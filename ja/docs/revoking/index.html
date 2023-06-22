@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ja">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>証明書を失効する -  Let&#39;s Encrypt - フリーな SSL/TLS 証明書</title>
+    <meta name="description" content="証明書に対応する秘密鍵が安全でなくなったときは、証明書を失効する必要があります。 これにはいくつかの理由があります。 たとえば、パブリックなウェブサイト上で誤って秘密鍵を公開してしまった場合、ハッカーが秘密鍵をサーバーからコピーした場合、ハッカーが一時的にサーバーや DNS の設定を操作した場合、取得した秘密鍵で証明書の検証や発行が行われた場合などがあります。
+Let&amp;rsquo;s Encrypt の証明書を失効すると、Let&amp;rsquo;s Encrypt は失効情報を Online Certificate Status Protocol (OCSP) を用いて公開します。一部のブラウザは OCSP をチェックして証明書が信頼するべきかどうか確認します。 ただし、OCSP にはいくつかの基礎的な問題があるため、すべてのブラウザがチェックするわけではないことに注意してください。 それでも、侵害された秘密鍵に対応する証明書を失効することは重要です。また、Let&amp;rsquo;s Encrypt の Subscriber Agreement でも義務づけられています。
+Let&amp;rsquo;s Encrypt で証明書を失効するには、ACME API を使用しますが、通常は Certbot などのACME クライアントを使用します。 証明書の失効をするには、Let&amp;rsquo;s Encrypt に対して失効の権限があることを証明しなければなりません。 証明の方法は３つあります。
+証明書を発行したアカウントから行う方法 もともと自分で証明書を発行し、現在でも発行に使用したアカウントがコントロール下にある場合、そのアカウントを使って証明書を失効できます。 Certbot はデフォルトでこの方法を試します。 以下は失効を行う例です。
+certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem --reason keycompromise 証明書の秘密鍵を使用する方法 もともと自分で証明書を発行したわけではなくても、証明書に対応する秘密鍵のコピーを持っている場合、その秘密鍵を使って失効リクエストに署名を行うことで失効を行えます。 たとえば、秘密鍵が意図せず公開されてしまった場合には、自分自身で証明書を発行したわけでなくても、この方法で秘密鍵を使用して発行した証明書を失効できます。
+この方法を使うには、初めに失効する証明書をダウンロードする必要があります。 Let&amp;rsquo;s Encrypt はすべての証明書のログを Certificate Transparency logs に記録しています。そのため、crt.sh などの log monitor から証明書を見つけてダウンロードできます。
+また、PEM 形式の秘密鍵のコピーも必要です。 これらが準備できたら、以下のコマンドで証明書を失効できます。
+certbot revoke --cert-path /PATH/TO/cert.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="証明書を失効する">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ja/docs/revoking/">
+    <meta name="twitter:description" content="証明書に対応する秘密鍵が安全でなくなったときは、証明書を失効する必要があります。 これにはいくつかの理由があります。 たとえば、パブリックなウェブサイト上で誤って秘密鍵を公開してしまった場合、ハッカーが秘密鍵をサーバーからコピーした場合、ハッカーが一時的にサーバーや DNS の設定を操作した場合、取得した秘密鍵で証明書の検証や発行が行われた場合などがあります。
+Let&amp;rsquo;s Encrypt の証明書を失効すると、Let&amp;rsquo;s Encrypt は失効情報を Online Certificate Status Protocol (OCSP) を用いて公開します。一部のブラウザは OCSP をチェックして証明書が信頼するべきかどうか確認します。 ただし、OCSP にはいくつかの基礎的な問題があるため、すべてのブラウザがチェックするわけではないことに注意してください。 それでも、侵害された秘密鍵に対応する証明書を失効することは重要です。また、Let&amp;rsquo;s Encrypt の Subscriber Agreement でも義務づけられています。
+Let&amp;rsquo;s Encrypt で証明書を失効するには、ACME API を使用しますが、通常は Certbot などのACME クライアントを使用します。 証明書の失効をするには、Let&amp;rsquo;s Encrypt に対して失効の権限があることを証明しなければなりません。 証明の方法は３つあります。
+証明書を発行したアカウントから行う方法 もともと自分で証明書を発行し、現在でも発行に使用したアカウントがコントロール下にある場合、そのアカウントを使って証明書を失効できます。 Certbot はデフォルトでこの方法を試します。 以下は失効を行う例です。
+certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem --reason keycompromise 証明書の秘密鍵を使用する方法 もともと自分で証明書を発行したわけではなくても、証明書に対応する秘密鍵のコピーを持っている場合、その秘密鍵を使って失効リクエストに署名を行うことで失効を行えます。 たとえば、秘密鍵が意図せず公開されてしまった場合には、自分自身で証明書を発行したわけでなくても、この方法で秘密鍵を使用して発行した証明書を失効できます。
+この方法を使うには、初めに失効する証明書をダウンロードする必要があります。 Let&amp;rsquo;s Encrypt はすべての証明書のログを Certificate Transparency logs に記録しています。そのため、crt.sh などの log monitor から証明書を見つけてダウンロードできます。
+また、PEM 形式の秘密鍵のコピーも必要です。 これらが準備できたら、以下のコマンドで証明書を失効できます。
+certbot revoke --cert-path /PATH/TO/cert.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ja/docs/revoking/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt ブログフィード" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">コミュニティ</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">寄付</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">スポンサーになる</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">私たちについて</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">インターネット・セキュリティ研究グループ (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">サービス・ステータス</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">キャリア</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">言語 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>証明書を失効する</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最終更新日:<time datetime="2021-08-03">2021/08/03</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ja/docs">すべてのドキュメントを読む</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    注意: このページが翻訳された後、英語バージョンのページがアップデートされています。
+                    (<time datetime="2021-10-15">2021/10/15</time>)
+                    <a href="letsencrypt-ewebsite/docs/revoking/">英語で表示する</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>証明書に対応する秘密鍵が安全でなくなったときは、証明書を失効する必要があります。 これにはいくつかの理由があります。 たとえば、パブリックなウェブサイト上で誤って秘密鍵を公開してしまった場合、ハッカーが秘密鍵をサーバーからコピーした場合、ハッカーが一時的にサーバーや DNS の設定を操作した場合、取得した秘密鍵で証明書の検証や発行が行われた場合などがあります。</p>
+<p>Let&rsquo;s Encrypt の証明書を失効すると、Let&rsquo;s Encrypt は失効情報を <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a> を用いて公開します。一部のブラウザは OCSP をチェックして証明書が信頼するべきかどうか確認します。 ただし、OCSP には<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">いくつかの基礎的な問題</a>があるため、すべてのブラウザがチェックするわけではないことに注意してください。 それでも、侵害された秘密鍵に対応する証明書を失効することは重要です。また、Let&rsquo;s Encrypt の <a href="letsencrypt-ewebsite/ja/repository/" hreflang="ja">Subscriber Agreement</a> でも義務づけられています。</p>
+<p>Let&rsquo;s Encrypt で証明書を失効するには、<a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a> を使用しますが、通常は <a href="https://certbot.eff.org/">Certbot</a> などのACME クライアントを使用します。 証明書の失効をするには、Let&rsquo;s Encrypt に対して失効の権限があることを証明しなければなりません。 証明の方法は３つあります。</p>
+<h1 id="証明書を発行したアカウントから行う方法">証明書を発行したアカウントから行う方法</h1>
+<p>もともと自分で証明書を発行し、現在でも発行に使用したアカウントがコントロール下にある場合、そのアカウントを使って証明書を失効できます。 Certbot はデフォルトでこの方法を試します。 以下は失効を行う例です。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem --reason keycompromise
+</code></pre></div><h1 id="証明書の秘密鍵を使用する方法">証明書の秘密鍵を使用する方法</h1>
+<p>もともと自分で証明書を発行したわけではなくても、証明書に対応する秘密鍵のコピーを持っている場合、その秘密鍵を使って失効リクエストに署名を行うことで失効を行えます。 たとえば、秘密鍵が意図せず公開されてしまった場合には、自分自身で証明書を発行したわけでなくても、この方法で秘密鍵を使用して発行した証明書を失効できます。</p>
+<p>この方法を使うには、初めに失効する証明書をダウンロードする必要があります。 Let&rsquo;s Encrypt はすべての証明書のログを <a href="https://www.certificate-transparency.org/">Certificate Transparency</a> logs に記録しています。そのため、<a href="https://crt.sh/">crt.sh</a> などの log monitor から証明書を見つけてダウンロードできます。</p>
+<p>また、PEM 形式の秘密鍵のコピーも必要です。 これらが準備できたら、以下のコマンドで証明書を失効できます。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reason keycompromise
+</code></pre></div><h1 id="別の認証済みアカウントを使用する方法">別の認証済みアカウントを使用する方法</h1>
+<p>ホストや DNS が不正アクセスを受けた後に誰かが証明書を発行した場合、コントロールを取り戻した時点でその証明書を失効させたいものです。 証明書を失効させるために、Let&rsquo;s Encrypt は、その証明書に含まれるドメイン名を管理していること (そうでなければ、人々が勝手に互いの証明書を失効させることができてしまいます) を確認する必要があります! このコントロールを検証するために、Let&rsquo;s Encrypt は発行用のコントロールを検証するのと同じ方法を使います。<a href="https://tools.ietf.org/html/rfc8555#section-8.4">DNS の TXT レコードの値</a>を入れたり、<a href="https://tools.ietf.org/html/rfc8555#section-8.3">HTTP サーバーにファイルを置く</a>ことが可能です。 通常、ACME クライアントがこれらを処理します。 ほとんどのACMEクライアントは、検証と発行を組み合わせているため、検証を求めるには発行を試みるしかないことに注意してください。 出来上がった証明書が不要な場合は失効させるか、単に秘密鍵を破棄すればよいのです。 証明書の発行を一切行わないようにしたい場合は、コマンドラインに存在しないドメイン名を記述することで、他の既存のドメイン名を検証しつつ、発行を失敗させることができます。 これを行うには、次を実行します。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot certonly --manual --preferred-challenges<span class="o">=</span>dns -d <span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span> -d nonexistent.<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>
+</code></pre></div><p>そして、その指示に従ってください。 DNS ではなく HTTP で検証したい場合は、<code>--preferred-challenges</code> フラグを <code>--preferred-challenges=http</code> に置き換えてください。</p>
+<p>失効させたい証明書に含まれるすべてのドメイン名の制御を確認したら、<a href="https://crt.sh/">crt.sh</a> から証明書をダウンロードし、自分が発行したかのように証明書の失効作業を進めることが可能です。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/downloaded-cert.pem --key-path /PATH/TO/ --reason keycompromise
+</code></pre></div></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encryptは、非営利団体の <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> が提供する自動化されたフリーでオープンな認証局です。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>すべての手紙またはお問い合わせを以下に送ってください：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ja/privacy/">プライバシー・ポリシー</a>を読む。<br>
+<a href="https://www.abetterinternet.org/trademarks/">トレードマーク・ポリシー</a>を読む。
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

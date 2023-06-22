@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="de-DE">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FAQ -  Let&#39;s Encrypt - Freie SSL/TLS Zertifikate</title>
+    <meta name="description" content="Diese FAQ ist in folgende Sektionen unterteilt:
+ Allgemeine Fragen Technische Fragen  Allgemeine Fragen Welche Dienste bietet Let&amp;rsquo;s Encrypt an? Let&amp;rsquo;s Encrypt ist eine globale Zertifizierungsstelle (CA). Wir lassen Menschen und Organisationen weltweit SSL/TLS Zertifikate ausstellen, erneuern und verwalten. Unsere Zertifikate können benutzt werden, um auf Webseiten sichere HTTPS Verbindungen zu aktivieren.
+Let&amp;rsquo;s Encrypt bietet Domain-Validierungs (DV) Zertifikate. Wir bieten keine Organisationsvalidierung (OV) oder Erweiterte Validierung (EV), weil wir für diese Typen die Ausstellung nicht automatisieren können.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="FAQ">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/de/docs/faq/">
+    <meta name="twitter:description" content="Diese FAQ ist in folgende Sektionen unterteilt:
+ Allgemeine Fragen Technische Fragen  Allgemeine Fragen Welche Dienste bietet Let&amp;rsquo;s Encrypt an? Let&amp;rsquo;s Encrypt ist eine globale Zertifizierungsstelle (CA). Wir lassen Menschen und Organisationen weltweit SSL/TLS Zertifikate ausstellen, erneuern und verwalten. Unsere Zertifikate können benutzt werden, um auf Webseiten sichere HTTPS Verbindungen zu aktivieren.
+Let&amp;rsquo;s Encrypt bietet Domain-Validierungs (DV) Zertifikate. Wir bieten keine Organisationsvalidierung (OV) oder Erweiterte Validierung (EV), weil wir für diese Typen die Ausstellung nicht automatisieren können.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/de/docs/faq/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Feed des Let&#39;s Encrypt-Blogs" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigation überspringen</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/de/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/de/docs/" class="pure-menu-link" tabindex="0">Dokumentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Hilfe bekommen</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Spenden</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/donate/" class="pure-menu-link">Spenden</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Sponsor werden</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/sponsors/" class="pure-menu-link">Derzeitige Sponsoren und Spender</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/getinvolved/" class="pure-menu-link">Mitmachen</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Über uns</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Dienstestatus</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/stats/" class="pure-menu-link">Statistiken</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Freie Stellen</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sprachen <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/faq/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/faq/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">✓ Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/faq/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/faq/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/faq/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/faq/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/faq/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/faq/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/faq/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/faq/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/faq/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/faq/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/faq/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/faq/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/faq/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>FAQ</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Letzte Änderung: <time datetime="2020-04-23">23.04.2020</time>
+
+
+ | <a href="/letsencrypt-ewebsite/de/docs">Gesamte Dokumentation anzeigen</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Hinweis: Die englische Version wurde seit der Übersetzung aktualisiert
+                    (<time datetime="2022-09-28">28.09.2022</time>)
+                    <a href="letsencrypt-ewebsite/docs/faq/">Auf Englisch anzeigen</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Diese FAQ ist in folgende Sektionen unterteilt:</p>
+<ul>
+<li><a href="#general">Allgemeine Fragen</a></li>
+<li><a href="#technical">Technische Fragen</a></li>
+</ul>
+<h1 id="a-id-general-allgemeine-fragen-a"><a id="general">Allgemeine Fragen</a></h1>
+<h2 id="welche-dienste-bietet-let-s-encrypt-an">Welche Dienste bietet Let&rsquo;s Encrypt an?</h2>
+<p>Let&rsquo;s Encrypt ist eine globale Zertifizierungsstelle (CA). Wir lassen Menschen und Organisationen weltweit SSL/TLS Zertifikate ausstellen, erneuern und verwalten. Unsere Zertifikate können benutzt werden, um auf Webseiten sichere HTTPS Verbindungen zu aktivieren.</p>
+<p>Let&rsquo;s Encrypt bietet Domain-Validierungs (DV) Zertifikate. Wir bieten keine Organisationsvalidierung (OV) oder Erweiterte Validierung (EV), weil wir für diese Typen die Ausstellung nicht automatisieren können.</p>
+<p>Um mit Let&rsquo;s Encrypt zu beginnen, besuchen Sie bitte <a href="letsencrypt-ewebsite/de/getting-started/" hreflang="de-DE">Erste Schritte</a> Seite.</p>
+<h2 id="was-kostet-die-benutzung-von-let-s-encrypt-ist-wirklich-alles-frei">Was kostet die Benutzung von Let&rsquo;s Encrypt? Ist wirklich alles frei?</h2>
+<p>Wir erheben keine Gebühr für unsere Zertifikate. Let&rsquo;s Encrypt ist gemeinnützig, unsere Mission ist die Erstellung eines sicheren Webs, welches die Privatsphäre akzeptiert durch weite Verbreitung von HTTPS. Unsere Dienste sind frei und einfach zu benutzen, sodass jede Webseite HTTPS bereitstellen kann.</p>
+<p>Wir brauchen Unterstützung von grosszügigen Sponsoren, Stipendiaten und Einzelpersonen, um unsere Dienste frei rund um den Globus bereitzustellen. Wenn Sie interessiert sind, uns zu unterstützen, bitte machen Sie eine <a href="letsencrypt-ewebsite/de/donate/" hreflang="de-DE">Spende</a> oder <a href="https://www.abetterinternet.org/sponsor">werden Sie Sponsor</a>.</p>
+<p>In einigen Fällen wird Integratoren (z.B. Hosting-Provider) eine geringe Gebühr für Verwaltungsaufwand berechnet.</p>
+<h2 id="welche-unterstützungsmöglichkeiten-werden-angeboten">Welche Unterstützungsmöglichkeiten werden angeboten?</h2>
+<p>Let&rsquo;s Encrypt läuft mit einem kleinen Team und hängt stark von Automatisierung ab, um Kosten zu senken. Aus diesem Grunde sind wir nicht in der Lage, direkten Support für unsere Abonnenten anzubieten. Wir haben dafür einige grossartige Optionen für Unterstützung:</p>
+<ol>
+<li>Wir haben eine wirklich hilfreiche <a href="letsencrypt-ewebsite/de/docs/" hreflang="de-DE">Dokumentation</a>.</li>
+<li>Wir haben ein sehr aktives und hilfreiches <a href="https://community.letsencrypt.org/">Community Support Forum</a>. Mitglieder unserer Community machen einen grossartigen Job beim Beantworten von Fragen und viele der üblichen Fragen sind schon beantwortet.</li>
+</ol>
+<p>Hier ist ein <a href="https://www.youtube.com/watch?v=Xe1TZaElTAs">Video, was wir mögen</a> über die Leistung der grossen Community.</p>
+<h2 id="eine-webseite-die-let-s-encrypt-benutzt-ist-an-phishing-malware-scam-beteiligt-was-sollte-ich-tun">Eine Webseite, die Let&rsquo;s Encrypt benutzt, ist an Phishing/Malware/Scam/&hellip; beteiligt, was sollte ich tun?</h2>
+<p>Wir empfehlen das Melden solcher Seiten bei Google Safe Browsing und dem Microsoft Smart Screen Programm, welche die Benutzer mehr schützen kann. Hier sind die Reporting-URLs:</p>
+<ul>
+<li><a href="https://safebrowsing.google.com/safebrowsing/report_badware/">https://safebrowsing.google.com/safebrowsing/report_badware/</a></li>
+<li><a href="https://www.microsoft.com/en-us/wdsi/support/report-unsafe-site-guest">https://www.microsoft.com/en-us/wdsi/support/report-unsafe-site-guest</a></li>
+</ul>
+<p>Wenn Sie mehr über Regeln und Gründe lesen wollen, so können Sie das hier (in englisch):</p>
+<p><a href="https://letsencrypt.org/2015/10/29/phishing-and-malware.html">https://letsencrypt.org/2015/10/29/phishing-and-malware.html</a></p>
+<h1 id="a-id-technical-technische-fragen-a"><a id="technical">Technische Fragen</a></h1>
+<h2 id="wird-zertifikaten-von-let-s-encrypt-von-meinem-browser-vertraut">Wird Zertifikaten von Let&rsquo;s Encrypt von meinem Browser vertraut?</h2>
+<p>Für die meisten Browser und Betriebssysteme, ja. Schauen Sie in die <a href="letsencrypt-ewebsite/de/docs/certificate-compatibility/" hreflang="de-DE">Kompatibilitätsliste</a> für mehr Details.</p>
+<h2 id="stellt-let-s-encrypt-zertifikate-für-andere-als-ssl-tls-für-webseiten-aus">Stellt Let&rsquo;s Encrypt Zertifikate für andere als SSL/TLS für Webseiten aus?</h2>
+<p>Let&rsquo;s Encrypt Zertifikate sind Standard Domain Validation Zertifikate, so können Sie diese für alle Server, die einen Domainnamen benutzen, verwenden: Webserver, Mailserver, FTP-Server und viele andere.</p>
+<p>Email-Verschlüsselung und Code-Signierung sind unterschiedliche Typen von Zertifikaten, die Let&rsquo;s Encrypt nicht ausstellt.</p>
+<h2 id="generiert-oder-speichert-let-s-encrypt-private-schlüssel-von-meinen-zertifikaten-auf-let-s-encrypt-servern">Generiert oder speichert Let&rsquo;s Encrypt private Schlüssel von meinen Zertifikaten auf Let&rsquo;s Encrypt Servern?</h2>
+<p>Nein. Niemals.</p>
+<p>Der private Schlüssel wird immer auf Ihrem eigenen Server generiert und verwaltet, nicht bei der Let&rsquo;s Encrypt Zertifikat Verwaltung.</p>
+<h2 id="was-ist-die-laufzeit-der-let-s-encrypt-zertifikate-für-wie-lange-sind-diese-gültig">Was ist die Laufzeit der Let&rsquo;s Encrypt Zertifikate? Für wie lange sind diese gültig?</h2>
+<p>Unsere Zertifikate sind 90 Tage gültig. Sie können <a href="/2015/11/09/why-90-days.html">hier</a> darüber lesen warum.</p>
+<p>Es gibt keine Möglichkeit, das zu ändern, es gibt keine Ausnahmen. Wir empfehlen die automatische Erneuerung Ihrer Zertifikate alle 60 Tage.</p>
+<h2 id="wird-let-s-encrypt-organisations-validierung-ov-oder-erweiterte-validierung-ev-zertifikate-anbieten">Wird Let&rsquo;s Encrypt Organisations-Validierung (OV) oder Erweiterte Validierung (EV) Zertifikate anbieten?</h2>
+<p>Wir haben keine Pläne für Ausstellung von OV oder EV Zertifikaten.</p>
+<h2 id="kann-ich-ein-zertifikat-für-mehrere-domain-namen-san-zertifikate-oder-ucc-zertifikate-bekommen">Kann ich ein Zertifikat für mehrere Domain-Namen (SAN Zertifikate oder UCC Zertifikate) bekommen?</h2>
+<p>Ja, dieselben Zertifikate können unterschiedliche Namen mit Benutzung des Subject Alternative Name (SAN) Mechanismus verwenden.</p>
+<h2 id="kann-let-s-encrypt-wildcard-zertifikate-ausstellen">Kann Let&rsquo;s Encrypt Wildcard-Zertifikate ausstellen?</h2>
+<p>Ja. Wildcard müssen über ACMEv2 mit DNS-01 Challenge ausgestellt werden. Schauen Sie <a href="https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578">diese Nachricht</a> für mehr technische Details.</p>
+<h2 id="gibt-es-einen-let-s-encrypt-acme-client-für-mein-betriebssystem">Gibt es einen Let&rsquo;s Encrypt (ACME) Client für mein Betriebssystem?</h2>
+<p>Es ist eine grosse Anzahl von <a href="letsencrypt-ewebsite/de/docs/client-options/" hreflang="de-DE">ACME Clients</a> verfügbar. Die Wahrscheinlichkeit ist gross, dass etwas auf Ihrem Betriebssystem gut funktioniert. Wir empfehlen, mit dem <a href="https://certbot.eff.org/">Certbot</a> zu starten.</p>
+<h2 id="kann-ich-einen-bestehenden-privaten-schlüssel-oder-ein-certificate-signing-request-csr-benutzen">Kann ich einen bestehenden privaten Schlüssel oder ein Certificate Signing Request (CSR) benutzen?</h2>
+<p>Ja, aber nicht alle Clients unterstützen diese Funktion. <a href="https://certbot.eff.org/">Certbot</a> tut das.</p>
+<h2 id="welche-ip-adressen-benutzt-let-s-encrypt-zur-validierung-meines-webservers">Welche IP-Adressen benutzt Let&rsquo;s Encrypt zur Validierung meines Webservers?</h2>
+<p>Wir veröffentlichen keine Liste von IP-Adressen, die wir bei der Validierung benutzen, weil diese ändern sich zu jeder Zeit. Beachten Sie, dass wir jetzt <a href="https://letsencrypt.org/2020/02/19/multi-perspective-validation.html">von mehreren IP-Adressen validieren</a>.</p>
+<h2 id="ich-habe-erfolgreich-ein-zertifikat-erneuert-aber-die-validierung-ist-nicht-geschehen-wie-ist-das-möglich">Ich habe erfolgreich ein Zertifikat erneuert, aber die Validierung ist nicht geschehen - wie ist das möglich?</h2>
+<p>Wenn Sie den Austausch für eine Domain erfolgreich abgeschlossen haben, wird die resultierende Autorisierung zwischengespeichert, damit Ihr Konto später erneut verwendet werden kann. Die zwischengespeicherten Berechtigungen sind 30 Tage ab dem Zeitpunkt der Validierung gültig. Wenn das angeforderte Zertifikat alle erforderlichen Berechtigungen zwischengespeichert hat, wird die Validierung erst nach Ablauf der relevanten zwischengespeicherten Berechtigungen erneut durchgeführt.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt ist eine freie, automatisierte und offene Zertifizierungsstelle,
+  herausgebracht für Sie durch <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Senden Sie alle Briefe oder Anfragen an:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Lesen Sie unsere <a href="/privacy/">Datenschutzerklärung</a>.<br> Lesen Sie unsere <a href="https://www.abetterinternet.org/trademarks/">Markenbestimmungen</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

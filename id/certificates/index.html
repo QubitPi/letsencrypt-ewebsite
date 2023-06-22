@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="id-ID">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rantai Kepercayaan -  Let&#39;s Encrypt - Sertifikat SSL/TLS Gratis</title>
+    <meta name="description" content="Sertifikat Root Sertifikat root kami disimpan dengan aman secara luring. Kami menerbitkan sertifikat entitas akhir untuk pelanggan dari perantara di bagian berikutnya. Sebagai tambahan kompatibilitas karena kami mendaftarkan Root X2 kami yang baru ke berbagai root programs, kami juga melakukan cross-signed dari Root X1.
+ Aktif  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Tanda tangan sendiri (Self-signed): der, pem, txt Tanda tangan lintas-silang (Cross-signed) oleh DST Root CA X3: derpem, txt     Aktif, ketersediaan terbatas  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Tanda tangan sendiri (Self-signed): der, pem, txt Tanda tangan lintas silang (Cross-signed) oleh ISRG Root X1: der, pem, txt      Kami telah mempersiapkan website untuk pengujian rantai sertifikat menuju root aktif kami.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Rantai Kepercayaan">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/id/certificates/">
+    <meta name="twitter:description" content="Sertifikat Root Sertifikat root kami disimpan dengan aman secara luring. Kami menerbitkan sertifikat entitas akhir untuk pelanggan dari perantara di bagian berikutnya. Sebagai tambahan kompatibilitas karena kami mendaftarkan Root X2 kami yang baru ke berbagai root programs, kami juga melakukan cross-signed dari Root X1.
+ Aktif  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Tanda tangan sendiri (Self-signed): der, pem, txt Tanda tangan lintas-silang (Cross-signed) oleh DST Root CA X3: derpem, txt     Aktif, ketersediaan terbatas  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Tanda tangan sendiri (Self-signed): der, pem, txt Tanda tangan lintas silang (Cross-signed) oleh ISRG Root X1: der, pem, txt      Kami telah mempersiapkan website untuk pengujian rantai sertifikat menuju root aktif kami.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/id/certificates/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Umpan Blog Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Lewati tautan navigasi</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/id/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/id/docs/" class="pure-menu-link" tabindex="0">Dokumentasi</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Dapatkan Bantuan</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donasi</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/donate/" class="pure-menu-link">Berdonasi</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Menjadi Sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/sponsors/" class="pure-menu-link">Sponsor dan Pendana Saat Ini</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/getinvolved/" class="pure-menu-link">Ayo terlibat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Tentang Kami</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status Layanan</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/stats/" class="pure-menu-link">Statistik</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/contact/" class="pure-menu-link">Kontak</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karir</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Daftar Bahasa <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">✓ Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/5.jpg');">
+<div class="container">
+	<h1>Rantai Kepercayaan</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Pembaruan terakhir: <time datetime="2021-10-02">2 Okt 2021</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p><a href="/images/isrg-hierarchy.png"><img src="/images/isrg-hierarchy.png" alt="ISRG Certificate Hierarchy Diagram, as of December 2020"></a></p>
+<h1 id="sertifikat-root">Sertifikat <em>Root</em></h1>
+<p>Sertifikat root kami disimpan dengan aman secara luring. Kami menerbitkan sertifikat entitas akhir untuk pelanggan dari perantara di bagian berikutnya. Sebagai tambahan kompatibilitas karena kami mendaftarkan Root X2 kami yang baru ke berbagai <em>root programs</em>, kami juga melakukan <em>cross-signed</em> dari Root X1.</p>
+<ul>
+<li>Aktif
+<ul>
+<li>ISRG Root X1 (<code>RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314791">Tanda tangan sendiri (Self-signed)</a>: <a href="/certs/isrgrootx1.der">der</a>, <a href="/certs/isrgrootx1.pem">pem</a>, <a href="/certs/isrgrootx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3958242236">Tanda tangan lintas-silang (Cross-signed) oleh DST Root CA X3</a>: <a href="/certs/isrg-root-x1-cross-signed.der">der</a><a href="/certs/isrg-root-x1-cross-signed.pem">pem</a>, <a href="/certs/isrg-root-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktif, ketersediaan terbatas
+<ul>
+<li>ISRG Root X2 (<code>ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3335562555">Tanda tangan sendiri (Self-signed)</a>: <a href="/certs/isrg-root-x2.der">der</a>, <a href="/certs/isrg-root-x2.pem">pem</a>, <a href="/certs/isrg-root-x2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3334561878">Tanda tangan lintas silang (Cross-signed) oleh ISRG Root X1</a>: <a href="/certs/isrg-root-x2-cross-signed.der">der</a>, <a href="/certs/isrg-root-x2-cross-signed.pem">pem</a>, <a href="/certs/isrg-root-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Kami telah mempersiapkan website untuk pengujian rantai sertifikat menuju root aktif kami.</p>
+<ul>
+<li>ISRG Root X1
+<ul>
+<li><a href="https://valid-isrgrootx1.letsencrypt.org/">Valid</a></li>
+<li><a href="https://revoked-isrgrootx1.letsencrypt.org/">Dicabut</a></li>
+<li><a href="https://expired-isrgrootx1.letsencrypt.org/">Kadaluarsa</a></li>
+</ul>
+</li>
+<li>ISRG Root X2
+<ul>
+<li><a href="https://valid-isrgrootx2.letsencrypt.org/">Valid</a></li>
+<li><a href="https://revoked-isrgrootx2.letsencrypt.org/">Dicabut</a></li>
+<li><a href="https://expired-isrgrootx2.letsencrypt.org/">Kadaluarsa</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="sertifikat-perantara">Sertifikat Perantara</h1>
+<p>Pada kondisi umumnya, sertifikat-sertifikat yang diterbitkan oleh Let&rsquo;s Encrypt akan berasal dari &ldquo;R3&rdquo;, yaitu suatu perantara RSA. Saat ini, penerbitan sertifikat dari &ldquo;E1&rdquo;, suatu perantara ECDSA, hanya dapat dilakukan oleh pelanggan kunci ECDSA yang <a href="https://community.letsencrypt.org/t/ecdsa-availability-in-production-environment/150679">telah terdaftar dan diijinkan</a>. Kedepannya, penerbitan dari &ldquo;E1&rdquo; akan tersedia bagi semua orang.</p>
+<p>Sertifikat perantara kami yang lain (&ldquo;R4&rdquo; dan &ldquo;E2&rdquo;) dipersiapkan sebagai pemulihan kebencanaan dan hanya akan digunkan jika dan hanya jika kami kehilangan kemampuan untuk menerbitkan sertifikat perantara utama kami. Kami tidak lagi menggunakan perantara X1, X2, X3 dan X4.</p>
+<p>IdenTrust telah menanda-tangani lintas-silang sertifikat perantara kami untuk kompatibilitas tambahan.</p>
+<ul>
+<li>Aktif
+<ul>
+<li>Let&rsquo;s Encrypt R3 (<code>RSA 2048, O = Let's Encrypt, CN = R3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561879">Tanda tangan oleh ISRG Root X1</a>: <a href="/certs/lets-encrypt-r3.der">der</a>, <a href="/certs/lets-encrypt-r3.pem">pem</a>, <a href="/certs/lets-encrypt-r3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778542">Tanda tangan lintas silang (Cross-signed) oleh IdenTrust</a>: <a href="/certs/lets-encrypt-r3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r3-cross-signed.txt">txt</a> (Telah usai)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktif, ketersediaan terbatas
+<ul>
+<li>Let&rsquo;s Encrypt E1 (<code>ECDSA P-384, O = Let's Encrypt, CN = E1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671964">Tanda tangan oleh ISRG Root X2</a>: <a href="/certs/lets-encrypt-e1.der">der</a>, <a href="/certs/lets-encrypt-e1.pem">pem</a>, <a href="/certs/lets-encrypt-e1.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cadangan
+<ul>
+<li>Let&rsquo;s Encrypt R4 (<code>RSA 2048, O = Let's Encrypt, CN = R4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561877">Tanda tangan oleh ISRG Root X1</a>: <a href="/certs/lets-encrypt-r4.der">der</a>, <a href="/certs/lets-encrypt-r4.pem">pem</a>, <a href="/certs/lets-encrypt-r4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778543">Tanda tangan lintas silang (Cross-signed) oleh IdenTrust</a>: <a href="/certs/lets-encrypt-r4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r4-cross-signed.txt">txt</a> (Telah usai)</li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt E2 (<code>ECDSA P-384, O = Let's Encrypt, CN = E2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671963">Tanda tangan oleh ISRG Root X2</a>: <a href="/certs/lets-encrypt-e2.der">der</a>, <a href="/certs/lets-encrypt-e2.pem">pem</a>, <a href="/certs/lets-encrypt-e2.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Ditarik
+<ul>
+<li>Let&rsquo;s Encrypt Authority X1 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314792">Tanda tangan oleh ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx1.der">der</a>, <a href="/certs/letsencryptauthorityx1.pem">pem</a>, <a href="/certs/letsencryptauthorityx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10235198">Tanda tangan lintas silang (Cross-signed) oleh IdenTrust</a>: <a href="/certs/lets-encrypt-x1-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x1-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X2 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=12721505">Tanda tangan oleh ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx2.der">der</a>, <a href="/certs/letsencryptauthorityx2.pem">pem</a>, <a href="/certs/letsencryptauthorityx2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10970235">Tanda tangan lintas silang (Cross-signed) oleh IdenTrust</a>: <a href="/certs/lets-encrypt-x2-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x2-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X3 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997543">Tanda tangan oleh ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx3.der">der</a>, <a href="/certs/letsencryptauthorityx3.pem">pem</a>, <a href="/certs/letsencryptauthorityx3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15706126">Tanda tangan lintas silang (Cross-signed) oleh IdenTrust</a>: <a href="/certs/lets-encrypt-x3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x3-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X4 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997546">Tanda tangan oleh ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx4.der">der</a>, <a href="/certs/letsencryptauthorityx4.pem">pem</a>, <a href="/certs/letsencryptauthorityx4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15710291">Tanda tangan lintas silang (Cross-signed) oleh IdenTrust</a>: <a href="/certs/lets-encrypt-x4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x4-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="tanda-tangan-silang">Tanda-tangan Silang</h1>
+<h2 id="sertifikat-perantara-1">Sertifikat Perantara</h2>
+<p>Pada tiap-tiap sertifikat perantara kami merepresentasikan satu pasang <em>public key</em> dan <em>private key</em>. Kunci privat dari pasangan tersebut menghasilkan tanda tangan untuk semua sertifikat entitas akhir (juga dikenal sebagai <em>leaf certificates</em>), seperti sertifikat yang kami terbitkan untuk Anda gunakan.</p>
+<p>Sertifikat perantara RSA kami ditandatangani oleh ISRG Root X1. Pada saat ini, ISRG Root X1 telah dipercaya secara luas, tetapi sertifikat-sertifikat perantara RSA tersebut masih ditandatangani lintas-silang oleh &ldquo;<a href="https://crt.sh/?id=8395">DST Root CA X3</a>&rdquo; dari IdenTrust (kemudian disebut sebagai &ldquo;TrustID X3 Root&rdquo;) sebagai kompatibilitas klien tambahan. Sertifikat <em>Root</em> IdenTrust telah beredar cukup lama dan oleh sebab itu memiliki kompatibilitas yang lebih baik bagi perangkat dan sistem operasi yang lebih berumur (misalkan Windows XP, Android 7). Anda dapat <a href="https://www.identrust.com/support/downloads">mengunduh sertifikat &ldquo;TrustID X3 Root&rdquo; dari IdentTrust</a> (atau, anda dapat juga <a href="/certs/trustid-x3-root.pem.txt"> mengunduh salinannya dari kami</a>).</p>
+<p>Dengan memiliki tanda-tangan lintas-silang, itu berarti bahwa tiap-tiap sertifikat perantara RSA kami memiliki dua sertifikat yang merepresentasikan <em>signing key</em> yang sama. Yang satu ditanda-tangani oleh DST Root CA X3 dan yang satunya lagi ditanda-tangani oleh ISRG Root X1. Cara termudah untuk membedakan keduanya adalah dengan melihat bidang Penerbit mereka.</p>
+<p>Saat mengkonfigurasi server web, operator server mengonfigurasi tidak hanya sertifikat entitas akhir, tetapi juga daftar sertifikat perantara untuk membantu browser memverifikasi bahwa sertifikat entitas akhir memiliki rantai kepercayaan yang mengarah ke sertifikat root tepercaya. Hampir seluruh operator server akan memilih untuk melayani rantai sertifikat yang terdiri atas sertifikat perantara dengan Subyek &ldquo;R3&rdquo; dan Penerbit &ldquo;ISRG Root X1&rdquo;. <a href="https://certbot.org">Certbot</a>, aplikasi klien Let&rsquo;s Encrypt yang direkomendasikan, dapat membuat pengaturan tersebut berjalan dengan mulus.</p>
+<h2 id="root">Root</h2>
+<p>Sama halnya dengan sertifikat perantara, sertifikat <em>root</em> juga dapat ditanda-tangani dengan lintas-silang, seringkali hal ini untuk meningkatkan kompatibilitas klien. Sertifikat <em>root</em> ECDSA kami, ISRG Root X2 di susun pada kisaran september hingga november 2020 dan merupakan sertifikat <em>root</em> bagi hirarki ECDSA. Sertifikat tersebut di representasikan oleh dua sertifikat berikut: satu yang ditanda-tangani sendiri (self-signed) dan satunya yang ditanda-tangani oleh ISRG Root X1.</p>
+<p>Seluruh sertifikat yang ditanda-tangani menggunakan sertifikat perantara ECDSA &ldquo;E1&rdquo; akan terbit dengan rangkaian yang mengandung sertifikat perantara dengan Subyeknya adalah &ldquo;ISRG Root X2&rdquo; dan Penerbitnya adalah &ldquo;ISRG Root X1&rdquo;. Mayoritas operator server akan memilih menyediakan rankaian sertifikat ini karena menawarkan kompatibilitas terlengkap hingga ISRG Root X2 dipercaya secara luas.</p>
+<h1 id="sertifikat-penanda-tangan-ocsp">Sertifikat Penanda-tangan OCSP</h1>
+<p>Sertifikat ini digunakan untuk menandatangani tanggapan OCSP untuk sertifikat perantara Let&rsquo;s Encrypt, sehingga kami tidak perlu membawa kunci root online untuk menandatangani respon tersebut. Salinan sertifikat ini disertakan secara otomatis dalam respons OCSP tersebut, sehingga Pelanggan tidak perlu melakukan apa pun. Tautan berikut diberikan hanya untuk informasi saja.</p>
+<ul>
+<li>ISRG Root OCSP X1 (<a href="https://crt.sh/?id=2929281974">Ditanda-tangani oleh ISRG Root X1</a>): <a href="/certs/isrg-root-ocsp-x1.der">der</a>, <a href="/certs/isrg-root-ocsp-x1.pem">pem</a>, <a href="/certs/isrg-root-ocsp-x1.txt">txt</a></li>
+</ul>
+<p>Sertifikat perantara kami yang baru tidak memiliki URL OCSP ( informasi pencabutan disediakan melalui CRL), oleh karena itu kami tidak menerbitkan penandatanganan OCSP melalui ISRG Root X2.</p>
+<h1 id="transparansi-sertifikat">Transparansi Sertifikat</h1>
+<p>Kami berdedikasi untuk menjaga transparansi pada operasi dan sertifikat yang kami terbitkan. Kami menampilkan semua sertifikat yang kami terbitkan ke <a href="https://www.certificate-transparency.org/">Log Transparansi Sertifikat</a>. Anda dapat melihat semua sertifikat Let&rsquo;s Encrypt yang diterbitkan melalui tautan ini:</p>
+<ul>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=7395">Diterbitkan oleh Let&rsquo;s Encrypt Authority X1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=16418">Diterbitkan oleh Let&rsquo;s Encrypt Authority X3</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183283">Diterbitkan oleh E1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183267">Diterbitkan oleh R3</a></li>
+</ul>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Mendukung Web yang lebih aman dan lebih menghargai privasi.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/id/donate/">Donasi</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt adalah otoritas sertifikasi terbuka yang gratis dan terotomatisasi,
+  dipersembahkan oleh organisasi non-profit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Kirim semua surat atau pertanyaan ke:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Lihat <a href="/id/privacy/">kebijakan privasi</a> kami.<br>
+Lihat <a href="https://www.abetterinternet.org/trademarks/">kebijakan merek</a> kami.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

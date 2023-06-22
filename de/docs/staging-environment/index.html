@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="de-DE">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Staging-Umgebung -  Let&#39;s Encrypt - Freie SSL/TLS Zertifikate</title>
+    <meta name="description" content="Wir empfehlen dringend das Testen gegen unsere Staging-Umgebung, bevor die Produktionsumgebung benutzt wird. Das wird Ihnen erlauben, die Dinge richtig zu machen, bevor vertrauenswürdige Zertifikate ausgestellt werden und reduziert das Risiko, gegen Rate Limits zu laufen.
+Die ACME URL für unsere ACME v2 Staging-Umgebung ist:
+https://acme-staging-v02.api.letsencrypt.org/directory
+Wenn Sie Certbot verwenden, können Sie unsere Staging-Umgebung mit dem --test-cert Flag verwenden. Für andere ACME Clients lesen Sie bitte die Instruktionen für Informationen zum Testen mit unserer Staging-Umgebung.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Staging-Umgebung">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/de/docs/staging-environment/">
+    <meta name="twitter:description" content="Wir empfehlen dringend das Testen gegen unsere Staging-Umgebung, bevor die Produktionsumgebung benutzt wird. Das wird Ihnen erlauben, die Dinge richtig zu machen, bevor vertrauenswürdige Zertifikate ausgestellt werden und reduziert das Risiko, gegen Rate Limits zu laufen.
+Die ACME URL für unsere ACME v2 Staging-Umgebung ist:
+https://acme-staging-v02.api.letsencrypt.org/directory
+Wenn Sie Certbot verwenden, können Sie unsere Staging-Umgebung mit dem --test-cert Flag verwenden. Für andere ACME Clients lesen Sie bitte die Instruktionen für Informationen zum Testen mit unserer Staging-Umgebung.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/de/docs/staging-environment/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Feed des Let&#39;s Encrypt-Blogs" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigation überspringen</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/de/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/de/docs/" class="pure-menu-link" tabindex="0">Dokumentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Hilfe bekommen</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Spenden</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/donate/" class="pure-menu-link">Spenden</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Sponsor werden</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/sponsors/" class="pure-menu-link">Derzeitige Sponsoren und Spender</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/getinvolved/" class="pure-menu-link">Mitmachen</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Über uns</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Dienstestatus</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/stats/" class="pure-menu-link">Statistiken</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Freie Stellen</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sprachen <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/staging-environment/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/staging-environment/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/staging-environment/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">✓ Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/staging-environment/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/staging-environment/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/staging-environment/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/staging-environment/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/staging-environment/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/staging-environment/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/staging-environment/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/staging-environment/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/staging-environment/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/staging-environment/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/staging-environment/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/staging-environment/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/staging-environment/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/staging-environment/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/staging-environment/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/staging-environment/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/staging-environment/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Staging-Umgebung</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Letzte Änderung: <time datetime="2022-06-13">13.06.2022</time>
+
+
+ | <a href="/letsencrypt-ewebsite/de/docs">Gesamte Dokumentation anzeigen</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Wir empfehlen dringend das Testen gegen unsere Staging-Umgebung, bevor die Produktionsumgebung benutzt wird. Das wird Ihnen erlauben, die Dinge richtig zu machen, bevor vertrauenswürdige Zertifikate ausgestellt werden und reduziert das Risiko, gegen Rate Limits zu laufen.</p>
+<p>Die ACME URL für unsere <a href="https://community.letsencrypt.org/t/staging-endpoint-for-acme-v2/49605">ACME v2 Staging-Umgebung</a> ist:</p>
+<p><code>https://acme-staging-v02.api.letsencrypt.org/directory</code></p>
+<p>Wenn Sie Certbot verwenden, können Sie unsere Staging-Umgebung mit dem <code>--test-cert</code> Flag verwenden. Für andere ACME Clients lesen Sie bitte die Instruktionen für Informationen zum Testen mit unserer Staging-Umgebung. Beachten Sie, die v2 Staging-Umgebung benötigt einen v2 kompatiblen ACME Client.</p>
+<h1 id="rate-limits">Rate Limits</h1>
+<p>Die Staging-Umgebung benutzt dieselben Rate Limits wie <a href="letsencrypt-ewebsite/de/docs/rate-limits/" hreflang="de-DE">beschrieben für unsere Produktionsumgebung</a> mit den folgenden Ausnahmen:</p>
+<ul>
+<li>Das <strong>Zertifikate pro registrierte Domain</strong> Limit ist 30,000 pro Woche.</li>
+<li>Das <strong>Doppelte Zertifikate</strong> Limit ist 30,000 pro Woche.</li>
+<li>Das <strong>Fehlgeschlagene Validierungen</strong> Limit ist 60 pro Stunde.</li>
+<li>Das <strong>Konten pro IP-Adresse</strong> Limit ist 50 Accounts pro 3 Stunden Periode pro IP.</li>
+<li>Für ACME v2, das <strong>Neue Aufträge</strong> Limit ist 1,500 neue Aufträge pro 3 Stunden Periode pro Konto.</li>
+</ul>
+<h1 id="staging-zertifikatshierarchie">Staging Zertifikatshierarchie</h1>
+<p>Die Staging-Umgebung hat eine Zertifikatshierarchie, die <a href="letsencrypt-ewebsite/de/certificates/" hreflang="de-DE">Produktionsumgebungen emuliert</a>.</p>
+<h2 id="zwischenzertifikate-intermediate-zertifikate">Zwischenzertifikate (Intermediate-Zertifikate)</h2>
+<p>Die Staging-Umgebung verfügt über zwei aktive Zwischenzertifikate: ein RSA-Zwischenzertifikat <a href="/certs/staging/letsencrypt-stg-int-r3.pem">&quot;(STAGING) Artificial Apricot R3&quot;</a> und ein ECDSA-Zwischenzertifikat <a href="/certs/staging/letsencrypt-stg-int-e1.pem">&quot;(STAGING) Ersatz Edamame E1&quot;</a>.</p>
+<p>Die ECDSA-Ausgabe wurde am 24. März 2021 <a href="https://community.letsencrypt.org/t/ecdsa-issuance-available-in-staging-march-24/147839">in Staging aktiviert</a> und alle Anforderungen für Staging-Zertifikate mit ECDSA-Schlüsseln werden von &ldquo;(STAGING) Ersatz Edamame E1&rdquo; signiert und verwenden die ECDSA-Hierarchie. Ebenso werden alle Anforderungen für Staging-Zertifikate mit RSA-Schlüsseln von „(STAGING) Artificial Apricot R3“ signiert und verwenden die RSA-Hierarchie. Es gibt keine Möglichkeit, ein RSA-signiertes Zertifikat für einen ECDSA-Schlüssel zu erhalten, und auch nicht umgekehrt; um zu bestimmen, welchen Zertifikatsaussteller Sie erhalten, wählen Sie aus, welche Art von Schlüssel Sie lokal generieren.</p>
+<h2 id="wurzelzertifikate-root-zertifikate">Wurzelzertifikate (Root-Zertifikate)</h2>
+<p>Die Staging-Umgebung hat zwei aktive Root-Zertifikate, die in Browser-/Client-Truststores <strong>nicht vorhanden</strong> sind: &ldquo;(STAGING) Pretend Pear X1&rdquo; und &ldquo;(STAGING) Bogus Brocoli X2&rdquo;. Wenn Sie einen Test-Client so verändern möchten, dass er der Staging-Umgebung zu Testzwecken vertraut, können Sie dies tun, indem Sie die <a href="/certs/staging/letsencrypt-stg-root-x1.pem">&quot;(STAGING) Pretend Pear X1&quot;</a> und/oder <a href="/certs/staging/letsencrypt-stg-root-x2.pem">&quot;(STAGING) Bogus Broccoli X2&quot;</a> Zertifikate zu Ihrem Test-Truststore hinzufügen. Alle unsere Staging-Zertifikate finden Sie <a href="https://github.com/letsencrypt/website/tree/master/static/certs/staging">hier</a>.  Wichtig: Fügen Sie den Staging-Root oder das Zwischenzertifikat nicht zu einem Truststore hinzu, den Sie für das normale Browsen oder für andere Aktivitäten verwenden, da diese nicht geprüft werden oder den gleichen Standards wie unsere Produktionsstammsätze entsprechen als Tests.</p>
+<h1 id="zertifikat-transparenz">Zertifikat Transparenz</h1>
+<p>Die Staging-Umgebung übermittelt Vorzertifikate an die CT-Testprotokolle von Let&rsquo;s Encrypt <a href="letsencrypt-ewebsite/de/docs/ct-logs/" hreflang="de-DE">Sapling</a> und Google <a href="http://www.certificate-transparency.org/known-logs#TOC-Test-Logs">testtube</a> und schließt zurückgegebene SCTs in die ausgestellten Zertifikate ein.</p>
+<h1 id="kontinuierliche-integration-entwicklertests">Kontinuierliche Integration/Entwicklertests</h1>
+<p>Die Staging-Umgebung hat grosszügige Rate Limits zum Testen, aber passt nicht für Integration in Entwicklungsumgebungen oder Kontinuierliche Integration (CI). Netzwerkanfragen zu externen Servern können Instabilitäten verursachen und die Staging-Umgebung ermöglicht keinen &ldquo;Fake&rdquo;-DNS oder Challenge Validation, was das Testen komplizierter macht.</p>
+<p>Zusätzlich zur Staging-Umgebung bietet Let&rsquo;s Encrypt einen kleinen ACME Server zum Einbau in CI und Entwicklungsumgebungen namens <a href="https://github.com/letsencrypt/pebble">Pebble</a> an. Es ist <a href="https://github.com/letsencrypt/pebble#docker">schnell und einfach</a>, Pebble in Ihrer Entwicklungsmaschine oder in einer CI Umgebung zu starten.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt ist eine freie, automatisierte und offene Zertifizierungsstelle,
+  herausgebracht für Sie durch <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Senden Sie alle Briefe oder Anfragen an:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Lesen Sie unsere <a href="/privacy/">Datenschutzerklärung</a>.<br> Lesen Sie unsere <a href="https://www.abetterinternet.org/trademarks/">Markenbestimmungen</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ja">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>チャレンジの種類 -  Let&#39;s Encrypt - フリーな SSL/TLS 証明書</title>
+    <meta name="description" content="Let&amp;rsquo;s Encrypt から証明書を取得するときには、ACME 標準で定義されている「チャレンジ」を使用して、証明書が証明しようとしているドメイン名があなたの制御下にあることを検証します。 ほどんどの場合、この検証は ACME クライアントにより自動的に処理されますが、より複雑な設定を行った場合、詳細な仕組みについて知っておくと役に立つはずです。 よく分からない場合には、クライアントのデフォルトの設定か、HTTP-01 を使用してください。
+HTTP-01 チャレンジ 現在、最も多く使われているチャレンジです。 Let&amp;rsquo;s Encrypt は ACME クライアントにトークンを発行し、ACME クライアントはウェブサーバー上のhttp://&amp;lt;YOUR_DOMAIN&amp;gt;/.well-known/acme-challenge/&amp;lt;TOKEN&amp;gt;という場所に1つのファイルを設置します。 このファイルにはトークンに加えて、あなたのアカウントのキーのフィンガープリントが含まれています。 ACME クライアントがLet&amp;rsquo;s Encrypt にファイルが準備できたことを伝えると、Let’s Encrypt はそのファイルを取得しようとします (複数の有効な場所から複数回取得する可能性もあります)。 私たちの検証チェックであなたのウェブサーバーから正当なレスポンスが得られた場合、検証は成功したとみなされ、証明書の発行に進むことができます。 検証チェックに失敗した場合には、新しい証明書の発行を再試行する必要があります。
+私たちの HTTP-01 チャレンジの実装は、リダイレクトを最大 10 回まで追跡します。 追跡されるのは、&amp;ldquo;http:&amp;rdquo; から &amp;ldquo;https:&amp;rdquo; へのリダイレクトで、80 番ポートから 443 番ポートへのリダイレクトのみです。 IP アドレスへのリダイレクトは許可されません。 HTTPS URL へのリダイレクトである場合、証明書の検証は行いません (というのも、このチャレンジは、有効な証明書のブートストラップを意図したものであり、HTTPS URL へのリダイレクトの場合、途中で自己署名証明書や有効期限切れの証明書が存在する可能性があるためです)。
+HTTP-01 チャレンジは 80 番ポートでのみ実行可能です。 クライアントに任意のポートを指定できるようにしてしまうと、チャレンジのセキュリティが低下してしまうため、ACME 標準ではポートの変更は許可されていません。
+利点:
+ ドメインの設定に関する追加知識が無くても、証明書の取得が簡単に自動化できる。 ホスティング・プロバイダが CNAME を設定したドメインに対する証明書を発行できるようになる。 すぐに入手可能なウェブサーバーで動作する。  欠点:
+ あなたの ISP が 80 番ポートをブロックしていた場合に動作しない (このようなプロバイダはまれですが、一部の ISP はブロックを行っています)。 この方法では Let’s Encrypt がワイルドカード証明書を発行することができない。 複数のウェブサーバーを持っていた場合、すべてのウェブサーバーで同じファイルを利用できるように設定する必要がある。  DNS-01 チャレンジ このチャレンジは、あなたのドメイン名が登録されている DNS があなたの制御下にあることを証明するために、ドメイン名の TXT レコードに特定の値を設定することを求めます。 HTTP-01 に比べると設定が難しいですが、HTTP-01 が動作しない状況でも適切に動作します。 また、このチャレンジを使用すれば、ワイルドカード証明書が発行できます。 Let&amp;rsquo;s Encrypt が ACME クライアントにトークンを与えると、あなたのクライアントは、与えられたトークンとあなたのアカウントの鍵から作られた TXT レコードを生成し、そのレコードを DNS の_acme-challenge.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="チャレンジの種類">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ja/docs/challenge-types/">
+    <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt から証明書を取得するときには、ACME 標準で定義されている「チャレンジ」を使用して、証明書が証明しようとしているドメイン名があなたの制御下にあることを検証します。 ほどんどの場合、この検証は ACME クライアントにより自動的に処理されますが、より複雑な設定を行った場合、詳細な仕組みについて知っておくと役に立つはずです。 よく分からない場合には、クライアントのデフォルトの設定か、HTTP-01 を使用してください。
+HTTP-01 チャレンジ 現在、最も多く使われているチャレンジです。 Let&amp;rsquo;s Encrypt は ACME クライアントにトークンを発行し、ACME クライアントはウェブサーバー上のhttp://&amp;lt;YOUR_DOMAIN&amp;gt;/.well-known/acme-challenge/&amp;lt;TOKEN&amp;gt;という場所に1つのファイルを設置します。 このファイルにはトークンに加えて、あなたのアカウントのキーのフィンガープリントが含まれています。 ACME クライアントがLet&amp;rsquo;s Encrypt にファイルが準備できたことを伝えると、Let’s Encrypt はそのファイルを取得しようとします (複数の有効な場所から複数回取得する可能性もあります)。 私たちの検証チェックであなたのウェブサーバーから正当なレスポンスが得られた場合、検証は成功したとみなされ、証明書の発行に進むことができます。 検証チェックに失敗した場合には、新しい証明書の発行を再試行する必要があります。
+私たちの HTTP-01 チャレンジの実装は、リダイレクトを最大 10 回まで追跡します。 追跡されるのは、&amp;ldquo;http:&amp;rdquo; から &amp;ldquo;https:&amp;rdquo; へのリダイレクトで、80 番ポートから 443 番ポートへのリダイレクトのみです。 IP アドレスへのリダイレクトは許可されません。 HTTPS URL へのリダイレクトである場合、証明書の検証は行いません (というのも、このチャレンジは、有効な証明書のブートストラップを意図したものであり、HTTPS URL へのリダイレクトの場合、途中で自己署名証明書や有効期限切れの証明書が存在する可能性があるためです)。
+HTTP-01 チャレンジは 80 番ポートでのみ実行可能です。 クライアントに任意のポートを指定できるようにしてしまうと、チャレンジのセキュリティが低下してしまうため、ACME 標準ではポートの変更は許可されていません。
+利点:
+ ドメインの設定に関する追加知識が無くても、証明書の取得が簡単に自動化できる。 ホスティング・プロバイダが CNAME を設定したドメインに対する証明書を発行できるようになる。 すぐに入手可能なウェブサーバーで動作する。  欠点:
+ あなたの ISP が 80 番ポートをブロックしていた場合に動作しない (このようなプロバイダはまれですが、一部の ISP はブロックを行っています)。 この方法では Let’s Encrypt がワイルドカード証明書を発行することができない。 複数のウェブサーバーを持っていた場合、すべてのウェブサーバーで同じファイルを利用できるように設定する必要がある。  DNS-01 チャレンジ このチャレンジは、あなたのドメイン名が登録されている DNS があなたの制御下にあることを証明するために、ドメイン名の TXT レコードに特定の値を設定することを求めます。 HTTP-01 に比べると設定が難しいですが、HTTP-01 が動作しない状況でも適切に動作します。 また、このチャレンジを使用すれば、ワイルドカード証明書が発行できます。 Let&amp;rsquo;s Encrypt が ACME クライアントにトークンを与えると、あなたのクライアントは、与えられたトークンとあなたのアカウントの鍵から作られた TXT レコードを生成し、そのレコードを DNS の_acme-challenge.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ja/docs/challenge-types/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt ブログフィード" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">コミュニティ</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">寄付</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">スポンサーになる</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">私たちについて</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">インターネット・セキュリティ研究グループ (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">サービス・ステータス</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">キャリア</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">言語 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/challenge-types/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/challenge-types/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/challenge-types/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/challenge-types/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/challenge-types/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/challenge-types/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/challenge-types/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/challenge-types/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/challenge-types/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/challenge-types/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/challenge-types/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/challenge-types/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/challenge-types/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/challenge-types/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/challenge-types/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/challenge-types/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/challenge-types/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/challenge-types/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/challenge-types/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/challenge-types/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>チャレンジの種類</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最終更新日:<time datetime="2020-12-08">2020/12/08</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ja/docs">すべてのドキュメントを読む</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    注意: このページが翻訳された後、英語バージョンのページがアップデートされています。
+                    (<time datetime="2023-02-13">2023/02/13</time>)
+                    <a href="letsencrypt-ewebsite/docs/challenge-types/">英語で表示する</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Let&rsquo;s Encrypt から証明書を取得するときには、ACME 標準で定義されている「チャレンジ」を使用して、証明書が証明しようとしているドメイン名があなたの制御下にあることを検証します。 ほどんどの場合、この検証は ACME クライアントにより自動的に処理されますが、より複雑な設定を行った場合、詳細な仕組みについて知っておくと役に立つはずです。 よく分からない場合には、クライアントのデフォルトの設定か、HTTP-01 を使用してください。</p>
+<h1 id="http-01-チャレンジ">HTTP-01 チャレンジ</h1>
+<p>現在、最も多く使われているチャレンジです。 Let&rsquo;s Encrypt は ACME クライアントにトークンを発行し、ACME クライアントはウェブサーバー上の<code>http://&lt;YOUR_DOMAIN&gt;/.well-known/acme-challenge/&lt;TOKEN&gt;</code>という場所に1つのファイルを設置します。 このファイルにはトークンに加えて、あなたのアカウントのキーのフィンガープリントが含まれています。 ACME クライアントがLet&rsquo;s Encrypt にファイルが準備できたことを伝えると、Let’s Encrypt はそのファイルを取得しようとします (複数の有効な場所から複数回取得する可能性もあります)。 私たちの検証チェックであなたのウェブサーバーから正当なレスポンスが得られた場合、検証は成功したとみなされ、証明書の発行に進むことができます。 検証チェックに失敗した場合には、新しい証明書の発行を再試行する必要があります。</p>
+<p>私たちの HTTP-01 チャレンジの実装は、リダイレクトを最大 10 回まで追跡します。 追跡されるのは、&ldquo;http:&rdquo; から &ldquo;https:&rdquo; へのリダイレクトで、80 番ポートから 443 番ポートへのリダイレクトのみです。 IP アドレスへのリダイレクトは許可されません。 HTTPS URL へのリダイレクトである場合、証明書の検証は行いません (というのも、このチャレンジは、有効な証明書のブートストラップを意図したものであり、HTTPS URL へのリダイレクトの場合、途中で自己署名証明書や有効期限切れの証明書が存在する可能性があるためです)。</p>
+<p>HTTP-01 チャレンジは 80 番ポートでのみ実行可能です。 クライアントに任意のポートを指定できるようにしてしまうと、チャレンジのセキュリティが低下してしまうため、ACME 標準ではポートの変更は許可されていません。</p>
+<p>利点:</p>
+<ul>
+<li>ドメインの設定に関する追加知識が無くても、証明書の取得が簡単に自動化できる。</li>
+<li>ホスティング・プロバイダが CNAME を設定したドメインに対する証明書を発行できるようになる。</li>
+<li>すぐに入手可能なウェブサーバーで動作する。</li>
+</ul>
+<p>欠点:</p>
+<ul>
+<li>あなたの ISP が 80 番ポートをブロックしていた場合に動作しない (このようなプロバイダはまれですが、一部の ISP はブロックを行っています)。</li>
+<li>この方法では Let’s Encrypt がワイルドカード証明書を発行することができない。</li>
+<li>複数のウェブサーバーを持っていた場合、すべてのウェブサーバーで同じファイルを利用できるように設定する必要がある。</li>
+</ul>
+<h1 id="dns-01-チャレンジ">DNS-01 チャレンジ</h1>
+<p>このチャレンジは、あなたのドメイン名が登録されている DNS があなたの制御下にあることを証明するために、ドメイン名の TXT レコードに特定の値を設定することを求めます。 HTTP-01 に比べると設定が難しいですが、HTTP-01 が動作しない状況でも適切に動作します。 また、このチャレンジを使用すれば、ワイルドカード証明書が発行できます。 Let&rsquo;s Encrypt が ACME クライアントにトークンを与えると、あなたのクライアントは、与えられたトークンとあなたのアカウントの鍵から作られた TXT レコードを生成し、そのレコードを DNS の<code>_acme-challenge.&lt;YOUR_DOMAIN&gt;</code>の値として設定します。 その後、Let&rsquo;s Encrypt は DNS システムにそのレコードを問い合わせます。 もし正しい値とマッチすれば、証明書の発行に進むことができます。</p>
+<p>発行と更新の自動化は非常に重要なので、DNS-01 チャレンジの使用は、あなたの DNS プロバイダが自動的なアップデートに利用できる API を提供していなければ有効ではありません。 私たちのコミュニティでは、<a href="https://community.letsencrypt.org/t/dns-providers-who-easily-integrate-with-lets-encrypt-dns-validation/86438">対応する DNS プロバイダのリスト</a>を作成しています。 あなたの DNS プロバイダはレジストラ (ドメイン名を購入した会社) と同じ場合もありますが、違うこともあります。 DNS プロバイダの変更は、レジストラに小さな変更を加えるだけで行えます。 ドメインの有効期限が近づくまで待つ必要はありません。</p>
+<p>DNS API の完全な認証情報をウェブサーバーにおいてしまうと、ウェブサーバーがクラックされた場合に受ける影響が非常に大きくなってしまいます。 ベストプラクティスは、<a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">より狭いスコープに制限された API 認証情報</a>を使用するか、DNS 検証を別のサーバーで行い、ウェブサーバー用の証明書を自動的にコピーするようにすることです。</p>
+<p>Let’s Encrypt は DNS-01 検証で TXT レコードを検索するときに DNS 標準に従っているので、CNAME レコードや NS レコードを使用することで、他の DNS ゾーンへチャレンジの回答を移譲できます。 この機能は、検証用のサーバーやゾーンへ <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation"><code>_acme-challenge</code>サブドメインを移譲する</a>ときに利用することができます。 また、あなたの DNS プロバイダの更新が遅くて、より更新の早いサーバーに移譲したい場合にも利用できます。</p>
+<p>ほとんどの DNS プロバイダでは、DNS レコードを更新してからプロバイダのサーバー全体に情報が反映されるまでゾーン転送における「伝播時間 (propagation time)」の遅延が生じます。 複数のサーバーに同一の IP アドレスを持たせることができる<a href="https://ja.wikipedia.org/wiki/%e3%82%a8%e3%83%8b%e3%83%bc%e3%82%ad%e3%83%a3%e3%82%b9%e3%83%88">エニーキャスト</a>が利用されることも多く、世界のどの場所にいるかによって、同じ IP アドレスでも Let&rsquo;s Encrypt とは違うサーバーと通信してしまい、レスポンスが異なることがあるため、正確な伝搬時間を測定するのは難しい場合があります。 最善の DNS API では、完全に伝搬したかどうかを自動的にチェックする方法が提供されています。 DNS プロバイダがこの手段を提供していない場合、検証を実行する前に更新した情報が伝搬されていることを確実にするために、クライアントが十分長い時間 (通常は最大1時間) 更新を待機するように設定する必要があります。</p>
+<p>同じ名前の場所に対して、複数の TXT レコードを設定することもできます。 たとえば、ワイルドカードと非ワイルドカードの証明書に対するチャレンジを同時に検証する必要があるかもしれません。 ただし、レスポンスのサイズが大きすぎると Let&rsquo;s Encrypt はリジェクトするため、古い TXT レコードは削除しておくべきです。</p>
+<p>利点:</p>
+<ul>
+<li>このチャレンジを利用すれば、ドメイン名にワイルドカードが含まれる証明書を発行することができる。</li>
+<li>複数のウェブサーバーを所有している場合でもうまく動作する。</li>
+</ul>
+<p>欠点:</p>
+<ul>
+<li>ウェブサーバー上に API のクレデンシャルを置くのはリスクがある。</li>
+<li>DNS プロバイダが API を提供していない場合がある。</li>
+<li>DNS の API が伝搬時間の情報を提供していない場合がある。</li>
+</ul>
+<h1 id="tls-sni-01-チャレンジ">TLS-SNI-01 チャレンジ</h1>
+<p>このチャレンジは、ACME の草稿バージョンで定義されています。 このチャレンジは、443 ポートで TLS のハンドシェイクを行い、特定の <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a> ヘッダを送信し、トークンを含んでいる証明書を探します。 十分にセキュアではないことが判明したため、<a href="https://community.letsencrypt.org/t/march-13-2019-end-of-life-for-all-tls-sni-01-validation-support/74209">2019年3月に無効化されました</a>。</p>
+<h1 id="tls-alpn-01-チャレンジ">TLS-ALPN-01 チャレンジ</h1>
+<p>このチャレンジは TLS-SNI-01 が非推奨となった後に開発され、<a href="https://tools.ietf.org/html/rfc8737">別の標準</a>として開発が行われています。 TLS-SNI-01 と同様に、443 番ポート上の TLS で実行されます。 ただし、カスタムの ALPN プロトコルを使用することで、このチャレンジの種類を知ることができるサーバーのみが検証リクエストに応答できることが保証されます。 さらに、このタイプのチャレンジの検証リクエストが、継承しようとしているドメイン名にマッチする SNI フィールドを利用できるようにすることで、より安全性が高まります。</p>
+<p>このチャレンジはほとんどの人には適しません。 最適なのは、HTTP-01 のようなホストベースの検証を実行したいが、関心の分離を行うために完全に TLS レイヤーで検証を行いたいと考えているような、終端が TLS となっているリバース・プロキシの提供者です。 現在の主な対象は大規模なホスティング・プロバイダですが、将来は、Apache や Nginx などのメインストリームのウェブサーバーでも実装される可能性があります(<a href="https://caddy.community/t/caddy-supports-the-acme-tls-alpn-challenge/4860">Caddy ではすでに実装されています</a>)。</p>
+<p>利点:</p>
+<ul>
+<li>80 番ポートが利用できない場合でも使用できる。</li>
+<li>完全に純粋に TLS レイヤーで実行される。</li>
+</ul>
+<p>欠点:</p>
+<ul>
+<li>Apache、Nginx、Certbot がサポートしておらず、すぐにサポートされる可能性が低い。</li>
+<li>HTTP-01 と同様に、複数サーバーを使用している場合、すべてのサーバーが同一のコンテンツを応答しなければならない。</li>
+<li>このメソッドはワイルドカードドメインの検証には使用できません。</li>
+</ul>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encryptは、非営利団体の <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> が提供する自動化されたフリーでオープンな認証局です。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>すべての手紙またはお問い合わせを以下に送ってください：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ja/privacy/">プライバシー・ポリシー</a>を読む。<br>
+<a href="https://www.abetterinternet.org/trademarks/">トレードマーク・ポリシー</a>を読む。
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

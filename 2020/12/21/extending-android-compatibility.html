@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Extending Android Device Compatibility for Let&#39;s Encrypt Certificates -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Update, May 13, 2021
+Please visit [this post] (https://community.letsencrypt.org/t/production-chain-changes/150739) on our community forum for the latest information about chain changes as some information about the changes and dates in this blog post are outdated.
+ We’re happy to announce that we have developed a way for older Android devices to retain their ability to visit sites that use Let&amp;rsquo;s Encrypt certificates after our cross-signed intermediates expire. We are no longer planning any changes in January that may cause compatibility issues for Let’s Encrypt subscribers.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Extending Android Device Compatibility for Let&#39;s Encrypt Certificates">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/2020/12/21/extending-android-compatibility.html">
+    <meta name="twitter:description" content="Update, May 13, 2021
+Please visit [this post] (https://community.letsencrypt.org/t/production-chain-changes/150739) on our community forum for the latest information about chain changes as some information about the changes and dates in this blog post are outdated.
+ We’re happy to announce that we have developed a way for older Android devices to retain their ability to visit sites that use Let&amp;rsquo;s Encrypt certificates after our cross-signed intermediates expire. We are no longer planning any changes in January that may cause compatibility issues for Let’s Encrypt subscribers.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/2020/12/21/extending-android-compatibility.html">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+  <body>
+    
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Skip navigation links</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Get Help</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donate</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Become a Sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getinvolved/" class="pure-menu-link">Get Involved</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">About Us</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/stats/" class="pure-menu-link">Statistics</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Careers</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/blog/" class="pure-menu-link">Blog</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+    
+    <div class="page-content">
+      <div class="wrapper">
+        
+<div class="post">
+	<header class="post-header">
+		<h1 class="post-title">Extending Android Device Compatibility for Let&#39;s Encrypt Certificates</h1>
+		<p class="post-meta">Dec 21, 2020 • Josh Aas and Aaron Gable</p>
+	</header>
+	<article class="post-content">
+		<blockquote>
+<p><strong>Update, May 13, 2021</strong></p>
+<p>Please visit [this post] (<a href="https://community.letsencrypt.org/t/production-chain-changes/150739">https://community.letsencrypt.org/t/production-chain-changes/150739</a>) on our community forum for the latest information about chain changes as some information about the changes and dates in this blog post are outdated.</p>
+</blockquote>
+<p>We’re happy to announce that we have developed a way for older Android devices to retain their ability to visit sites that use Let&rsquo;s Encrypt certificates after our cross-signed intermediates expire. We are no longer planning any changes in January that may cause compatibility issues for Let’s Encrypt subscribers.</p>
+<p>A recurring theme in <a href="https://letsencrypt.org/2020/11/06/own-two-feet.html">our posts</a> about our upcoming chain switch has been our concern over the effects on users of Android operating systems prior to 7.1.1, whose devices don’t trust our ISRG Root X1. Thanks to some innovative thinking from our community and our wonderful partners at IdenTrust, we now have a solution that allows us to maintain wide compatibility. Critical to our mission as a nonprofit is to help create a more secure and privacy-respecting Web for as many people as possible. This work brings us closer to that goal.</p>
+<p>IdenTrust has agreed to issue a 3-year cross-sign for our ISRG Root X1 from their DST Root CA X3. The new cross-sign will be somewhat novel because it extends beyond the expiration of DST Root CA X3. This solution works because Android intentionally does not enforce the expiration dates of certificates used as trust anchors. ISRG and IdenTrust reached out to our auditors and root programs to review this plan and ensure there weren’t any compliance concerns.</p>
+<p>As such, we will be able to provide subscribers with a chain which contains both ISRG Root X1 and DST Root CA X3, ensuring uninterrupted service to all users and avoiding the potential breakage we have been concerned about.</p>
+<p>We will not be performing our previously-planned chain switch on January 11th, 2021. Instead, we will be switching to provide this new chain by default in late January or early February. The transition should have no impact on Let’s Encrypt subscribers, much like our switch to our R3 intermediate earlier this month.</p>
+<p class="text-center"><img src="/images/2020.12.21-android-compat-cert-chain.png" alt="Let's Encrypt Issuance Chains" width="600"></p>
+<p>Some additional technical details follow.</p>
+<p><strong>I’m an ACME client developer, what do I need to do?</strong> If your client handled the X3 to R3 transition smoothly, then you shouldn’t need to take action. Ensure that your client correctly uses the intermediate certificate provided by the ACME API at the end of issuance, and doesn’t retrieve intermediates by other means (e.g. hardcoding them, reusing what is on disk already, or fetching from AIA URLs).</p>
+<p><strong>I’m a Let’s Encrypt subscriber, what do I need to do?</strong> In the vast majority of cases, nothing. If you want to double check, please ensure that your ACME client is up-to-date.</p>
+<p><strong>I use an old Android device, what do I need to do?</strong> Nothing! We’re trying to ensure that this change is completely invisible to end-users.</p>
+<p><strong>What exactly is changing?</strong> Today, when a subscriber fetches their certificate from our API, we provide the following chain by default:
+Subscriber Certificate &lt; &ndash; R3 &lt; &ndash; DST Root CA X3
+After this change, we will instead provide this chain by default:
+Subscriber Certificate &lt; &ndash; R3 &lt; &ndash; ISRG Root X1 &lt; &ndash; DST Root CA X3
+This does mean that the default chain we provide to subscribers will be larger than before, because it contains two intermediates instead of just one. This will make TLS handshakes larger and slightly less efficient, but the tradeoff is worthwhile for the extra compatibility.</p>
+<p><strong>But isn’t DST Root CA X3 expiring?</strong> The self-signed certificate which represents the DST Root CA X3 keypair is expiring. But browser and OS root stores don’t contain certificates per se, they contain “trust anchors”, and the standards for verifying certificates allow implementations to choose whether or not to use fields on trust anchors. Android has intentionally chosen not to use the notAfter field of trust anchors. Just as our ISRG Root X1 hasn’t been added to older Android trust stores, DST Root CA X3 hasn’t been removed. So it can issue a cross-sign whose validity extends beyond the expiration of its own self-signed certificate without any issues.</p>
+<p><strong>What happens when the new cross-sign expires?</strong> This new cross-sign will expire in early 2024. Prior to that, perhaps as early as June 2021, we will be making a similar change to what we intended to make this January. When we make that change, subscribers will have the option to continue using DST Root CA X3 by configuring their ACME client to specifically request it. If you are a Let’s Encrypt subscriber who is already working to mitigate the chain switch (e.g. by configuring alternate chains or encouraging your users on old Android devices to install Firefox), continue that work so you’ll be well-positioned in the future.</p>
+<p><strong>What about the alternate chain?</strong> Today, some ACME clients are able to instead request an alternate chain, if their user has configured it. We currently provide the option of getting the chain:
+Subscriber Certificate &lt; &ndash; R3 &lt; &ndash; ISRG Root X1
+We will continue to offer this same chain as an alternate. However, note that most ACME clients don&rsquo;t yet have a way to select this alternate chain (for example, Certbot selects chains by looking to see if they contain a given Issuer Name, but this chain doesn’t contain any Issuer Names which the high compatibility chain above doesn’t). We’ll be working with ACME client developers to create more flexible chain selection mechanisms going forward.</p>
+<p><strong>What does this have to do with the upcoming ECDSA chain?</strong> This change is unrelated to our upcoming issuance from the ECDSA-based ISRG Root X2 and E1 intermediate. We look forward to using those to provide smaller, more efficient certificates and chains, but that future offering is not related to this change.</p>
+<p><strong>I have more questions, how can I get them answered?</strong> Please refer your questions to our <a href="https://community.letsencrypt.org/">community forum</a>.</p>
+<p>In the future we hope to share more technical details about how and why this plan works, demonstrate why the expiration of DST Root CA X3 doesn’t affect the security of the web, and what this plan means long-term for our subscribers and end-users on the web.</p>
+<p>We depend on contributions from our supporters in order to provide our services. If your company or organization would like to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. We ask that you make an <a href="https://letsencrypt.org/donate/">individual contribution</a> if it is within your means.</p>
+
+	</article>
+</div>
+
+      </div>
+    </div>
+    
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Support a more secure and privacy-respecting Web.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/donate/">Donate</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt is a free, automated, and open certificate
+  authority brought to you by the nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send all mail or inquiries to:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        View our <a href="/privacy/">privacy policy</a>.<br>
+View our <a href="https://www.abetterinternet.org/trademarks">trademark policy</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+  </body>
+</html>

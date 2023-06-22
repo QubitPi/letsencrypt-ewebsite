@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="hu">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kezdő lépések -  Let&#39;s Encrypt</title>
+    <meta name="description" content="A HTTPS engedélyezéséhez a webhelyen tanúsítványra van szükség (egyfajta fájl) egy tanúsító hatóságtól (CA). A Let&amp;rsquo;s Encrypt egy tanúsító hatóság. Annak érdekében, hogy tanúsítványt kaphass a Let&amp;rsquo;s Encrypt-től a weboldalad domainjéhez, bizonyítanod kell a domain felett való rendelkezésed. A Let&amp;rsquo;s Encrypt-tel ezt egy olyan szoftverrel teheti meg, amely ACME protokollt használ, mely jellemzően a a webtárhelyen fut.
+Ahhoz, hogy rájöjjön, melyik módszer lesz a legmegfelelőbb az Ön számára, tudnia kell, hogy rendelkezik-e shell hozzáféréssel (más néven SSH hozzáférés) a webtárhelyéhez.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Kezdő lépések">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/hu/getting-started/">
+    <meta name="twitter:description" content="A HTTPS engedélyezéséhez a webhelyen tanúsítványra van szükség (egyfajta fájl) egy tanúsító hatóságtól (CA). A Let&amp;rsquo;s Encrypt egy tanúsító hatóság. Annak érdekében, hogy tanúsítványt kaphass a Let&amp;rsquo;s Encrypt-től a weboldalad domainjéhez, bizonyítanod kell a domain felett való rendelkezésed. A Let&amp;rsquo;s Encrypt-tel ezt egy olyan szoftverrel teheti meg, amely ACME protokollt használ, mely jellemzően a a webtárhelyen fut.
+Ahhoz, hogy rájöjjön, melyik módszer lesz a legmegfelelőbb az Ön számára, tudnia kell, hogy rendelkezik-e shell hozzáféréssel (más néven SSH hozzáférés) a webtárhelyéhez.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/hu/getting-started/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigációs linkek átugrása</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/hu/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/hu/docs/" class="pure-menu-link" tabindex="0">Dokumentáció</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Segítség</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Adományozok</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Legyen a támogatónk</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/sponsors/" class="pure-menu-link">Jelenlegi szponzorok és támogatók</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getinvolved/" class="pure-menu-link">Kapcsolódjon be</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Rólunk</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 lejárat (2021. szeptember)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" class="pure-menu-link">Gyakran Ismételt Kérdések (GYIK)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Szolgáltatás státusza</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/stats/" class="pure-menu-link">Statisztikák</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karrier</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/contact/" class="pure-menu-link">Kapcsolat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Nyelvek <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">✓ Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="container">
+	<h1>Kezdő lépések</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<p>A HTTPS engedélyezéséhez a webhelyen tanúsítványra van szükség (egyfajta fájl) egy tanúsító hatóságtól (CA). A Let&rsquo;s Encrypt egy tanúsító hatóság. Annak érdekében, hogy tanúsítványt kaphass a Let&rsquo;s Encrypt-től a weboldalad domainjéhez, bizonyítanod kell a domain felett való rendelkezésed. A Let&rsquo;s Encrypt-tel ezt egy olyan szoftverrel teheti meg, amely <a href="https://tools.ietf.org/html/rfc8555">ACME protokollt</a> használ, mely jellemzően a a webtárhelyen fut.</p>
+<p>Ahhoz, hogy rájöjjön, melyik módszer lesz a legmegfelelőbb az Ön számára, tudnia kell, hogy rendelkezik-e <a href="https://en.wikipedia.org/wiki/Shell_account">shell hozzáféréssel</a> (más néven SSH hozzáférés) a webtárhelyéhez. Ha weboldalát teljes egészében egy vezérlőpanelen kezeli, mint például a <a href="https://cpanel.net/">cPanel</a>, <a href="https://www.plesk.com/">Plesk</a>, vagy a <a href="https://wordpress.org/">WordPress</a>, akkor jó eséllyel nem rendelkezik shell hozzáféréssel. Hogy biztos lehessen benne, megkérdezheti a tárhelyszolgáltatóját.</p>
+<h1 id="shell-hozzáféréssel">Shell hozzáféréssel</h1>
+<p>A legtöbb shell hozzáféréssel rendelkező ember számára azt javasoljuk, hogy használja a <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> ACME klienst. Automatizálhatja a tanúsítványok kiállítását és telepítését állásidő nélkül. Rendelkezik expert üzemmóddal is azok számára, akik nem akarnak automatikus konfigurációt. Könnyű használni, számos operációs rendszeren működik, és nagyszerű dokumentációval rendelkezik. <a href="https://certbot.eff.org/" title="Certbot">Látogasson el a Certbot weboldalára</a>, az operációs rendszerére és webkiszolgálójára szabott instrukciókért.</p>
+<p>Ha a <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> nem felel meg az Ön igényeinek, vagy valami mást szeretne kipróbálni, akkor <a href="letsencrypt-ewebsite/hu/docs/client-options/" hreflang="hu">sok más ACME-kliens közül is választhat</a>.  Miután kiválasztotta az ACME-klienst, a folytatáshoz tekintse meg az adott kliens dokumentációját.</p>
+<p>Ha különböző ACME-kliensekkel kísérletezik, használja a <a href="letsencrypt-ewebsite/hu/docs/staging-environment/" hreflang="hu">staging környezetet</a>, hogy elkerülje a <a href="letsencrypt-ewebsite/hu/docs/rate-limits/" hreflang="hu">korlátozásokat</a>.</p>
+<h1 id="shell-hozzáférés-nélkül">Shell hozzáférés nélkül</h1>
+<p>Shell hozzáférés nélkül a Let&rsquo;s Encryptet a saját tárhelyszolgáltatója által biztosított támogatással a legjobb használni. Ha tárhelyszolgáltatója kínál Let&rsquo;s Encrypt támogatást, akkor az Ön nevében kérhet egy ingyenes tanúsítványt, telepítheti, és automatikusan naprakészen tarthatja azt. Néhány tárhelyszolgáltató esetében ez egy konfigurációs beállítás, amelyet Önnek kell bekapcsolnia. Más szolgáltatók automatikusan igénylik és telepítik az ügyfeleik számára a tanúsítványokat.</p>
+<p><a href="https://community.letsencrypt.org/t/web-hosting-who-support-lets-encrypt/6920">Tekintse meg tárhelyszolgáltatóink listáját</a> hogy megnézze, az Öné szerepel-e rajta. Ha igen, kövesse a dokumentációjukat, hogy beállítsa a Let&rsquo;s Encrypt tanúsítványát.</p>
+<p>Ha a tárhelyszolgáltatója nem támogatja a Let&rsquo;s Encryptet, akkor kapcsolatba léphet velük, hogy jelezze támogatási igényét. Mindent megteszünk azért, hogy nagyon egyszerűvé tegyük a Let&rsquo;s Encrypt támogatás hozzáadását, és a szolgáltatók gyakran örömmel fogadják az ügyfelek javaslatait!</p>
+<p>Ha a tárhelyszolgáltatója nem akarja integrálni a Let&rsquo;s Encryptet, de támogatja az egyéni tanúsítványok feltöltését, akkor telepítheti a Certbotot a saját számítógépére, melyet <a href="https://certbot.eff.org/docs/using.html#manual">manuális módban</a> használhat. Manuális üzemmódban egy bizonyos fájlt tölt fel a weboldalára, hogy ezzel bizonyítsa a weboldala feletti rendelkezését. Ezután a Certbot lekér egy tanúsítványt, amelyet feltölthet a tárhelyszolgáltatójához. Nem ajánljuk ezt a lehetőséget, mert időigényes és évente többször is meg kell ismételnie, amikor a tanúsítványa lejár. A legtöbb ember számára jobb megoldás, ha a saját tárhelyszolgáltatójától kéri a Let&rsquo;s Encrypt támogatását, vagy szolgáltatót vált, ha az nem tervezi a bevezetését.</p>
+<h1 id="segítség-kérése">Segítség kérése</h1>
+<p>Ha kérdése van az ACME kliens kiválasztásával, vagy egy adott kliens használatával kapcsolatban, vagy a Let&rsquo;s Encryptet illetően bármi mással kapcsolatban, kérjük, próbálja ki <a href="https://community.letsencrypt.org/">segítőkész közösségi fórumainkat</a>.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Támogassa a biztonságosabb és az adatvédelmet tiszteletben tartó webet.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/hu/donate/">Adományozz</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  A Let's Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
+  melyet a nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> szervezet tesz elérhetővé.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Megkereséseiket a következő címre küldhetik:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Tekintse meg <a href="/privacy/">Adatvédelmi irányelveinket</a>.<br>
+Tekintse meg <a href="https://www.abetterinternet.org/trademarks">Védjegypolitikánkat</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

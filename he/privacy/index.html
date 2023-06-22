@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html
+	dir="rtl"
+	lang="he">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>מדיניות פרטיות -  Let&#39;s Encrypt</title>
+    <meta name="description" content="מדיניות הפרטיות של Let’s Encrypt מתארת כיצד אנו אוספים, משתמשים וחושפים את המידע שלך בשלושה הקשרים שונים:
+ כאשר, כגוף נסמך, ביקרת באתר שמאובטח ב־HTTPS ומשתמש באישור מבית Let’s Encrypt, כאשר ערכת מנוי, כלומר, כאשר הגשת בקשה ובחרת להשתמש באישורים מבית Let’s Encrypt, במהלך ביקורך באתר של Let’s Encrypt, בפורום הדיונים הקהילתי, בדפים אחרים תחת letsencrypt.org ואתרי מדיה חברתית מצד־שלישי בהם מופעל חשבון של Let’s Encrypt.  Let&amp;rsquo;s Encrypt הוא שירות שמסופק על ידי Internet Security Research Group, ארגון ללא מטרות רווח לרווחת הציבור שמקורו בקליפורניה (ארה״ב).">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="מדיניות פרטיות">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/he/privacy/">
+    <meta name="twitter:description" content="מדיניות הפרטיות של Let’s Encrypt מתארת כיצד אנו אוספים, משתמשים וחושפים את המידע שלך בשלושה הקשרים שונים:
+ כאשר, כגוף נסמך, ביקרת באתר שמאובטח ב־HTTPS ומשתמש באישור מבית Let’s Encrypt, כאשר ערכת מנוי, כלומר, כאשר הגשת בקשה ובחרת להשתמש באישורים מבית Let’s Encrypt, במהלך ביקורך באתר של Let’s Encrypt, בפורום הדיונים הקהילתי, בדפים אחרים תחת letsencrypt.org ואתרי מדיה חברתית מצד־שלישי בהם מופעל חשבון של Let’s Encrypt.  Let&amp;rsquo;s Encrypt הוא שירות שמסופק על ידי Internet Security Research Group, ארגון ללא מטרות רווח לרווחת הציבור שמקורו בקליפורניה (ארה״ב).">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/he/privacy/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="הזנת הבלוג של Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">דילוג על קישורי הניווט</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/he/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/he/docs/" class="pure-menu-link" tabindex="0">תיעוד</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">קבלת עזרה</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">תרומה</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/donate/" class="pure-menu-link">הצעת תרומה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">מתן חסות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/sponsors/" class="pure-menu-link">נותני חסות ומממנים נוכחיים</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getinvolved/" class="pure-menu-link">להצטרף למאמץ</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">עלינו</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" class="pure-menu-link">שאלות ותשובות (שו״ת)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">תפוגת התוקף של DST Root CA X3 (ספטמבר 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">מצב השירות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/stats/" class="pure-menu-link">סטטיסטיקה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">משרות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/contact/" class="pure-menu-link">יצירת קשר</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/privacy/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/privacy/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/privacy/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/privacy/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/privacy/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/privacy/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/privacy/" lang="he" hreflang="he" class="pure-menu-link">✓ עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/privacy/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/privacy/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/privacy/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/privacy/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/privacy/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/privacy/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/privacy/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/privacy/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/privacy/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/privacy/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/privacy/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/privacy/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/privacy/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/privacy/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/4.jpg');">
+<div class="container">
+	<h1>מדיניות פרטיות</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<div class="canonical-warning" style="">
+			<i class="fas fa-exclamation-circle" aria-hidden="true"></i>הגרסה האנגלית היא הסמכות העליונה</div>
+<p>
+
+    
+    עדכון אחרון: <time datetime="2022-03-11">11 במרץ 2022</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    לתשומת לבך: הגרסה האנגלית נערכה מאז שתורגמה
+                    (<time datetime="2023-02-28">28 בפבר׳ 2023</time>)
+                    <a href="letsencrypt-ewebsite/privacy/">מעבר לאנגלית</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>מדיניות הפרטיות של Let’s Encrypt מתארת כיצד אנו אוספים, משתמשים וחושפים את המידע שלך בשלושה הקשרים שונים:</p>
+<ul>
+<li>כאשר, כגוף נסמך, ביקרת באתר שמאובטח ב־HTTPS ומשתמש באישור מבית Let’s Encrypt,</li>
+<li>כאשר ערכת מנוי, כלומר, כאשר הגשת בקשה ובחרת להשתמש באישורים מבית Let’s Encrypt,</li>
+<li>במהלך ביקורך באתר של Let’s Encrypt, בפורום הדיונים הקהילתי, בדפים אחרים תחת letsencrypt.org ואתרי מדיה חברתית מצד־שלישי בהם מופעל חשבון של Let’s Encrypt.</li>
+</ul>
+<p>Let&rsquo;s Encrypt הוא שירות שמסופק על ידי <a href="https://www.abetterinternet.org/">Internet Security Research Group</a>, ארגון ללא מטרות רווח לרווחת הציבור שמקורו בקליפורניה (ארה״ב).</p>
+<h2 id="גוף-נסמך">גוף נסמך</h2>
+<p>בעת שימוש באתר HTTPS או בשירות אחר נתמך TLS עם אישור של Let’s Encrypt, הדפדפן שלך (או לקוח ה־TLS שלך) עשוי לתשאל את Let’s Encrypt כדי לבדוק האם האישור נשלל („בקשת OCSP”). אם הדפדפן שלך מבצע בקשת OCSP, השרתים שלנו יקליטו אוטומטית את כתובת ה־IP, הדפדפן ומערכת ההפעלה שלך בקובצי יומן שרת זמניים. איננו משתמשים בנתונים מבקשות ה־OCSP כדי לבנות פרופילים או לזהות משתמשים. יומני שרת זמניים משמשים למטרות תפעוליות בלבד והם בדרך כלל נמחקים תוך פחות משבעה ימים. אנו עשויים לשמור מבחר מצומצם של יומני שרת לתקופות ארוכות יותר כדי לחקור כשלים בתכניות או שימוש לרעה. אם נאלצנו לעשות זאת, אנו נמחק את היומנים המאוחסנים עם סיום החקירה. אנו עשויים גם לחשב, לשמור ולפרסם מידע ייצוגי מתוך יומני השרת כגון אילו אישורים מייצרים את נפח הבקשות הגדול ביותר. אנו תמיד נחתור לוודא שמקבץ כזה של נתונים לא יכיל מידע על הפעילויות של משתמשים או מכשירים שניתנים לזיהוי.</p>
+<h2 id="מנוי">מנוי</h2>
+<p>אם הגדרתך היא מנוי, בקשתך היא לקבל אישור מהימן מ־Let’s Encrypt המיועד לערוב באופן ציבורי שיש לך שליטה על שם או שמות תחום מסוימים שנגישים דרך האינטרנט. כחלק מתהליך הוכחת השליטה הזאת, תאסוף מערכת Let’s Encrypt מידע מגוון בנוגע לאימות האישור וניהולו. מידע זה יכלול את כתובת ה־IP ממנה ניגשת לשירות של Let’s Encrypt, כל כתובות ה־IP שנפתרו עבור שמות תחום כלשהם עבורם הוגשה בקשה, פרטי השרת שקשורים לבקשות תיקוף כלשהן, תיעוד יומן מלא של כל בקשות ה־HTTP / ACME הנכנסות, היוצאות ובקשות התיקוף, לצד פרטים שנשלחים או שתכנית צד הלקוח שלך הסיקה בעצמה. אנו נאחסן את הפרטים לתקופה מזערית של שבע שנים בהתאם לדרישות תוכנית אישורי העל המהימנים. המידע הזה יאוחסן למשך עשר שנים לכל היותר.</p>
+<p>צריכה להישמר לנו היכולת להציג לציבור, לרבות לאלו שסומכים על מהימנות האישורים שלנו, שהשירותים שלנו מתנהלים כפי שמצופה מהם. כתוצאה מכך, לא נוכל למחוק את המידע שלך, לרבות כתובת IP. מידע זה עשוי להיחשף לציבור במספר דרכים, לרבות דרך API ציבורי, מאגרים ציבוריים ו/או דיונים ציבוריים.</p>
+<p>תהיה לך האפשרות לספק פרטי קשר, כגון כתובת הדוא״ל שלך, לטובת שירותי חשבון ומטרות שחזור. פרטי הקשר שלך לא ייחשפו לציבורי והם ישותפו רק בהתאם ל„בקשות מגופי אכיפת חוק ונסיבות מקלות” שלהלן. מעצם אספקת כתובת הדוא״ל שלך, מוסכם עליך לקבל מאתנו הודעות דוא״ל בנוגע לשירות. באפשרותך להפסיק את המינוי להודעות דוא״ל בנושאי שירות בכל כעת על ידי לחיצה על הקישור „ביטול המינוי” בתחתית הודעות הדוא״ל או על ידי יצירת קשר אתנו דרך <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>. לא נשתמש בפרטי הקשר שלך למטרות שיווק או קידום מכירות.</p>
+<p>ייתכן שיהיה עליך להוריד תכנית לקוח ממאגר כגון אלו שמופעלים על ידי דביאן, אובונטו, Red Hat או GitHub. ההתקשרות שלך עם מאגר תכנה שכזה כפוף למדיניות הפרטיות ו/או תנאי השימוש של אותו המאגר.</p>
+<h2 id="מבקר">מבקר</h2>
+<p>אם מזדמן לך לבקר באתר של Let’s Encrypt, יש לך אפשרות לתרום. התרומות מועברות לעיבוד על ידי שותפי התשלום המהימנים שלנו לרבות DonorBox,‏ Stripe,‏ Shopify,‏ PayPal,‏ The Giving Block ו־Gemini כתלות בשיטת התשלום שנבחרה והן מאוחסנות במסד הנתונים של ה־Salesforce של ISRG. אנו אוספים את שמך ואת כתובת הדוא״ל שלך בעת התרומה. לא נשתמש בכתובת הדוא״ל שלך כדי ליצור אתך קשר ללא הסכמתך אלמלא אנו חשים שזה הכרחי כדי לפתור בעיה שקשורה לתרומה מסוימת. הפעילות שלך מול <a href="https://donorbox.org/privacy">DonorBox</a>,‏ <a href="https://stripe.com/privacy/">Stripe</a>,‏ <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full">PayPal</a>,‏ <a href="https://www.shopify.com/legal/privacy">Shopify</a>,‏ <a href="https://thegivingblock.com/about/privacy-policy/">The Giving Block</a>,‏ Gemini,‏ <a href="https://shiphero.com/privacy-data-policy/">SHIPHERO</a>,‏ <a href="https://www.salesforce.com/company/privacy/">Salesforce</a> ו־<a href="https://www.sageintacct.com/privacy_policy_website">Sage Intacct</a> כפופה להסכמי הפרטיות שלהם בהתאמה. אנחנו לא אוספים או שומרים פרטי כרטיסי אשראי או בנקים שקשורים בתרומות. שותפי שירותי השילוח שלנו הם Shopify ו־SHIPHERO.</p>
+<p>מותר לך לספק את כתובת הדוא״ל שלך כדי לקבל התכתבויות שקשורות במיזמי ISRG על ידי הרשמה באתר של ISRG ודרך חומרים שיווקיים נוספים. כל תכתובת שהועברה דרך MailChimp או Salesforce והפעילות שלך מול <a href="https://www.intuit.com/privacy/statement/">MailChimp</a> ומול <a href="https://www.salesforce.com/company/privacy/">Salesforce</a> כפופה להסכמי הפרטיות שלהם. אנו עשויים להשתמש לעתים בכתובת הדוא״ל שלך כדי לשלוח לך מסרים מותאמים אישית שקשורים ב־Let’s Encrypt. יש לך אפשרות לבקש להסיר את כתובת הדוא״ל שלך מהרשימה שלנו על ידי בקשת עזיבה דרך MailChimp או על ידי שליחת הודעת דוא״ל אלינו לכתובת <a href="mailto:press@letsencrypt.org">press@letsencrypt.org</a>.</p>
+<p>אם בחרת להירשם לפורום התמיכה הקהילתי של Let’s Encrypt ולהשתמש בו, הפרטים האישיים שיסופקו והפעולות שם כפופות למדיניות הפרטיות של ספקי האירוח והתוכנה של הפורום, <a href="https://www.discourse.org/privacy">ערכת דיון מתורבת ב־Discourse</a>. איננו אוספים או מתחזקים פרטים אישיים דרך פורום התמיכה הזה שמוצע לקהל הרחב.</p>
+<h2 id="איננו-מוכרים-את-הנתונים-או-הפרטים-עליך">איננו מוכרים את הנתונים או הפרטים עליך</h2>
+<p>איננו מוכרים את הנתונים או הפרטים עליך. לרבות הגוף הנסמך, המינוי ונתוני הביקור והפרטים.</p>
+<h2 id="בקשות-מגופי-אכיפת-חוק-ונסיבות-מקלות">בקשות מגופי אכיפת חוק ונסיבות מקלות</h2>
+<p>אם אנחנו אכן מחזיקים בהם, אנו עשויים לחשוף פרטים מזהים עליך לגופי צד־שלישי בנסיבות מצומצמות. נסיבות כאלו כוללות את כך שקיבלנו את הסכמתך או שאנו מאמינים בלב שלם שיש לכך צידוק חוקי, כגון בהתאם לצו הזמנה לבית משפט או לשיפוט מנהלי. אנו גם נחשוף פרטי שחזור חשבון אם אנו מאמינים בלב שלם שצעד זה הכרחי למניעת אובדן חיים, פציעה אישית, נזק לרכוש או נזק כלכלי משמעותי.</p>
+<p>אם אנו נדרשים על פי חוק לחשוף מידע שהגשת, אנו ננסה להודיע לך על כך מראש (אלא אם כן נאסרנו לעשות זאת) שהוגשה בקשה לקבל עליך מידע כדי להעניק לך אפשרות להתנגד לחשיפה. אנו ננסה להודיע לך באמצעים שנחשבים מעשיים באופן סביר. אם לא נקבל מענה ממך לבקשת החשיפה, ייתכן שנהיה מחויבים על פי חוק להסגיר את המידע שלך.</p>
+<p>נוסף על כך, אנו שומרים את הזכות, לבחירתנו בלבד, להתנגד באופן עצמאי לבקשות מסוימות (לגישה למידע על משתמשים במוצרים ובטכנולוגיות שלנו) שאנו מאמינים שהן בלתי הולמות.</p>
+<h2 id="אילו-זכויות-יש-לגופי-בר-סמכא-מנויים-ומבקרים-מהאזור-הכלכלי-האירופי-תחת-gdpr-ואיך-אוכל-לאכוף-אותן">אילו זכויות יש לגופי בר סמכא, מנויים ומבקרים מהאזור הכלכלי האירופי תחת GDPR ואיך אוכל לאכוף אותן?</h2>
+<p>אנו מעבדים נתונים אישיים כפי שמתואר במדיניות זו. התכלית והבסיס המשפטי לעיבוד המידע הם כמתואר להלן:</p>
+<p><strong>מטרה:</strong> אספקת מידע על מצבם של אישורים (OCSP)</p>
+<p><strong>בסיס משפטי:</strong> צרכים חוקיים</p>
+<p><strong>פרטים נוספים:</strong> אנו אוספים ומעבדים מידע מגופים נסמכים כדי לספק פירוט מצב על אישורים בצורה מהימנה.</p>
+<p><strong>מטרה:</strong> לספק הנפקת אישורים ושירותי ניהול</p>
+<p><strong>בסיס משפטי:</strong> חוזה, צרכים חוקיים</p>
+<p><strong>פרטים נוספים:</strong> אנו אוספים ומעבדים מידע ממנויים כדי לספק הנפקת אישורים ושירותי ניהול מהימנים ומאובטחים וכדי לשקף מול הציבור שביצועי השירותים שלנו הם כצפוי.</p>
+<p><strong>מטרה:</strong> אספקת מידע למבקרים</p>
+<p><strong>בסיס משפטי:</strong> הסכמה, צרכים חוקיים</p>
+<p><strong>פרטים נוספים:</strong> אנו אוספים ומעבדים מידע ממבקרים כדי לספר מידע דרך האינטרנט ודרך דוא״ל באופן אמין ויעיל.</p>
+<p><strong>מטרה:</strong> עיבוד תרומות ובקשות מימון</p>
+<p><strong>בסיס משפטי:</strong> צרכים חוקיים</p>
+<p><strong>פרטים נוספים:</strong> אנו אוספים ומעבדים מידע כדי לעבד ולתמוך בתרומות.</p>
+<p><strong>מטרה:</strong> מחויבויות משפטיות ונסיבות מקלות</p>
+<p><strong>בסיס משפטי:</strong> מחויבות חוקית, צרכים חוקיים</p>
+<p><strong>פרטים נוספים:</strong> אנו עשויים לאסוף ולעבד מידע כדי לעמוד במחויבויות משפטיות וכאשר אנחנו מאמינים בלב שלם שזה הכרחי כדי למנוע אובדן בחיי אדם, פציעה גופנית, נשק לרכוש או נזק כלכלי כבד.</p>
+<p>נא לשים לב שיתכן שלא נוכל למחוק מידע, כולל כתובות IP, כיוון שמידע זה נחוץ לאחרים שעבורם המידע הזה מהווה אסמכתה למהימנות האישורים שלנו. בחלק מהמקרים אנו עשויים לעבד נתונים אישיים בהתאם לחובה משפטית או כדי להגן על על ענייניך החיוניים או של מישהו אחר.</p>
+<p>הנתונים האישיים שלך עשויים להיאסף מתוך או לעבור אל תחומי שיפוט בהם אנו וספקי השירות שלנו מאחסנים או מעבדים נתונים, לרבות ארצות הברית. תחומי שיפוט אלו עלולים שלא לספק את אותה רמת הגנת פרטיות כמו תחום השיפוט שלך, לרבות בתוך תחומי האזור הכלכלי האירופי. נקטנו צעדים כדי לוודא שספקי השירות שלך מספקים רמה הולמת של הגנה על נתונים אישיים של תושבי האזור הכלכלי האירופי, לרבות חתימה על הסכמי עיבוד נתונים דרך סעיפי החוזים הרגילים שאושרו על ידי הנציבות האירופית או על ידי שימוש באמצעי הבטחון שאושרו על ידי הנציבות האירופית. שמורה לך הזכות לקבל פרטים על המנגנון שבחסותו הפרטים האישיים שלך מועברים אל מחוץ לאירופה על ידי כתיבת הודעת דוא״ל לכתובת שמופיעה להלן.</p>
+<p>לגופים פרטיים שנמצאים באזור הכלכלי האירופי (EEA) יש זכויות מסוימות בנוגע לפרטיהם האישיים, כולל הזכות לגשת, לתקן או למחוק נתונים אישיים שאנו מעבדים בעקבות שימושך באתרים ובשירותים שלנו. אם הנך גורם עצמאי שהוא גוף נסמך, מנוי, או מבקר שמיקומו הוא האזור הכלכלי האירופי (EEA), באפשרותך:</p>
+<ul>
+<li>
+<p>לבקש דוח נתונים אישיים על ידי שליחת הודעה בדוא״ל אלינו לכתובת <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>. דוח זה יכלול את הנתונים האישיים שאספנו עליך, שיסופקו לך בתבנית מובנית, נפוצה וניידת. נא לשים לב שאנו עשויים לבקש ממך פרטים נוספים כדי לאמת את זהותך בטרם חשיפת מידע כלשהו.</p>
+</li>
+<li>
+<p>לבקש שהמידע עליך יתוקן או יימחק על ידי יצירת קשר אתנו דרך דוא״ל בכתובת <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>.</p>
+</li>
+<li>
+<p>להתנגד לכך שנעבד את המידע עליך. ניתן לבקש מאתנו להפסיק להשתמש במידע שלך, כולל מתי שאנו משתמשים במידע שלך כדי לשלוח אליך הודעות שירות בדוא״ל. באפשרותך למשוך את הסכמתך לקבלת הודעות שירות בדוא״ל בכל עת על ידי לחיצה על הקישור „ביטול מינוי” שנמצא בהודעות שנשלחות על ידי Let’s Encrypt בדוא״ל.</p>
+</li>
+<li>
+<p>להתלונן לרשויות חוק. אם מקום מגוריך הוא האזור הכלכלי האירופי ולדעתך לא עמדנו בחוקים להגנת הנתונים, יש לך את הזכות להגיש תביעה מול הרשות המפקחת המקומית שלך.</p>
+</li>
+</ul>
+<p>למידע נוסף, או לדיווח על בעיית פרטיות, נא ליצור אתנו קשר דרך: <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>לתמיכה ברשת אינטרנט מאובטחת יותר ומכבדת פרטיות.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/he/donate/">תרומה</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt היא רשות אישורים חופשית, אוטומטית ופתוחה
+  שמוגשת לך באדיבות <a href="https://www.abetterinternet.org/">קבוצת מחקר אבטחת האינטרנט (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>יש לשלוח הודעות או בקשות אל:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        לצפייה ב<a href="/privacy/">מדיניות הפרטיות</a> שלנו.<br>
+לצפייה ב<a href="https://www.abetterinternet.org/trademarks/">מדיניות זכויות היוצרים</a> שלנו.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>证书兼容性 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="平台能否验证Let&amp;rsquo;s Encrypt证书的主要决定因素是，该平台是否信任ISRG的“ISRG Root X1”证书。 在2021年9月之前， 有些平台即使未信任 ISRG Root X1 证书也可以验证我们的证书，因为它们信任IdenTrust的 &amp;ldquo;DST Root CA X3&amp;rdquo; 证书。 自2021年10月起，只有那些信任ISRG Root X1的平台才能验证Let&amp;rsquo;s Encrypt证书(Android平台除外)。
+如果您的证书在仅能够在一部分（而不是全部）“已知兼容”的平台上通过验证，则问题可能在于 Web 服务器配置错误。 如果您在较新的系统中遇到问题，最常见的原因是网站没有提供正确的证书链。 您可以使用 SSL Labs 的服务器测试来测试您站点的兼容性。 如果这个测试仍旧不能帮助您确定问题所在，您可以在我们的社区论坛中寻求帮助。
+信任ISRG RootX1的平台  Windows &amp;gt;= XP SP3 (如果自动 Root 证书更新没有手动禁用的话) macOS &amp;gt;= 10.12.1 iOS &amp;gt;= 10 (不包括 iOS 9) iPhone 5 及更新的手机可以升级到 iOS 10 ，因此可以信任ISRG Root X1 Android &amp;gt;= 7.1.1 (由于我们的特殊交互签名证书，安卓 &amp;gt;= 2.3.6 默认情况下可信任) Mozilla Firefox &amp;gt;= 50.0 Ubuntu &amp;gt;= Precise Pangolin / 12.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="证书兼容性">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/certificate-compatibility/">
+    <meta name="twitter:description" content="平台能否验证Let&amp;rsquo;s Encrypt证书的主要决定因素是，该平台是否信任ISRG的“ISRG Root X1”证书。 在2021年9月之前， 有些平台即使未信任 ISRG Root X1 证书也可以验证我们的证书，因为它们信任IdenTrust的 &amp;ldquo;DST Root CA X3&amp;rdquo; 证书。 自2021年10月起，只有那些信任ISRG Root X1的平台才能验证Let&amp;rsquo;s Encrypt证书(Android平台除外)。
+如果您的证书在仅能够在一部分（而不是全部）“已知兼容”的平台上通过验证，则问题可能在于 Web 服务器配置错误。 如果您在较新的系统中遇到问题，最常见的原因是网站没有提供正确的证书链。 您可以使用 SSL Labs 的服务器测试来测试您站点的兼容性。 如果这个测试仍旧不能帮助您确定问题所在，您可以在我们的社区论坛中寻求帮助。
+信任ISRG RootX1的平台  Windows &amp;gt;= XP SP3 (如果自动 Root 证书更新没有手动禁用的话) macOS &amp;gt;= 10.12.1 iOS &amp;gt;= 10 (不包括 iOS 9) iPhone 5 及更新的手机可以升级到 iOS 10 ，因此可以信任ISRG Root X1 Android &amp;gt;= 7.1.1 (由于我们的特殊交互签名证书，安卓 &amp;gt;= 2.3.6 默认情况下可信任) Mozilla Firefox &amp;gt;= 50.0 Ubuntu &amp;gt;= Precise Pangolin / 12.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/certificate-compatibility/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/certificate-compatibility/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/certificate-compatibility/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/certificate-compatibility/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/certificate-compatibility/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/certificate-compatibility/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/certificate-compatibility/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/certificate-compatibility/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/certificate-compatibility/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/certificate-compatibility/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/certificate-compatibility/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/certificate-compatibility/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/certificate-compatibility/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/certificate-compatibility/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/certificate-compatibility/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/certificate-compatibility/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/certificate-compatibility/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/certificate-compatibility/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/certificate-compatibility/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/certificate-compatibility/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/certificate-compatibility/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/certificate-compatibility/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>证书兼容性</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2021-10-31">Oct 31, 2021</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>平台能否验证Let&rsquo;s Encrypt证书的主要决定因素是，该平台是否信任ISRG的“ISRG Root X1”证书。 在2021年9月之前， 有些平台即使未信任 ISRG Root X1 证书也可以验证我们的证书，因为它们信任IdenTrust的 &ldquo;DST Root CA X3&rdquo; 证书。 自2021年10月起，只有那些信任ISRG Root X1的平台才能验证Let&rsquo;s Encrypt证书(<a href="/2020/12/21/extending-android-compatibility.html">Android平台除外</a>)。</p>
+<p>如果您的证书在仅能够在一部分（而不是全部）“已知兼容”的平台上通过验证，则问题可能在于 Web 服务器配置错误。 如果您在较新的系统中遇到问题，最常见的原因是网站没有提供正确的证书链。 您可以使用 <a href="https://www.ssllabs.com/ssltest/">SSL Labs 的服务器测试</a>来测试您站点的兼容性。 如果这个测试仍旧不能帮助您确定问题所在，您可以在我们的<a href="https://community.letsencrypt.org/">社区论坛</a>中寻求帮助。</p>
+<h1 id="信任isrg-rootx1的平台">信任ISRG RootX1的平台</h1>
+<ul>
+<li>Windows &gt;= XP SP3 (<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/">如果自动 Root 证书更新没有手动禁用的话</a>)</li>
+<li><a href="https://twitter.com/letsencrypt/status/790960929504497665?lang=en">macOS &gt;= 10.12.1</a></li>
+<li><a href="https://support.apple.com/en-us/HT207177">iOS &gt;= 10</a> (<a href="https://support.apple.com/en-us/HT205205">不包括 iOS 9</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/IPhone_5">iPhone 5 及更新的手机可以升级到 iOS 10</a> ，因此可以信任ISRG Root X1</li>
+<li><a href="https://android.googlesource.com/platform/system/ca-certificates/&#43;/android-7.1.1_r15">Android &gt;= 7.1.1</a> (<a href="https://letsencrypt.org/2020/12/21/extending-android-compatibility.html">由于我们的特殊交互签名证书</a>，安卓 &gt;= 2.3.6 默认情况下可信任)</li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1204656">Mozilla Firefox &gt;= 50.0</a></li>
+<li>Ubuntu &gt;= Precise Pangolin / 12.04（安装更新后）</li>
+<li><a href="https://packages.debian.org/jessie/all/ca-certificates/filelist">Debian &gt;= jessie / 8</a> (安装更新后)</li>
+<li><a href="https://www.oracle.com/java/technologies/javase/8u141-relnotes.html">Java 8 &gt;= 8u141</a></li>
+<li><a href="https://www.oracle.com/java/technologies/javase/7u151-relnotes.html">Java 7 &gt;= 7u151</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.26_release_notes">NSS &gt;= 3.26</a></li>
+</ul>
+<p>浏览器(Chrome、Safari、Edge、Opera) 一般都信任他们所运行于的操作系统的根证书。 Firefox 是例外：它有自己的根证书列表。 不久，Chrome的新版本将 <a href="https://www.chromium.org/Home/chromium-security/root-ca-policy">也有自己的根证书列表</a>。</p>
+<h1 id="信任dst-root-ca-x3但不信任isrg-root-x1的平台">信任DST Root CA X3但不信任ISRG Root X1的平台</h1>
+<p>这些平台在2021年9月前可以使用， 但是现在不再验证 Let&rsquo;s Encrypt 证书。</p>
+<ul>
+<li>macOS &lt; 10.12.1</li>
+<li>iOS &lt; 10</li>
+<li>Mozilla Firefox &lt; 50</li>
+<li>Ubuntu &gt;= intrepid / 8.10</li>
+<li><a href="https://twitter.com/TokenScandi/status/600806080684359680">Debian &gt;= squeeze / 6</a>, &lt; jessie /8</li>
+<li>Java 8 &gt;= 8u101, &lt; 8u141</li>
+<li>Java 7 &gt;= 7u111, &lt; 7u151</li>
+<li>NSS &gt;= v3.11.9, &lt; 3.26</li>
+<li>Amazon FireOS (Silk Browser) (版本范围未知)</li>
+<li>Cyanogen &gt; v10 (添加 ISRG Root X1 信任的版本未知)</li>
+<li>Jolla Sailfish OS &gt; v1.1.2.16 (添加 ISRG Root X1 信任的版本未知)</li>
+<li>Kindle &gt; v3.4.1 (添加 ISRG Root X1 信任的版本未知)</li>
+<li>Blackberry &gt;= 10.3.3 (添加 ISRG Root X1 信任的版本未知)</li>
+<li>固件 &gt;= 5.00 的 PS4 游戏机 (添加 ISRG Root X1 信任的版本未知)</li>
+</ul>
+<h1 id="已知不兼容的平台">已知不兼容的平台</h1>
+<ul>
+<li>Blackberry &lt; v10.3.3</li>
+<li>Android &lt; v2.3.6</li>
+<li>Nintendo 3DS</li>
+<li>Windows XP SP3 之前的系统
+<ul>
+<li>无法处理 SHA-2 签名的证书</li>
+</ul>
+</li>
+<li>Java 7 &lt; 7u111</li>
+<li>Java 8 &lt; 8u101</li>
+<li>Windows Live Mail（2012 版邮件客户端，而非网页端邮件服务）
+<ul>
+<li>无法处理不包含CRL的证书</li>
+</ul>
+</li>
+<li>PS3 游戏机</li>
+<li>PS4 游戏机（固件版本 &lt; 5.00 ）</li>
+</ul>
+<h1 id="isrg-root-x2-新-ecdsa-root-即将推出">ISRG Root X2 (新 ECDSA root) - 即将推出</h1>
+<p>我们已经将ISRG Root X2提交给微软、苹果、谷歌、Mozilla和Oracle根证书程序以供兼容。 ISRG Root X2已经通过我们的 ISRG Root X1 的交叉签名得到广泛信任。 欲了解更多信息，请查看我们的 <a href="https://community.letsencrypt.org/t/isrg-root-x2-submitted-to-root-programs/149385">社区论坛帖子</a>.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

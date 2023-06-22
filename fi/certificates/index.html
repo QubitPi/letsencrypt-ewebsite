@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="fi">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Luottamuksen ketju -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Juuri-varmenteet Meidän juuret pidetään turvallisesti pois verkosta. Myönnämme loppukäyttäjän varmenteita välimiehiltä seuraavasta osiosta tilaajille. Yhteensopivuuden lisäämiseksi lähettäessämme uuden Root X2:n useisiin juuriohjelmiin, olemme myös ristiinallekirjoittaneet sen Root X1:stä.
+ Aktiivisia  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Itseallekirjoitettu: der, pem, txt DST Root CA X3:n ristiinallekirjoitus: [der](/certs/isrg-root-x1-cross-signed. der), pem, [txt](/certs/isrg-root-x1- cross-signed.txt)     Aktiivisia, rajoitetulla saatavuudella  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Itseallekirjoitettu: der, pem, txt ISRG Root X1:n ristiinallekirjoitus: der, pem, [txt](/certs/isrg-root-x2-cross -signed.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Luottamuksen ketju">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/fi/certificates/">
+    <meta name="twitter:description" content="Juuri-varmenteet Meidän juuret pidetään turvallisesti pois verkosta. Myönnämme loppukäyttäjän varmenteita välimiehiltä seuraavasta osiosta tilaajille. Yhteensopivuuden lisäämiseksi lähettäessämme uuden Root X2:n useisiin juuriohjelmiin, olemme myös ristiinallekirjoittaneet sen Root X1:stä.
+ Aktiivisia  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Itseallekirjoitettu: der, pem, txt DST Root CA X3:n ristiinallekirjoitus: [der](/certs/isrg-root-x1-cross-signed. der), pem, [txt](/certs/isrg-root-x1- cross-signed.txt)     Aktiivisia, rajoitetulla saatavuudella  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Itseallekirjoitettu: der, pem, txt ISRG Root X1:n ristiinallekirjoitus: der, pem, [txt](/certs/isrg-root-x2-cross -signed.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/fi/certificates/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encryptin blogisyöte" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Ohita navigointilinkit</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/fi/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/fi/docs/" class="pure-menu-link" tabindex="0">Dokumentaatio</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Hanki apua</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Lahjoita</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Ryhdy sponsoriksi</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/sponsors/" class="pure-menu-link">Tämänhetkiset sponsorit ja rahoittajat</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/getinvolved/" class="pure-menu-link">Osallistu</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Tietoa meistä</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Palvelun tila</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/stats/" class="pure-menu-link">Tilastot</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Työpaikat</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/contact/" class="pure-menu-link">Ota yhteyttä</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Kielet <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">✓ Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/5.jpg');">
+<div class="container">
+	<h1>Luottamuksen ketju</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Viimeksi päivitetty: <time datetime="2021-10-02">2.10.2021</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p><a href="/images/isrg-hierarchy.png"><img src="/images/isrg-hierarchy.png" alt="ISRG Certificate Hierarchy Diagram, as of December 2020"></a></p>
+<h1 id="juuri-varmenteet">Juuri-varmenteet</h1>
+<p>Meidän juuret pidetään turvallisesti pois verkosta. Myönnämme loppukäyttäjän varmenteita välimiehiltä seuraavasta osiosta tilaajille. Yhteensopivuuden lisäämiseksi lähettäessämme uuden Root X2:n useisiin juuriohjelmiin, olemme myös ristiinallekirjoittaneet sen Root X1:stä.</p>
+<ul>
+<li>Aktiivisia
+<ul>
+<li>ISRG Root X1 (<code>RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314791">Itseallekirjoitettu</a>: <a href="/certs/isrgrootx1.der">der</a>, <a href="/certs/isrgrootx1.pem">pem</a>, <a href="/certs/isrgrootx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3958242236">DST Root CA X3:n ristiinallekirjoitus</a>: [der](/certs/isrg-root-x1-cross-signed. der), <a href="/certs/isrg-root-x1-cross-signed.pem">pem</a>, [txt](/certs/isrg-root-x1- cross-signed.txt)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktiivisia, rajoitetulla saatavuudella
+<ul>
+<li>ISRG Root X2 (<code>ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3335562555">Itseallekirjoitettu</a>: <a href="/certs/isrg-root-x2.der">der</a>, <a href="/certs/isrg-root-x2.pem">pem</a>, <a href="/certs/isrg-root-x2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3334561878">ISRG Root X1:n ristiinallekirjoitus</a>: <a href="/certs/isrg-root-x2-cross-signed.der">der</a>, <a href="/certs/isrg-root-x2-cross-signed.pem">pem</a>, [txt](/certs/isrg-root-x2-cross -signed.txt)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Olemme asettaneet verkkosivustot testaamaan varmenteiden ketjutusta aktiivisiin juurimme saakka.</p>
+<ul>
+<li>ISRG Root X1
+<ul>
+<li><a href="https://valid-isrgrootx1.letsencrypt.org/">Kelvollinen</a></li>
+<li><a href="https://revoked-isrgrootx1.letsencrypt.org/">Kumottu</a></li>
+<li><a href="https://expired-isrgrootx1.letsencrypt.org/">Vanhentunut</a></li>
+</ul>
+</li>
+<li>ISRG Root X2
+<ul>
+<li><a href="https://valid-isrgrootx2.letsencrypt.org/">Kelvollinen</a></li>
+<li><a href="https://revoked-isrgrootx2.letsencrypt.org/">Kumottu</a></li>
+<li><a href="https://expired-isrgrootx2.letsencrypt.org/">Vanhentunut</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="välilliset-varmenteet">Välilliset varmenteet</h1>
+<p>Tavanomaisissa olosuhteissa Let&rsquo;s Encryptin myöntämät varmenteet ovat peräisin &ldquo;R3&rdquo;:sta, RSA-välilliseltä. Tällä hetkellä, myöntäminen ’E1’:ltä, eräs ECDSA-välillinen, on mahdollista ainoastaan <a href="https://community.letsencrypt.org/t/ecdsa-availability-in-production-environment/150679">sallittujen tilien</a> ECDSA-tilaajaavaimille. Tulevaisuudessa myöntäminen &lsquo;E1&rsquo;:ltä on kaikkien saatavilla.</p>
+<p>Muut välillisemme (&ldquo;R4&rdquo; ja &ldquo;E2&rdquo;) on varattu katastrofipalautukseen, ja niitä käytetään vain, jos menetämme myöntämiskyvyn ensisijaisilla välillisillämme. Emme enää käytä X1, X2, X3 ja X4 välituotteita.</p>
+<p>IdenTrust on allekirjoittanut RSA-välillisemme yhteensopivuuden lisäämiseksi.</p>
+<ul>
+<li>Aktiivisia
+<ul>
+<li>Let&rsquo;s Encrypt R3 (<code>RSA 2048, O = Let's Encrypt, CN = R3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561879">Allekirjoittanut ISRG Root X1</a>: <a href="/certs/lets-encrypt-r3.der">der</a>, <a href="/certs/lets-encrypt-r3.pem">pem</a>, <a href="/certs/lets-encrypt-r3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778542">Ristiinallekirjoittanut IdenTrust </a>: <a href="/certs/lets-encrypt-r3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r3-cross-signed.txt">txt</a> (eläkkeellä)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktiivisia, rajoitetulla saatavuudella
+<ul>
+<li>Let&rsquo;s Encrypt E1 (<code>ECDSA P-384, O = Let's Encrypt, CN = E1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671964">Allekirjoittanut ISRG Root X2</a>: <a href="/certs/lets-encrypt-e1.der">der</a>, <a href="/certs/lets-encrypt-e1.pem">pem</a>, <a href="/certs/lets-encrypt-e1.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Varmuuskopiointi
+<ul>
+<li>Let&rsquo;s Encrypt R4 (<code>RSA 2048, O = Let's Encrypt, CN = R4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561877">Allekirjoittanut ISRG Root X1</a>: <a href="/certs/lets-encrypt-r4.der">der</a>, <a href="/certs/lets-encrypt-r4.pem">pem</a>, <a href="/certs/lets-encrypt-r4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778543">Ristiinallekirjoittanut IdenTrust </a>: <a href="/certs/lets-encrypt-r4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r4-cross-signed.txt">txt</a> (eläkkeellä)</li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt E2 (<code>ECDSA P-384, O = Let's Encrypt, CN = E2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671963">Allekirjoittanut ISRG Root X2</a>: <a href="/certs/lets-encrypt-e2.der">der</a>, <a href="/certs/lets-encrypt-e2.pem">pem</a>, <a href="/certs/lets-encrypt-e2.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Eläkkeellä
+<ul>
+<li>Let&rsquo;s Encrypt Authority X1 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314792">Allekirjoittanut ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx1.der">der</a>, <a href="/certs/letsencryptauthorityx1.pem">pem</a>, <a href="/certs/letsencryptauthorityx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10235198">Ristiinallekirjoittanut IdenTrust</a>: <a href="/certs/lets-encrypt-x1-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x1-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X2 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=12721505">Allekirjoittanut ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx2.der">der</a>, <a href="/certs/letsencryptauthorityx2.pem">pem</a>, <a href="/certs/letsencryptauthorityx2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10970235">Ristiinallekirjoittanut IdenTrust</a>: <a href="/certs/lets-encrypt-x2-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x2-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X3 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997543">Allekirjoittanut ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx3.der">der</a>, <a href="/certs/letsencryptauthorityx3.pem">pem</a>, <a href="/certs/letsencryptauthorityx3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15706126">Ristiinallekirjoittanut IdenTrust</a>: <a href="/certs/lets-encrypt-x3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x3-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X4 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997546">Allekirjoittanut ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx4.der">der</a>, <a href="/certs/letsencryptauthorityx4.pem">pem</a>, <a href="/certs/letsencryptauthorityx4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15710291">Ristiinallekirjoittanut IdenTrust</a>: <a href="/certs/lets-encrypt-x4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x4-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="ristiinallekirjoitus">Ristiinallekirjoitus</h1>
+<h2 id="välilliset">Välilliset</h2>
+<p>Jokainen välillisemme edustaa yhtä julkista/yksityistä avainparia. Tämän parin yksityinen avain luo allekirjoituksen kaikille loppuyksikön varmenteille (tunnetaan myös lehtivarmenteina), eli varmenteille, jotka myönnämme käytettäväksi palvelimellasi.</p>
+<p>Meidän RSA-välillisiä ovat allekirjoittaneet ISRG Root X1. ISRG Root X1:een luotetaan tässä vaiheessa laajalti, mutta RSA-välillisemme on edelleen allekirjoittanut IdenTrustin &ldquo;<a href="https://crt.sh/?id=8395">DST Root CA X3</a> -sovelluksella. (tällä hetkellä nimeltään &ldquo;TrustID X3 Root&rdquo;) asiakasyhteensopivuuden lisäämiseksi. IdenTrust-juuri on ollut olemassa pidempään ja sillä on siten parempi yhteensopivuus vanhempien laitteiden ja käyttöjärjestelmien kanssa (esim. Windows XP, Android 7). Voit <a href="https://www.identrust.com/support/downloads">ladata &ldquo;TrustID X3 Root&rdquo; IdenTrustista</a> (tai vaihtoehtoisesti [lataa kopio meiltä](/certs/trustid -x3-root.pem.txt)).</p>
+<p>Ristiinallekirjoituksen olemassa olo tarkoittaa, että jokaisella RSA-välillisellämme on kaksi samaa allekirjoitusavainta edustavaa varmennetta. Yksi on allekirjoittanut DST Root CA X3 ja toinen on allekirjoittanut ISRG Root X1. Helpoin tapa erottaa nämä kaksi on katsoa niiden myöntäjän kenttää.</p>
+<p>Kun määrität verkkopalvelinta, palvelimen operaattori konfiguroi loppuyksikön varmenteen lisäksi luettelon välillisistä, jotka auttavat verkkoselaimia varmistamaan, että loppuyksikön varmenteella on luotettuun juurivarmenteeseen johtava luottamusketju. Melkein kaikki palvelinoperaattorit valitsevat ketjun, joka sisältää välivarmenteen, jonka aihe on &ldquo;R3&rdquo; ja myöntäjä &ldquo;ISRG Root X1&rdquo;. Suositeltu Let&rsquo;s Encrypt asiakasohjelmisto, <a href="https://certbot.org">Certbot</a>, tekee tästä kokoonpanosta saumattomasti.</p>
+<h2 id="juuret">Juuret</h2>
+<p>Kuten välilliset, juurivarmenteita voidaan ristiinallekirjoittaa, usein asiakkaiden yhteensopivuuden lisäämiseksi. ECDSA-juuremme, ISRG Root X2, luotiin syksyllä 2020 ja on ECDSA-hierarkian juurivarmenne. Sitä edustaa kaksi varmennetta: toinen on itseallekirjoitettu ja toinen ISRG Root X1:n allekirjoittama.</p>
+<p>Kaikki ECDSA-välillisen &ldquo;E1&rdquo; allekirjoittamat varmenteet toimitetaan ketjulla, joka sisältää välivarmenne, jonka aihe on &ldquo;ISRG Root X2&rdquo; ja jonka myöntäjä on &ldquo;ISRG Root X1&rdquo;. Melkein kaikki palvelinoperaattorit valitsevat tämän ketjun palvelemisen, koska se tarjoaa parhaan yhteensopivuuden, kunnes ISRG Root X2:een luotetaan laajalti.</p>
+<h1 id="ocsp-allekirjoitusvarmenne">OCSP-allekirjoitusvarmenne</h1>
+<p>Tätä varmennetta käytetään OCSP-vastausten allekirjoittamiseen Let&rsquo;s Encrypt Authority -välillisille, jotta meidän ei tarvitse tuoda juuriavainta verkkoon näiden vastausten allekirjoittamista varten. Kopio tästä varmenteesta sisältyy automaattisesti näihin OCSP-vastauksiin, joten tilaajien ei tarvitse tehdä mitään sen kanssa. Se sisältyy tässä vain tiedoksi.</p>
+<ul>
+<li>ISRG Root OCSP X1 (<a href="https://crt.sh/?id=2929281974">Allekirjoittanut ISRG Root X1</a>): <a href="/certs/isrg-root-ocsp-x1.der">der</a>, <a href="/certs/isrg-root-ocsp-x1.pem">pem</a>, <a href="/certs/isrg-root-ocsp-x1.txt">txt</a></li>
+</ul>
+<p>Uudemmilla välillisillämme ei ole OCSP-URL:a (niiden kumotustiedot toimitetaan sen sijaan CRL:n kautta), joten emme ole myöntäneet OCSP-allekirjoitusvarmennetta ISRG Root X2:lta.</p>
+<h1 id="certificate-transparency">Certificate Transparency</h1>
+<p>Olemme sitoutuneet toiminnassamme ja myöntämiemme varmenteiden läpinäkyvyyteen. Lähetämme kaikki varmenteet <a href="https://www.certificate-transparency.org/">varmenteiden läpinäkyvyyslokeihin</a> sitä mukaa, kun niitä myönnämme. Voit nähdä kaikkia myönnettyjä varmenteita näiden linkkien kautta:</p>
+<ul>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=7395">Myöntänyt Let&rsquo;s Encrypt Authority X1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=16418">Myöntänyt Let&rsquo;s Encrypt Authority X3</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183283">Myöntänyt E1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183267">Myöntänyt R3</a></li>
+</ul>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Tue turvallisempaa ja yksityisyyttä arvostavampaa verkkoa.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/fi/donate/">Lahjoita</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt on ilmainen, automatisoitu, ja avoin varmenteita myöntävä organisaatio, jonka on perustanut voittoa tavoittelematon organisaatio <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Lähetä kaikki sähköpostit tai tiedustelut osoitteeseen:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Katso <a href="/privacy/">yksityisyyskäytäntömme</a>.<br>
+Katso <a href="https://www.abetterinternet.org/trademarks">tavaramerkkikäytäntömme</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>How Let&#39;s Encrypt Runs CT Logs -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Let’s Encrypt launched a Certificate Transparency (CT) log this past spring. We’re excited to share how we built it in hopes that others can learn from what we did. CT has quickly become an important piece of Internet security infrastructure, but unfortunately it’s not trivial to run a good log. The more the CT community can share about what has been done, the better the ecosystem will be.
+Sectigo and Amazon Web Services have generously provided support to cover a significant portion of the cost of running our CT log.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="How Let&#39;s Encrypt Runs CT Logs">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/2019/11/20/how-le-runs-ct-logs.html">
+    <meta name="twitter:description" content="Let’s Encrypt launched a Certificate Transparency (CT) log this past spring. We’re excited to share how we built it in hopes that others can learn from what we did. CT has quickly become an important piece of Internet security infrastructure, but unfortunately it’s not trivial to run a good log. The more the CT community can share about what has been done, the better the ecosystem will be.
+Sectigo and Amazon Web Services have generously provided support to cover a significant portion of the cost of running our CT log.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/2019/11/20/how-le-runs-ct-logs.html">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+  <body>
+    
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Skip navigation links</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Get Help</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donate</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Become a Sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getinvolved/" class="pure-menu-link">Get Involved</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">About Us</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/stats/" class="pure-menu-link">Statistics</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Careers</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/blog/" class="pure-menu-link">Blog</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+    
+    <div class="page-content">
+      <div class="wrapper">
+        
+<div class="post">
+	<header class="post-header">
+		<h1 class="post-title">How Let&#39;s Encrypt Runs CT Logs</h1>
+		<p class="post-meta">Nov 20, 2019 • Phil Porada, Site Reliability Engineer</p>
+	</header>
+	<article class="post-content">
+		<p>Let’s Encrypt <a href="https://letsencrypt.org/2019/05/15/introducing-oak-ct-log.html">launched a Certificate Transparency (CT) log</a> this past spring. We’re excited to share how we built it in hopes that others can learn from what we did. CT has quickly become an important piece of Internet security infrastructure, but unfortunately it’s not trivial to run a good log. The more the CT community can share about what has been done, the better the ecosystem will be.</p>
+<p><a href="https://sectigo.com/">Sectigo</a> and <a href="https://aws.amazon.com/">Amazon Web Services</a> have generously provided support to cover a significant portion of the cost of running our CT log. “Sectigo is proud to sponsor the Let’s Encrypt CT Log. We believe this initiative will provide much-needed reinforcement of the CT ecosystem,” said Ed Giaquinto, Sectigo’s CIO.</p>
+<p>For more background information about CT and how it works, we recommend reading “<a href="https://www.certificate-transparency.org/how-ct-works">How Certificate Transparency Works</a>.”</p>
+<p>If you have questions about any of what we’ve written here, feel free to ask on our <a href="https://community.letsencrypt.org/">community forums</a>.</p>
+<h1 id="objectives">Objectives</h1>
+<ol>
+<li><em>Scale:</em> Let’s Encrypt issues over <a href="https://letsencrypt.org/stats/#daily-issuance">1 million certificates per day</a>, and that number grows each month. We want our log to consume our certificates as well as those from other CAs, so we need to be able to handle as many as 2 million or more certificates per day. To support this ever-increasing number of certificates, CT software and infrastructure need to be architected for scale.</li>
+<li><em>Stability and Compliance:</em> We target 99% uptime, with no outage lasting longer than 24 hours, in compliance with the <a href="https://github.com/chromium/ct-policy/blob/master/log_policy.md">Chromium</a> and <a href="https://support.apple.com/en-gb/HT205280">Apple</a> CT policies.</li>
+<li><em>Sharding:</em> Best practice for a CT log is to break it into several temporal shards. For more information on temporal sharding, check out these <a href="https://www.digicert.com/blog/scaling-certificate-transparency-logs-temporal-sharding/">blog</a> <a href="https://www.venafi.com/blog/how-temporal-sharding-helps-ease-challenge-growing-log-scale">posts</a>.</li>
+<li><em>Low Maintenance:</em> Staff time is expensive, we want to minimize the amount of time spent maintaining infrastructure.</li>
+</ol>
+<h1 id="system-architecture">System Architecture</h1>
+<p><img src="/images/2019-11-20-ct-architecture.png" alt="System Architecture Diagram"></p>
+<h1 id="staging-and-production-logs">Staging and Production Logs</h1>
+<p>We run two equivalent logs, one for staging and one for production. Any changes we plan to make to the production log are first deployed to the staging log. This is critical for making sure that updates and upgrades don’t cause problems before being deployed to production. You can find access details for these logs in our <a href="https://letsencrypt.org/docs/ct-logs/">documentation</a>.</p>
+<p>We keep the staging log continually under production-level load so that any scale-related problems manifest there first. We also use the staging CT log to submit certificates from our staging CA environment, and make it available for use by other CAs’ staging environments.</p>
+<p>As a point of clarification, we consider a log to be comprised of several temporal shards. While each shard is technically a separate log, it makes sense to conceptualize the shards as belonging to a single log.</p>
+<h1 id="amazon-web-services-aws">Amazon Web Services (AWS)</h1>
+<p>We decided to run our CT logs on AWS for two reasons.</p>
+<p>One consideration for us was cloud provider diversity. Since there are relatively few trusted logs in the ecosystem, we don’t want multiple logs to go down due to a single cloud provider outage. At the time we made the decision there were logs running on Google and Digital Ocean infrastructure, as well as self-hosted. We were not aware of any on AWS (in hindsight we may have missed the fact that Digicert had started using AWS for logs). If you’re thinking about setting up a trusted log for CAs to use, please consider cloud provider diversity.</p>
+<p>Additionally, AWS provides a solid set of features and our team has experience using it for other purposes. We had little doubt that AWS was up to the task.</p>
+<h1 id="terraform">Terraform</h1>
+<p>Let’s Encrypt uses Hashicorp <a href="https://www.terraform.io/">Terraform</a> for a number of cloud-based projects. We were able to bootstrap our CT log infrastructure by reusing our existing Terraform code. There are roughly 50 components in our CT deployments; including EC2, RDS, EKS, IAM, security groups, and routing. Centrally managing this code allows our small team to reproduce a CT infrastructure in any Amazon region of the globe, prevent configuration drift, and easily test infrastructure changes.</p>
+<h1 id="database">Database</h1>
+<p>We chose to use MariaDB for our CT log database because we have extensive experience using it to run our certificate authority. MariaDB has scaled well on our journey to becoming the largest publicly trusted certificate authority.</p>
+<p>We chose to have our MariaDB instances managed by Amazon RDS because RDS provides synchronous writes to standby cluster members. This allows for automatic database failover and ensures database consistency. Synchronous writes to database replicas are essential for a CT log. One missed write during a database failover can mean a certificate was not included as promised, and could lead to the log being disqualified. Having RDS manage this for us reduces complexity and saves staff time. We are still responsible for managing the database performance, tuning, and monitoring.</p>
+<p>It’s important to calculate the necessary amount of storage for a CT log database carefully. Too little storage can result in needing to undertake time-consuming and potentially risky storage migrations. Too much storage can result in unnecessarily high costs.</p>
+<p>A back of the napkin storage estimation is 1TB per 100 million entries. We expect to need to store 1 billion certificates and precertificates per annual temporal shard, for which we would need 10TB. We considered having separate database storage per annual temporal shard, with approximately 10TB allocated to each, but that was cost prohibitive. We decided to create a 12TB storage block per log (10TB plus some breathing room), which is duplicated for redundancy by RDS. Each year we plan to freeze the previous year’s shard and move it to a less expensive serving infrastructure, reclaiming its storage for our live shards.</p>
+<p>We use 2x db.r5.4xlarge instances for RDS for each CT log. Each of these instances contains 8 CPU cores and 128GB of RAM.</p>
+<h1 id="kubernetes">Kubernetes</h1>
+<p>After trying a few different strategies for managing application instances, we decided to use Kubernetes. There is a hefty learning curve for Kubernetes and the decision was not made lightly. This was our first project making use of Kubernetes, and part of the reason we went with it was to gain experience and possibly apply that knowledge to other parts of our infrastructure in the future.</p>
+<p>Kubernetes provides abstractions for operators such as <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#use-case">deployments</a>, <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/">scaling</a>, and <a href="https://kubernetes.io/docs/concepts/services-networking/service/#motivation">service discovery</a> that we would not have to build ourselves. We utilized the example Kubernetes deployment manifests in the <a href="https://github.com/google/trillian/">Trillian repository</a> to assist with our deployment.</p>
+<p>A Kubernetes cluster is comprised of two main components: the control plane which handles the Kubernetes APIs, and worker nodes where containerized applications run. We chose to have Amazon EKS manage our Kubernetes control plane.</p>
+<p>We use 4x c5.2xlarge EC2 instances for the worker node pool for each CT log. Each of these instances contains 8 CPU cores and 16GB of RAM.</p>
+<h1 id="application-software">Application Software</h1>
+<p>There are three main CT components that we run in a Kubernetes cluster.</p>
+<p>The certificate transparency front end, or <a href="https://github.com/google/certificate-transparency-go">CTFE</a>, provides <a href="https://tools.ietf.org/html/rfc6962">RFC 6962</a> endpoints and translates them to gRPC API requests for the Trillian backend.</p>
+<p><a href="https://github.com/google/trillian">Trillian</a> describes itself as a “transparent, highly scalable and cryptographically verifiable data store.” Essentially, Trillian implements a generalized verifiable data store via a Merkle tree that can be used as the back-end for a CT log via the CTFE. Trillian consists of two components; the log signer and log server. The <a href="https://github.com/google/trillian/blob/master/docs/images/LogDesign.png">log signer’s function</a> is to periodically process incoming leaf data (certificates in the case of CT) and incorporate them into a Merkle tree. The log server retrieves objects from a Merkle tree in order to fulfill CT API monitoring requests.</p>
+<h1 id="load-balancing">Load Balancing</h1>
+<p>Traffic enters the CT log through an Amazon ELB which is mapped to a Kubernetes Nginx ingress service. The ingress service balances traffic amongst multiple Nginx pods. The Nginx pods proxy traffic to the CTFE service which balance that traffic to CTFE pods.</p>
+<p>We employ IP and user agent based rate limiting at this Nginx layer.</p>
+<h1 id="logging-and-monitoring">Logging and Monitoring</h1>
+<p>Trillian and the CTFE expose <a href="https://prometheus.io/">Prometheus</a> metrics which we transform into monitoring dashboards and alerts. It is essential to set a <a href="https://en.wikipedia.org/wiki/Service-level_objective">Service Level Objective</a> for the CT log endpoints above the 99% uptime dictated by CT policy to ensure that your log is trusted. A FluentD pod running in a DaemonSet ships logs to centralized storage for further analysis.</p>
+<p>We developed a free and open source tool named <a href="https://github.com/letsencrypt/ct-woodpecker">ct-woodpecker</a> that is used to monitor various aspects of log stability and correctness. This tool is an important part of how we ensure we’re meeting our service level objectives. Each ct-woodpecker instance runs externally from Amazon VPCs containing CT logs.</p>
+<h1 id="future-efficiency-improvements">Future Efficiency Improvements</h1>
+<p>Here are some ways we may be able to improve the efficiency of our system in the future:</p>
+<ul>
+<li>Trillian stores a copy of each certificate chain, including many duplicate copies of the same intermediate certificates. Being able to de-duplicate these in Trillian would significantly reduce storage costs. We’re planning to look into whether this is possible and reasonable.</li>
+<li>See if we can successfully use a cheaper form of storage than IO1 block storage and provisioned IOPs.</li>
+<li>See if we can reduce the Kubernetes worker EC2 instance size or use fewer EC2 instances.</li>
+</ul>
+<h1 id="support-let-s-encrypt">Support Let’s Encrypt</h1>
+<p>We depend on contributions from our community of users and supporters in order to provide our services. If your company or organization is interested in learning more about <a href="https://www.abetterinternet.org/sponsor/">sponsorship</a>, please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. We ask that you make an <a href="https://letsencrypt.org/donate/">individual contribution</a> if it is within your means.</p>
+
+	</article>
+</div>
+
+      </div>
+    </div>
+    
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Support a more secure and privacy-respecting Web.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/donate/">Donate</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt is a free, automated, and open certificate
+  authority brought to you by the nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send all mail or inquiries to:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        View our <a href="/privacy/">privacy policy</a>.<br>
+View our <a href="https://www.abetterinternet.org/trademarks">trademark policy</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+  </body>
+</html>

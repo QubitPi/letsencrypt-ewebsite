@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="sr">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lanac poverenja -  Let&#39;s Encrypt - Besplatni SSL/TLS Sertifikati</title>
+    <meta name="description" content="Root Sertifikati Naši root sertifikati se čuvaju na sigurnom &amp;ldquo;offline&amp;rdquo; mestu. Mi izdajemo sertifikate našim pretplatnicima preko posrednika iz naredne sekcije.
+ Aktivni  ISRG Root X1 (self-signed)    Postavili smo web sajtove za testiranje sertifikata koji se vezuju za naše root sertifikate.
+ ISRG Root X1 Valid Certificate  https://valid-isrgrootx1.letsencrypt.org/   ISRG Root X1 Revoked Certificate  https://revoked-isrgrootx1.letsencrypt.org/   ISRG Root X1 Expired Certificate  https://expired-isrgrootx1.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Lanac poverenja">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/sr/certificates/">
+    <meta name="twitter:description" content="Root Sertifikati Naši root sertifikati se čuvaju na sigurnom &amp;ldquo;offline&amp;rdquo; mestu. Mi izdajemo sertifikate našim pretplatnicima preko posrednika iz naredne sekcije.
+ Aktivni  ISRG Root X1 (self-signed)    Postavili smo web sajtove za testiranje sertifikata koji se vezuju za naše root sertifikate.
+ ISRG Root X1 Valid Certificate  https://valid-isrgrootx1.letsencrypt.org/   ISRG Root X1 Revoked Certificate  https://revoked-isrgrootx1.letsencrypt.org/   ISRG Root X1 Expired Certificate  https://expired-isrgrootx1.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/sr/certificates/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog lista" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Preskoči navigacione linkove</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/sr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/sr/docs/" class="pure-menu-link" tabindex="0">Dokumentacija</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Pomoć</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Doniraj</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/donate/" class="pure-menu-link">Dati donaciju</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Postanite Sponzor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/sponsors/" class="pure-menu-link">Trenutni sponzori i donori</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/getinvolved/" class="pure-menu-link">Priključite se</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">O nama</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status Servisa</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/stats/" class="pure-menu-link">Statistika</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karijera</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Jezik <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">✓ Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/5.jpg');">
+<div class="container">
+	<h1>Lanac poverenja</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Poslednji put ažurirano: <time datetime="2019-05-01">01.05.2019.</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Napomena: Engleska verzija je izmenjena od poslednjeg prevoda na Srpski jezik
+                    (<time datetime="2021-10-02">02.10.2021.</time>)
+                    <a href="letsencrypt-ewebsite/certificates/">Pročitaj na Engleskom</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<h1 id="root-sertifikati">Root Sertifikati</h1>
+<p>Naši root sertifikati se čuvaju na sigurnom &ldquo;offline&rdquo; mestu. Mi izdajemo sertifikate našim pretplatnicima preko posrednika iz naredne sekcije.</p>
+<ul>
+<li>Aktivni
+<ul>
+<li><a href="/certs/isrgrootx1.pem.txt">ISRG Root X1 (self-signed)</a></li>
+</ul>
+</li>
+</ul>
+<p>Postavili smo web sajtove za testiranje sertifikata koji se vezuju za naše root sertifikate.</p>
+<ul>
+<li>ISRG Root X1 Valid Certificate
+<ul>
+<li><a href="https://valid-isrgrootx1.letsencrypt.org/">https://valid-isrgrootx1.letsencrypt.org/</a></li>
+</ul>
+</li>
+<li>ISRG Root X1 Revoked Certificate
+<ul>
+<li><a href="https://revoked-isrgrootx1.letsencrypt.org/">https://revoked-isrgrootx1.letsencrypt.org/</a></li>
+</ul>
+</li>
+<li>ISRG Root X1 Expired Certificate
+<ul>
+<li><a href="https://expired-isrgrootx1.letsencrypt.org/">https://expired-isrgrootx1.letsencrypt.org/</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="posrednički-sertifikati">Posrednički Sertifikati</h1>
+<p>IdenTrust je potpisnik naših intermedijara. To nam omogućava prihvatanje naših krajnjih sertifikata od strane svih glavnih pretraživača.</p>
+<p>U normalnim okolnostima, sertifikati izdati od strane Let’s Encrypt potiču iz „Let’s Encrypt Authority X3”. Drugi međupredmet, „Let’s Encrypt Authority X4“, rezervisan je za oporavak od katastrofe i koristiće se samo ako izgubimo mogućnost izdavanja sa „Let’s Encrypt Authority X3“. Međuprodukti X1 i X2 bili su naša prva generacija intermedijara. Zamenili smo ih novim intermedijarima koji su kompatibilniji sa Windows XP-om.</p>
+<ul>
+<li>Aktivni
+<ul>
+<li><a href="/certs/lets-encrypt-x3-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X3 (IdenTrust cross-signed)</a>
+<ul>
+<li><a href="/certs/letsencryptauthorityx3.pem.txt">Let&rsquo;s Encrypt Authority X3 (Signed by ISRG Root X1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Backup
+<ul>
+<li><a href="/certs/lets-encrypt-x4-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X4 (IdenTrust cross-signed)</a>
+<ul>
+<li><a href="/certs/letsencryptauthorityx4.pem.txt">Let&rsquo;s Encrypt Authority X4 (Signed by ISRG Root X1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Izbačeni iz upotrebe
+<ul>
+<li><a href="/certs/lets-encrypt-x2-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X2 (IdenTrust cross-signed)</a>
+<ul>
+<li><a href="/certs/letsencryptauthorityx2.pem.txt">Let&rsquo;s Encrypt Authority X2 (Signed by ISRG Root X1)</a></li>
+</ul>
+</li>
+<li><a href="/certs/lets-encrypt-x1-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X1 (IdenTrust cross-signed)</a>
+<ul>
+<li><a href="/certs/letsencryptauthorityx1.pem.txt">Let&rsquo;s Encrypt Authority X1 (Signed by ISRG Root X1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="unakrsno-potpisivanje">Unakrsno potpisivanje</h1>
+<p>Naš intermedijar „Let’s Encrypt Authority X3“ predstavlja jedinstven javni / privatni
+par ključeva. Privatni ključ tog para generiše potpis za sve krajnje entitetske
+sertifikate (poznati i kao listovi sertifikata), tj. sertifikati koje izdajemo
+za upotrebu na vašim serverima.</p>
+<p>Naš posrednik potpisuje ISRG Root X1. Međutim, s obzirom da smo vrlo mlado
+sertifikaciono telo, ISRG Root X1 još uvek nije priznat u većini pretraživača.
+Da bismo odmah dobili poverenje, naš intermedijar takođe je unakrsno potpisan
+od strane još jednog sertifikacionog tela, IdenTrust, čiji je root već priznat u svim
+glavnim pretraživačima. Konkretno, IdenTrust je potpisao naš intermedijar koristeći njihov
+&ldquo;DST Root CA X3&rdquo; (sada se zove &ldquo;TrustID X3 Root&rdquo;). <a href="https://www.identrust.com/support/downloads">Preuzmite &ldquo;TrustID X3 Root&rdquo; na identrust.com</a> (ili, alternativno, kopiju možete preuzeti ovde: <a href="/certs/trustid-x3-root.pem.txt">.pem</a>, <a href="/certs/trustid-x3-root.p7b">.p7b</a>).</p>
+<p>To znači da su na raspolaganju dva sertifikata gde oba predstavljaju naš
+intermedijar. Jednog potpisuje DST Root CA X3, a drugog potpisuje ISRG
+Root X1. Najjednostavniji način za razlikovanje je gledanje u informaciju o
+njihovom izdavaču.</p>
+<p>Prilikom konfigurisanja web servera, administrator servera konfiguriše ne samo
+sertifikat krajnjeg entiteta, ali i popis intermedijara koji će pomoći pretraživačima da provere
+da sertifikat krajnjeg entiteta ima lanac poverenja koji vodi do pouzdanog root-a.
+Gotovo svi administratori servera će izabrati da opslužuju lanac uključujući
+posredni sertifikat s naslovom „Let’s Encrypt Authority X3“ i
+Izdavač “DST Root CA X3.” Preporučeni Let&rsquo;s Encrypt softver,
+<a href="https://certbot.org">Certbot</a>, ovu konfiguraciju će nesmetano izvršiti.</p>
+<p>Sledeća slika objašnjava odnose između naših sertifikata vizuelno:</p>
+<img src="/certs/isrg-keys.png" alt="ISRG Key relationship diagram">
+<h1 id="ocsp-signing-sertifikat">OCSP Signing Sertifikat</h1>
+<p>Ovaj sertifikat koristi se za potpisivanje OCSP odgovora za Let&rsquo;s Encrypt
+intermedijara, tako da ne moramo postavljati root ključ na mrežu kako bi smo
+potpisali te odgovore. Kopija ovog sertifikata automatski se uključuje u
+OCSP odgovore, tako da pretplatnici ne moraju ništa učiniti. Iz tog razloga, to
+ovde navedimo samo u informativne svrhe.</p>
+<ul>
+<li><a href="/certs/isrg-root-ocsp-x1.pem.txt">ISRG Root OCSP X1 (Potpisan od strane ISRG Root X1)</a></li>
+</ul>
+<h1 id="transparentnost-sertifikata">Transparentnost sertifikata</h1>
+<p>Posvećeni smo transparentnosti u svom poslovanju i u sertifikatima koje izdajemo.
+Sve potvrde šaljemo u <a href="https://www.certificate-transparency.org/">Log o Transparentnosti sertifikata</a>
+dok ih izdajemo. Možete pregledati sve izdate sertifikate na sledećim linkovima:</p>
+<ul>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=7395">Izdati od strane Let&rsquo;s Encrypt Authority X1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=16418">Izdati od strane Let&rsquo;s Encrypt Authority X3</a></li>
+</ul>
+<h1 id="više-informacija">Više informacija</h1>
+<p>Privatni ključevi za ISRG root CA i intermedijarni podaci Let’s Encrypt čuvaju se na hardverskim sigurnosnim modulima (HSM), koji pružaju visok stepen zaštite od krađe ključeva.</p>
+<p>Svi ISRG ključevi trenutno su RSA ključevi. U budućnosti <a href="letsencrypt-ewebsite/sr/upcoming-features/" hreflang="sr">planiramo generisati ECDSA ključeve</a>.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Podržite sigurniji internet koji poštuje privatnost</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/sr/donate/">Doniraj</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt je besplatno, automatizovano, i otvoreno sertifikaciono
+  telo omogućeno od strane ne profitne <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> grupe.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Сва писма и упите шаљите на:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Pročitaj našu <a href="/sr/privacy/">politiku privatnosti</a>.<br>
+Pročitaj našu <a href="https://www.abetterinternet.org/trademarks/">politiku brenda</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>过期提醒邮件 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="订阅邮件提醒 如果您在创建帐户时向 Let&amp;rsquo;s Encrypt 提供电子邮件地址，我们将尽最大努力在您的证书即将更新时自动向您发送到期通知。 我们会在您的证书到期前 20 天发送第一个通知，并在其到期前 10 天和 1 天发送更多通知。 我们建议您设置 ACME 客户端自动更新您的证书，并且仅使用这些到期通知作为检查您的自动化的警告。
+当您收到过期提醒邮件时 如果您的证书已经续期，我们将不会发送到期通知。 如果有具有完全相同域名列表的新证书，无论是哪个账户创建了该证书，我们都会将其认定为续期证书。 如果您在旧证书的域名列表中添加或删除了域名后颁发了新证书，您仍将收到有关旧证书的过期提醒邮件。 如果当前在您的网站上使用的证书的日期正确，则无需进一步操作。
+退订邮件提醒 在您收到的邮件正文中有一个退订该通知的链接。 如果您点击该链接，您在之后的一年内不会收到任何到期通知。 测试环境和生产环境的“退订列表”是互相独立的，因此您可以随意退订测试环境的通知，而不影响到您生产环境的订阅状态。
+请注意，您的退订操作仅在一年内有效，因此您必须每年重新进行退订。
+如果您退订了邮件提醒，我们还没有办法让您方便地重新订阅。 我们的电子邮件提供商 Mandrill 有一个我们还未自动化的手动重新订阅机制。
+但是，您可以更改帐户的电子邮件地址，这个操作实际上会使您重新订阅邮件提醒。 许多常见的电子邮件服务将 yourname&#43;1@example.com 与 yourname@example.com 视为同一个地址。 因此，您只要将电子邮件地址修改为 yourname&#43;1@example.com，就可以再次开始接收过期邮件。 如果您使用的客户端是 Certbot，您可以输入如下命令来更改邮件地址：
+certbot update_account --email yourname&#43;1@example.com">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="过期提醒邮件">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/expiration-emails/">
+    <meta name="twitter:description" content="订阅邮件提醒 如果您在创建帐户时向 Let&amp;rsquo;s Encrypt 提供电子邮件地址，我们将尽最大努力在您的证书即将更新时自动向您发送到期通知。 我们会在您的证书到期前 20 天发送第一个通知，并在其到期前 10 天和 1 天发送更多通知。 我们建议您设置 ACME 客户端自动更新您的证书，并且仅使用这些到期通知作为检查您的自动化的警告。
+当您收到过期提醒邮件时 如果您的证书已经续期，我们将不会发送到期通知。 如果有具有完全相同域名列表的新证书，无论是哪个账户创建了该证书，我们都会将其认定为续期证书。 如果您在旧证书的域名列表中添加或删除了域名后颁发了新证书，您仍将收到有关旧证书的过期提醒邮件。 如果当前在您的网站上使用的证书的日期正确，则无需进一步操作。
+退订邮件提醒 在您收到的邮件正文中有一个退订该通知的链接。 如果您点击该链接，您在之后的一年内不会收到任何到期通知。 测试环境和生产环境的“退订列表”是互相独立的，因此您可以随意退订测试环境的通知，而不影响到您生产环境的订阅状态。
+请注意，您的退订操作仅在一年内有效，因此您必须每年重新进行退订。
+如果您退订了邮件提醒，我们还没有办法让您方便地重新订阅。 我们的电子邮件提供商 Mandrill 有一个我们还未自动化的手动重新订阅机制。
+但是，您可以更改帐户的电子邮件地址，这个操作实际上会使您重新订阅邮件提醒。 许多常见的电子邮件服务将 yourname&#43;1@example.com 与 yourname@example.com 视为同一个地址。 因此，您只要将电子邮件地址修改为 yourname&#43;1@example.com，就可以再次开始接收过期邮件。 如果您使用的客户端是 Certbot，您可以输入如下命令来更改邮件地址：
+certbot update_account --email yourname&#43;1@example.com">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/expiration-emails/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/expiration-emails/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/expiration-emails/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/expiration-emails/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/expiration-emails/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/expiration-emails/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/expiration-emails/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/expiration-emails/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/expiration-emails/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/expiration-emails/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/expiration-emails/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/expiration-emails/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/expiration-emails/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/expiration-emails/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/expiration-emails/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/expiration-emails/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/expiration-emails/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/expiration-emails/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/expiration-emails/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/expiration-emails/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/expiration-emails/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/expiration-emails/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>过期提醒邮件</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2021-09-25">Sep 25, 2021</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    注意：本页面有较新的英文版本。
+                    (<time datetime="2023-01-09">Jan 9, 2023</time>)
+                    <a href="letsencrypt-ewebsite/docs/expiration-emails/">阅读英文页面</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<h1 id="订阅邮件提醒">订阅邮件提醒</h1>
+<p>如果您在创建帐户时向 Let&rsquo;s Encrypt 提供电子邮件地址，我们将尽最大努力在您的证书即将更新时自动向您发送到期通知。 我们会在您的证书到期前 20 天发送第一个通知，并在其到期前 10 天和 1 天发送更多通知。 我们建议您设置 ACME 客户端自动更新您的证书，并且仅使用这些到期通知作为检查您的自动化的警告。</p>
+<h1 id="当您收到过期提醒邮件时">当您收到过期提醒邮件时</h1>
+<p>如果您的证书已经续期，我们将不会发送到期通知。 如果有具有完全相同域名列表的新证书，无论是哪个账户创建了该证书，我们都会将其认定为续期证书。 如果您在旧证书的域名列表中添加或删除了域名后颁发了新证书，您仍将收到有关旧证书的过期提醒邮件。 如果当前在您的网站上使用的证书的日期正确，则无需进一步操作。</p>
+<h1 id="退订邮件提醒">退订邮件提醒</h1>
+<p>在您收到的邮件正文中有一个退订该通知的链接。 如果您点击该链接，您在之后的一年内不会收到任何到期通知。 测试环境和生产环境的“退订列表”是互相独立的，因此您可以随意退订测试环境的通知，而不影响到您生产环境的订阅状态。</p>
+<p>请注意，您的退订操作仅在一年内有效，因此您必须每年重新进行退订。</p>
+<p>如果您退订了邮件提醒，我们还没有办法让您方便地重新订阅。 我们的电子邮件提供商 Mandrill <a href="https://mandrill.zendesk.com/hc/en-us/articles/360039299913">有一个我们还未自动化的手动重新订阅机制</a>。</p>
+<p>但是，您可以更改帐户的电子邮件地址，这个操作实际上会使您重新订阅邮件提醒。 许多常见的电子邮件服务将 <code>yourname+1@example.com</code> 与 <code>yourname@example.com</code> 视为同一个地址。 因此，您只要将电子邮件地址修改为 <code>yourname+1@example.com</code>，就可以再次开始接收过期邮件。 如果您使用的客户端是 Certbot，您可以输入如下命令来更改邮件地址：</p>
+<p><code>certbot update_account --email yourname+1@example.com</code></p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

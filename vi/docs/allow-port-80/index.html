@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="vi-VN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Phương Pháp Hay Nhất - Giữ Cổng 80 Mở -  Let&#39;s Encrypt - Chứng Chỉ SSL/TLS Certificates Miễn Phí</title>
+    <meta name="description" content="Đôi khi chúng tôi nhận được báo cáo từ những người gặp sự cố khi sử dụng HTTP-01 vì họ đã chặn cổng 80 tới máy chủ web của họ. Khuyến nghị của chúng tôi là tất cả các máy chủ dành cho mục đích sử dụng web chung phải cung cấp cả HTTP trên cổng 80 và HTTPS trên cổng 443. Họ cũng phải gửi yêu cầu chuyển hướng cho tất cả các yêu cầu tới cổng 80 và có thể là một tiêu đề HSTS (trên các yêu cầu tới cổng 443).">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Phương Pháp Hay Nhất - Giữ Cổng 80 Mở">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/vi/docs/allow-port-80/">
+    <meta name="twitter:description" content="Đôi khi chúng tôi nhận được báo cáo từ những người gặp sự cố khi sử dụng HTTP-01 vì họ đã chặn cổng 80 tới máy chủ web của họ. Khuyến nghị của chúng tôi là tất cả các máy chủ dành cho mục đích sử dụng web chung phải cung cấp cả HTTP trên cổng 80 và HTTPS trên cổng 443. Họ cũng phải gửi yêu cầu chuyển hướng cho tất cả các yêu cầu tới cổng 80 và có thể là một tiêu đề HSTS (trên các yêu cầu tới cổng 443).">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/vi/docs/allow-port-80/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Bỏ qua các liên kết điều hướng</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/vi/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/vi/docs/" class="pure-menu-link" tabindex="0">Tài liệu</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Trợ Giúp</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Quyên Góp</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/donate/" class="pure-menu-link">Quyên góp</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Trở thành Nhà tài trợ</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/sponsors/" class="pure-menu-link">Nhà Tài Trợ Và Quyên Góp</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/getinvolved/" class="pure-menu-link">Tham Gia</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Giới Thiệu</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Tình Trạng Dịch Vụ</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/stats/" class="pure-menu-link">Thống kê</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Nghề Nghiệp</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/contact/" class="pure-menu-link">Liên Hệ</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Các Ngôn ngữ <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">✓ Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Phương Pháp Hay Nhất - Giữ Cổng 80 Mở</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Cập nhật mới nhất: <time datetime="2019-01-24">24 thg 1, 2019</time>
+
+
+ | <a href="/letsencrypt-ewebsite/vi/docs">Xem tất cả Tài liệu</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Đôi khi chúng tôi nhận được báo cáo từ những người gặp sự cố khi sử dụng HTTP-01 vì họ đã chặn cổng 80 tới máy chủ web của họ. Khuyến nghị của chúng tôi là tất cả các máy chủ dành cho mục đích sử dụng web chung phải cung cấp cả HTTP trên cổng 80 và HTTPS trên cổng 443. Họ cũng phải gửi yêu cầu chuyển hướng cho tất cả các yêu cầu tới cổng 80 và có thể là một tiêu đề HSTS (trên các yêu cầu tới cổng 443).</p>
+<p>Việc cho phép cổng 80 không tạo ra tấn công bề mặt trên máy chủ của bạn, vì các yêu cầu trên cổng 80 thường được phục vụ bởi cùng một phần mềm chạy trên cổng 443.</p>
+<p>Đóng cổng 80 không làm giảm rủi ro cho người vô tình truy cập trang web của bạn qua HTTP. Trong trường hợp bình thường, người đó sẽ nhận được yêu cầu chuyển hướng đến HTTPS và lưu lượng truy cập tiếp theo của họ sẽ được bảo vệ. Nếu người đó gặp phải một cuộc tấn công xen giữa, Tấn công xen giữa sẽ trả lời ở cổng 80, do đó trang web của bạn không bao giờ có cơ hội trả lời là &ldquo;kết nối bị từ chối.&rdquo;</p>
+<p>Cuối cùng, giữ cho cổng 80 được mở để phục vụ điều hướng giúp mọi người tới đúng phiên bản của trang web (phiên bản HTTPS). Có nhiều tình huống ngoài tầm kiểm soát của bạn có thể khiến ai đó truy cập phiên bản HTTP của trang web - ví dụ: liên kết tự động trong email hoặc nhập tên miền theo cách thủ công. Tốt hơn là họ nhận được một sự chuyển hướng hơn là một lỗi.</p>
+<p>Rất tiếc, bạn có thể không kiểm soát được việc cổng 80 có bị chặn đối với trang web của mình hay không. Một số ISP (chủ yếu là dân cư) chặn cổng 80 vì nhiều lý do khác nhau. Nếu ISP của bạn thực hiện điều này nhưng bạn vẫn muốn nhận chứng chỉ từ Let&rsquo;s Encrypt, bạn có hai lựa chọn: Bạn có thể sử dụng DNS-01 hoặc bạn có thể sử dụng [ một trong những ứng dụng hỗ trợ TLS-ALPN-01](<a href="https://community.letsencrypt.org/t">https://community.letsencrypt.org/t</a> / which-client-support-tls-alpn-challenge / 75859/2) (trên cổng 443).</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt là một chứng nhận mở, miễn phí và tự động
+  được cung cấp bởi tổ chức phi lợi nhuận <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Gửi tất cả thư hoặc thắc mắc đến:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Xem <a href="/vi/privacy/">chính sách bảo mật</a> của chúng tôi.<br>
+Xem <a href="https://www.abetterinternet.org/trademarks/">chính sách nhãn hiệu</a> của chúng tôi.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

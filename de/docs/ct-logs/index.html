@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="de-DE">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Certificate Transparency (CT) Logs -  Let&#39;s Encrypt - Freie SSL/TLS Zertifikate</title>
+    <meta name="description" content="Certificate Transparency (CT)ist ein System zur Protokollierung und Überwachung der Ausstellung eines TLS Zertfikates. CT ermöglicht es jederman, Zertifikatsausstellungen zu überprüfen und zu überwachen und diese Funktionen haben zu zahlreichen Verbesserungen des CA-Ökosystems und der Websicherheit geführt. Aus diesem Ergebnis ist CT sehr schnell zu einem kritischen Teil der Infrastruktur geworden.  Let&#39;s Encrypt sendet alle ausgestellten Zertifikate zu CT Logs. Wir betreiben auch CT Log für uns selber und möchten alle öffentlichen Zertifikatsaussteller ermutigen, dasselbe zu tun.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Certificate Transparency (CT) Logs">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/de/docs/ct-logs/">
+    <meta name="twitter:description" content="Certificate Transparency (CT)ist ein System zur Protokollierung und Überwachung der Ausstellung eines TLS Zertfikates. CT ermöglicht es jederman, Zertifikatsausstellungen zu überprüfen und zu überwachen und diese Funktionen haben zu zahlreichen Verbesserungen des CA-Ökosystems und der Websicherheit geführt. Aus diesem Ergebnis ist CT sehr schnell zu einem kritischen Teil der Infrastruktur geworden.  Let&#39;s Encrypt sendet alle ausgestellten Zertifikate zu CT Logs. Wir betreiben auch CT Log für uns selber und möchten alle öffentlichen Zertifikatsaussteller ermutigen, dasselbe zu tun.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/de/docs/ct-logs/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Feed des Let&#39;s Encrypt-Blogs" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigation überspringen</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/de/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/de/docs/" class="pure-menu-link" tabindex="0">Dokumentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Hilfe bekommen</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Spenden</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/donate/" class="pure-menu-link">Spenden</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Sponsor werden</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/sponsors/" class="pure-menu-link">Derzeitige Sponsoren und Spender</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/getinvolved/" class="pure-menu-link">Mitmachen</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Über uns</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Dienstestatus</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/stats/" class="pure-menu-link">Statistiken</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Freie Stellen</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sprachen <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/ct-logs/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/ct-logs/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/ct-logs/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">✓ Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/ct-logs/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/ct-logs/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/ct-logs/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/ct-logs/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/ct-logs/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/ct-logs/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/ct-logs/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/ct-logs/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/ct-logs/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/ct-logs/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/ct-logs/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/ct-logs/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/ct-logs/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/ct-logs/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/ct-logs/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/ct-logs/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/ct-logs/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/ct-logs/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/4.jpg');">
+<div class="container">
+	<h1>Certificate Transparency (CT) Logs</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Letzte Änderung: <time datetime="2019-11-20">20.11.2019</time>
+
+
+ | <a href="/letsencrypt-ewebsite/de/docs">Gesamte Dokumentation anzeigen</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Hinweis: Die englische Version wurde seit der Übersetzung aktualisiert
+                    (<time datetime="2022-06-17">17.06.2022</time>)
+                    <a href="letsencrypt-ewebsite/docs/ct-logs/">Auf Englisch anzeigen</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+<p>
+  <a href="https://www.certificate-transparency.org/what-is-ct"
+    >Certificate Transparency (CT)</a
+  >
+  ist ein System zur Protokollierung und Überwachung der Ausstellung eines TLS
+  Zertfikates. CT ermöglicht es jederman, Zertifikatsausstellungen zu überprüfen
+  und zu überwachen und diese Funktionen haben zu zahlreichen Verbesserungen des
+  CA-Ökosystems und der Websicherheit geführt. Aus diesem Ergebnis ist CT sehr
+  schnell zu einem kritischen Teil der Infrastruktur geworden.
+</p>
+
+<p>
+  Let's Encrypt sendet alle ausgestellten Zertifikate zu CT Logs. Wir betreiben
+  auch CT Log für uns selber und möchten alle öffentlichen Zertifikatsaussteller
+  ermutigen, dasselbe zu tun.
+</p>
+
+<h2>Finanzierung</h2>
+
+<p>
+  Wir möchten folgenden Partnern für die grossartige Unterstützung von Let's
+  Encrypt CT Log danken. Wenn Ihre Organisation helfen möchte, diese Arbeit
+  fortzusetzen, bitte besuchen Sie
+  <a href="https://www.abetterinternet.org/sponsor/">Sponsor werden</a>.
+</p>
+
+<p class="text-center">
+  <a href="https://sectigo.com/"
+    ><img src="/images/sectigo_logo_color.svg" width="240" alt="Sectigo"
+  /></a>
+</p>
+
+<h2>Architektur</h2>
+
+<p>
+  Unsere Logs benutzen Google
+  <a href="https://github.com/google/trillian/">Trillian Software</a>, betrieben
+  auf AWS Infrastruktur. Wir benutzen
+  <a href="https://kubernetes.io/">Kubernetes</a> zur Container Orchestrierung
+  und Aufgabenplanung und AWS RDS zur Datenbankverwaltung. Für mehr
+  Informationen lesen Sie
+  <a href="https://letsencrypt.org/2019/11/20/how-le-runs-ct-logs.html"
+    >"How Let's Encrypt Runs CT Logs"</a
+  >.
+</p>
+
+<h2>Log Monitoring</h2>
+
+<p>
+  Let's Encrypt hat ein Open-Source CT log Monitoringtool entwickelt namens
+  <a href="https://github.com/letsencrypt/ct-woodpecker">CT Woodpecker</a>. Wir
+  benutzen das Tool, um die Stabilität und Integrität unser eigenen Logs zu
+  überwachen und wir hoffen, dass andere es als nützlich empfinden.
+</p>
+
+<h2>CT Logs</h2>
+
+
+
+    <h3>Produktion</h3>
+
+<ul>
+     
+    <li class="list-style-none">
+        <ul>
+        
+            
+            <li>
+            <strong>Name: Oak 2019</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2019<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFkqNKRuZ&#43;Z8IOsnNJrUZ8gwp&#43;KKGOdQrJ/HKhSadK/SJuoCc9&#43;dxQ7awpmWIMr9SKcQeG5uRzG1kVSyFN4Wfcw==</code><br>
+            Protokoll-ID: <code>65:9B:33:50:F4:3B:12:CC:5E:A5:AB:4E:C7:65:D3:FD:E6:C8:82:43:77:77:78:E7:20:03:F9:EB:2B:8C:31:29</code><br>
+            Begin des Zeitfensters: <code>2019-01-01T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2020-01-07T00:00Z</code><br>
+
+            
+            
+                Status: Rejected - Shard Expired
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Oak 2020</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2020<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEfzb42Zdr/h7hgqgDCo1vrNJqGqbcUvJGJEER9DDqp19W/wFSB0l166hD&#43;U5cAXchpH8ZkBNUuvOHS0OnJ4oJrQ==</code><br>
+            Protokoll-ID: <code>E7:12:F2:B0:37:7E:1A:62:FB:8E:C9:0C:61:84:F1:EA:7B:37:CB:56:1D:11:26:5B:F3:E0:F3:4B:F2:41:54:6E</code><br>
+            Begin des Zeitfensters: <code>2020-01-01T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2021-01-07T00:00Z</code><br>
+
+            
+            
+                Status: Rejected - Shard Expired
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Oak 2021</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2021<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELsYzGMNwo8rBIlaklBIdmD2Ofn6HkfrjK0Ukz1uOIUC6Lm0jTITCXhoIdjs7JkyXnwuwYiJYiH7sE1YeKu8k9w==</code><br>
+            Protokoll-ID: <code>94:20:BC:1E:8E:D5:8D:6C:88:73:1F:82:8B:22:2C:0D:D1:DA:4D:5E:6C:4F:94:3D:61:DB:4E:2F:58:4D:A2:C2</code><br>
+            Begin des Zeitfensters: <code>2021-01-01T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2022-01-07T00:00Z</code><br>
+
+            
+            
+                Status: Rejected - Shard Expired
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Oak 2022</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2022<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEhjyxDVIjWt5u9sB/o2S8rcGJ2pdZTGA8&#43;IpXhI/tvKBjElGE5r3de4yAfeOPhqTqqc&#43;o7vPgXnDgu/a9/B&#43;RLg==</code><br>
+            Protokoll-ID: <code>DF:A5:5E:AB:68:82:4F:1F:6C:AD:EE:B8:5F:4E:3E:5A:EA:CD:A2:12:A4:6A:5E:8E:3B:12:C0:20:44:5C:2A:73</code><br>
+            Begin des Zeitfensters: <code>2022-01-01T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2023-01-07T00:00Z</code><br>
+
+            
+            
+                Status: Usable
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Oak 2023</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2023<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEsz0OeL7jrVxEXJu&#43;o4QWQYLKyokXHiPOOKVUL3/TNFFquVzDSer7kZ3gijxzBp98ZTgRgMSaWgCmZ8OD74mFUQ==</code><br>
+            Protokoll-ID: <code>B7:3E:FB:24:DF:9C:4D:BA:75:F2:39:C5:BA:58:F4:6C:5D:FC:42:CF:7A:9F:35:C4:9E:1D:09:81:25:ED:B4:99</code><br>
+            Begin des Zeitfensters: <code>2023-01-01T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2024-01-07T00:00Z</code><br>
+
+            
+            
+                Status: Usable
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Oak 2024h1</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2024h1<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVkPXfnvUcre6qVG9NpO36bWSD&#43;pet0Wjkv3JpTyArBog7yUvuOEg96g6LgeN5uuk4n0kY59Gv5RzUo2Wrqkm/Q==</code><br>
+            Protokoll-ID: <code>3B:53:77:75:3E:2D:B9:80:4E:8B:30:5B:06:FE:40:3B:67:D8:4F:C3:F4:C7:BD:00:0D:2D:72:6F:E1:FA:D4:17</code><br>
+            Begin des Zeitfensters: <code>2023-12-20T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2024-07-20T00:00Z</code><br>
+
+            
+            
+                Status: Pending
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Oak 2024h2</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2024h2<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE13PWU0fp88nVfBbC1o9wZfryUTapE4Av7fmU01qL6E8zz8PTidRfWmaJuiAfccvKu5&#43;f81wtHqOBWa&#43;Ss20waA==</code><br>
+            Protokoll-ID: <code>3F:17:4B:4F:D7:22:47:58:94:1D:65:1C:84:BE:0D:12:ED:90:37:7F:1F:85:6A:EB:C1:BF:28:85:EC:F8:64:6E</code><br>
+            Begin des Zeitfensters: <code>2024-06-20T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2025-01-20T00:00Z</code><br>
+
+            
+            
+                Status: Pending
+            
+            </li>
+            
+        
+            
+        
+            
+        
+        </ul>
+    </li>
+</ul>
+ 
+
+    <h3>Testen</h3>
+
+<ul>
+     
+    <li class="list-style-none">
+        <ul>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <li>
+            <strong>Name: Sapling 2022h2</strong><br>
+            URI: https://sapling.ct.letsencrypt.org/2022h2<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE6m0gtMM2pcVTxVjkztm/ByNrF32xacdVnbsYwlzwtqN0vOwqcXLtPkfYqH&#43;q93hlJwEBsX1MnRXDdlMHkkmZJg==</code><br>
+            Protokoll-ID: <code>23:2D:41:A4:CD:AC:87:CE:D9:F9:43:F4:68:C2:82:09:5A:E0:9D:30:D6:2E:2F:A6:5D:DC:3B:91:9C:2E:46:8F</code><br>
+            Begin des Zeitfensters: <code>2022-06-15T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2023-01-15T00:00Z</code><br>
+
+            
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>Name: Sapling 2023h1</strong><br>
+            URI: https://sapling.ct.letsencrypt.org/2023h1<br>
+            Öffentlicher Schlüssel: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE09jAcGbw5CDCK2Kg0kkmmDydfDfZAA8K64BufU37yx3Jcy/ePy1EjAi2wUPVJ0xsaNMCU37mh&#43;fBV3&#43;K/cSG8A==</code><br>
+            Protokoll-ID: <code>C1:83:24:0B:F1:A4:50:C7:6F:BB:00:72:69:DC:AC:3B:E2:2A:48:05:D4:db:E0:49:66:C3:C8:ab:C4:47:B0:0C</code><br>
+            Begin des Zeitfensters: <code>2022-12-15T00:00Z</code><br>
+            Ende des Zeitfensters: <code>2023-07-15T00:00Z</code><br>
+
+            
+            
+            </li>
+            
+        
+        </ul>
+    </li>
+</ul>
+
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt ist eine freie, automatisierte und offene Zertifizierungsstelle,
+  herausgebracht für Sie durch <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Senden Sie alle Briefe oder Anfragen an:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Lesen Sie unsere <a href="/privacy/">Datenschutzerklärung</a>.<br> Lesen Sie unsere <a href="https://www.abetterinternet.org/trademarks/">Markenbestimmungen</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

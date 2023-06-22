@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ko-KR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>문서 -  Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
+    <meta name="description" content=" Let&#39;s Encrypt는 비영리 인터넷 보안 연구 그룹 (ISRG)에서 가져온 무료, 자동 및 공개 인증 기관입니다. ">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="문서">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ko/docs/">
+    <meta name="twitter:description" content=" Let&#39;s Encrypt는 비영리 인터넷 보안 연구 그룹 (ISRG)에서 가져온 무료, 자동 및 공개 인증 기관입니다. ">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ko/docs/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 블로그 피드" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">탐색 링크 건너뛰기</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ko/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ko/docs/" class="pure-menu-link" tabindex="0">문서</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">도움말</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">후원</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/donate/" class="pure-menu-link">기부하기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">스폰서 되기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/sponsors/" class="pure-menu-link">현재 스폰서 및 기부자</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getinvolved/" class="pure-menu-link">참여</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">소개</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">비영리 인터넷 보안 연구 그룹 (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" class="pure-menu-link">자주 묻는 질문</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">서비스 상태</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/stats/" class="pure-menu-link">통계</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">채용</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/contact/" class="pure-menu-link">연락처</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">언어 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">✓ 한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>문서</h1>
+</div>
+</div>
+
+
+<div class="page-content">
+	<div class="wrapper">
+		
+<h1 id="개요">개요</h1>
+
+<ul>
+    <li>
+<a href="letsencrypt-ewebsite/ko/getting-started/" hreflang="ko-KR">시작하기</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/how-it-works/" hreflang="ko-KR">Let&#39;s Encrypt의 작동 방식</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/faq/" hreflang="ko-KR">자주 묻는 질문</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/glossary/" hreflang="ko-KR">용어 사전</a></li>
+</ul>
+
+<h1 id="구독자-정보">구독자 정보</h1>
+
+<ul>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/client-options/" hreflang="ko-KR">ACME 클라이언트 구현</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/rate-limits/" hreflang="ko-KR">속도 제한</a>
+        <ul>
+            <li>
+<a href="letsencrypt-ewebsite/ko/docs/duplicate-certificate-limit/" hreflang="ko-KR">Duplicate Certificate Limit</a></li>
+        </ul>
+        <ul>
+            <li>
+<a href="letsencrypt-ewebsite/ko/docs/failed-validation-limit/" hreflang="ko-KR">Failed Validation Limit</a></li>
+        </ul>
+        <ul>
+            <li>
+<a href="letsencrypt-ewebsite/ko/docs/too-many-registrations-for-this-ip/" hreflang="ko-KR">Registrations Per IP Limit</a></li>
+        </ul>
+    </li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/expiration-emails/" hreflang="ko-KR">만료 이메일</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" hreflang="ko-KR">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a></li>
+</ul>
+
+<h1 id="고급-구독자-정보">고급 구독자 정보</h1>
+
+<ul>
+    <li><a href="https://cp.letsencrypt.org">인증서 정책</a></li>
+    <li><a href="https://cps.letsencrypt.org">인증서 관행 지침</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/staging-environment/" hreflang="ko-KR">준비 환경</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/certificate-compatibility/" hreflang="ko-KR">인증서 호환성</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/certificates/" hreflang="ko-KR">신뢰의 체인 (root 및 중간 인증서)</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/upcoming-features/" hreflang="ko-KR">향후 기능</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/revoking/" hreflang="ko-KR">인증서 해지</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/caa/" hreflang="ko-KR">인증기관 허가(CAA, Certificate Authority Authorization)</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/certificates-for-localhost/" hreflang="ko-KR">localhost를 위한 인증서</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/allow-port-80/" hreflang="ko-KR">모범 사례 - 80번 포트를 열어 두십시오.</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/challenge-types/" hreflang="ko-KR">도전 유형</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/ct-logs/" hreflang="ko-KR">인증서 투명성(CT, Certificate Transparency) 로그</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/godaddy/" hreflang="ko-KR">Let&#39;s Encrypt Certificates on GoDaddy Hosting</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/ipv6-support/" hreflang="ko-KR">IPv6 Support</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/a-warm-welcome-to-asn1-and-der/" hreflang="ko-KR">A Warm Welcome to ASN.1 and DER</a></li>
+    <li><a href="/2019/10/09/onboarding-your-customers-with-lets-encrypt-and-acme.html">Let&#39;s Encrypt 및 ACME로 고객 유치하기</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/lencr.org/" hreflang="ko-KR">lencr.org</a></li>
+</ul>
+
+<h1 id="클라이언트-개발자-정보">클라이언트 개발자 정보</h1>
+
+<ul>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/integration-guide/" hreflang="ko-KR">클라이언트 및 대규모 제공자 통합 안내서</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/acme-protocol-updates/" hreflang="ko-KR">ACME 프로토콜 업데이트</a></li>
+    <li><a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">현재 ACME RFC와의 차이점</a></li>
+    <li>
+<a href="letsencrypt-ewebsite/ko/docs/account-id/" hreflang="ko-KR">계정 ID 찾기</a></li>
+</ul>
+
+
+	</div>
+</div>
+
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt는 <a href="https://www.abetterinternet.org/"> 비영리 인터넷 보안 연구 그룹 (ISRG)</a>에서 가져온 무료, 자동 및 공개 인증 기관입니다.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>모든 문의 및 질문:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ko/privacy/">개인정보보호 정책</a>을 확인하십시오.<br>
+<a href="https://www.abetterinternet.org/trademarks/">상표권 정책</a>을 확인하십시오.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

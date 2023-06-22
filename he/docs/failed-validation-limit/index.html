@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html
+	dir="rtl"
+	lang="he">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>מגבלת אימות כושל -  Let&#39;s Encrypt</title>
+    <meta name="description" content="תיאור כל בקשות ההנפקה כפופות למגבלת אימותים כושלים על סך 5 כשלונות לחשבון, לשם מארח, לשעה. לקוח ה־ACME שלך אמור להציג את הודעת השגיאה הבאה בעת חריגה ממגבלת אימותים כושלים:
+too many failed authorizations recently: see https://letsencrypt.org/docs/failed-validation-limit/ אותם ‚אימותים’ אליהם מתייחסת השגיאה הזאת הם תוצאה של בקשות אימות שנשלחו על ידי לקוח ה־ACME שלך כדי לתקף את השליטה בשם התחום לפני שנוכל להנפיק או לחדש אישור חדש. שגיאה זו מציינת שמספר בקשות לתיקוף נשלחו בהצלחה אך כל ניסיונות התיקוף נכשלו.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="מגבלת אימות כושל">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/he/docs/failed-validation-limit/">
+    <meta name="twitter:description" content="תיאור כל בקשות ההנפקה כפופות למגבלת אימותים כושלים על סך 5 כשלונות לחשבון, לשם מארח, לשעה. לקוח ה־ACME שלך אמור להציג את הודעת השגיאה הבאה בעת חריגה ממגבלת אימותים כושלים:
+too many failed authorizations recently: see https://letsencrypt.org/docs/failed-validation-limit/ אותם ‚אימותים’ אליהם מתייחסת השגיאה הזאת הם תוצאה של בקשות אימות שנשלחו על ידי לקוח ה־ACME שלך כדי לתקף את השליטה בשם התחום לפני שנוכל להנפיק או לחדש אישור חדש. שגיאה זו מציינת שמספר בקשות לתיקוף נשלחו בהצלחה אך כל ניסיונות התיקוף נכשלו.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/he/docs/failed-validation-limit/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="הזנת הבלוג של Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">דילוג על קישורי הניווט</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/he/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/he/docs/" class="pure-menu-link" tabindex="0">תיעוד</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">קבלת עזרה</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">תרומה</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/donate/" class="pure-menu-link">הצעת תרומה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">מתן חסות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/sponsors/" class="pure-menu-link">נותני חסות ומממנים נוכחיים</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getinvolved/" class="pure-menu-link">להצטרף למאמץ</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">עלינו</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" class="pure-menu-link">שאלות ותשובות (שו״ת)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">תפוגת התוקף של DST Root CA X3 (ספטמבר 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">מצב השירות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/stats/" class="pure-menu-link">סטטיסטיקה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">משרות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/contact/" class="pure-menu-link">יצירת קשר</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/failed-validation-limit/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/failed-validation-limit/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/failed-validation-limit/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/failed-validation-limit/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/failed-validation-limit/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/failed-validation-limit/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/failed-validation-limit/" lang="he" hreflang="he" class="pure-menu-link">✓ עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/failed-validation-limit/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/failed-validation-limit/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/failed-validation-limit/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/failed-validation-limit/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/failed-validation-limit/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/failed-validation-limit/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/failed-validation-limit/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/failed-validation-limit/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/failed-validation-limit/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/failed-validation-limit/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/failed-validation-limit/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/failed-validation-limit/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/failed-validation-limit/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/failed-validation-limit/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>מגבלת אימות כושל</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<h1 id="תיאור">תיאור</h1>
+<p>כל בקשות ההנפקה כפופות למגבלת <em>אימותים כושלים</em> על סך 5 כשלונות לחשבון, לשם מארח, לשעה. לקוח ה־ACME שלך אמור להציג את הודעת השגיאה הבאה בעת חריגה ממגבלת אימותים כושלים:</p>
+<pre tabindex="0"><code>too many failed authorizations recently: see https://letsencrypt.org/docs/failed-validation-limit/
+</code></pre><p>אותם ‚אימותים’ אליהם מתייחסת השגיאה הזאת הם תוצאה של בקשות אימות שנשלחו על ידי לקוח ה־ACME שלך כדי לתקף את השליטה בשם התחום לפני שנוכל להנפיק או לחדש אישור חדש. שגיאה זו מציינת שמספר בקשות לתיקוף נשלחו בהצלחה אך כל ניסיונות התיקוף נכשלו.</p>
+<h1 id="גורמים-נפוצים">גורמים נפוצים</h1>
+<p>מנויים שניצלו את מיכסת האימותים הכושלים שלהם בדרך כלל הגיעו לכך עקב הגדרות שגויות בסביבה שלהם.</p>
+<h2 id="http-01-או-tls-apln-01">HTTP-01 או TLS-APLN-01</h2>
+<p>ללקוחות ACME שדורשים אימות דרך שיטות התיקוף HTTP-01 או TLS-APLN-01, הבעיה בדרך כלל נגרמת מהגדרות רשת או חומת אש שגויות שלא מאפשרים לשרתי התיקוף שלנו להגיע לשרת ממנו נשלחה הבקשה.</p>
+<h2 id="dns-01">DNS-01</h2>
+<p>לקוחות ACME שדורשים אימות דרך שיטת האימות DNS-01 בדרך כלל דורשים ממך ליצור רשומת CNAME באזור ה־DNS הראשי שלך מה שמאפשר ללקוח ה־ACME להגדיר את רשומות ה־DNS הנחוצות במהלך התיקוף. תיקופי DNS-01 שכשלו הם בדרך כלל תוצאה של צעדים חסרים או שגיאות הקלדה במהלך תהליך ההגדרה הראשוני הזה.</p>
+<p>בעת ניסיון לפתור תקלות או לבדוק את הטמעת היישומים שלך עדיף לנו שלקוח ה־ACME שלך יוגדר להשתמש ב<a href="letsencrypt-ewebsite/he/docs/staging-environment/" hreflang="he">סביבת ההכנה להקמה שלנו</a>. מגבלות הקצב לסביבת ההכנה להקמה שלנו <a href="/docs/staging-environment/#rate-limits">גבוהות בהרבה</a>.</p>
+<h1 id="בקשת-עזרה">בקשת עזרה</h1>
+<p>אם לא ברור לך איך להגדיר את לקוח ה־ACME שלך להשתמש בסביבת ההכנה להקמה או שנדרשת לך עזרה בניפוי שגיאות, אנו מזמינים אותך <a href="https://community.letsencrypt.org/c/help/13">לבקש עזרה בפורום הקהילתי שלנו</a>.</p>
+<h1 id="בקשת-מעקף">בקשת מעקף</h1>
+<p><strong>אין</strong> מעקפים זמינים למגבלת האימותים הכושלים.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt היא רשות אישורים חופשית, אוטומטית ופתוחה
+  שמוגשת לך באדיבות <a href="https://www.abetterinternet.org/">קבוצת מחקר אבטחת האינטרנט (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>יש לשלוח הודעות או בקשות אל:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        לצפייה ב<a href="/privacy/">מדיניות הפרטיות</a> שלנו.<br>
+לצפייה ב<a href="https://www.abetterinternet.org/trademarks/">מדיניות זכויות היוצרים</a> שלנו.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html
+	dir="rtl"
+	lang="he">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>מדריך שילוב -  Let&#39;s Encrypt</title>
+    <meta name="description" content="מסמך זה מכיל עצות שימושיות אם יש ספק אירוח או אתר גדול בתחום אחריותך שמשתלבים מול Let&amp;rsquo;s Encrypt או שבחרת לפתח תכנית לקוח עבור Let&amp;rsquo;s Encrypt.
+תכנון לעדכונים גם Let&amp;rsquo;s Encrypt וגם Web PKI ימשיכו להתפתח עם הזמן. עליך לוודא שיש לך את היכולת לעדכן את כל השירותים שמשתמשים ב־Let&amp;rsquo;s Encrypt. אם בנוסף לכך הטמעת לקוחות שנסמכים על אישורים של Let&amp;rsquo;s Encrypt היא באחריותך, כדאי מאוד לוודא שהלקוחות האלו יתעדכנו על בסיס קבוע.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="מדריך שילוב">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/he/docs/integration-guide/">
+    <meta name="twitter:description" content="מסמך זה מכיל עצות שימושיות אם יש ספק אירוח או אתר גדול בתחום אחריותך שמשתלבים מול Let&amp;rsquo;s Encrypt או שבחרת לפתח תכנית לקוח עבור Let&amp;rsquo;s Encrypt.
+תכנון לעדכונים גם Let&amp;rsquo;s Encrypt וגם Web PKI ימשיכו להתפתח עם הזמן. עליך לוודא שיש לך את היכולת לעדכן את כל השירותים שמשתמשים ב־Let&amp;rsquo;s Encrypt. אם בנוסף לכך הטמעת לקוחות שנסמכים על אישורים של Let&amp;rsquo;s Encrypt היא באחריותך, כדאי מאוד לוודא שהלקוחות האלו יתעדכנו על בסיס קבוע.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/he/docs/integration-guide/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="הזנת הבלוג של Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">דילוג על קישורי הניווט</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/he/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/he/docs/" class="pure-menu-link" tabindex="0">תיעוד</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">קבלת עזרה</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">תרומה</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/donate/" class="pure-menu-link">הצעת תרומה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">מתן חסות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/sponsors/" class="pure-menu-link">נותני חסות ומממנים נוכחיים</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getinvolved/" class="pure-menu-link">להצטרף למאמץ</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">עלינו</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" class="pure-menu-link">שאלות ותשובות (שו״ת)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">תפוגת התוקף של DST Root CA X3 (ספטמבר 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">מצב השירות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/stats/" class="pure-menu-link">סטטיסטיקה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">משרות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/contact/" class="pure-menu-link">יצירת קשר</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">✓ עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>מדריך שילוב</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    עדכון אחרון: <time datetime="2016-08-08">8 באוג׳ 2016</time>
+
+
+ | <a href="/letsencrypt-ewebsite/he/docs">הצגת כל התיעוד</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>מסמך זה מכיל עצות שימושיות אם יש ספק אירוח או אתר גדול בתחום אחריותך שמשתלבים מול Let&rsquo;s Encrypt או שבחרת לפתח תכנית לקוח עבור Let&rsquo;s Encrypt.</p>
+<h1 id="תכנון-לעדכונים">תכנון לעדכונים</h1>
+<p>גם Let&rsquo;s Encrypt וגם Web PKI ימשיכו להתפתח עם הזמן.  עליך לוודא שיש לך את היכולת לעדכן את כל השירותים שמשתמשים ב־Let&rsquo;s Encrypt. אם בנוסף לכך הטמעת לקוחות שנסמכים על אישורים של Let&rsquo;s Encrypt היא באחריותך, כדאי מאוד לוודא שהלקוחות האלו יתעדכנו על בסיס קבוע.</p>
+<p>בעתיד, אלו עשויים להשתנות:</p>
+<ul>
+<li>האישורים העליונים והמתווכים מתוכם אנחנו מנפיקים</li>
+<li>האלגוריתמים של הגיבוב בהם אנו משתמשים בעת חתימת אישורים</li>
+<li>סוגי המפתחות ובדיקות חוזק המפתחות שעבורם אנחנו רוצים לחתום אישורים ליישויות קצה</li>
+<li>ופרוטוקול ACME</li>
+</ul>
+<p>אנו תמיד נתכננן להודיע מראש עד כמה שניתן על שינויים שאלה, למרות שבמקרים של איתור פרצת אבטחה חמורה ברכיב כלשהו ייתכן שניאלץ לערוך שינויים בטווח קצר מאוד או מיידית. לשינויים במתווכים במיוחד, אין לקבע את המתווך שיהיה בשימוש, במקום עדיף להשתמש בכותרת <a href="https://tools.ietf.org/html/rfc8555#section-7.4.2"><code>Link: rel=&quot;up&quot;‎</code></a> מפרוטוקול ACME מאחר שמתווכים עשויים להשתנות.</p>
+<p>באופן דומה, סביר להניח שנשתה את כתובת תנאי השירות (ToS) עם עדכונם. יש להימנע מקיבוע כתובת תנאי השירות ובמקום לסמוך על הכותרת <a href="https://tools.ietf.org/html/rfc8555#section-7.3.3"><code>Link: rel=&quot;terms-of-service&quot;‎</code></a> כדי לפענח באיזו כתובת תנאי שירות להשתמש.</p>
+<p>יתכן שגם יעניין אותך לפתח דרך להשאיר את הגדרות ה־TLS שלך עדכניות לאור גילוי מתקפות חדשות בערכות צופן או בגרסאות פרוטוקולים.</p>
+<h1 id="קבלת-עדכונים">קבלת עדכונים</h1>
+<p>כדי לקבל עדכונים דלילים על שינויים חשובים כמו אלו שתוארו לעיל, ניתן להירשם לקבוצה <a href="https://community.letsencrypt.org/t/about-the-api-announcements-category/23836">הכרזות API</a>. שימושי למפתחי לקוחות וספקי אירוח.</p>
+<p>לקבלת עדכונים יותר צפופים על תחזוקה ותקלות בשירות, יש לבקר ב<a href="https://letsencrypt.status.io/">עמוד המצב</a> שלנו וללחוץ על רישום בפינה השמאלית העליונה. עשוי בעיקר להועיל לספקי אחסון.</p>
+<p>כמו כן, כדאי לוודא שימוש בכתובת דוא״ל תקנית עבור חשבון ה־ACME שלך. אנו נשתמש בכתובת הזאת כדי לשלוח לך התראות תפוגת תוקף וכדי ליצור אתך קשר בנוגע לכל מיני תקלות שנוגעות לחשבון שלך.</p>
+<h1 id="מי-המנוי">מי המנוי</h1>
+<p><a href="letsencrypt-ewebsite/he/repository/" hreflang="he">ה־CPS (הצהרת מדיניות האישור) והסכם המנוי</a> מציינים שהמנוי הוא מחזיק במפתח הפרטי לאישור. לספקיות אירוח, מדובר בספקית, לא בלקוח של הספקית. אם נמצאת אצלך כרגע בפיתוח תכנית שאנשים מטמיעים בעצמם, אז אלו המטמיעים עצמם.</p>
+<p>כתובת הדוא״ל ליצירת קשר שמסופקת בזמן יצירת חשבונות (ידועים גם בשם נרשמים) אמורה להפנות למנוי. אנו נשלח הודעות בדוא״ל כדי להזהיר מפני אישורים שתוקפם עומד לפוג, ולהודיע על שינויים ב<a href="letsencrypt-ewebsite/he/privacy/" hreflang="he">מדיניות הפרטיות</a> שלנו.  אם הנך נציגות מטעם ספקית אחסון, ההודעות האלו צריכות להגיע אליך במקום ללקוח הקצה. מוטב להגדיר רשימת תפוצה או כינוי דוא״ל כדי שמספר אנשים יוכלו להגיב להודעות במקרה שיצאת לחופשה.</p>
+<p>כתוצאה מכך, אם הנך נציגות מטעם ספקית אחסון, אין צורך בשליחת כתובות הדוא״ל של הלקוחות שלך או לבקש מהם להסכים להסכם המנויים שלנו. באפשרותך פשוט להנפיק אישורים עבור שמות התחום שבשליטתך ולהתחיל להשתמש בהם.</p>
+<h1 id="חשבון-אחד-או-יותר">חשבון אחד או יותר?</h1>
+<p>ב־ACME אפשר ליצור חשבון אחד ולהשתמש בו לכל ההרשאות וההנפקות או ליצור חשבון אחד ללקוח. הגמישות הזאת היא יקרת ערך. למשל, חלק מספקיות האחסון עשויות לרצות להשתמש בחשבון אחד ללקוח ולאחסן את מפתחות החשבון בהקשרים אחרים, כדי שפגיעה במפתח חשבון אחד לא תאפשר הנפקה עבור כל הלקוחות שלהם.</p>
+<p>עם זאת, עבור רוב ספקיות האחסון הגדולות יותר אנו ממליצים להשתמש בחשבון בודד ולהגן על מפתח החשבון הזה בקפידה. מצב זה מקל על זיהוי אישורים ששייכים לאותה יישות, קל יותר לשמור על עדכניות פרטי קשר וקל יותר לספק התאמות מגבלות מיכסה אם יש צורך בכך. לא תהיה לנו אפשרות להתאים מגבלות מיכסה ביעילות אם נעשה שימוש במספר רב של חשבונות.</p>
+<h1 id="אישורים-למגוון-שמות-תחום-san">אישורים למגוון שמות תחום (SAN)</h1>
+<p><a href="letsencrypt-ewebsite/he/docs/rate-limits/" hreflang="he">מדיניות ההנפקה</a> שלנו מאפשרת עד 100 שמות לאישור. בין אם בחרת להשתמש באישור נפרד לכל שם מארח או לקבץ יחד מגוון שמות מארחים במקבץ קטן של אישורים, בחירה זו נתונה לשיקולך.</p>
+<p>המשמעות שבהפרדת אישורים לפי שם מארח היא שנדרשים פחות חלקים נעים לצורך הוספה והסרה של שמות תחום ברמה הלוגית בעת הקמתם או פרישתם. אישורים נפרדים יכולים למזער את גודל האישור, מה שעשוי להאיץ את לחיצת היד לטובת HTTPS ברשתות עם רוחב פס נמוך.</p>
+<p>מצד שני, שימוש באישורים גדולים עם מגוון שמות מאחרים מאפשר לך לנהל פחות אישורים בסך הכול. אם עליך לתמוך בלקוחות ישנים כגון Windows XP שאינם תומכים בציון שם שרת עם TLS ‏(Server Name Indication - <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>), תידרשנה לך כתובת IP ייחודית עבור כל אישור, לכן הוספת כמה שיותר שמות בכל אישור מפחיתה את כמות כתובות ה־IP שתידרשנה לך.</p>
+<p>עבור רוב תצורות ההטמעה שתי האפשרויות מציעות את אותה רמת האבטחה.</p>
+<h1 id="אחסון-ושימוש-חוזר-באישורים-ובמפתחות">אחסון ושימוש חוזר באישורים ובמפתחות</h1>
+<p>החלק הארי בערך של Let&rsquo;s Encrypt הוא שהמערכת מאפשרת הנפקה אוטומטית כחלק מתהליך הקמת אתר חדש.  עם זאת, אם התשתית שלך עשויה ליצור שרתי חזית (frontends) באופן מחזורי עבור אותו אתר, על אותם שרתי החזית לנסות תחילה להשתמש באישור ובמפתח הפרטי מהאחסון היציב ולהנפיק אישור חדש רק אם אין אישור זמין או שתוקפם כל האישורים הנוכחיים פג.</p>
+<p>עבור Let&rsquo;s Encrypt, מנגנון שכזה מסייע לנו לספק שירותים ביעילות לכמות האנשים האפשרית הגדולה ביותר. עבורך, מנגנון שכזה מוודא שבאפשרותך להטמיע אתר האתר שלך בכל זמן נתון, ללא תלות במצב של Let&rsquo;s Encrypt.</p>
+<p>למשל, אתרים רבים מתחילים להשתמש ב־Docker כדי לספק מופעי שרתי חזית (frontends) כנדרש. אם הגדרת את מכולות ה־Docker שלך להנפיק אישור עם כל הפעלה שלהם ולא אחסנת את האישורים והמפתחות שלך באופן יציב, סביר להניח שהחשבון שלך ייתקל במגבלת מיכסה אם יותר מדי מופעים יופעלו בבת אחת. במצב הגרוע ביותר, אם עליך להשמיד וליצור מחדש את כל המופעים שלך בבת־אחת, יתכן שאף אחד מהמופעים שלך לא יוכל לקבל אישור והאתר שלך יהיה פגום למשך כמה ימים עד לפקיעת תוקף מגבלת המיכסה. עם זאת, סוג כזה של תקלה אינו ייחודי למגבלות מיכסה. אם השירות של Let&rsquo;s Encrypt אינו זמין מסיבה כלשהי כשעליך להעלות את שרתי החזית שלך, תהיה לך את אותה הבעיה.</p>
+<p>נא לשים לב שחלק מתאוריות ההטמעה גורסות שמפתחות הצפנה אף פעם לא אמורים להישאר באותה המכונה הפיזית בה הם נוצרו. דגם זה יכול לעבוד נהדר עם Let&rsquo;s Encrypt, כל עוד וידאת שהמכונות האלו והנתונים שלהם מיועדים לטווח ארוך וההתנהלות שלך בתוך מגבלות המיכסה היא מפוקחת.</p>
+<h1 id="בחירת-סוג-אתגר">בחירת סוג אתגר</h1>
+<p>אם בחרת באתגר http-01 של ACME, יהיה עליך לספק את התגובה לאתגר לכל אחד משרתי החזית (frontends) שלך בטרם הודעה ל־Let&rsquo;s Encrypt שסיימת להתכונן למלא אחר האתגר. אם יש לך כמות גדולה של שרתי חזית, זה עשוי להיות מאתגר. במקרה כזה, כנראה שהשימוש באתגר dns-01 יהיה קל יותר. כמובן שאם יש לך מגוון שירותי DNS מבוזרים שעשויים לענות לפנייה, יהיה עליך לוודא שרשומת ה־TXT זמינה בכל אחד מהשירותים שעונים.</p>
+<p>נוסף על כך, בעת שימוש באתגר dns-01, יש לוודא שמחקת רשומות TXT ישנות כדי שהתגובה לשאילתה של Let&rsquo;s Encrypt לא תהיה גדולה מדי.</p>
+<p>אם מעניין אותך להשתמש באתגר http-01 בין כה וכה, יכול להיות שעדיף לך להשתמש בהפניות HTTP. ניתן להגדיר כך שכל נקודות ההשקה שלך מול המשתמש (frontends) יפנו מ־‎/.well-known/acme-validation/XYZ אל validation-server.example.com/XYZ לכל XYZ שהוא. הגדרה שכזאת מעניקה את האחריות להנפקה לשרת תיקוף מרכזי, לכן עליך להגן על השרת הזה היטב.</p>
+<h1 id="שרתי-תיקוף-מרכזיים">שרתי תיקוף מרכזיים</h1>
+<p>בהקשר לשתי הנקודות שלעיל, יכול להיות שעדיף לך, במקרה של מגוון רחב של נקודות השקה מול המשתמש (frontends), להשתמש בסדרה מצומצמת של שרתים לניהול ההנפקה. הגדרה שכזאת מקלה על שימוש בהפניות בתיקוף http-01 ומספקת מקום לאחסון אישורים ומפתחות בצורה יציבה.</p>
+<h1 id="מימוש-שידוך-ocsp">מימוש שידוך OCSP</h1>
+<p>דפדנים רבים ישיגו OCSP מ־Let&rsquo;s Encrypt בעת טעינת האתר שלך. מדובר ב<a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/">בעיית ביצועים ואבטחה</a>.  באופן המיטבי, החיבורים לאתר שלך לא אמורים להמתין לחיבור משני אל Let&rsquo;s Encrypt. כמו כן, בקשות OCSP מגלות ל־Let&rsquo;s Encrypt באילו אתרים אנשים מבקרים. מדיניות הפרטיות שלנו טובה ואנחנו לא שומרים פרטים מזהים ייחודיים מבקשות OCSP, אבל נעדיף לא לקבל את הנתונים האלה מלכתחילה. נוסף על כך, עלות רוחב פס להגשת OCSP בכל פעם שדפדפן מבקר באתר עם Let&rsquo;s Encrypt בפעם הראשונה בהחלט עשויה להכביד מאוד על הוצאות התשתיות שלנו.</p>
+<p>הפעלת שידוך OCSP עשויה לשפר את ביצועי האתר שלך, לספק הגנת פרטיות משופרת ללקוחות שלך ולסייע ל־Let&rsquo;s Encrypt לשרת ביעילות כמה שיותר אנשים במידת האפשר.</p>
+<h1 id="הגדרות-חומת-אש">הגדרות חומת אש</h1>
+<p>כדי להשתמש ב־Let&rsquo;s Encrypt עליך להרשות תעבורה יוצאת בפתחה 443 מהמכונות שמפעילות את לקוח ה־ACME שלך. אנו לא נפרסם את כתובות ה־IP לשירות ה־ACME והן תשתנינה ללא אזהרה מוקדמת.</p>
+<p>לטובת אתגר ACME מסוג „http-01”, עליך לאפשר תעבורה נכנסת בפתחה 80. אנו לא מפרסמים את כתובות ה־IP מהן אנו מבצעים תיקוף והן תשתנינה ללא אזהרה מוקדמת.</p>
+<p>לתשומת לבך: אנו תמיד ממליצים לאפשר גישת HTTP בצורה פשוטה לשרת שלך, עם הפניה ל־HTTPS. מצב זה תמיד מעניק חוויית משתמש טובה יותר מאשר שרת שמסרב או קוטע התחברויות לפתחה 80 ומספק את אותה רמת האבטחה.</p>
+<p>עבור כל האתגרים, עליך לאפשר תעבורה נכנסת בפתחה 53 (TCP ו־UDP) לשרתי ה־DNS המוסמכים שלך.</p>
+<h1 id="אלגוריתמים-נתמכים-למפתחות">אלגוריתמים נתמכים למפתחות</h1>
+<p>Let&rsquo;s Encrypt מקבלת מפתחות RSA באורך של 2048, 3072 או 4096 סיביות ומפתחות P-256 או P-384 ECDSA. זה נכון גם לגבי מפתחות חשבונות וגם לגבי מפתחות אישורים. אי אפשר לעשות שימוש חוזר במפתח חשבון בתור מפתח אישור.</p>
+<p>ההמלצה שלנו היא לשרת תצורת מפתחות זוגית, שמציעה אישור מסוג RSA כבררת מחדל, ואישור (קטן בהרבה) מסוג ECDSA ללקוחות שמציינים שהם תומכים בו.</p>
+<h1 id="https-כבררת-מחדל">HTTPS כבררת מחדל</h1>
+<p>לספקי אחסון, ההמלצה שלנו היא להנפיק אוטומטית אישורים ולהגדיר HTTPS לכל שמות המארחים שבשליטתך ולהציע הגדרה שהמשתמש יכול לשנות האם להפנות כתובות HTTP למקבילות ה־HTTPS שלהן. אנו ממליצים שעבור חשבונות קיימים, ההגדרה הזאת תושבת כבררת מחדל אבל לחשבונות חדשים האפשרות הזאת תפעל כבררת מחדל.</p>
+<p>הסיבה לכך: אתרים קיימים עשויים לכלול תת־משאבים ב־HTTP (סקריפטים, CSS ותמונות). אם האתרים האלו מופנים אוטומטית לגרסת ה־HTTPS שלהם, הדפדפנים יחסמו חלק מתת־המשאבים האלה עקב חסימת תוכן מעורב. מצב שכזה יכול לפגום בתקינות האתר. עם זאת, אם מדובר באתר חדש שכבר מפנה ל־HTTPS אז סביר להניח שמקים האתר יכלול תת־משאבים ב־HTTPS בלבד, כיוון שאם הם ינסו לכלול משאבים ב־HTTP הם מיד ישימו לב שזה לא עובד.</p>
+<p>אנו ממליצים לאפשר ללקוחות להגדיר כותרת HTTP Strict-Transport-Security‏ (HSTS) עם max-age של שישים ימים כבררת מחדל. עם זאת, את ההגדרה הזאת יש ללוות באזהרה שאם על הלקוח לעבור לספקית אחסון שאינה מציעה HTTPS, הגדרת ה־HSTS שבדפדפנים יגרום לכך שהאתר שלהם יהיה לא זמין. כמו כן, גם הלקוח וגם ספקית האחסון אמורים להיות מודעים לכך שכותרת ה־HSTS עשויה להפוך שגיאות אישורים לכשלים מורכבים. למשל, בעוד אנשים יכולים בדרך כלל לדלג על אזהרה בדפדפן בנוגע לחוסר התאמה בשם או תפוגת תוקף אישור, הדפדפנים לא מאפשרים לדלג על אזהרה עבוד שמות מארחים עם כותרת HSTS פעילה.</p>
+<h1 id="מתי-לחדש">מתי לחדש</h1>
+<p>אנו ממליצים לחדש אישורים אוטומטית כאשר נותר עוד שליש מתוך סך כל חייהם. עבור האישורים הנוכחיים של Let&rsquo;s Encrypt שתוקפם הוא 90 ימים, משמעות הדבר היא לחדש 30 יום לפני מועד התפוגה.</p>
+<p>אם עליך להנפיק למעלה מ־10,000 שמות מארחים, אנו גם ממליצים על חידוש אוטומטי במקבצים קצרים על פני איסוף חידושים לחבילות גדולות. התנהלות שכזאת מפחיתה את הסיכון: אם השירות של Let&rsquo;s Encrypt אינו פעיל בזמן שעליך לחדש או שיש תקלה זמנית במערכת החידושים שלך, תהיה השפעה רק על חלק מהאישורים במקום על כולם. נוסף על כך, תכנון הקיבולת שלנו פשוט יותר.</p>
+<p>יכול להיות שהעדפתך תהיה להנפיק כמות גדולה של אישורים לכל שמות התחום שלך כדי להיכנס מהר לעניינים, זה בסדר. לאחר מכן אפשר פשוט לפזר את מועדי החידוש על ידי תהליך חד־פעמי של חידוש חלק מהאישורים יום לפני מועד החידוש הרגיל, חלקם יומיים לפני וכן הלאה.</p>
+<p>אם יש לך תכנה שמוצעת מטעמך ומגדירה אוטומטית משימה כמותית תקופתית, נא לוודא שהיא פועלת בשנייה אקראית המשלך היום במקום לרוץ באותה השעה כל פעם. שיטה זו מבטיחה שלא יופנו עומסי תעבורה כבדים ל־Let&rsquo;s Encrypt באופן שרירותי בתחילת שעה או דקה. מאחר שעל Let&rsquo;s Encrypt להתכונן לקיבולת שתעמוד בעומס נקודתי, הפחתת עומסים פתאומיים יכולה לסייע לנו לחסוך בעלויות.</p>
+<h1 id="ניסוי-חוזר-של-כשלונות">ניסוי חוזר של כשלונות</h1>
+<p>אין להתנהל מול כשל בחידוש כמו לשגיאה משמעותית. עליך להטמיע לוגיקת ניסיון חוזר רכה בשירותי ההנפקה שלך באמצעות תבנית נסיגה מעריכית שמגיעה לפעם ביום לכל היותר לכל אישור. למשל, תזמון נסיגה סביר יהיה משהו כמו: ניסיון ראשון אחרי דקה, ניסיון שני אחרי עשר דקות, ניסיון שלישי אחרי 100 דקות, ניסיונות רביעי ואילך לאחר יום. אמורה להיות למנהלים שלך דרך לבקש ניסיונות חוזרים מהירים יותר לפי שם תחום או להכול.</p>
+<p>משמעות נסיגות על ניסיונות חוזרים היא שהתכנה שמנפיק עבורך אמורה לעקוב אחר כשלונות לצד הצלחות ולבדוק האם היה כשל בניסיון האחרון בטרם ניסיון הנפקה מחדש. אין טעם לנסות להנפיק מאות פעמים בשעה מאחר שכשלונות חוזרים הם בדרך כלל עקביים.</p>
+<p>את כל השגיאות יש לשלוח להנהלה האחראית כדי לראות אם יש תקלות מסוימות שדורשות תיקון.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt היא רשות אישורים חופשית, אוטומטית ופתוחה
+  שמוגשת לך באדיבות <a href="https://www.abetterinternet.org/">קבוצת מחקר אבטחת האינטרנט (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>יש לשלוח הודעות או בקשות אל:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        לצפייה ב<a href="/privacy/">מדיניות הפרטיות</a> שלנו.<br>
+לצפייה ב<a href="https://www.abetterinternet.org/trademarks/">מדיניות זכויות היוצרים</a> שלנו.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

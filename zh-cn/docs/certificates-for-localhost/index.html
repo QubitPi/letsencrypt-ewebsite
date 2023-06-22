@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>localhost 证书 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="有时，人们希望获得主机名为“localhost”的证书，以用于本地开发或与需要与 Web 应用程序通信的原生应用程序一同分发。 Let’s Encrypt 不能为“localhost”提供证书，因为没有人唯一地拥有它，并且它不在“.com”或“.net”等顶级域名下。 您可以将您自己的域名设置为解析至“127.0.0.1”，并使用 DNS 验证获取证书。 然而，通常情况下这是个坏主意，您其实有更好的选择。
+用于本地开发目的 如果您正在开发 Web 应用程序，那么您可能需要运行 Apache 或 Nginx 等本地 Web 服务器并在浏览器中通过 http://localhost:8000/ 访问它。 但是，浏览器在 HTTP 与 HTTPS 页面上的行为方式略有不同。 主要区别是：在 HTTPS 页面上，从 HTTP 链接加载 JavaScript 的请求都会被阻断。 因此，若您在本地使用 HTTP 开发，您添加的脚本可能能在本地开发环境正常工作，但是将在部署至 HTTPS 站点时出现问题。 若要发现此类问题，您可能需要在本地 Web 服务器配置 HTTPS。 但是，您不希望始终看到证书错误警告。 那么如何在访问本地网页版本时让浏览器显示那个绿色锁标志呢？
+最佳选择是：生成您自己的证书（自签名的或由本地根证书签名），并且可以在您的操作系统的受信证书存储中信任它。 然后在本地网页服务器中使用该证书。 请参阅下文了解详情。
+用于与 Web 应用通信的原生应用 有时开发人员希望提供可下载的原生应用程序，可以与网站一起使用以提供额外的功能。 例如，Dropbox 和 Spotify 桌面应用程序会扫描您机器上的文件，而网页版无法进行此操作。 一种常见的解决方法是让这些原生应用程序在 localhost 上提供 Web 服务，并让 Web 应用程序通过 XMLHTTPRequest（XHR）或 WebSockets 向它发出请求。 Web 应用程序基本上都使用了 HTTPS，这意味着浏览器将禁止它向非安全链接发送 XHR 或 WebSockets 请求。 这称为混合内容阻断。 要与 Web 应用程序通信，原生应用程序需要提供安全的 Web 服务。">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="localhost 证书">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/certificates-for-localhost/">
+    <meta name="twitter:description" content="有时，人们希望获得主机名为“localhost”的证书，以用于本地开发或与需要与 Web 应用程序通信的原生应用程序一同分发。 Let’s Encrypt 不能为“localhost”提供证书，因为没有人唯一地拥有它，并且它不在“.com”或“.net”等顶级域名下。 您可以将您自己的域名设置为解析至“127.0.0.1”，并使用 DNS 验证获取证书。 然而，通常情况下这是个坏主意，您其实有更好的选择。
+用于本地开发目的 如果您正在开发 Web 应用程序，那么您可能需要运行 Apache 或 Nginx 等本地 Web 服务器并在浏览器中通过 http://localhost:8000/ 访问它。 但是，浏览器在 HTTP 与 HTTPS 页面上的行为方式略有不同。 主要区别是：在 HTTPS 页面上，从 HTTP 链接加载 JavaScript 的请求都会被阻断。 因此，若您在本地使用 HTTP 开发，您添加的脚本可能能在本地开发环境正常工作，但是将在部署至 HTTPS 站点时出现问题。 若要发现此类问题，您可能需要在本地 Web 服务器配置 HTTPS。 但是，您不希望始终看到证书错误警告。 那么如何在访问本地网页版本时让浏览器显示那个绿色锁标志呢？
+最佳选择是：生成您自己的证书（自签名的或由本地根证书签名），并且可以在您的操作系统的受信证书存储中信任它。 然后在本地网页服务器中使用该证书。 请参阅下文了解详情。
+用于与 Web 应用通信的原生应用 有时开发人员希望提供可下载的原生应用程序，可以与网站一起使用以提供额外的功能。 例如，Dropbox 和 Spotify 桌面应用程序会扫描您机器上的文件，而网页版无法进行此操作。 一种常见的解决方法是让这些原生应用程序在 localhost 上提供 Web 服务，并让 Web 应用程序通过 XMLHTTPRequest（XHR）或 WebSockets 向它发出请求。 Web 应用程序基本上都使用了 HTTPS，这意味着浏览器将禁止它向非安全链接发送 XHR 或 WebSockets 请求。 这称为混合内容阻断。 要与 Web 应用程序通信，原生应用程序需要提供安全的 Web 服务。">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/certificates-for-localhost/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/certificates-for-localhost/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/certificates-for-localhost/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/certificates-for-localhost/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/certificates-for-localhost/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/certificates-for-localhost/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/certificates-for-localhost/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/certificates-for-localhost/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/certificates-for-localhost/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/certificates-for-localhost/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/certificates-for-localhost/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/certificates-for-localhost/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/certificates-for-localhost/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/certificates-for-localhost/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/certificates-for-localhost/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/certificates-for-localhost/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/certificates-for-localhost/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/certificates-for-localhost/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/certificates-for-localhost/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/certificates-for-localhost/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/certificates-for-localhost/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/certificates-for-localhost/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>localhost 证书</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2017-12-21">Dec 21, 2017</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>有时，人们希望获得主机名为“localhost”的证书，以用于本地开发或与需要与 Web 应用程序通信的原生应用程序一同分发。 Let’s Encrypt 不能为“localhost”提供证书，因为没有人唯一地拥有它，并且它不在“.com”或“.net”等顶级域名下。 您可以将您自己的域名设置为解析至“127.0.0.1”，并使用 DNS 验证获取证书。 然而，通常情况下这是个坏主意，您其实有更好的选择。</p>
+<h1 id="用于本地开发目的">用于本地开发目的</h1>
+<p>如果您正在开发 Web 应用程序，那么您可能需要运行 Apache 或 Nginx 等本地 Web 服务器并在浏览器中通过 <code>http://localhost:8000/</code> 访问它。 但是，浏览器在 HTTP 与 HTTPS 页面上的行为方式略有不同。 主要区别是：在 HTTPS 页面上，从 HTTP 链接加载 JavaScript 的请求都会被阻断。 因此，若您在本地使用 HTTP 开发，您添加的脚本可能能在本地开发环境正常工作，但是将在部署至 HTTPS 站点时出现问题。 若要发现此类问题，您可能需要在本地 Web 服务器配置 HTTPS。 但是，您不希望始终看到证书错误警告。 那么如何在访问本地网页版本时让浏览器显示那个绿色锁标志呢？</p>
+<p>最佳选择是：生成您自己的证书（自签名的或由本地根证书签名），并且可以在您的操作系统的受信证书存储中信任它。 然后在本地网页服务器中使用该证书。 请参阅下文了解详情。</p>
+<h1 id="用于与-web-应用通信的原生应用">用于与 Web 应用通信的原生应用</h1>
+<p>有时开发人员希望提供可下载的原生应用程序，可以与网站一起使用以提供额外的功能。 例如，Dropbox 和 Spotify 桌面应用程序会扫描您机器上的文件，而网页版无法进行此操作。 一种常见的解决方法是让这些原生应用程序在 localhost 上提供 Web 服务，并让 Web 应用程序通过 XMLHTTPRequest（XHR）或 WebSockets 向它发出请求。 Web 应用程序基本上都使用了 HTTPS，这意味着浏览器将禁止它向非安全链接发送 XHR 或 WebSockets 请求。 这称为混合内容阻断。 要与 Web 应用程序通信，原生应用程序需要提供安全的 Web 服务。</p>
+<p>幸运的是，现代浏览器<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=607878">认为</a> <code>http://127.0.0.1:8000/</code> 是一个 <a href="https://www.w3.org/TR/secure-contexts/#is-origin-trustworthy">“可能可信赖的”</a>链接，因为它指向一个环回地址。 发送到 <code>127.0.0.1</code> 的流量肯定不会离开您的计算机，因此它自然而然地不受网络拦截的影响。 这意味着如果您的 Web 应用程序使用HTTPS，并且您在 <code>127.0.0.1</code> 上提供原生应用程序的 Web 服务，则两者可以通过 XHR 进行通信。 不幸的是，<a href="https://tools.ietf.org/html/draft-ietf-dnsop-let-localhost-be-localhost-02">localhost 没有受到相同的待遇</a>。 此外，使用 WebSockets 这两个名称都不会受到特殊对待。</p>
+<p>您可能想通过以下方法来绕开这些限制：在全局 DNS 中设置解析为<code>127.0.0.1</code> 的域名（例如<code>localhost.example.com</code>），获取该域名的证书，将该证书和相应的私钥与您的原生应用程序一起分发，并告诉您的 Web 应用程序与 <code>https://localhost.example.com:8000/</code> 而不是 <code>http://127.0.0.1:8000/</code>进行通信。 <em>请不要这样做。</em> 它会使您的用户面临风险，而您的证书也可能会被吊销。</p>
+<p>如果您使用域名而不是 IP 地址，攻击者可以对DNS查询进行中间人攻击（MitM），并注入指向不同IP地址的响应。然后攻击者可以伪装成原生应用程序并将伪造的回复发送回 Web 应用程序。 这可能会导致您在 Web 应用程序上的帐户遭到入侵，具体取决于其设计方式。</p>
+<p>为了使原生应用程序能够工作，您必须将证书的私钥和它一起分发，这使得 MitM 攻击成为可能。 这意味着任何下载原生应用程序的人都会获得私钥的副本，包括攻击者。这被视为您泄露了您的私钥，而如果您的 CA 发现了这一情况，则它必须吊销您的证书。 <a href="https://groups.google.com/d/msg/mozilla.dev.security.policy/eV89JXcsBC0/wsj5zpbbAQAJ">许多原生应用程序</a><a href="https://groups.google.com/d/msg/mozilla.dev.security.policy/pk039T_wPrI/tGnFDFTnCQAJ">被 Ca 吊销了证书</a><a href="https://groups.google.com/d/msg/mozilla.dev.security.policy/T6emeoE-lCU/-k-A2dEdAQAJ">因为将私钥和程序一起发送</a>。</p>
+<p>不幸的是，这使得本机应用程序没有很多好的、安全的选项来与相应的网站进行通信。 如果浏览器进一步<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=378566">缩紧来自 Web 的对 localhost 的访问</a>，将来情况可能会变得更加棘手。</p>
+<p>此外请注意，暴露提供特权原生 API 的 Web 服务本身就存在风险，因为未经授权的网站可能会访问它们。 如果您执意这么做，请务必阅读<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">跨源资源共享</a>，使用 Access-Control-Allow-Origin，并确保使用“内存安全”的 HTTP 解析器，因为即使是被禁止访问的网页也可能会发送预检请求来利用解析器中的漏洞。</p>
+<h1 id="制作并信任您自己的证书">制作并信任您自己的证书</h1>
+<p>任何人都可以在没有 CA 帮助的情况下制作自己的证书。 唯一的区别是您自己制作的证书不会被其他任何人信任。 当然如果用于本地开发，那没什么关系。</p>
+<p>为 localhost 生成私钥和自签名证书的最简单方法是使用以下 openssl 命令：</p>
+<pre><code>openssl req -x509 -out localhost.crt -keyout localhost.key \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj '/CN=localhost' -extensions EXT -config &lt;( \
+   printf &quot;[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth&quot;)
+</code></pre>
+<p>然后，您就可以使用 localhost.crt 和 localhost.key 配置本地 Web 服务器，并在本地的受信任根证书列表中安装 localhost.crt。</p>
+<p>如果您希望您的开发用证书更加逼真，您可以使用 <a href="https://github.com/jsha/minica">minica</a> 生成自己的本地根证书，并颁发由其签名的终端实体证书（又称叶证书）。 然后，您就可以导入根证书而不是自签名的终端实体证书。</p>
+<p>您还可以选择使用带有点的域，例如<code>www.localhost</code>，将其作为<code>127.0.0.1</code> 的别名添加到 /etc/hosts 中。 这细微地改变了浏览器处理 Cookies 存储的方式。</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

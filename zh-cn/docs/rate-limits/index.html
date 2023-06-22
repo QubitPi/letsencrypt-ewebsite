@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>速率限制 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="为保证尽可能多的人可以公平使用服务，Let&amp;rsquo;s Encrypt 提供了速率限制措施。 我们相信这些速率限制已经高到足以让大多数人在默认情况下使用。 Let&amp;rsquo;s Encrypt 对证书颁发进行速率限制以确保尽可能多的人能合理使用我们的服务。我们相信这些速率限制在大多数情况下足以满足用户的需求。同时续期证书几乎不受速率限制的影响，所以大型组织可以逐步增加他们可以发布的证书数量，而无需Let&amp;rsquo;s Encrypt的干预。
+如果你正活跃于开发或测试一款 Let&amp;rsquo;s Encrypt 客户端，请使用我们的测试环境而不是生产环境 API. 如果您正在将 Let&amp;rsquo;s Encrypt 作为提供商或与大型网站进行整合，请查看我们的集成指南。
+我们的主要限制为每个注册域名可签发证书数量（每周50张）。 一般而言，注册域名是您从域名注册商处购买的那一部分域名。 例如，在 www.example.com 中，注册域名为 example.com. 在 new.blog.example.co.uk 中，注册域名为 example.co.uk. 我们将使用公共后缀列表来计算注册域名。 超出每个注册域名可签发证书数量限制的请求，将会得到 too many certificates already issued 的报错信息，同时可能提其他信息。
+您在3小时之内每个账户最多可以创建300个新订单。 每次您从 Boulder CA 请求证书时，都会创建一个新订单，这意味着每个证书请求中都会产生一个新订单。 超出新订单数量限制的请求，将会得到too many new orders recently的报错信息。
+如果您拥有很多子域名，您可能会希望将它们整合到一张证书中，限制为每份证书最多100个域名。 出于性能和可靠性角度的考虑，建议您在每张证书中包含尽可能少的域名。 含有多个域名的证书常被称为主题备用名称 (SAN) 证书，有时或被称作统一通讯证书 (UCC).
+续期证书遵守特殊规则：它们不计入您的每个注册域名的证书数量的限制，但它们受到每周最多 5 张重复证书 的限制。 一旦超过重复证书数量的限制，将会得到too many certificates already issued for exact set of domains 的报错信息。
+忽略大小写和顺序，当一张证书与既有证书包含了完全一样的域名列表时，它会被视为既有证书的续签（或副本）。 例如，如果您已经为[www.example.com, example.com]申请签发一张证书，那么本周您将可以再为 [www.example.com, example.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="速率限制">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/rate-limits/">
+    <meta name="twitter:description" content="为保证尽可能多的人可以公平使用服务，Let&amp;rsquo;s Encrypt 提供了速率限制措施。 我们相信这些速率限制已经高到足以让大多数人在默认情况下使用。 Let&amp;rsquo;s Encrypt 对证书颁发进行速率限制以确保尽可能多的人能合理使用我们的服务。我们相信这些速率限制在大多数情况下足以满足用户的需求。同时续期证书几乎不受速率限制的影响，所以大型组织可以逐步增加他们可以发布的证书数量，而无需Let&amp;rsquo;s Encrypt的干预。
+如果你正活跃于开发或测试一款 Let&amp;rsquo;s Encrypt 客户端，请使用我们的测试环境而不是生产环境 API. 如果您正在将 Let&amp;rsquo;s Encrypt 作为提供商或与大型网站进行整合，请查看我们的集成指南。
+我们的主要限制为每个注册域名可签发证书数量（每周50张）。 一般而言，注册域名是您从域名注册商处购买的那一部分域名。 例如，在 www.example.com 中，注册域名为 example.com. 在 new.blog.example.co.uk 中，注册域名为 example.co.uk. 我们将使用公共后缀列表来计算注册域名。 超出每个注册域名可签发证书数量限制的请求，将会得到 too many certificates already issued 的报错信息，同时可能提其他信息。
+您在3小时之内每个账户最多可以创建300个新订单。 每次您从 Boulder CA 请求证书时，都会创建一个新订单，这意味着每个证书请求中都会产生一个新订单。 超出新订单数量限制的请求，将会得到too many new orders recently的报错信息。
+如果您拥有很多子域名，您可能会希望将它们整合到一张证书中，限制为每份证书最多100个域名。 出于性能和可靠性角度的考虑，建议您在每张证书中包含尽可能少的域名。 含有多个域名的证书常被称为主题备用名称 (SAN) 证书，有时或被称作统一通讯证书 (UCC).
+续期证书遵守特殊规则：它们不计入您的每个注册域名的证书数量的限制，但它们受到每周最多 5 张重复证书 的限制。 一旦超过重复证书数量的限制，将会得到too many certificates already issued for exact set of domains 的报错信息。
+忽略大小写和顺序，当一张证书与既有证书包含了完全一样的域名列表时，它会被视为既有证书的续签（或副本）。 例如，如果您已经为[www.example.com, example.com]申请签发一张证书，那么本周您将可以再为 [www.example.com, example.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/rate-limits/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/rate-limits/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/rate-limits/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/rate-limits/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/rate-limits/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/rate-limits/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/rate-limits/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/rate-limits/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/rate-limits/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/rate-limits/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/rate-limits/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/rate-limits/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/rate-limits/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/rate-limits/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/rate-limits/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/rate-limits/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/rate-limits/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/rate-limits/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/rate-limits/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/rate-limits/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>速率限制</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2023-06-09">Jun 9, 2023</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>为保证尽可能多的人可以公平使用服务，Let&rsquo;s Encrypt 提供了速率限制措施。 我们相信这些速率限制已经高到足以让大多数人在默认情况下使用。 Let&rsquo;s Encrypt 对证书颁发进行速率限制以确保尽可能多的人能合理使用我们的服务。我们相信这些速率限制在大多数情况下足以满足用户的需求。同时续期证书几乎不受速率限制的影响，所以大型组织可以逐步增加他们可以发布的证书数量，而无需Let&rsquo;s Encrypt的干预。</p>
+<p>如果你正活跃于开发或测试一款 Let&rsquo;s Encrypt 客户端，请使用我们的<a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" hreflang="zh-Hans-CN">测试环境</a>而不是生产环境 API. 如果您正在将 Let&rsquo;s Encrypt 作为提供商或与大型网站进行整合，请<a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" hreflang="zh-Hans-CN">查看我们的集成指南</a>。</p>
+<p>我们的主要限制为<a id="certificates-per-registered-domain"></a><strong>每个注册域名可签发证书数量</strong>（每周50张）。 一般而言，注册域名是您从域名注册商处购买的那一部分域名。 例如，在 <code>www.example.com</code> 中，注册域名为 <code>example.com</code>. 在 <code>new.blog.example.co.uk</code> 中，注册域名为 <code>example.co.uk</code>. 我们将使用<a href="https://publicsuffix.org">公共后缀列表</a>来计算注册域名。 超出每个注册域名可签发证书数量限制的请求，将会得到 <code>too many certificates already issued</code> 的报错信息，同时可能提其他信息。</p>
+<p>您在3小时之内每个账户最多可以创建300个<a
+id="new-orders"></a><strong>新订单</strong>。 每次您从 Boulder CA 请求证书时，都会创建一个新订单，这意味着每个证书请求中都会产生一个新订单。 超出新订单数量限制的请求，将会得到<code>too many new orders recently</code>的报错信息。</p>
+<p>如果您拥有很多子域名，您可能会希望将它们整合到一张证书中，限制为<a id="names-per-certificate"></a><strong>每份证书最多100个域名</strong>。 出于性能和可靠性角度的考虑，建议您在每张证书中包含尽可能少的域名。  含有多个域名的证书常被称为主题备用名称 (SAN) 证书，有时或被称作统一通讯证书 (UCC).</p>
+<p>续期证书遵守特殊规则：它们不计入您的<strong>每个注册域名的证书数量</strong>的限制，但它们受到每周最多 5 张<a href="letsencrypt-ewebsite/zh-cn/docs/duplicate-certificate-limit/" hreflang="zh-Hans-CN"><strong>重复证书</strong></a> 的限制。 一旦超过重复证书数量的限制，将会得到<code>too many certificates already issued for exact set of domains</code> 的报错信息。</p>
+<p>忽略大小写和顺序，当一张证书与既有证书包含了完全一样的域名列表时，它会被视为既有证书的续签（或副本）。  例如，如果您已经为[<code>www.example.com</code>, <code>example.com</code>]申请签发一张证书，那么本周您将可以再为 [<code>www.example.com</code>, <code>example.com</code>] 申请签发四张证书。 如果您添加 [<code>blog.example.com</code>] 改变了域名列表，您就可以申请额外的证书。</p>
+<p>续签处理将会忽略公钥和需求的 X509 扩展。 即使您使用了新的公钥，一次证书签发申请也依然可以被视作续签。</p>
+<p><strong>请求吊销证书不会重设速率限制</strong>，因为申请证书所使用的资源已经被消耗了。</p>
+<p>There is a!!crwdBlockTags_34_sgaTkcolBdwrc!<img src="/docs/failed-validation-limit" alt="Failed Validation"> limit of 5 failures per account, per hostname, per hour. 这个限制在我们的<a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" hreflang="zh-Hans-CN">测试环境</a>中更高，因此您可以使用它来调试连接性问题。 超出验证失败限制将会得到 <code>too many failed authorizations recently</code> 的报错信息。</p>
+<p>API 的&quot;new-nonce&quot;、&ldquo;new-account&rdquo;、&ldquo;new-order&quot;和&quot;revoke-cert&quot;接口<a
+id="overall-requests"></a><strong>总请求数</strong>限制为每秒 20 次。 &ldquo;/directory&quot;端点和&rdquo;/acme&quot;目录及其子目录的总请求数限制为每秒 40 次。</p>
+<p>此外还有两个您不太可能遇到的限制。</p>
+<p>您在3小时之内每个IP地址最多可以创建10个<a id="accounts-per-ip-address"></a><strong>账户</strong>。 <strong>每个 IPv6 /48 地址段</strong>每 3 小时最多可以创建 500 个账户。 达到这两个账户限制是十分罕见的，我们建议我们建议大型集成商<a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" hreflang="zh-Hans-CN">使用一个帐户为多个客户提供服务</a>。 超过这些限制的请求，将会得到 <code>too many registrations for this IP</code> 或者 <code>too many registrations for this IP range</code>的报错信息。</p>
+<p>您的帐户最多可以有 300 个<a id="pending-authorizations"></a><strong>待验证授权</strong>。 达到此速率限制很少见，并且通常在开发 ACME 客户端时发生。 到达此限制通常意味着您的客户正在创建授权但没有验证授权。 如果您正在开发 ACME 客户端，请使用我们的<a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" hreflang="zh-Hans-CN">测试环境</a>。 超出待验证授权数量限制的请求，将会得到 <code>too many currently pending authorizations</code>的报错信息。</p>
+<h1 id="a-id-overrides-a-重置限制"><a id="overrides"></a>重置限制</h1>
+<p>如果您达到了速率限制，我们没有办法帮助您暂时重置它。 您需要等待一周，直到这些速率限制过期。 我们使用了滑动窗口的方式，因此如果你在周一申请签发了25张证书，并且在周五又申请签发了25张证书，那么下周一起你将可以再次申请签发证书。 你可以在利用公开<a href="https://www.certificate-transparency.org">证书透明度</a>记录的 <a href="https://crt.sh"> crt.sh </a> 网站上搜索获取你已经申请签发的证书列表。</p>
+<p>如果您是需要集成 Let&rsquo;s Encrypt 的大型托管服务提供商或组织，您可以使用<a href="https://isrg.formstack.com/forms/rate_limit_adjustment_request">速率限制表单</a>请求更高的速率限制。 处理请求需要几周时间。因此，如果您只是不想等待一周，想要提前进行速率限制重置，请不要使用该表单。</p>
+<h1 id="a-id-clearing-pending-a-清除待验证的授权"><a id="clearing-pending"></a>清除待验证的授权</h1>
+<p>如果您有大量待处理的授权对象并且受到了速率限制，您可以通过向其中一个验证请求提交 JWS 签名的 POST 请求来触发对这些授权对象的验证尝试（如<a href="https://tools.ietf.org/html/rfc8555#section-7.5.1">ACME 规范</a>中所述）。 待处理的授权对象由<code>https://acme-v02.api.letsencrypt.org/acme/authz/XYZ</code>格式的 URL 表示，并应显示在客户端日志中。 请注意，验证成功还是失败并不重要， 因为无论结果如何待授权对象均会转出“待验证”状态。 如果您没有记录包含相关授权 URL 的日志，则需要等待速率限制结束。 如上所述，速率限制基于滑动窗口，因此根据您颁发方式的不同，需要的时间可能不到一周。</p>
+<p>请注意，拥有大量待验证授权通常是客户端代码有误的结果。 如果您经常遇到此速率限制，则应仔细检查您的客户端代码。</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

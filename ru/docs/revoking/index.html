@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ru-RU">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Аннулирование сертификатов -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Когда закрытый ключ, соответствующий сертификату, становится небезопасным, вы должны аннулировать сертификат. Это может произойти по нескольким причинам. Например, вы можете случайно выложить закрытый ключ на общедоступный сервер; хакеры получат доступ к вашему закрытому ключу на сервере; хакеры получат временный контроль над вашими серверами или DNS-конфигурацией и используют это, чтобы подтвердить и выпустить сертификат с помощью вашего открытого ключа.
+Когда вы аннулируете сертификат Let&amp;rsquo;s Encrypt, информация об этом публикуется в Online Certificate Status Protocol (OCSP).">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Аннулирование сертификатов">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ru/docs/revoking/">
+    <meta name="twitter:description" content="Когда закрытый ключ, соответствующий сертификату, становится небезопасным, вы должны аннулировать сертификат. Это может произойти по нескольким причинам. Например, вы можете случайно выложить закрытый ключ на общедоступный сервер; хакеры получат доступ к вашему закрытому ключу на сервере; хакеры получат временный контроль над вашими серверами или DNS-конфигурацией и используют это, чтобы подтвердить и выпустить сертификат с помощью вашего открытого ключа.
+Когда вы аннулируете сертификат Let&amp;rsquo;s Encrypt, информация об этом публикуется в Online Certificate Status Protocol (OCSP).">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ru/docs/revoking/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Блог Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустить навигационные ссылки</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ru/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ru/docs/" class="pure-menu-link" tabindex="0">Документация</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Помощь</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Поддержите нас</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/donate/" class="pure-menu-link">Сделайте пожертвование</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Станьте нашим спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/sponsors/" class="pure-menu-link">Текущие спонсоры и дарители</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getinvolved/" class="pure-menu-link">Внесите свой вклад</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">О сервисе</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/about/" class="pure-menu-link">Что такое Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Окончание срока действия DST Root CA X3 (сентябрь 2021 г.)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/faq/" class="pure-menu-link">Часто задаваемые вопросы (ЧЗВ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Состояние сервиса</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Карьера</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/contact/" class="pure-menu-link">Контакты</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Язык <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">✓ Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Аннулирование сертификатов</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Последнее обновление: <time datetime="2021-08-03">3 авг. 2021 г.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ru/docs">Вся документация</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Внимание! Английская версия сайта была обновлена, перевод неактуален
+                    (<time datetime="2021-10-15">15 окт. 2021 г.</time>)
+                    <a href="letsencrypt-ewebsite/docs/revoking/">Просмотреть на английском</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Когда закрытый ключ, соответствующий сертификату, становится небезопасным, вы должны аннулировать сертификат. Это может произойти по нескольким причинам. Например, вы можете случайно выложить закрытый ключ на общедоступный сервер; хакеры получат доступ к вашему закрытому ключу на сервере; хакеры получат временный контроль над вашими серверами или DNS-конфигурацией и используют это, чтобы подтвердить и выпустить сертификат с помощью вашего открытого ключа.</p>
+<p>Когда вы аннулируете сертификат Let&rsquo;s Encrypt, информация об этом публикуется в <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a>. Некоторые браузеры проверяют OCSP, чтобы определить, можно ли доверять сертификату. Обратите внимание, что OCSP <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">имеет несколько значительных проблем</a>, поэтому не все браузеры проводят эту проверку. Но аннулирование сертификатов, соответствующих скомпрометированным закрытым ключам, все еще является важной практикой и необходима согласно <a href="letsencrypt-ewebsite/ru/repository/" hreflang="ru-RU">Клиентскому соглашению</a> Let&rsquo;s Encrypt.</p>
+<p>Чтобы аннулировать сертификат с помощью Let&rsquo;s Encrypt, следует использовать <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a>, лучше всего через ACME-клиент, например, <a href="https://certbot.eff.org/">Certbot</a>. Нужно подтвердить Let&rsquo;s Encrypt, что вы имеете право на аннулирование сертификата. Есть три способа сделать это:</p>
+<h1 id="с-аккаунта-который-выпустил-сертификат">С аккаунта, который выпустил сертификат</h1>
+<p>Если изначально вы выпустили этот сертификат и все еще имеете контроль над аккаунтом, который использовали для выпуска, можно аннулировать его с помощью учетных данных аккаунта. Certbot попытается сделать это по умолчанию. Например:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem --reason keycompromise
+</code></pre></div><h1 id="используя-закрытый-ключ-сертификата">Используя закрытый ключ сертификата</h1>
+<p>Если сертификат изначально был выпущен не вами, но у вас есть копия соответствующего закрытого ключа, можно аннулировать сертификат, используя этот ключ для подписи запроса на аннулирование. Допустим, если вы обнаружили, что закрытый ключ случайно попал в общий доступ, этот метод подойдет для аннулирования соответствующего сертификата, даже если его выпустили не вы.</p>
+<p>Чтобы использовать этот метод, нужно сперва скачать сертификат, который требуется аннулировать. Let&rsquo;s Encrypt сохраняет все сертификаты в логах системы <a href="https://www.certificate-transparency.org/">Certificate Transparency</a>, так что можно найти и скачать сертификаты с помощью монитора логов, например, <a href="https://crt.sh/">crt.sh</a>.</p>
+<p>Вам также понадобится копия закрытого ключа в PEM-формате. Имея ее, можно аннулировать сертификат подобным образом:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reason keycompromise
+</code></pre></div><h1 id="используя-разные-авторизованные-аккаунты">Используя разные авторизованные аккаунты</h1>
+<p>Если кто-то выпустил сертификат после компрометации вашего хоста или DNS, вы захотите аннулировать его сразу по возвращении контроля. Чтобы аннулировать такой сертификат, Let&rsquo;s Encrypt нужно убедиться, что вы контролируете доменные имена в этом сертификате (иначе сторонние люди смогли бы аннулировать чужие сертификаты без разрешения)! Для подтверждения этого контроля Let&rsquo;s Encrypt использует те же методы, что и для подтверждения контроля при выпуске: вы можете поместить <a href="https://tools.ietf.org/html/rfc8555#section-8.4">некое значение в запись DNS TXT</a>, разместить <a href="https://tools.ietf.org/html/rfc8555#section-8.3">файл на HTTP-сервере</a>, или предложить <a href="https://tools.ietf.org/html/rfc8737#section-3">специальный TLS-сертификат</a>. Обычно ACME-клиент сделает это за вас. Обратите внимание, что большинство ACME-клиентов совмещают подтверждение и выпуск; таким образом, единственный способ запросить подтверждение &ndash; это попытка выпуска сертификата. Вы можете впоследствии аннулировать полученный сертификат, если он вам не требуется, либо просто уничтожить закрытый ключ. Если все же хочется избежать выпуска сертификата, можно включить несуществующее доменное имя в команду запуска, что приведет к ошибке выпуска, при этом другое, существующее доменное имя будет подтверждено. Для этого сделайте следующее:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot certonly --manual --preferred-challenges<span class="o">=</span>dns -d <span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span> -d nonexistent.<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>
+</code></pre></div><p>Далее следуйте инструкциям. Если вы предпочитаете подтверждать с использованием HTTP, а не DNS, замените флаг <code>--preferred-challenges</code> на <code>--preferred-challenges=http</code>.</p>
+<p>Как только вы подтвердите контроль над всеми доменными именами в сертификате, который нужно аннулировать, можно скачать сертификат с <a href="https://crt.sh/">crt.sh</a>, после чего продолжить процесс аннулирования, как если бы его выпустили вы:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/downloaded-cert.pem --reason keycompromise
+</code></pre></div></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - это бесплатный, автоматизированный и открытый Центр Сертификации, созданный для вас
+  некоммерческой организацией <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Все письма и запросы отправляйте по адресу:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Ознакомьтесь с нашей <a href="/ru/privacy/">политикой конфиденциальности</a>.<br>
+Ознакомьтесь с нашей <a href="https://www.abetterinternet.org/trademarks/">политикой в отношении товарных знаков</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

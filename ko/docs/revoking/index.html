@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ko-KR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>인증서 해지 -  Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
+    <meta name="description" content="인증서에 대응하는 개인 키가 더 이상 안전하지 않으면 인증서를 해지해야 합니다. 이것은 몇 가지 다른 이유로 발생할 수 있습니다. 예를 들어, 실수로 공용 웹 사이트에서 개인 키를 공유하거나 해커가 서버에서 개인 키를 복사할 수 있습니다. 또는 해커가 서버 또는 DNS 구성을 일시적으로 제어하고, 이를 사용하여 개인 키를 보유하고 있는 인증서의 유효성을 검사하고 발급할 수 있습니다.
+Let&amp;rsquo;s Encrypt 인증서를 취소하면 Let&amp;rsquo;s Encrypt는 OCSP (온라인 인증서 상태 프로토콜)를 통해 해당 해지 정보를 게시하고, 일부 브라우저는 OCSP에서 인증서를 신뢰해야 하는지 여부를 확인합니다.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="인증서 해지">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ko/docs/revoking/">
+    <meta name="twitter:description" content="인증서에 대응하는 개인 키가 더 이상 안전하지 않으면 인증서를 해지해야 합니다. 이것은 몇 가지 다른 이유로 발생할 수 있습니다. 예를 들어, 실수로 공용 웹 사이트에서 개인 키를 공유하거나 해커가 서버에서 개인 키를 복사할 수 있습니다. 또는 해커가 서버 또는 DNS 구성을 일시적으로 제어하고, 이를 사용하여 개인 키를 보유하고 있는 인증서의 유효성을 검사하고 발급할 수 있습니다.
+Let&amp;rsquo;s Encrypt 인증서를 취소하면 Let&amp;rsquo;s Encrypt는 OCSP (온라인 인증서 상태 프로토콜)를 통해 해당 해지 정보를 게시하고, 일부 브라우저는 OCSP에서 인증서를 신뢰해야 하는지 여부를 확인합니다.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ko/docs/revoking/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 블로그 피드" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">탐색 링크 건너뛰기</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ko/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ko/docs/" class="pure-menu-link" tabindex="0">문서</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">도움말</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">후원</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/donate/" class="pure-menu-link">기부하기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">스폰서 되기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/sponsors/" class="pure-menu-link">현재 스폰서 및 기부자</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getinvolved/" class="pure-menu-link">참여</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">소개</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">비영리 인터넷 보안 연구 그룹 (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" class="pure-menu-link">자주 묻는 질문</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">서비스 상태</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/stats/" class="pure-menu-link">통계</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">채용</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/contact/" class="pure-menu-link">연락처</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">언어 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">✓ 한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>인증서 해지</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    최근 업데이트: <time datetime="2021-08-03">2021. 8. 3.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ko/docs">모든 문서 보기</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    참고: 번역된 이후로 영문판이 업데이트되었습니다
+                    (<time datetime="2021-10-15">2021. 10. 15.</time>)
+                    <a href="letsencrypt-ewebsite/docs/revoking/">영어로 보기</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>인증서에 대응하는 개인 키가 더 이상 안전하지 않으면 인증서를 해지해야 합니다. 이것은 몇 가지 다른 이유로 발생할 수 있습니다. 예를 들어, 실수로 공용 웹 사이트에서 개인 키를 공유하거나 해커가 서버에서 개인 키를 복사할 수 있습니다. 또는 해커가 서버 또는 DNS 구성을 일시적으로 제어하고, 이를 사용하여 개인 키를 보유하고 있는 인증서의 유효성을 검사하고 발급할 수 있습니다.</p>
+<p>Let&rsquo;s Encrypt 인증서를 취소하면 Let&rsquo;s Encrypt는 <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">OCSP (온라인 인증서 상태 프로토콜)</a>를 통해 해당 해지 정보를 게시하고, 일부 브라우저는 OCSP에서 인증서를 신뢰해야 하는지 여부를 확인합니다. OCSP에는 <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">근본적인 문제가 있으므로</a> 모든 브라우저가 이 검사를 수행하지는 않습니다. 이 작업에는 세 가지 방법이 있습니다. 그러나 손상된 개인 키에 대응하는 인증서를 해지하는 것은 중요한 실천이며 Let&rsquo;s Encrypt의 <a href="letsencrypt-ewebsite/ko/repository/" hreflang="ko-KR">구독자 계약</a>에 따라 필요합니다.</p>
+<p>Let&rsquo;s Encrypt로 인증서를 취소하려면 대부분 <a href="https://certbot.eff.org/">Certbot</a>과 같은 ACME 클라이언트를 통해 <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a>를 사용하게 됩니다. 귀하에게 인증서를 철회할 수있는 권한이 있음을 Let&rsquo;s Encrypt에 증명해야 합니다. 이 작업에는 세 가지 방법이 있습니다.</p>
+<h1 id="인증서를-발급한-계정에서-하는-경우">인증서를 발급한 계정에서 하는 경우</h1>
+<p>인증서를 원래 발급했었고, 인증서 발급에 사용한 계정을 계속 제어할 수 있는 경우, 계정 자격 증명을 사용하여 인증서를 해지할 수 있습니다. Certbot은 기본적으로 이를 시도합니다. 예시:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem --reason keycompromise
+</code></pre></div><h1 id="인증서의-개인-키를-사용하는-경우">인증서의 개인 키를 사용하는 경우</h1>
+<p>인증서를 원래 발급하지 않았지만 해당 개인 키의 복사본이 있는 경우, 개인 키를 사용하여 해지 요청에 서명하고 인증서를 해지할 수 있습니다. 예를 들어, 개인 키가 실수로 공개 된 것을 알았을 때 이 인증서를 처음 발행한 사람이 아니더라도 이 방법을 사용하여 개인 키를 사용한 인증서를 해지할 수 있습니다.</p>
+<p>이 방법을 사용하려면 먼저 해지할 인증서를 다운로드해야 합니다. Let&rsquo;s Encrypt는 모든 인증서를 <a href="https://www.certificate-transparency.org/">인증서 투명성</a> 로그에 기록하므로 <a href="https://crt.sh/">crt.sh</a>와 같은 로그 모니터에서 인증서를 찾아 다운로드할 수 있습니다.</p>
+<p>PEM 형식의 개인 키 사본도 필요합니다. 일단 이들을 모두 가지고 있으면, 다음과 같이 인증서를 취소할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reason keycompromise
+</code></pre></div><h1 id="승인된-다른-계정을-사용하는-경우">승인된 다른 계정을 사용하는 경우</h1>
+<p>호스트 또는 DNS를 손상시킨 후 누군가가 인증서를 발급한 경우, 다시 제어권을 얻었을 때 해당 인증서를 해지하고 싶을 것입니다. 인증서 해지를 위해 Let&rsquo;s Encrypt는 귀하가 인증서의 도메인 이름을 제어하고 있다는 것을 확인해야 합니다 (그렇지 않으면 사람이 서로의 인증서를 허가없이 취소할 수 있습니다)! 이 제어권의 유효성을 검사하기 위해 Let&rsquo;s Encrypt는 인증서를 발급하는 데 사용하는 것과 동일한 메서드를 사용합니다. <a href="https://tools.ietf.org/html/rfc8555#section-8.4">DNS TXT 레코드에 값</a>을 넣거나, <a href="https://tools.ietf.org/html/rfc8555#section-8.3">HTTP 서버에 파일</a>을 저장하거나, <a href="https://tools.ietf.org/html/rfc8737#section-3">특수한 TLS 인증서</a>를 제공할 수 있습니다. 일반적으로 ACME 클라이언트가 이를 처리합니다. 대부분의 ACME 클라이언트는 유효성 검사와 발급을 합치므로, 유효성 검사를 요청하는 유일한 방법은 발급을 시도하는 것입니다. 그런 다음 원하지 않는 인증서를 취소하거나, 단순히 개인 키를 삭제할 수 있습니다. 인증서를 아예 발행하지 않으려면, 명령줄에 존재하지 않는 도메인 이름을 포함시키면 됩니다. 이렇게 하려면 다음을 실행하십시오.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot certonly --manual --preferred-challenges<span class="o">=</span>dns -d <span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span> -d nonexistent.<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>
+</code></pre></div><p>그리고 다음 지침을 따르십시오. DNS가 아닌 HTTP를 사용하여 검증하는 것을 선호한다면 <code>--preferred-challenges</code> 플래그를 <code>--preferred-challenges = http</code>로 수정하십시오.</p>
+<p>해지하려는 인증서에서 모든 도메인 이름을 제어할 수 있는지 확인한 후에는 <a href="https://crt.sh/">crt.sh</a>에서 인증서를 다운로드한 다음 인증서를 발급한 것처럼 인증서를 해지할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/downloaded-cert.pem --reason keycompromise
+</code></pre></div></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt는 <a href="https://www.abetterinternet.org/"> 비영리 인터넷 보안 연구 그룹 (ISRG)</a>에서 가져온 무료, 자동 및 공개 인증 기관입니다.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>모든 문의 및 질문:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ko/privacy/">개인정보보호 정책</a>을 확인하십시오.<br>
+<a href="https://www.abetterinternet.org/trademarks/">상표권 정책</a>을 확인하십시오.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

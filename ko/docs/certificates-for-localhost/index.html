@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ko-KR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>localhost를 위한 인증서 -  Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
+    <meta name="description" content="가끔 사람들은 로컬 개발에 사용하거나, 웹 앱과 통신해야 하는 네이티브 앱을 배포하기 위해 호스트 이름 &amp;ldquo;localhost&amp;quot;에 대한 인증서를 얻고 싶어합니다. Let&amp;rsquo;s Encrypt는 &amp;ldquo;localhost&amp;quot;에 대한 인증서를 제공 할 수 없습니다. 그것을 아무도 고유하게 소유하지 않으며, &amp;ldquo;.com&amp;rdquo; 또는 &amp;ldquo;.net&amp;quot;과 같은 최상위 도메인에 뿌리를 두고 있지 않기 때문입니다. 127.0.0.1로 확인되는 자체 도메인 이름을 설정하고, DNS 챌린지를 사용하여 도메인 이름에 대한 인증서를 얻을 수 있습니다. 그러나 이건 일반적으로 나쁜 방법이며 더 나은 옵션이 있습니다.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="localhost를 위한 인증서">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ko/docs/certificates-for-localhost/">
+    <meta name="twitter:description" content="가끔 사람들은 로컬 개발에 사용하거나, 웹 앱과 통신해야 하는 네이티브 앱을 배포하기 위해 호스트 이름 &amp;ldquo;localhost&amp;quot;에 대한 인증서를 얻고 싶어합니다. Let&amp;rsquo;s Encrypt는 &amp;ldquo;localhost&amp;quot;에 대한 인증서를 제공 할 수 없습니다. 그것을 아무도 고유하게 소유하지 않으며, &amp;ldquo;.com&amp;rdquo; 또는 &amp;ldquo;.net&amp;quot;과 같은 최상위 도메인에 뿌리를 두고 있지 않기 때문입니다. 127.0.0.1로 확인되는 자체 도메인 이름을 설정하고, DNS 챌린지를 사용하여 도메인 이름에 대한 인증서를 얻을 수 있습니다. 그러나 이건 일반적으로 나쁜 방법이며 더 나은 옵션이 있습니다.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ko/docs/certificates-for-localhost/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 블로그 피드" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">탐색 링크 건너뛰기</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ko/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ko/docs/" class="pure-menu-link" tabindex="0">문서</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">도움말</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">후원</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/donate/" class="pure-menu-link">기부하기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">스폰서 되기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/sponsors/" class="pure-menu-link">현재 스폰서 및 기부자</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getinvolved/" class="pure-menu-link">참여</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">소개</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">비영리 인터넷 보안 연구 그룹 (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" class="pure-menu-link">자주 묻는 질문</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">서비스 상태</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/stats/" class="pure-menu-link">통계</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">채용</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/contact/" class="pure-menu-link">연락처</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">언어 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/certificates-for-localhost/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/certificates-for-localhost/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/certificates-for-localhost/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/certificates-for-localhost/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/certificates-for-localhost/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/certificates-for-localhost/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/certificates-for-localhost/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/certificates-for-localhost/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/certificates-for-localhost/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/certificates-for-localhost/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/certificates-for-localhost/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/certificates-for-localhost/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">✓ 한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/certificates-for-localhost/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/certificates-for-localhost/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/certificates-for-localhost/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/certificates-for-localhost/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/certificates-for-localhost/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/certificates-for-localhost/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/certificates-for-localhost/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/certificates-for-localhost/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/certificates-for-localhost/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>localhost를 위한 인증서</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    최근 업데이트: <time datetime="2017-12-21">2017. 12. 21.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ko/docs">모든 문서 보기</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>가끔 사람들은 로컬 개발에 사용하거나, 웹 앱과 통신해야 하는 네이티브 앱을 배포하기 위해 호스트 이름 &ldquo;localhost&quot;에 대한 인증서를 얻고 싶어합니다. Let&rsquo;s Encrypt는 &ldquo;localhost&quot;에 대한 인증서를 제공 할 수 없습니다. 그것을 아무도 고유하게 소유하지 않으며, &ldquo;.com&rdquo; 또는 &ldquo;.net&quot;과 같은 최상위 도메인에 뿌리를 두고 있지 않기 때문입니다. <code>127.0.0.1</code>로 확인되는 자체 도메인 이름을 설정하고, DNS 챌린지를 사용하여 도메인 이름에 대한 인증서를 얻을 수 있습니다. 그러나 이건 일반적으로 나쁜 방법이며 더 나은 옵션이 있습니다.</p>
+<h1 id="로컬에서-개발하는-경우">로컬에서 개발하는 경우</h1>
+<p>웹 애플리케이션을 개발하는 경우, Apache 또는 Nginx와 같은 로컬 웹 서버를 실행하고 웹 브라우저에서 <code>http://localhost:8000/</code> 을 통해 액세스하는 것이 유용합니다. 그러나 웹 브라우저는 HTTP 대 HTTPS 페이지에서 미묘하게 다른 방식으로 작동합니다. 주요 차이점은 HTTPS 페이지에서 HTTP URL로부터 JavaScript를 로드하라는 요청은 차단된다는 것입니다. 따라서 HTTP를 사용하여 로컬에서 개발하는 경우, 개발 컴퓨터에서는 잘 작동하지만 HTTPS 제작 사이트에 배포 할 때 중단된다는 스크립트 태그를 추가할 수 있습니다. 이런 종류의 문제를 파악하려면 로컬 웹 서버에 HTTPS를 설정하는 것이 좋습니다. 그러나 항상 인증서 경고를 보고 싶지는 않습니다. 로컬에서 녹색 잠금 표시를 어떻게 얻을까요?</p>
+<p>가장 좋은 옵션은 자체 서명 또는 로컬 Root에서 서명한 자체 인증서를 생성하고 운영체제의 신뢰 저장소에서 신뢰하는 것입니다. 그런 다음 로컬 웹 서버에서 해당 인증서를 사용하십시오. 자세한 내용은 아래를 참조하십시오.</p>
+<h1 id="네이티브-앱이-웹-앱과-통신하는-경우">네이티브 앱이 웹 앱과 통신하는 경우</h1>
+<p>때로는 개발자가 추가 기능을 제공하기 위해 웹 사이트와 함께 사용할 수 있는 다운로드 가능한 네이티브 앱을 제공하려고 합니다. 예를 들어, 웹 앱은 할 수 없지만 Dropbox 및 Spotify 데스크톱 앱은 컴퓨터에서 파일을 스캔할 수 있습니다. 한 가지 공통적인 접근 방식은 이러한 네이티브 앱이 localhost에서 웹 서비스를 제공하고, 웹 앱에서 XMLHTTPRequest (XHR) 또는 WebSockets을 통해 요청을 수행하도록 하는 것입니다. 웹 앱은 거의 항상 HTTPS를 사용합니다. 즉, 브라우저가 XHR 또는 WebSockets 요청을 비보안 URL로 전송하는 것을 금지합니다. 이를 &ldquo;혼합 콘텐츠 차단&quot;이라고 합니다. 웹 앱과 통신하려면 네이티브 앱이 안전한 웹 서비스를 제공해야 합니다.</p>
+<p>다행히 최신 브라우저는 <code>http://127.0.0.1:8000/</code>이 루프백 주소를 참조하기 때문에 <a href="https://www.w3.org/TR/secure-contexts/#is-origin-trustworthy">&ldquo;잠재적으로 신뢰할 수있는&rdquo;</a> URL로 <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=607878">간주</a>합니다. <code>127.0.0.1</code>로 전송된 트래픽은 시스템을 떠나지 않도록 보장되므로 네트워크 차단에 대해 자동으로 안전하다고 간주됩니다. 즉, 웹 앱이 HTTPS이고<code>127.0.0.1</code>에서 네이티브 앱 웹 서비스를 제공하는 경우 두 앱은 XHR을 통해 원활하게 통신할 수 있습니다. 불행히도 <a href="https://tools.ietf.org/html/draft-ietf-dnsop-let-localhost-be-localhost-02">localhost는 아직 동일한 기능을 제공받지 못합니다</a>. WebSockets 또한 어떤 이름이라도 이 기능을 제공받지 못합니다.</p>
+<p>이러한 한계를 극복하기 위해<code>127.0.0.1</code> (예시: <code>localhost.example.com</code>)로 확인되는 도메인 이름을 전역 DNS에 설정하고, 그 도메인 이름에 대한 인증서를 얻을 수 있습니다. 해당 인증서를 발송할 개인 키를 네이티브 앱과 연결하고 웹 앱에 <code>http://127.0.0.1:8000/</code> 대신 <code>https://localhost.example.com:8000/</code> 과 통신하도록 알려줍니다. *이렇게 하지 마십시오. 그러면 자체 서명된 최종 사용자 인증서가 아닌 root 인증서를 가져옵니다.</p>
+<p>IP 주소 대신 도메인 이름을 도입하면 공격자가 중간자 (MitM)에서 DNS를 조회하고 다른 IP 주소를 가리키는 응답을 삽입할 수 있습니다. 그런 다음 공격자가 로컬 앱인 것처럼 위조된 응답을 웹 앱으로 보내면, 웹 앱의 디자인에 따라 귀하의 계정을 손상시킬 수 있습니다.</p>
+<p>이 상황에서 성공적인 중간자 (MitM) 가 가능한 이유는 네이티브 앱으로 인증서에 개인 키를 보내야했기 때문입니다. 즉, 네이티브 앱을 다운로드 한 사람은 공격자를 포함한 누구나 개인 키의 사본을 얻습니다. 이는 개인 키의 손상으로 간주되며 CA (Certificate Authority) 가 알게 되면 인증서를 해지해야 합니다. <a href="https://groups.google.com/d/msg/mozilla.dev.security.policy/eV89JXcsBC0/wsj5zpbbAQAJ">많은 네이티브 앱</a>이 <a href="https://groups.google.com/d/msg/mozilla.dev.security.policy/T6emeoE-lCU/-k-A2dEdAQAJ">개인 키를 전달하다가</a> <a href="https://groups.google.com/d/msg/mozilla.dev.security.policy/pk039T_wPrI/tGnFDFTnCQAJ">인증서</a> 를 폐기했습니다.</p>
+<p>안타깝게도 이 기능을 사용하면 웹 사이트와 통신할 때 안전하고 좋은 옵션이 없어도 네이티브 앱을 사용할 수 있습니다. 그리고 브라우저가 <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=378566">웹에서 localhost에 대한 액세스를 더욱 강화하면</a> 상황이 더 까다로워질 수 있습니다.</p>
+<p>또한 권한을 가진 네이티브 API를 제공하는 웹 서비스를 내보내면 권한이 부여되지 않은 웹 사이트가 액세스할 수 있으므로 본질적으로 위험할 수 있습니다. 이 방법을 사용하는 경우, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing</a>을 읽고 Access-Control-Allow-Origin와 메모리 보호가 적용된 HTTP 파서를 사용해야 합니다.</p>
+<h1 id="고유-인증서-생성과-신뢰">고유 인증서 생성과 신뢰</h1>
+<p>CA의 도움없이 누구나 고유 인증서를 만들 수 있습니다. 자신이 만든 인증서는 다른 사람이 신뢰하지 않는다는 것이 유일한 차이점입니다. 로컬 개발용으로는 괜찮습니다.</p>
+<p>localhost에 대한 개인 키와 자체 서명된 인증서를 생성하는 가장 간단한 방법은 다음과 같은 openssl 명령을 사용하는 것입니다.</p>
+<pre><code>openssl req -x509 -out localhost.crt -keyout localhost.key \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj '/CN=localhost' -extensions EXT -config &lt;( \
+   printf &quot;[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth&quot;)
+</code></pre>
+<p>localhost.crt와 localhost.key로 로컬 웹서버를 구성하고, 신뢰할 수 있는 root 목록에 localhost.crt를 설치하십시오.</p>
+<p>개발 인증서를 좀 더 사실적으로 만들고 싶으면, <a href="https://github.com/jsha/minica">minica</a> 를 사용하여 로컬 root 인증서를 생성하고, 서명된 최종 사용자 (일명 리프) 인증서를 발행할 수 있습니다. 그러면 자체 서명된 최종 사용자 인증서가 아닌 root 인증서를 가져옵니다.</p>
+<p>또한 <code>www.localhost</code>와 같이 점이 있는 도메인을 /etc/hosts 파일에 127.0.0.1의 별칭으로 추가하여 사용할 수 있습니다. 이는 브라우저가 쿠키 저장을 처리하는 방법을 미묘하게 변경합니다.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt는 <a href="https://www.abetterinternet.org/"> 비영리 인터넷 보안 연구 그룹 (ISRG)</a>에서 가져온 무료, 자동 및 공개 인증 기관입니다.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>모든 문의 및 질문:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ko/privacy/">개인정보보호 정책</a>을 확인하십시오.<br>
+<a href="https://www.abetterinternet.org/trademarks/">상표권 정책</a>을 확인하십시오.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

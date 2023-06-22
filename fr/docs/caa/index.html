@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="fr-FR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Certificate Authority Authorization (CAA) -  Let&#39;s Encrypt - Certificats SSL/TLS gratuits</title>
+    <meta name="description" content="CAA est un type d&amp;rsquo;enregistrement DNS qui permet aux propriétaires de site de spécifier quelles Autorités de Certificat (AC) sont autorisées à émettre des certificats contenant leurs noms de domaine. Il a été standardisé en 2013 par le RFC 6844 pour autoriser une AC à réduire le risque de délivrance de certificat imprévue. Par défaut, chaque AC publique est autorisée à émettre des certificats pour tout nom de domaine dans le DNS, à condition qu&amp;rsquo;ils valident le contrôle de ce nom de domaine.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Certificate Authority Authorization (CAA)">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/fr/docs/caa/">
+    <meta name="twitter:description" content="CAA est un type d&amp;rsquo;enregistrement DNS qui permet aux propriétaires de site de spécifier quelles Autorités de Certificat (AC) sont autorisées à émettre des certificats contenant leurs noms de domaine. Il a été standardisé en 2013 par le RFC 6844 pour autoriser une AC à réduire le risque de délivrance de certificat imprévue. Par défaut, chaque AC publique est autorisée à émettre des certificats pour tout nom de domaine dans le DNS, à condition qu&amp;rsquo;ils valident le contrôle de ce nom de domaine.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/fr/docs/caa/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Flux du blog de Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Passer les liens de navigation</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/fr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/fr/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/aide-en-francais" class="pure-menu-link" tabindex="0">Obtenir de l&#39;aide</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Faire un don</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/donate/" class="pure-menu-link">Faire un don</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Devenez un sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/sponsors/" class="pure-menu-link">Sponsors et donateurs actuels</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/getinvolved/" class="pure-menu-link">Participez</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">À propos de nous</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Expiration de l&#39;AC racine X3 de DST (septembre 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/faq/" class="pure-menu-link">Foire aux questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">État du service</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/stats/" class="pure-menu-link">Statistiques</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Emplois</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Langues <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/caa/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/caa/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/caa/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/caa/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/caa/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/caa/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">✓ Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/caa/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/caa/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/caa/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/caa/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/caa/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/caa/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/caa/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/caa/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/caa/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/caa/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/caa/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/caa/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/caa/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/caa/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/caa/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Certificate Authority Authorization (CAA)</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Dernière mise à jour : <time datetime="2017-07-27">27 juil. 2017</time>
+
+
+ | <a href="/letsencrypt-ewebsite/fr/docs">Voir toute la documentation</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>CAA est un type d&rsquo;enregistrement DNS qui permet aux propriétaires de site de spécifier quelles Autorités de Certificat (AC) sont autorisées à émettre des certificats contenant leurs noms de domaine. Il a été standardisé en 2013 par le <a href="https://tools.ietf.org/html/rfc6844">RFC 6844</a> pour autoriser une AC à réduire le risque de délivrance de certificat imprévue. Par défaut, chaque AC publique est autorisée à émettre des certificats pour tout nom de domaine dans le DNS, à condition qu&rsquo;ils valident le contrôle de ce nom de domaine. Cela signifie que s&rsquo;il y a un bogue dans l&rsquo;un des nombreux processus de validation des AC publics, chaque nom de domaine est potentiellement affecté. CAA fournit un moyen aux détenteurs de domaine de réduire ce risque.</p>
+<h1 id="utilisation-du-caa">Utilisation du CAA</h1>
+<p>Si vous ne vous souciez pas de CAA, vous n&rsquo;avez généralement rien à faire (mais voyez erreurs CAA ci-dessous). Si vous souhaitez utiliser CAA pour restreindre les Autorités de Certificat autorisées à émettre des certificats pour votre domaine, vous devrez utiliser un fournisseur DNS qui prend en charge la configuration des enregistrements CAA. Référez-vous à <a href="https://sslmate.com/caa/support">la page CAA de SSLMate</a> pour une liste de ces fournisseurs. Si votre fournisseur est listé, vous pouvez utiliser <a href="https://sslmate.com/caa/">le générateur d&rsquo;entrées CAA de SSLMate</a> pour générer un ensemble d&rsquo;entrées CAA qui liste les AC que vous souhaitez autoriser.</p>
+<p>Le nom de domaine d&rsquo;identification de Let&rsquo;s Encrypt pour CAA est <code>letsencrypt.org</code>. C&rsquo;est officiellement documenté <a href="letsencrypt-ewebsite/fr/repository/" hreflang="fr-FR">dans notre Certification Practice Statement (CPS)</a>.</p>
+<h2 id="où-ajouter-l-entrée">Où ajouter l&rsquo;entrée</h2>
+<p>Vous pouvez définir des enregistrements CAA sur votre domaine principal, ou à n&rsquo;importe quel niveau de sous-domaine. Par exemple, si vous avez <code>www.community.example.com</code>, vous pouvez définir des enregistrements CAA pour tout le domaine, ou pour <code>community.example.com</code>, ou pour <code>example.com</code>. Les AC vérifieront chaque version, de gauche à droite, et s&rsquo;arrêteront dés qu&rsquo;ils verront un enregistrement CAA. Donc par exemple, un enregistrement CAA pour <code>community.example.com</code> aura la priorité sur <code>example.com</code>. La plupart des gens qui ajoutent des enregistrements CAA voudront les ajouter sur leur domaine enregistré (<code>example.com</code>) afin qu&rsquo;ils s&rsquo;appliquent sur tous les sous-domaines. Veuillez noter également que les enregistrements CAA pour les sous-domaines ont la priorité sur leurs domaines parent, peu importe qu&rsquo;ils soient plus permissifs ou plus restrictifs. Donc un sous-domaine peut assouplir une restriction mise en place par un domaine parent.</p>
+<p>La validation CAA suit les CNAME, comme toutes les autres requêtes DNS. Si <code>www.community.example.com</code> est un CNAME vers <code>web1.example.net</code>, le AC demandera d&rsquo;abord les enregistrements CAA pour <code>www.community.example.com</code>, puis constatant qu&rsquo;il y a un CNAME pour ce nom de domaine au lieu d&rsquo;enregistrements CAA, demandera plutôt les enregistrements CAA pour <code>web1.example.net</code>. Notez que si un nom de domaine a un enregistrement CNAME, il est interdit d&rsquo;avoir d&rsquo;autres enregistrements selon les standards DNS.</p>
+<p>La <a href="https://tools.ietf.org/html/rfc6844">RFC CAA</a> spécifie un comportement supplémentaire appelé &ldquo;tree-climbing&rdquo; qui nécessite que les AC vérifie également les domaines parents du résultat de la résolution CNAME. Ce comportement supplémentaire a été supprimé plus tard dans <a href="https://www.rfc-editor.org/errata/eid5065">un erratum</a>, donc Let&rsquo;s Encrypt et d&rsquo;autres AC ne l&rsquo;implémentent pas.</p>
+<h1 id="erreurs-caa">Erreurs CAA</h1>
+<p>Depuis que Let&rsquo;s Encrypt vérifie les enregistrements CAA avant d&rsquo;émettre un certificat, nous avons parfois des erreurs même pour les domaines qui n&rsquo;ont pas défini d&rsquo;enregistrement CAA. Quand nous avons une erreur, il n&rsquo;y aucun moyen de dire si nous sommes autorisé à émettre pour le domaine affecté, car il peut y avoir des enregistrements CAA présents qui interdisent l&rsquo;émission, mais qui ne sont pas visibles à cause de l&rsquo;erreur.</p>
+<p>Si vous avez des erreurs relatives à CAA, réessayez quelques fois avec notre <a href="letsencrypt-ewebsite/fr/docs/staging-environment/" hreflang="fr-FR">environnement de test</a> pour déterminer si ces erreurs sont temporaires ou permanentes. Si elles sont permanentes, vous devrez rapporter le problème au support de votre fournisseur DNS, ou changer de fournisseur. Si vous n&rsquo;êtes certain de savoir qui est votre fournisseur DNS, demandez à votre hébergeur.</p>
+<p>Certains fournisseurs DNS qui ne sont pas familiers avec CAA répondent initialement avec &ldquo;Nous ne prenons pas en charge les enregistrements CAA&rdquo;. Votre fournisseur DNS n&rsquo;a pas besoin de spécifiquement supporter les enregistrements CAA ; il a seulement besoin de répondre avec une réponse NOERROR aux types de requêtes inconnus (y compris CAA). Retourner d&rsquo;autres opcodes, y compris NOTIMP, pour les qtypes non reconnus est une violation de la <a href="https://tools.ietf.org/html/rfc1035">RFC 1025</a>, et doit être corrigé.</p>
+<h1 id="servfail">SERVFAIL</h1>
+<p>Une des erreurs les plus courantes que les gens rencontrent est SERVFAIL. Le plus souvent cela indique un échec de la validation DNSSEC. Si vous obtenez une erreur SERVFAIL, vous devriez en premier lieu utiliser un débogueur DNSSEC comme <a href="http://dnsviz.net/">dnsviz.net</a>. Si cela ne fonctionne pas, il est possible que vos serveurs de noms génèrent des signatures incorrectes uniquement quand la réponse est vide. Or les réponses CAA sont le plus souvent vides.  Par exemple, PowerDNS <a href="https://community.letsencrypt.org/t/caa-servfail-changes/38298/2?u=jsha">a eu ce bug jusqu&rsquo;à sa version 4.0.3</a>.</p>
+<p>Si vous n&rsquo;avez pas de DNSSEC activé et que vous obtenez un SERVFAIL, la seconde raison la plus probable est que votre serveurs de noms autorisé a retourné NOTIMP, qui, comme décrit plus haut, est une violation de la RFC 1035 ; elle devrait plutôt renvoyer NOERROR avec une réponse vide. Si c&rsquo;est le cas, rapportez un bug ou ouvrez un ticket auprès du support de votre fournisseur DNS.</p>
+<p>Enfin, SERVFAIL peut être causé par des pannes sur vos serveurs de noms autorisés. Vérifiez les enregistrements NS pour vos serveurs de noms et assurez-vous que chaque serveur est disponible.</p>
+<h1 id="timeout">Timeout</h1>
+<p>Parfois, les requêtes CAA expirent. C&rsquo;est-à-dire que le serveur de noms faisant autorité ne renvoie jamais de réponse, même après plusieurs tentatives. La plupart du temps ceci se produit lorsque votre serveur de noms a devant lui un pare-feu mal configuré qui ignore les requêtes DNS avec des qtypes inconnus. Ouvrez un ticket auprès du support de votre fournisseur DNS et demandez-leur s&rsquo;ils ont un tel pare-feu.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt est une autorité de certification gratuite, automatisée et ouverte
+  mise à votre disposition par la société d'utilité publique <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envoyer tous les emails ou les demandes de renseignements à :</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Voir notre <a href="/fr/privacy/">politique de confidentialité</a>.<br>
+Voir notre <a href="https://www.abetterinternet.org/trademarks/">politique en matière de copyright</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

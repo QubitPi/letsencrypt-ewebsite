@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="es-US">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Comenzando -  Let&#39;s Encrypt - Certificados SSL/TLS Gratuitos</title>
+    <meta name="description" content="Para habilitar HTTPS en tu página de web, tienes que obtener un certificado (un tipo de archivo) de una Autoridad de Certificación (AC, o CA por sus siglas en inglés). Let&amp;rsquo;s Encrypt es una AC. Para obtener un certificado para tu dominio de sitio web de Let&amp;rsquo;s Encrypt, tienes que demonstrar control sobre ese dominio. Con Let&amp;rsquo;s Encrypt, puedes hacer esto con software que usa el protocolo ACME, el cual típicamente corre en tu hospedaje de web.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Comenzando">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/es/getting-started/">
+    <meta name="twitter:description" content="Para habilitar HTTPS en tu página de web, tienes que obtener un certificado (un tipo de archivo) de una Autoridad de Certificación (AC, o CA por sus siglas en inglés). Let&amp;rsquo;s Encrypt es una AC. Para obtener un certificado para tu dominio de sitio web de Let&amp;rsquo;s Encrypt, tienes que demonstrar control sobre ese dominio. Con Let&amp;rsquo;s Encrypt, puedes hacer esto con software que usa el protocolo ACME, el cual típicamente corre en tu hospedaje de web.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/es/getting-started/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Saltar enlaces de navegación</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/es/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/es/docs/" class="pure-menu-link" tabindex="0">Documentación</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/ayuda-en-espanol/22" class="pure-menu-link" tabindex="0">Consigue Ayuda</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donar</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/donate/" class="pure-menu-link">Haz una donación</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Conviértete en un patrocinador</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/sponsors/" class="pure-menu-link">Patrocinadores y donantes actuales</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getinvolved/" class="pure-menu-link">Involúcrate</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Acerca De</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/faq/" class="pure-menu-link">Preguntas Frecuentes (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status de Servicio</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/stats/" class="pure-menu-link">Estadísticas</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Trabajos</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/contact/" class="pure-menu-link">Contactar</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Lenguajes <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">✓ Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="container">
+	<h1>Comenzando</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<p>Para habilitar HTTPS en tu página de web, tienes que obtener un certificado (un tipo de archivo) de una Autoridad de Certificación (AC, o CA por sus siglas en inglés). Let&rsquo;s Encrypt es una AC. Para obtener un certificado para tu dominio de sitio web de Let&rsquo;s Encrypt, tienes que demonstrar control sobre ese dominio. Con Let&rsquo;s Encrypt, puedes hacer esto con software que usa el <a href="https://tools.ietf.org/html/rfc8555">protocolo ACME</a>, el cual típicamente corre en tu hospedaje de web.</p>
+<p>Para averiguar cuál método funcionará mejor para ti, tendrás que saber si tienes <a href="https://en.wikipedia.org/wiki/Shell_account">acceso shell</a> (también conocido como acceso SSH) a tu hospedaje de web. Si manejas tu sitio web enteramente mediante un panel de control como <a href="https://cpanel.net/">cPanel</a>, <a href="https://www.plesk.com/">Plesk</a>, o <a href="https://wordpress.org/">WordPress</a>, hay una buena posibilidad que no tienes acceso shell. Puedes preguntarle a tu proveedor de hospedaje para estar seguro.</p>
+<h1 id="con-acceso-shell">Con Acceso Shell</h1>
+<p>Recomendamos que la mayoría de las personas con <em>acceso shell</em> usen el cliente ACME llamado <a href="https://certbot.eff.org/" title="Certbot">Certbot</a>. Éste puede automatizar la emisión e instalación de certificados con cero tiempo de inactividad. También tiene modos de expertos para personas que no quieren autoconfiguración. Es fácil de usar, funciona en muchos sistemas operativos, y tiene documentación genial. <a href="https://certbot.eff.org/" title="Certbot">Visita la página web de Certbot</a> para conseguir instrucciones para tu sistema operativo y servidor de web.</p>
+<p>Si <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> no cumple con tus necesidades, o quisieras tratar otra cosa, <a href="letsencrypt-ewebsite/es/docs/client-options/" hreflang="es-US">hay muchos otros clientes ACME para escoger</a>.  Una vez hayas escogido un cliente ACME, ve la documentación para ese cliente para proceder.</p>
+<p>Si estás experimentando con diferentes clientes ACME, usa nuestro <a href="letsencrypt-ewebsite/es/docs/staging-environment/" hreflang="es-US">ambiente de <em>staging</em></a> para evitar que llegues a nuestros <a href="letsencrypt-ewebsite/es/docs/rate-limits/" hreflang="es-US">limites de tarifa</a>.</p>
+<h1 id="sin-acceso-shell">Sin Acceso Shell</h1>
+<p>La mejor forma de utilizar Let&rsquo;s Encrypt sin acceso <em>shell</em> es usando el soporte incorporado de tu proveedor de hospedaje. Si tu proveedor de hospedaje ofrece soporte para Let&rsquo;s Encrypt, pueden solicitar un certificado gratis en su nombre, instalarlo, y mantenerlo actualizado automáticamente. Para algunos proveedores de hospedaje, esto es un ajuste de configuración que tienes que prender. Otros proveedores automaticamente solicitan e instalan certificados para todos sus clientes.</p>
+<p><a href="https://community.letsencrypt.org/t/web-hosting-who-support-lets-encrypt/6920">Revisa nuestra lista de proveedores de hospedaje</a> para ver si el tuyo está en ella. Si lo está, sigue su documentación para configurar tu certificado de Let&rsquo;s Encrypt.</p>
+<p>Si tu proveedor de hospedaje no tiene soporte para Let&rsquo;s Encrypt, puedes contactarlos para que lo soporten. Hacemos lo mejor que podemos para hacer fácil añadir soporte para Let&rsquo;s Encrypt, !y proveedores suelen estar felices de escuchar sugerencias de clientes!</p>
+<p>Si tu proveedor de hospedaje no quiere integrar Let&rsquo;s Encrypt, pero sí tiene soporte para subir certificados <em>custom</em>, puedes instalar Certbot en tu propia computadora y usarlo en <a href="https://certbot.eff.org/docs/using.html#manual">modo manual</a>. En modo manual, tu subes un archivo específico a tu sitio web para probar tu control. Certbot recuperará un certificado que tu puedes subir a tu proveedor de hospedaje. No recomendamos esta opción porque es un contratiempo y necesitaras repetirlo varias veces durante el año cuando tu certificado expira. Para la mayoría de las personas es mejor solicitar soporte para Let&rsquo;s Encrypt de su proveedor de hospedaje, o cambiar de proveedor si no tienen planes de implementarlo.</p>
+<h1 id="obteniendo-ayuda">Obteniendo Ayuda</h1>
+<p>Si tienes preguntas sobre la selección de clientes ACME, o sobre como usar un cliente en particular, or cualquier otra cosa relacionada a Let&rsquo;s Encrypt, por favor trata nuestros <a href="https://community.letsencrypt.org/">foros comunitarios</a>.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Apoya una Web más segura y respetuosa de la privacidad.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/es/donate/">Donar</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt es una autoridad de certificación gratuita, automatizada, y abierta traida a ustedes por la organización sin ánimos de lucro <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envíe todo el correo o consultas a:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Mira nuestra <a href="/es/privacy/">política de privacidad</a>.<br>
+Mira nuestra <a href="https://www.abetterinternet.org/trademarks/">política de marca</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

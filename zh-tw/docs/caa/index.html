@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hant-TW">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>憑證頒發機構授權 -  Let&#39;s Encrypt - 免費的 SSL/TLS 憑證</title>
+    <meta name="description" content="憑證頒發機構授權 (Certificate Authority Authorization, CAA) 是一種 DNS 紀錄，它讓網站管理者指定哪些憑證頒發機構，可以頒發包含其網站域名的憑證。 CAA 記錄在 2013 年由 RFC 6844 標準化，以&amp;quot;降低網域擁有者對於 CA 意外頒發憑證時的風險&amp;quot;。任何 CA 都可以在驗證域名控制權後，替任何 DNS 下的網域頒發憑證。 這表示，如果在 CA 的驗證程序中有錯誤，所有域名都可能受到影響。 CAA 紀錄提供了一個方法讓域名擁有者降低這種風險。
+使用 CAA 如果你不在意 CAA 紀錄，你可以甚麼都不用做，但請注意以下描述的 CAA 紀錄錯誤。 如果你想使用 CAA 紀錄，來限制哪些憑證頒發機構能替你的網域頒發憑證，你需要使用支援 CAA 紀錄的 DNS。 你可以透過 SSLMate CAA 支援網頁找到哪些 DNS 業者支援 CAA 紀錄； 如果你所使用的 DNS 業者有在列表中，你可以使用 SSLMate&amp;rsquo;s CAA Record Generator 來產生 CAA 紀錄。
+Let&amp;rsquo;s Encrypt 的 CAA 網域辨認名稱為 letsencrypt.org。 紀錄在官方的憑證實作聲明 (Certification Practice Statemen, CPS) 章節 4.2.1 中。">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="憑證頒發機構授權">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-tw/docs/caa/">
+    <meta name="twitter:description" content="憑證頒發機構授權 (Certificate Authority Authorization, CAA) 是一種 DNS 紀錄，它讓網站管理者指定哪些憑證頒發機構，可以頒發包含其網站域名的憑證。 CAA 記錄在 2013 年由 RFC 6844 標準化，以&amp;quot;降低網域擁有者對於 CA 意外頒發憑證時的風險&amp;quot;。任何 CA 都可以在驗證域名控制權後，替任何 DNS 下的網域頒發憑證。 這表示，如果在 CA 的驗證程序中有錯誤，所有域名都可能受到影響。 CAA 紀錄提供了一個方法讓域名擁有者降低這種風險。
+使用 CAA 如果你不在意 CAA 紀錄，你可以甚麼都不用做，但請注意以下描述的 CAA 紀錄錯誤。 如果你想使用 CAA 紀錄，來限制哪些憑證頒發機構能替你的網域頒發憑證，你需要使用支援 CAA 紀錄的 DNS。 你可以透過 SSLMate CAA 支援網頁找到哪些 DNS 業者支援 CAA 紀錄； 如果你所使用的 DNS 業者有在列表中，你可以使用 SSLMate&amp;rsquo;s CAA Record Generator 來產生 CAA 紀錄。
+Let&amp;rsquo;s Encrypt 的 CAA 網域辨認名稱為 letsencrypt.org。 紀錄在官方的憑證實作聲明 (Certification Practice Statemen, CPS) 章節 4.2.1 中。">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-tw/docs/caa/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳過導航連結</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">獲取幫助</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐贈</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成為贊助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">關於我們</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服務狀態</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招募</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/caa/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/caa/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/caa/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/caa/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/caa/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/caa/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/caa/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/caa/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/caa/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/caa/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/caa/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/caa/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/caa/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/caa/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/caa/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/caa/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/caa/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/caa/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/caa/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/caa/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/caa/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>憑證頒發機構授權</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最後更新於<time datetime="2017-07-27">Jul 27, 2017</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-tw/docs">查看所有文件</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>憑證頒發機構授權 (Certificate Authority Authorization, CAA) 是一種 DNS 紀錄，它讓網站管理者指定哪些憑證頒發機構，可以頒發包含其網站域名的憑證。 CAA 記錄在 2013 年由 <a href="https://tools.ietf.org/html/rfc6844">RFC 6844</a> 標準化，以&quot;降低網域擁有者對於 CA 意外頒發憑證時的風險&quot;。任何 CA 都可以在驗證域名控制權後，替任何 DNS 下的網域頒發憑證。 這表示，如果在 CA 的驗證程序中有錯誤，所有域名都可能受到影響。 CAA 紀錄提供了一個方法讓域名擁有者降低這種風險。</p>
+<h1 id="使用-caa">使用 CAA</h1>
+<p>如果你不在意 CAA 紀錄，你可以甚麼都不用做，但請注意以下描述的 CAA 紀錄錯誤。 如果你想使用 CAA 紀錄，來限制哪些憑證頒發機構能替你的網域頒發憑證，你需要使用支援 CAA 紀錄的 DNS。 你可以透過 <a href="https://sslmate.com/caa/support">SSLMate CAA 支援網頁</a>找到哪些 DNS 業者支援 CAA 紀錄； 如果你所使用的 DNS 業者有在列表中，你可以使用 <a href="https://sslmate.com/caa/">SSLMate&rsquo;s CAA Record Generator</a> 來產生 CAA 紀錄。</p>
+<p>Let&rsquo;s Encrypt 的 CAA 網域辨認名稱為 <code>letsencrypt.org</code>。 紀錄在官方的<a href="letsencrypt-ewebsite/zh-tw/repository/" hreflang="zh-Hant-TW">憑證實作聲明 (Certification Practice Statemen, CPS) 章節 4.2.1</a> 中。</p>
+<h2 id="caa-紀錄應該設定為哪個網域">CAA 紀錄應該設定為哪個網域</h2>
+<p>你可以將 CAA 紀錄設定為主網域或任何子網域。 例如：你想替網域 <code>www.community.example.com</code> 設定 CAA 紀錄，你可以以設定全名、<code>community.example.com</code> 或 <code>example.com</code>。 憑證頒發機構會從左到右檢查網域名稱，並在看到 CAA 紀錄後停止 因此 <code>community.example.com</code> 上的 CAA 紀錄優先於 <code>example.com</code>。 大多數人會將 CAA 紀錄設定為註冊網域 (<code>example.com</code>)，這樣所有子網域就都能使用其 CAA 紀錄。 另外請注意，子網域的 CAA 優先權大於其父網域，無論該紀錄的限制比父網域更寬鬆或嚴格。 因此子網域可以使用比父網域更寬鬆的限制。</p>
+<p>CAA 如同所有的 DNS 請求一樣，也遵守 CNAME 紀錄。 如果 <code>www.community.example.com</code> 有一個 CNAME 紀錄指向 <code>web1.example.net</code>，憑證頒發機構會先向 <code>www.community.example.com</code> 詢問 CAA 紀錄，接著他發現該網域有一個 CNAME 紀錄而不是 CAA 紀錄後，它會向 <code>web1.example.net</code> 詢問 CAA 紀錄。 請注意，如果網域名稱有 CNAME 紀錄，則根據 DNS 標準中該域名不能有其他的紀錄。</p>
+<p><a href="https://tools.ietf.org/html/rfc6844">CAA RFC</a> 中描述了另一種 &ldquo;爬樹&rdquo; 的方式，要求憑證頒發機構同時檢查父網域的 CNAME 紀錄。 後來<a href="https://www.rfc-editor.org/errata/eid5065">勘誤</a>中移除了這個要求，因此 Let&rsquo;s Encrypt 和其他憑證頒發機構都沒有這個行為。</p>
+<h1 id="caa-錯誤">CAA 錯誤</h1>
+<p>Let&rsquo;s Encrypt 在頒發憑證之前會先確認 CAA 紀錄，對於未設置 CAA 紀錄的網域，我們也可能遇到錯誤。 當我們遇到錯誤時，我們無法判斷是否能替該網域頒發憑證，因為網域可能因為錯誤而無法顯示禁止我們頒發憑證的 CAA 紀錄。</p>
+<p>如果你遇到與 CAA 相關的紀錄，請在我們的<a href="letsencrypt-ewebsite/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>中多試幾次，以確認他們是暫時還是持續性的問題。 如果是持續性的問題，你需要向 DNS 業者或網路服務業者尋求支援 如果你不確定你的 DNS 業者是誰，請向主機託管業者詢問。</p>
+<p>一些對於 CAA 紀錄不熟悉的 DNS 業者可能會回應 &ldquo;我們不提供 CAA 紀錄&rdquo;。事實上你的 DNS 業者不需要特別的動作來處理 CAA 紀錄，DNS 只需要對無法識別的查詢（包括 CAA）回應 NOERROR， 回應其他種類的操作代碼，包括 NOTIMP，違反了 <a href="https://tools.ietf.org/html/rfc1035">RFC 1035</a>標準並需要被修補。</p>
+<h1 id="servfail">SERVFAIL</h1>
+<p>SERVFAIL 是人們最常見的錯誤之一， 大多數情況下這表示 DNSSEC 驗證失敗。 如果你遇到 SERVFAIL 錯誤，首先你需要使用 DNSSEC debugger，例如 <a href="http://dnsviz.net/">dnsviz.net</a>。 如果還是發生錯誤，很有可能是你的 DNS 在空回應時，會產生錯誤簽名， 因為 CAA 回應通常為空回應，  像 PowerDNS <a href="https://community.letsencrypt.org/t/caa-servfail-changes/38298/2?u=jsha">在 4.0.3 之前的版本就發生這樣的問題</a>。</p>
+<p>如果你並沒有開啟 DNSSEC 但還是遇到了 SERVFAIL 錯誤，可能的原因是你的授權域名伺服器 (authoritative DNS servers) 了回應 NOTIMP，這種回應方式違反了 RFC 1035 標準；它應該回應空回應與操作代碼 NOERROR。 如果你遇到這種情況，請像 DNS 業者尋求支援並回報錯誤。</p>
+<p>最後，SERVFAILs 也有可能是你的授權域名伺服器服務中斷所造成的。 請檢查 DNS 的 NS 紀錄，並確保每個伺服器都有正常運作。</p>
+<h1 id="超時">超時</h1>
+<p>有時候進行 CAA 紀錄查詢會超時。 也就是說，即使在重複多次後，授權域名伺服器一直沒有回應。 最常見的狀況 DNS 伺服器防火牆設置有誤，拒絕對無法識別的 DNS 紀錄查詢進行回應。 你可以向 DNS 業者詢問他們是否有這樣的防火牆設定。</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  
+  Let's Encrypt 是免費、自動化和開放的憑證頒發機構，由非營利組織<a href="https://www.abetterinternet.org/">網路安全研究小組 (Internet Security Research Group, ISRG)</a> 營運。
+  </p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>將所有信件和問題發送至：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我們的<a href="/zh-tw/privacy/">私隱政策</a>.<br>
+查看我們的<a href="https://www.abetterinternet.org/trademarks/">商標政策</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

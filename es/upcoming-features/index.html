@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="es-US">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Próximas Funcionalidades -  Let&#39;s Encrypt - Certificados SSL/TLS Gratuitos</title>
+    <meta name="description" content="Validación de Multi-Perspectiva Actualmente Let&amp;rsquo;s Encrypt hace validaciónes desde una sola perspectiva de red. Estamos planificando empezar a validar desde multiples perspectivas de red.
+Raíz e Intermedios ECDSA Actualmente Let&amp;rsquo;s Encrypt solamente firma certificados end-entity con intermedios RSA. Let&amp;rsquo;s Encrypt generará una raíz ECDSA e intermedios que se pueden usar para firmar certificados end-entity.
+Funcionalidades Completadas Certificate Transparency Log  Habilitado: 15 de mayo del 2019  Estamos empezando a operar un Certificate Transparency log.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Próximas Funcionalidades">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/es/upcoming-features/">
+    <meta name="twitter:description" content="Validación de Multi-Perspectiva Actualmente Let&amp;rsquo;s Encrypt hace validaciónes desde una sola perspectiva de red. Estamos planificando empezar a validar desde multiples perspectivas de red.
+Raíz e Intermedios ECDSA Actualmente Let&amp;rsquo;s Encrypt solamente firma certificados end-entity con intermedios RSA. Let&amp;rsquo;s Encrypt generará una raíz ECDSA e intermedios que se pueden usar para firmar certificados end-entity.
+Funcionalidades Completadas Certificate Transparency Log  Habilitado: 15 de mayo del 2019  Estamos empezando a operar un Certificate Transparency log.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/es/upcoming-features/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Saltar enlaces de navegación</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/es/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/es/docs/" class="pure-menu-link" tabindex="0">Documentación</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/ayuda-en-espanol/22" class="pure-menu-link" tabindex="0">Consigue Ayuda</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donar</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/donate/" class="pure-menu-link">Haz una donación</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Conviértete en un patrocinador</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/sponsors/" class="pure-menu-link">Patrocinadores y donantes actuales</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getinvolved/" class="pure-menu-link">Involúcrate</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Acerca De</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/faq/" class="pure-menu-link">Preguntas Frecuentes (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status de Servicio</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/stats/" class="pure-menu-link">Estadísticas</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Trabajos</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/contact/" class="pure-menu-link">Contactar</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Lenguajes <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/upcoming-features/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/upcoming-features/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/upcoming-features/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/upcoming-features/" lang="es-US" hreflang="es-US" class="pure-menu-link">✓ Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/upcoming-features/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/upcoming-features/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/upcoming-features/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/upcoming-features/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/upcoming-features/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/upcoming-features/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/upcoming-features/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/upcoming-features/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/upcoming-features/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/upcoming-features/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/upcoming-features/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/upcoming-features/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/upcoming-features/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/upcoming-features/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/upcoming-features/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/upcoming-features/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/upcoming-features/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Próximas Funcionalidades</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Última Actualización: <time datetime="2019-07-03">3 jul. 2019</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Nota: La versión en inglés ha sido actualizada desde está traducción
+                    (<time datetime="2021-09-16">16 sept. 2021</time>)
+                    <a href="letsencrypt-ewebsite/upcoming-features/">Ver en inglés</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<h2 id="validación-de-multi-perspectiva">Validación de Multi-Perspectiva</h2>
+<p>Actualmente Let&rsquo;s Encrypt hace validaciónes desde una sola perspectiva de red. Estamos planificando empezar a validar desde multiples perspectivas de red.</p>
+<h2 id="raíz-e-intermedios-ecdsa">Raíz e Intermedios ECDSA</h2>
+<p>Actualmente Let&rsquo;s Encrypt solamente firma certificados <em>end-entity</em> con intermedios RSA. Let&rsquo;s Encrypt generará una raíz ECDSA e intermedios que se pueden usar para firmar certificados <em>end-entity</em>.</p>
+<h1 id="funcionalidades-completadas">Funcionalidades Completadas</h1>
+<h2 id="certificate-transparency-log">Certificate Transparency Log</h2>
+<ul>
+<li>Habilitado: 15 de mayo del 2019</li>
+</ul>
+<p>Estamos empezando a operar un <a href="letsencrypt-ewebsite/es/docs/ct-logs/" hreflang="es-US">Certificate Transparency log</a>.</p>
+<h2 id="soporte-para-reto-tls-alpn">Soporte para reto TLS ALPN</h2>
+<ul>
+<li>Habilitado: 12 de julio del 2018</li>
+</ul>
+<p>Hemos especificado e implementado un <a href="https://tools.ietf.org/html/rfc8737">reemplazo</a> para el método de validación TLS-SNI, el cual fue <a href="https://community.letsencrypt.org/t/important-what-you-need-to-know-about-tls-sni-validation-issues/50811">discontinuado por razones de seguridad</a>. Introducir un reemplazo fue importante para subscriptores que solo quieren usar el puerto 443 para validación.</p>
+<h2 id="inserción-de-recibos-sct-en-certificados">Inserción de recibos SCT en certificados</h2>
+<ul>
+<li>Habilitado: 29 de marzo del 2018</li>
+</ul>
+<h2 id="certificados-wildcard">Certificados Wildcard</h2>
+<ul>
+<li>Habilitado: 13 de marzo del 2018</li>
+</ul>
+<h2 id="v2-acme-api">v2 ACME API</h2>
+<ul>
+<li>Habilitado: 13 de marzo del 2018</li>
+</ul>
+<h2 id="soporte-idn">Soporte IDN</h2>
+<ul>
+<li>Habilitado: 20 de octubre del 2016</li>
+</ul>
+<p>Let&rsquo;s Encrypt ahora soporta emitición para <em>Internationalized Domain Names</em> (IDNs, por sus siglas en inglés).</p>
+<h2 id="soporta-completo-para-ipv6">Soporta completo para IPv6</h2>
+<ul>
+<li>Habilitado: 26 de julio del 2016</li>
+</ul>
+<p>Inicialmente, solo partes de la infraestructura del API de Let&rsquo;s Encrypt se podia comunicar mediante IPv6. Esto evitaba que sistemas solo IPV6 pudieran interacturar completamente con Let&rsquo;s Encrypt. Esto ha sido resuelto - soporte para IPV6 ha sido habilitado para toda funcionalidad.</p>
+<h2 id="compatibilidad-de-certificado-en-windows-xp">Compatibilidad de Certificado en Windows XP</h2>
+<ul>
+<li>Habilitado: 25 de marzo del 2016</li>
+</ul>
+<p>Se resolvió un problema con nuestra cadena de certificados que prevenía certificados Let&rsquo;s Encrypt  de ser aceptados por navegadores en Windows XP.</p>
+<h2 id="soporte-para-firmar-ecdsa">Soporte para firmar ECDSA</h2>
+<ul>
+<li>Habilitado: 10 de febrero del 2016</li>
+</ul>
+<p>Se agregó la habilidad para Let&rsquo;s Encypt firmar llaves ECDSA con intermedios RSA de Let&rsquo;s Encrypt. Soporte para firmar llaves ECDSA con una cadena completa de certificados ECDSA será añdido después.</p>
+<h2 id="soporte-para-reto-acme-dns">Soporte para reto ACME DNS</h2>
+<ul>
+<li>Habilitado: 20 de enero del 2016</li>
+</ul>
+<p>Let&rsquo;s Encrypt permite validación mediante registros DNS asi definidos en la especificación ACME.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Apoya una Web más segura y respetuosa de la privacidad.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/es/donate/">Donar</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt es una autoridad de certificación gratuita, automatizada, y abierta traida a ustedes por la organización sin ánimos de lucro <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envíe todo el correo o consultas a:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Mira nuestra <a href="/es/privacy/">política de privacidad</a>.<br>
+Mira nuestra <a href="https://www.abetterinternet.org/trademarks/">política de marca</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

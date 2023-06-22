@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>隐私政策 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="Let&amp;rsquo;s Encrypt 隐私政策将从三个情况来描述我们如何收集、使用、披露您的信息：
+ 当您作为依赖方访问一个使用 HTTPS 的网站，使用我们的加密证书时， 当您是用户，即，当您请求并使用 Let&amp;rsquo;s Encrypt 中的证书时， 当您是 Let&amp;rsquo;s Encrypt 网站、社区讨论论坛、letsencrypt.org 下的其他网页以及第三方社交媒体网站上 Let&amp;rsquo;s Encrypt 运营的帐户的访问者时，  Let&amp;rsquo;s Encrypt是由 互联网安全调查小组提供的服务，是美国加利福尼亚州的非盈利公共组织。
+信任方 当您使用具有 Let&amp;rsquo;s Encrypt 证书的 HTTPS 网站或其他 TLS 服务时，您的浏览器（或 TLS 客户端）将请求 Let&amp;rsquo;s Encrypt 以检查证书是否已被撤销（“OCSP 请求”）。 如果您的浏览器发出 OCSP 请求，我们的服务器将自动在服务器的临时日志文件中记录您的 IP 地址、浏览器和操作系统。 我们绝不会使用 OCSP 请求中的数据来构建档案或识别个人。 临时日志仅用于服务运作上的目的，通常会在不到七天的时间内删除。 我们可能会长时间保留一部分服务器日志，以便调查软件出错或滥用情况。 如果我们这样做，我们将在完成调查后删除任何存储的日志。 我们还可能从服务器日志计算、保留和发布聚合信息，例如哪些证书生成最大量的请求。 我们将始终努力确保此类数据集不包含有关可识别用户或设备的活动的信息。
+订阅者 如果您是用户，则您将从 Let&amp;rsquo;s Encrypt 请求受信任的证书，以用于公开担保您对某些可在互联网上访问的域名有控制权。 作为证明该控制权的过程的一部分，Let&amp;rsquo;s Encrypt 将收集与证书认证和管理相关的各种信息。 该信息包括：您访问 Let&amp;rsquo;s Encrypt 服务所用的 IP 地址；所有请求证书的域名解析得到的所有 IP 地址；与所有验证请求相关的服务器信息；所有入站 HTTP/ACME 请求和所有出站验证请求的完整日志；以及从您的客户端软件发送，或推断自您的客户端软件的信息。 我们将根据受信根证书项目要求将此信息存储至少七年。 这种信息将最多储存十年。">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="隐私政策">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/privacy/">
+    <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt 隐私政策将从三个情况来描述我们如何收集、使用、披露您的信息：
+ 当您作为依赖方访问一个使用 HTTPS 的网站，使用我们的加密证书时， 当您是用户，即，当您请求并使用 Let&amp;rsquo;s Encrypt 中的证书时， 当您是 Let&amp;rsquo;s Encrypt 网站、社区讨论论坛、letsencrypt.org 下的其他网页以及第三方社交媒体网站上 Let&amp;rsquo;s Encrypt 运营的帐户的访问者时，  Let&amp;rsquo;s Encrypt是由 互联网安全调查小组提供的服务，是美国加利福尼亚州的非盈利公共组织。
+信任方 当您使用具有 Let&amp;rsquo;s Encrypt 证书的 HTTPS 网站或其他 TLS 服务时，您的浏览器（或 TLS 客户端）将请求 Let&amp;rsquo;s Encrypt 以检查证书是否已被撤销（“OCSP 请求”）。 如果您的浏览器发出 OCSP 请求，我们的服务器将自动在服务器的临时日志文件中记录您的 IP 地址、浏览器和操作系统。 我们绝不会使用 OCSP 请求中的数据来构建档案或识别个人。 临时日志仅用于服务运作上的目的，通常会在不到七天的时间内删除。 我们可能会长时间保留一部分服务器日志，以便调查软件出错或滥用情况。 如果我们这样做，我们将在完成调查后删除任何存储的日志。 我们还可能从服务器日志计算、保留和发布聚合信息，例如哪些证书生成最大量的请求。 我们将始终努力确保此类数据集不包含有关可识别用户或设备的活动的信息。
+订阅者 如果您是用户，则您将从 Let&amp;rsquo;s Encrypt 请求受信任的证书，以用于公开担保您对某些可在互联网上访问的域名有控制权。 作为证明该控制权的过程的一部分，Let&amp;rsquo;s Encrypt 将收集与证书认证和管理相关的各种信息。 该信息包括：您访问 Let&amp;rsquo;s Encrypt 服务所用的 IP 地址；所有请求证书的域名解析得到的所有 IP 地址；与所有验证请求相关的服务器信息；所有入站 HTTP/ACME 请求和所有出站验证请求的完整日志；以及从您的客户端软件发送，或推断自您的客户端软件的信息。 我们将根据受信根证书项目要求将此信息存储至少七年。 这种信息将最多储存十年。">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/privacy/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/privacy/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/privacy/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/privacy/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/privacy/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/privacy/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/privacy/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/privacy/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/privacy/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/privacy/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/privacy/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/privacy/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/privacy/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/privacy/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/privacy/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/privacy/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/privacy/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/privacy/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/privacy/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/privacy/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/privacy/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/privacy/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/4.jpg');">
+<div class="container">
+	<h1>隐私政策</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<div class="canonical-warning" style="">
+			<i class="fas fa-exclamation-circle" aria-hidden="true"></i>此页内容请以英文页面为准</div>
+<p>
+
+    
+    最后更新：<time datetime="2022-03-11">Mar 11, 2022</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    注意：本页面有较新的英文版本。
+                    (<time datetime="2023-02-28">Feb 28, 2023</time>)
+                    <a href="letsencrypt-ewebsite/privacy/">阅读英文页面</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Let&rsquo;s Encrypt 隐私政策将从三个情况来描述我们如何收集、使用、披露您的信息：</p>
+<ul>
+<li>当您作为依赖方访问一个使用 HTTPS 的网站，使用我们的加密证书时，</li>
+<li>当您是用户，即，当您请求并使用 Let&rsquo;s Encrypt 中的证书时，</li>
+<li>当您是 Let&rsquo;s Encrypt 网站、社区讨论论坛、letsencrypt.org 下的其他网页以及第三方社交媒体网站上 Let&rsquo;s Encrypt 运营的帐户的访问者时，</li>
+</ul>
+<p>Let&rsquo;s Encrypt是由 <a href="https://www.abetterinternet.org/">互联网安全调查小组</a>提供的服务，是美国加利福尼亚州的非盈利公共组织。</p>
+<h2 id="信任方">信任方</h2>
+<p>当您使用具有 Let&rsquo;s Encrypt 证书的 HTTPS 网站或其他 TLS 服务时，您的浏览器（或 TLS 客户端）将请求 Let&rsquo;s Encrypt 以检查证书是否已被撤销（“OCSP 请求”）。 如果您的浏览器发出 OCSP 请求，我们的服务器将自动在服务器的临时日志文件中记录您的 IP 地址、浏览器和操作系统。 我们绝不会使用 OCSP 请求中的数据来构建档案或识别个人。 临时日志仅用于服务运作上的目的，通常会在不到七天的时间内删除。 我们可能会长时间保留一部分服务器日志，以便调查软件出错或滥用情况。 如果我们这样做，我们将在完成调查后删除任何存储的日志。 我们还可能从服务器日志计算、保留和发布聚合信息，例如哪些证书生成最大量的请求。 我们将始终努力确保此类数据集不包含有关可识别用户或设备的活动的信息。</p>
+<h2 id="订阅者">订阅者</h2>
+<p>如果您是用户，则您将从 Let&rsquo;s Encrypt 请求受信任的证书，以用于公开担保您对某些可在互联网上访问的域名有控制权。 作为证明该控制权的过程的一部分，Let&rsquo;s Encrypt 将收集与证书认证和管理相关的各种信息。 该信息包括：您访问 Let&rsquo;s Encrypt 服务所用的 IP 地址；所有请求证书的域名解析得到的所有 IP 地址；与所有验证请求相关的服务器信息；所有入站 HTTP/ACME 请求和所有出站验证请求的完整日志；以及从您的客户端软件发送，或推断自您的客户端软件的信息。 我们将根据受信根证书项目要求将此信息存储至少七年。 这种信息将最多储存十年。</p>
+<p>我们需要能够向公众（包括那些依赖我们证书可信度的人）展示我们的服务正常运行。 因此，我们可能无法删除包括 IP 地址在内的某些信息。 该信息可能以多种方式公开，包括通过公共 API、公共存储库和/或公共讨论。</p>
+<p>您可以选择提供联系信息（例如您的电子邮件地址）以用于帐户服务和恢复目的。 您的联系信息不会被公开，而且它只会根据下文提到的“执法请求与情有可原的情况”被分享。 您若提供电子邮件地址，即表示您同意接收我们提供的与服务相关的电子邮件。 您可以随时通过点击我们电子邮件底部的“取消订阅”链接，或通过 <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a> 与我们联系，来取消订阅与服务相关的电子邮件。 我们不会将您的联系信息用于营销或促销目的。</p>
+<p>您可能需要从存储库（例如由 Debian、Ubuntu、RedHat 或 GitHub 运营的存储库）下载客户端软件。 您与此类软件存储库的交互，受该存储库自己的隐私政策和/或使用条款的约束。</p>
+<h2 id="访客">访客</h2>
+<p>如果您是浏览 Let&rsquo;s Encrypt 网站的访客，您可以选择为我们捐款。 捐赠由我们信任的支付合作伙伴处理，包括 DonorBox、Stripe、Shopify、PayPal、The Giving Block 和 Gemini，具体取决于所选的支付方式，并存储在 ISRG 的 Salesforce 数据库中。 捐款时我们会收集您的姓名和电子邮箱地址。 我们不会在未经您同意的情况下通过该电子邮箱地址联系您，除非是为了解决某次捐款出现的问题我们认为确有必要与您联系。 您与 <a href="https://donorbox.org/privacy">DonorBox</a>，<a href="https://stripe.com/privacy/">Stripe</a>, <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full">PayPal</a>, <a href="https://www.shopify.com/legal/privacy">Shopify</a>, <a href="https://thegivingblock.com/about/privacy-policy/">The Giving Block</a>, Gemini, <a href="https://shiphero.com/privacy-data-policy/">SHIPHERO</a>, <a href="https://www.salesforce.com/company/privacy/">Salesforce</a> 和 <a href="https://www.sageintacct.com/privacy_policy_website">Sage Intacct</a> 的联系受其各自的隐私政策约束。 我们不收集或保留与捐款有关的任何信用卡或银行信息。 我们的运输合作商是 Shopify 和 SHIPHERO。</p>
+<p>您可以选择通过在ISRG网站上注册或向其他营销渠道提供您的电子邮件地址，以接收与 ISRG 项目相关的通讯邮件。 任何通过 MailChimp 或 Salesforce 发送的信息以及您与 <a href="https://www.intuit.com/privacy/statement/">MailChimp</a> and <a href="https://www.salesforce.com/company/privacy/">Salesforce</a> 的交互是由他们的隐私策略管理的。 我们可能偶尔会向您的电子邮件地址发送与 Let&rsquo;s Encrypt 相关的个性化通信。 您可以通过在 MailChimp 选择退出或发送电子邮件至 <a href="mailto:press@letsencrypt.org">press@letsencrypt.org</a> 请求从我们的列表中删除您的电子邮件地址。</p>
+<p>如果您注册使用 Let&rsquo;s Encrypt 社区支持论坛，则您提供的个人信息和您在该论坛的行为受我们的论坛托管和软件提供商的隐私政策的约束，<a href="https://www.discourse.org/privacy">文明话语构建工具包</a>。 我们不会通过提供此支持论坛来收集或维护个人信息。</p>
+<h2 id="我们不会出售您的数据或信息">我们不会出售您的数据或信息</h2>
+<p>我们不会出售您的数据或信息. 这包括依赖方、 订阅者和访客的数据和信息。</p>
+<h2 id="执法请求与情有可原的情况">执法请求与情有可原的情况</h2>
+<p>在我们拥有您的个人身份信息的期间内，我们可能会在有限的情况下向第三方披露这些信息。 这些情况包括：当我们征得您的同意或我们真诚地相信法律要求我们这样做时（例如根据传票或其他司法或行政命令）。 当我们真诚地相信有必要防止生命损失、人身伤害、财产损失或重大财务损失时，我们可能也会披露帐户恢复信息。</p>
+<p>如果法律要求我们披露您提交的信息，我们将尝试事先通知您这一情况（除非我们被禁止这样做，或者这样做是徒劳的），以给您反对披露信息的机会。 我们将尝试通过任何合理可行的方式提供此通知。 如果您不对披露请求提出异议，我们将会按法律要求提供您的信息。</p>
+<p>此外，我们保留自行决定独立反对某些我们认为不适当的请求（访问我们的产品和技术用户的信息）的权利。</p>
+<h2 id="欧洲经济区的信任方-用户和访客在-gdpr-下享有哪些权利-我该如何行使这些权利">欧洲经济区的信任方、用户和访客在 GDPR 下享有哪些权利？我该如何行使这些权利？</h2>
+<p>我们按照本政策的规定处理个人数据。 资料处理的目的和法律依据如下：</p>
+<p><strong>目的：</strong> 提供证书状态 (OCSP) 信息</p>
+<p><strong>法律依据：</strong> 合法利益</p>
+<p><strong>额外信息：</strong> 我们收集并处理来自依赖方的信息，以便可靠地提供证书状态信息。</p>
+<p><strong>目的：</strong> 提供证书签发和管理服务</p>
+<p><strong>法律依据：</strong> 合规合法利益</p>
+<p><strong>额外信息：</strong> 我们收集并处理订阅者提供的信息，以便提供可靠和安全的证书签发和管理服务。 并向公众表明我们的服务正在按预期进行。</p>
+<p><strong>目的：</strong> 向访客提供信息</p>
+<p><strong>法律依据：</strong> 许可，合法利益</p>
+<p><strong>额外信息：</strong> 我们收集和处理来自访客的信息，以便以可靠和有效的方式通过网络和电子邮件提供信息。</p>
+<p><strong>目的：</strong> 处理捐赠和赞助调查问题</p>
+<p><strong>法律依据：</strong> 合法利益</p>
+<p><strong>额外信息：</strong> 我们收集和处理信息，以处理和支持捐赠。</p>
+<p><strong>目的：</strong> 法律义务和情有可原的情况</p>
+<p><strong>法律依据：</strong> 法定义务，合法利益</p>
+<p><strong>额外信息：</strong> 我们可能会收集和处理信息以履行法律义务，或当我们真诚地相信有必要防止生命损失、人身伤害、财产损失或重大经济损失。</p>
+<p>请注意，我们可能无法删除包括IP地址在内的信息，因为在确定证书的可信度时，其他人必须依赖这些信息。 在某些情况下，我们可能会根据法定义务或是保护您或其他人的重要利益而处理个人数据。</p>
+<p>您的个人数据可能会被我们和我们的服务提供商收集或转移到存储或处理数据的司法管辖区（包括美国）。 这些法域可能无法提供与贵国法域（包括欧洲经济区）相同程度的数据保护。 我们已采取步骤确保我们的服务提供者为欧洲经济区居民的个人资料提供充分的保护。 包括使用欧洲联盟委员会核准的标准合同条款订立数据处理协定，或使用欧洲联盟委员会核准的其他保障措施。 您有权通过以下联系信息向我们发送电子邮件，以获取您的个人信息在欧盟以外传输的机制的详细信息。</p>
+<p>位于欧洲经济区（EEA）的个人对其个人信息拥有一定的权利，这包括访问、更正或删除我们通过您使用本网站处理的个人数据的权利。 如果您是位于 EEA 的信任方、用户或访客，您可以：</p>
+<ul>
+<li>
+<p>通过发送电子邮件至 <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a> 索取个人数据报告。 本报告将包括我们所掌握的关于您的个人数据，这些数据以结构化、常用和便捷的格式提供给您。 请注意，在我们披露任何信息之前，我们可能会要求您提供其他信息以验证您的身份。</p>
+</li>
+<li>
+<p>通过发送电子邮件至 <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a> 联系我们，要求更正或删除您的信息。</p>
+</li>
+<li>
+<p>反对我们处理您的信息。 您可以要求我们停止使用您的信息，包括我们使用您的信息向您发送服务相关电子邮件。 您可以随时通过点击 Let&rsquo;s Encrypt 电子邮件中的“取消订阅”链接，撤销对于接收服务电子邮件的许可。</p>
+</li>
+<li>
+<p>向监管机构投诉。 如果您位于欧洲经济区，并认为我们没有遵守数据保护法，您有权向当地监管机构提出投诉。</p>
+</li>
+</ul>
+<p>了解更多信息或报告隐私问题，请联系：<a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>。</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>支持更安全、更尊重隐私的互联网。</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/zh-cn/donate/">捐赠</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="da">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sådan fungerer det -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Formålet med Let&amp;rsquo;s Encrypt og ACME-protokollen er at gøre det muligt at oprette en HTTPS-server og automatisk få et browser-betroet certifikat, uden menneskelig indblanding. Dette opnås ved at køre et certifikat management agent på webserveren.
+For at forstå, hvordan teknologien virker, lad os gå gennem processen med at oprette https://eksempel. om/ med et certifikat management agent, der understøtter Let&amp;rsquo;s Encrypt.
+Der er to trin i denne proces. For det første viser agenten til CA at webserveren kontrollerer et domæne.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Sådan fungerer det">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/da/how-it-works/">
+    <meta name="twitter:description" content="Formålet med Let&amp;rsquo;s Encrypt og ACME-protokollen er at gøre det muligt at oprette en HTTPS-server og automatisk få et browser-betroet certifikat, uden menneskelig indblanding. Dette opnås ved at køre et certifikat management agent på webserveren.
+For at forstå, hvordan teknologien virker, lad os gå gennem processen med at oprette https://eksempel. om/ med et certifikat management agent, der understøtter Let&amp;rsquo;s Encrypt.
+Der er to trin i denne proces. For det første viser agenten til CA at webserveren kontrollerer et domæne.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/da/how-it-works/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Spring navigation links over</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/da/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/da/docs/" class="pure-menu-link" tabindex="0">Dokumentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Få hjælp</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Doner</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/donate/" class="pure-menu-link">Foretag en donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/sponsors/" class="pure-menu-link">Nuværende Sponsorer og finansieringskilder</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/getinvolved/" class="pure-menu-link">Bliv en del af det</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Om os</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Udløb (september 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/stats/" class="pure-menu-link">Statistikker</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karriere</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">donere</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Bliv sponsor</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sprog <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/how-it-works/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/how-it-works/" lang="da" hreflang="da" class="pure-menu-link">✓ Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/how-it-works/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/how-it-works/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/how-it-works/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/how-it-works/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/how-it-works/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/how-it-works/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/how-it-works/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/how-it-works/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/how-it-works/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/how-it-works/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/how-it-works/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/how-it-works/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/how-it-works/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/how-it-works/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/how-it-works/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/how-it-works/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/how-it-works/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/how-it-works/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/how-it-works/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="container">
+	<h1>Sådan fungerer det</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Seneste opdatering: <time datetime="2019-10-18">18. okt. 2019</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Formålet med Let&rsquo;s Encrypt og <a href="https://tools.ietf.org/html/rfc8555">ACME-protokollen</a> er at gøre det muligt at oprette en HTTPS-server og automatisk få et browser-betroet certifikat, uden menneskelig indblanding.  Dette opnås ved at køre et certifikat management agent på webserveren.</p>
+<p>For at forstå, hvordan teknologien virker, lad os gå gennem processen med at oprette <code>https://eksempel. om/</code> med et certifikat management agent, der understøtter Let&rsquo;s Encrypt.</p>
+<p>Der er to trin i denne proces.  For det første viser agenten til CA at webserveren kontrollerer et domæne.  Derefter kan agenten anmode om, forny og tilbagekalde certifikater for dette domæne.</p>
+<h2 id="domæne-validering">Domæne Validering</h2>
+<p>Let&rsquo;s Encrypt identificerer serveradministratoren ved offentlig nøgle.  Første gang agent softwaren interagerer med Let&rsquo;s Encrypt genereres et nyt nøglepar og beviser for Let&rsquo;s Encrypt CA at serveren styrer et eller flere domæner.  Dette svarer til den traditionelle CA proces med at oprette en konto og tilføje domæner til denne konto.</p>
+<p>For at starte processen, spørger agenten Let&rsquo;s Encrypt CA, hvad den skal gøre for at bevise, at det styrer <code>eksempel. om</code>.  Let&rsquo;s Encrypt CA vil se på det domænenavn, der anmodes om, og udstede en eller flere sæt af udfordringer.   Det er forskellige måder, hvorpå agenten kan bevise kontrol af domænet.  For eksempel kan CA give agenten et valg af enten:</p>
+<ul>
+<li>Oprette en DNS-record under <code>example.com</code>, eller</li>
+<li>Oprette en HTTP ressource under en velkendt URI på <code>http://example.com/</code></li>
+</ul>
+<p>Sammen med udfordringerne Let&rsquo;s Encrypt CA giver også en nonce at agenten skal underskrive med sin private nøgle par for at bevise, at det styrer nøglen parret.</p>
+<div class="howitworks-figure">
+<img alt="Requesting challenges to validate example.com"
+     src="/images/howitworks_challenge.png"/>
+</div>
+<p>Agent software fuldender en af de leverede sæt af udfordringer.   Lad os antage, at den er i stand til at udføre den anden opgave ovenfor: der oprettes en fil på en bestemt sti på <code>http://example.com</code> webstedet.  Agenten underskriver også den medfølgende nonce med sin private nøgle.  Når agenten har fuldført disse trin, underretter den CA, at den er klar til at fuldføre valideringen.</p>
+<p>Derefter er det CA&rsquo;s opgave at kontrollere, at udfordringerne er blevet imødekommet.  CA verificerer underskriften på nonce, og det forsøger at hente filen fra webserveren og bekræfter at den har det forventede indhold.</p>
+<div class="howitworks-figure">
+<img alt="Requesting authorization to act for example.com"
+     src="/images/howitworks_authorization.png"/>
+</div>
+<p>Hvis underskriften over nonce er gyldig, og udfordringerne bekræftes, så tillades den agent, der er identificeret af den offentlige nøgle, at gøre certifikatstyring for eksempel <code>. om</code>.  Vi kalder nøgleparret, agenten brugte et &ldquo;autoriseret nøglepar&rdquo; for <code>example.com</code>.</p>
+<h2 id="certifikat-udstedelse-og-tilbagekaldelse">Certifikat udstedelse og tilbagekaldelse</h2>
+<p>Når agenten har et autoriseret nøglepar er anmodning, fornyelse, og tilbagekaldelse af certifikater simpel &ndash;send blot certifikat management beskeder og signer dem med den autoriserede nøgle par.</p>
+<p>For at få et certifikat for domænet konstruerer agenten en PKCS#10 <a href="https://tools.ietf.org/html/rfc2986">Certifikatsigneringsanmodning</a>, der beder Let&rsquo;s Encrypt CA om at udstede et certifikat for <code>. om</code> med en bestemt offentlig nøgle.  Som sædvanlig indeholder CSR en underskrift fra den private nøgle, der svarer til den offentlige nøgle i CSR.  Agenten underskriver også hele CSR med den autoriserede nøgle for <code>example.com</code>, så Let&rsquo;s Encrypt CA ved, at det er autoriseret.</p>
+<p>Når Let&rsquo;s Encrypt CA modtager anmodningen, verificerer den begge underskrifter.  Hvis alt ser godt ud, udsteder det et certifikat for <code>example.com</code> med den offentlige nøgle fra CSR og returnerer det til agenten.</p>
+<div class="howitworks-figure">
+<img alt="Requesting a certificate for example.com"
+     src="/images/howitworks_certificate.png"/>
+</div>
+<p>Tilbagekaldelse virker på en lignende måde.  Agenten underskriver en tilbagekaldelsesanmodning med nøgleparret godkendt for <code>eksempel.com</code>, og Let&rsquo;s Encrypt CA bekræfter, at anmodningen er autoriseret.  I så fald offentliggør den tilbagekaldelsesoplysninger i de normale tilbagekaldelseskanaler (dvs. OCSP), så afhængige parter såsom browsere kan vide, at de ikke bør acceptere det tilbagekaldte certifikat.</p>
+<div class="howitworks-figure">
+<img alt="Requesting revocation of a certificate for example.com"
+     src="/images/howitworks_revocation.png"/>
+</div>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Støt et mere sikkert og privatlivets respektiverede internettet.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/da/donate/">Donér</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt er en gratis, automatisk og åben certifikat 
+ udsteeder bragt til dig af nonprofit organisationen <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>. 
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send alle mails eller forespørgsler til:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Se vores <a href="/privacy/">privatlivspolitik</a>.<br>
+Se vores <a href="https://www.abetterinternet.org/trademarks">varemærkepolitik</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

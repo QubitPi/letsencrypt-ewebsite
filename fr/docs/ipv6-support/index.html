@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="fr-FR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Support IPv6 -  Let&#39;s Encrypt - Certificats SSL/TLS gratuits</title>
+    <meta name="description" content="Let&amp;rsquo;s Encrypt supporte IPv6 à la fois pour l&amp;rsquo;accès à l&amp;rsquo;API ACME en utilisant un client ACME, et pour les consultations DNS et les requêtes HTTP que nous effectuons lors de la validation de votre contrôle des noms de domaine.
+Validation du domaine Lors de requêtes de validation de domaine, pour un domaine qui possède à la fois des adresses IPv4 et IPv6 (par exemple les deux enregistrements A et AAAA) Let&amp;rsquo;s Encrypt préfèrera toujours les adresses IPv6 pour la connexion initiale.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Support IPv6">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/fr/docs/ipv6-support/">
+    <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt supporte IPv6 à la fois pour l&amp;rsquo;accès à l&amp;rsquo;API ACME en utilisant un client ACME, et pour les consultations DNS et les requêtes HTTP que nous effectuons lors de la validation de votre contrôle des noms de domaine.
+Validation du domaine Lors de requêtes de validation de domaine, pour un domaine qui possède à la fois des adresses IPv4 et IPv6 (par exemple les deux enregistrements A et AAAA) Let&amp;rsquo;s Encrypt préfèrera toujours les adresses IPv6 pour la connexion initiale.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/fr/docs/ipv6-support/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Flux du blog de Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Passer les liens de navigation</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/fr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/fr/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/aide-en-francais" class="pure-menu-link" tabindex="0">Obtenir de l&#39;aide</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Faire un don</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/donate/" class="pure-menu-link">Faire un don</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Devenez un sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/sponsors/" class="pure-menu-link">Sponsors et donateurs actuels</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/getinvolved/" class="pure-menu-link">Participez</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">À propos de nous</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Expiration de l&#39;AC racine X3 de DST (septembre 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/faq/" class="pure-menu-link">Foire aux questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">État du service</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/stats/" class="pure-menu-link">Statistiques</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Emplois</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Langues <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/ipv6-support/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/ipv6-support/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/ipv6-support/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/ipv6-support/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/ipv6-support/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/ipv6-support/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">✓ Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/ipv6-support/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/ipv6-support/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/ipv6-support/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/ipv6-support/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/ipv6-support/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/ipv6-support/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/ipv6-support/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/ipv6-support/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/ipv6-support/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/ipv6-support/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/ipv6-support/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/ipv6-support/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/ipv6-support/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/ipv6-support/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/ipv6-support/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Support IPv6</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Dernière mise à jour : <time datetime="2020-02-07">7 févr. 2020</time>
+
+
+ | <a href="/letsencrypt-ewebsite/fr/docs">Voir toute la documentation</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Let&rsquo;s Encrypt supporte IPv6 à la fois pour l&rsquo;accès à l&rsquo;API ACME en utilisant un client ACME, et pour les consultations DNS et les requêtes HTTP que nous effectuons lors de la validation de votre contrôle des noms de domaine.</p>
+<h2 id="validation-du-domaine">Validation du domaine</h2>
+<p>Lors de requêtes de validation de domaine, pour un domaine qui possède à la fois des adresses IPv4 et IPv6 (par exemple les deux enregistrements <code>A</code> et <code>AAAA</code>) Let&rsquo;s Encrypt préfèrera toujours les adresses IPv6 pour la connexion initiale. Si la connexion IPv6 échoue au niveau du réseau (par exemple, s&rsquo;il y a un dépassement de délai) et que des adresses IPv4 sont disponibles, nous retenterons la demande avec une des adresses IPv4.</p>
+<h2 id="adresses-ipv6-incorrectes">Adresses IPv6 incorrectes</h2>
+<p>Souvent, les propriétaires de domaines ne sont pas conscients de l&rsquo;existence d&rsquo;un <code>AAAA</code> pour leur domaine. Si l&rsquo;adresse IPv6 dans l&rsquo;enregistrement <code>AAAA</code> est incorrecte, cela affectera le processus de validation du domaine.</p>
+<p>Commonly the IPv6 address will be a different server than the IPv4 address where the ACME client is being run. Comme le client ACME ne configure le serveur IPv4 que pour répondre au test de validation du domaine, la validation échouera lorsque le serveur IPv6 sera utilisé.</p>
+<p>Dans la plupart des cas, la correction consiste à mettre à jour l&rsquo;adresse IPv6 pour qu&rsquo;elle pointe vers le serveur sur lequel tourne le client ACME, ou à supprimer l&rsquo;enregistrement <code>AAAA</code> si le domaine n&rsquo;est pas destiné à fonctionner avec IPv6. Il n&rsquo;y a pas moyen de demander à Let&rsquo;s Encrypt de préférer IPv4, vous devez corriger la mauvaise configuration.</p>
+<h2 id="détails-de-la-relance-ipv6-à-ipv4">Détails de la relance IPv6 à IPv4</h2>
+<p>La tentative d&rsquo;IPv6 à IPv4 n&rsquo;a lieu que lorsque les délais de connexion sont dépassés, et non pour d&rsquo;autres types d&rsquo;erreurs.</p>
+<p>Par exemple, dans le scénario &ldquo;Pièges communs&rdquo; (&ldquo;Common Pitfalls&rdquo;) ci-dessus, une nouvelle tentative ne se produira pas si un serveur web écoute l&rsquo;adresse IPv6, mais que ce serveur n&rsquo;est pas prêt à relever le challenge ACME. Dans ce cas, il n&rsquo;y aurait pas de délai de connexion pour accéder à l&rsquo;adresse IPv6 et le challenge échouera sans nouvelle tentative parce qu&rsquo;une réponse incorrecte a été renvoyée.</p>
+<p>Pour que notre logiciel d&rsquo;AC reste simple, nous n&rsquo;effectuons qu&rsquo;une nouvelle tentative IPv6 à IPv4 à la première demande lors de la validation des challenges &ldquo;http-01&rdquo;. Si vous utilisez des redirections, les redirections n&rsquo;obtiendront pas de nouveau traitement.</p>
+<p>Par exemple, si un nom de domaine a un enregistrement <code>AAAA</code> qui s&rsquo;arrête toujours et un enregistrement <code>A</code> avec un serveur web qui redirige de HTTP à HTTPS, alors le repli IPv6 à IPv4 ne fonctionnera pas correctement. La première requête au domaine se rabattra correctement sur IPv4, recevant une redirection de HTTP vers HTTPS. La demande suivante préférera à nouveau l&rsquo;adresse IPv6, mais s&rsquo;arrêtera sans revenir à l&rsquo;IPv4. Vous pouvez résoudre cette situation soit en corrigeant la mauvaise configuration d&rsquo;IPv6, soit en supprimant la redirection HTTP vers HTTPS pour les requêtes vers le chemin du challenge ACME HTTP-01.</p>
+<h2 id="obtenir-de-l-aide">Obtenir de l&rsquo;aide</h2>
+<p>Si vous avez besoin d&rsquo;aide pour diagnostiquer un problème lié à l&rsquo;IPv6, veuillez consulter notre <a href="https://community.letsencrypt.org">forum communautaire</a>.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt est une autorité de certification gratuite, automatisée et ouverte
+  mise à votre disposition par la société d'utilité publique <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envoyer tous les emails ou les demandes de renseignements à :</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Voir notre <a href="/fr/privacy/">politique de confidentialité</a>.<br>
+Voir notre <a href="https://www.abetterinternet.org/trademarks/">politique en matière de copyright</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

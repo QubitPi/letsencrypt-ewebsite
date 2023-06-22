@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ko-KR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>개인정보보호 정책 -  Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
+    <meta name="description" content="Let&amp;rsquo;s Encrypt 개인정보보호 정책은 다음 세 가지의 맥락으로 사용자의 정보를 수집, 사용 및 공개하는 방법을 설명합니다:
+ Let&amp;rsquo;s Encryption의 인증서를 사용하는 HTTPS로 보안된 웹 사이트를 방문하는 경우 구독자인 경우, 즉 Let&amp;rsquo;s Encrypt에서 인증서를 요청하고 사용하는 경우 Let&amp;rsquo;s Encrypt 웹 사이트, 커뮤니티 토론 포럼, letencrypt.org 아래의 다른 웹 페이지 및 Let&amp;rsquo;s Encrypt가 계정을 운영하는 타사 소셜 미디어 사이트를 방문하는 경우  신뢰 기관 Let&amp;rsquo;s Encrypt 인증서와 함께 HTTPS 웹 사이트 또는 기타 TLS 서비스를 사용할 때 브라우저 (또는 TLS 클라이언트)가 Let&amp;rsquo;s Encrypt를 사용하여 인증서가 해지되었는지 확인할 수 있습니다 (&amp;ldquo;OCSP 요청&amp;rdquo;).">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="개인정보보호 정책">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ko/privacy/">
+    <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt 개인정보보호 정책은 다음 세 가지의 맥락으로 사용자의 정보를 수집, 사용 및 공개하는 방법을 설명합니다:
+ Let&amp;rsquo;s Encryption의 인증서를 사용하는 HTTPS로 보안된 웹 사이트를 방문하는 경우 구독자인 경우, 즉 Let&amp;rsquo;s Encrypt에서 인증서를 요청하고 사용하는 경우 Let&amp;rsquo;s Encrypt 웹 사이트, 커뮤니티 토론 포럼, letencrypt.org 아래의 다른 웹 페이지 및 Let&amp;rsquo;s Encrypt가 계정을 운영하는 타사 소셜 미디어 사이트를 방문하는 경우  신뢰 기관 Let&amp;rsquo;s Encrypt 인증서와 함께 HTTPS 웹 사이트 또는 기타 TLS 서비스를 사용할 때 브라우저 (또는 TLS 클라이언트)가 Let&amp;rsquo;s Encrypt를 사용하여 인증서가 해지되었는지 확인할 수 있습니다 (&amp;ldquo;OCSP 요청&amp;rdquo;).">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ko/privacy/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 블로그 피드" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">탐색 링크 건너뛰기</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ko/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ko/docs/" class="pure-menu-link" tabindex="0">문서</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">도움말</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">후원</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/donate/" class="pure-menu-link">기부하기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">스폰서 되기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/sponsors/" class="pure-menu-link">현재 스폰서 및 기부자</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getinvolved/" class="pure-menu-link">참여</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">소개</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">비영리 인터넷 보안 연구 그룹 (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" class="pure-menu-link">자주 묻는 질문</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">서비스 상태</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/stats/" class="pure-menu-link">통계</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">채용</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/contact/" class="pure-menu-link">연락처</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">언어 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/privacy/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/privacy/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/privacy/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/privacy/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/privacy/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/privacy/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/privacy/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/privacy/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/privacy/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/privacy/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/privacy/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/privacy/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">✓ 한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/privacy/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/privacy/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/privacy/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/privacy/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/privacy/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/privacy/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/privacy/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/privacy/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/privacy/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/4.jpg');">
+<div class="container">
+	<h1>개인정보보호 정책</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<div class="canonical-warning" style="">
+			<i class="fas fa-exclamation-circle" aria-hidden="true"></i>영문판의 내용이 우선됩니다</div>
+<p>
+
+    
+    최근 업데이트: <time datetime="2019-12-05">2019. 12. 5.</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    참고: 번역된 이후로 영문판이 업데이트되었습니다
+                    (<time datetime="2023-02-28">2023. 2. 28.</time>)
+                    <a href="letsencrypt-ewebsite/privacy/">영어로 보기</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Let&rsquo;s Encrypt 개인정보보호 정책은 다음 세 가지의 맥락으로 사용자의 정보를 수집, 사용 및 공개하는 방법을 설명합니다:</p>
+<ul>
+<li>Let&rsquo;s Encryption의 인증서를 사용하는 HTTPS로 보안된 웹 사이트를 방문하는 경우</li>
+<li>구독자인 경우, 즉 Let&rsquo;s Encrypt에서 인증서를 요청하고 사용하는 경우</li>
+<li>Let&rsquo;s Encrypt 웹 사이트, 커뮤니티 토론 포럼, letencrypt.org 아래의 다른 웹 페이지 및 Let&rsquo;s Encrypt가 계정을 운영하는 타사 소셜 미디어 사이트를 방문하는 경우</li>
+</ul>
+<h2 id="신뢰-기관">신뢰 기관</h2>
+<p>Let&rsquo;s Encrypt 인증서와 함께 HTTPS 웹 사이트 또는 기타 TLS 서비스를 사용할 때 브라우저 (또는 TLS 클라이언트)가 Let&rsquo;s Encrypt를 사용하여 인증서가 해지되었는지 확인할 수 있습니다 (&ldquo;OCSP 요청&rdquo;). 브라우저가 OCSP 요청을 하면, 당사의 서버는 사용자의 IP 주소, 브라우저 및 운영 체제를 임시 서버 로그 파일에 자동으로 기록합니다. NAT은 OCSP 요청의 데이터를 사용하여 프로필을 작성하거나 개인을 식별하지 않습니다. 임시 서버 로그는 운영 목적으로만 사용되며 일반적으로 7일 이내에 삭제됩니다. 소프트웨어 오류 또는 남용을 조사하기 위해 서버 로그의 일부를 더 오랫동안 보존할 수 있습니다. 이렇게 하면 조사를 마치면 저장된 로그가 삭제됩니다. 또한 서버 로그에서 가장 많은 요청 볼륨을 생성하는 인증서와 같은 집계 정보를 계산, 보존 및 게시할 수 있습니다. 당사는 이러한 데이터 세트에 식별 가능한 사용자 또는 장치의 활동에 대한 정보가 포함되지 않도록 항상 노력할 것입니다.</p>
+<h2 id="구독자">구독자</h2>
+<p>구독자인 경우 인터넷에서 연결할 수 있는 특정 도메인 이름 또는 이름을 제어하는 것을 공개적으로 보증하기 위해 Let&rsquo;s Encrypt(암호화)에서 신뢰할 수 있는 인증서를 요청합니다. 그 제어를 증명하는 과정의 일환으로, Let&rsquo;s Encrypt는 인증서 인증 및 관리와 관련된 다양한 정보를 수집할 것입니다. 이 정보에는 암호화 서비스에 액세스하는 데 사용되는 IP 주소, 요청된 도메인 이름에 대해 확인된 모든 IP 주소, 유효성 검사 요청과 관련된 서버 정보, 모든 인바운드 HTTP/ACME 요청의 전체 로그, 모든 아웃바운드 유효성 검사 요청 및 클라이언트 소프트웨어에서 전송되거나 추론된 정보가 포함됩니다. 당사는 계약상 필요성과 공익에 따라 최소 7년 동안 이 정보를 보관할 것입니다. 당사 인증서의 신뢰성에 의지하는 사람들을 포함하여 당사의 서비스가 예상대로 수행된다는 것을 대중에게 증명할 수 있어야 합니다. 따라서 IP 주소를 포함한 정보를 삭제할 수 없습니다. 이 정보는 공용 API, 공용 저장소 및/또는 공개 토론을 통해 여러 가지 방법으로 공개될 수 있습니다.</p>
+<p>계정 서비스 및 복구 목적으로 이메일 주소와 같은 연락처 정보를 제공할 수 있는 옵션이 있을 수 있습니다. 귀하의 연락처 정보는 공개되지 않으며 아래의 &ldquo;법 집행 요청 및 소멸 상황&quot;에 따라 공유됩니다. 이메일 주소를 제공함으로써 귀하는 당사에서 서비스 관련 이메일을 받는 것에 동의합니다. 언제든지 이메일 하단에 있는 &ldquo;구독 취소&rdquo; 링크를 클릭하거나 <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>.으로 문의하여 서비스 관련 이메일을 받지 못할 수 있습니다. 당사는 마케팅 또는 홍보 목적으로 귀하의 연락처 정보를 사용하지 않습니다.</p>
+<p>Debian, Ubuntu, Red Hat 또는 Github에서 실행하는 것과 같은 저장소에서 클라이언트 소프트웨어를 다운로드해야 할 수 있습니다. 이러한 소프트웨어 리포지토리와의 상호 작용은 해당 리포지토리의 개인 정보 보호 정책 및/또는 사용 조건에 따라 결정됩니다.</p>
+<h2 id="방문자">방문자</h2>
+<p>Let&rsquo;s Encrypt 웹 사이트를 탐색하는 방문자라면 기부할 수 있는 옵션이 있습니다. 기부는 선택한 지불 방법에 따라 DonorBox, Stripe, PayPal 등 당사의 신뢰할 수 있는 지불 파트너가 처리합니다. 기부하실 때 성함과 이메일 주소를 모읍니다. 당사는 귀하의 동의 없이 귀하의 이메일 주소를 사용하여 연락하지 않습니다. <a href="https://donorbox.org/privacy">DonorBox</a>, <a href="https://stripe.com/privacy/">Stripe</a> 및 <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full">PayPal</a>과의 상호 작용은 각 개인 정보 보호 정책에 따라 결정됩니다. 우리는 기부금 관련 신용카드나 은행 정보를 수집하거나 보관하지 않습니다. 실제 주소를 수집하는 경우, 당사는 귀하가 요청한 발송에 필요한 기간 동안만 귀하의 실제 주소 정보를 유지합니다.</p>
+<p>이 웹 사이트 및 기타 마케팅 자료를 통해 Let&rsquo;s Encrypt 뉴스레터를 수신할 수 있는 이메일 주소를 제공할 수 있습니다. 뉴스레터는 MailChimp를 통해 전달되며 MailChimp와의 상호 작용은 해당 개인 정보 보호 정책에 따라 결정됩니다. Let&rsquo;s Encrypt와 관련된 개인화된 통신을 보낼 때 사용자의 전자 메일 주소를 사용하는 경우가 있습니다. 우리는 당신의 정보를 팔지 않습니다. MailChimp를 통해 이메일 주소를 삭제하거나 <a href="mailto:press@letsencrypt.org">press@letsencrypt.org</a>로 이메일을 보내도록 요청할 수 있습니다.</p>
+<p>Let&rsquo;s Encrypt 커뮤니티 지원 포럼을 사용하기 위해 등록한 경우, 제공하는 개인 정보 및 해당 커뮤니티에 대한 귀하의 행동은 포럼의 호스팅 및 소프트웨어 제공자의 개인 정보 보호 정책에 따라 결정됩니다.<a href="https://www.discourse.org/privacy">예의바른 담론 건설 키트</a>. 당사는 본 지원 포럼의 오퍼링을 통해 개인 정보를 수집하거나 유지하지 않습니다.</p>
+<p>또한 Google Analytics를 사용하여 웹 사이트의 트래픽과 인기 있는 페이지를 측정합니다. 이 서비스의 일환으로 Google Analytics 쿠키를 사이트에 게시합니다. 이러한 쿠키에는 개인 정보가 포함되어 있지 않지만 시간이 지남에 따라 당사의 사이트에서 사용자의 브라우저 소프트웨어를 고유하게 식별할 수 있습니다. 당사의 분석 서비스가 모든 방문자에 대해 수집 및 공유할 수 있는 정보를 엄격하게 제한함으로써 <a href="http://donottrack.us/">추적 금지</a> 헤더를 존중합니다.</p>
+<h2 id="법-집행-요청-및-소멸-상황">법 집행 요청 및 소멸 상황</h2>
+<p>NAT은 귀사에 대한 개인 신상 정보를 제한된 상황에서 제3자에게 공개할 수 있습니다. 이러한 상황에는 귀하의 동의가 있을 때 또는 선한 믿음이 있을 때, 소환장 또는 기타 사법적 또는 행정적 명령에 따라 법에 의해 요구됩니다. 또한 인명 손실, 개인 상해, 재산 손해 또는 중대한 금전적 위해를 방지하기 위해 필요하다고 믿고 있는 경우 계좌 회수 정보를 공개할 수도 있습니다.</p>
+<p>귀하께서 제출하신 정보를 법률상 공개하도록 요구된 경우, 당사는 귀하에게 공개에 반대할 기회를 주기 위해 귀하의 정보에 대한 요청이 이루어진 경우를 제외하고 귀하에게 사전 통지를 제공하려고 시도할 것입니다. 우리는 어떤 수단을 써서라도 이 통지를 제공할 것입니다. 공개 요청에 이의를 제기하지 않을 경우 당사는 귀하의 정보를 반환해야 할 수 있습니다.</p>
+<p>또한, 당사는 당사의 제품 및 기술 사용자에 대한 정보에 대한 액세스 권한을 부적절하다고 판단되는 특정 요청(제품 및 기술에 대한 정보에 대한 액세스)에 독립적으로 반대할 수 있는 권한을 당사의 재량에 따라 보유합니다.</p>
+<h2 id="유럽-경제-지역-기관-가입자-및-방문자는-gdpr에-따라-어떤-권리를-가지며-이-권리를-어떻게-행사할-수-있습니까">유럽 경제 지역 기관, 가입자 및 방문자는 GDPR에 따라 어떤 권리를 가지며 이 권리를 어떻게 행사할 수 있습니까?</h2>
+<p>이 정책에 설명된 대로 개인 데이터를 처리합니다. 우리는 당신이 이메일을 보내는 것에 동의하는 것에 의존합니다. IP 주소를 수집할 때, 서비스가 예상대로 작동한다는 것을 증명할 수 있는 계약상의 필요성에 따라 데이터를 처리합니다. 다른 사용자가 인증서의 신뢰도를 결정하는 데 이 정보가 필요하므로 IP 주소를 포함한 정보를 삭제할 수 없습니다. 경우에 따라 당사는 법적 의무에 따라 개인 데이터를 처리하거나 사용자의 중대한 이익이나 다른 사람의 이익을 보호할 수 있습니다.</p>
+<p>EEA(European Economic Area)에 위치한 개인은 사용자가 사이트를 사용하여 처리하는 개인 데이터에 액세스, 수정 또는 삭제할 수 있는 권한을 포함하여 개인 정보에 대한 특정 권한을 가집니다. EEA에 기반을 둔 기관, 가입자 및 방문자인 경우 다음을 수행할 수 있습니다:</p>
+<ul>
+<li><a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>로 이메일을 보내 개인 데이터 보고서를 요청합니다. 이 보고서에는 귀하와 관련된 개인 데이터가 포함되며, 일반적으로 사용되는 정형화된 휴대용 형식으로 제공됩니다. 정보를 공개하기 전에 귀하의 신원을 확인하기 위해 추가 정보를 요청할 수 있습니다.</li>
+<li><a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>로 연락하여 귀하의 정보를 수정하거나 삭제해 줄 것을 요청할 수 있습니다.</li>
+<li>귀하의 정보를 처리하는 것을 반대할 수 있습니다. 사용자 정보를 사용하여 서비스 이메일을 보내는 경우를 포함하여 사용자의 정보 사용을 중지하도록 요청할 수 있습니다. 언제든지 Let&rsquo;s Encrypt 이메일에서 찾은 &ldquo;구독 취소&rdquo; 링크를 클릭하여 서비스 전자 메일을 받는 데 대한 동의를 취소할 수 있습니다.</li>
+<li>규제기관에 항의할 수 있습니다. 귀하가 EEA에 거주하고 계신데 저희가 데이터 보호법을 준수하지 않았다고 생각하신다면, 귀하는 해당 지역 감독 기관에 이의를 제기할 권리가 있습니다.</li>
+</ul>
+<p>자세한 정보를 원하거나 개인 정보 문제를 보고하려면 다음 연락처로 문의하시기 바랍니다: <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a></p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>더욱 안전하고 프라이버시를 존중하는 웹을 지원하여 주십시오.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/ko/donate/">기부</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt는 <a href="https://www.abetterinternet.org/"> 비영리 인터넷 보안 연구 그룹 (ISRG)</a>에서 가져온 무료, 자동 및 공개 인증 기관입니다.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>모든 문의 및 질문:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ko/privacy/">개인정보보호 정책</a>을 확인하십시오.<br>
+<a href="https://www.abetterinternet.org/trademarks/">상표권 정책</a>을 확인하십시오.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

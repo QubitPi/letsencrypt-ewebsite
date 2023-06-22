@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>吊销证书 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="当证书不再安全使用时，您应该吊销它。 该情况可能由很多原因造成。 例如， 您可能意外的在某些公共网站上上传了您的私钥信息；黑客可能进入了您的服务器并复制了私钥；黑客可能暂时获取了您的服务器或 DNS 配置的控制权，并验证、颁发了他们控制私钥的证书。
+当您在吊销 Let&amp;rsquo;s Encrypt 证书时，Let&amp;rsquo;s Encrypt 将使用在线证书状态协议（OCSP）发布该吊销信息，有些浏览器会检查 OCSP 并决定是否信任该证书。 请注意，OCSP 有些根本性问题，所以不是所有浏览器都将检查 OCSP 信息。 但是，吊销私钥已经泄露的证书十分重要，并且也是 Let&amp;rsquo;s Encrypt 的用户协议中强制要求的。
+若您要吊销 Let&amp;rsquo;s Encrypt 颁发的证书，您需要通过 Certbot 之类的 ACME 客户端使用 ACME API 进行操作。 您需要向 Let&amp;rsquo;s Encrypt 证明您有权吊销证书。 有三种方法可以验证所有权：使用签发证书的原帐户，使用另一个授权签发的帐户，或使用证书私钥。
+指定吊销原因代码 当吊销证书时，Let&amp;rsquo;s Encrypt用户应该选择以下原因代码：
+ 未提供任何理由或 unspecified (RFC 5280 CRLReason #0)  当下面的原因代码不适用于吊销请求时，用户不能提供除“未指定”以外的理由代码。   keyCompromise (RFC 5280 CRLReason #1)  当用户有理由相信其证书的私钥已被泄露时，必须选择吊销原因“keyCompromise”。例如，未经授权的人可以访问证书的私钥。 如果吊销请求是使用证书私钥而不是用户帐户私钥签署的，Let&amp;rsquo;s Encrypt 可能会忽略请求中的吊销原因并将原因设置为“keyCompromise”。   superseded (RFC 5280 CRLReason #4)  用户在申请新证书以替换其现有证书时，应选择吊销原因“被取代”。   cessationOfOperation (RFC 5280 CRLReason #5)  当用户不再拥有证书中的所有域名或由于停止网站而不再使用证书时，应选择吊销原因“停止运营”。 如果吊销请求来自未请求相关证书但已证明对证书中所有标识符的控制权的用户帐户，Let&amp;rsquo;s Encrypt 可能会忽略请求中的吊销原因并将原因设置为“cessationOfOperation”。    使用除以上外的任何原因代码的吊销请求将被拒绝。">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="吊销证书">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/revoking/">
+    <meta name="twitter:description" content="当证书不再安全使用时，您应该吊销它。 该情况可能由很多原因造成。 例如， 您可能意外的在某些公共网站上上传了您的私钥信息；黑客可能进入了您的服务器并复制了私钥；黑客可能暂时获取了您的服务器或 DNS 配置的控制权，并验证、颁发了他们控制私钥的证书。
+当您在吊销 Let&amp;rsquo;s Encrypt 证书时，Let&amp;rsquo;s Encrypt 将使用在线证书状态协议（OCSP）发布该吊销信息，有些浏览器会检查 OCSP 并决定是否信任该证书。 请注意，OCSP 有些根本性问题，所以不是所有浏览器都将检查 OCSP 信息。 但是，吊销私钥已经泄露的证书十分重要，并且也是 Let&amp;rsquo;s Encrypt 的用户协议中强制要求的。
+若您要吊销 Let&amp;rsquo;s Encrypt 颁发的证书，您需要通过 Certbot 之类的 ACME 客户端使用 ACME API 进行操作。 您需要向 Let&amp;rsquo;s Encrypt 证明您有权吊销证书。 有三种方法可以验证所有权：使用签发证书的原帐户，使用另一个授权签发的帐户，或使用证书私钥。
+指定吊销原因代码 当吊销证书时，Let&amp;rsquo;s Encrypt用户应该选择以下原因代码：
+ 未提供任何理由或 unspecified (RFC 5280 CRLReason #0)  当下面的原因代码不适用于吊销请求时，用户不能提供除“未指定”以外的理由代码。   keyCompromise (RFC 5280 CRLReason #1)  当用户有理由相信其证书的私钥已被泄露时，必须选择吊销原因“keyCompromise”。例如，未经授权的人可以访问证书的私钥。 如果吊销请求是使用证书私钥而不是用户帐户私钥签署的，Let&amp;rsquo;s Encrypt 可能会忽略请求中的吊销原因并将原因设置为“keyCompromise”。   superseded (RFC 5280 CRLReason #4)  用户在申请新证书以替换其现有证书时，应选择吊销原因“被取代”。   cessationOfOperation (RFC 5280 CRLReason #5)  当用户不再拥有证书中的所有域名或由于停止网站而不再使用证书时，应选择吊销原因“停止运营”。 如果吊销请求来自未请求相关证书但已证明对证书中所有标识符的控制权的用户帐户，Let&amp;rsquo;s Encrypt 可能会忽略请求中的吊销原因并将原因设置为“cessationOfOperation”。    使用除以上外的任何原因代码的吊销请求将被拒绝。">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/revoking/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>吊销证书</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2021-10-15">Oct 15, 2021</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>当证书不再安全使用时，您应该吊销它。 该情况可能由很多原因造成。 例如， 您可能意外的在某些公共网站上上传了您的私钥信息；黑客可能进入了您的服务器并复制了私钥；黑客可能暂时获取了您的服务器或 DNS 配置的控制权，并验证、颁发了他们控制私钥的证书。</p>
+<p>当您在吊销 Let&rsquo;s Encrypt 证书时，Let&rsquo;s Encrypt 将使用<a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">在线证书状态协议（OCSP）</a>发布该吊销信息，有些浏览器会检查 OCSP 并决定是否信任该证书。 请注意，OCSP 有些<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">根本性问题</a>，所以不是所有浏览器都将检查 OCSP 信息。 但是，吊销私钥已经泄露的证书十分重要，并且也是 Let&rsquo;s Encrypt 的<a href="letsencrypt-ewebsite/zh-cn/repository/" hreflang="zh-Hans-CN">用户协议</a>中强制要求的。</p>
+<p>若您要吊销 Let&rsquo;s Encrypt 颁发的证书，您需要通过 <a href="https://certbot.eff.org/">Certbot</a> 之类的 ACME 客户端使用 <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a> 进行操作。 您需要向 Let&rsquo;s Encrypt 证明您有权吊销证书。 有三种方法可以验证所有权：使用签发证书的原帐户，使用另一个授权签发的帐户，或使用证书私钥。</p>
+<h1 id="指定吊销原因代码">指定吊销原因代码</h1>
+<p>当吊销证书时，Let&rsquo;s Encrypt用户应该选择以下原因代码：</p>
+<ul>
+<li>未提供任何理由或 <code>unspecified</code> (RFC 5280 CRLReason #0)
+<ul>
+<li>当下面的原因代码不适用于吊销请求时，用户不能提供除“未指定”以外的理由代码。</li>
+</ul>
+</li>
+<li><code>keyCompromise</code> (RFC 5280 CRLReason #1)
+<ul>
+<li>当用户有理由相信其证书的私钥已被泄露时，必须选择吊销原因“keyCompromise”。例如，未经授权的人可以访问证书的私钥。</li>
+<li>如果吊销请求是使用证书私钥而不是用户帐户私钥签署的，Let&rsquo;s Encrypt 可能会忽略请求中的吊销原因并将原因设置为“keyCompromise”。</li>
+</ul>
+</li>
+<li><code>superseded</code> (RFC 5280 CRLReason #4)
+<ul>
+<li>用户在申请新证书以替换其现有证书时，应选择吊销原因“被取代”。</li>
+</ul>
+</li>
+<li><code>cessationOfOperation</code> (RFC 5280 CRLReason #5)
+<ul>
+<li>当用户不再拥有证书中的所有域名或由于停止网站而不再使用证书时，应选择吊销原因“停止运营”。</li>
+<li>如果吊销请求来自未请求相关证书但已证明对证书中所有标识符的控制权的用户帐户，Let&rsquo;s Encrypt 可能会忽略请求中的吊销原因并将原因设置为“cessationOfOperation”。</li>
+</ul>
+</li>
+</ul>
+<p>使用除以上外的任何原因代码的吊销请求将被拒绝。</p>
+<h1 id="用颁发证书的账户吊销证书">用颁发证书的账户吊销证书</h1>
+<p>如果最初是您自己颁发了证书，并且您仍然控制用于颁发该证书的帐户，则可以使用您的帐户凭据吊销该证书。 Certbot 将默认尝试使用该方法吊销证书。 例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
+</code></pre></div><h1 id="使用其他授权帐户吊销证书">使用其他授权帐户吊销证书</h1>
+<p>如果有人入侵了您的主机或 DNS 后颁发了证书，那么您一旦重新获得控制权，就会想要吊销该证书。 要吊销证书，Let&rsquo;s Encrypt 将需要确保您控制该证书中的域名（否则人们可以在未经许可的情况下吊销彼此的证书）！</p>
+<p>为了验证您对该域名的控制权，您需要使用和您申请 Let&rsquo;s Encrypt 证书时相同的流程：您可以<a href="https://tools.ietf.org/html/rfc8555#section-8.4">添加一条 DNS TXT 记录</a>或在<a href="https://tools.ietf.org/html/rfc8555#section-8.3">HTTP 服务器上放置指定文件</a>。 通常情况下，ACME 客户端将为您处理这些工作。 然而，大多数 ACME 客户端将验证控制权和颁发证书这两个操作捆绑在一起，因此若要验证控制权您必须尝试颁发新证书。 若您不需要颁发的新证书，您可以将其吊销或删除证书私钥。</p>
+<p>若您完全不想颁发一张新的证书，您可以尝试在请求中添加一个不存在的域名，这将导致证书颁发失败，但是仍旧能够证明您对需要吊销的域名的控制权。 例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot certonly --manual --preferred-challenges<span class="o">=</span>dns -d <span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span> -d nonexistent.<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>
+</code></pre></div><p>并按照指引操作。 若您想要使用 HTTP 文件（而不是 DNS）来进行验证，请将 <code>--preferred-challenges=dns</code> 替换为 <code>--preferred-challenges=http</code>。</p>
+<p>一旦您验证了要吊销的证书中所有域名的控制权，您就可以从 <a href="https://crt.sh/">crt.sh</a> 中下载证书，然后和您自己颁发了证书的情况一样，使用如下命令吊销证书：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
+</code></pre></div><h1 id="使用证书私钥吊销证书">使用证书私钥吊销证书</h1>
+<p>如果最初不是您颁发了证书，但是您拥有相应私钥的副本，则您可以使用该私钥对吊销请求进行签名。 例如，如果您发现有私钥被意外公开，即使您不是最初颁发使用该私钥的证书的人，您也可以使用此方法吊销这些证书。</p>
+<p>若要使用此方法，您将首先需要以PEM格式复制私钥。</p>
+<p>然后，如果您还没做，请下载要吊销的证书。 Let&rsquo;s Encrypt 将所有颁发的证书记录到<a href="https://www.certificate-transparency.org/">证书透明度</a>日志中，所以您可以从日志监视器（例如 <a href="https://crt.sh/">crt.sh</a>中查找并下载证书。 搜索匹配 <code>SubjectPublicKeyInfo</code> (SPKI) 字段将找到使用私钥的所有证书。 从私钥中提取SPKI哈希值：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">openssl pkey -outform DER -in /PATH/TO/privkey.pem -pubout <span class="p">|</span> openssl sha256
+</code></pre></div><p>一旦您拥有私钥和证书，您就可以吊销该证书：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/privkey.pem --reason keyCompromise
+</code></pre></div></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

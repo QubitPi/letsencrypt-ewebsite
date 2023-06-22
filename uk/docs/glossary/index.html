@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="uk-UA">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Термінологія -  Let&#39;s Encrypt - Free SSL/TLS Certificates</title>
+    <meta name="description" content="ACME (Automatic Certificate Management Environment) : Протокол реалізовано Let&amp;rsquo;s Encrypt. Програмне забезпечення, сумісне з тим протоколом, може використовувати його для комунікації з Let&amp;rsquo;s Encrypt для запитусертифікату. ACME RFC - Вікіпедія ACME Client : Програма зв‘язку з сервером ACME для запитусертифікату. ACME Server : ACME-це сумісний сервер, що може генеруватисертифікати. Програмне забезпечення, яке належить Let’s Encrypt Boulder, є ACME-сумісним, з деякими відхиленнями . Authority Information Access (AIA) : Сертифікаційнерозширення використовується, щоб показати представникам користувача, як отримати інформацію про видавцясертифікату.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Термінологія">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/uk/docs/glossary/">
+    <meta name="twitter:description" content="ACME (Automatic Certificate Management Environment) : Протокол реалізовано Let&amp;rsquo;s Encrypt. Програмне забезпечення, сумісне з тим протоколом, може використовувати його для комунікації з Let&amp;rsquo;s Encrypt для запитусертифікату. ACME RFC - Вікіпедія ACME Client : Програма зв‘язку з сервером ACME для запитусертифікату. ACME Server : ACME-це сумісний сервер, що може генеруватисертифікати. Програмне забезпечення, яке належить Let’s Encrypt Boulder, є ACME-сумісним, з деякими відхиленнями . Authority Information Access (AIA) : Сертифікаційнерозширення використовується, щоб показати представникам користувача, як отримати інформацію про видавцясертифікату.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/uk/docs/glossary/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Канал блогу Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустити навігаційні посилання</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/uk/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/uk/docs/" class="pure-menu-link" tabindex="0">Документація</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Допомога</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Підтримати</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/donate/" class="pure-menu-link">Зробити пожертву</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Стати спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/sponsors/" class="pure-menu-link">Спонсори та фонди</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getinvolved/" class="pure-menu-link">Долучитися</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Про сервіс</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Закінчення DST Root ЦС X3 (вересень 2021 року)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/faq/" class="pure-menu-link">Часто поставлені питання (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Стан сервісу</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Кар&#39;єра</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/contact/" class="pure-menu-link">Контакти</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Мови <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">✓ Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Термінологія</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Останнє оновлення: <time datetime="2018-12-30">30 груд. 2018 р.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/uk/docs">Переглянути всю документацію</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<!--
+Note for translators:
+ 
+- Usage of the "def" macro (in other languages than English):
+{% def 
+    id="a unique id for anchor - the SAME than for english. will be prefixed by `def-`" 
+    name="The term to define (optional if english or abbr is provided)"
+    abbr="an accronym (optional)"
+    english="the english term (optional - if present the abbr is in english too)" %}}
+        the definition
+{% /def %}
+    
+- Check the javascript console for errors.
+
+- Automatic titles on definition's link cuts everything after the last point (to remove source links)
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="definition">
+	<a href="#def-ACME"><dfn id="def-ACME"><abbr lang="en">ACME</abbr></dfn> (Automatic Certificate Management Environment)</a>
+	: Протокол реалізовано <a href="#def-LE">Let&rsquo;s Encrypt</a>. Програмне забезпечення, сумісне з тим протоколом, може використовувати його для комунікації з Let&rsquo;s Encrypt для запиту<a href="#def-leaf"> сертифікату</a>. <a href="https://tools.ietf.org/html/rfc8555">ACME RFC</a> - <a href="https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-ACME-client"><dfn id="def-ACME-client">ACME Client</dfn></a>
+	: Програма зв‘язку з сервером ACME для запиту<a href="#def-leaf"> сертифікату</a>.
+</p>
+<p class="definition">
+	<a href="#def-ACME-server"><dfn id="def-ACME-server">ACME Server</dfn></a>
+	: ACME-це сумісний сервер, що може генерувати<a href="#def-leaf"> сертифікати</a>. Програмне забезпечення, яке належить Let’s Encrypt <a href="#def-boulder">Boulder</a>, є ACME-сумісним, <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md"> з деякими відхиленнями </a>.
+</p>
+<p class="definition">
+	<a href="#def-AIA"><dfn id="def-AIA">Authority Information Access</dfn> (<abbr>AIA</abbr>)</a>
+	: Сертифікаційне<a href="#def-extension"> розширення </a>використовується, щоб показати <a href="#def-user-agent">представникам користувача,</a> як отримати інформацію про видавця<a href="#def-certificate"> сертифікату</a>. Це зазвичай точно визначає <a href="#def-OCSP">OCSP</a> URI і <a href="#def-CAI">видавця URI</a>.
+</p>
+<p class="definition">
+	<a href="#def-BRs"><dfn id="def-BRs">Baseline Requirements</dfn> (<abbr>BRs</abbr>)</a>
+	: Перелік технічних вимог та правил для Центрів Сертифікації (ЦС). Оскільки всі основні <a href="#def-root-program">кореневі програми</a> містять базові вимоги, щоб більшість браузерів їм довіряли, ЦС повинні відповідати цим вимогам.
+</p>
+<p class="definition">
+	<a href="#def-boulder"><dfn id="def-boulder">Boulder</dfn></a>
+	: Програмне забезпечення, що реалізує ACME, розроблене та використовується <a href="#def-LE">Let&rsquo;s Encrypt</a>. <a href="https://github.com/letsencrypt/boulder">GitHub</a>
+</p>
+<p class="definition">
+	<a href="#def-CAI"><dfn id="def-CAI">CA Issuers</dfn></a>
+	: Частина поля <a href="#def-AIA">AIA</a>, що містить інформацію про видавця <a href="#def-leaf">сертифікату</a>. Може стати в нагоді, якщо <a href="#def-web-server">вебсервер</a> не надав надійний <a href="#def-chain">ланцюжок сертифікатів</a>.
+</p>
+<p class="definition">
+	<a href="#def-CABF"><dfn id="def-CABF">CA/Browser Forum</dfn></a>
+	: Добровільна група ЦС, постачальників програмного забезпечення для веб-браузерів, операційних систем та інших програм, що підтримують PKI. Форум ЦС/браузера публікує <a href="#def-BRs">базові вимоги</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> є членом Форуму ЦС/браузера. <a href="https://en.wikipedia.org/wiki/CA/Browser_Forum">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (Certificate Authority Authorization)</a>
+	: Запис DNS, який визначає яким <a href="#def-CA">ЦС</a> дозволено видавати сертифікат для відповідного доменного імені. Записи Авторизації центру сертифікації (CAA) перевіряються ЦС, а не браузерами. <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="letsencrypt-ewebsite/uk/docs/caa/" hreflang="uk-UA"> шанує записи CAA </a> відповідно до <a href="#def-BRs"> базових вимог </a>. - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CNAME"><dfn id="def-CNAME">Canonical Name record</dfn> (<abbr>CNAME</abbr>)</a>
+	: Запис DNS, що зіставляє одне доменне ім&rsquo;я з іншим, називається канонічним ім&rsquo;ям. <a href="https://en.wikipedia.org/wiki/CNAME_record">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-certificate"><dfn id="def-certificate">Certificate</dfn></a>
+	: Файл у <a href="#def-X509">певному форматі</a> містить відкритий ключ та інші дані, що описують коли саме використовувати цей відкритий ключ. Найпоширеніший вид сертифіката - це <a href="#def-leaf">leaf certificate</a>. Також є <a href="#def-intermediate">проміжні</a> і <a href="#def-root">кореневі</a> сертифікати.
+</p>
+<p class="definition">
+	<a href="#def-CA"><dfn id="def-CA">Certificate Authority</dfn> (<abbr>CA</abbr>)</a>
+	: Організація, що видає <a href="#def-leaf">сертифікати</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a>, <a href="#def-IdenTrust">IdenTrust</a>, Sectigo та DigiCert є Центрами Сертифікації. <a href="https://en.wikipedia.org/wiki/Certificate_authority">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CP"><dfn id="def-CP">Certificate Policy</dfn> (<abbr>CP</abbr>)</a>
+	: Іменований набір правил, який вказує на можливість залучення сертифіката до певної спільноти та/або класу додатків із загальними вимогами безпеки. Більше деталей випуску викладені в <a href="#def-CPS">CPS</a>. <a href="letsencrypt-ewebsite/uk/repository/#isrg-certificate-policy" hreflang="uk-UA">Політика сертифікатів дослідницької групи з питань безпеки Інтернету (ISRG)</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CRL"><dfn id="def-CRL">Certificate Revocation List</dfn> (<abbr>CRL</abbr>)</a>
+	: Метод інформування <a href="#def-user-agent">агентів користувача</a> про<a href="#def-revocation"> статус</a> відкликання<a href="#def-leaf"> сертифікату</a>. Це перелік серійних номерів усіх відкликаних сертифікатів з даного ЦС, підписаний цим ЦС. <a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CSR"><dfn id="def-CSR">Certificate Signing Request</dfn> (<abbr>CSR</abbr>)</a>
+	: Підписаний файл, що містить інформацію, необхідну <a href="#def-CA">ЦС</a> для створення сертифікату. Необхідна інфрмація для <a href="#def-LE">Let&rsquo;s Encrypt</a> - це <a href="#def-CN">Загальна назва</a>, <a href="#def-SAN">Альтернативні імена суб&rsquo;єктів</a>, а також інформація про відкритий ключ. Зазвичай, <a href="#def-ACME-client">клієнтські програми</a> автоматично генерують запит на підпис сертифікату (CSR) для користувача, хоча постачальник веб-хостингу або девайсу можуть також генерувати CSR. <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-store"><dfn id="def-store">Certificate Store</dfn></a>
+	: Сховище сертифікатів містить список надійних <a href="#def-root">коренів</a>. Оперативні системи (такі як, Windows, Android або Debian) та <a href="#def-web-browser">веб-браузери</a> (наприклад, Firefox) підтримують сховище сертифікатів. Браузери без такого сховища покладаються на сховище сертифікатів операційних систем. <a href="#def-leaf">Сертифікати</a> від <a href="#def-LE">Let&rsquo;s Encrypt</a> мають <a href="letsencrypt-ewebsite/uk/certificates/" hreflang="uk-UA">довіру більшості сховищ сертифікатів</a>.
+</p>
+<p class="definition">
+	<a href="#def-CT"><dfn id="def-CT">Certificate Transparency</dfn> (<abbr>CT</abbr>)</a>
+	: Для підвищення безпеки сертифікати (або <a href="#def-precertificate"> precertificates</a>) мають бути опубліковані у журналах прозорості сертифікатів: <a href="https://www.certificate-transparency.org/">https://www.certificate-transparency.org/</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> генерує та публікує <a href="#def-precertificate">пресертифікати</a>, та включає до наступного <a href="#def-leaf">сертифікату</a> перелік <a href="#def-SCT">SCT</a> для пресертифіката. Деякі <a href="#def-web-browser">браузери</a>, як Google Chrome, вимагають наявності цієї обіцяної перевірки для підтвердження сертифіката. <a href="https://en.wikipedia.org/wiki/Certificate_Transparency">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CT-log"><dfn id="def-CT-log">Certificate Transparency Log</dfn></a>
+	: Компонент<a href="#def-CT"> Прозорості сертифікату</a>, який приймає сертифікати і <a href="#def-precertificate">пресертифікати</a> та включає їх до постійного, загальнодоступного переліку, що перевіряється.
+</p>
+<p class="definition">
+	<a href="#def-chain"><dfn id="def-chain">Certificate chain</dfn></a>
+	: Перелік <a href="#def-intermediate">проміжних сертифікатів</a>, що допомагає <a href="#def-user-agent">агентові користувача</a> визначити чи можна довіряти кінцевому суб&rsquo;єкту <a href="#def-leaf">або листовому сертифікату</a>, підключивши його до <a href="#def-root">кореневого сертифікату</a> у <a href="#def-store">сховищі сертифікатів</a>. Примітка: ланцюжок не завжди унікальний, і коли веб-сайт представляє ланцюжок сертифікатів, що веде до одного кореня, то агент користувача може вирішити використовувати інший ланцюг для перевірки сертифіката. <a href="https://en.wikipedia.org/wiki/Public_key_certificate">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-extension"><dfn id="def-extension">Certificate extension</dfn></a>
+	: У сертифікатах більшість полів визначаються розширеннями. Нприклад, <a href="#def-SAN">Додаткові імена суб’єкта (SAN)</a> та <a href="#def-AIA">AIA</a> є розширеннями. Механізм розширення дозволяє створювати нові поля, що не були частиною оригінального<a href="#def-X509">X.509</a> стандарту.
+</p>
+<p class="definition">
+	<a href="#def-issuer"><dfn id="def-issuer">Certificate issuer</dfn></a>
+	: Поле &ldquo;Видавець&rdquo; сертифіката описує, який сертифікат його підписав. Наприклад, поле &ldquo;Видавець&rdquo; сертифіката кінцевого користувача від Let&rsquo;s Encrypt може бути &ldquo;Issuer: C = US, O = Let&rsquo;s Encrypt, CN = Let&rsquo;s Encrypt Authority X3&rdquo;. Воно зазвичай містить такі поля, як <a href="#def-CN"> Загальна назва </a>, Країна та Організація. Поле &ldquo;Видавець&rdquo; завжди відповідає полю<a href="#def-subject"> &ldquo;Суб&rsquo;єкт&rdquo;</a> в сертифікаті. Для таких<a href="#def-self-signed"> самопідписаних </a> сертифікатів, як <a href="#def-root">кореневі</a>, Видавець той самий, що й Суб&rsquo;єкт. Термін &ldquo;Видавець&rdquo; також може використовуватися для позначення сертифікатів, які видають інші сертифікати (<a href="#def-intermediate"> проміжні </a> або кореневі), або для організації, що видає сертифікати.
+</p>
+<p class="definition">
+	<a href="#def-subject"><dfn id="def-subject">Certificate subject</dfn></a>
+	: Поле &ldquo;Суб&rsquo;єкт&rdquo; сертифіката вказує, про що йдеться у сертифікаті. Воно зазвичай містить такі поля, як <a href="#def-CN"> Загальна назва </a>, Країна та Організація.
+</p>
+<p class="definition">
+	<a href="#def-CPS"><dfn id="def-CPS">Certification Practice Statement</dfn> (<abbr>CPS</abbr>)</a>
+	: Заява про практику, яку використовує центр сертифікації при видачі, управлінні, відкликанні, поновленні або при переоформленні сертифікатів. <a href="letsencrypt-ewebsite/uk/repository/#isrg-certification-practice-statement" hreflang="uk-UA">Заява ISRG про сертифікацію </a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 розділ 3.4</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-CN"><dfn id="def-CN">Common Name</dfn> (<abbr>CN</abbr>)</a>
+	: У частині сертифіката <a href="#def-subject">&ldquo;Суб&rsquo;єкт&rdquo;</a> описується, про що йдеться у сертифікаті. Для <a href="#def-root">кореневих</a> і <a href="#def-intermediate">проміжних сертифікатів</a> це читабельна назва <a href="#def-CA">центру сертифікації</a>. Для <a href="#def-leaf"> листового сертифікату </a>- це одне з доменних імен у сертифікаті. Примітка: Загальна назва обмежена 63 символами. Це застарілий метод позначення доменного імені, на яке поширюється сертифікат, оскільки поточні стандарти Інтернету передбачають, що програмне забезпечення перевірятиме лише <a href="#def-SAN">Альтернативні імена суб&rsquo;єктів (SAN)</a>, щоб визначити придатність сертифіката.
+</p>
+<p class="definition">
+	<a href="#def-critical"><dfn id="def-critical">Critical extension</dfn></a>
+	: Сертифікат може містити <a href="#def-extension">розширення</a> з позначкою &ldquo;критично.&rdquo; У такому разі програмне забезпечення має відхилити цей сертифікат, якщо програмне забезпечення не розуміє, як обробляти розширення. Це дає можливість впроваджувати нові розширення, важливі для безпеки, не створюючи ризиків для старого програмного забезпечення.
+</p>
+<p class="definition">
+	<a href="#def-cross-signing"><dfn id="def-cross-signing">Cross Signing</dfn></a>
+	: Сертифікат, що видається, може підписуватись кількома <a href="#def-root">коренями</a>. Наприклад, <a href="#def-LE"> в Let&rsquo;s Encrypt</a> <a href="#def-intermediate">проміжні</a> також підписані <a href="#def-IdenTrust">IdenTrust</a>, оскільки під час запуску кореневих сертифікатів Let&rsquo;s Encrypt вони ще не підтримувались <a href="#def-store">сховищами сертифікатів</a>. Технічно це досягається за допомогою видачі двох сертифікатів, що використовують один і той же <a href="#def-subject"> суб&rsquo;єкт </a> і ту саму <a href="#def-key-pair"> пару ключів </a>, один підписаний приватним ключем кореня Let&rsquo;s Encrypt, а інший - приватним ключем кореня IdenTrust: <a href="letsencrypt-ewebsite/uk/certificates/" hreflang="uk-UA">/certificates</a>. <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-DANE"><dfn id="def-DANE">DNS-based Authentication of Named Entities</dfn> (<abbr>DANE</abbr>)</a>
+	: Механізм, який використовує DNS, щоб вказати, як перевірити автентичність <a href="#def-leaf">сертифікату</a> або представленого ключа шифрування.  <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-DNSSEC"><dfn id="def-DNSSEC">Domain Name System Security Extensions</dfn> (<abbr>DNSSEC</abbr>)</a>
+	: Механізм криптографічної автентифікації відповідей DNS. DNSSEC вимагає розгортання TLD, власниками імен доменів та рекурсивними резольверами для набуття чинності. Ухвалення поки що на досить низькому рівні. <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-DV"><dfn id="def-DV">Domain-validated certificate</dfn></a>
+	: <a href="#def-leaf"> сертифікат </a>, де заявник лише довів свій контроль над доменним іменем (а не ідентифікаційні дані запитуючої організації). <a href="#def-LE">Let&rsquo;s Encrypt</a> пропонує лише сертифікати DV (не <a href="#def-OV"> OV </a> або <a href="#def-EV"> EV </a>): <a href="letsencrypt-ewebsite/uk/docs/faq/" hreflang="uk-UA">FAQ</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (Elliptic Curve Digital Signature Algorithm)</a>
+	: Варіант алгоритму цифрового підпису (DSA), який використовує криптографію з еліптичною кривою.  <a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">Вікіпедія</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> підтримує ECDSA для <a href="#def-leaf">сертифікатів кінцевого користувача або листових сертифікатів</a>, але не для всього <a href="#def-chain">ланцюжка</a>: <a href="letsencrypt-ewebsite/uk/upcoming-features/" hreflang="uk-UA">/upcoming-features</a>
+</p>
+<p class="definition">
+	<a href="#def-Ed25519"><dfn id="def-Ed25519">Ed25519</dfn></a>
+	: Особливий тип <a href="#def-EdDSA">EdDSA</a>, разом із Ed448.
+</p>
+<p class="definition">
+	<a href="#def-EdDSA"><dfn id="def-EdDSA"><abbr lang="en">EdDSA</abbr></dfn> (Edwards-curve Digital Signature Algorithm)</a>
+	: Сучасна система підпису відкритих ключів на основі еліптичних кривих, призначена для вирішення кількох поширених <a href="https://ed25519.cr.yp.to/"> проблем впровадження </a>  криптографії на еліптичній кривій. Центри сертифікації, такі як <a href="#def-LE"> Let&rsquo;s Encrypt </a>, ще не можуть надавати сертифікати EdDSA. <a href="https://en.wikipedia.org/wiki/EdDSA">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-ECC"><dfn id="def-ECC">Elliptic Curve Cryptography</dfn> (<abbr>ECC</abbr>)</a>
+	: Тип криптографії з відкритим ключем на основі еліптичних кривих. ECC використовує менші ключі порівняно з криптографією, що не належить до ЄС, забезпечуючи при цьому еквівалентну безпеку. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">Cloudflare</a> - <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-EV"><dfn id="def-EV">Extended Validation</dfn> (<abbr>EV</abbr>)</a>
+	: Тип підтвердження сертифіката, для якого <a href="#def-CA"> ЦС </a> перевірив юридичну особу, що контролює веб-сайт. Він містить інформацію про цю організацію. Контроль <a href="#def-CA">ЦС</a> більш суровий, ніж для <a href="#def-OV">OV</a> сертифікатів. <a href="#def-LE"> Let&rsquo;s Encrypt </a> не пропонує EV сертифікати. <a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-FQDN"><dfn id="def-FQDN">Fully qualified domain name</dfn> (<abbr>FQDN</abbr>)</a>
+	: Повне доменне ім&rsquo;я веб -сайту. Наприклад, <code>www.example.com</code> - <em>повне доменне ім&rsquo;я(FQDN)</em>.
+</p>
+<p class="definition">
+	<a href="#def-HPKP"><dfn id="def-HPKP">HTTP Public Key Pinning</dfn> (<abbr>HPKP</abbr>)</a>
+	: Механізм безпеки, який просить веб-переглядач вимагати, щоб <a href="#def-chain">ланцюжок сертифікатів сайту </a> використовувати певні відкриті ключі під час майбутніх завантажень. Chrome запровадив цей механізм для захисту від компромісу ЦС, але він спричинив перебої на сайті, що призвело до того, що Chrome [Скасуйте підтримку та видаліть її](<a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/">https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/</a> he9tr7p3rZ8). <a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-IdenTrust"><dfn id="def-IdenTrust">IdenTrust</dfn></a>
+	: <a href="#def-CA">Центр сертифікації</a>. IdenTrust має <a href="#def-cross-signing">крос-підпис</a> <a href="#def-LE">проміжних сертифікатів</a> <a href="#def-intermediate">Let&rsquo;s Encrypt</a>: <a href="letsencrypt-ewebsite/uk/certificates/" hreflang="uk-UA">/certificates</a>. <a href="https://en.wikipedia.org/wiki/IdenTrust">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-intermediate"><dfn id="def-intermediate">Intermediate certificate</dfn></a>
+	: Сертифікат, підписаний <a href="#def-root">кореневим</a> або іншим проміжним сертифікатом, також здатен підписувати інші сертифікати. Вони використовуються для підписання листових сертифікатів, зберігаючи при цьому закритий ключ кореневого сертифіката в автономному режимі. Проміжні сертифікати включені до<a href="#def-chain">ланцюжків сертифікатів</a>. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Types_of_certificate">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-IDN"><dfn id="def-IDN">Internationalized Domain Name</dfn> (<abbr>IDN</abbr>)</a>
+	: Доменне ім’я з символами, відмінними від <code>a</code> до <code>z</code>, <code>0</code> до <code>9</code> та дефісом(<code>-</code>). Вони можуть, наприклад, містити арабські, китайські, кириличні, тамільські, єврейські або латинські символи з діакритикою або лігатурами. Закодоване представлення доменів IDN починається з <code>xn--</code>. IDN підтримуються <a href="#def-LE">Let&rsquo;s Encrypt</a>: <a href="https://letsencrypt.org/2016/10/21/">https://letsencrypt.org/2016/10/21/</a>представляючи-idn-support.html. <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">Вікіпедія</a> - <a href="https://tools.ietf.org/html/rfc5890">RFC 5890</a> - <a href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>
+</p>
+<p class="definition">
+	<a href="#def-IDNA"><dfn id="def-IDNA">Internationalized Domain Names for Applications</dfn> (<abbr>IDNA</abbr>)</a>
+	: Див. <a href="#def-IDN"> інтернаціоналізоване доменне ім&rsquo;я </a>.
+</p>
+<p class="definition">
+	<a href="#def-ISRG"><dfn id="def-ISRG">Internet Security Research Group</dfn> (<abbr>ISRG</abbr>)</a>
+	: Організація, яка стоїть за <a href="#def-LE">Let&rsquo;s Encrypt</a>: <a href="https://www.abetterinternet.org/about/">https://www.abetterinternet.org/about/</a>. <a href="https://en.wikipedia.org/wiki/Internet_Security_Research_Group">Вікіпедія</a>
+</p>
+<p class="definition">
+	<a href="#def-key-pair"><dfn id="def-key-pair">Key-pair</dfn></a>
+	: Поєднання приватного ключа та відкритого ключа, що використовується для підпису або шифрування. Відкритий ключ зазвичай вбудовується в сертифікат, тоді як приватний ключ зберігається окремо і повинен зберігатися в таємниці. Пара ключів може бути використана для шифрування та дешифрування, для підпису та перевірки даних або узгодження вторинних ключів, залежно від програми. <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-leaf"><dfn id="def-leaf">Leaf certificate (end-entity certificate)</dfn></a>
+	: Найчастіше сертифікат, підписаний<a href="#def-intermediate">intermediate</a>, дійсний для набору доменів і не може підписувати інші сертифікати. Це тип сертифіката, який <a href="#def-ACME-client">ACME clients</a> запрошує і використовує <a href="#def-web-server">web servers</a>. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#End-entity_or_leaf_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-LE"><dfn id="def-LE">Let&#39;s Encrypt</dfn> (<abbr>LE</abbr>)</a>
+	: <a href="#def-CA"> ЦС </a>, яким керує <a href="#def-ISRG"> ISRG </a>. <a href="https://en.wikipedia.org/wiki/Let%27s_Encrypt">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-mixed-content"><dfn id="def-mixed-content">Mixed content</dfn></a>
+	: Коли веб-сторінка HTTPS завантажує суб-ресурси (Javascript, CSS або зображення) через HTTP. <a href="#def-web-browser">Браузери</a> можуть блокувати змішаний вміст або позначати сторінку як менш безпечну, якщо присутній змішаний вміст:https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content. Щоб вирішити проблему змішаного вмісту, веб -розробник повинен змінити свої сторінки, щоб усі ресурси використовували URL -адреси HTTPS. <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">Інструменти розробника </a>, вбудовані у браузери і можуть використовуватися, щоб з&rsquo;ясувати, які ресурси викликають проблеми зі змішаним вмістом.
+</p>
+<p class="definition">
+	<a href="#def-OCSP"><dfn id="def-OCSP"><abbr lang="en">OCSP</abbr></dfn> (Online Certificate Status Protocol)</a>
+	: Метод перевірки <a href="#def-revocation">скасування</a> статус <a href="#def-leaf">certificate</a>. Іншими словами, спосіб перевірити, чи <a href="#def-CA">ЦС</a> вказує, що сертифікат більше не повинен вважатися дійсним, навіть якщо термін його дії ще не досяг. Цей запит може створити проблеми з конфіденційністю, оскільки дозволяє цс та постачальникам послуг Інтернету безпосередньо спостерігати, хто відвідує які сайти. <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-must-staple"><dfn id="def-OCSP-must-staple">OCSP Must-Staple</dfn></a>
+	: <a href="#def-leaf">certificate</a>розширення, інформує <a href="#def-web-browser"> браузер </a>, що <a href="#def-web-server"> веб-сервер </a> із цим сертифікатом повинен використовувати<a href="#def-OCSP-stapling">OCSP stapling</a>. Він використовується для того щоб вимагати оновлений статус<a href="#def-revocation">revocation</a> <a href="#def-leaf"> сертифіката </a>підтверджувався веб -сервер при кожному з&rsquo;єднанні, що робить відкликання більш надійним. <a href="#def-LE">Let&rsquo;s Encrypt</a> може видавати сертифікати з OCSP Must-Staple <a href="#def-extension">extension</a> за запитом. <a href="https://blog.mozilla.org/security/2015/11/23/improving-revocation-ocsp-must-staple-and-short-lived-certificates/">Mozilla Security Blog</a> <a href="https://tools.ietf.org/html/rfc7633">RFC 7633</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-stapling"><dfn id="def-OCSP-stapling">OCSP stapling</dfn></a>
+	: Спосіб для <a href="#def-web-server"> веб-сервера </a> надсилати <a href="#def-web-browser">browser</a> an <a href="#def-OCSP">OCSP</a> відповідь, підписана <a href="#def-CA">ЦС</a>, тому браузеру не потрібно подавати вторинний запит OCSP до ЦС, покращуючи швидкість та конфіденційність. Також відомий як розширення запиту статусу TLS сертифіката. <a href="https://en.wikipedia.org/wiki/OCSP_stapling">Wikipedia</a> <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">Cloudflare</a>
+</p>
+<p class="definition">
+	<a href="#def-OID"><dfn id="def-OID">Object identifier</dfn> (<abbr>OID</abbr>)</a>
+	: OID - це унікальні числові ідентифікатори, стандартизовані Міжнародною телекомунікаційною спілкою (ITU) та ISO/IEC. OID використовуються в сертифікатах для визначення розширень, полів або тверджень політики. Інтернет стандарти та <a href="#def-CP">Політика сертифікатів</a> і <a href="#def-CPS">Заяви про практику сертифікації</a> документи визначають використання OID. <a href="https://en.wikipedia.org/wiki/Object_identifier">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-OV"><dfn id="def-OV">Organization Validation</dfn> (<abbr>OV</abbr>)</a>
+	: Сертифікати для яких <a href="#def-CA">CA</a> підтвердив юридичну особу <a href="#def-subscriber">Subscriber</a>. Вони містять інформацію про цю організацію. <a href="#def-LE">Let&rsquo;s Encrypt</a> не пропонує OV сертифікатів. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Organization_validation">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-pem"><dfn id="def-pem">PEM file (.pem)</dfn></a>
+	: Формат криптографічної інформації (спочатку вказано як частина Покращених Поштових Інтернет-стандартів для безпечної електронної пошти). Документ PEM може представляти інформацію таку як приватний ключ, відкритий ключ або цифровий сертифікат. Ці файли починаються на &ldquo;----BEGIN&rdquo;, а потім тип даних. <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-pfx"><dfn id="def-pfx">Personal Information Exchange Files (.pfx)</dfn></a>
+	: Файл, який може містити <a href="#def-leaf">лист сертифікату</a>, його <a href="#def-chain">ланцюжок</a> до кореня і закритий ключ листа. Дивіться також <a href="https://uk.wikipedia.org/wiki/PKCS_12">https://uk.wikipedia.org/wiki/PKCS_12</a>. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files">Microsoft Hardware Dev Center</a>
+</p>
+<p class="definition">
+	<a href="#def-precertificate"><dfn id="def-precertificate">Precertificate</dfn></a>
+	: Сутички є частиною <a href="#def-CT">Прозорість сертифікатів</a>. Пресертифікат – це копія <a href="#def-leaf">сертифікату</a>, який CA має намір видати, з <a href="#def-critical">критичним</a> розширенням додано, щоб запобігти прийняттю попереднього сертифіката програмним забезпеченням у дикій природі. ЦС подає пресертифікат в <a href="#def-CT-log">журнали CT</a> в обмін на <a href="#def-SCT">SCT</a>. Оскільки пресертифікат не ідентичний його відповідному сертифікату, журнали прозорості сертифікатів можуть містити обидва. <a href="https://tools.ietf.org/html/rfc6962#section-3.1">RFC 6962 Section 3.1</a>
+</p>
+<p class="definition">
+	<a href="#def-PSL"><dfn id="def-PSL">Public Suffix List</dfn> (<abbr>PSL</abbr>)</a>
+	: Список <em>Загальнодоступних суфіксів</em>, який підтримує Mozilla, вказуючи, який Інтернет домени доступні для багатьох окремих організацій для реєстрації субдоменів. Наприклад, список вказує, що і <code>com</code>, і <code>co.uk</code> є загальнодоступними суфіксами, хоча <code>co.uk</code> не є TLD. Веб-браузери використовують цей список, серед іншого, для того, щоб сайти, які, ймовірно, керуються різними організаціями, не могли обмінюватися файлами cookie один з одним. <a href="#def-LE">Let&rsquo;s Encrypt</a> також використовує список для обчислення ліміту швидкості: <a href="letsencrypt-ewebsite/uk/docs/rate-limits/" hreflang="uk-UA">/rate-limits</a>. <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+<p class="definition">
+	<a href="#def-RSA"><dfn id="def-RSA"><abbr>RSA</abbr></dfn></a>
+	: Алгоритм із відкритим ключем, що використовується для шифрування та цифрового підпису сертифікатів. <a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-relying-party"><dfn id="def-relying-party">Relying Party</dfn></a>
+	: Особа покладається на інформації в сертифікаті. Наприклад, хтось, хто відвідує вебсайт HTTPS, є довірчою стороною.
+</p>
+<p class="definition">
+	<a href="#def-revocation"><dfn id="def-revocation">Revocation</dfn></a>
+	: Сертифікат чинний до завершення терміну його дії, якщо <a href="#def-CA">ЦС</a> не стверджує, що його відкликано. Сертифікат може бути відкликаний з різних причин, наприклад, компрометація приватного ключа. Веб-переглядачі можуть перевірити, чи відкликано сертифікат, використовуючи <a href="#def-CRL">CRL</a>, <a href="#def-OCSP">OCSP</a> або новіші методи, як-от <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> і [CRLSets](<a href="https://dev.chromium">https://dev.chromium</a> .org/Home/chromium-security/crlsets). Зауважте, що в багатьох ситуаціях <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">відкликання не працює</a>. <a href="letsencrypt-ewebsite/uk/docs/revoking/" hreflang="uk-UA">/docs/revoking</a>
+</p>
+<p class="definition">
+	<a href="#def-root-program"><dfn id="def-root-program">Root Program</dfn></a>
+	: Політики, які організація використовує, щоб вирішити, які сертифікати включити до свого <a href="#def-store">сховища сертифікатів</a> , а отже, яким ЦС довіряє їх програмне забезпечення.
+</p>
+<p class="definition">
+	<a href="#def-root"><dfn id="def-root">Root certificate</dfn></a>
+	: <a href="#def-self-signed">самопідписаний</a> сертифікат, контрольований за допомогою <a href="#def-CA">центр сертифікації</a>, який використовується для підписання його <a href="#def-intermediate">проміжних</a> сертифікатів і включений до <a href="#def-store">сховища сертифікатів</a>. <a href="https://en.wikipedia.org/wiki/Root_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SSL"><dfn id="def-SSL"><abbr lang="en">SSL</abbr></dfn> (Secure Sockets Layer)</a>
+	: Старша назва для <a href="#def-TLS">TLS</a>, досі в загальному вжитку.
+</p>
+<p class="definition">
+	<a href="#def-self-signed"><dfn id="def-self-signed">Self-signed certificate</dfn></a>
+	: Сертифікат, підписаний власним закритим ключем, з <a href="#def-subject">темою</a> рівним до свого <a href="#def-issuer">емітента</a>. Самопідписані сертифікати є надійними лише завдяки попереднім домовленостям, зробленим у фізичному світі, як-от включення до <a href="#def-store">довіреного кореневого списку</a>. <a href="#def-root">Кореневі сертифікати</a> є самопідписаними.  <a href="https://en.wikipedia.org/wiki/Self-signed_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SNI"><dfn id="def-SNI">Server Name Indication</dfn> (<abbr>SNI</abbr>)</a>
+	: Поле, яке <a href="#def-user-agent">агент користувача</a> надсилає до <a href="#def-web-server">сервер</a> під час рукостискання <a href="#def-TLS">TLS</a>, вказуючи ім’я домену для підключення. Це дозволяє серверу відповідати відповідним <a href="#def-leaf">сертифікатом</a>, коли кілька доменів розміщено за однією IP-адресою. Веб-сервер може надсилати інший сертифікат і показувати інший вміст, залежно від імені, яке клієнт запитав SNI. SNI не зашифрований, але експериментальна заміна, ESNI, є. <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SCT"><dfn id="def-SCT">Signed Certificate Timestamp</dfn> (<abbr>SCT</abbr>)</a>
+	: Підписана, піддана перевірці обіцянка опублікувати сертифікат із <a href="#def-CT-log">сертифікату Журнал прозорості</a>. Веб-переглядачі, які застосовують <a href="#def-CT">CT</a>, перевіряють наявність SCT в сертифікаті сайту або в рукостисканні <a href="#def-TLS">TLS</a> , і відмовитися від підключення до сайтів, які не відповідають їхнім вимогам до реєстрації. Це підвищує ймовірність виявлення шахрайських або неточних сертифікатів. <a href="https://www.certificate-transparency.org/how-ct-works">https://www.certificate-transparency.org/how-ct-works</a>
+</p>
+<p class="definition">
+	<a href="#def-staging"><dfn id="def-staging">Staging</dfn></a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a> надає проміжний API для перевірки запиту сертифіката, не впливаючи на обмеження швидкості. Сертифікати, створені проміжним середовищем, <em>не</em> є загальнодоступними. Проміжне середовище має використовуватися для тестування, налагодження та розробки клієнта ACME. <a href="letsencrypt-ewebsite/uk/docs/staging-environment/" hreflang="uk-UA">/docs/staging-environment</a>
+</p>
+<p class="definition">
+	<a href="#def-SAN"><dfn id="def-SAN">Subject Alternative Name</dfn> (<abbr>SAN</abbr>)</a>
+	: Поле <a href="#def-leaf">сертифікату</a>, яке вказує на який домен( s) сертифікат дійсний. Він замінює використання <a href="#def-CN">Загального імені</a>, яке тепер надається лише з міркувань сумісності. Один сертифікат може містити багато SAN, які дійсні для різних доменних імен. <a href="https://en.wikipedia.org/wiki/Subject_Alternative_Name">Вікіпедія</a> <a href="https://letsencrypt.org/uk/docs/rate-limits/#names-per-certificate">https://letsencrypt.org/uk/docs/rate-limits/#names-per-certificate</a>
+</p>
+<p class="definition">
+	<a href="#def-subscriber"><dfn id="def-subscriber">Subscriber</dfn></a>
+	: Особа або організація, яка запитує сертифікат.
+</p>
+<p class="definition">
+	<a href="#def-TLS"><dfn id="def-TLS"><abbr lang="en">TLS</abbr></dfn> (Transport-Level Security)</a>
+	: Протокол, який використовується HTTPS для шифрування та перевірки справжності відвіданих вебсторінок.
+</p>
+<p class="definition">
+	<a href="#def-TLSA"><dfn id="def-TLSA"><abbr>TLSA</abbr></dfn></a>
+	: Частина <a href="#def-DANE">DANE</a> спеціально пов&rsquo;язана з перевіркою з&rsquo;єднань <a href="#def-TLS">TLS</a>.
+</p>
+<p class="definition">
+	<a href="#def-TLD"><dfn id="def-TLD">Top-Level Domain</dfn> (<abbr>TLD</abbr>)</a>
+	: Найвищий рівень в ієрархічній системі імена доменів, таких як домени верхнього рівня (ccTLD), такі як <code>. e</code> (Німеччина), <code>.cn</code> (Китай) і загальні домени вищого рівня як <code>. om-</code>, <code>.org</code>. <a href="https://en.wikipedia.org/wiki/Top-level_domain">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-UCC"><dfn id="def-UCC">Unified Communications Certificate</dfn> (<abbr>UCC</abbr>)</a>
+	: Опис сертифікату, що містить кілька <a href="#def-SAN">Альтернативних імен суб&rsquo;єкта (SAN)</a>.
+</p>
+<p class="definition">
+	<a href="#def-user-agent"><dfn id="def-user-agent">User Agent</dfn></a>
+	: Програмне забезпечення для обміну даними з <a href="#def-web-server">вебсервером</a>. Наприклад: <a href="#def-web-browser">браузер</a> або <a href="https://uk.wikipedia.org/wiki/CURL">cURL</a>.
+</p>
+<p class="definition">
+	<a href="#def-web-browser"><dfn id="def-web-browser">Web Browser</dfn></a>
+	: } Користувач <a href="#def-user-agent"></a> використовується для відображення веб-сторінок. Приклади: <em>Mozilla Firefox</em>, <em>Google Chrome</em> або <em>Internet Explorer format@@</em>. <a href="https://en.wikipedia.org/wiki/Web_browser">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-web-server"><dfn id="def-web-server">Web server</dfn></a>
+	: Програмне забезпечення обслуговування вебсторінок (або, розширено, апаратне серверне забезпечення, яке розміщує їх). <a href="https://en.wikipedia.org/wiki/Web_server">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-wildcard"><dfn id="def-wildcard">Wildcard Certificate</dfn></a>
+	: Сертифікати дійсні для піддоменів на один рівень нижче. Наприклад, сертифікат, що містить <a href="#def-SAN">SAN</a> для <code>*.example.com</code>, дійсний для <code>blog.example.com</code> і для <code>www.example.com</code>, але <strong>не</strong> для <code>bork.bork.example.com</code> або <code>example.com</code>). Підставлення (джокер) позначено символом зірочки (*) замість піддомену. <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">надає Wildcard-сертифікати від березня 2018 року</a>. <a href="https://en.wikipedia.org/wiki/Wildcard_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-X509"><dfn id="def-X509"><abbr>X.509</abbr></dfn></a>
+	: Звичайне визначення формату публічних сертифікатів. <a href="https://en.wikipedia.org/wiki/X.509">Wikipedia</a>
+</p>
+<link rel="stylesheet" href="/css/glossary.css" />
+<script src="/js/glossary.js" async></script>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - це безкоштовний, автоматизований і відкритий Центр Сертифікації, створений для вас
+  некомерційною організацією <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Відправити всі повідомлення чи запити:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Переглянути <a href="/uk/privacy/">політику конфіденційності</a>.<br>
+Переглянути <a href="/uk/trademarks/">правила користування торговою маркою</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

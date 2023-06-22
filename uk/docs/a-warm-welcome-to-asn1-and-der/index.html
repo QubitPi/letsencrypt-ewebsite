@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="uk-UA">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ласкаво просимо в ASN.1 і DER -  Let&#39;s Encrypt - Free SSL/TLS Certificates</title>
+    <meta name="description" content="Даний документ дасть вам вступну інформацію про структури даних та формати, які визначають сертифікати, що використовуються у HTTPS. Він повинен бути зрозумілим для всіх, хто має мінімальний досвід у сфері комп&amp;rsquo;ютерних технологій та трішки знайомий із сертифікатами.
+HTTPS сертифікат - це тип файлу, зрештою, як і будь-який інший файл. Його вміст відповідає формату, визначеному за RFC 5280. Визначення передаються в ASN.1, яка є мовою, що використовується для того, щоб визначити формати файлів або структури даних, відповідно.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Ласкаво просимо в ASN.1 і DER">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/uk/docs/a-warm-welcome-to-asn1-and-der/">
+    <meta name="twitter:description" content="Даний документ дасть вам вступну інформацію про структури даних та формати, які визначають сертифікати, що використовуються у HTTPS. Він повинен бути зрозумілим для всіх, хто має мінімальний досвід у сфері комп&amp;rsquo;ютерних технологій та трішки знайомий із сертифікатами.
+HTTPS сертифікат - це тип файлу, зрештою, як і будь-який інший файл. Його вміст відповідає формату, визначеному за RFC 5280. Визначення передаються в ASN.1, яка є мовою, що використовується для того, щоб визначити формати файлів або структури даних, відповідно.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/uk/docs/a-warm-welcome-to-asn1-and-der/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Канал блогу Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустити навігаційні посилання</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/uk/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/uk/docs/" class="pure-menu-link" tabindex="0">Документація</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Допомога</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Підтримати</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/donate/" class="pure-menu-link">Зробити пожертву</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Стати спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/sponsors/" class="pure-menu-link">Спонсори та фонди</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getinvolved/" class="pure-menu-link">Долучитися</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Про сервіс</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Закінчення DST Root ЦС X3 (вересень 2021 року)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/faq/" class="pure-menu-link">Часто поставлені питання (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Стан сервісу</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Кар&#39;єра</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/contact/" class="pure-menu-link">Контакти</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Мови <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/a-warm-welcome-to-asn1-and-der/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/a-warm-welcome-to-asn1-and-der/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/a-warm-welcome-to-asn1-and-der/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/a-warm-welcome-to-asn1-and-der/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/a-warm-welcome-to-asn1-and-der/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/a-warm-welcome-to-asn1-and-der/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/a-warm-welcome-to-asn1-and-der/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/a-warm-welcome-to-asn1-and-der/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/a-warm-welcome-to-asn1-and-der/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/a-warm-welcome-to-asn1-and-der/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/a-warm-welcome-to-asn1-and-der/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/a-warm-welcome-to-asn1-and-der/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/a-warm-welcome-to-asn1-and-der/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/a-warm-welcome-to-asn1-and-der/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/a-warm-welcome-to-asn1-and-der/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/a-warm-welcome-to-asn1-and-der/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/a-warm-welcome-to-asn1-and-der/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/a-warm-welcome-to-asn1-and-der/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">✓ Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/a-warm-welcome-to-asn1-and-der/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/a-warm-welcome-to-asn1-and-der/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Ласкаво просимо в ASN.1 і DER</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<p>Даний документ дасть вам вступну інформацію про структури даних та формати, які визначають сертифікати, що використовуються у HTTPS. Він повинен бути зрозумілим для всіх, хто має мінімальний досвід у сфері комп&rsquo;ютерних технологій та трішки знайомий із сертифікатами.</p>
+<p>HTTPS сертифікат - це тип файлу, зрештою, як і будь-який інший файл. Його вміст відповідає формату, визначеному за <a href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>. Визначення передаються в ASN.1, яка є мовою, що використовується для того, щоб визначити формати файлів або структури даних, відповідно. До прикладу, у С ви, можливо, напишете:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="k">struct</span> <span class="n">point</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">label</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div><p>У Go ви б написали:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">point</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span>
+  <span class="nx">label</span> <span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div><p>І в ASN.1 це виглядало б так:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">Point ::= SEQUENCE {
+  x INTEGER,
+  y INTEGER,
+  label UTF8String
+}
+</code></pre><p>Перевагою написання визначень в ASN.1 замість Go чи C є те, що вони є незалежними від мови. Ви можете виконати визначення ASN.1Точки у будь-якій мові або бажано використати засіб, що приймає визначення ASN.1 і автоматично генерує код на вашій улюбленій мові. Набір ASN.1 визначень називається &ldquo;<a href="https://www.obj-sys.com/asn1tutorial/node6.html">модулем</a>.&rdquo;</p>
+<p>Не менш важлива річ про ASN.1 це те, що у ній наявні формати для серіалізації-- способи для перетворення структури даних у пам&rsquo;яті у серію байтів, чи файлу і навпаки. Це дозволяє сертифікат згенерований одним комп&rsquo;ютером читати на іншому, навіть якщо той комп&rsquo;ютер використовує інший CPU та іншу операційну систему.</p>
+<p>Є декілька інших мов, що <a href="https://en.wikipedia.org/wiki/Interface_description_language">роблять ті ж самі речі</a> , що й ASN.1. Наприклад, Protocol Buffers пропонує як і <a href="https://developers.google.com/protocol-buffers/docs/proto3">мову</a> для визначення типів, так і <a href="https://developers.google.com/protocol-buffers/docs/encoding">формат серіалізації</a> для кодування об&rsquo;єктів визначених типів. <a href="https://thrift.apache.org/">Thrift</a> має також і мову і формат серіалізації. Protocol Buffers і Thrift можна легко використовувати, щоб визначити формат HTTPS сертифікатів, але ASN.1 (1984) мав значну перевагу перед усіма наявними у час, коли були розроблені сертифікати (1988) і HTTPS (1994).</p>
+<p>Протягом років ASN.1 було переглянуто чимало разів і редакції, зазвичай, позначалися відповідно до року публікування. Даний документ має на меті навчити достатньо ASN.1, щоб чітко розуміти RFC 5280 та інші стандарти, що відносяться до HTTPS сертифікатів. Тому ми в основному говоритимемо про версію 1988 року із декількома новими функціями, що були додані у пізніших версіях. Ви можете завантажити різні версії безпосередньо з ITU, але із застереженням, що деякі будуть доступні тільки для ITU членів. Відповідні стандарти <a href="https://www.itu.int/rec/T-REC-X.680">X.680</a> (визначають мову ASN.1) і <a href="https://www.itu.int/rec/T-REC-X.690">X.690</a> (визначають формати серіалізацій DER і BER). Попередні версії даних стандартів були <a href="https://www.itu.int/rec/T-REC-X.208/en">X.208</a> і <a href="https://www.itu.int/rec/T-REC-X.209/en">X.209</a>, відповідно.</p>
+<p>Особливі правила кодування &ldquo;Distinguished Encoding Rules&rdquo; (DER) - головний формат серіалізації в ASN.1. Вони варіант основних правил кодування &ldquo;Basic Encoding Rules&rdquo; (BER) із доданою канонізацією. Наприклад, якщо тип містить SET OF, члени повинні будуть відсортовані по DER серіалізації.</p>
+<p>Сертифікат відображений у DER часто надалі закодований у PEM, який використовує <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, щоб закодувати довільні байти (також &lsquo;+&rsquo; і &lsquo;/') і додати розділювальні рядки (&quot;-----BEGIN CERTIFICATE-----&quot; і &ldquo;-----END CERTIFICATE-----&quot;). PEM корисний простотою копіювання і вставляння.</p>
+<p>Цей документ спочатку опише типи та позначення використовувані ASN.1, а тоді опише як об&rsquo;єкти визначені за допомогою ASN.1 будуть закодовані. Ви можете вільно рухатися розділами, а саме тому, що деякі риси мови ASN.1 безпосередньо визначають деталі кодування. Цей документ надає перевагу звичнішим термінам, тому використовує &ldquo;byte&rdquo; замість &ldquo;octet&rdquo; і &ldquo;value&rdquo; замість &ldquo;contents&rdquo;. Тут &ldquo;serialization&rdquo; і &ldquo;encoding&rdquo; взаємозамінні.</p>
+<h1 id="типи">Типи</h1>
+<h2 id="integer">INTEGER</h2>
+<p>Ваш добрий старий знайомий INTEGER. Він може бути як позитивним, так і негативним. Що є найбільш незвичним для INTEGER у мові ASN.1 це те, що він може бути довільної величини. Не вистачає місця в int64? Немає проблем. Це саме стає у пригоді, коли зображуєте речі такі, як модуль RSA, який набагато більший від int64 (наприклад, 2<sup>2048</sup> ). Технічно у DER є максимальний integer, але він незвично великий: довжина будь-якого поля у DER може бути виражена, як серія аж до 126 байтів. Отже, найбільший INTEGER, який ви можете відтворити у DER є 256<sup>(2**1008)</sup>-1. Для справжнього нескінченного INTEGER вам прийдеться закодовувати його у BER, який дозволяє мати нескінченні поля.</p>
+<h2 id="рядки">Рядки</h2>
+<p>ASN.1 має багато типів рядків: BMPString, GeneralString, GraphicString, IA5String, ISO646String, NumericString, PrintableString, TeletexString, T61String, UniversalString, UTF8String, VideotexString і VisibleString. Для цілей HTTPS сертифікатів здебільшого ви маєте турбуватися про PrintableString, UTF8String і <a href="https://en.wikipedia.org/wiki/IA5STRING">IA5String</a>. Для даного поля тип рядка визначається ASN.1 модулем, який визначає саме поле. <a href="https://tools.ietf.org/html/rfc5280#page-127">Наприклад</a>:</p>
+<pre tabindex="0"><code>CPSuri ::= IA5String
+</code></pre><p>PrintableString - це обмежена підмножина ASCII, яка дозволяє використовувати буквенно-цифрові символи, пробіли та певну кількість розділових знаків: <code>' () + , - . / : = ?</code>. Зокрема вона не містить <code>*</code> чи <code>@</code>. Більш обмежувальні типи рядків не мають переваг у розмірі зберігання.</p>
+<p>Такі поля, як <a href="https://tools.ietf.org/html/rfc5280#page-20">DirectoryString у RFC 5280</a> дозволяють серіалізацію коду для вибору рядка певного типу серед інших. Оскільки DER кодування включає тип рядка, який ви використовуєте впевніться, що кодуючи щось, як PrintableString воно <a href="https://community.letsencrypt.org/t/2018-03-12-wildcard-certificate-encoding-issue/55485">відповідає вимогам PrintableString</a>.</p>
+<p>IA5String, заснований на <a href="https://en.wikipedia.org/wiki/T.50_%28standard%29">Міжнародному алфавіті №5</a>, є менш обмеженим: він дозволяє майже будь-який ASCII символ і використовується для адреси електронної пошти, DNS імен та URL-адрес у сертифікатах. Візьміть до уваги, що є кілька значень байтів де IA5 значення байту буде іншим від ідентичного US-ASCII значення.</p>
+<p>TeletexString, BMPString і UniversalString вже застаріли для використання у HTTPS сертифікатах, але ви їх все ще можете побачити під час аналізу старіших сертифікатів ЦС, які є довговічними та можуть передувати старінню.</p>
+<p>Рядки в ASN.1 не закінчуються, як рядки у C і C++. Насправді це цілком нормально мати вбудовані нульові байти. Це може спричинити нестабільність, коли дві системи трактують один і той же ASN.1 рядок по-різному. Наприклад, деякі ЦС <a href="https://www.theregister.co.uk/2009/07/30/universal_ssl_certificate/">можна було обманути за видачу </a> &ldquo;example.com\0.evil.com&rdquo; на основі права власності evil.com. У той час бібліотеки перевірки сертифікатів видавали результат, як дійсний для &ldquo;example.com&rdquo;. Будьте уважні при опрацюванні ASN.1 рядків у C та C++, для уникнення нестабільності.</p>
+<h2 id="дата-і-час">Дата і Час</h2>
+<p>Також є багато різних типів часу: UTCTime, GeneralizedTime, DATE, TIME-OF-DAY, DATE-TIME і DURATION. Для HTTPS сертифікатів вам потрібно потурбуватися тільки про UTCTime та GeneralizedTime.</p>
+<p>UTCTime представляє дату і час у форматі YYMMDDhhmm[ss] із можливим зсувом часового поясу &ldquo;Z&rdquo; для позначення Зулу (він же UTC, він же 0 часовий пояс). Наприклад, обидва часи UTCTimes 820102120000Z і 820102070000-0500 позначають однаковий час: 2 січня, 1982 року, 7:00 у Нью-Йорку (UTC-5) і 12:00 ночі в UTC.</p>
+<p>Оскільки UTCTime двозначний, щодо того чи це 1900-ті, чи 2000-ні, <a href="https://tools.ietf.org/html/rfc5280#section-4.1.2.5.1">RFC 5280 уточнює</a> те, що він представляє роки із 1950 по 2050 роки. RFC 5280 також вимагає, щоб часова зона &ldquo;Z&rdquo; використовувалася і секунди були включені.</p>
+<p>GeneralizedTime підтримує дати після 2050 шляхом простого позначення років чотирма цифрами. Він також дозволяє дробові секунди (досить дивно з комою або крапкою як десятковий роздільник). RFC 5280 забороняє дробові секунди та вимагає &ldquo;Z.&rdquo;</p>
+<h2 id="ідентифікатор-об-єкта">ІДЕНТИФІКАТОР ОБ&rsquo;ЄКТА</h2>
+<p>Ідентифікатори об&rsquo;єктів є глобально унікальними, ієрархічні ідентифікатори утворені послідовністю цілих чисел. Вони можуть посилатися на будь-які &ldquo;речі&rdquo;, але зазвичай використовуються для визначення стандартів, алгоритмів, розширень сертифікатів, організацій або програмної документації. Ось, наприклад: <a href="http://oid-info.com/get/1.2.840.113549">1.2.840.113549</a> визначає ТОВ &ldquo;RSA Security&rdquo;. RSA пізніше можуть призначити OID (Ідентифікатори об&rsquo;єкта), що починаються із тим самим префіксом, типу <a href="http://oid-info.com/get/1.2.840.113549.1.1.11">1.2.840.113549.1.1.11</a>, який ідентифікує sha256WithRSAEncryption, як визначено у <a href="https://tools.ietf.org/html/rfc8017#page-69">RFC 8017</a>.</p>
+<p>Подібно, <a href="http://oid-info.com/get/1.3.6.1.4.1.11129">1.3.6.1.4.1.11129</a> ідентифікує Google, Inc. Google призначив <a href="http://oid-info.com/get/1.3.6.1.4.1.11129.2.4.2">1.3.6.1.4.1.11129.2.4.2</a> щоб ідентифікувати <a href="https://letsencrypt.org/2018/04/04/sct-encoding.html"> список SCT розширень</a> , які використовуються у Certificate Transparency(що було спочатку розроблено у Google), як визначено у <a href="https://tools.ietf.org/html/rfc6962">RFC 6962</a>.</p>
+<p>Набір дочірніх OID, які можуть існувати у даному префіксі називаються &ldquo;OID arc.&rdquo; Оскільки представлення коротших OID менше, вважається, що призначення OID під коротшими дугами(arc) є більш цінним, особливо для форматів де OID мають часто посилатися. Дуга OID <a href="http://oid-info.com/get/2.5">2.5</a> є призначеною для &ldquo;Directory Services,&rdquo; ряд специфікацій, що включає X.509 на яких будуються HTTPS сертифікати. Багато полів у сертифікатах починаються із цієї зручної дуги. Наприклад, <a href="http://oid-info.com/get/2.5.4.6">2.5.4.6</a> означає &ldquo;countryName,&rdquo; у той час, як <a href="http://oid-info.com/get/2.5.4.10">2.5.4.10</a> - &ldquo;organizationName.&rdquo; Оскільки більшість сертифікатів мають закодовувати кожен із поданих OID щонайменше один раз, це зручно, коли вони короткі.</p>
+<p>OID у специфікаціях зазвичай представлені із читабельною назвою та можуть бути вказані шляхом об&rsquo;єднання з іншим OID. <a href="https://tools.ietf.org/html/rfc8017#page-68">Ось приклад із RFC 8017</a>:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">   pkcs-1    OBJECT IDENTIFIER ::= {
+       iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1) 1
+   }
+   ...
+
+   sha256WithRSAEncryption      OBJECT IDENTIFIER ::= { pkcs-1 11 }
+</code></pre><h2 id="нуль">Нуль</h2>
+<p>НУЛЬ - це просто НУЛЬ, ви в курсі?</p>
+<h2 id="sequence-та-sequence-of">SEQUENCE та SEQUENCE OF</h2>
+<p>Нехай імена вас не обманюють: оці є двома дуже різними типами. SEQUENCE - є еквівалентом слова &ldquo;struct&rdquo; у більшості мов програмування. У ньому міститься фіксована кількість полів різних типів. Наприклад, перегляньте <a href="#bit-string-and-octet-string">приклад сертифікату нижче</a>.</p>
+<p>A SEQUENCE OF містить довільну кількість полів одного типу. Це аналогічно масиву або списку у мові програмування. <a href="https://tools.ietf.org/html/rfc5280#page-116">Наприклад</a>:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">   RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
+</code></pre><p>Це може бути 0, 1 чи 7,000 Відносних унікальних імен(RelativeDistinguishedNames) у визначеному порядку.</p>
+<p>Виявляється, що SEQUENCE та SEQUENCE OF мають одну схожість - вони обидва закодовані в один і той же спосіб! Більше про це у секції <a href="#sequence-encoding">Кодування</a>.</p>
+<h2 id="set-та-set-of">SET та SET OF</h2>
+<p>Вони є дуже схожими до SEQUENCE та SEQUENCE OF, за винятком лише того, що немає ніякої навмисної семантики прив&rsquo;язаної до впорядкування елементів, що вони містять. Однак у закодованій формі вони мають бути відсортованими. <a href="https://tools.ietf.org/html/rfc5280#page-116">Приклад</a>:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">RelativeDistinguishedName ::=
+  SET SIZE (1..MAX) OF AttributeTypeAndValue
+</code></pre><p>Візьміть до уваги: у цьому прикладі використовується ключове слово SIZE, щоб додатково вказати на те, що RelativeDistinguishedName повинен мати хоча б один член, але у загальному SET чи SET OF дозволено мати значення нуля.</p>
+<h2 id="bit-string-і-octet-string">BIT STRING і OCTET STRING</h2>
+<p>Вони містять довільні біти чи байти відповідно. Вони можуть використовуватися для збереження неструктурованих даних таких, як nonces або вивід хеш-функції. Вони також можуть використовуватися як покажчик void в C або порожній тип інтерфейсу (interface{}) в Go: спосіб зберігання даних, які мають структуру, але де ця структура розуміється або визначається окремо від системи типів. <a href="https://tools.ietf.org/html/rfc5280#page-116">Наприклад</a>, підпис на сертифікаті визначається як BIT STRING:</p>
+<pre tabindex="0"><code>Сертифікат  ::=  SEQUENCE  {
+     tbsCertificate       TBSCertificate,
+     signatureAlgorithm   AlgorithmIdentifier,
+     signature            BIT STRING  }
+</code></pre><p>Пізніші версії мови ASN.1 <a href="https://tools.ietf.org/html/rfc5912#page-99">допускають більш детальну специфікацію</a>вмісту всередині бітового рядка (і те ж саме відноситься до OCTET STRINGs).</p>
+<h2 id="choice-і-any">CHOICE і ANY</h2>
+<p>CHOICE - тип, який може містити рівно один з типів, перерахованих в його визначення. <a href="https://tools.ietf.org/html/rfc5280#page-117">Наприклад</a>, Час може містити рівно один з UTCTime або a GeneralizedTime:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">Час ::= CHOICE {
+     utcTime        UTCTime,
+     generalTime    GeneralizedTime }
+</code></pre><p>ANY вказує на те, що значення може бути будь-яким типом. На практиці це зазвичай обмежується речами, які не можуть бути повністю виражені в граматиці ASN.1. <a href="https://tools.ietf.org/html/rfc5280#page-111">Наприклад</a>:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">   AttributeTypeAndValue ::= SEQUENCE {
+     type     AttributeType,
+     value    AttributeValue }
+
+   AttributeType ::= OBJECT IDENTIFIER
+
+   AttributeValue ::= ANY -- DEFINED BY AttributeType
+</code></pre><p>Це особливо корисно для розширень, де ви хочете залишити місце для додаткових полів, які будуть визначені окремо після публікації основної специфікації, щоб у вас був спосіб зареєструвати нові типи (ідентифікатори об&rsquo;єктів) і дозволити визначенням для цих типів вказувати, якою має бути структура нових полів.</p>
+<p>Зверніть увагу, що ANY є реліквією позначення ASN.1 1988 року. У <a href="https://www.itu.int/rec/T-REC-X.680-199407-S/en"> виданні</a> 1994 року ANY був визнаний застарілим і замінений класами інформаційних об&rsquo;єктів, які представляють собою химерний, формалізований спосіб визначення типу поведінки розширення, якого люди хотіли від будь-кого. Зміна на сьогодні настільки стара, що останні ASN.1 специфікації (з 2015) навіть не згадують про ANY. Проте якщо ви подивитися у видання 1994 року, то побачите деяке обговорення про перемикання. Я включив старий синтаксис тут, тому що він досі використовується RFC 5280. <a href="https://tools.ietf.org/html/rfc5912">RFC5912</a>використовує синтакс 2002 ASN.1, щоб виразити ті ж типи з RFC 5280 та кількох пов&rsquo;язаних специфікацій.</p>
+<h1 id="інші-позначення">Інші позначення</h1>
+<p>Коментарі починаются з <code>--</code>. Поля SEQUENCE або SET можуть бути позначені OPTIONAL, або ж вони можуть бути позначені DEFAULT foo, що означає те ж саме, що і OPTIONAL за винятком того, що коли поле відсутнє, слід вважати, що воно містить &ldquo;foo&rdquo; Типи з довжиною (стрічки, октет і бітові рядки, набори та послідовність речей) можуть бути задані параметром SIZE, що обмежує їх довжину, або до точної довжини або до діапазону.</p>
+<p>Типи можуть бути обмежені певними значеннями за допомогою фігурних дужок після визначення типу. <a href="https://tools.ietf.org/html/rfc5280#page-117">Цей приклад визначає</a>, що поле Версії може мати три значення і присвоює змістовні назви таким значенням:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">Версія ::= INTEGER { v1(0), v2(1), v3(2) }
+</code></pre><p>Це також використовується у присвоєнні назв конкретним OIDs (зверніть увагу, що це - єдине значеня, без ком, які вказують на альтернативні значення). <a href="https://tools.ietf.org/html/rfc5280#page-110">Приклад з RFC 5280</a>.</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">id-pkix OBJECT IDENTIFIER ::=
+         { iso(1) identified-organization(3) dod(6) internet(1)
+                    security(5) mechanisms(5) pkix(7) }
+</code></pre><p>Також, ви побачите [number], IMPLICIT, EXPLICIT, UNIVERSAL, і APPLICATION. Вони визначають деталі того, як має бути закодовано значення, про що ми поговоримо нижче.</p>
+<h1 id="кодування">Кодування</h1>
+<p>ASN.1 асоціюється з багатьма кодуваннями: BER, DER, PER, XER, і більше. Основні правила кодування (BER) досить гнучкі. Особливі правила кодування (DER) є підмножиною BER з <a href="https://en.wikipedia.org/wiki/Canonicalization">правилами канонізації</a>, тому існує тільки один спосіб вираження даної структури. Упаковані правила кодування (PER) використовують менше байтів для введення речей, так що вони корисні, коли час пробілу або передачі припадає на преміум-версію. XML правила кодування (XER) корисні тоді, коли ви з деякої причини маєте бажання використати XML.</p>
+<p>HTTPS сертифікати, як правило, закодовані в DER. Їх можна закодувати у BER, але оскільки значення підпису обчислюється за еквівалентним кодуванням DER, а не за точними байтами в сертифікаті, кодування сертифіката в BER створює непотрібні проблеми. Я опишу BER і поясню по ходу додаткові обмеження, передбачені DER.</p>
+<p>Я закликаю вас прочитати цей розділ з цієюрозшифровкою реального сертифіката&lt; / a&gt;, відкритої в іншому вікні.</p></p>
+<h2 id="значення-довжини-типу">Значення довжини типу</h2>
+<p>BER - це кодування довжиною типу, так само, як посилювачі протоколу, Thrift. Це означає, що під час читання байтів, які закодовані BER, спочатку ви стикаєтеся з типом під назвою ASN.1 як тегу. Це байт, або серія байтів, які повідомляють вам, який тип кодований: INTEGER, або UTF8String, або структура, тощо.</p>
+<table>
+<thead>
+<tr>
+<th>тип</th>
+<th>довжина</th>
+<th>значення</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>02</td>
+<td>03</td>
+<td>01 00 01</td>
+</tr>
+</tbody>
+</table>
+<p>Потім ви стикаєтеся з довжиною: числом, яке вказує на те, скільки байтів даних вам потрібно прочитати для отримання значення. Потім, звичайно, приходить байт, що містить саме значення. Як приклад, шістнадцяткові байти 02 03 01 00 01 предствалятимуть INTEGER (тег 02 відповідає INTEGER типу), з довжиною 03 та трибайтовим значенням, що складається з 01 00 01.</p>
+<p>Тип-довжина-значення відрізняється від розділених кодувань, таких як JSON, CSV, або XML, де замість визнання довжини поля наперед, ви зчитуєте байти, поки не натиснули на очікуваний роздільник (наприклад, <code>}</code> в JSON, або <code>&lt;/some-tag&gt;</code> в XML).</p>
+<h2 id="тег">Тег</h2>
+<p>Мітка зазвичай є одна байта. Є засіб для довільного кодування великі номери тегів із використанням кількох байтів (форма &ldquo;великий номер тега&rdquo;), але зазвичай це не потрібно.</p>
+<p>Ось декілька прикладів:</p>
+<style>
+td {
+  padding: 0.2em 1em;
+  border: 2px solid lightgrey;
+}
+table {
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+}
+</style>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Тег (десятковий)</th>
+<th style="text-align:right">Тег (hex)</th>
+<th>Тип</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">02</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">03</td>
+<td>ПОЧАТОК</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">04</td>
+<td>ЗАХИСТ</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">05</td>
+<td>Нуль</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">06</td>
+<td>ІДЕНТИФІКАТОР ОБ&rsquo;ЄКТА</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0C</td>
+<td>UTF8 Рядок</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">10 (та 30)*</td>
+<td>SEQUENCE та SEQUENCE OF</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">11 (та 31)*</td>
+<td>SET та SET OF</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">13</td>
+<td>PrintableString</td>
+</tr>
+<tr>
+<td style="text-align:right">22</td>
+<td style="text-align:right">16</td>
+<td>IA5Струн</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:right">17</td>
+<td>UTCTime</td>
+</tr>
+<tr>
+<td style="text-align:right">24</td>
+<td style="text-align:right">18</td>
+<td>Узагальнений час</td>
+</tr>
+</tbody>
+</table>
+<p>Це і декілька інших, яких я пропустив за нудні, це теги &ldquo;універсальні&rdquo;, тому що вони вказані в ядрі ASN. специфікація та означають те ж саме у всіх модулях ASN.1.</p>
+<p>Ці теги можуть бути більшими за 31 (0x1F), і це є гарною причиною: Біти 8, 7 і 6 (високі біти тега байт) використовуються для кодування додаткової інформації таким чином, будь-який універсальний тег повинен бути використовувати форму &ldquo;high tag&rdquo;, яка приймає додаткові байти. Є небагато універсальних тегів вище 31, але вони досить рідкісні.</p>
+<p>Два теги, позначені <code>*</code>, завжди закодовані як 0x30 або 0x31, тому що біт 6 використовується для позначення того, чи є поле конструкцією для Примітивно. Ці теги завжди Конструкційовані, тому кодування має біт 6 встановлений в 1. Перегляньте розділ <a href="#constructed-vs-primitive">зібраний проти Примітивних</a> для деталей.</p>
+<h2 id="класи-тегів">Класи тегів</h2>
+<p>Просто тому, що універсальний клас використав усі &ldquo;хороші&rdquo; номери тегів, це не означає, що нам не пощастило визначити власні теги. Існує також класи &ldquo;застосунок&rdquo;, &ldquo;приватний&rdquo; і &ldquo;залежний від контексту&rdquo;. Ці відрізняються бітами 8 і 7:</p>
+<table>
+<thead>
+<tr>
+<th>Клас</th>
+<th style="text-align:right">Біт-8</th>
+<th style="text-align:right">Біт-7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Універсальний</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>Програма</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>Контекстно-конкретний</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>Приватний</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Специфікації переважно використовують теги у універсальному класі, оскільки вони надають найважливіші будівельні блоки. Наприклад, серійний номер в сертифікаті закодовано його в звичайному &lsquo;INTEGER, тег 0x02. Але іноді специфікація повинна визначити теги в контекстно-конкретному класі розмежувати записи у SET або SEQUENCE який визначає додаткові матеріали, або розчленувати CHOICE з декількома записами, які мають такий тип. Наприклад, розгляньмо це визначення:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">Point ::= SEQUENCE {
+  x INTEGER OPTIONAL,
+  y INTEGER OPTIONAL
+}
+</code></pre><p>Оскільки OPTIONAL поля повністю виключені з кодування коли вони відсутні, було б неможливо відрізнити точку з лише координату з точки х з лише координатою у. Наприклад, ви кодуєте точку з єдиною координатою х з 9, схожою на (30 означає SEQUENCE тут):</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">30 03 02 01 09
+</code></pre><p>Ось SEQUENCE довжиною 3 (байт), що містить INTEGER довжиною 1, яка має значення 9. Але ви також кодуєте точку з координатами у на 9 точно однаковим чином, тобто існує двозначність.</p>
+<h2 id="інструкції-з-кодування">Інструкції з кодування</h2>
+<p>Для вирішення цієї двозначності специфікація повинна вказати інструкції  з кодування, які призначать унікальний тег для кожного запису. І тому, що нам не дозволено застосовувати теги UNIVERSAL, ми маємо використовувати один з інших, наприклад APPLICATION:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">Point ::= SEQUENCE {
+  x [APPLICATION 0] INTEGER OPTIONAL,
+  y [APPLICATION 1] INTEGER OPTIONAL
+}
+</code></pre><p>Хоча для цього використання ви можете набагато частіше використовувати спеціальний контекст, який представлений числом в дужках самотужки:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">Point ::= SEQUENCE {
+  x [0] INTEGER OPTIONAL,
+  y [1] INTEGER OPTIONAL
+}
+</code></pre><p>Так що тепер, щоб закодувати точку з просто координатами х в 9, замість кодування х в якості UNIVERSAL INTEGER, ви б задали біт 8 і 7 закодованого тегу (1, 0) щоб вказати контекст визначений клас, і встановити низькі біти в 0, даючи це кодування:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">30 03 80 01 09
+</code></pre><p>І щоб представити точку з просто у=9, ви б зробили те саме, за винятком того, що ви встановите низькі біти до 1:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">30 03 81 01 09
+</code></pre><p>Або ви можете представити точку з координатами х і у, що дорівнює 9:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">30 06 80 01 09 81 01 09
+</code></pre><h2 id="довжина">Довжина</h2>
+<p>Довжина кортежу довжиною мітки завжди відображає загальну кількість байтів у об&rsquo;єкті, включаючи всі субоб&rsquo;єкти. Таким чином, SEQUENCE з одним полем не має довжини 1; він має задану довжину кількість байт форми це поле займе вгору.</p>
+<p>Кодування довжини може приймати дві форми: короткий або довгий. Коротка форма - один байт, від 0 до 127.</p>
+<p>Довга форма є принаймні два байти довгими і має трохи 8 першого байту встановлений в 1. Bits 7-1 з першого байта вказує на те,  скільки більше байт знаходиться в полі довжини. Потім решта байтів задає довжину себе, як ціле число з мультибайтом.</p>
+<p>Як ви можете уявити, це дозволяє дуже довгі значення. Найдовша можлива довжина почнеться з 254 (довжина байту 255 зарезервована для майбутніх розширень), встановлюючи що на 126 більше бактів знайдеться лише поле довжини. Якщо кожен з цих 126 байт був 255, то це означатиме 2<sup>1008</sup>-1 байт слідувати у полі значення.</p>
+<p>Тривала форма дозволяє закодувати однакову довжину декількох способів - для екземпляра, використовуючи два байти для вираження довжини, яка може вміститися в один, або використовуючи довгу форму для вираження довжини, яка може поміститися у короткій формі. DER каже, що завжди використовувати найменшу можливу довжину представлення.</p>
+<p>Попередження про безпеку: не повністю довіряйте визначенням довжини, які ви декодуєте! Для наприклад переконайтеся, що закодована довжина менше ніж кількість даних доступна від декодуваного потоку.</p>
+<h2 id="невизначена-довжина">Невизначена довжина</h2>
+<p>Також можливо, в BER, закодувати рядок, SEQUENCE, SEQUENCE OF, SET, SET, або ВСТАНОВІТЬ, де ви не знаєте довжини заздалегідь (для екземпляра, коли виводиться потокове передавання). Для цього ви закодуєте довжину в один байт зі значенням 80, і закодовувати значення як серію закодованих об&rsquo;єктів разом об&rsquo;єднуються, з кінцем зазначеним двома байтами <code>00</code> (який можна розглядати як об&rsquo;єкт з нульовою довжиною з тегом 0). Так, для наприклад, невизначеною довжиною кодування UTF8String буде кодування одного або більше UTF8Stres, об&rsquo;єднаних разом, і об&rsquo;єднані, нарешті, з 00 00.</p>
+<p>Невизначеність може бути довільно вкладена! Так, наприклад, UTF8Рядки, які ви збираєтесь разом для створення невизначеної довжини UTF8String може бути закодована або з заданою довжиною або невизначеною довжиною.</p>
+<p>Довжина байту від 80 відрізняється тому, що це не коректна коротка форма або довга довжина. Оскільки біт 8 встановлений на 1, це зазвичай відбувається інтерпретувати як довгу форму, але решта бітів має бути інтерпретованою вказати кількість додаткових байтів, які утворюють довжину. Оскільки біти 7-1 - це все 0, що буде вказувати на довгу кодування з нульовим байтами, що утворюють довжину, що не допускається.</p>
+<p>DER забороняє кодування невизначеної довжини. Слід використовувати визначену довжину кодування (тобто з довжиною, вказаною на початку).</p>
+<h2 id="складний-чи-примітивний">Складний чи примітивний</h2>
+<p>Біт 6 першого байта тегу використовується для того, щоб вказати, чи значення закодоване в примітивній формі чи в складній формі. Примітивне кодування представляє значення безпосередньо - наприклад, у UTF8String значення буде складатися виключно з самого рядка в байтах UTF-8. Складне кодування представляє значення як об&quot;єднання інших закодованих значень. Наприклад, як описано в розділі «Невизначена довжина», UTF8String у складному кодуванні буде складатися з кількох закодованих рядків UTF8 (кожен з тегом і довжиною), об’єднаних разом. Довжина загального рядка UTF8String дорівнюватиме загальній довжині в байтах усіх цих об&quot;єднаних закодованих значень. Складне кодування може використовувати як визначену, так і невизначену довжину. Примітивне кодування завжди використовує визначену довжину, тому що немає способу виразити невизначену довжину без використання складного кодування.</p>
+<p>INTEGER, OBJECT IDENTIFIER i NULL мають використовувати примітивне кодування. SEQUENCE, SEQUENCE OF, SET і SET OF мають використовувати складне кодування (оскільки вони за своєю суттю є об&quot;єднанням кількох значень). BIT STRING, OCTET STRING, UTCTime, GeneralizedTime та різні типи рядків можуть використовувати або примітивне кодування, або складне кодування, на розсуд відправника-- у BER. Однак у DER всі типи, які мають вибір кодування між примітивним і складним, повинні використовувати примітивне кодування.</p>
+<h2 id="explicit-vs-implicit">EXPLICIT vs IMPLICIT</h2>
+<p>Описані вище інструкції кодування, наприклад [1] або [APPLICATION 8] також можуть містити ключове слово EXPLICIT або IMPLICIT (приклад з RFC 5280):</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">TBSCertificate  ::=  SEQUENCE  {
+     version         [0]  Version DEFAULT v1,
+     serialNumber         CertificateSerialNumber,
+     signature            AlgorithmIdentifier,
+     issuer               Name,
+     validity             Validity,
+     subject              Name,
+     subjectPublicKeyInfo SubjectPublicKeyInfo,
+     issuerUniqueID  [1]  IMPLICIT UniqueIdentifier OPTIONAL,
+                          -- If present, version MUST be v2 or v3
+     subjectUniqueID [2]  IMPLICIT UniqueIdentifier OPTIONAL,
+                          -- If present, version MUST be v2 or v3
+     extensions      [3]  Extensions OPTIONAL
+                          -- If present, version MUST be v3 --  }
+</code></pre><p>Це визначає, як тег має бути закодований; це не має відношення до того, чи номер тега призначений явно чи ні (оскільки і IMPLICIT, і EXPLICIT завжди йдуть поряд із конкретним номером тега). IMPLICIT кодує поле так само, як і основний тип, але з номером тега та класом, вказаними в модулі ASN.1. EXPLICIT кодує поле як основний тип, а потім обертає його у зовнішнє кодування. Зовнішнє кодування має номер тега та клас із модуля ASN.1 і додатково має встановлений <a href="#constructed-vs-primitive">біт Constructed</a>.</p>
+<p>Ось приклад інструкції кодування ASN.1 з використанням IMPLICIT:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">[5] IMPLICIT UTF8String
+</code></pre><p>Це буде кодувати &ldquo;привіт&rdquo; як:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">85 02 68 69
+</code></pre><p>Порівняйте з вижчезазначеною інструкцію кодування ASN.1 з використанням EXPLICIT:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">[5] EXPLICIT UTF8String
+</code></pre><p>Це буде кодувати &ldquo;привіт&rdquo; як:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">A5 04 0C 02 68 69
+</code></pre><p>Якщо ключове слово IMPLICIT або EXPLICIT відсутнє, за промовчанням використовується значення EXPLICIT, якщо модуль не встановлює інше значення за замовчуванням у верхній частині за допомогою команди &ldquo;EXPLICIT TAGS,&rdquo; &ldquo;IMPLICIT TAGS,&rdquo; or &ldquo;AUTOMATIC TAGS.&rdquo; Наприклад, RFC 5280 визначає два модулі, в одному з яких за замовчуванням використовуються теги EXPLICIT, а в другому, який імпортує перший, за замовчуванням використовуються теги IMPLICIT. Неявне кодування використовує менше байтів, ніж явне кодування.</p>
+<p>AUTOMATIC TAGS - це те саме, що і IMPLICIT TAGS, але з додатковою властивістю: номери тегів ([0], [1] і т. д.) автоматично присвоюються в тих місцях, де вони необхідні, наприклад, у SEQUENCE з необов&rsquo;язковими полями.</p>
+<h1 id="кодування-конкретних-типів">Кодування конкретних типів</h1>
+<p>У цьому розділі ми поговоримо про те, як кодується значення кожного типу, з наведенням прикладів.</p>
+<h2 id="кодування-integer">Кодування INTEGER</h2>
+<p>Integers кодуються як один або більше байтів, у вигляді двох доповнень зі високим бітом (біт 8) крайнього лівого байта як знаковий біт. Як говорить специфікація BER:</p>
+<p>Значення двійкового числа, що доповнює двійку, виводиться шляхом нумерації бітів у октетах вмісту, починаючи з біта 1 останнього октету як нульовий біт і закінчуючи нумерацією бітом 8 першого октету. Кожному біту надається числове значення 2<sup>N</sup>, де N - його положення в наведеній вище послідовності нумерації. Значення двійкового числа з додатком два виходить шляхом підсумовування числових значень, присвоєних кожному біту для тих бітів, які встановлені в одиницю, за винятком біта 8 першого октету, а потім зменшення цього значення на числове значення, присвоєне біту 8 першого октету, якщо цей біт встановлений на одиницю.</p>
+<p>Так, наприклад, це однобайтове значення (представлене у двійковій формі) кодує десяткове число 50:</p>
+<p>00110010 (== десяткове 50)</p>
+<p>Це однобайтове значення (представлене у двійковій формі) кодує десяткове значення -100:</p>
+<p>10011100 (== десяткове -100)</p>
+<p>Це п’ятибайтове значення (представлене у двійковій формі) кодує десяткове -549755813887 (тобто -2<sup>39</sup> + 1):</p>
+<p>10000000 00000000 00000000 00000000 00000001 (== десяткове -549755813887)</p>
+<p>BER та DER вимагають, щоб цілі числа були представлені у максимально короткій формі. Це забезпечується за допомогою цього правила:</p>
+<pre tabindex="0"><code>... біти першого октету та біт 8 другого октету:
+
+1.  не всі будуть єдиними;
+2.  не всі дорівнюють нулю.
+</code></pre><p>Правило (2) приблизно означає: якщо в кодуванні є провідні нульові байти, їх можна просто опустити і отримати те ж число. Біт 8 другого байта тут також важливий, тому що якщо ви хочете представити певні значення, ви повинні використовувати провідний нульовий байт. Наприклад, десяткове число 255 кодується як два байти:</p>
+<p>00000000 11111111</p>
+<p>Це тому, що однобайтове кодування 11111111 саме по собі означає -1 (біт 8 розглядається як біт знака).</p>
+<p>Правило (1) найкраще пояснити на прикладі. Десяткове число -128 кодується як:</p>
+<p>10000000 (== десяткове -128)</p>
+<p>Однак це також може бути закодовано як:</p>
+<p>11111111 10000000 (== десяткове -128, але недійсне кодування)</p>
+<p>Якщо розширити, то це -2<sup>15</sup> + 2<sup>14</sup> + 2<sup>13</sup> + 2<sup>12</sup> + 2<sup>11</sup> + 2<sup>10</sup> + 2<sup>9</sup> + 2<sup>8</sup> + 2<sup>7</sup> == -2<sup>7</sup> == -128. Зверніть увагу, що 1 &ldquo;10000000&rdquo; був знаковим бітом в однобайтовому кодуванні, але означає 27 в двобайтовому кодуванні.</p>
+<p>Це загальне перетворення: для будь-якого від&quot;ємного числа, закодованого як BER (або DER), ви можете додати до нього префікс 11111111 і отримати те саме число. Це називається <a href="https://andybargh.com/binary-sign-extension/">sign extension</a>. Або еквівалентно, якщо є від’ємне число, де кодування значення починається з 11111111, ви можете видалити цей байт і отримати те саме число. Тому BER і DER потребують найкоротшого кодування.</p>
+<p>Кодування INTEGERs з двома доповненнями має <a href="https://groups.google.com/forum/#!topic/mozilla.dev.security.policy/nnLVNfqgz7g%255B26-50%255D">практичну дію при видачі сертифікатів</a>: RFC 5280 вимагає, щоб серійні номери були додатними. Оскільки перший біт завжди є знаковим, це означає, що серійні номери, закодовані в DER у вигляді 8 байтів, можуть мати не більше 63 бітів. Кодування 64-бітового додатного серійного номера потребує 9-байтового кодованого значення (при цьому перший байт дорівнює нулю).</p>
+<p>Ось кодування INTEGER зі значенням 2<sup>63</sup>+1 (яке виявляється 64-бітовим додатним числом):</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">02 09 00 80 00 00 00 00 00 00 01
+</code></pre><h2 id="кодування-string">Кодування String</h2>
+<p>Рядки кодуються як їхні буквальні байти. Оскільки IA5String та PrintableString просто визначають різні підмножини допустимих символів, їх кодування відрізняються лише тегами.</p>
+<p>PrintableString, що містить &ldquo;привіт&rdquo;:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">13 02 68 69
+</code></pre><p>IA5String, що містить &ldquo;привіт&rdquo;:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">16 02 68 69
+</code></pre><p>UTF8Strings - це те саме, але може кодувати ширший спектр символів. Наприклад, це кодування UTF8String, що містить U+1F60E усміхнене обличчя з сонцезахисними окулярами (😎):</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">0c 04 f0 9f 98 8e
+</code></pre><h2 id="кодування-дати-та-часу">Кодування дати та часу</h2>
+<p>UTCTime і GeneralizedTime насправді кодуються як рядки, на диво! Як описано вище в розділі «Типи», UTCTime представляє дати у форматі YYMMDDhhmmss. GeneralizedTime використовує чотиризначний рік YYYY замість YY. Обидва мають додаткове зміщення часового поясу або «Z» (Zulu), щоб позначити відсутність зміщення часового поясу від UTC.</p>
+<p>Наприклад, 15 грудня 2019 року о 19:02:10 у часовому поясі PST (UTC-8) представлено в часі UTC як: 191215190210-0800. Закодовано у BER, це:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">17 11 31 39 31 32 31 35 31 39 30 32 31 30 2d 30 38 30 30
+</code></pre><p>Для кодування BER секунди є необов’язковими як у UTCTime, так і в GeneralizedTime, і допускається зміщення часового поясу. Однак DER (поряд із RFC 5280) визначає, що секунди повинні бути присутніми, долі секунди не повинні бути присутніми, а час повинен бути виражений як UTC з формою &ldquo;Z&rdquo;.</p>
+<p>Вищенаведена дата буде закодована в DER як:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">17 0d 31 39 31 32 31 36 30 33 30 32 31 30 5a
+</code></pre><h2 id="кодування-object-identifier">Кодування OBJECT IDENTIFIER</h2>
+<p>Як <a href="#object-identifier">описано вище</a>, OID концептуально є рядом цілих чисел. Вони завжди складаються з принаймні двох компонентів. Першим компонентом завжди є 0, 1, або 2. Коли перший компонент дорівнює 0 або 1, другий компонент завжди менше 40. Через це перші дві складові однозначно представлені як 40*X+Y, де X – перший компонент, а Y – другий.</p>
+<p>Так, наприклад, щоб закодувати 2.999.3, ви поєднаєте перші два компоненти в 1079 десяткову (40*2 + 999), що дасть вам &ldquo;1079.3&rdquo;.</p>
+<p>Після застосування цього перетворення кожен компонент кодується на підставі 128, причому старшим байтом є перший. Біт 8 встановлюється в &ldquo;1&rdquo; в кожному байті, крім останнього в компоненті; так ви дізнаєтеся, коли один компонент завершено і починається наступний. Таким чином, компонент «3» буде представлений просто як байт 0x03. Компонент &ldquo;129&rdquo; буде представлений у вигляді байтів 0x81 0x01. Після кодування всі компоненти OID об’єднуються разом, щоб утворити закодоване значення OID.</p>
+<p>OID мають бути представлені якнайменшою кількістю байтів, будь то BER чи DER. Тому компоненти не можуть починатися з байта 0x80.</p>
+<p>Як приклад, OID 1.2.840.113549.1.1.11 (представляючи <a href="https://tools.ietf.org/html/rfc8017#appendix-A.2.4">sha256WithRSAEncryption</a>) кодується так:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">06 09 2a 86 48 86 f7 0d 01 01 0b
+</code></pre><h2 id="кодування-null">Кодування NULL</h2>
+<p>Значення об&rsquo;єкта, що містить NULL, завжди має нульову довжину, тому кодування NULL завжди є лише тегом і полем довжини, що дорівнює нулю:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">05 00
+</code></pre><h2 id="кодування-sequence">Кодування SEQUENCE</h2>
+<p>Перше, що потрібно знати про SEQUENCE, це те, що він завжди використовує складне кодування, оскільки містить інші об&rsquo;єкти. Іншими словами, значення байтів SEQUENCE містять об&quot;єднання закодованих полів цього SEQUENCE (у тому порядку, в якому ці поля були визначені). Це також означає, що біт 6 тегу SEQUENCE (<a href="#constructed-vs-primitive">складний чи примітивний</a> біт) завжди має значення 1. Тому, навіть якщо номер тега SEQUENCE технічно дорівнює 0x10, його байт тега після кодування завжди дорівнює 0x30.</p>
+<p>Якщо SEQUENCE має поля з анотацією OPTIONAL, вони просто опускаються з кодування, якщо відсутні. У міру того. як декодер обробляє елементи SEQUENCE, він може визначити, який тип декодується на основі того, що було декодовано на даний момент, і байтів тегу, які він зчитує. Якщо існує неоднозначність, наприклад коли елементи мають однаковий тип, модуль ASN.1 повинен визначити <a href="#encoding-instructions">інструкції кодування</a>, які присвоюють елементам різні номери тегів.</p>
+<p>Поля DEFAULT подібні до полів OPTIONAL. Якщо значення поля є значенням за замовчуванням, воно може бути опущене в кодуванні BER. У кодуванні DER він повинен бути опущений.</p>
+<p>Як приклад, RFC 5280 <a href="https://tools.ietf.org/html/rfc5280#page-118">визначає AlgorithmIdentifier</a> як SEQUENCE:</p>
+<pre tabindex="0"><code class="language-asn1" data-lang="asn1">   AlgorithmIdentifier  ::=  SEQUENCE  {
+        algorithm               OBJECT IDENTIFIER,
+        parameters              ANY DEFINED BY algorithm OPTIONAL  }
+</code></pre><p>Ось кодування AlgorithmIdentifier, що містить 1.2.840.113549.1.1.11. RFC 8017 каже, що <a href="https://tools.ietf.org/html/rfc8017#appendix-A.2">&ldquo;параметри&rdquo; повинні мати тип NULL для цього алгоритму</a>.</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00
+</code></pre><h2 id="кодування-sequence-of">Кодування SEQUENCE OF</h2>
+<p>SEQUENCE OF кодується точно так само, як SEQUENCE. Він навіть використовує той самий тег! Якщо ви займаєтеся декодування, єдиний спосіб відрізнити SEQUENCE від SEQUENCE OF - це звернутися до модуля ASN.1.</p>
+<p>Ось кодування SEQUENCE OF INTEGER, що містить числа 7, 8 та 9:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">30 09 02 01 07 02 01 08 02 01 09
+</code></pre><h2 id="кодування-set">Кодування SET</h2>
+<p>Як і SEQUENCE, SET є складним, що означає, що його значення байтів є об&quot;єднанням його закодованих полів. Номер його тегу - 0x11. Оскільки біт <a href="#constructed-vs-primitive">Constructed vs Primitive</a> (біт 6) завжди встановлений на 1, це означає, що він закодований байтом тегу 0x31.</p>
+<p>Кодування SET, як і SEQUENCE, опускає поля OPTIONAL і DEFAULT, якщо вони відсутні або мають значення за замовчуванням. Будь-яка неоднозначність, яка виникає через поля з однаковим типом, повинна бути вирішена модулем ASN.1, а поля DEFAULT ПОВИННІ бути вилучені з кодування DER, якщо вони мають значення за замовчуванням.</p>
+<p>У BER SET може бути закодований у будь-якому порядку. У DER SET має бути закодований у порядку зростання за тегом.</p>
+<h2 id="кодування-set-of">Кодування SET OF</h2>
+<p>Елементи SET OF кодуються так само, як і SET, включаючи байт тегу 0x31. Для кодування DER існує аналогічна вимога, згідно з якою SET OF мають бути закодовані в порядку зростання. Оскільки всі елементи в SET OF мають однаковий тип, упорядкування за тегами недостатньо. Таким чином, елементи SET OF сортуються за їхніми закодованими значеннями, а коротші значення розглядаються так, ніби вони були доповнені нулями праворуч.</p>
+<h2 id="кодування-bit-string">Кодування BIT STRING</h2>
+<p>A BIT STRING з N бітів кодується як N/8 байтів (округлюється в більшу сторону) з однобайтовим префіксом, який містить «кількість невикористаних бітів», для наочності, коли кількість бітів не кратна 8. Наприклад, під час кодування бітового рядка 011011100101110111 (18 біт), нам потрібно щонайменше три байти. Але це трохи більше, ніж нам потрібно: це дає нам можливість використовувати 24 біти. Шість з цих бітів залишаться невикористаними. Ці шість бітів записуються в крайньому правому кінці бітового рядка, так що це кодується як:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">03 04 06 6e 5d c0
+</code></pre><p>У BER невикористані біти можуть мати будь-яке значення, тому останнім байтом цього кодування може бути c1, c2, c3 тощо. У DER усі невикористані біти мають дорівнювати нулю.</p>
+<h2 id="кодування-octet-string">Кодування OCTET STRING</h2>
+<p>Рядок OCTET STRING кодується у вигляді байтів, які він містить. Ось приклад OCTET STRING, що містить байти 03, 02, 06 та A0:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">04 04 03 02 06 A0
+</code></pre><h2 id="кодування-choice-and-any">Кодування CHOICE and ANY</h2>
+<p>A CHOICE or ANY кодується як будь-який тип, який насправді має, якщо не змінено інструкціями кодування. Отже, якщо поле CHOICE в специфікації ASN.1 дозволяє INTEGER або UTCTime, а конкретний об’єкт, який кодується, містить INTEGER, тоді він кодується як INTEGER.</p>
+<p>На практиці поля CHOICE часто містять інструкції з кодування. Наприклад, розглянемо цей приклад із RFC 5280, де інструкції кодування необхідні, щоб відрізнити rfc822Name від dNSName, оскільки вони обидва мають базовий тип IA5String:</p>
+<pre tabindex="0"><code>   GeneralName ::= CHOICE {
+        otherName                       [0]     OtherName,
+        rfc822Name                      [1]     IA5String,
+        dNSName                         [2]     IA5String,
+        x400Address                     [3]     ORAddress,
+        directoryName                   [4]     Name,
+        ediPartyName                    [5]     EDIPartyName,
+        uniformResourceIdentifier       [6]     IA5String,
+        iPAddress                       [7]     OCTET STRING,
+        registeredID                    [8]     OBJECT IDENTIFIER }
+</code></pre><p>Ось приклад кодування GeneralName, що містить rfc822Name <code>a@example.com</code> (нагадаємо, що [1] означає використання тега номер 1, у класі тегів &ldquo;контекстно-специфічний&rdquo; (біт 8 встановлений на 1) з методом кодування тегу IMPLICIT):</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">81 0d 61 40 65 78 61 6d 70 6c 65 2e 63 6f 6d
+</code></pre><p>Ось приклад кодування GeneralName, що містить dNSName &ldquo;example.com&rdquo;:</p>
+<pre tabindex="0"><code class="language-der" data-lang="der">82 0b 65 78 61 6d 70 6c 65 2e 63 6f 6d
+</code></pre><h1 id="безпека">Безпека</h1>
+<p>Важливо бути дуже обережним при декодуванні BER та DER, особливо в мовах, що не забезпечують збереження пам&rsquo;яті, таких як C та C++. Існує довга історія вразливостей у декодерах. Розбір вхідних даних загалом є <a href="http://langsec.org/">поширеним джерелом вразливостей</a>. Формати кодування ASN.1, зокрема, є <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1300257">особливим магнітом для вразливостей</a>. Це складні формати із великою кількістю полів змінної довжини. Навіть довжина має змінну довжину! Крім того, вхідні дані ASN.1 часто контролюються зловмисниками. Якщо вам потрібно розпізнати сертифікат, щоб відрізнити авторизованого користувача від неавторизованого, ви повинні припустити, що в деяких випадках ви розбиратимете не сертифікат, а якийсь дивний вхід, створений для використання помилок у вашому коді ASN.1.</p>
+<p>Щоб уникнути цих проблем, найкраще використовувати мову, безпечну для пам’яті, коли це можливо. І незалежно від того, чи можете ви використовувати безпечну для пам&rsquo;яті мову, краще використовувати <a href="https://www.itu.int/en/ITU-T/asn1/Pages/Tools.aspx">компілятор ASN.1</a> для генерації коду аналізу, ніж писати його з нуля.</p>
+<h1 id="вираження-подяки">Вираження подяки</h1>
+<p>Я дуже зобов’язаний <a href="http://luca.ntop.org/Teaching/Appunti/asn1.html">A Layman&rsquo;s Guide to a Subset of ASN.1, DER, and BER</a>, який є значною частиною того, як я вивчав ці теми. Я також хотів би подякувати авторам книги <a href="https://powerdns.org/hello-dns/">A warm welcome to DNS</a>, яка є чудовою для читання та надихнула тон цього документа.</p>
+<h1 id="невеличкий-бонус">Невеличкий бонус</h1>
+<p>Ви коли-небудь помічали, що сертифікат із кодуванням PEM завжди починається з &ldquo;MII&rdquo;? Наприклад:</p>
+<pre tabindex="0"><code>-----ПОЧАТКОВИЙ СЕРТИФІКАТ-----
+
+MIIFajCCBFKgAwIBAgISA6HJW9qjaoJoMn8iU8vTuiQ2MA0GCSqGSIb3DQEBCwUA
+...
+</code></pre><p>Тепер ви знаєте достатньо, щоб пояснити чому! <a href="https://tools.ietf.org/html/rfc5280#page-116">Сертифікат це SEQUENCE</a>, тому він почнеться з байта 0x30. Наступні байти – це <a href="#length">поле довжини</a>. Сертифікати майже завжди мають розмір понад 127 байт, тому поле довжини має використовувати довгу форму довжини. Це означає, що перший байт буде 0x80 + N, де N - кількість наступних байтів довжини. N майже завжди дорівнює 2, оскільки саме стільки байтів потрібно для кодування довжин від 128 до 65535, і майже всі сертифікати мають довжину в цьому діапазоні.</p>
+<p>Отже, тепер ми знаємо, що перші два байти DER-кодування сертифіката дорівнюють 0x30 0x82. який кодує 3 байти двійкового введення в 4 символи ASCII.<a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">Кодування PEM</a> використовує <a href="https://en.wikipedia.org/wiki/Base64">base64</a>, який кодує 3 байти двійкового введення в 4 символи ASCII. Або, говорячи інакше: base64 перетворює 24 біти двійкового введення в 4 символи ASCII, при цьому кожному символу призначається 6 біт введення. Ми знаємо, якими будуть перші 16 біт кожного сертифіката. Щоб довести, що першими символами (майже) кожного сертифіката буде «MII», нам потрібно два, щоб подивитися на наступні 2 біти. Це будуть найзначніші біти найзначнішого байта з двох байтів довжини. Чи будуть колись ці біти встановлені на 1? Тільки якщо сертифікат має довжину понад 16383 байт! Таким чином, ми можемо передбачити, що перші символи сертифіката PEM завжди будуть однаковими. Спробуйте зробити це самі:</p>
+<pre tabindex="0"><code>xxd -r -p &lt;&lt;&lt;308200 | base64
+</code></pre></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - це безкоштовний, автоматизований і відкритий Центр Сертифікації, створений для вас
+  некомерційною організацією <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Відправити всі повідомлення чи запити:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Переглянути <a href="/uk/privacy/">політику конфіденційності</a>.<br>
+Переглянути <a href="/uk/trademarks/">правила користування торговою маркою</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

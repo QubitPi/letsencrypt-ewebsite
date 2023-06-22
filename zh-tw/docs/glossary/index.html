@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hant-TW">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>術語表 -  Let&#39;s Encrypt - 免費的 SSL/TLS 憑證</title>
+    <meta name="description" content="ACME (Automatic Certificate Management Environment) : 自動憑證管理環境。由 Let&amp;rsquo;s Encrypt 所實作的協議，與它相容的軟體可以透過此協議與 Let&amp;rsquo;s Encrypt 溝通以獲得憑證。ACME 協議草案 - 維基百科 ACME Client : ACME 客戶端。能 ACME 伺服器溝通，以請求憑證的軟體。 ACME Server : ACME 伺服器。相容 ACME 協定的伺服器。Let&amp;rsquo;s Encrypt 的軟體 Boulder 相容 ACME 協定，但是還是有一些差異。 Authority Information Access (AIA) : 授權資訊存取。一個憑證擴展中的欄位，用來告訴使用者代理軟體有關憑證頒發者的資訊，包括 OCSP URI 和憑證頒發者的 URI。 Baseline Requirements (BRs) : 底線要求。客戶端對於憑證頒發機構技術和政策上的要求，憑證頒發機構需要遵守客戶端的根憑證政策，以取得數瀏覽器的信任。 Boulder : 由 Let&amp;rsquo;s Encrypt 開發和使用，以實作 ACME 協議的軟體。GitHub CA Issuers : CA 頒發者。AIA 欄位中的一部分，內容包含憑證頒發者的資訊。用於當網頁伺服器沒有提供可信任的憑證鏈時。 CA/Browser Forum : CA/瀏覽器論壇。由憑證頒發機構、瀏覽器、作業系統，以及其他使用 PKI 應用程式開發商，所組成的公益性組織。CA/瀏覽器論壇頒布了底線要求。Let&amp;rsquo;s Encrypt 是 CA/瀏覽器論壇的成員之一。維基百科 CAA (Certificate Authority Authorization) : 憑證頒發授權。指定哪些憑證頒發機構是可以替對應的網域名稱頒發憑證的 DNS 紀錄。憑證頒發機構會檢查 CAA 紀錄，而瀏覽器不會檢查它。依據憑證頒發機構的底線要求，Let&amp;rsquo;s Encrypt 會尊重 CAA 紀錄。 - 維基百科 Canonical Name record (CNAME) : 將一個網域名稱對應到另一個網域名稱的 DNS 紀錄。維基百科 Certificate : 憑證。一個使用 X.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="術語表">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-tw/docs/glossary/">
+    <meta name="twitter:description" content="ACME (Automatic Certificate Management Environment) : 自動憑證管理環境。由 Let&amp;rsquo;s Encrypt 所實作的協議，與它相容的軟體可以透過此協議與 Let&amp;rsquo;s Encrypt 溝通以獲得憑證。ACME 協議草案 - 維基百科 ACME Client : ACME 客戶端。能 ACME 伺服器溝通，以請求憑證的軟體。 ACME Server : ACME 伺服器。相容 ACME 協定的伺服器。Let&amp;rsquo;s Encrypt 的軟體 Boulder 相容 ACME 協定，但是還是有一些差異。 Authority Information Access (AIA) : 授權資訊存取。一個憑證擴展中的欄位，用來告訴使用者代理軟體有關憑證頒發者的資訊，包括 OCSP URI 和憑證頒發者的 URI。 Baseline Requirements (BRs) : 底線要求。客戶端對於憑證頒發機構技術和政策上的要求，憑證頒發機構需要遵守客戶端的根憑證政策，以取得數瀏覽器的信任。 Boulder : 由 Let&amp;rsquo;s Encrypt 開發和使用，以實作 ACME 協議的軟體。GitHub CA Issuers : CA 頒發者。AIA 欄位中的一部分，內容包含憑證頒發者的資訊。用於當網頁伺服器沒有提供可信任的憑證鏈時。 CA/Browser Forum : CA/瀏覽器論壇。由憑證頒發機構、瀏覽器、作業系統，以及其他使用 PKI 應用程式開發商，所組成的公益性組織。CA/瀏覽器論壇頒布了底線要求。Let&amp;rsquo;s Encrypt 是 CA/瀏覽器論壇的成員之一。維基百科 CAA (Certificate Authority Authorization) : 憑證頒發授權。指定哪些憑證頒發機構是可以替對應的網域名稱頒發憑證的 DNS 紀錄。憑證頒發機構會檢查 CAA 紀錄，而瀏覽器不會檢查它。依據憑證頒發機構的底線要求，Let&amp;rsquo;s Encrypt 會尊重 CAA 紀錄。 - 維基百科 Canonical Name record (CNAME) : 將一個網域名稱對應到另一個網域名稱的 DNS 紀錄。維基百科 Certificate : 憑證。一個使用 X.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-tw/docs/glossary/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳過導航連結</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">獲取幫助</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐贈</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成為贊助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">關於我們</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服務狀態</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招募</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>術語表</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最後更新於<time datetime="2018-12-30">Dec 30, 2018</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-tw/docs">查看所有文件</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<!--
+Note for translators:
+ 
+- Usage of the "def" macro (in other languages than English):
+{% def 
+	id="a unique id for anchor - the SAME than for english. will be prefixed by `def-`" 
+	name="The term to define (optional if english or abbr is provided)"
+	abbr="an accronym (optional)"
+	english="the english term (optional - if present the abbr is in english too)" %}}
+		the definition
+{% /def %}
+	
+- Check the javascript console for errors.
+
+- Automatic titles on definition's link cuts everything after the last point (to remove source links)
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="definition">
+	<a href="#def-ACME"><dfn id="def-ACME"><abbr lang="en">ACME</abbr></dfn> (Automatic Certificate Management Environment)</a>
+	: 自動憑證管理環境。由 <a href="#def-LE">Let&rsquo;s Encrypt</a> 所實作的協議，與它相容的軟體可以透過此協議與 Let&rsquo;s Encrypt 溝通以獲得<a href="#def-leaf">憑證</a>。<a href="https://tools.ietf.org/html/draft-ietf-acme-acme-16">ACME 協議草案</a> - <a href="https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-ACME-client"><dfn id="def-ACME-client">ACME Client</dfn></a>
+	: ACME 客戶端。能 ACME 伺服器溝通，以請求<a href="#def-leaf">憑證</a>的軟體。
+</p>
+<p class="definition">
+	<a href="#def-ACME-server"><dfn id="def-ACME-server">ACME Server</dfn></a>
+	: ACME 伺服器。相容 ACME 協定的伺服器。Let&rsquo;s Encrypt 的軟體 <a href="#def-boulder">Boulder</a> 相容 ACME 協定，但是還<a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">是有一些差異</a>。
+</p>
+<p class="definition">
+	<a href="#def-AIA"><dfn id="def-AIA">Authority Information Access</dfn> (<abbr>AIA</abbr>)</a>
+	: 授權資訊存取。一個<a href="#def-extension">憑證擴展</a>中的欄位，用來告訴<a href="#def-user-agent">使用者代理</a>軟體有關<a href="#def-certificate">憑證</a>頒發者的資訊，包括 <a href="#def-OCSP">OCSP</a> URI 和<a href="#def-CAI">憑證頒發者的 URI</a>。
+</p>
+<p class="definition">
+	<a href="#def-BRs"><dfn id="def-BRs">Baseline Requirements</dfn> (<abbr>BRs</abbr>)</a>
+	: 底線要求。客戶端對於憑證頒發機構技術和政策上的要求，憑證頒發機構需要遵守客戶端的<a href="#def-root-program">根憑證政策</a>，以取得數瀏覽器的信任。
+</p>
+<p class="definition">
+	<a href="#def-boulder"><dfn id="def-boulder">Boulder</dfn></a>
+	: 由 <a href="#def-LE">Let&rsquo;s Encrypt</a> 開發和使用，以實作 ACME 協議的軟體。<a href="https://github.com/letsencrypt/boulder">GitHub</a>
+</p>
+<p class="definition">
+	<a href="#def-CAI"><dfn id="def-CAI">CA Issuers</dfn></a>
+	: CA 頒發者。<a href="#def-AIA">AIA</a> 欄位中的一部分，內容包含<a href="#def-leaf">憑證</a>頒發者的資訊。用於當<a href="#def-web-server">網頁伺服器</a>沒有提供可信任的<a href="#def-chain">憑證鏈</a>時。
+</p>
+<p class="definition">
+	<a href="#def-CABF"><dfn id="def-CABF">CA/Browser Forum</dfn></a>
+	: CA/瀏覽器論壇。由憑證頒發機構、瀏覽器、作業系統，以及其他使用 PKI 應用程式開發商，所組成的公益性組織。CA/瀏覽器論壇頒布了<a href="#def-BRs">底線要求</a>。<a href="#def-LE">Let&rsquo;s Encrypt</a> 是 CA/瀏覽器論壇的成員之一。<a href="https://en.wikipedia.org/wiki/CA/Browser_Forum">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (Certificate Authority Authorization)</a>
+	: 憑證頒發授權。指定哪些<a href="#def-CA">憑證頒發機構</a>是可以替對應的網域名稱頒發憑證的 DNS 紀錄。憑證頒發機構會檢查 CAA 紀錄，而瀏覽器不會檢查它。依據憑證頒發機構的<a href="#def-BRs">底線要求</a>，<a href="#def-LE">Let&rsquo;s Encrypt</a> 會<a href="letsencrypt-ewebsite/zh-tw/docs/caa/" hreflang="zh-Hant-TW">尊重 CAA 紀錄</a>。 - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CNAME"><dfn id="def-CNAME">Canonical Name record</dfn> (<abbr>CNAME</abbr>)</a>
+	: 將一個網域名稱對應到另一個網域名稱的 DNS 紀錄。<a href="https://en.wikipedia.org/wiki/CNAME_record">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-certificate"><dfn id="def-certificate">Certificate</dfn></a>
+	: 憑證。一個使用 <a href="#def-X509">X.509 格式</a>的文件，內容包含公鑰和如何使用這把公鑰的資訊。最常見的憑證種類是<a href="#def-leaf">終端憑證</a>；同時，憑證種類也有<a href="#def-intermediate">中間憑證</a>和<a href="#def-root">根憑證</a>。
+</p>
+<p class="definition">
+	<a href="#def-CA"><dfn id="def-CA">Certificate Authority</dfn> (<abbr>CA</abbr>)</a>
+	: 憑證頒發機構。<a href="#def-LE">Let&rsquo;s Encrypt</a>、<a href="#def-IdenTrust">IdenTrust</a>、Sectigo 和 DigiCert 都是憑證頒發機構。<a href="https://en.wikipedia.org/wiki/Certificate_authority">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CP"><dfn id="def-CP">Certificate Policy</dfn> (<abbr>CP</abbr>)</a>
+	: 憑證政策。一系列的共同安全要求，描述對於使用者社群和應用程式的憑證用性。<a href="https://letsencrypt.org/repository/#isrg-certificate-policy">ISRG Certificate Policy</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CRL"><dfn id="def-CRL">Certificate Revocation List</dfn> (<abbr>CRL</abbr>)</a>
+	: 憑證註銷列表。告知<a href="#def-user-agent">使用者代理</a>軟體關於<a href="#def-leaf">憑證</a><a href="#def-revocation">註銷</a>狀態的方法。憑證註銷列表由 CA 對憑證簽名的序號所組成。<a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CSR"><dfn id="def-CSR">Certificate Signing Request</dfn> (<abbr>CSR</abbr>)</a>
+	: 憑證簽發請求。一份經由簽名的文件，內容包含申請憑證所需要的資訊。<a href="#def-LE">Let&rsquo;s Encrypt</a> 需要的資訊為：<a href="#def-CN">通用名稱</a>、<a href="#def-SAN">主體別名</a>和主體公鑰資訊。通常 <a href="#def-ACME-client">ACME 客戶端</a>，或網頁服務業者會自動替使用者產生此簽發請求。<a href="https://en.wikipedia.org/wiki/Certificate_signing_request">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-store"><dfn id="def-store">Certificate Store</dfn></a>
+	: 憑證儲存倉庫。憑證儲存倉庫中包含一個可信任的<a href="#def-root">根憑證</a>列表。作業系統（例如：Windows、Android 或 Debian）和瀏覽器（例如：Firefox）都維護著自己的憑證儲存倉庫；沒有憑證儲存倉庫的瀏覽器，會使用作業系統本身的憑證儲存倉庫。由 <a href="#def-LE">Let&rsquo;s Encrypt</a> 提供的憑證<a href="letsencrypt-ewebsite/zh-tw/certificates/" hreflang="zh-Hant-TW">已經被大多數的憑證儲存倉庫所信任</a>。
+</p>
+<p class="definition">
+	<a href="#def-CT"><dfn id="def-CT">Certificate Transparency</dfn> (<abbr>CT</abbr>)</a>
+	: 憑證透明度。為了增加安全性，憑證或<a href="#def-precertificate">預憑證</a>必須被公開在憑證透明度紀錄中：<a href="https://www.certificate-transparency.org/">https://www.certificate-transparency.org/</a>。<a href="#def-LE">Let&rsquo;s Encrypt</a> 頒發憑證的過程會先產生預憑證，再將 <a href="#def-SCT">SCT</a> 列表加入到預憑證中。有些<a href="#def-web-browser">瀏覽器</a>，例如：Google Chrome 就會需要 SCT 來驗證憑證。<a href="https://en.wikipedia.org/wiki/Certificate_Transparency">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CT-log"><dfn id="def-CT-log">Certificate Transparency Log</dfn></a>
+	: 憑證透明度紀錄。<a href="#def-CT">憑證透明度</a>架構中的一部份，憑證透明度紀錄接受憑證和預憑證的提交，並加他們添加到一個永久、可驗證、公開的列表中。
+</p>
+<p class="definition">
+	<a href="#def-chain"><dfn id="def-chain">Certificate chain</dfn></a>
+	: 憑證鏈。透過中間憑證列表，連結到儲存在憑證信任倉庫中的根憑證，來幫助<a href="#def-user-agent">使用者代理</a>軟體判斷是否能信任一張<a href="#def-leaf">終端憑證</a>。請注意，憑證鏈的選擇不是唯一的，網站提供了一個憑證鏈，然而使用者代理軟體可能會選擇另一條憑證鏈來驗證這張憑證。<a href="https://en.wikipedia.org/wiki/Public_key_certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-extension"><dfn id="def-extension">Certificate extension</dfn></a>
+	: 憑證擴展。在憑證中，大部分的欄位都是憑證擴展所定義，例如：<a href="#def-SAN">SAN</a> 和 <a href="#def-AIA">AIA</a>，這兩個欄位都屬於憑證擴展。憑證擴展的機制讓你可以建立不屬於 <a href="#def-X509">X.509</a> 標準中的欄位。
+</p>
+<p class="definition">
+	<a href="#def-issuer"><dfn id="def-issuer">Certificate issuer</dfn></a>
+	: 憑證頒發者。憑證中的頒發者欄位。例如：Let&rsquo;s Encrypt 終端憑證的頒發者欄位可能是：C = US, O = Let&rsquo;s Encrypt, CN = Let&rsquo;s Encrypt Authority X3&quot;。它同常包含<a href="#def-CN">通用名稱</a>、國家和組織。憑證的頒發者，必須對應到另一張憑證的<a href="#def-subject">主體</a>。對於像<a href="#def-root">根憑證</a>的<a href="#def-self-signed">自簽憑證</a>，頒發者和主體兩者會相同。頒發者這個詞可能也用來，表示一張頒發了其他憑證的憑證（例如：<a href="#def-intermediate">中間憑證</a> 或根憑證），或表示頒發了憑證的組織。
+</p>
+<p class="definition">
+	<a href="#def-subject"><dfn id="def-subject">Certificate subject</dfn></a>
+	: 憑證主體。憑證中的主體欄位，指名這張憑證是頒發給誰的。憑證主體通常包含<a href="#def-CN">通用名稱</a>、所屬國家、機構名稱。
+</p>
+<p class="definition">
+	<a href="#def-CPS"><dfn id="def-CPS">Certification Practice Statement</dfn> (<abbr>CPS</abbr>)</a>
+	: 憑證實作聲明。一份憑證頒發機構的聲明文件，內容包括對於憑證頒發、管理、註銷、更新或更換金鑰的實作方法。<a href="https://letsencrypt.org/repository/#isrg-certification-practice-statement">ISRG Certification Practice Statement</a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 section 3.4</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-CN"><dfn id="def-CN">Common Name</dfn> (<abbr>CN</abbr>)</a>
+	: 通用名稱。憑證主體欄位中的一部分，通用名稱描述該憑證是頒發給哪個網域的。<a href="#def-root">根憑證</a>和<a href="#def-intermediate">中間憑證</a>的通用名稱是<a href="#def-CA">憑證頒發機構</a>的名稱；而<a href="#def-leaf">終端憑證</a>的通用名稱是擁有該憑證的網域之一。請注意，通用名稱有長度的限制，最多為 63 個字元，因為在過去我們使用通用名稱來判斷哪個網遇能使用該憑證；而現在網路標準使用<a href="#def-SAN">主體別名</a>來判斷。
+</p>
+<p class="definition">
+	<a href="#def-critical"><dfn id="def-critical">Critical extension</dfn></a>
+	: 關鍵擴展。憑證中被標示為&quot;關鍵&quot;的擴展欄位。憑證相關軟體如果不知道如何處理關鍵擴展欄位，它就必須拒絕該憑證。區分關鍵與非關鍵擴展，使得未來為了安全性而新增的擴展欄位，不會對舊軟體造成影響。
+</p>
+<p class="definition">
+	<a href="#def-cross-signing"><dfn id="def-cross-signing">Cross Signing</dfn></a>
+	: 交互簽名。一張憑證由多個憑證頒發機構的<a href="#def-root">根憑證</a>所簽發。例如：<a href="#def-LE">Let&rsquo;s Encrypt</a> 的<a href="#def-intermediate">中間憑證</a>是與<a href="#def-IdenTrust">IdenTrust</a> 交互簽名所產生的，因為在剛開始 Let&rsquo;s Encrypt 的根憑證並沒有被客戶端的<a href="#def-store">憑證儲存倉庫</a>所信任。技術上來說，要進行交互簽名需要兩張使用相同<a href="#def-subject">主體</a>，和<a href="#def-key-pair">金鑰對</a>的憑證，一張由 Let&rsquo;s Encrypt 根憑證的私鑰簽名，另一張由 IdenTrust 根憑證的私鑰簽名：<a href="letsencrypt-ewebsite/zh-tw/certificates/" hreflang="zh-Hant-TW">/certificates</a>。 <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-DANE"><dfn id="def-DANE">DNS-based Authentication of Named Entities</dfn> (<abbr>DANE</abbr>)</a>
+	: 基於 DNS 的域名實體認證。一個網路安全協定，使用 DNS 來告訴客戶端該如何驗證憑證真偽，以及是否有提供加密公鑰。<a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-DNSSEC"><dfn id="def-DNSSEC">Domain Name System Security Extensions</dfn> (<abbr>DNSSEC</abbr>)</a>
+	: 網域名稱系統安全擴展。使用密碼學認證 DNS 回應的機制。要使用 DNSSEC 需要頂級域名、網域名稱擁有者和 DNS recursive resolvers 的配合。DNSSEC 安全擴展的使用率目前偏低。<a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-DV"><dfn id="def-DV">Domain-validated certificate</dfn></a>
+	: 域名驗證型憑證。證明你有該網域名稱控制權的<a href="#def-leaf">憑證</a>。<a href="#def-LE">Let&rsquo;s Encrypt</a> 僅提供 DV 憑證，而不提供 <a href="#def-OV">OV</a> 或 <a href="#def-EV">EV</a> 憑證：<a href="letsencrypt-ewebsite/zh-tw/docs/faq/" hreflang="zh-Hant-TW">FAQ</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (Elliptic Curve Digital Signature Algorithm)</a>
+	: 橢圓曲線數位簽名演算法。使用橢圓曲線密碼學的數位簽名演算法。<a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">維基百科</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> 支援頒發使用 ECDSA 的<a href="#def-leaf">終端憑證</a>，但是整個<a href="#def-chain">憑證鏈</a>還沒有完全使用 ECDSA：<a href="letsencrypt-ewebsite/zh-tw/upcoming-features/" hreflang="zh-Hant-TW">/upcoming-features</a>
+</p>
+<p class="definition">
+	<a href="#def-Ed25519"><dfn id="def-Ed25519">Ed25519</dfn></a>
+	: 一種特殊類型的 EdDSA，類似還的還有 Ed448。
+</p>
+<p class="definition">
+	<a href="#def-EdDSA"><dfn id="def-EdDSA"><abbr lang="en">EdDSA</abbr></dfn> (Edwards-curve Digital Signature Algorithm)</a>
+	: 現代基於橢圓曲線的公鑰簽名演算法，它是為了解決一些橢圓曲線加密的<a href="https://ed25519.cr.yp.to/">常見問題</a>。<a href="#def-LE">Let&rsquo;s Encrypt</a> 等憑證頒發機構還沒有辦法頒發使用 EdDsa 的憑證。<a href="https://en.wikipedia.org/wiki/EdDSA">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-ECC"><dfn id="def-ECC">Elliptic Curve Cryptography</dfn> (<abbr>ECC</abbr>)</a>
+	: 橢圓曲線密碼學。一種基於橢圓曲線的公鑰密碼學。ECC 得以在提供相同安全性的前提下，使用較小的金鑰。<a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">Cloudflare</a> - <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-EV"><dfn id="def-EV">Extended Validation</dfn> (<abbr>EV</abbr>)</a>
+	: 擴展驗證。一種憑證驗證方式，<a href="#def-CA">CA</a> 會驗證法律實體是否有網站的控制權。擴展驗證憑證中會包含法律實體的資訊。<a href="#def-CA">CA</a> 對 EV 憑證的控制比 <a href="#def-OV">OV</a> 憑證還要嚴格。<a href="#def-LE">Let&rsquo;s Encrypt</a> 不提供頒發擴展驗證憑證。<a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-FQDN"><dfn id="def-FQDN">Fully qualified domain name</dfn> (<abbr>FQDN</abbr>)</a>
+	: 完整網域名稱。例如： <code>www.example.com</code> 就是一個 <em>FQDN</em> 。
+</p>
+<p class="definition">
+	<a href="#def-HPKP"><dfn id="def-HPKP">HTTP Public Key Pinning</dfn> (<abbr>HPKP</abbr>)</a>
+	: HTTP 公鑰固定。要求瀏覽器在載入網頁時，使用特定公鑰來驗證網站<a href="#def-chain">憑證鏈</a>的安全機制。Chrome 引入這個機制來應對 CA 被入侵時的狀況，但它會導致網站無法被訪問，因此後來 Chrome <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">移除了這項機制</a>。<a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-IdenTrust"><dfn id="def-IdenTrust">IdenTrust</dfn></a>
+	: IdenTrust 是一個<a href="#def-CA">憑證頒發機構</a>。 IdenTrust 和 <a href="#def-LE">Let&rsquo;s Encrypt</a> 使用彼此的私鑰<a href="#def-cross-signing">交互簽名</a>產生了<a href="#def-intermediate">中間憑證</a>：<a href="letsencrypt-ewebsite/zh-tw/certificates/" hreflang="zh-Hant-TW">/certificates</a>。 <a href="https://en.wikipedia.org/wiki/IdenTrust">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-intermediate"><dfn id="def-intermediate">Intermediate certificate</dfn></a>
+	: 中間憑證。由<a href="#def-root">根憑證</a>或其他中間憑證所頒發的憑證，它可以頒發其他憑證。通常我們會將根憑證的私鑰以離線方式儲存，並用中間憑證憑證的私鑰替終端憑證簽名。中間憑證被包含在<a href="#def-chain">憑證鏈</a>中。<a href="https://en.wikipedia.org/wiki/Public_key_certificate#Types_of_certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-IDN"><dfn id="def-IDN">Internationalized Domain Name</dfn> (<abbr>IDN</abbr>)</a>
+	: 國際化域名。含有不屬於 <code>a</code> 到 <code>z</code>和 <code>0</code> 到 <code>9</code> 以及連字號 <code>-</code> 的網域名稱。這些網域名稱可能含有阿拉伯文、中文、西里爾文、泰米爾文、希伯來文，或其他拉丁字母的變音符號或合體字。編碼後的 IDN 域名會以 <code>xn--</code> 為開頭。<a href="#def-LE">Let&rsquo;s Encrypt</a> 支援頒發 IDN 域名的憑證：<a href="https://letsencrypt.org/2016/10/21/introducing-idn-support.html">https://letsencrypt.org/2016/10/21/introducing-idn-support.html</a> 。<a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">維基百科</a> - <a href="https://tools.ietf.org/html/rfc5890">RFC 5890</a> - <a href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>
+</p>
+<p class="definition">
+	<a href="#def-IDNA"><dfn id="def-IDNA">Internationalized Domain Names for Applications</dfn> (<abbr>IDNA</abbr>)</a>
+	: 應用程式中的國際化域名。請參考<a href="#def-IDN">國際化域名</a>。
+</p>
+<p class="definition">
+	<a href="#def-ISRG"><dfn id="def-ISRG">Internet Security Research Group</dfn> (<abbr>ISRG</abbr>)</a>
+	: 在 <a href="#def-LE">Let&rsquo;s Encrypt</a> 的上級組織：<a href="https://www.abetterinternet.org/about/">https://www.abetterinternet.org/about/</a>。 <a href="https://en.wikipedia.org/wiki/Internet_Security_Research_Group">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-key-pair"><dfn id="def-key-pair">Key-pair</dfn></a>
+	: 金鑰對，或稱公私鑰對。由一組私鑰與公鑰所組成，公鑰通常被包含在憑證資訊內，而私鑰則獨立保存。金鑰對通常依據不同的用途，被用來加密、解密、簽名、驗證資料。<a href="https://en.wikipedia.org/wiki/Public-key_cryptography">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-leaf"><dfn id="def-leaf">Leaf certificate (end-entity certificate)</dfn></a>
+	: 終端憑證，或稱子葉憑證。終端憑證大部份是由<a href="#def-intermediate">中間憑證</a>所頒發，僅對於一組網域有效，並且無法用來頒發憑證。終端憑證透過 <a href="#def-ACME-client">ACME 客戶端</a>請求，並由<a href="#def-web-server">網頁伺服器</a>所使用。<a href="https://en.wikipedia.org/wiki/Let%27s_Encrypt">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-mixed-content"><dfn id="def-mixed-content">Mixed content</dfn></a>
+	: 混合內容。在 HTTPS 網頁中以 HTTP 方式載入子資源（Javascript、CSS 或圖片）的網頁稱為混合內容。<a href="#def-web-browser">瀏覽器</a> 可能會禁止混合內容網頁，或標示為安全性較低的網頁：<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content</a> 。為了解決混合內容問題，網頁開發者必須全數使用 HTTPS 載入資源。在瀏覽器內建的<a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">開發者工具</a>可以幫助你找出哪些資源可能造成混合內容問題。
+</p>
+<p class="definition">
+	<a href="#def-OCSP"><dfn id="def-OCSP"><abbr lang="en">OCSP</abbr></dfn> (Online Certificate Status Protocol)</a>
+	: 線上憑證狀態協定。一種檢查憑證<a href="#def-revocation">註銷</a>狀態的方法。檢查<a href="#def-CA">憑證頒發機構</a>是否認為該憑證雖然在有效期限內，但依然不再有效力。這個協定衍伸出隱私問題，因為憑證頒發機構和網路提供業者，可以藉由此協定的請求過程知道哪些人正在拜訪哪些網站。<a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-must-staple"><dfn id="def-OCSP-must-staple">OCSP Must-Staple</dfn></a>
+	: 一個<a href="#def-extension">憑證擴展</a>欄位，它告訴<a href="#def-web-browser">瀏覽器</a>必須使用 <a href="#def-OCSP-stapling">OCSP 裝訂</a>的證書。它用來確保瀏覽器在每次訪問網頁伺服器時，取得最新的憑證<a href="#def-revocation">註銷</a>狀態，使得憑證註銷系統更加可靠。<a href="#def-LE">Let&rsquo;s Encrypt</a> 可以頒發具有 OCSP Must-Staple 擴展欄位的憑證。<a href="https://blog.mozilla.org/security/2015/11/23/improving-revocation-ocsp-must-staple-and-short-lived-certificates/">Mozilla Security Blog</a> <a href="https://tools.ietf.org/html/rfc7633">RFC 7633</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-stapling"><dfn id="def-OCSP-stapling">OCSP stapling</dfn></a>
+	: OSCP 裝訂，也被稱為 TLS 憑證狀態請求擴展 (TLS Certificate Status Request extension)。<a href="#def-web-server">網頁伺服器</a>透過回傳給<a href="#def-web-browser">瀏覽器</a>一個經由<a href="#def-CA">憑證頒發機構</a>簽名的 <a href="#def-OCSP">OCSP</a> 請求回應，以節省瀏覽器向憑證頒發機構二次 OCSP 請求的時間。OCSP 裝訂是為了增加效率與保護隱私而增加的。<a href="https://en.wikipedia.org/wiki/OCSP_stapling">維基百科</a> <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">Cloudflare</a>
+</p>
+<p class="definition">
+	<a href="#def-OID"><dfn id="def-OID">Object identifier</dfn> (<abbr>OID</abbr>)</a>
+	: 物件識別碼。UID 是由國際電信聯盟 (ITU) 和 ISO/IEC 標準化，具有唯一性的一組數字。在憑證中，OID 用來定義憑證擴展、欄位或政策聲明。網路標準、<a href="#def-CP">憑證政策</a>和<a href="#def-CPS">憑證實作聲明</a>文件內都定義了 OID 的使用方法。<a href="https://en.wikipedia.org/wiki/Object_identifier">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-OV"><dfn id="def-OV">Organization Validation</dfn> (<abbr>OV</abbr>)</a>
+	: 組織驗證。一種憑證驗證方式，<a href="#def-CA">CA</a> 會驗證<a href="#def-subscriber">使用者</a>的法律實體。組織驗證憑證中會有法律實體的資訊。<a href="#def-LE">Let&rsquo;s Encrypt</a> 不提供頒發組織驗證憑證。 <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Organization_validation">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-pem"><dfn id="def-pem">PEM file (.pem)</dfn></a>
+	: PEM 格式。一種密碼學格式，原本用於&quot;隱私增強型電子郵件&quot;標準。PEM 格式的文件可用來表示私鑰、公鑰或數位憑證，文件以 &ldquo;-----BEGIN &quot; 作為資料的開頭。<a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-pfx"><dfn id="def-pfx">Personal Information Exchange Files (.pfx)</dfn></a>
+	: PFX 個人資訊交換格式。一種包含<a href="#def-leaf">終端憑證</a>、連結根憑證的憑證鏈，和私鑰的檔案。請參考：<a href="https://en.wikipedia.org/wiki/PKCS_12">https://en.wikipedia.org/wiki/PKCS_12</a> 。<a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files">Microsoft Hardware Dev Center</a>
+</p>
+<p class="definition">
+	<a href="#def-precertificate"><dfn id="def-precertificate">Precertificate</dfn></a>
+	: 預憑證。預憑證是憑證透明度架構的其中一部份。預憑證內包含一個破壞性的<a href="#def-critical">關鍵擴展</a>，以避免預憑證被客戶端軟體接受。CA 會將預憑證提交給<a href="#def-CT-log">憑證透明度紀錄</a>，以取得 <a href="#def-SCT">SCT</a>。預憑證與它對應的憑證不會相同，因此憑證透明度紀錄可能會將兩者都記錄下來。<a href="https://tools.ietf.org/html/rfc6962#section-3.1">RFC 6962 Section 3.1</a>
+</p>
+<p class="definition">
+	<a href="#def-PSL"><dfn id="def-PSL">Public Suffix List</dfn> (<abbr>PSL</abbr>)</a>
+	: 公共後綴列表。由 Mozilla 所維護的列表，列表中記錄可供註冊的網域名稱。例如：<code>com</code> 和 <code>co.uk</code> 都屬於公共後綴網域名稱，雖然 <code>co.uk</code> 不屬於<a href="#def-TLD">頂級域名</a>。網頁瀏覽器使用這個列表和其他的方法，以避免不同的網站共享 cookies。<a href="#def-LE">Let&rsquo;s Encrypt</a> 也使用了這個列表來計算是否達到速率限制：<a href="letsencrypt-ewebsite/zh-tw/docs/rate-limits/" hreflang="zh-Hant-TW">/rate-limits</a>。 <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+<p class="definition">
+	<a href="#def-RSA"><dfn id="def-RSA"><abbr>RSA</abbr></dfn></a>
+	: 一個公開金鑰的演算法，用來加密和替數位憑證簽名。<a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-relying-party"><dfn id="def-relying-party">Relying Party</dfn></a>
+	: 信任方。依賴憑證資訊的人。例如：訪問 HTTPS 網站的人就是信任方。
+</p>
+<p class="definition">
+	<a href="#def-revocation"><dfn id="def-revocation">Revocation</dfn></a>
+	: 註銷。對於一張憑證，除非 <a href="#def-CA">CA</a> 註銷它，不然在憑證過期之前一直有效。憑證可能因為不同原因而被註銷，例如：憑證的私鑰洩漏。瀏覽器會使用 <a href="#def-CRL">CRL</a>來檢查憑證是否被註銷、<a href="#def-OCSP">OCSP</a> 或其他新方法像是 <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OnceCRL</a>。請注意，<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">有些狀況下註銷憑證對瀏覽器沒有影響</a>。 <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" hreflang="zh-Hant-TW">/docs/revoking</a>
+</p>
+<p class="definition">
+	<a href="#def-root-program"><dfn id="def-root-program">Root Program</dfn></a>
+	: 根憑證政策。客戶端軟體開發機構的政策，用來決定哪些根憑證可以被放入<a href="#def-store">憑證儲存倉庫</a>，被包含憑證儲存倉庫的憑證，其憑證頒發機構就會被該軟體所信任。
+</p>
+<p class="definition">
+	<a href="#def-root"><dfn id="def-root">Root certificate</dfn></a>
+	: 根憑證。由<a href="#def-CA">憑證頒發機構</a>所控制的<a href="#def-self-signed">自簽</a>憑證，它用來頒發<a href="#def-intermediate">中間憑證</a>，以及儲存在客戶端或作業系統中的<a href="#def-store">憑證儲存倉庫</a>中。<a href="https://en.wikipedia.org/wiki/Root_certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-SSL"><dfn id="def-SSL"><abbr lang="en">SSL</abbr></dfn> (Secure Sockets Layer)</a>
+	: <a href="#def-TLS">TLS</a> 協定的前身，SSL 目前依然被廣泛地使用。
+</p>
+<p class="definition">
+	<a href="#def-self-signed"><dfn id="def-self-signed">Self-signed certificate</dfn></a>
+	: 自簽憑證。一張由自己私鑰簽名的憑證，這張憑證的<a href="#def-subject">主體</a>和<a href="#def-issuer">頒發者</a>是相同的。自簽憑證僅會受到現實世界中的約定而受信任，例如：被加入到<a href="#def-store">憑證儲存倉庫</a>中。<a href="#def-root">根憑證</a> 就是一個自簽憑證。<a href="https://en.wikipedia.org/wiki/Self-signed_certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-SNI"><dfn id="def-SNI">Server Name Indication</dfn> (<abbr>SNI</abbr>)</a>
+	: 伺服器名稱指示。<a href="#def-TLS">TLS</a> 協定下的一個欄位。在 TLS 交握過程中，<a href="#def-user-agent">使用者代理</a>透過 SNI 告訴伺服器要連接的網域名稱。這使得在同一個 IP 下有許多網域名稱的伺服器，可以回應相對應的<a href="#def-leaf">憑證</a>。網頁伺服器可以依據客戶端指名的 SNI 回應不同憑證和網頁內容。SNI 並沒有被加密，因此產生了目前正在實驗階段的 ESNI。<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-SCT"><dfn id="def-SCT">Signed Certificate Timestamp</dfn> (<abbr>SCT</abbr>)</a>
+	: 憑證簽名時間戳記。由<a href="#def-CT-log">憑證透明度紀錄</a>提供，以驗證憑證頒發紀錄的簽名。瀏覽器會在網頁提供憑證，或 <a href="#def-TLS">TLS</a> 交握時，執行 <a href="#def-CT">CT</a> 檢查是否有 SCTs，並拒絕連結到不符合憑證透明度紀錄的網站。憑證透明度使得欺騙性或錯誤頒發的憑證更容易被檢驗出來。 <a href="https://www.certificate-transparency.org/how-ct-works">https://www.certificate-transparency.org/how-ct-works</a>
+</p>
+<p class="definition">
+	<a href="#def-staging"><dfn id="def-staging">Staging</dfn></a>
+	: 開發環境。<a href="#def-LE">Let&rsquo;s Encrypt</a> 提供一個開發環境的 API 讓你測試憑證請求，以避免達到速率限制。由測試環境所申請的憑證 <em>不會</em> 被大眾信任。開發環境僅用於測試、除錯以及 ACME 客戶端軟體的開發。<a href="letsencrypt-ewebsite/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">/docs/staging-environment</a>
+</p>
+<p class="definition">
+	<a href="#def-SAN"><dfn id="def-SAN">Subject Alternative Name</dfn> (<abbr>SAN</abbr>)</a>
+	: 主體別名。一個憑證擴展中的欄位，用來指名哪些網域可以使用這張憑證。它取代了<a href="#def-CN">通用名稱</a>欄位，目前通用名稱僅因相容性而添加。一個憑證中可以包含許多的主體別名，讓不同網域名稱使用它。<a href="https://en.wikipedia.org/wiki/Subject_Alternative_Name">維基百科</a> <a href="https://letsencrypt.org/docs/rate-limits/#names-per-certificate">https://letsencrypt.org/docs/rate-limits/#names-per-certificate</a>
+</p>
+<p class="definition">
+	<a href="#def-subscriber"><dfn id="def-subscriber">Subscriber</dfn></a>
+	: 訂閱者或使用者。請求憑證的人或機構。
+</p>
+<p class="definition">
+	<a href="#def-TLS"><dfn id="def-TLS"><abbr lang="en">TLS</abbr></dfn> (Transport-Level Security)</a>
+	: 傳輸層安全協定。TLS 協定使用 HTTPS 來加密及驗證你與網頁之間的連線。
+</p>
+<p class="definition">
+	<a href="#def-TLSA"><dfn id="def-TLSA"><abbr>TLSA</abbr></dfn></a>
+	: <a href="#def-DANE">DANE</a> 協定中的一部分，通常用來驗證 <a href="#def-TLS">TLS</a> 協定的連線。
+</p>
+<p class="definition">
+	<a href="#def-TLD"><dfn id="def-TLD">Top-Level Domain</dfn> (<abbr>TLD</abbr>)</a>
+	: 頂級域名。在網域名稱分級中最上層的域名。例如國家級頂級域名：<code>.de</code>（德國）和 <code>.cn</code>（中國）；以及通用頂級預名：<code>.com</code> 和 <code>.org</code>。<a href="https://en.wikipedia.org/wiki/Top-level_domain">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-UCC"><dfn id="def-UCC">Unified Communications Certificate</dfn> (<abbr>UCC</abbr>)</a>
+	: 整合通訊憑證。表示一張含有<a href="#def-SAN">主體別名</a>欄位的憑證。
+</p>
+<p class="definition">
+	<a href="#def-user-agent"><dfn id="def-user-agent">User Agent</dfn></a>
+	: 使用者代理。通稱有能力與<a href="#def-web-server">網頁伺服器</a>溝通的軟體。例如：<a href="#def-web-browser">網頁瀏覽器</a>或 <a href="https://en.wikipedia.org/wiki/CURL">cURL</a>。
+</p>
+<p class="definition">
+	<a href="#def-web-browser"><dfn id="def-web-browser">Web Browser</dfn></a>
+	: 網頁瀏覽器。一種用來顯示網頁的<a href="#def-user-agent">使用者代理</a>軟體。例如：<em>Mozilla Firefox</em> 、 <em>Google Chrome</em> 或 <em>Internet Explorer</em> 。<a href="https://en.wikipedia.org/wiki/Web_browser">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-web-server"><dfn id="def-web-server">Web server</dfn></a>
+	: 網頁伺服器。提供網頁服務的軟體，廣義上也可以指運行該軟體的硬體本身。<a href="https://en.wikipedia.org/wiki/Web_server">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-wildcard"><dfn id="def-wildcard">Wildcard Certificate</dfn></a>
+	: 萬用字元憑證。可用於一級子域名下的憑證。例如：在憑證中的 <a href="#def-SAN">SAN</a> 欄位中填入 <code>*.example.com</code>，表示該憑證可用於 <code>blog.example.com</code> 和 <code>www.example.com</code>，但是不可用於 <code>bork.bork.example.com</code> 或 <code>example.com</code>。在子域名中使用星星符號 (*) 來表示萬用字元。<a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">自從 2018 年 3 月支援萬用字元憑證的申請</a>。<a href="https://en.wikipedia.org/wiki/Wildcard_certificate">維基百科</a>
+</p>
+<p class="definition">
+	<a href="#def-X509"><dfn id="def-X509"><abbr>X.509</abbr></dfn></a>
+	: 定義了公開金鑰憑證格式的標準。<a href="https://en.wikipedia.org/wiki/X.509">維基百科</a>
+</p>
+<link rel="stylesheet" href="/css/glossary.css">
+<script src="/js/glossary.js" async></script>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  
+  Let's Encrypt 是免費、自動化和開放的憑證頒發機構，由非營利組織<a href="https://www.abetterinternet.org/">網路安全研究小組 (Internet Security Research Group, ISRG)</a> 營運。
+  </p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>將所有信件和問題發送至：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我們的<a href="/zh-tw/privacy/">私隱政策</a>.<br>
+查看我們的<a href="https://www.abetterinternet.org/trademarks/">商標政策</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

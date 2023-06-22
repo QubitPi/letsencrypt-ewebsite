@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="hu">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Integrációs útmutató -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Ez a dokumentum hasznos tanácsokat tartalmaz, ha Ön egy Let&amp;rsquo;s Encryptet integráló tárhelyszolgáltató vagy nagy weboldal, vagy ha Ön írja a Let&amp;rsquo;s Encrypt kliensszoftverét.
+Változtatási terv Mind a Let&amp;rsquo;s Encrypt, mind a Web PKI idővel tovább fog fejlődni. Meg kell győződnie arról, hogy könnyen frissítheti a Let&amp;rsquo;s Encryptet használó összes szolgáltatást. Ha olyan klienseket is telepít, amelyek Let&amp;rsquo;s Encrypt tanúsítványokra támaszkodnak, különösen ügyeljen arra, hogy ezek a kliensek rendszeres frissítéseket kapjanak.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Integrációs útmutató">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/hu/docs/integration-guide/">
+    <meta name="twitter:description" content="Ez a dokumentum hasznos tanácsokat tartalmaz, ha Ön egy Let&amp;rsquo;s Encryptet integráló tárhelyszolgáltató vagy nagy weboldal, vagy ha Ön írja a Let&amp;rsquo;s Encrypt kliensszoftverét.
+Változtatási terv Mind a Let&amp;rsquo;s Encrypt, mind a Web PKI idővel tovább fog fejlődni. Meg kell győződnie arról, hogy könnyen frissítheti a Let&amp;rsquo;s Encryptet használó összes szolgáltatást. Ha olyan klienseket is telepít, amelyek Let&amp;rsquo;s Encrypt tanúsítványokra támaszkodnak, különösen ügyeljen arra, hogy ezek a kliensek rendszeres frissítéseket kapjanak.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/hu/docs/integration-guide/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigációs linkek átugrása</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/hu/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/hu/docs/" class="pure-menu-link" tabindex="0">Dokumentáció</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Segítség</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Adományozok</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Legyen a támogatónk</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/sponsors/" class="pure-menu-link">Jelenlegi szponzorok és támogatók</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getinvolved/" class="pure-menu-link">Kapcsolódjon be</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Rólunk</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 lejárat (2021. szeptember)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" class="pure-menu-link">Gyakran Ismételt Kérdések (GYIK)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Szolgáltatás státusza</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/stats/" class="pure-menu-link">Statisztikák</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karrier</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/contact/" class="pure-menu-link">Kapcsolat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Nyelvek <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">✓ Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Integrációs útmutató</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Utoljára frissítve: <time datetime="2016-08-08">2016. aug. 8.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/hu/docs">Dokumentáció megtekinthető</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Ez a dokumentum hasznos tanácsokat tartalmaz, ha Ön egy Let&rsquo;s Encryptet integráló tárhelyszolgáltató vagy nagy weboldal, vagy ha Ön írja a Let&rsquo;s Encrypt kliensszoftverét.</p>
+<h1 id="változtatási-terv">Változtatási terv</h1>
+<p>Mind a Let&rsquo;s Encrypt, mind a Web PKI idővel tovább fog fejlődni.  Meg kell győződnie arról, hogy könnyen frissítheti a Let&rsquo;s Encryptet használó összes szolgáltatást. Ha olyan klienseket is telepít, amelyek Let&rsquo;s Encrypt tanúsítványokra támaszkodnak, különösen ügyeljen arra, hogy ezek a kliensek rendszeres frissítéseket kapjanak.</p>
+<p>A jövőben ezek a dolgok valószínűleg megváltoznak:</p>
+<ul>
+<li>a gyökér- és közbenső tanúsítványok, amelyeket a tanúsítvány kiadáshoz használunk</li>
+<li>a tanúsítványok aláírásakor használt hash algoritmusok</li>
+<li>a kulcsok és kulcserősség-ellenőrzések típusai, amelyekhez hajlandóak vagyunk aláírni a végfelhasználói tanúsítványokat</li>
+<li>és az ACME protokoll</li>
+</ul>
+<p>Az ilyen változtatásokról mindig igyekszünk a lehető legtöbb előzetes értesítést adni, bár ha valamelyik komponensben komoly biztonsági hibát találunk, előfordulhat, hogy nagyon rövid időn belül vagy azonnal változtatásokat kell végrehajtanunk. Különösen a közbenső változások esetén nem szabad hard kódolnia a használni kívánt közbensőt, hanem az ACME protokoll <a href="https://tools.ietf.org/html/rfc8555#section-7.4.2"><code>Link: rel=&quot;up&quot;</code></a> fejlécét kell használni, mivel a közbensők valószínűleg változnak.</p>
+<p>Hasonlóképpen, valószínűleg a szolgáltatási feltételek (ToS) URL címét is meg fogjuk változtatni, amint frissítjük azt. Kerülje a ToS URL hard kódolását, és helyette a <a href="https://tools.ietf.org/html/rfc8555#section-7.3.3"><code>Link: rel=&quot;terms-of-service&quot;</code></a> fejlécre támaszkodva határozza meg, hogy melyik ToS URL-t használja.</p>
+<p>Jó, ha a TLS konfigurációját is naprakészen tartja, ha új támadások jelennek meg a titkosító csomagok vagy a protokoll verziók ellen.</p>
+<h1 id="frissítések-beszerzése">Frissítések beszerzése</h1>
+<p>Ha a fent leírtakhoz hasonló fontos változásokról kisebb frissítéseket szeretne kapni, iratkozzon fel az <a href="https://community.letsencrypt.org/t/about-the-api-announcements-category/23836">API közlemények</a> csoportra. Ez mind a kliensfejlesztők, mind a tárhelyszolgáltatók számára hasznos.</p>
+<p>A karbantartásokról és üzemszünetekről szóló nagyobb volumenű frissítésekért látogasson el a <a href="https://letsencrypt.status.io/">státusz oldalunkra</a>, és nyomja meg a jobb felső sarokban a Feliratkozás gombot. Ez leginkább a tárhelyszolgáltatók számára hasznos.</p>
+<p>Győződjön meg arról is, hogy érvényes e-mail címet használ az ACME-fiókjához. Ezt az e-mailt arra fogjuk használni, hogy értesítést küldjünk Önnek a lejáratról, és értesítsük Önt a fiókjával kapcsolatos bármilyen problémáról.</p>
+<h1 id="ki-az-előfizető">Ki az előfizető</h1>
+<p>A <a href="letsencrypt-ewebsite/hu/repository/" hreflang="hu">CPS és az Előfizetői megállapodás</a> alapján az Előfizető az, aki a tanúsítvány privát kulcsát birtokolja. A tárhelyszolgáltatók esetében ez a szolgáltató, nem pedig a szolgáltató ügyfele. Ha Ön olyan szoftvert ír, amelyet az emberek maguk telepítenek, akkor az az, aki a szoftvert telepíti.</p>
+<p>A fiókok létrehozásakor (azaz a regisztrációkor) megadott kapcsolattartó e-mail címét az Előfizetőnek kell megadni. Erre a címre küldünk e-mailt, hogy figyelmeztessük a lejáró tanúsítványokra, és értesítsük a <a href="letsencrypt-ewebsite/hu/privacy/" hreflang="hu">Adatvédelmi irányelvek</a> módosításairól.  Ha Ön tárhelyszolgáltató, akkor ezeknek az értesítéseknek inkább Önhöz kell érkezniük, nem pedig az ügyfélnek. Lehetőleg állítson be egy levelezőlistát vagy aliast, hogy több személy is reagálhasson az értesítésekre, arra az esetre, ha Ön szabadságon lenne.</p>
+<p>Ennek az az eredménye, hogy ha Ön tárhelyszolgáltató, nem kell elküldenie nekünk ügyfelei e-mail címét, és nem kell rávennie őket, hogy elfogadják az előfizetői megállapodásunkat. Egyszerűen kiállíthat tanúsítványokat az Ön rendelkezése alatt álló domainekhez, és elkezdheti használni őket.</p>
+<h1 id="egy-fiók-vagy-több">Egy fiók vagy több?</h1>
+<p>Az ACME-ben lehetőség van egy fiók létrehozására, amelyet az összes engedélyezéshez és kiadáshoz használhat, vagy létrehozhat fiókot ügyfelenként. Ez a rugalmasság értékes lehet. Egyes tárhelyszolgáltatók például ügyfélenként egy fiókot kívánnak használni, és a fiókkulcsokat különböző kontextusokban tárolják, így egy fiókkulcs kompromittálása nem teszi lehetővé az összes ügyfél számára a kiadást.</p>
+<p>A legtöbb nagyobb tárhelyszolgáltató esetében azonban azt javasoljuk, hogy egyetlen fiókot használjon, és őrizze meg jól a fiókkulcsot. Ez megkönnyíti az azonos szervezethez tartozó tanúsítványok azonosítását, megkönnyíti az elérhetőségi adatok naprakészen tartását, és szükség esetén megkönnyíti a limitek beállítását. Ha sok különböző fiókot használnak, nem tudjuk hatékonyan beállítani a limiteket.</p>
+<h1 id="multi-domain-san-tanúsítványok">Multi-domain (SAN) tanúsítványok</h1>
+<p><a href="letsencrypt-ewebsite/hu/docs/rate-limits/" hreflang="hu">Kibocsátási szabályzatunk</a> legfeljebb 100 nevet engedélyez tanúsítványonként. Öntől függ, hogy minden hosztnévhez külön tanúsítványt használ-e, vagy több hosztnevet csoportosít egy kis számú tanúsítványhoz.</p>
+<p>Az hosztnevenként különálló tanúsítványok használata azt jelenti, hogy kevesebb mozgó részre van szükség a domainek logikai hozzáadásához és eltávolításához, ahogyan azokat rendelkezésre bocsátják és visszavonják. A különálló tanúsítványok minimalizálják a tanúsítványok méretét is, ami felgyorsíthatja a HTTPS kézfogásokat az alacsony sávszélességű hálózatokon.</p>
+<p>Másfelől a sok hosztnevet tartalmazó nagy tanúsítványok használata lehetővé teszi, hogy összességében kevesebb tanúsítványt kezeljen. Ha olyan régebbi klienseket kell támogatnia, mint a Windows XP, amelyek nem támogatják a TLS Server Name Indication (<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>) szolgáltatást, akkor minden tanúsítványhoz egyedi IP-címre lesz szüksége, így több név feltüntetése minden tanúsítványhoz csökkenti a szükséges IP-címek számát.</p>
+<p>A legtöbb telepítés esetében mindkét lehetőség ugyanazt a biztonságot nyújtja.</p>
+<h1 id="tanúsítványok-és-kulcsok-tárolása-és-újrafelhasználása">Tanúsítványok és kulcsok tárolása és újrafelhasználása</h1>
+<p>A Let&rsquo;s Encrypt értékének nagy része abban rejlik, hogy lehetővé teszi az automatikus kibocsátást egy új weboldal létrehozásának részeként.  Ha azonban olyan infrastruktúrával rendelkezik, amely ismételten új frontendeket hozhat létre ugyanahhoz a weboldalhoz, ezeknek a frontendeknek először meg kell próbálniuk a tartós tárolóból származó tanúsítványt és magánkulcsot használniuk, és csak akkor kell újat kibocsátaniuk, ha nem áll rendelkezésre tanúsítvány, vagy az összes meglévő tanúsítvány lejárt.</p>
+<p>A Let&rsquo;s Encrypt számára; ez segít minket, hogy minél több ember számára nyújtsunk hatékony szolgáltatásokat. Az Ön számára; ez biztosítja, hogy a Let&rsquo;s Encrypt állapotától függetlenül bármikor telepíteni tudja weboldalát.</p>
+<p>Például sok weboldal kezdi használni a Dockert, hogy szükség szerint új frontend példányokat biztosítson. Ha úgy állítja be a Docker konténereket, hogy indításkor bocsássanak ki tanúsítványt, és nem tárolja tartósan a tanúsítványokat és a kulcsokat, akkor valószínű, hogy határértéket fog túllépni, ha túl sok példányt hoz létre egyszerre. A legrosszabb esetben, ha egyszerre kell megsemmisítenie és újra létrehoznia az összes példányát, akkor olyan helyzetbe kerülhet, hogy egyik példánya sem tud tanúsítványt szerezni, és a weboldala több napig nem működik, amíg a határérték túllépés le nem jár. Ez a fajta probléma azonban nem csak a határértékekre vonatkozik. Ha a Let&rsquo;s Encrypt valamilyen okból nem érhető el, amikor frontend példányokat kellene kitegyen, akkor ugyanez a probléma áll fenn.</p>
+<p>Vegye figyelembe, hogy egyes telepítési filozófiák szerint a kriptokulcsok soha nem hagyhatják el azt a fizikai gépet, amelyen létrehozták őket. Ez a modell jól működhet a Let&rsquo;s Encrypttel, amennyiben gondoskodik arról, hogy a gépek és adataik hosszú élettartamúak legyenek, és gondosan kezeli a határértékeket.</p>
+<h1 id="kihívástípus-kiválasztása">Kihívástípus kiválasztása</h1>
+<p>Ha a http-01 ACME kihívást használja, akkor a kihívás válaszát minden egyes frontendjének biztosítania kell, mielőtt értesítené a Let&rsquo;s Encryptet, hogy készen áll a kihívás teljesítésére. Ha sok frontenddel rendelkezik, ez kihívást jelenthet. Ebben az esetben a dns-01 kihívás használata valószínűleg egyszerűbb lesz. Természetesen, ha sok földrajzilag elosztott DNS válaszadója van, meg kell győződnie arról, hogy a TXT rekord minden válaszadón elérhető.</p>
+<p>Továbbá, ha a dns-01 kihívást használja, győződjön meg róla, hogy kitörölte a régi TXT rekordokat, hogy a Let&rsquo;s Encrypt lekérdezésére adott válasz ne legyen túl nagy.</p>
+<p>Ha mindenképpen használni szeretné a http-01 kihívást, akkor érdemes kihasználni a HTTP átirányítás előnyeit. Beállíthatja, hogy minden frontendje átirányítsa a /.well-known/acme-validation/XYZ fájlt a validation-server.example.com/XYZ címre minden XYZ esetében. Ez a kiadási felelősséget a validációs szerverre delegálja, ezért ezt a szervert alaposan kell védenie.</p>
+<h1 id="központi-validációs-szerverek">Központi validációs szerverek</h1>
+<p>A fenti két ponthoz kapcsolódóan, ha sok frontenddel rendelkezik, érdemes lehet a szerverek egy kisebb részhalmazát használni a kiadás kezelésére. Ez megkönnyíti az átirányítások használatát a http-01 validáláshoz, és helyet biztosít a tanúsítványok és kulcsok tartós tárolására.</p>
+<h1 id="ocsp-stapling-implementálása">OCSP Stapling implementálása</h1>
+<p>Sok böngésző lekérdezi az OCSP-t a Let&rsquo;s Encrypt-től, amikor betöltik az Ön weboldalát. Ez egy <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/">teljesítmény és adatvédelmi probléma</a>.  Ideális esetben a weboldalához való kapcsolódások nem várhatnak a Let&rsquo;s Encrypthez való másodlagos kapcsolódásra. Az OCSP kérelmek azt is elárulják a Let&rsquo;s Encryptnek, hogy mely oldalakat látogatják az emberek. Egy jó adatvédelmi politikával rendelkezünk, és nem rögzítünk személyazonosító adatokat az OCSP kérésekből, inkább nem is kapjuk meg az adatokat. Ezen túlmenően, az OCSP kiszolgálásával kapcsolatos sávszélességi költségek minden alkalommal, amikor egy böngésző először látogat el egy Let&rsquo;s Encrypt oldalra, várhatóan az infrastrukturális költségeink nagy részét teszik majd ki.</p>
+<p>Az OCSP Stapling bekapcsolásával javíthatja weboldala teljesítményét, jobb adatvédelmet biztosíthat a felhasználók számára, és segíthet a Let&rsquo;s Encryptnek, hogy minél több embert szolgáljon ki hatékonyan.</p>
+<h1 id="tűzfal-konfiguráció">Tűzfal konfiguráció</h1>
+<p>A Let&rsquo;s Encrypt használatához engedélyeznie kell a 443-as port kimenő forgalmát az ACME klienst futtató gépekről. Az ACME szolgáltatásunk IP tartományait nem tesszük közzé, és azok előzetes értesítés nélkül változhatnak.</p>
+<p>A &ldquo;http-01&rdquo; ACME kihívás esetén engedélyeznie kell a 80-as port bejövő forgalmát. Nem tesszük közzé azokat az IP tartományokat, amelyekből a validálást végezzük, és ezek előzetes értesítés nélkül változhatnak.</p>
+<p>Megjegyzés: Javasoljuk, hogy mindig engedélyezze a webszerverhez való egyszerű HTTP hozzáférést, HTTPS-re történő átirányítással. Ez jobb felhasználói élményt nyújt, mint egy olyan webszerver, amely elutasítja a 80-as portú kapcsolatokat, és ugyanolyan szintű biztonságot nyújt.</p>
+<p>Minden kihívás esetén engedélyeznie kell az 53-as porton bejövő forgalmat (TCP és UDP) a hiteles DNS kiszolgálói felé.</p>
+<h1 id="támogatott-kulcs-algoritmusok">Támogatott kulcs algoritmusok</h1>
+<p>A Let&rsquo;s Encrypt 2048, 3072 vagy 4096 bit hosszúságú RSA kulcsokat és P-256 vagy P-384 ECDSA kulcsokat fogad el. Ez mind a fiók kulcsokra, mind a tanúsítvány kulcsokra igaz. A fiók kulcsot nem használhatja újra tanúsítvány kulcsként.</p>
+<p>Javasoljuk a kettős tanúsítvány konfigurációt, amely alapértelmezés szerint egy RSA tanúsítványt kínál, és egy (sokkal kisebb) ECDSA tanúsítványt azoknak az ügyfeleknek, amelyek jelzik, hogy támogatják.</p>
+<h1 id="https-alapértelmezett">HTTPS alapértelmezett</h1>
+<p>A tárhelyszolgáltatóknak azt javasoljuk, hogy automatikusan állítsanak ki tanúsítványokat és konfigurálják a HTTPS-t az összes általuk ellenőrzött hosztnévhez, és a felhasználó által konfigurálható beállítással adják meg, hogy a HTTP URL-címeket átirányítsák-e a HTTPS megfelelőjükre. Javasoljuk, hogy a meglévő fiókok esetében a beállítás alapértelmezetten tiltva legyen, de az új fiókok esetében a beállítás alapértelmezetten engedélyezve legyen.</p>
+<p>Indoklás: A meglévő weboldalak valószínűleg tartalmaznak néhány HTTP alforrást (szkripteket, CSS-t és képeket). Ha ezeket a webhelyeket automatikusan átirányítják a HTTPS verziójukra, a böngészők a vegyes tartalom blokkolása (Mixed Content Blocking) miatt blokkolni fogják az alforrások egy részét. Ez megszakíthatja a weboldal működését. Azonban valaki, aki új webhelyet hoz létre, és úgy találja, hogy az átirányít HTTPS-re, valószínűleg csak HTTPS alforrásokat fog felvenni, mert ha megpróbál HTTP alforrást felvenni, azonnal észreveszi, hogy az nem működik.</p>
+<p>Javasoljuk, hogy az ügyfelek beállíthassanak egy HTTP Strict-Transport-Security (HSTS) fejlécet, amelynek alapértelmezett maximális élettartama hatvan nap. Ezt a beállítást azonban figyelmeztetésnek kell kísérnie, hogy ha az ügyfélnek olyan tárhelyszolgáltatóhoz kell átmennie, amely nem kínál HTTPS-t, a böngészőkben a gyorsítótárazott HSTS-beállítás elérhetetlenné teszi a weboldalát. Az ügyfélnek és a tárhelyszolgáltatónak is tisztában kell lennie azzal, hogy a HSTS fejléc a tanúsítvány hibákat súlyos meghibásodássá változtatja. Például, míg az emberek általában át tudnak kattintani egy néveltérésre vagy lejárt tanúsítványra vonatkozó figyelmeztetésen, a böngészők nem engedélyezik az ilyen kattintást az aktív HSTS fejléccel rendelkező hosztnevek esetében.</p>
+<h1 id="mikor-kell-megújítani">Mikor kell megújítani</h1>
+<p>Javasoljuk, hogy a tanúsítványokat automatikusan újítsa meg, amikor a teljes élettartamuk kétharmada lejár. A Let&rsquo;s Encrypt jelenlegi 90 napos tanúsítványai esetében ez azt jelenti, hogy 30 nappal a lejárat előtt meg kell újítani.</p>
+<p>Ha több mint 10 000 hosztnévre ad ki tanúsítványt, akkor azt is javasoljuk, hogy a megújításokat ne nagy tételekben, hanem kis sorozatban, automatizáltan újítsa meg. Ez csökkenti a kockázatot: Ha a Let&rsquo;s Encryptnél a megújítás idején kiesik a szolgáltatás, vagy a megújítási rendszerekben átmeneti hiba lép fel, az nem az összes tanúsítványt, hanem csak néhányat érint. Ez megkönnyíti a kapacitástervezést is.</p>
+<p>Előfordulhat, hogy a gyors induláshoz az összes domainhez tömegesen szeretne tanúsítványokat kiállítani, ami rendben is van. Ezután szétoszthatja a megújítási időket úgy, hogy egyszeri alkalommal megújít néhány tanúsítványt 1 nappal a szokásos megújítási időpont előtt, néhányat 2 nappal előtte, és így tovább.</p>
+<p>Ha olyan kliensszoftvert kínál, amely automatikusan beállít egy időszakos kötegelt feladatot, kérjük, ügyeljen arra, hogy a nap folyamán véletlenszerűen kiválasztott másodpercben fusson, és ne mindig egy adott időpontban. Ez biztosítja, hogy a Let&rsquo;s Encrypt nem szembesül önkényes forgalmi csúccsal az adott óra vagy a perc kezdetén. Mivel a Let&rsquo;s Encryptnek kapacitást kell biztosítania a csúcsterheléshez, a forgalmi csúcsok csökkentése segíthet a költségeink alacsonyan tartásában.</p>
+<h1 id="hibákból-adódó-újrapróbálkozások">Hibákból adódó újrapróbálkozások</h1>
+<p>A megújítás sikertelenségét nem szabad súlyos hibaként kezelni. Kíméletes újrakezdési logikát kell implementálnia a kibocsátó szolgáltatásaiban, exponenciális visszalépési mintát használva, amely tanúsítványonként naponta legfeljebb egyszer fordulhat elő. Egy ésszerű visszalépési ütemterv például a következő lenne: első újrapróbálkozás 1 perc elteltével, második újrapróbálkozás tíz perc elteltével, harmadik újrapróbálkozás 100 perc elteltével, negyedik és további újrapróbálkozások egy nap elteltével. Természetesen az adminisztrátoroknak lehetőséget kell biztosítani arra, hogy domainenként vagy globálisan kérhessenek korai újrapróbálkozást.</p>
+<p>Újbóli próbálkozáskor történő visszalépés azt jelenti, hogy a kibocsátó szoftvernek nyomon kell követnie a sikertelenségeket és a sikereket is, és az újbóli kibocsátási kísérlet előtt ellenőriznie kell, hogy volt-e nemrégiben sikertelen próbálkozás. Nincs értelme óránként több százszor megkísérelni a kibocsátást, mivel az ismétlődő hibák valószínűleg tartósak lesznek.</p>
+<p>Minden hibát el kell küldeni a felelős adminisztrátornak, hogy lássa, szükség van-e bizonyos problémák javítására.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  A Let's Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
+  melyet a nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> szervezet tesz elérhetővé.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Megkereséseiket a következő címre küldhetik:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Tekintse meg <a href="/privacy/">Adatvédelmi irányelveinket</a>.<br>
+Tekintse meg <a href="https://www.abetterinternet.org/trademarks">Védjegypolitikánkat</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

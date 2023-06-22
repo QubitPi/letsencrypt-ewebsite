@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Next Gen Database Servers Powering Let&#39;s Encrypt -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Let’s Encrypt helps to protect a huge portion of the Web by providing TLS certificates to more than 235 million websites. A database is at the heart of how Let’s Encrypt manages certificate issuance. If this database isn’t performing well enough, it can cause API errors and timeouts for our subscribers. Database performance is the single most critical factor in our ability to scale while meeting service level objectives. In late 2020, we upgraded our database servers and we’ve been very happy with the results.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="The Next Gen Database Servers Powering Let&#39;s Encrypt">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/2021/01/21/next-gen-database-servers.html">
+    <meta name="twitter:description" content="Let’s Encrypt helps to protect a huge portion of the Web by providing TLS certificates to more than 235 million websites. A database is at the heart of how Let’s Encrypt manages certificate issuance. If this database isn’t performing well enough, it can cause API errors and timeouts for our subscribers. Database performance is the single most critical factor in our ability to scale while meeting service level objectives. In late 2020, we upgraded our database servers and we’ve been very happy with the results.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/2021/01/21/next-gen-database-servers.html">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+  <body>
+    
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Skip navigation links</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Get Help</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donate</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Become a Sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getinvolved/" class="pure-menu-link">Get Involved</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">About Us</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/stats/" class="pure-menu-link">Statistics</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Careers</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/blog/" class="pure-menu-link">Blog</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+    
+    <div class="page-content">
+      <div class="wrapper">
+        
+<div class="post">
+	<header class="post-header">
+		<h1 class="post-title">The Next Gen Database Servers Powering Let&#39;s Encrypt</h1>
+		<p class="post-meta">Jan 21, 2021 • Josh Aas and James Renken</p>
+	</header>
+	<article class="post-content">
+		<p>Let’s Encrypt helps to protect a huge portion of the Web by providing TLS certificates to more than <a href="https://letsencrypt.org/stats/">235 million websites</a>. A database is at the heart of how Let’s Encrypt manages certificate issuance. If this database isn’t performing well enough, it can cause API errors and timeouts for our subscribers. Database performance is the single most critical factor in our ability to scale while meeting service level objectives. In late 2020, we upgraded our database servers and we’ve been very happy with the results.</p>
+<h2 id="what-exactly-are-we-doing-with-these-servers">What exactly are we doing with these servers?</h2>
+<p>Our CA software, <a href="https://github.com/letsencrypt/boulder">Boulder</a>, uses MySQL-style schemas and queries to manage subscriber accounts and the entire certificate issuance process. It&rsquo;s designed to work with a single MySQL, MariaDB, or Percona database. We currently use MariaDB, with the InnoDB database engine.</p>
+<p>We run the CA against a single database in order to minimize complexity. Minimizing complexity is good for security, reliability, and reducing maintenance burden. We have a number of replicas of the database active at any given time, and we direct some read operations to replica database servers to reduce load on the primary.</p>
+<p>One consequence of this design is that our database machines need to be pretty powerful. Eventually we may need to shard or break the single database into multiple databases, but hardware advancements have allowed us to avoid that so far.</p>
+<h2 id="hardware-specifications">Hardware Specifications</h2>
+<p>The previous generation of database hardware was powerful but it was regularly being pushed to its limits. For the next generation, we wanted to more than double almost every performance metric in the same 2U form factor. In order to pull that off, we needed AMD EPYC chips and Dell’s <a href="https://www.dell.com/en-us/work/shop/cty/pdp/spd/poweredge-r7525/">PowerEdge R7525</a> was ideal. Here are the specifications:</p>
+<div style="display: flex; flex-direction: column; align-items: center">
+<table>
+	<tr>
+		<td style="padding: 10px;"></td>
+		<td style="padding: 10px;"><b>Previous Generation</b></td>
+		<td style="padding: 10px;"><b>Next Generation</b></td>
+	</tr>
+	<tr>
+		<td style="padding: 10px; vertical-align: top;"><b>CPU</b></td>
+		<td style="padding: 10px;">2x Intel Xeon E5-2650<br>Total 24 cores / 48 threads</td>
+		<td style="padding: 10px;">2x <a href="https://www.amd.com/en/products/cpu/amd-epyc-7452">AMD EPYC 7542</a><br>Total 64 cores / 128 threads
+</td>
+	</tr>
+	<tr>
+		<td style="padding: 10px; vertical-align: top;"><b>Memory</b></td>
+		<td style="padding: 10px;">1TB 2400MT/s</td>
+		<td style="padding: 10px;">2TB 3200MT/s</td>
+	</tr>
+	<tr>
+		<td style="padding: 10px; vertical-align: top;"><b>Storage</b></td>
+		<td style="padding: 10px;">24x 3.8TB Samsung PM883<br>SATA SSD<br>560/540 MB/s read/write</td>
+		<td style="padding: 10px;">24x 6.4TB Intel P4610<br>NVMe SSD<br>3200/3200 MB/s read/write</td>
+	</tr>
+</table>
+</div>
+<figure style="display: flex; flex-direction: column; align-items: center; text-align: center">
+<img src="/images/2021.01.21-next-gen-db-chassis.jpg" width="600" alt="Dell PowerEdge R7525 Chassis">
+<figcaption>Dell PowerEdge R7525 internals. The two silver rectangles in the middle are the CPUs. The RAM sticks, each 64GB, are above and below the CPUs. The 24x NVMe drives are in the front of the server, on the far left.</figcaption>
+</figure>
+<p>By going with AMD EPYC, we were able to get 64 physical CPU cores while keeping clock speeds high: 2.9GHz base with 3.4GHz boost. More importantly, EPYC provides 128 PCIe v4.0 lanes, which allows us to put 24 NVMe drives in a single machine. NVMe is incredibly fast (~5.7x faster than the SATA SSDs in our previous-gen database servers) because it uses PCIe instead of SATA. However, PCIe lanes are typically very limited: modern consumer chips typically have only 16 lanes, and Intel’s Xeon chips have 48. By providing 128 PCI lanes per chip (v4.0, no less), AMD EPYC has made it possible to pack large numbers of NVMe drives into a single machine. We’ll talk more about NVMe later.</p>
+<h2 id="performance-impact">Performance Impact</h2>
+<p>We’ll start by looking at our median time to process a request because it best reflects subscribers’ experience. Before the upgrade, we turned around the median API request in ~90 ms. The upgrade decimated that metric to ~9 ms!</p>
+<p class="text-center"><img src="/images/2021.01.21-next-gen-db-api-latency.png" alt="API Latency"></p>
+<p>We can clearly see how our old CPUs were reaching their limit. In the week before we upgraded our primary database server, its CPU usage (from /proc/stat) averaged over 90%:</p>
+<p class="text-center"><img src="/images/2021.01.21-next-gen-db-cpu-before.png" alt="CPU Usage Before Upgrade"></p>
+<p>The new AMD EPYC CPUs sit at about 25%. You can see in this graph where we promoted the new database server from replica (read-only) to primary (read/write) on September 15.</p>
+<p class="text-center"><img src="/images/2021.01.21-next-gen-db-cpu-after.png" alt="CPU Usage After Upgrade"></p>
+<p>The upgrade greatly reduced our overall database latency. The average query response time (from INFORMATION_SCHEMA) used to be ~0.45ms.</p>
+<p class="text-center"><img src="/images/2021.01.21-next-gen-db-db-latency-before.png" alt="Database Latency Before Upgrade"></p>
+<p>Queries now average <em>three times faster</em>, about 0.15ms.</p>
+<p class="text-center"><img src="/images/2021.01.21-next-gen-db-db-latency-after.png" alt="Database Latency After Upgrade"></p>
+<h2 id="openzfs-and-nvme">OpenZFS and NVMe</h2>
+<p>NVMe drives are becoming increasingly popular because of their incredible performance. Up until recently, though, it was nearly impossible to get many of them in a single machine because NVMe uses PCIe lanes. Those were very limited: Intel’s Xeon processors come with just 48 PCIe v3 lanes, and a number of those are used up by the chipset and add-on cards such as network adapters and GPUs. You can’t fit many NVMe drives in the remaining lanes.</p>
+<p>AMD’s latest generation of EPYC processors come with 128 PCIe lanes - more than double what Intel offers - and they’re PCIe v4! This is enough to pack a 2U server full of NVMe drives (24 in our case).</p>
+<p>Once you have a server full of NVMe drives, you have to decide how to manage them. Our previous generation of database servers used hardware RAID in a RAID-10 configuration, but there is no effective hardware RAID for NVMe, so we needed another solution. One option was software RAID (Linux mdraid), but we got several recommendations for OpenZFS and decided to give it a shot. We’ve been very happy with it!</p>
+<p>There wasn’t a lot of information out there about how best to set up and optimize OpenZFS for a pool of NVMe drives and a database workload, so we want to share what we learned. You can find detailed information about our setup in <a href="https://github.com/letsencrypt/openzfs-nvme-databases">this GitHub repository</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This database upgrade was necessary as more people rely on Let’s Encrypt for the security and privacy that TLS/SSL provides. The equipment is quite expensive and it was a sizable undertaking for our SRE team to plan and execute the transition, but we gained a lot through the process.</p>
+<h2 id="support-let-s-encrypt">Support Let&rsquo;s Encrypt</h2>
+<p>We depend on contributions from our supporters in order to provide our services. If your company or organization would like to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. We ask that you make an <a href="https://letsencrypt.org/donate/">individual contribution</a> if it is within your means.</p>
+
+	</article>
+</div>
+
+      </div>
+    </div>
+    
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Support a more secure and privacy-respecting Web.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/donate/">Donate</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt is a free, automated, and open certificate
+  authority brought to you by the nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send all mail or inquiries to:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        View our <a href="/privacy/">privacy policy</a>.<br>
+View our <a href="https://www.abetterinternet.org/trademarks">trademark policy</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+  </body>
+</html>

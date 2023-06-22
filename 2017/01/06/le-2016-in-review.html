@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Let’s Encrypt 2016 In Review -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Our first full year as a live CA was an exciting one. I’m incredibly proud of what our team and community accomplished during 2016. I’d like to share some thoughts about how we’ve changed, what we’ve accomplished, and what we’ve learned.
+At the start of 2016, Let’s Encrypt certificates had been available to the public for less than a month and we were supporting approximately 240,000 active (unexpired) certificates. That seemed like a lot at the time!">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Let’s Encrypt 2016 In Review">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/2017/01/06/le-2016-in-review.html">
+    <meta name="twitter:description" content="Our first full year as a live CA was an exciting one. I’m incredibly proud of what our team and community accomplished during 2016. I’d like to share some thoughts about how we’ve changed, what we’ve accomplished, and what we’ve learned.
+At the start of 2016, Let’s Encrypt certificates had been available to the public for less than a month and we were supporting approximately 240,000 active (unexpired) certificates. That seemed like a lot at the time!">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/2017/01/06/le-2016-in-review.html">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+  <body>
+    
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Skip navigation links</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Get Help</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donate</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Become a Sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getinvolved/" class="pure-menu-link">Get Involved</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">About Us</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/stats/" class="pure-menu-link">Statistics</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Careers</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/blog/" class="pure-menu-link">Blog</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+    
+    <div class="page-content">
+      <div class="wrapper">
+        
+<div class="post">
+	<header class="post-header">
+		<h1 class="post-title">Let’s Encrypt 2016 In Review</h1>
+		<p class="post-meta">Jan 6, 2017 • Josh Aas, ISRG Executive Director</p>
+	</header>
+	<article class="post-content">
+		<p>Our first full year as a live CA was an exciting one. I’m incredibly proud of what our team and community accomplished during 2016. I’d like to share some thoughts about how we’ve changed, what we’ve accomplished, and what we’ve learned.</p>
+<p>At the start of 2016, Let’s Encrypt certificates had been available to the public for less than a month and we were supporting approximately 240,000 active (unexpired) certificates. That seemed like a lot at the time! Now we’re frequently issuing that many new certificates in a single day while supporting more than 20,000,000 active certificates in total. We’ve issued more than a million certificates in a single day a few times recently. We’re currently serving an average of 6,700 OCSP responses per second. We’ve done a lot of optimization work, we’ve had to add some hardware, and there have been some long nights for our staff, but we’ve been able to keep up and we’re ready for another year of <a href="https://letsencrypt.org/stats/">strong growth</a>.</p>
+<p class="text-center"><img src="/images/Jan-6-2017-Cert-Stats.png" alt="Let's Encrypt certificate issuance statistics." style="width: 650px; margin-bottom: 17px;"/></p>
+<p>We added a number of <a href="https://letsencrypt.org/upcoming-features/">new features</a> during the past year, including support for the ACME DNS challenge, ECDSA signing, IPv6, and Internationalized Domain Names.</p>
+<p>When 2016 started, our root certificate had not been accepted into any major root programs. Today we’ve been accepted into the Mozilla, Apple, and Google root programs. We’re close to announcing acceptance into another major root program. These are major steps towards being able to operate as an independent CA. You can read more about why <a href="https://letsencrypt.org/2016/08/05/le-root-to-be-trusted-by-mozilla.html">here</a>.</p>
+<p>The ACME protocol for issuing and managing certificates is at the heart of how Let’s Encrypt works. Having a well-defined and heavily audited specification developed in public on a standards track has been a major contributor to our growth and the growth of our client ecosystem. Great progress was made in 2016 towards standardizing ACME in the <a href="https://datatracker.ietf.org/wg/acme/charter/">IETF ACME working group</a>. We’re hoping for a final document around the end of Q2 2017, and we’ll announce plans for implementation of the updated protocol around that time as well.</p>
+<p>Supporting the kind of growth we saw in 2016 meant adding staff, and during the past year Internet Security Research Group (ISRG), the non-profit entity behind Let’s Encrypt, went from four full-time employees to nine. We’re still a pretty small crew given that we’re now one of the largest CAs in the world (if not the largest), but it works because of our intense focus on automation, the fact that we’ve been able to hire great people, and because of the incredible support we receive from the Let’s Encrypt community.</p>
+<p>Let’s Encrypt exists in order to help create a 100% encrypted Web. Our own metrics can be interesting, but they’re only really meaningful in terms of the impact they have on progress towards a more secure and privacy-respecting Web. The metric we use to track progress towards that goal is the percentage of page loads using HTTPS, as seen by browsers. According to Firefox Telemetry, the Web has gone from approximately 39% of page loads using HTTPS each day to just about 49% during the past year. We’re incredibly close to a Web that is more encrypted than not. We’re proud to have been a big part of that, but we can’t take credit for all of it. Many people and organizations around the globe have come to realize that we need to invest in a more secure and privacy-respecting Web, and have taken steps to secure their own sites as well as their customers’. Thank you to everyone that has advocated for HTTPS this year, or helped to make it easier for people to make the switch.</p>
+<p>We learned some lessons this year. When we had service interruptions they were usually related to managing the rapidly growing database backing our CA. Also, while most of our code had proper tests, some small pieces didn’t and that led to <a href="https://community.letsencrypt.org/c/incidents">incidents</a> that shouldn’t have happened. That said, I’m proud of the way we handle incidents promptly, including quick and transparent public disclosure.</p>
+<p>We also learned a lot about our client ecosystem. At the beginning of 2016, ISRG / Let’s Encrypt provided client software called letsencrypt. We’ve always known that we would never be able produce software that would work for every Web server/stack, but we felt that we needed to offer a client that would work well for a large number of people and that could act as a reference client. By March of 2016, earlier than we had foreseen, it had become clear that our community was up to the task of creating a wide range of quality clients, and that our energy would be better spent fostering that community than producing our own client. That’s when we made the decision to <a href="https://letsencrypt.org/2016/03/09/le-client-new-home.html">hand off development of our client</a> to the Electronic Frontier Foundation (EFF). EFF renamed the client to <a href="https://certbot.eff.org/">Certbot</a> and has been doing an excellent job maintaining and improving it as one of <a href="https://letsencrypt.org/docs/client-options/">many client options</a>.</p>
+<p>As exciting as 2016 was for Let’s Encrypt and encryption on the Web, 2017 seems set to be an even more incredible year. Much of the infrastructure and many of the plans necessary for a 100% encrypted Web came into being or solidified in 2016. More and more hosting providers and CDNs are supporting HTTPS with one click or by default, often without additional fees. It has never been easier for people and organizations running their own sites to find the tools, services, and information they need to move to HTTPS. Browsers are planning to update their user interfaces to better reflect the risks associated with non-secure connections.</p>
+<p>We’d like to thank our community, including our <a href="https://letsencrypt.org/sponsors/">sponsors</a>, for making everything we did this past year possible. Please consider <a href="https://letsencrypt.org/getinvolved/">getting involved</a> or making a <a href="https://letsencrypt.org/donate/">donation</a>, and if your company or organization would like to sponsor Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>.</p>
+
+	</article>
+</div>
+
+      </div>
+    </div>
+    
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Support a more secure and privacy-respecting Web.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/donate/">Donate</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt is a free, automated, and open certificate
+  authority brought to you by the nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send all mail or inquiries to:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        View our <a href="/privacy/">privacy policy</a>.<br>
+View our <a href="https://www.abetterinternet.org/trademarks">trademark policy</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+  </body>
+</html>

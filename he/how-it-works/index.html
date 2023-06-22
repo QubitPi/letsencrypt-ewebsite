@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html
+	dir="rtl"
+	lang="he">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>כיצד זה עובד -  Let&#39;s Encrypt</title>
+    <meta name="description" content="המטרה של Let&amp;rsquo;s Encrypt ושל פרוטוקול ACME היא לאפשר להקים שרת HTTPS ושהוא ימשוך אוטומטית אישורים מהימנים לדפדפן, ללא התערבות של בן אדם. מטרה זו מושגת על ידי הפעלת סומן ניהול אישורים בשרת המארח.
+כדי להבין איך הטכנולוגיה הזו עובדת, הבה נעבור על תהליך הגדרת לקוח ניהול אישורים שתומך ב־Let&amp;rsquo;s Encrypt עבור https://example.com/.
+לתהליך זה שני שלבים. תחילה, הסוכן מוכיח לרשות האישורים שהשרת הזה שולט בשם התחום. לאחר מכן, הסוכן יכול לבקש, לחדש ולשלול אישורים עבור שם התחום הזה.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="כיצד זה עובד">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/he/how-it-works/">
+    <meta name="twitter:description" content="המטרה של Let&amp;rsquo;s Encrypt ושל פרוטוקול ACME היא לאפשר להקים שרת HTTPS ושהוא ימשוך אוטומטית אישורים מהימנים לדפדפן, ללא התערבות של בן אדם. מטרה זו מושגת על ידי הפעלת סומן ניהול אישורים בשרת המארח.
+כדי להבין איך הטכנולוגיה הזו עובדת, הבה נעבור על תהליך הגדרת לקוח ניהול אישורים שתומך ב־Let&amp;rsquo;s Encrypt עבור https://example.com/.
+לתהליך זה שני שלבים. תחילה, הסוכן מוכיח לרשות האישורים שהשרת הזה שולט בשם התחום. לאחר מכן, הסוכן יכול לבקש, לחדש ולשלול אישורים עבור שם התחום הזה.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/he/how-it-works/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="הזנת הבלוג של Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">דילוג על קישורי הניווט</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/he/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/he/docs/" class="pure-menu-link" tabindex="0">תיעוד</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">קבלת עזרה</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">תרומה</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/donate/" class="pure-menu-link">הצעת תרומה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">מתן חסות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/sponsors/" class="pure-menu-link">נותני חסות ומממנים נוכחיים</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getinvolved/" class="pure-menu-link">להצטרף למאמץ</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">עלינו</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" class="pure-menu-link">שאלות ותשובות (שו״ת)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">תפוגת התוקף של DST Root CA X3 (ספטמבר 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">מצב השירות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/stats/" class="pure-menu-link">סטטיסטיקה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">משרות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/contact/" class="pure-menu-link">יצירת קשר</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/how-it-works/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/how-it-works/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/how-it-works/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/how-it-works/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/how-it-works/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/how-it-works/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/how-it-works/" lang="he" hreflang="he" class="pure-menu-link">✓ עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/how-it-works/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/how-it-works/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/how-it-works/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/how-it-works/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/how-it-works/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/how-it-works/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/how-it-works/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/how-it-works/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/how-it-works/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/how-it-works/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/how-it-works/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/how-it-works/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/how-it-works/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/how-it-works/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="container">
+	<h1>כיצד זה עובד</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    עדכון אחרון: <time datetime="2019-10-18">18 באוק׳ 2019</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>המטרה של Let&rsquo;s Encrypt ושל <a href="https://tools.ietf.org/html/rfc8555">פרוטוקול ACME</a> היא לאפשר להקים שרת HTTPS ושהוא ימשוך אוטומטית אישורים מהימנים לדפדפן, ללא התערבות של בן אדם.  מטרה זו מושגת על ידי הפעלת סומן ניהול אישורים בשרת המארח.</p>
+<p>כדי להבין איך הטכנולוגיה הזו עובדת, הבה נעבור על תהליך הגדרת לקוח ניהול אישורים שתומך ב־Let&rsquo;s Encrypt עבור <code>https://example.com/</code>.</p>
+<p>לתהליך זה שני שלבים.  תחילה, הסוכן מוכיח לרשות האישורים שהשרת הזה שולט בשם התחום.  לאחר מכן, הסוכן יכול לבקש, לחדש ולשלול אישורים עבור שם התחום הזה.</p>
+<h2 id="תיקוף-שם-תחום">תיקוף שם תחום</h2>
+<p>Let&rsquo;s Encrypt מזהה את מנהל השרת באמצעות מפתח ציבורי.  בפעם הראשונה שתכנית הסוכן יוצרת קשר עם Let&rsquo;s Encrypt היא מייצרת צמד מפתחות חדש ומוכיחה לרשות האישורים Let&rsquo;s Encrypt שלשרת יש שליטה בשם תחום אחד או יותר.  בדומה לתהליך המסורתי מול רשות אישורים שכרוך ביצירת חשבון והוספת שמות תחום לחשבון הזה.</p>
+<p>כדי להניע את התהליך, הסוכן מבקש מרשות האישורים Let&rsquo;s Encrypt את מה שדרוש לו כדי להוכיח שהוא שולט ב־<code>example.com</code>.  רשות האישורים Let&rsquo;s Encrypt תסתכל על שם התחום שבבקשה ותנפיק סדרת אתגרים אחת או יותר.   אלו דרכים שונות שבהן יכול הסוכן להוכיח שיש לו שליטה על שם התחום.  למשל, רשות האישורים יכולה לתת לסוכן לבחור בין:</p>
+<ul>
+<li>להקים רשומת DNS תחת <code>example.com</code>, או</li>
+<li>להקים משאב HTTP תחת כתובת פנימית (URI) מוכרת <code>http://example.com/‎</code></li>
+</ul>
+<p>בנוסף לאתגרים, רשות האישורים Let&rsquo;s Encrypt מספקת אסימון מוצפן שעל הסוכן לחתום עליו עם המפתח הפרטי שלו כדי להוכיח שיש לו שליטה על צמד המפתחות.</p>
+<div class="howitworks-figure">
+<img alt="בקשת אתגרים לתיקוף example.com"
+     src="/images/howitworks_challenge.png"/>
+</div>
+<p>תכנית הסוכן משלימה את אחת מסדרות האתגרים שסופקו.   נניח שהוא מצליח להשלים את המשימה השנייה שלעיל: הסוכן יוצר קובץ תחת נתיב מסוים באתר <code>http://example.com</code>.  הסוכן גם חותם על האסימון המוצפן עם המפתח הפרטי שלו.  לאחר שהסוכן השלים את הצעדים האלה, הוא מודיע לרשות האישורים שהוא מוכן להשלים את התיקוף.</p>
+<p>מכאן, זה תפקידה של רשות האישורים לבדוק שהאתגרים נענו כראוי.  רשות האישורים מאמתת את החתימות על האסימון המוצפון ומנסה להוריד את הקובץ מהשרת ולוודא שיש בו את התוכן שאמור להיות בו.</p>
+<div class="howitworks-figure">
+<img alt="בקשת הרשאה כדי לפעול עבור example.com"
+     src="/images/howitworks_authorization.png"/>
+</div>
+<p>אם החתימה על האסימון המוצפן תקפה והאתגרים הושלמו אז הסוכן שמזוהה באמצעות המפתח הציבורי מורשה לנהל אישורים עבור <code>example.com</code>.  אנו קוראים לצמד המפתחות בהם משתמש הסוכן „צמד מפתחות מורשה” עבור <code>example.com</code>.</p>
+<h2 id="הנפקה-ושלילה-של-אישורים">הנפקה ושלילה של אישורים</h2>
+<p>לאחר שהסוכן נתן הרשאה לצמד מפתחות, בקשה, חידוש ושלילה של אישורים היא פשוטה - עליך פשוט לשלוח הודעות ניהול אישורים ולחתום עליהן עם צמד המפתחות המורשה.</p>
+<p>כדי להשיג אישור עבור שם התחום, הסוכן מרכיב <a href="https://tools.ietf.org/html/rfc2986">בקשת חתימת אישור - Certificate Signing Request ‏(CSR)</a> בתצורת PKCS#10 שמבקשת מרשות האישורים Let&rsquo;s Encrypt להנפיק אישור עבור <code>example.com</code> עם מפתח ציבורי מסוים.  כרגיל, ה־CSR כולל חתימה במפתח הפרטי שתואם למפתח הציבורי שב־CSR.  הסוכן גם חותם על כל ה־CSR עם המפתח המורשה עבור <code>example.com</code> כדי שרשות האישורים Let&rsquo;s Encrypt תדע שהוא מורשה.</p>
+<p>כאשר רשות האישורים Let&rsquo;s Encrypt מקבלת את האישור, היא מאמתת את שתי החתימות.  אם הכול נראה טוב, היא מנפיקה אישור עבור <code>example.com</code> עם המפתח הציבורי מתוך בקשת חתימת האישור (CSR) ומחזירה אותו אל הסוכן.</p>
+<div class="howitworks-figure">
+<img alt="בקשת אישור עבור example.com"
+     src="/images/howitworks_certificate.png"/>
+</div>
+<p>השלילה עובדת באופן דומה.  הסוכן חותם על בקשת שלילה עם צמד המפתחות שמורשים עבור <code>example.com</code>, ורשות האישורים Let&rsquo;s Encrypt מוודאה שהבקשה מורשית.  אם תהליך זה צלח, פרטי השלילה מפורסמים לערוצי השלילה הרגילים (למשל: OCSP), כדי שהגופים הנסמכים כגון דפדפנים יוכלו לדעת שאין עליהם לסמוך על אישורים שנשללו.</p>
+<div class="howitworks-figure">
+<img alt="בקשת שלילת אישור עבור example.com"
+     src="/images/howitworks_revocation.png"/>
+</div>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>לתמיכה ברשת אינטרנט מאובטחת יותר ומכבדת פרטיות.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/he/donate/">תרומה</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt היא רשות אישורים חופשית, אוטומטית ופתוחה
+  שמוגשת לך באדיבות <a href="https://www.abetterinternet.org/">קבוצת מחקר אבטחת האינטרנט (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>יש לשלוח הודעות או בקשות אל:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        לצפייה ב<a href="/privacy/">מדיניות הפרטיות</a> שלנו.<br>
+לצפייה ב<a href="https://www.abetterinternet.org/trademarks/">מדיניות זכויות היוצרים</a> שלנו.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

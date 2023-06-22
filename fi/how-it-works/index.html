@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="fi">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Miten se toimii -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Let&amp;rsquo;s Encrypt ja ACME-protokollan tavoitteena on mahdollistaa HTTPS-palvelimen perustaminen ja saada automaattisesti selainluotettava varmenne, ilman ihmisen toimia. Tämä saavutetaan suorittamalla varmennehallinta-agentti verkkopalvelimessa.
+Ymmärtääksesi tekniikan toiminnan, käydään läpi prosessi, jossa määritetään https:// esimerkki.com/ varmenteiden hallinta-agentilla, joka tukee Let&amp;rsquo;s Encryptia.
+Tähän prosessiin on kaksi vaihetta. Ensinnäkin agentti todistaa CA:lle, että verkkopalvelin hallitsee toimialuetta. Sitten agentti voi pyytää, uusia ja kumottaa kyseisen toimialueen varmenteita.
+Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäjän julkisella avaimella. Ensimmäistä kertaa agenttiohjelmisto on vuorovaikutuksessa Let&amp;rsquo;s Encryptin kanssa, se luo uuden avainparin ja todistaa varmentajalle Let&amp;rsquo;s Encrypt, että palvelin ohjaa yhtä tai useampaa toimialueita.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Miten se toimii">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/fi/how-it-works/">
+    <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt ja ACME-protokollan tavoitteena on mahdollistaa HTTPS-palvelimen perustaminen ja saada automaattisesti selainluotettava varmenne, ilman ihmisen toimia. Tämä saavutetaan suorittamalla varmennehallinta-agentti verkkopalvelimessa.
+Ymmärtääksesi tekniikan toiminnan, käydään läpi prosessi, jossa määritetään https:// esimerkki.com/ varmenteiden hallinta-agentilla, joka tukee Let&amp;rsquo;s Encryptia.
+Tähän prosessiin on kaksi vaihetta. Ensinnäkin agentti todistaa CA:lle, että verkkopalvelin hallitsee toimialuetta. Sitten agentti voi pyytää, uusia ja kumottaa kyseisen toimialueen varmenteita.
+Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäjän julkisella avaimella. Ensimmäistä kertaa agenttiohjelmisto on vuorovaikutuksessa Let&amp;rsquo;s Encryptin kanssa, se luo uuden avainparin ja todistaa varmentajalle Let&amp;rsquo;s Encrypt, että palvelin ohjaa yhtä tai useampaa toimialueita.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/fi/how-it-works/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encryptin blogisyöte" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Ohita navigointilinkit</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/fi/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/fi/docs/" class="pure-menu-link" tabindex="0">Dokumentaatio</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Hanki apua</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Lahjoita</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Ryhdy sponsoriksi</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/sponsors/" class="pure-menu-link">Tämänhetkiset sponsorit ja rahoittajat</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/getinvolved/" class="pure-menu-link">Osallistu</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Tietoa meistä</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Palvelun tila</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/stats/" class="pure-menu-link">Tilastot</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Työpaikat</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/contact/" class="pure-menu-link">Ota yhteyttä</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Kielet <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/how-it-works/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/how-it-works/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/how-it-works/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/how-it-works/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/how-it-works/" lang="fi" hreflang="fi" class="pure-menu-link">✓ Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/how-it-works/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/how-it-works/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/how-it-works/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/how-it-works/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/how-it-works/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/how-it-works/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/how-it-works/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/how-it-works/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/how-it-works/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/how-it-works/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/how-it-works/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/how-it-works/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/how-it-works/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/how-it-works/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/how-it-works/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/how-it-works/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="container">
+	<h1>Miten se toimii</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Viimeksi päivitetty: <time datetime="2019-10-18">18.10.2019</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Let&rsquo;s Encrypt ja <a href="https://tools.ietf.org/html/rfc8555">ACME-protokollan</a> tavoitteena on mahdollistaa HTTPS-palvelimen perustaminen ja saada automaattisesti selainluotettava varmenne, ilman ihmisen toimia.  Tämä saavutetaan suorittamalla varmennehallinta-agentti verkkopalvelimessa.</p>
+<p>Ymmärtääksesi tekniikan toiminnan, käydään läpi prosessi, jossa määritetään <code>https:// esimerkki.com/</code> varmenteiden hallinta-agentilla, joka tukee Let&rsquo;s Encryptia.</p>
+<p>Tähän prosessiin on kaksi vaihetta.  Ensinnäkin agentti todistaa CA:lle, että verkkopalvelin hallitsee toimialuetta.  Sitten agentti voi pyytää, uusia ja kumottaa kyseisen toimialueen varmenteita.</p>
+<h2 id="toimialueen-vahvistus">Toimialueen vahvistus</h2>
+<p>Let&rsquo;s Encrypt tunnistaa palvelimen ylläpitäjän julkisella avaimella.  Ensimmäistä kertaa agenttiohjelmisto on vuorovaikutuksessa Let&rsquo;s Encryptin kanssa, se luo uuden avainparin ja todistaa  varmentajalle Let&rsquo;s Encrypt, että palvelin ohjaa yhtä tai useampaa toimialueita.  Tämä on samanlainen kuin perinteinen varmentajan prosessi, jossa luodaan tili ja siihen lisätään toimialueita.</p>
+<p>Prosessin käynnistämiseksi agentti kysyy varmentajalta Let&rsquo;s Encrypt, mitä sen on tehtävä osoittaakseen, että se hallitsee <code>esimerkki.com</code>:ta.  Varmentaja Let&rsquo;s Encrypt tarkastelee pyydettyä toimialuetta ja luo yhden tai useamman sarjan haasteita.   Nämä ovat eri tapoja, joilla agentti voi todistaa toimialueen hallinnan.  Varmentaja voi esimerkiksi antaa agentille valita jommankumman seuraavista:</p>
+<ul>
+<li>DNS-tietueen varustaminen <code>esimerkki.com</code>:n alla tai</li>
+<li>HTTP-resurssin varustaminen hyvin tunnetun URI:n alla <code>esimerkki.com</code>:ssa</li>
+</ul>
+<p>Haasteiden ohella varmentaja Let&rsquo;s Encrypt tarjoaa myös nonce:n, joka agentin on allekirjoitettava yksityisellä avainparillaan todistaakseen, että se hallitsee avainparia.</p>
+<div class="howitworks-figure">
+<img alt="Requesting challenges to validate example.com"
+     src="/images/howitworks_challenge.png"/>
+</div>
+<p>Agenttiohjelmisto toteuttaa yhden tarjotuista sarjoista haasteita.   Oletetaan, että se pystyy suorittamaan toisen yllä olevan tehtävän: se luo tiedoston määritettyyn polkuun <code>http://esimerkki.com</code>:lle.  Agentti allekirjoittaa myös toimitetun nonce:n yksityisellä avaimellaan.  Kun agentti on suorittanut nämä vaiheet, se ilmoittaa varmentajalle, että on valmis suorittamaan vahvistuksen.</p>
+<p>Sitten on varmentajan tehtävä tarkistaa, että haasteet on täytetty.  Varmentaja tarkistaa allekirjoituksen nonce:ssa ja yrittää ladata tiedoston verkkopalvelimelta ja varmistaa, että siinä on odotettu sisältö.</p>
+<div class="howitworks-figure">
+<img alt="Requesting authorization to act for example.com"
+     src="/images/howitworks_authorization.png"/>
+</div>
+<p>Jos allekirjoitus nonce:n välityksellä on kelvollinen ja haasteet kuitataan, sitten julkisella avaimella tunnistettu agentti on valtuutettu hallitsemaan <code>esimerkki.com</code>:n varmenteita.  Kutsumme agentiin käyttämää avainparia &ldquo;valtuutetuksi avainpariksi&rdquo; <code>esimerkki.com</code>:een.</p>
+<h2 id="varmenteen-myöntäminen-ja-kumoaminen">Varmenteen myöntäminen ja kumoaminen</h2>
+<p>Kun agentilla on valtuutettu avainpari, varmenteiden pyytäminen, uusiminen ja kumoaminen on helppoa – on vain lähetettävä varmenteenhallintaviestit ja allekirjoita ne valtuutetulla avainparilla.</p>
+<p>Saadakseen varmenteen toimialueelle agentti muodostaa PKCS#10 <a href="https://tools.ietf.org/html/rfc2986">sertifikaatin allekirjoituspyynnön</a>, joka pyytää varmentajalta Let&rsquo;s Encrypt myöntämään varmenteen <code>esimerkki.com</code>:lle tietyllä julkisella avaimella.  Kuten tavallista, CSR sisältää allekirjoituksen yksityisellä avaimella, joka vastaa CSR:n julkista avainta.  Agentti allekirjoittaa myös koko CSR:n valtuutetulla avaimella <code>esimerkki.com</code>:lle, jotta varmentaja Let&rsquo;s Encrypt tietää, että se on valtuutettu.</p>
+<p>Kun Let&rsquo;s Encrypt CA vastaanottaa pyynnön, se vahvistaa molemmat allekirjoitukset.  Jos kaikki näyttää hyvältä, se luo varmenteen <code>esimerkiksi.com</code>:lle CSR:n julkisella avaimella ja palauttaa sen agentille.</p>
+<div class="howitworks-figure">
+<img alt="Requesting a certificate for example.com"
+     src="/images/howitworks_certificate.png"/>
+</div>
+<p>Kumoaminen toimii samalla tavalla.  Agentti allekirjoittaa peruutuspyynnön avainparilla, joka on valtuutettu toimialueelle <code>esimerkki.com</code>, ja varmentaja Let&rsquo;s Encrypt varmistaa, että pyyntö on valtuutettu.  Jos näin on, se julkaisee kumotustiedot normaaleihin kumotuskanaviin (eli OCSP:hen), jotta siihen luottavat osapuolet, kuten verkkoselaimet, voivat tietää, että niiden ei pitäisi hyväksyä kumottua varmennetta.</p>
+<div class="howitworks-figure">
+<img alt="Requesting revocation of a certificate for example.com"
+     src="/images/howitworks_revocation.png"/>
+</div>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Tue turvallisempaa ja yksityisyyttä arvostavampaa verkkoa.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/fi/donate/">Lahjoita</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt on ilmainen, automatisoitu, ja avoin varmenteita myöntävä organisaatio, jonka on perustanut voittoa tavoittelematon organisaatio <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Lähetä kaikki sähköpostit tai tiedustelut osoitteeseen:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Katso <a href="/privacy/">yksityisyyskäytäntömme</a>.<br>
+Katso <a href="https://www.abetterinternet.org/trademarks">tavaramerkkikäytäntömme</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

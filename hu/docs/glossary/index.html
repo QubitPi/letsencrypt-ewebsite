@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="hu">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fogalomtár -  Let&#39;s Encrypt</title>
+    <meta name="description" content="ACME (Automatic Certificate Management Environment) : A Let&amp;rsquo;s Encrypt által alkalmazott protokoll. Az ezzel a protokollal kompatibilis szoftverek használhatják a Let&amp;rsquo;s Encrypttel való kommunikációra, hogy tanúsítványt kérjenek. ACME RFC - Wikipedia ACME Client : Egy olyan program, amely képes kommunikálni egy ACME szerverrel, hogy tanúsítványt kérjen. ACME Server : Egy ACME-kompatibilis szerver, amely képes tanúsítványokat generálni. A Let&amp;rsquo;s Encrypt szoftvere, a Boulder ACME-kompatibilis, némi eltéréssel. Authority Information Access (AIA) : Tanúsítványbővítmény, amely arra szolgál, hogy a user agentek számára jelezze, hogyan szerezzenek információt a tanúsítványkiállítójáról.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Fogalomtár">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/hu/docs/glossary/">
+    <meta name="twitter:description" content="ACME (Automatic Certificate Management Environment) : A Let&amp;rsquo;s Encrypt által alkalmazott protokoll. Az ezzel a protokollal kompatibilis szoftverek használhatják a Let&amp;rsquo;s Encrypttel való kommunikációra, hogy tanúsítványt kérjenek. ACME RFC - Wikipedia ACME Client : Egy olyan program, amely képes kommunikálni egy ACME szerverrel, hogy tanúsítványt kérjen. ACME Server : Egy ACME-kompatibilis szerver, amely képes tanúsítványokat generálni. A Let&amp;rsquo;s Encrypt szoftvere, a Boulder ACME-kompatibilis, némi eltéréssel. Authority Information Access (AIA) : Tanúsítványbővítmény, amely arra szolgál, hogy a user agentek számára jelezze, hogyan szerezzenek információt a tanúsítványkiállítójáról.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/hu/docs/glossary/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigációs linkek átugrása</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/hu/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/hu/docs/" class="pure-menu-link" tabindex="0">Dokumentáció</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Segítség</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Adományozok</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Legyen a támogatónk</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/sponsors/" class="pure-menu-link">Jelenlegi szponzorok és támogatók</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getinvolved/" class="pure-menu-link">Kapcsolódjon be</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Rólunk</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 lejárat (2021. szeptember)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" class="pure-menu-link">Gyakran Ismételt Kérdések (GYIK)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Szolgáltatás státusza</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/stats/" class="pure-menu-link">Statisztikák</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karrier</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/contact/" class="pure-menu-link">Kapcsolat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Nyelvek <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">✓ Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Fogalomtár</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Utoljára frissítve: <time datetime="2018-12-30">2018. dec. 30.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/hu/docs">Dokumentáció megtekinthető</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<!--
+Note for translators:
+ 
+- Usage of the "def" macro (in other languages than English):
+{% def 
+    id="a unique id for anchor - the SAME than for english. will be prefixed by `def-`" 
+    name="The term to define (optional if english or abbr is provided)"
+    abbr="an accronym (optional)"
+    english="the english term (optional - if present the abbr is in english too)" %}}
+        the definition
+{% /def %}
+    
+- Check the javascript console for errors.
+
+- Automatic titles on definition's link cuts everything after the last point (to remove source links)
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="definition">
+	<a href="#def-ACME"><dfn id="def-ACME"><abbr lang="en">ACME</abbr></dfn> (Automatic Certificate Management Environment)</a>
+	: A <a href="#def-LE">Let&rsquo;s Encrypt</a> által alkalmazott protokoll. Az ezzel a protokollal kompatibilis szoftverek használhatják a Let&rsquo;s Encrypttel való kommunikációra, hogy <a href="#def-leaf">tanúsítványt</a> kérjenek. <a href="https://tools.ietf.org/html/rfc8555">ACME RFC</a> - <a href="https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-ACME-client"><dfn id="def-ACME-client">ACME Client</dfn></a>
+	: Egy olyan program, amely képes kommunikálni egy ACME szerverrel, hogy <a href="#def-leaf">tanúsítványt</a> kérjen.
+</p>
+<p class="definition">
+	<a href="#def-ACME-server"><dfn id="def-ACME-server">ACME Server</dfn></a>
+	: Egy ACME-kompatibilis szerver, amely képes <a href="#def-leaf">tanúsítványokat</a> generálni. A Let&rsquo;s Encrypt szoftvere, a <a href="#def-boulder">Boulder</a> ACME-kompatibilis, <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">némi eltéréssel</a>.
+</p>
+<p class="definition">
+	<a href="#def-AIA"><dfn id="def-AIA">Authority Information Access</dfn> (<abbr>AIA</abbr>)</a>
+	: <a href="#def-extension">Tanúsítványbővítmény</a>, amely arra szolgál, hogy a <a href="#def-user-agent">user agentek</a> számára jelezze, hogyan szerezzenek információt a <a href="#def-certificate">tanúsítvány</a>kiállítójáról. Általában az <a href="#def-OCSP">OCSP</a> URI-t és a <a href="#def-CAI">kibocsátó URI-t</a> adja meg.
+</p>
+<p class="definition">
+	<a href="#def-BRs"><dfn id="def-BRs">Baseline Requirements</dfn> (<abbr>BRs</abbr>)</a>
+	: A hitelesítésszolgáltatókra vonatkozó technikai és eljárásmódbeli követelmények. Mivel minden fontosabb <a href="#def-root-program">root-program</a> tartalmazza az alapkövetelményeket (Baseline Requirements), a tanúsító hatóságoknak követniük kell ezeket a követelményeket ahhoz, hogy a legtöbb böngésző megbízzon bennük.
+</p>
+<p class="definition">
+	<a href="#def-boulder"><dfn id="def-boulder">Boulder</dfn></a>
+	: Az ACME-t alkalmazó szoftver, amelyet a <a href="#def-LE">Let&rsquo;s Encrypt</a> fejlesztett ki és használ. <a href="https://github.com/letsencrypt/boulder">GitHub</a>
+</p>
+<p class="definition">
+	<a href="#def-CAI"><dfn id="def-CAI">CA Issuers</dfn></a>
+	: Az <a href="#def-AIA">AIA</a> mező azon része, amely a <a href="#def-leaf">tanúsítvány</a> kiállítójára vonatkozó információkat tartalmazza. Hasznos lehet, ha a <a href="#def-web-server">webszerver</a> nem biztosít megbízható <a href="#def-chain">tanúsítványláncot</a>.
+</p>
+<p class="definition">
+	<a href="#def-CABF"><dfn id="def-CABF">CA/Browser Forum</dfn></a>
+	: A tanúsító hatóságok, az internetes böngészőszoftverek, az operációs rendszerek és más PKI-kompatibilis alkalmazások szállítóinak önkéntes csoportja. A CA/Browser Forum közzéteszi a <a href="#def-BRs">alapkövetelményeket (Baseline Requirements)</a>. <a href="#def-LE">A Let&rsquo;s Encrypt</a> a CA/Browser Forum tagja. <a href="https://en.wikipedia.org/wiki/CA/Browser_Forum">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (Certificate Authority Authorization)</a>
+	: Egy DNS rekord, amely meghatározza, hogy mely <a href="#def-CA">CA-k</a> jogosultak tanúsítványt kiállítani a megfelelő domain névhez. A CAA rekordokat a tanúsító hatóságok ellenőrzik, nem a böngészők. A <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="letsencrypt-ewebsite/hu/docs/caa/" hreflang="hu">tiszteletben tartja a CAA rekordokat</a> <a href="#def-BRs">az alapkövetelményeknek (Baseline Requirement) megfelelően</a>. - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CNAME"><dfn id="def-CNAME">Canonical Name record</dfn> (<abbr>CNAME</abbr>)</a>
+	: Egy DNS bejegyzés, amely egy domainnevet képez le egy másik domainnévre, amelyet kanonikus névnek nevezünk. <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-certificate"><dfn id="def-certificate">Certificate</dfn></a>
+	: Egy <a href="#def-X509">meghatározott formátumú</a> fájl, amely tartalmaz egy nyilvános kulcsot és egyéb adatokat, amelyek leírják, hogy mikor kell használni a nyilvános kulcsot. A leggyakoribb tanúsítványtípus a <a href="#def-leaf">végfelhasználói tanúsítvány</a>. Vannak <a href="#def-intermediate">köztes</a> és <a href="#def-root">gyökér</a> tanúsítványok is.
+</p>
+<p class="definition">
+	<a href="#def-CA"><dfn id="def-CA">Certificate Authority</dfn> (<abbr>CA</abbr>)</a>
+	: Egy szervezet, amely <a href="#def-leaf">tanúsítványokat</a> állít ki. A <a href="#def-LE">Let&rsquo;s Encrypt</a>, <a href="#def-IdenTrust">IdenTrust</a>, Sectigo, és DigiCert mind tanúsító hatóságok (Certificate Authorities). <a href="https://en.wikipedia.org/wiki/Certificate_authority">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CP"><dfn id="def-CP">Certificate Policy</dfn> (<abbr>CP</abbr>)</a>
+	: Szabályrendszer, amely jelzi egy tanúsítvány alkalmazhatóságát egy adott közösségre és/vagy a közös biztonsági követelményeket támasztó alkalmazások osztályára. A kibocsátás konkrét részleteit a <a href="#def-CPS">CPS</a> tartalmazza. <a href="letsencrypt-ewebsite/hu/repository/#isrg-certificate-policy" hreflang="hu">ISRG Certificate Policy</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CRL"><dfn id="def-CRL">Certificate Revocation List</dfn> (<abbr>CRL</abbr>)</a>
+	: Módszer a <a href="#def-user-agent">user agentek</a> tájékoztatására egy <a href="#def-leaf">tanúsítvány</a> <a href="#def-revocation">visszavonásának</a> állapotáról. Ez egy adott hitelesítésszolgáltatótól származó, az adott hitelesítésszolgáltató által aláírt összes visszavont tanúsítvány sorszámainak listája. <a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CSR"><dfn id="def-CSR">Certificate Signing Request</dfn> (<abbr>CSR</abbr>)</a>
+	: Aláírt fájl, amely tartalmazza a <a href="#def-CA">CA</a> által a tanúsítvány létrehozásához szükséges információkat. A <a href="#def-LE">Let&rsquo;s Encrypt</a> esetében a <a href="#def-CN">Common Name</a>, <a href="#def-SAN">Subject Alternative Names</a> és a Subject Public Key Info lényeges információk. Általában a <a href="#def-ACME-client">kliens alkalmazások</a> automatikusan generálják a CSR-t a felhasználó számára, bár a webtárhely-szolgáltató vagy az eszköz is generálhat CSR-t. <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-store"><dfn id="def-store">Certificate Store</dfn></a>
+	: A tanúsítványtár a megbízható <a href="#def-root">gyökerek</a> listáját tartalmazza. Az operációs rendszerek (mint a Windows, az Android vagy a Debian) és a <a href="#def-web-browser">webböngészők</a> (például a Firefox) fenntartanak egy tanúsítványtárat. A tanúsítványtár nélküli böngészők az operációs rendszer tanúsítványtárára támaszkodnak. A <a href="#def-LE">Let&rsquo;s Encrypt</a> által biztosított <a href="#def-leaf">tanúsítványokban</a> a legtöbb <a href="letsencrypt-ewebsite/hu/certificates/" hreflang="hu">tanúsítványtár megbízik</a>.
+</p>
+<p class="definition">
+	<a href="#def-CT"><dfn id="def-CT">Certificate Transparency</dfn> (<abbr>CT</abbr>)</a>
+	: A biztonság növelése érdekében a tanúsítványokat (vagy <a href="#def-precertificate">előtanúsítványokat</a>) közzé kell tenni a tanúsítványok átláthatósági naplóiban: <a href="https://www.certificate-transparency.org/">https://www.certificate-transparency.org/</a>. A <a href="#def-LE">Let&rsquo;s Encrypt</a> létrehozza és közzéteszi az <a href="#def-precertificate">előtanúsítványokat</a>, és a későbbi <a href="#def-leaf">tanúsítvány</a> tartalmazza az előtanúsítványhoz tartozó <a href="#def-SCT">SCT-k</a> listáját. Néhány <a href="#def-web-browser">böngésző</a>, például a Google Chrome, megköveteli ennek az ellenőrizhető ígéretnek a jelenlétét a tanúsítvány érvényesítéséhez. <a href="https://en.wikipedia.org/wiki/Certificate_Transparency">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CT-log"><dfn id="def-CT-log">Certificate Transparency Log</dfn></a>
+	: A <a href="#def-CT">tanúsítványok átláthatóságának (Certificate Transparency)</a> egy olyan összetevője, amely elfogadja a tanúsítványok és <a href="#def-precertificate">előzetes tanúsítványok benyújtását</a>, és beépíti azokat egy állandó, ellenőrizhető, nyilvánosan hozzáférhető listába.
+</p>
+<p class="definition">
+	<a href="#def-chain"><dfn id="def-chain">Certificate chain</dfn></a>
+	: Olyan <a href="#def-intermediate">köztes tanúsítványok</a> listája, amelyek segítenek egy <a href="#def-user-agent">user agentnek</a> meghatározni, hogy megbízhat-e egy végfelhasználói vagy <a href="#def-leaf">leaf tanúsítvány</a> megbízhatóságában, azáltal, hogy összekapcsolja azt a <a href="#def-store">tanúsítvány tárjában</a> lévő <a href="#def-root">gyökértanúsítvánnyal</a>. Megjegyzés: a lánc nem mindig egyedi, és ha egy weboldal egy tanúsítványláncot mutat be, amely egy gyökérhez vezet, a user agent dönthet úgy, hogy egy másik láncot használ a tanúsítvány validálásához. <a href="https://en.wikipedia.org/wiki/Public_key_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-extension"><dfn id="def-extension">Certificate extension</dfn></a>
+	: A tanúsítványokban a legtöbb mezőt kiterjesztések határozzák meg. Például a <a href="#def-SAN">Subject Alternative Names</a> és az <a href="#def-AIA">AIA</a> kiterjesztések. A kiterjesztési mechanizmus lehetővé teszi olyan új mezők létrehozását, amelyek nem voltak részei az eredeti <a href="#def-X509">X.509</a> szabványnak.
+</p>
+<p class="definition">
+	<a href="#def-issuer"><dfn id="def-issuer">Certificate issuer</dfn></a>
+	: A tanúsítvány &ldquo;kibocsátó&rdquo; mezője azt írja le, hogy melyik tanúsítvány írta alá a tanúsítványt. Például egy Let&rsquo;s Encrypt végfelhasználói tanúsítvány kibocsátó mezője a következő lehet: &ldquo;Kibocsátó: C = US, O = Let&rsquo;s Encrypt, CN = Let&rsquo;s Encrypt hatóság X3&rdquo;. Általában olyan mezőket tartalmaz, mint <a href="#def-CN">Common Name</a>, Country és Organization. A kibocsátó mező minden esetben megegyezik bizonyos tanúsítványok <a href="#def-subject">Subject</a> mezőjével. A <a href="#def-self-signed">önaláírt</a> tanúsítványok esetében, mint például a <a href="#def-root">gyökerek</a>, a kibocsátó megegyezik a Subject-el. A &ldquo;kibocsátó&rdquo; kifejezés használható olyan tanúsítványra is, amely más tanúsítványokat ad ki (<a href="#def-intermediate">köztes</a> vagy gyökér), vagy olyan szervezetre, amely tanúsítványokat ad ki.
+</p>
+<p class="definition">
+	<a href="#def-subject"><dfn id="def-subject">Certificate subject</dfn></a>
+	: A tanúsítvány &ldquo;Subject&rdquo; mezője jelzi, hogy miről szól a tanúsítvány. Ez általában olyan mezőket tartalmaz, mint <a href="#def-CN">Common Name</a>, Country és Organization.
+</p>
+<p class="definition">
+	<a href="#def-CPS"><dfn id="def-CPS">Certification Practice Statement</dfn> (<abbr>CPS</abbr>)</a>
+	: A tanúsító hatóság által a tanúsítványok kiállítása, kezelése, visszavonása, megújítása vagy újrakulcsozása során alkalmazott gyakorlatok ismertetése. <a href="letsencrypt-ewebsite/hu/repository/#isrg-certification-practice-statement" hreflang="hu">ISRG Certification Practice Statement</a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 section 3.4</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CN"><dfn id="def-CN">Common Name</dfn> (<abbr>CN</abbr>)</a>
+	: A tanúsítvány <a href="#def-subject">Subject</a> része, amely leírja, hogy miről szól a tanúsítvány. A <a href="#def-root">gyökér</a> és <a href="#def-intermediate">közbenső</a> tanúsítványok esetében ez a <a href="#def-CA">tanúsító hatóság</a> ember által olvasható neve. A <a href="#def-leaf">végfelhasználói tanúsítványok</a> esetében ez a tanúsítványban szereplő domain nevek egyike. Megjegyzés: A &ldquo;Common Name&rdquo; legfeljebb 63 karakter lehet. Ez egy elavult módszer annak a domain névnek a megjelölésére, amelyre a tanúsítvány vonatkozik, mivel a jelenlegi internetes szabványok elvárják, hogy a szoftverek csak a <a href="#def-SAN">Subject Alternative Names</a> paramétert ellenőrizzék a tanúsítvány alkalmazhatóságának megállapításához.
+</p>
+<p class="definition">
+	<a href="#def-critical"><dfn id="def-critical">Critical extension</dfn></a>
+	: A tanúsítvány tartalmazhat <a href="#def-extension">kiterjesztéseket</a>, amelyek &ldquo;kritikusnak&rdquo; vannak jelölve. Ez azt jelenti, hogy a szoftvereknek el kell utasítaniuk a tanúsítványt, kivéve, ha a szoftver érti, hogyan kell feldolgozni az adott kiterjesztést. Ez lehetővé teszi a biztonság szempontjából fontos új kiterjesztések bevezetését anélkül, hogy a régebbi szoftvereket veszélyeztetné.
+</p>
+<p class="definition">
+	<a href="#def-cross-signing"><dfn id="def-cross-signing">Cross Signing</dfn></a>
+	: Egy kiállítandó tanúsítványt több <a href="#def-root">gyökér</a> is aláírhat. Például a <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="#def-intermediate">közbensők</a> keresztaláírása a <a href="#def-IdenTrust">IdenTrust</a> által történik, mivel a Let&rsquo;s Encrypt gyökerében az induláskor még nem bíztak meg a <a href="#def-store">tanúsítványtárak</a>. Technikailag ez két kiállító tanúsítványt jelent, amelyek ugyanazt a <a href="#def-subject">Subject</a> és ugyanazt a <a href="#def-key-pair">Key-pair</a> paramétereket használják, az egyiket egy Let&rsquo;s Encrypt root, a másikat pedig egy IdenTrust root privát kulcsa írja alá: <a href="letsencrypt-ewebsite/hu/certificates/" hreflang="hu">/certificates</a>. <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-DANE"><dfn id="def-DANE">DNS-based Authentication of Named Entities</dfn> (<abbr>DANE</abbr>)</a>
+	: DNS-t használó mechanizmus a bemutatott <a href="#def-leaf">tanúsítvány</a> vagy titkosítási kulcs hitelességének ellenőrzésére.  <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-DNSSEC"><dfn id="def-DNSSEC">Domain Name System Security Extensions</dfn> (<abbr>DNSSEC</abbr>)</a>
+	: A DNS válaszok kriptográfiai hitelesítésére szolgáló mechanizmus. A DNSSEC-nek a TLD-k, a domainnév-tulajdonosok és a rekurzív resolverek általi telepítésre van szüksége ahhoz, hogy érvénybe lépjen. Elterjedtsége jelenleg elég alacsony. <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-DV"><dfn id="def-DV">Domain-validated certificate</dfn></a>
+	: Egy <a href="#def-leaf">tanúsítvány</a>, ahol a kérelmező csak a domainnév feletti ellenőrzését bizonyította (és nem a kérelmező szervezet személyazonosságát). <a href="#def-LE">Let&rsquo;s Encrypt</a> kizárólag DV tanúsítványokat kínál (<a href="#def-OV">OV</a> vagy <a href="#def-EV">EV</a> tanúsítványokat nem): <a href="letsencrypt-ewebsite/hu/docs/faq/" hreflang="hu">GYIK</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (Elliptic Curve Digital Signature Algorithm)</a>
+	: A digitális aláírási algoritmus (DSA) egy változata, amely elliptikus görbén alapuló kriptográfiát használ.  <a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">Wikipedia</a>. A <a href="#def-LE">Let&rsquo;s Encrypt</a> támogatja az ECDSA-t a <a href="#def-leaf">végfelhasználói tanúsítványok esetében</a>, de a <a href="#def-chain">teljes lánc esetében még nem</a>: <a href="letsencrypt-ewebsite/hu/upcoming-features/" hreflang="hu">/upcoming-features</a>
+</p>
+<p class="definition">
+	<a href="#def-Ed25519"><dfn id="def-Ed25519">Ed25519</dfn></a>
+	: Az <a href="#def-EdDSA">EdDSA</a> egy speciális típusa, az Ed448-al együtt.
+</p>
+<p class="definition">
+	<a href="#def-EdDSA"><dfn id="def-EdDSA"><abbr lang="en">EdDSA</abbr></dfn> (Edwards-curve Digital Signature Algorithm)</a>
+	: Egy modern, elliptikus görbéken alapuló nyilvános kulcsú aláírási rendszer, amely az elliptikus görbéken alapuló kriptográfiával kapcsolatos számos gyakori <a href="https://ed25519.cr.yp.to/">megvalósítási probléma</a> megoldására szolgál. Az olyan hitelesítésszolgáltatók, mint a <a href="#def-LE">Let&rsquo;s Encrypt</a>, még nem tudnak EdDSA tanúsítványokat biztosítani. <a href="https://en.wikipedia.org/wiki/EdDSA">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-ECC"><dfn id="def-ECC">Elliptic Curve Cryptography</dfn> (<abbr>ECC</abbr>)</a>
+	: Az elliptikus görbéken alapuló nyilvános kulcsú kriptográfia egy típusa. Az ECC a nem EC-kriptográfiához képest kisebb kulcsokat használ, ugyanakkor azonos biztonságot nyújt. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">Cloudflare</a> - <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-EV"><dfn id="def-EV">Extended Validation</dfn> (<abbr>EV</abbr>)</a>
+	: A tanúsítvány validálásának olyan típusa, amelynél a <a href="#def-CA">CA</a> ellenőrizte a weboldalt irányító jogi személyt. Az adott entitással kapcsolatos információkat tartalmaznak. A <a href="#def-CA">CA</a> tanúsítványok ellenőrzése szigorúbb, mint az <a href="#def-OV">OV</a> tanúsítványoké. <a href="#def-LE">A Let&rsquo;s Encrypt</a> nem kínál EV tanúsítványokat. <a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-FQDN"><dfn id="def-FQDN">Fully qualified domain name</dfn> (<abbr>FQDN</abbr>)</a>
+	: A weboldal teljes domainneve. Például a <code>www.example.com</code> egy <em>FQDN</em>.
+</p>
+<p class="definition">
+	<a href="#def-HPKP"><dfn id="def-HPKP">HTTP Public Key Pinning</dfn> (<abbr>HPKP</abbr>)</a>
+	: Olyan biztonsági mechanizmus, amely arra kéri a böngészőt, hogy egy webhely <a href="#def-chain">tanúsítványlánca</a> a jövőbeni betöltések során bizonyos nyilvános kulcsokat használjon. A Chrome bevezette ezt a mechanizmust a hitelesítésszolgáltatói kompromittálódások elleni védelem érdekében, de ez webhelykieséseket okozott, ami arra késztette a Chrome-ot, hogy <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">elavulttá minősítse és eltávolítsa</a> ezt a mechanizmust. <a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-IdenTrust"><dfn id="def-IdenTrust">IdenTrust</dfn></a>
+	: Egy <a href="#def-CA">tanúsító hatóság</a>. Az IdenTrust rendelkezik <a href="#def-cross-signing">keresztaláírt</a> <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="#def-intermediate">köztes tanúsítványokkal</a>: <a href="letsencrypt-ewebsite/hu/certificates/" hreflang="hu">/certificates</a>. <a href="https://en.wikipedia.org/wiki/IdenTrust">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-intermediate"><dfn id="def-intermediate">Intermediate certificate</dfn></a>
+	: Egy <a href="#def-root">gyökér</a> vagy egy másik köztes fél által aláírt tanúsítvány, amely képes más tanúsítványok aláírására. Ezeket a végfelhasználói tanúsítványok aláírására használják, miközben a gyökértanúsítvány magánkulcsa offline állapotban marad. A köztes tanúsítványok szerepelnek a <a href="#def-chain">tanúsítványláncokban</a>. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Types_of_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-IDN"><dfn id="def-IDN">Internationalized Domain Name</dfn> (<abbr>IDN</abbr>)</a>
+	: Domainnév a <code>a</code>-tól <code>z</code>-ig, <code>0</code>-tól <code>9</code>-ig és a kötőjelen (<code>-</code>) kívüli karakterekkel. Tartalmazhatnak például arab, kínai, cirill, tamil, héber vagy latin ábécé alapú karaktereket diakritikus vagy ligatúrákkal. Az IDN domainek kódolt megjelenítése <code>xn--</code>-el kezdődnek. Az IDN-eket a <a href="#def-LE">Let&rsquo;s Encrypt</a> támogatja: <a href="https://letsencrypt.org/2016/10/21/introducing-idn-support.html">https://letsencrypt.org/2016/10/21/introducing-idn-support.html</a>. <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">Wikipedia</a> - <a href="https://tools.ietf.org/html/rfc5890">RFC 5890</a> - <a href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>
+</p>
+<p class="definition">
+	<a href="#def-IDNA"><dfn id="def-IDNA">Internationalized Domain Names for Applications</dfn> (<abbr>IDNA</abbr>)</a>
+	: Lásd <a href="#def-IDN">nemzetközivé tett tartománynév</a>.
+</p>
+<p class="definition">
+	<a href="#def-ISRG"><dfn id="def-ISRG">Internet Security Research Group</dfn> (<abbr>ISRG</abbr>)</a>
+	: A <a href="#def-LE">Let&rsquo;s Encrypt</a> mögött álló szervezet: <a href="https://www.abetterinternet.org/about/">https://www.abetterinternet.org/about/</a>. <a href="https://en.wikipedia.org/wiki/Internet_Security_Research_Group">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-key-pair"><dfn id="def-key-pair">Key-pair</dfn></a>
+	: A magánkulcs és a nyilvános kulcs kombinációja, amelyet aláírásra vagy titkosításra használnak. A nyilvános kulcsot általában egy tanúsítványba ágyazzák, míg a magánkulcsot önállóan tárolják, és titokban kell tartani. A kulcspár az alkalmazástól függően használható titkosításra és visszafejtésre, adatok aláírására és ellenőrzésére, vagy másodlagos kulcsok egyeztetésére. <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-leaf"><dfn id="def-leaf">Leaf certificate (end-entity certificate)</dfn></a>
+	: Leggyakrabban egy <a href="#def-intermediate">közvetítő</a> által aláírt tanúsítvány, amely egy adott domain készletre érvényes, és nem képes más tanúsítványok aláírására. Ez az a tanúsítványtípus, amelyet a <a href="#def-ACME-client">ACME kliensek</a> igényelnek, és amelyet a <a href="#def-web-server">web szerverek</a> használnak. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#End-entity_or_leaf_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-LE"><dfn id="def-LE">Let&#39;s Encrypt</dfn> (<abbr>LE</abbr>)</a>
+	: A <a href="#def-ISRG">ISRG</a> által működtetett <a href="#def-CA">tanúsító hatóság</a>. <a href="https://en.wikipedia.org/wiki/Let%27s_Encrypt">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-mixed-content"><dfn id="def-mixed-content">Mixed content</dfn></a>
+	: Amikor egy HTTPS weboldal HTTP-n keresztül tölt be alforrásokat (Javascript, CSS vagy képek). <a href="#def-web-browser">A böngészők</a> blokkolhatják a vegyes tartalmakat, vagy kevésbé biztonságosnak jelölhetik az oldalt, ha vegyes tartalom van jelen: <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content</a>. A vegyes tartalmak problémájának megoldásához a webfejlesztőnek meg kell változtatnia az oldalait, hogy minden erőforrás HTTPS URL-címet használjon. A böngészőkbe épített <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">fejlesztői eszközök</a> segítségével kideríthető, hogy mely erőforrások okoznak vegyes tartalom problémákat.
+</p>
+<p class="definition">
+	<a href="#def-OCSP"><dfn id="def-OCSP"><abbr lang="en">OCSP</abbr></dfn> (Online Certificate Status Protocol)</a>
+	: Egy módszer a <a href="#def-leaf">tanúsítvány</a> <a href="#def-revocation">visszavonási</a> státuszának ellenőrzésére. Más szóval, egy mód annak ellenőrzésére, hogy a <a href="#def-CA">tanúsító hatóság</a> jelzi-e, hogy a tanúsítványt már nem kell érvényesnek tekinteni, annak ellenére, hogy a lejárati ideje még nem járt le. Ez a kérés adatvédelmi problémákat okozhat, mivel lehetővé teszi a tanúsító hatóság és az internetszolgáltatók számára, hogy közvetlenül megfigyeljék, hogy ki milyen webhelyeket látogat. <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-must-staple"><dfn id="def-OCSP-must-staple">OCSP Must-Staple</dfn></a>
+	: Egy <a href="#def-leaf">tanúsítvány</a> kiterjesztés, amely tájékoztatja a <a href="#def-web-browser">böngészőt</a> arról, hogy a <a href="#def-web-server">webszervernek</a> az adott tanúsítvánnyal <a href="#def-OCSP-stapling">OCSP tűzést</a> kell használnia. Arra szolgál, hogy megkövetelje, hogy a <a href="#def-leaf">tanúsítvány</a> naprakész <a href="#def-revocation">visszavonás</a> státuszát a webkiszolgáló minden kapcsolatnál megerősítse, így a visszavonás megbízhatóbbá válik. A <a href="#def-LE">Let&rsquo;s Encrypt</a> kérésre az OCSP Must-Staple <a href="#def-extension">bővítéssel</a> ellátott tanúsítványokat is kiállíthat. <a href="https://blog.mozilla.org/security/2015/11/23/improving-revocation-ocsp-must-staple-and-short-lived-certificates/">Mozilla Security Blog</a> <a href="https://tools.ietf.org/html/rfc7633">RFC 7633</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-stapling"><dfn id="def-OCSP-stapling">OCSP stapling</dfn></a>
+	: Mód arra, hogy egy <a href="#def-web-server">webszerver</a> egy <a href="#def-web-browser">böngésző</a> számára egy <a href="#def-OCSP">OCSP</a> választ küldjön, amelyet a <a href="#def-CA">tanúsító hatóság</a> írt alá, így a böngészőnek magának nem kell másodlagos OCSP kérést intéznie a tanúsító hatósághoz, javítva ezzel a sebességet és az adatvédelmet. Más néven TLS Certificate Status Request kiterjesztés. <a href="https://en.wikipedia.org/wiki/OCSP_stapling">Wikipedia</a> <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">Cloudflare</a>
+</p>
+<p class="definition">
+	<a href="#def-OID"><dfn id="def-OID">Object identifier</dfn> (<abbr>OID</abbr>)</a>
+	: Az OID-k a Nemzetközi Távközlési Unió (ITU) és az ISO/IEC által szabványosított egyedi numerikus azonosítók. Az OID-ket tanúsítványokon belül kiterjesztések, mezők vagy eljárásrend meghatározására használják. Az internetes szabványok, a <a href="#def-CP">Certificate Policy</a> és <a href="#def-CPS">Certification Practice Statement</a> dokumentumok határozzák meg az OID használatát. <a href="https://en.wikipedia.org/wiki/Object_identifier">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-OV"><dfn id="def-OV">Organization Validation</dfn> (<abbr>OV</abbr>)</a>
+	: Tanúsítványok, amelyek esetében a <a href="#def-CA">CA</a> ellenőrizte az <a href="#def-subscriber">Subscriber</a> jogi személyét. Az adott entitással kapcsolatos információkat tartalmaznak. <a href="#def-LE">A Let&rsquo;s Encrypt</a> nem kínál OV tanúsítványokat. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Organization_validation">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-pem"><dfn id="def-pem">PEM file (.pem)</dfn></a>
+	: A kriptográfiai információk formátuma (eredetileg a biztonságos e-mailre vonatkozó Privacy Enhanced Mail internetes szabványok részeként került meghatározásra). A PEM dokumentum olyan információkat reprezentál, mint például egy magánkulcs, egy nyilvános kulcs vagy egy digitális tanúsítvány. Ezek a fájlok a következőképpen kezdődnek: &ldquo;------BEGIN &ldquo;, majd egy adattípus. <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-pfx"><dfn id="def-pfx">Personal Information Exchange Files (.pfx)</dfn></a>
+	: Egy fájl, amely tartalmazhat egy <a href="#def-leaf">végfelhasználói tanúsítványt</a>, annak <a href="#def-chain">láncát</a> a gyökérig és a végfelhasználói tanúsítvány magánkulcsát. Lásd még: <a href="https://en.wikipedia.org/wiki/PKCS_12">https://en.wikipedia.org/wiki/PKCS_12</a>. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files">Microsoft Hardware Dev Center</a>
+</p>
+<p class="definition">
+	<a href="#def-precertificate"><dfn id="def-precertificate">Precertificate</dfn></a>
+	: Az előzetes tanúsítványok a <a href="#def-CT">tanúsítványok átláthatóságának</a> részét képezik. Az előzetes tanúsítvány annak a <a href="#def-leaf">tanúsítványnak</a> a másolata, amelyet a hitelesítésszolgáltató ki akar állítani, egy <a href="#def-critical">kritikus</a> méregkiterjesztéssel kiegészítve, amely megakadályozza, hogy az előzetes tanúsítványt a hálózaton lévő szoftverek elfogadják. A tanúsító hatóság az <a href="#def-SCT">SCT-kért</a> cserébe előtanúsítványt nyújt be a <a href="#def-CT-log">CT-naplókhoz</a>. Mivel az előzetes tanúsítvány nem azonos a hozzá tartozó tanúsítvánnyal, a Certificate Transparency naplók végül mindkettőt tartalmazhatják. <a href="https://tools.ietf.org/html/rfc6962#section-3.1">RFC 6962 Section 3.1</a>
+</p>
+<p class="definition">
+	<a href="#def-PSL"><dfn id="def-PSL">Public Suffix List</dfn> (<abbr>PSL</abbr>)</a>
+	: A Mozilla által karbantartott <em>Public Suffixes</em> lista, amely jelzi, hogy mely internetes domainek állnak rendelkezésre több különálló szervezet számára aldomainek regisztrálására. A lista például azt mutatja, hogy a <code>com</code> és a <code>co.uk</code> is Public Suffix, annak ellenére, hogy a <code>co.uk</code> nem TLD. A webböngészők többek között arra használják a listát, hogy megakadályozzák, hogy a valószínűleg különböző szervezetek által üzemeltetett webhelyek megosszák egymással a webes sütiket. <a href="#def-LE">A Let&rsquo;s Encrypt</a> a listát a határérték számításokhoz is használja: <a href="letsencrypt-ewebsite/hu/docs/rate-limits/" hreflang="hu">/rate-limits</a>. <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+<p class="definition">
+	<a href="#def-RSA"><dfn id="def-RSA"><abbr>RSA</abbr></dfn></a>
+	: Titkosításra és tanúsítványok digitális aláírására használt nyilvános kulcsú algoritmus. <a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-relying-party"><dfn id="def-relying-party">Relying Party</dfn></a>
+	: Az a személy, aki a tanúsítványban szereplő információkra támaszkodik. Például, aki egy HTTPS weboldalt látogat meg, az egy Relying Party.
+</p>
+<p class="definition">
+	<a href="#def-revocation"><dfn id="def-revocation">Revocation</dfn></a>
+	: A tanúsítvány a lejárati dátumáig érvényes, kivéve, ha a <a href="#def-CA">CA</a> visszavontnak nyilvánítja. A tanúsítványt különböző okokból, például a magánkulcs kompromittálódása miatt visszavonhatják. A böngészők a <a href="#def-CRL">CRL</a>, <a href="#def-OCSP">OCSP</a>, vagy az újabb módszerek, mint a <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> és <a href="https://dev.chromium.org/Home/chromium-security/crlsets">CRLSets</a> segítségével ellenőrizhetik, hogy egy tanúsítványt visszavontak-e már. Vegye figyelembe, hogy sok helyzetben a <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">visszavonás nem működik</a>. <a href="letsencrypt-ewebsite/hu/docs/revoking/" hreflang="hu">/docs/revoking</a>
+</p>
+<p class="definition">
+	<a href="#def-root-program"><dfn id="def-root-program">Root Program</dfn></a>
+	: Az az eljárásrend, amely alapján egy szervezet eldönti, hogy mely tanúsítványok kerüljenek a <a href="#def-store">tanúsítványtárába</a>, és amelyek alapján meghatározza, hogy mely tanúsító hatóságokban bízik meg a szoftvere.
+</p>
+<p class="definition">
+	<a href="#def-root"><dfn id="def-root">Root certificate</dfn></a>
+	: Egy <a href="#def-self-signed">önaláírt</a> tanúsítvány, amelyet egy <a href="#def-CA">tanúsító hatóság</a> ellenőriz, és amelyet <a href="#def-intermediate">köztes</a> tanúsítványainak aláírására használnak, és amely szerepel a <a href="#def-store">tanúsítványtárakban</a>. <a href="https://en.wikipedia.org/wiki/Root_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SSL"><dfn id="def-SSL"><abbr lang="en">SSL</abbr></dfn> (Secure Sockets Layer)</a>
+	: A <a href="#def-TLS">TLS</a> régebbi, még mindig használatos neve.
+</p>
+<p class="definition">
+	<a href="#def-self-signed"><dfn id="def-self-signed">Self-signed certificate</dfn></a>
+	: Saját magánkulccsal aláírt tanúsítvány, amelynek <a href="#def-subject">Subject</a> mezője megegyezik az <a href="#def-issuer">Issuer</a> mezőjével. Az önaláírt tanúsítványok csak a fizikai világban kötött előzetes megállapodások, például a <a href="#def-store">megbízható gyökerek listáján</a> való szereplés miatt megbízhatóak. <a href="#def-root">A gyökértanúsítványok</a> önaláírtak. <a href="https://en.wikipedia.org/wiki/Self-signed_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SNI"><dfn id="def-SNI">Server Name Indication</dfn> (<abbr>SNI</abbr>)</a>
+	: Egy mező, amelyet egy <a href="#def-user-agent">user agent</a> küld egy <a href="#def-web-server">szervernek</a> a <a href="#def-TLS">TLS</a> kézfogás során, megadva a domain nevet, amelyhez csatlakozni kíván. Ez lehetővé teszi a szerver számára, hogy a megfelelő <a href="#def-leaf">tanúsítvánnyal</a> válaszoljon, ha ugyanazon IP cím mögött több domain is található. A webszerver más tanúsítványt küldhet, és más tartalmat jeleníthet meg, attól függően, hogy az ügyfél milyen nevet igényelt az SNI által. Az SNI nem titkosított, de egy kísérleti helyettesítője, az ESNI igen. <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SCT"><dfn id="def-SCT">Signed Certificate Timestamp</dfn> (<abbr>SCT</abbr>)</a>
+	: Egy aláírt, ellenőrizhető ígéret egy tanúsítvány közzétételére egy <a href="#def-CT-log">Tanúsítvány átláthatósági naplóból</a>. A <a href="#def-CT">CT</a>-t érvényesítő böngészők ellenőrzik az SCT-k jelenlétét egy webhely tanúsítványában vagy a <a href="#def-TLS">TLS</a> kézfogásban, és megtagadják a csatlakozást olyan webhelyekhez, amelyek nem felelnek meg a naplózási követelményeknek. Ez növeli annak valószínűségét, hogy a hamis vagy pontatlan tanúsítványok felderítésre kerülnek. <a href="https://www.certificate-transparency.org/how-ct-works">https://www.certificate-transparency.org/how-ct-works</a>
+</p>
+<p class="definition">
+	<a href="#def-staging"><dfn id="def-staging">Staging</dfn></a>
+	: A <a href="#def-LE">Let&rsquo;s Encrypt</a> egy staging API-t biztosít a tanúsítványkérelmek teszteléséhez a határértékek befolyásolása nélkül. Az staging környezet által generált tanúsítványok <em>nem</em> nyilvánosan megbízhatóak. A staging környezet tesztelésre, hibakeresésre és az ACME kliens fejlesztésére használható. <a href="letsencrypt-ewebsite/hu/docs/staging-environment/" hreflang="hu">/docs/staging-environment</a>
+</p>
+<p class="definition">
+	<a href="#def-SAN"><dfn id="def-SAN">Subject Alternative Name</dfn> (<abbr>SAN</abbr>)</a>
+	: A <a href="#def-leaf">tanúsítvány</a> egy mezője, amely jelzi, hogy a tanúsítvány mely domain(ek)re érvényes. Ez helyettesíti a <a href="#def-CN">Common Name</a> használatát, amely most már csak kompatibilitási okokból van megadva. Egyetlen tanúsítvány több SAN-t is tartalmazhat, és több különböző domain névre is érvényes lehet. <a href="https://en.wikipedia.org/wiki/Subject_Alternative_Name">Wikipedia</a> <a href="https://letsencrypt.org/docs/rate-limits/#names-per-certificate">https://letsencrypt.org/docs/rate-limits/#names-per-certificate</a>
+</p>
+<p class="definition">
+	<a href="#def-subscriber"><dfn id="def-subscriber">Subscriber</dfn></a>
+	: A tanúsítványt igénylő személy vagy szervezet.
+</p>
+<p class="definition">
+	<a href="#def-TLS"><dfn id="def-TLS"><abbr lang="en">TLS</abbr></dfn> (Transport-Level Security)</a>
+	: A HTTPS által a weboldal látogatások titkosítására és hitelesítésére használt protokoll.
+</p>
+<p class="definition">
+	<a href="#def-TLSA"><dfn id="def-TLSA"><abbr>TLSA</abbr></dfn></a>
+	: A <a href="#def-DANE">DANE</a> azon része, amely kifejezetten a <a href="#def-TLS">TLS</a> kapcsolatok validálására vonatkozik.
+</p>
+<p class="definition">
+	<a href="#def-TLD"><dfn id="def-TLD">Top-Level Domain</dfn> (<abbr>TLD</abbr>)</a>
+	: A hierarchikus tartománynévrendszer legmagasabb szintje, mint például az országkódos felső szintű domainek (ccTLD-k), mint <code>.de</code> (Németország), <code>.cn</code> (Kína) és az általános felső szintű domainek (gTLD-k), mint <code>.com</code>, <code>.org</code>. <a href="https://en.wikipedia.org/wiki/Top-level_domain">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-UCC"><dfn id="def-UCC">Unified Communications Certificate</dfn> (<abbr>UCC</abbr>)</a>
+	: Egy tanúsítvány leírása, amely több <a href="#def-SAN">Subject Alternative Names (SAN)</a>-t tartalmaz.
+</p>
+<p class="definition">
+	<a href="#def-user-agent"><dfn id="def-user-agent">User Agent</dfn></a>
+	: Szoftver, amely képes kommunikálni egy <a href="#def-web-server">webszerverrel</a>. Például: <a href="#def-web-browser">webböngésző</a> vagy <a href="https://en.wikipedia.org/wiki/CURL">cURL</a>.
+</p>
+<p class="definition">
+	<a href="#def-web-browser"><dfn id="def-web-browser">Web Browser</dfn></a>
+	: Egy <a href="#def-user-agent">user agent</a>, amelyet weboldalak megjelenítésére használnak. Példák: <em>Mozilla Firefox</em>, <em>Google Chrome</em> vagy <em>Internet Explorer</em>. <a href="https://en.wikipedia.org/wiki/Web_browser">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-web-server"><dfn id="def-web-server">Web server</dfn></a>
+	: A weboldalakat kiszolgáló szoftver (vagy tágabb értelemben a hardveres szerver, amely a weboldalakat kiszolgálja). <a href="https://en.wikipedia.org/wiki/Web_server">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-wildcard"><dfn id="def-wildcard">Wildcard Certificate</dfn></a>
+	: Egy szint mélységű aldomainekre érvényes tanúsítványok. Például egy <a href="#def-SAN">SAN</a>-t tartalmazó tanúsítvány a <code>*.example.example.com</code> címre érvényes a <code>blog.example.com</code> és a <code>www.example.com</code> címre, de <strong>nem</strong> a <code>bork.bork.example.com</code> vagy a <code>example.com</code> címre. A wildcard-ot egy csillag (*) jelzi az aldomain helyett. <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579"> 2018 márciusától biztosít Wildcard tanúsítványokat</a>. <a href="https://en.wikipedia.org/wiki/Wildcard_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-X509"><dfn id="def-X509"><abbr>X.509</abbr></dfn></a>
+	: A nyilvános kulcsú tanúsítványok formátumát meghatározó szabvány. <a href="https://en.wikipedia.org/wiki/X.509">Wikipedia</a>
+</p>
+<link rel="stylesheet" href="/css/glossary.css" />
+<script src="/js/glossary.js" async></script>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  A Let's Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
+  melyet a nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> szervezet tesz elérhetővé.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Megkereséseiket a következő címre küldhetik:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Tekintse meg <a href="/privacy/">Adatvédelmi irányelveinket</a>.<br>
+Tekintse meg <a href="https://www.abetterinternet.org/trademarks">Védjegypolitikánkat</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

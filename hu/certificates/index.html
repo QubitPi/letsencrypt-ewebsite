@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="hu">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bizalmi lánc -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Gyökértanúsítványok Gyökértanúsítvánainkat biztonságos módon offline tároljuk. Végfelhasználói tanúsítványokat állítunk ki előfizetőknek köztes tanúsító hatóságtól a következő szakaszban. A további kompatibilitás érdekében, mivel az új Root X2-t különböző root programokhoz nyújtjuk be, a Root X1-el szintén kereszttanúsítottuk.
+ Aktív  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Önaláírt: der, pem, txt DST Root CA X3 által kereszttanúsítva: der, pem, txt     Aktív, korlátozott elérhetőség  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Önaláírt: der, pem, txt ISRG Root X1 által kereszttanúsítva: der, pem, txt      Weboldalakat hoztunk létre, hogy teszteljük az aktív root-okhoz láncolt tanúsítványokat.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Bizalmi lánc">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/hu/certificates/">
+    <meta name="twitter:description" content="Gyökértanúsítványok Gyökértanúsítvánainkat biztonságos módon offline tároljuk. Végfelhasználói tanúsítványokat állítunk ki előfizetőknek köztes tanúsító hatóságtól a következő szakaszban. A további kompatibilitás érdekében, mivel az új Root X2-t különböző root programokhoz nyújtjuk be, a Root X1-el szintén kereszttanúsítottuk.
+ Aktív  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Önaláírt: der, pem, txt DST Root CA X3 által kereszttanúsítva: der, pem, txt     Aktív, korlátozott elérhetőség  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Önaláírt: der, pem, txt ISRG Root X1 által kereszttanúsítva: der, pem, txt      Weboldalakat hoztunk létre, hogy teszteljük az aktív root-okhoz láncolt tanúsítványokat.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/hu/certificates/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigációs linkek átugrása</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/hu/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/hu/docs/" class="pure-menu-link" tabindex="0">Dokumentáció</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Segítség</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Adományozok</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Legyen a támogatónk</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/sponsors/" class="pure-menu-link">Jelenlegi szponzorok és támogatók</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getinvolved/" class="pure-menu-link">Kapcsolódjon be</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Rólunk</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 lejárat (2021. szeptember)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" class="pure-menu-link">Gyakran Ismételt Kérdések (GYIK)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Szolgáltatás státusza</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/stats/" class="pure-menu-link">Statisztikák</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karrier</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/contact/" class="pure-menu-link">Kapcsolat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Nyelvek <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">✓ Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/5.jpg');">
+<div class="container">
+	<h1>Bizalmi lánc</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Utoljára frissítve: <time datetime="2021-10-02">2021. okt. 2.</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p><a href="/images/isrg-hierarchy.png"><img src="/images/isrg-hierarchy.png" alt="ISRG Certificate Hierarchy Diagram, as of December 2020"></a></p>
+<h1 id="gyökértanúsítványok">Gyökértanúsítványok</h1>
+<p>Gyökértanúsítvánainkat biztonságos módon offline tároljuk. Végfelhasználói tanúsítványokat állítunk ki előfizetőknek köztes tanúsító hatóságtól a következő szakaszban. A további kompatibilitás érdekében, mivel az új Root X2-t különböző root programokhoz nyújtjuk be, a Root X1-el szintén kereszttanúsítottuk.</p>
+<ul>
+<li>Aktív
+<ul>
+<li>ISRG Root X1 (<code>RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314791">Önaláírt</a>: <a href="/certs/isrgrootx1.der">der</a>, <a href="/certs/isrgrootx1.pem">pem</a>, <a href="/certs/isrgrootx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3958242236">DST Root CA X3 által kereszttanúsítva</a>: <a href="/certs/isrg-root-x1-cross-signed.der">der</a>, <a href="/certs/isrg-root-x1-cross-signed.pem">pem</a>, <a href="/certs/isrg-root-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktív, korlátozott elérhetőség
+<ul>
+<li>ISRG Root X2 (<code>ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3335562555">Önaláírt</a>: <a href="/certs/isrg-root-x2.der">der</a>, <a href="/certs/isrg-root-x2.pem">pem</a>, <a href="/certs/isrg-root-x2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3334561878">ISRG Root X1 által kereszttanúsítva</a>: <a href="/certs/isrg-root-x2-cross-signed.der">der</a>, <a href="/certs/isrg-root-x2-cross-signed.pem">pem</a>, <a href="/certs/isrg-root-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Weboldalakat hoztunk létre, hogy teszteljük az aktív root-okhoz láncolt tanúsítványokat.</p>
+<ul>
+<li>ISRG Root X1
+<ul>
+<li><a href="https://valid-isrgrootx1.letsencrypt.org/">Érvényes</a></li>
+<li><a href="https://revoked-isrgrootx1.letsencrypt.org/">Visszavont</a></li>
+<li><a href="https://expired-isrgrootx1.letsencrypt.org/">Lejárt</a></li>
+</ul>
+</li>
+<li>ISRG Root X2
+<ul>
+<li><a href="https://valid-isrgrootx2.letsencrypt.org/">Érvényes</a></li>
+<li><a href="https://revoked-isrgrootx2.letsencrypt.org/">Visszavont</a></li>
+<li><a href="https://expired-isrgrootx2.letsencrypt.org/">Lejárt</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="köztes-tanúsítványok">Köztes tanúsítványok</h1>
+<p>Normál körülmények között a Let&rsquo;s Encrypt által kiadott tanúsítványok az &ldquo;R3&rdquo;-tól, egy RSA közvetítőtől származnak. Jelenleg az &ldquo;E1&rdquo;-ről, egy ECDSA közbenső kulcsról történő kiadás csak az <a href="https://community.letsencrypt.org/t/ecdsa-availability-in-production-environment/150679">engedélyezett fiókok</a> ECDSA előfizetői kulcsaihoz lehetséges. A jövőben az &ldquo;E1&rdquo; kibocsátása mindenki számára elérhető lesz.</p>
+<p>Más közvetítőinket (&ldquo;R4&rdquo; és &ldquo;E2&rdquo;) katasztrófa utáni helyreállításra tartjuk fenn, és csak akkor használjuk őket, ha elveszítjük az elsődleges közvetítőink kibocsátási képességét. Már nem használjuk az X1, X2, X3 és X4 közvetítőket.</p>
+<p>Az IdenTrust a további kompatibilitás érdekében kereszttanusította a közbenső RSA-t.</p>
+<ul>
+<li>Aktív
+<ul>
+<li>Let&rsquo;s Encrypt R3 (<code>RSA 2048, O = Let's Encrypt, CN = R3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561879">ISRG Root X1 által aláírt</a>: <a href="/certs/lets-encrypt-r3.der">der</a>, <a href="/certs/lets-encrypt-r3.pem">pem</a>, <a href="/certs/lets-encrypt-r3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778542">IdenTrust által kereszttanúsítva</a>: <a href="/certs/lets-encrypt-r3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r3-cross-signed.txt">txt</a> (visszavonult)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktív, korlátozott elérhetőség
+<ul>
+<li>Let&rsquo;s Encrypt E1 (<code>ECDSA P-384, O = Let's Encrypt, CN = E1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671964">ISRG Root X2 által aláírt</a>: <a href="/certs/lets-encrypt-e1.der">der</a>, <a href="/certs/lets-encrypt-e1.pem">pem</a>, <a href="/certs/lets-encrypt-e1.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Backup
+<ul>
+<li>Let&rsquo;s Encrypt R4 (<code>RSA 2048, O = Let's Encrypt, CN = R4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561877">ISRG Root X1 által aláírt</a>: <a href="/certs/lets-encrypt-r4.der">der</a>, <a href="/certs/lets-encrypt-r4.pem">pem</a>, <a href="/certs/lets-encrypt-r4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778543">IdenTrust által kereszttanúsítva</a>: <a href="/certs/lets-encrypt-r4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r4-cross-signed.txt">txt</a> (visszavonult)</li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt E2 (<code>ECDSA P-384, O = Let's Encrypt, CN = E2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671963">ISRG Root X2 által aláírt</a>: <a href="/certs/lets-encrypt-e2.der">der</a>, <a href="/certs/lets-encrypt-e2.pem">pem</a>, <a href="/certs/lets-encrypt-e2.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Visszavonult
+<ul>
+<li>Let&rsquo;s Encrypt Authority X1 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314792">ISRG Root X1 által aláírt</a>: <a href="/certs/letsencryptauthorityx1.der">der</a>, <a href="/certs/letsencryptauthorityx1.pem">pem</a>, <a href="/certs/letsencryptauthorityx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10235198">IdenTrust által kereszttanúsítva</a>: <a href="/certs/lets-encrypt-x1-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x1-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X2 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=12721505">ISRG Root X1 által aláírt</a>: <a href="/certs/letsencryptauthorityx2.der">der</a>, <a href="/certs/letsencryptauthorityx2.pem">pem</a>, <a href="/certs/letsencryptauthorityx2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10970235">IdenTrust által kereszttanúsítva</a>: <a href="/certs/lets-encrypt-x2-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x2-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X3 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997543">ISRG Root X1 által aláírt</a>: <a href="/certs/letsencryptauthorityx3.der">der</a>, <a href="/certs/letsencryptauthorityx3.pem">pem</a>, <a href="/certs/letsencryptauthorityx3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15706126">IdenTrust által kereszttanúsítva</a>: <a href="/certs/lets-encrypt-x3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x3-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X4 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997546">ISRG Root X1 által aláírt</a>: <a href="/certs/letsencryptauthorityx4.der">der</a>, <a href="/certs/letsencryptauthorityx4.pem">pem</a>, <a href="/certs/letsencryptauthorityx4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15710291">IdenTrust által kereszttanúsítva</a>: <a href="/certs/lets-encrypt-x4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x4-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="kereszttanúsítás">Kereszttanúsítás</h1>
+<h2 id="köztes-tanúsítványok-1">Köztes tanúsítványok</h2>
+<p>Minden egyes köztes tanúsítvány egyetlen publikus/privát kulcs párként van reprezentálva. Ennek a párnak a magánkulcsa generálja az aláírást az összes végponti tanúsítványhoz (más néven levéltanúsítványokhoz), azaz a szerveren való használatra kiállított tanúsítványokhoz.</p>
+<p>RSA közvetítőinket az ISRG Root X1 írja alá. Az ISRG Root X1 jelenleg széles körben megbízható, de az RSA közvetítőinket továbbra is az IdenTrust &ldquo;<a href="https://crt.sh/?id=8395">DST Root CA X3</a>&rdquo; keresztaláírással látja el (mostantól &ldquo;TrustID X3 Root&rdquo;) a további ügyfél-kompatibilitás érdekében. Az IdenTrust gyökér régebb óta létezik, ezért jobb kompatibilitással rendelkezik a régebbi eszközökkel és operációs rendszerekkel (pl. Windows XP, Android 7). A <a href="https://www.identrust.com/support/downloads">&ldquo;TrustID X3 Root&rdquo; letölthető</a> az IdenTrusttól (vagy <a href="/certs/trustid-x3-root.pem.txt">letölthet egy példányt tőlünk</a>).</p>
+<p>A kereszttanúsítások azt jelentik, hogy minden egyes RSA közvetítőnknek két tanúsítványa van, amelyek ugyanazt az aláíró kulcsot képviselik. Az egyiket a DST Root CA X3, a másikat pedig az ISRG Root X1 írta alá. A legegyszerűbben a kibocsátó mező alapján lehet megkülönböztetni a kettőt.</p>
+<p>A webszerver konfigurálásakor a szerver üzemeltetője nemcsak a végponti tanúsítványt konfigurálja, hanem a közvetítők listáját is, hogy a böngészők ellenőrizhessék, hogy a végponti tanúsítvány rendelkezik-e egy megbízható gyökértanúsítványhoz vezető bizalmi lánccal. Szinte minden szerverüzemeltető úgy dönt, hogy egy olyan láncot szolgáltat ki, amely tartalmazza az &ldquo;R3&rdquo; alanyú és &ldquo;ISRG Root X1&rdquo; kiállítójú közbenső tanúsítványt. Az ajánlott Let&rsquo;s Encrypt kliensszoftver, a <a href="https://certbot.org">Certbot</a>, zökkenőmentesen elvégzi ezt a konfigurációt.</p>
+<h2 id="gyökértanúsítványok-1">Gyökértanúsítványok</h2>
+<p>A köztes tanúsítványokhoz hasonlóan a gyökértanúsítványok is lehetnek kereszttanúsítottak, gyakran a kliens-kompatibilitás növelése érdekében. A mi ECDSA root-unk, az ISRG Root X2 2020 őszén készült, és ez az ECDSA-hierarchia gyökértanúsítványa. Két tanúsítvány képviseli: egy saját aláírású és egy az ISRG Root X1 által aláírt tanúsítvány.</p>
+<p>Az &ldquo;E1&rdquo; ECDSA közbenső tanúsítvány által aláírt összes tanúsítvány egy olyan láncot tartalmaz, amely tartalmaz egy közbenső tanúsítványt, amelynek tárgya &ldquo;ISRG Root X2&rdquo; és kiállítója &ldquo;ISRG Root X1&rdquo;. Szinte minden szerverüzemeltető ezt a láncot fogja választani, mivel ez kínálja a legnagyobb kompatibilitást, amíg az ISRG Root X2-ben széles körben megbíznak.</p>
+<h1 id="ocsp-aláírási-tanúsítvány">OCSP aláírási tanúsítvány</h1>
+<p>Ez a tanúsítvány a Let&rsquo;s Encrypt hatóság közvetítőinek OCSP válaszainak aláírására szolgál, így a válaszok aláírásához nem kell a gyökérkulcsot online állapotba hozni. Az OCSP válaszok automatikusan tartalmazzák ennek a tanúsítványnak a másolatát, így az előfizetőknek nem kell vele semmit sem kezdeniük. Csak tájékoztató jelleggel szerepel itt.</p>
+<ul>
+<li>ISRG Root OCSP X1 (<a href="https://crt.sh/?id=2929281974">ISRG Root X1 által aláírt</a>): <a href="/certs/isrg-root-ocsp-x1.der">der</a>, <a href="/certs/isrg-root-ocsp-x1.pem">pem</a>, <a href="/certs/isrg-root-ocsp-x1.txt">txt</a></li>
+</ul>
+<p>Az újabb köztes tanúsítóink nem rendelkeznek OCSP URL címekkel (a visszavonási információikat ehelyett CRL-en keresztül szolgáltatják), ezért nem állítottunk ki OCSP aláírási tanúsítványt az ISRG Root X2-től.</p>
+<h1 id="certificate-transparency">Certificate Transparency</h1>
+<p>Elkötelezettek vagyunk az átláthatóság iránt a működésünk és az általunk kibocsátott tanúsítványok tekintetében is. Minden tanúsítvány bekerül a <a href="https://www.certificate-transparency.org/">tanúsítványok átláthatósági naplójába (Certificate Transparency logs)</a>, amint kiállítjuk őket. Az összes kiadott Let&rsquo;s Encrypt tanúsítványt ezeken a linkeken keresztül tekintheti meg:</p>
+<ul>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=7395">Let&rsquo;s Encrypt Authority X1 által kiadott</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=16418">Let&rsquo;s Encrypt Authority X3 által kiadott</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183283">E1 által kiadott</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183267">R3 által kiadott</a></li>
+</ul>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Támogassa a biztonságosabb és az adatvédelmet tiszteletben tartó webet.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/hu/donate/">Adományozz</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  A Let's Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
+  melyet a nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> szervezet tesz elérhetővé.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Megkereséseiket a következő címre küldhetik:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Tekintse meg <a href="/privacy/">Adatvédelmi irányelveinket</a>.<br>
+Tekintse meg <a href="https://www.abetterinternet.org/trademarks">Védjegypolitikánkat</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

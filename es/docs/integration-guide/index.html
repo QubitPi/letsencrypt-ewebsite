@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="es-US">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Guia de Integración -  Let&#39;s Encrypt - Certificados SSL/TLS Gratuitos</title>
+    <meta name="description" content="Este documento contiene consejos útiles si usted es un proveedor de alojamiento o un sitio web grande que integra Let&amp;rsquo;s Encrypt, o estás escribiendo software cliente para Let&amp;rsquo;s Encrypt.
+Plan para el futuro Tanto Let&amp;rsquo;s Encrypt como Web PKI seguirán evolucionando con el tiempo. Debe asegurarse de tener la capacidad de actualizar fácilmente todos los servicios que usan Let&amp;rsquo;s Encrypt. Si también está implementando clientes que dependen de los certificados Let&amp;rsquo;s Encrypt, asegúrese especialmente de que esos clientes reciban actualizaciones periódicas.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Guia de Integración">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/es/docs/integration-guide/">
+    <meta name="twitter:description" content="Este documento contiene consejos útiles si usted es un proveedor de alojamiento o un sitio web grande que integra Let&amp;rsquo;s Encrypt, o estás escribiendo software cliente para Let&amp;rsquo;s Encrypt.
+Plan para el futuro Tanto Let&amp;rsquo;s Encrypt como Web PKI seguirán evolucionando con el tiempo. Debe asegurarse de tener la capacidad de actualizar fácilmente todos los servicios que usan Let&amp;rsquo;s Encrypt. Si también está implementando clientes que dependen de los certificados Let&amp;rsquo;s Encrypt, asegúrese especialmente de que esos clientes reciban actualizaciones periódicas.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/es/docs/integration-guide/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Saltar enlaces de navegación</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/es/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/es/docs/" class="pure-menu-link" tabindex="0">Documentación</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/ayuda-en-espanol/22" class="pure-menu-link" tabindex="0">Consigue Ayuda</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donar</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/donate/" class="pure-menu-link">Haz una donación</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Conviértete en un patrocinador</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/sponsors/" class="pure-menu-link">Patrocinadores y donantes actuales</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getinvolved/" class="pure-menu-link">Involúcrate</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Acerca De</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/faq/" class="pure-menu-link">Preguntas Frecuentes (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status de Servicio</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/stats/" class="pure-menu-link">Estadísticas</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Trabajos</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/contact/" class="pure-menu-link">Contactar</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Lenguajes <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">✓ Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Guia de Integración</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Última Actualización: <time datetime="2016-08-08">8 ago. 2016</time>
+
+
+ | <a href="/letsencrypt-ewebsite/es/docs">Ve toda la Documentación</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Este documento contiene consejos útiles si usted es un proveedor de alojamiento o un sitio web grande que integra Let&rsquo;s Encrypt, o estás escribiendo software cliente para Let&rsquo;s Encrypt.</p>
+<h1 id="plan-para-el-futuro">Plan para el futuro</h1>
+<p>Tanto Let&rsquo;s Encrypt como Web PKI seguirán evolucionando con el tiempo.  Debe asegurarse de tener la capacidad de actualizar fácilmente todos los servicios que usan Let&rsquo;s Encrypt. Si también está implementando clientes que dependen de los certificados Let&rsquo;s Encrypt, asegúrese especialmente de que esos clientes reciban actualizaciones periódicas.</p>
+<p>En el futuro, es probable que estas cosas cambien:</p>
+<ul>
+<li>los certificados raíz e intermedios desde los que emitimos</li>
+<li>los algoritmos hash que usamos al firmar certificados</li>
+<li>los tipos de claves y la fortaleza de las mismas para las cuales estamos dispuestos a firmar certificados de entidad final</li>
+<li>y el protocolo ACME</li>
+</ul>
+<p>Siempre trataremos de anticiparnos a dichos cambios con la mayor rapidez, aunque si se encuentra un fallo de seguridad grave en algún componente, es posible que tengamos que hacer cambios a muy corto plazo o de inmediato. Para los cambios intermedios en particular, no debe usar el intermedio para codificar, sino usar el <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-03#section-6.3.1"><code>Link: rel=&quot;up&quot;</code></a> encabezado del protocolo ACME, ya que es probable que los intermedios cambien.</p>
+<p>Del mismo modo, es probable que cambiemos la URL de los términos de servicio (ToS) a medida que la actualizamos. Evite codificar la URL de ToS y confíe en el <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-03#section-6.2"><code>Link: rel=&quot;terms-of-service&quot;</code></a> encabezado para determinar qué URL ToS usar.</p>
+<p>También querrá una manera de mantener actualizada su configuración TLS a medida que se encuentren nuevos ataques en conjuntos de cifrado o versiones de protocolo.</p>
+<h1 id="obtener-actualizaciones">Obtener actualizaciones</h1>
+<p>Para recibir actualizaciones menores sobre cambios importantes como los descritos anteriormente, suscríbase a nuestro grupo <a href="https://community.letsencrypt.org/t/about-the-api-announcements-category/23836">Anuncios de API</a> . Esto es útil tanto para desarrolladores de clientes como para proveedores de hosting.</p>
+<p>Para actualizaciones importantes sobre mantenimientos e interrupciones, visite nuestra <a href="https://letsencrypt.status.io/">página de estado</a> y presione Suscribirse en la esquina superior derecha. Esto es más útil para los proveedores de hosting.</p>
+<p>Además, asegúrese de utilizar una dirección de correo electrónico válida para su cuenta ACME. Utilizaremos ese correo electrónico para enviarle avisos de vencimiento y comunicarnos sobre cualquier problema específico de su cuenta.</p>
+<h1 id="quién-es-el-suscriptor">¿ Quién es el suscriptor ?</h1>
+<p>Nuestro <a href="letsencrypt-ewebsite/es/repository/" hreflang="es-US">Acuerdo de CPS y Suscriptor</a> indica que el Suscriptor es quien posee la clave privada para un certificado. Para los proveedores de hosting, ese es el proveedor, no el cliente del proveedor. Si está escribiendo software que las personas implementan, ese es quien está implementando el software.</p>
+<p>El correo electrónico de contacto proporcionado al crear cuentas (también conocido como registros) debe ir al Suscriptor. Le enviaremos un correo electrónico a esa dirección para advertirle de los certificados que expiran y notificarle sobre los cambios en nuestra <a href="letsencrypt-ewebsite/es/privacy/" hreflang="es-US">política de privacidad</a>.  Si usted es un proveedor de alojamiento, esas notificaciones deberían llegarle a usted en lugar de a un cliente. Lo ideal sería configurar una lista de correo o un alias, para que varias personas puedan responder a las notificaciones, en caso de que esté de vacaciones.</p>
+<p>El resultado de esto es que, si usted es un proveedor de alojamiento, no necesita enviarnos las direcciones de correo electrónico de sus clientes ni hacer que acepten nuestro Acuerdo de Suscriptor. Simplemente puede emitir certificados para los dominios que controla y comenzar a usarlos.</p>
+<h1 id="una-cuenta-o-muchas">¿ Una cuenta o muchas ?</h1>
+<p>En ACME, es posible crear una cuenta y usarla para todas las autorizaciones y emisiones, o crear una cuenta por cliente. Esta flexibilidad puede ser valiosa. Por ejemplo, algunos proveedores de hosting pueden querer usar una cuenta por cliente y almacenar las claves de la cuenta en diferentes contextos, de modo que una clave de la cuenta comprometida no permita la emisión de todos sus clientes.</p>
+<p>Sin embargo, para la mayoría de los proveedores de alojamiento más grandes, recomendamos usar una sola cuenta y proteger bien la clave de cuenta correspondiente. Esto hace que sea más fácil identificar los certificados que pertenecen a la misma entidad, es más fácil mantener actualizada la información de contacto y es más fácil proporcionar ajustes de límites de tarifas si es necesario. No podremos ajustar efectivamente los límites de las tasas si se utilizan muchas cuentas diferentes.</p>
+<h1 id="certificados-san-multi-dominio">Certificados (SAN) Multi-dominio</h1>
+<p>Nuestra <a href="letsencrypt-ewebsite/es/docs/rate-limits/" hreflang="es-US">política de emisión</a> permite hasta 100 nombres por certificado. Depende de usted si utiliza un certificado separado para cada nombre de host o si agrupa muchos nombres de host en una pequeña cantidad de certificados.</p>
+<p>El uso de certificados separados por nombre de host significa que se requieren menos partes móviles para agregar y eliminar dominios a medida que se aprovisionan y retiran. Los certificados separados también minimizan el tamaño del certificado, lo que puede acelerar los saludos HTTPS en redes de bajo ancho de banda.</p>
+<p>Por otro lado, el uso de certificados grandes con muchos nombres de host le permite administrar menos certificados en general. Si necesita admitir clientes antiguos como Windows XP que no admiten la Indicación de nombre de servidor TLS (<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>), necesitará una dirección IP única para cada certificado , por lo que poner más nombres en cada certificado reduce la cantidad de direcciones IP que necesitará.</p>
+<p>Para la mayoría de las implementaciones, ambas opciones ofrecen la misma seguridad.</p>
+<h1 id="almacenamiento-y-reutilización-de-certificados-y-claves">Almacenamiento y reutilización de certificados y claves</h1>
+<p>Una gran parte del valor de Let&rsquo;s Encrypt es que permite la emisión automática como parte del aprovisionamiento de un nuevo sitio web.  Sin embargo, si tiene una infraestructura que puede crear repetidamente nuevas interfaces para el mismo sitio web, esas interfaces primero deben intentar usar un certificado y una clave privada del almacenamiento local, y solo emitir una nueva si no hay un certificado disponible, o si todos los certificados existentes han expirado.</p>
+<p>A Let&rsquo;s Encrypt, esto le ayuda a proporcionar servicios de manera eficiente a la mayor cantidad de personas posible. A usted, esto le garantiza que pueda implementar su sitio web siempre que lo necesite, independientemente del estado de Let&rsquo;s Encrypt.</p>
+<p>Como ejemplo, muchos sitios están comenzando a usar Docker para aprovisionar nuevas instancias frontend según sea necesario. Si configura sus contenedores Docker para que emitan certificados cuando se inician, y no almacena estos certificados y claves de forma duradera, es probable que alcance los límites de solicitudes si abre demasiadas instancias a la vez. En el peor de los casos, si tiene que destruir y volver a crear todas sus instancias a la vez, puede terminar en una situación en la que ninguna de sus instancias pueda obtener un certificado, y su sitio se rompe durante varios días hasta que el límite de solicitudes expira. Sin embargo, este tipo de problema no es exclusivo de los límites de solicitudes. Si Let&rsquo;s Encrypt no está disponible por algún motivo cuando necesita abrir sus interfaces, tendría el mismo problema.</p>
+<p>Tenga en cuenta que algunas filosofías de implementación establecen que las claves criptográficas nunca deben abandonar la máquina física en la que se generaron. Este modelo puede funcionar bien con Let&rsquo;s Encrypt, siempre y cuando se asegure de que las máquinas y sus datos sean duraderos y administre los límites de solicitudes con cuidado.</p>
+<h1 id="elegir-un-tipo-de-desafío">Elegir un tipo de desafío</h1>
+<p>Si está utilizando el desafío http-01 ACME, deberá proporcionar la respuesta del desafío a cada una de sus interfaces antes de notificar a Let&rsquo;s Encrypt que está listo para cumplir el desafío. Si tiene una gran cantidad de interfaces, esto puede ser un problema. En ese caso, es probable que usar el desafío dns-01 sea más fácil. Por supuesto, si tiene muchos respondedores DNS distribuidos geográficamente, debe asegurarse de que el registro TXT esté disponible en cada respondedor.</p>
+<p>Además, cuando utilice el desafío dns-01, asegúrese de limpiar los registros TXT antiguos para que la respuesta a la consulta de Let&rsquo;s Encrypt no sea demasiado lenta.</p>
+<p>Si de todos modos desea utilizar el desafío http-01, puede aprovechar las redirecciones HTTP. Puede configurar cada una de sus interfaces para redirigir /.well-known/acme-validation/XYZ a validation-server.example.com/XYZ para todo XYZ. Esto delega la responsabilidad de la emisión al servidor de validación, por lo que debe proteger bien ese servidor.</p>
+<h1 id="servidores-centrales-de-validación">Servidores centrales de validación</h1>
+<p>En relación con los dos puntos anteriores, puede tener sentido, si tiene muchas interfaces, usar un subconjunto más pequeño de servidores para administrar la emisión. Esto facilita el uso de redireccionamientos para la validación http-01 y proporciona un lugar para almacenar certificados y claves de forma duradera.</p>
+<h1 id="implementar-ocsp-stapling">Implementar OCSP Stapling</h1>
+<p>Muchos navegadores buscarán el OCSP de Let&rsquo;s Encrypt cuando carguen su sitio. Este es un <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/">problema de rendimiento y privacidad</a>.  Idealmente, las conexiones a su sitio no deberían esperar una conexión secundaria a Let&rsquo;s Encrypt. Además, las solicitudes de OCSP le dicen a Let&rsquo;s Encrypt qué sitios visitan las personas. Tenemos una buena política de privacidad y no registramos detalles de identificación individual de las solicitudes de OCSP, preferimos ni siquiera recibir los datos en primer lugar. Además, anticipamos nuestros costos de ancho de banda para servir OCSP cada vez que un navegador visita un sitio Let&rsquo;s Encrypt por primera vez, supone una gran parte de nuestros gastos de infraestructura.</p>
+<p>Al activar el OCSP Stapling ( engrapado OCSP ), puede mejorar el rendimiento de su sitio web, proporcionar mejores protecciones de privacidad para sus usuarios y ayudar a Let&rsquo;s Encrypt a servir de manera eficiente a la mayor cantidad de personas posible.</p>
+<h1 id="configuración-del-firewall">Configuración del firewall</h1>
+<p>Para usar Let&rsquo;s Encrypt, debe permitir el tráfico del puerto de salida 443 desde las máquinas que ejecutan su cliente ACME. No publicamos los rangos de IP para nuestro servicio ACME, y cambiarán sin previo aviso.</p>
+<p>Para el desafío ACME &ldquo;http-01&rdquo;, debe permitir el tráfico entrante del puerto 80. No publicamos los rangos de IP desde los que realizamos la validación, y cambiarán sin previo aviso.</p>
+<p>Nota: Recomendamos siempre permitir el acceso HTTP simple a su servidor web, con una redirección a HTTPS. Esto proporciona una mejor experiencia al usuario ante un servidor web que rechaza o deja caer las conexiones del puerto 80 y proporciona el mismo nivel de seguridad.</p>
+<p>Para todos los desafíos, debe permitir el tráfico entrante del puerto 53 (TCP y UDP) a sus servidores DNS autorizados.</p>
+<h1 id="algoritmos-de-clave-admitidos">Algoritmos de clave admitidos</h1>
+<p>Vamos a cifrar acepta claves RSA de 2048, 3072 o 4096 bits de longitud y claves ECDSA P-256 o P-384. Eso es cierto tanto para las claves de cuenta como para las claves de certificado. No puede reutilizar una clave de cuenta como clave de certificado.</p>
+<p>Nuestra recomendación es servir una configuración de doble certificado, ofreciendo un certificado RSA por defecto y un certificado ECDSA (mucho más pequeño) a aquellos clientes que indiquen que lo soportan.</p>
+<h1 id="https-por-defecto">HTTPS por defecto</h1>
+<p>Para los proveedores de hosting, nuestra recomendación es emitir automáticamente certificados y configurar HTTPS para todos los nombres de host que controle, y ofrecer una configuración configurable por el usuario para redirigir las URL HTTP a sus equivalentes HTTPS. Recomendamos que para las cuentas existentes, la configuración esté deshabilitada de manera predeterminada, pero para las cuentas nuevas, la configuración estará habilitada de manera predeterminada.</p>
+<p>Razonamiento: es probable que los sitios web existentes incluyan algunos recursos secundarios HTTP (scripts, CSS e imágenes). Si esos sitios se redirigen automáticamente a sus versiones HTTPS, los navegadores bloquearán algunos de esos subrecursos debido al bloqueo de contenido mixto. Esto puede romper la funcionalidad en el sitio. Sin embargo, alguien que cree un nuevo sitio y descubra que redirige a HTTPS probablemente incluirá solo recursos secundarios HTTPS, porque si intentan incluir un recurso secundario HTTP notarán de inmediato que no funciona.</p>
+<p>Recomendamos que los clientes establezcan un encabezado HTTP Strict-Transport-Security (HSTS) con una edad máxima predeterminada de sesenta días. Sin embargo, esta configuración debe ir acompañada de una advertencia de que si el cliente necesita pasar a un proveedor de alojamiento que no ofrece HTTPS, la configuración HSTS almacenada en caché en los navegadores hará que su sitio no esté disponible. Además, tanto el cliente como el proveedor de alojamiento deben tener en cuenta que el encabezado HSTS convertirá los errores del certificado en fallas graves. Por ejemplo, mientras que las personas generalmente pueden hacer clic a través de un navegador advirtiendo sobre una falta de coincidencia de nombre o un certificado caducado, los navegadores no permiten hacer clic para nombres de host con un encabezado HSTS activo.</p>
+<h1 id="cuando-renovar">Cuando renovar</h1>
+<p>Recomendamos renovar los certificados automáticamente cuando les quede un tercio de su vida útil total. Para los certificados actuales de 90 días de Let&rsquo;s Encrypt, eso significa renovar 30 días antes del vencimiento.</p>
+<p>Si está emitiendo más de 10,000 nombres de host, también recomendamos la renovación automática en pequeñas ejecuciones, en lugar de agrupar las renovaciones en grandes bloques. Esto reduce el riesgo: si Let&rsquo;s Encrypt tiene una interrupción en el momento en que necesita renovar, o si hay una falla temporal en sus sistemas de renovación, solo afectará a algunos de sus certificados, en lugar de a todos. También facilita nuestra planificación de capacidad.</p>
+<p>Es posible que desee emitir certificados de forma masiva para que todos sus dominios comiencen rápidamente, lo cual está bien. Luego puede extender los tiempos de renovación haciendo un proceso único de renovación de algunos certificados 1 día antes de cuando normalmente renovaría, algunos de ellos 2 días antes, y así sucesivamente.</p>
+<p>Si ofrece software de cliente que configura automáticamente un trabajo por lotes periódico, asegúrese de ejecutarlo a una hora y minuto aleatorizados durante el día, en lugar de hacerlo siempre a una hora específica. Esto garantiza que Let&rsquo;s Encrypt no reciba picos arbitrarios de tráfico en la parte superior de la hora. Dado que Let&rsquo;s Encrypt necesita aprovisionar capacidad para cumplir con la carga máxima, reducir los picos de tráfico puede ayudar a mantener nuestros costos bajos.</p>
+<h1 id="revisando-fallos">Revisando fallos</h1>
+<p>Los fallos de renovación no debe ser tratados como un error fatal. Debe implementar una lógica de reintento elegante en sus servicios de emisión utilizando un patrón de retroceso exponencial, maximizando una vez al día por certificado. Por ejemplo, un cronograma razonable de retroceso sería: 1er reintento después de un minuto, 2º reintento después de diez minutos, tercer reintento después de 100 minutos, 4º y reintentos posteriores después de un día. Por supuesto, debe tener una forma para que los administradores puedan solicitar reintentos anticipados por dominio o globalmente.</p>
+<p>Los retrasos en el reintento significan que su software de emisión debe realizar un seguimiento de los fallos y los éxitos, y verificar si hubo un fallo reciente antes de intentar una nueva emisión. No tiene sentido intentar la emisión cientos de veces por hora, ya que es probable que los fallos se repitan persistentemente</p>
+<p>Todos los errores se deben enviar al administrador encargado, para ver si es necesario solucionar problemas específicos.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt es una autoridad de certificación gratuita, automatizada, y abierta traida a ustedes por la organización sin ánimos de lucro <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envíe todo el correo o consultas a:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Mira nuestra <a href="/es/privacy/">política de privacidad</a>.<br>
+Mira nuestra <a href="https://www.abetterinternet.org/trademarks/">política de marca</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

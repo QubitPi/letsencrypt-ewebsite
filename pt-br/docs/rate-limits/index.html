@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="pt-BR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Limites de Requisições -  Let&#39;s Encrypt - Certificados SSL/TLS Gratuitos</title>
+    <meta name="description" content="A Let&amp;rsquo;s Encrypt implementa limites de requisições para garantir uma utilização justa pela maior quantidade de pessoas possível. Acreditamos que estes limites são altos o suficiente para funcionar sem problemas para a maioria das pessoas. Também pensamos nos limites de maneira que renovar um certificado quase nunca atinge o limite de requisições, e que grandes organizações possam aumentar gradualmente o número de certificados que eles podem solicitar sem precisar de intervenção da Let&amp;rsquo;s Encrypt.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Limites de Requisições">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/pt-br/docs/rate-limits/">
+    <meta name="twitter:description" content="A Let&amp;rsquo;s Encrypt implementa limites de requisições para garantir uma utilização justa pela maior quantidade de pessoas possível. Acreditamos que estes limites são altos o suficiente para funcionar sem problemas para a maioria das pessoas. Também pensamos nos limites de maneira que renovar um certificado quase nunca atinge o limite de requisições, e que grandes organizações possam aumentar gradualmente o número de certificados que eles podem solicitar sem precisar de intervenção da Let&amp;rsquo;s Encrypt.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/pt-br/docs/rate-limits/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Feed do blog Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Pular links de navegação</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/pt-br/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/pt-br/docs/" class="pure-menu-link" tabindex="0">Documentação</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/ajuda-em-portugues" class="pure-menu-link" tabindex="0">Obter Ajuda</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Doar</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/donate/" class="pure-menu-link">Faça uma doação</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Torne-se um Patrocinador</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/sponsors/" class="pure-menu-link">Atuais Patrocinadores e Doadores</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sobre Nós</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/faq/" class="pure-menu-link">Perguntas Frequentes (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status do Serviço</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/stats/" class="pure-menu-link">Estatísticas</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Carreiras</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/contact/" class="pure-menu-link">Contato</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Idiomas <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/rate-limits/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/rate-limits/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/rate-limits/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/rate-limits/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/rate-limits/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/rate-limits/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/rate-limits/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/rate-limits/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/rate-limits/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/rate-limits/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/rate-limits/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/rate-limits/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/rate-limits/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">✓ Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/rate-limits/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/rate-limits/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/rate-limits/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/rate-limits/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/rate-limits/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/rate-limits/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/rate-limits/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Limites de Requisições</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Última atualização: <time datetime="2023-06-09">Jun 9, 2023</time>
+
+
+ | <a href="/letsencrypt-ewebsite/pt-br/docs">Ver Documentação completa</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>A Let&rsquo;s Encrypt implementa limites de requisições para garantir uma utilização justa
+pela maior quantidade de pessoas possível. Acreditamos que estes limites são altos o suficiente para
+funcionar sem problemas para a maioria das pessoas. Também pensamos nos limites de maneira que renovar
+um certificado quase nunca atinge o limite de requisições, e que grandes
+organizações possam aumentar gradualmente o número de certificados que eles podem solicitar
+sem precisar de intervenção da Let&rsquo;s Encrypt.</p>
+<p>Se você está ativamente desenvolvendo ou testando um cliente Let&rsquo;s Encrypt, por favor use
+nosso <a href="letsencrypt-ewebsite/pt-br/docs/staging-environment/" hreflang="pt-BR">ambiente de testes</a> ao invés da API de produção.
+Se você está trabalhando para integrar a Let&rsquo;s Encrypt a um provedor ou a um website
+muito grande por favor <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" hreflang="pt-BR">leia nosso Guia de Integração</a>.</p>
+<p>O principal limite é o de <a id="certificates-per-registered-domain"></a> <strong>Certificados por Domínio Registrado</strong> (50 por semana). Um
+domínio registrado é, de maneira geral, a parte do nome do domínio que você comprou
+do seu registrador de domínios. Por exemplo, no nome <code>example.com</code>,
+o domínio registrado é <code>example.com</code>. Em <code>novo.blog.example.com</code>,
+o domínio registrado é <code>example.com</code>. Usamos a
+<a href="https://publicsuffix.org">Lista Pública de Sufixos</a> para calcular o domínio
+registrado.</p>
+<p>Se você tem muitos subdomínios, talvez queira combinar todos eles em um único
+certificado, dentro do limite de 100 <a id="names-per-certificate"></a><strong>Nomes por Certificado</strong>. Combinado com o
+limite acima, isso significa que você pode emitir certificados contendo até 5.000 únicos
+subdomínios por semana. Um certificado com múltiplos nomes é comumente chamado de certificado
+SAN, ou as vezes de certificado UCC. Nota: Por motivos de performance e
+confiabilidade, é melhor usar menos nomes por certificado sempre que você
+puder.</p>
+<p>Renovações são tratadas de forma especial: Elas não usam seu limite de <strong>Certificados por
+Domínio Registrado</strong>, mas estão sujeitas ao
+limite de 5 <strong>Certificados Duplicados</strong> por semana. Nota: Renovações costumavam usar seu limite de Certificados por
+Domínio Registrado até Março de 2019, <a href="https://community.letsencrypt.org/t/rate-limits-fixing-certs-per-name-rate-limit-order-of-operations-gotcha/88189">mas isso não
+acontece mais</a>.</p>
+<p>Um certificado é considerado renovação (ou uma duplicação) de um certificado anterior se ele contém
+o exato conjunto de nomes de domínio, ignorando capitalizações e ordenação
+destes nomes. Por exemplo, se você solicitou um certificado com os nomes
+[<code>www.example.com</code>, <code>example.com</code>], você pode solicitar mais quatro certificados para
+[<code>www.example.com</code>, <code>example.com</code>] na mesma semana. Se você alterar o conjunto de nomes de domínio
+de domínio acrescentando [<code>blog.example.com</code>], você poderá solicitar certificados
+adicionais.</p>
+<p>O processo de renovação ignora a chave pública e extensões solicitadas. Uma emissão de certificado
+pode ser considerada uma renovação mesmo que você esteja usando uma nova chave.</p>
+<p>Revogar certificados não zera os limites de requisições, porque os recursos usados para
+emitir estes certificados já foram consumidos.</p>
+<p>Existe um limite de <a id="failed-validations"></a><strong>Falha de Validação</strong> de 5 falhas
+por conta, por nome de domínio, por hora. Este limite é maior em nosso <a href="letsencrypt-ewebsite/pt-br/docs/staging-environment/" hreflang="pt-BR">ambiente de testes</a>, você
+pode usar este ambiente para identificar e corrigir problemas de conectividade.</p>
+<p>Os endpoints &ldquo;new-reg&rdquo;, &ldquo;new-authz&rdquo; e &ldquo;new-cert&rdquo; possuem um
+<a id="overall-requests"></a><strong>Limite
+Geral</strong> de 20 requisições por segundo. O endpoint &ldquo;/directory&rdquo; e o diretório &ldquo;/acme&rdquo;
+e seus subdiretórios possuem um Limite Geral de 40 requisições por segundo.</p>
+<p>Temos dois outros limites que você dificilmente atingirá.</p>
+<p>Você pode criar um máximo de 10 <a id="accounts-per-ip-address"></a><strong>Contas por Endereço IP</strong> por 3 horas. Você pode
+criar um máximo de 500 <strong>Contas por Intervalo de IP</strong> nas configurações IPv6 /48 por
+3 horas. Atingir qualquer um destes dois limites é bem raro, e recomendamos que
+grandes integradores <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" hreflang="pt-BR">usem uma conta para muitos usuários</a>.</p>
+<p>Você pode ter um máximo de 300 <a id="pending-authorizations"></a><strong>Autorizações Pendentes</strong> na sua conta. Atingir
+este limite é bem raro e acontece com mais frequência durante o desenvolvimento de clientes ACME. Isso
+normalmente significa que o seu cliente está criando autorizações e as deixando em aberto.
+Por favor use nosso <a href="letsencrypt-ewebsite/pt-br/docs/staging-environment/" hreflang="pt-BR">ambiente de testes</a> se você está
+desenvolvendo um cliente ACME.</p>
+<p>Para usuários da API ACME v2 você pode criar um máximo de 300 <a
+id="new-orders"></a><strong>Novas Ordens</strong> por conta por 3 horas.</p>
+<h1 id="a-id-overrides-a-exceções"><a id="overrides"></a>Exceções</h1>
+<p>Se você atingir um limite de requisições, não temos como zerá-lo temporariamente. Você
+precisará esperar até que o limite expire após uma semana. Nós usamos uma janela móvel de dias,
+então se você emitir 25 certificados na segunda-feira e mais 25 na sexta,
+você poderá emitir novamente a partir de segunda-feira. Você pode obter uma lista de certificados
+emitidos para os seus domínios registrados <a href="https://crt.sh">através de uma busca em crt.sh</a>, que
+usa os registros públicos de
+<a href="https://www.certificate-transparency.org">Transparência de Certificados</a>.</p>
+<p>Revogar certificados não zera os limites de requisições, porque os recursos envolvidos
+na emissão de certificados já foram consumidos.</p>
+<p>Se você for um provedor de hospedagem grande ou uma organização trabalhando na integração
+com a Let&rsquo;s Encrypt, temos um <a href="https://isrg.formstack.com/forms/rate_limit_adjustment_request">formulário de
+limite de requisições</a> (Inglês)
+que pode ser usado para solicitar um limite maior de requisições. Leva algumas semanas para processar
+as solicitações, então este formulário não é adequado se você precisa zerar o limite de requisições
+mais rápido do que ele zera automaticamente.</p>
+<p>Observe que a maioria dos provedores de hospedagem não precisa de aumentos de limite, porque
+não há limites para o número de domínios distintos registrados para os quais você pode emitir certificados.
+Enquanto a maioria dos seus usuários não tiver mais do que 2000 subdomínios em
+um domínio registrado, você provavelmente não precisará de um aumento. Veja nosso <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" hreflang="pt-BR">Guia de Integração</a> para mais dicas.</p>
+<h1 id="a-id-clearing-pending-a-limpando-autorizações-pendentes"><a id="clearing-pending"></a>Limpando Autorizações Pendentes</h1>
+<p>Se você possui um grande número de objetos pendentes de autorização e está recebendo um
+erro de limite de requisições, você pode acionar uma tentativa de validação para estes
+objetos de autorização enviando uma solicitação POST assinada com JWS para um dos desafios, como
+descrito nagi
+<a href="https://tools.ietf.org/html/rfc8555#section-7.5.1">Especificação ACME</a> (Inglês).
+Os objetos pendentes de autorização são representados por URLs no formato
+<code>https://acme-v02.api.letsencrypt.org/acme/authz/XYZ</code>, e precisam aparecer nos
+registros do seu cliente. Observe que não importa se a validação é bem sucedida ou não.
+Qualquer resultado fará com que a autorização saia do estado &ldquo;Pendente&rdquo;. Se você não
+possui os registros contendo as URLs de autorização relevantes, você precisa esperar que
+os limites expirem. Como descrito acima, existe uma janela móvel de dias, então pode
+levar menos de uma semana dependendo do seu padrão de emissão.</p>
+<p>Observe que ter um grande número de autorizações pendentes normalmente é
+resultado de um cliente com bugs. Se você está atingindo este limite com frequência então
+é necessário checar o código fonte do seu cliente.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt é uma autoridade certificadora gratuita, automatizada e aberta
+  que se tornou possível graças à organização sem fins lucrativos <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envie todas as cartas ou perguntas para:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Veja nossa <a href="/pt-br/privacy/">política de privacidade</a>.<br>
+Veja nossa <a href="https://www.abetterinternet.org/trademarks/">política de direitos autorais</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

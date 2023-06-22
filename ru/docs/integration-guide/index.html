@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ru-RU">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Руководство по интеграции -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Документ будет полезен хостинг-провайдерам, интеграторам и разработчикам клиентского ПО для Let&amp;rsquo;s Encrypt.
+Планирование изменений И Let&amp;rsquo;s Encrypt, и технология Web PKI продолжают развиваться. Нужно быть готовыми к необходимым обновлениям сервисов, которые использует Let&amp;rsquo;s Encrypt. Особое внимание уделяйте регулярному обновлению исходного кода ACME-клиентов.
+Нами запланированы следующие изменения:
+ корневой и промежуточный сертификаты, на основании которых выпускаются сертификаты алгоритм хэширования для подписи сертификатов типы ключей и проверок ключей, для подписи сертификатов и сам протокол ACME  Аналогично, мы меняем URL ссылки на условия использования сервиса (terms of service, ToS) сразу после их обновления.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Руководство по интеграции">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ru/docs/integration-guide/">
+    <meta name="twitter:description" content="Документ будет полезен хостинг-провайдерам, интеграторам и разработчикам клиентского ПО для Let&amp;rsquo;s Encrypt.
+Планирование изменений И Let&amp;rsquo;s Encrypt, и технология Web PKI продолжают развиваться. Нужно быть готовыми к необходимым обновлениям сервисов, которые использует Let&amp;rsquo;s Encrypt. Особое внимание уделяйте регулярному обновлению исходного кода ACME-клиентов.
+Нами запланированы следующие изменения:
+ корневой и промежуточный сертификаты, на основании которых выпускаются сертификаты алгоритм хэширования для подписи сертификатов типы ключей и проверок ключей, для подписи сертификатов и сам протокол ACME  Аналогично, мы меняем URL ссылки на условия использования сервиса (terms of service, ToS) сразу после их обновления.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ru/docs/integration-guide/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Блог Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустить навигационные ссылки</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ru/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ru/docs/" class="pure-menu-link" tabindex="0">Документация</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Помощь</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Поддержите нас</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/donate/" class="pure-menu-link">Сделайте пожертвование</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Станьте нашим спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/sponsors/" class="pure-menu-link">Текущие спонсоры и дарители</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getinvolved/" class="pure-menu-link">Внесите свой вклад</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">О сервисе</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/about/" class="pure-menu-link">Что такое Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Окончание срока действия DST Root CA X3 (сентябрь 2021 г.)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/faq/" class="pure-menu-link">Часто задаваемые вопросы (ЧЗВ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Состояние сервиса</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Карьера</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/contact/" class="pure-menu-link">Контакты</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Язык <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">✓ Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Руководство по интеграции</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Последнее обновление: <time datetime="2016-08-08">8 авг. 2016 г.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ru/docs">Вся документация</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Документ будет полезен хостинг-провайдерам, интеграторам и разработчикам клиентского ПО для Let&rsquo;s Encrypt.</p>
+<h1 id="планирование-изменений">Планирование изменений</h1>
+<p>И Let&rsquo;s Encrypt, и технология Web PKI продолжают развиваться.  Нужно быть готовыми к необходимым обновлениям сервисов, которые использует Let&rsquo;s Encrypt. Особое внимание уделяйте регулярному обновлению исходного кода ACME-клиентов.</p>
+<p>Нами запланированы следующие изменения:</p>
+<ul>
+<li>корневой и промежуточный сертификаты, на основании которых выпускаются сертификаты</li>
+<li>алгоритм хэширования для подписи сертификатов</li>
+<li>типы ключей и проверок ключей, для подписи сертификатов</li>
+<li>и сам протокол ACME</li>
+</ul>
+<p>Аналогично, мы меняем URL ссылки на условия использования сервиса (terms of service, ToS) сразу после их обновления. Избегайте явного указания URL для ToS в исходном коде ACME-клиентов, вместо этого используйте содержимое заголовка <a href="https://tools.ietf.org/html/rfc8555#section-7.3.3"><code>Link: rel=&quot;terms-of-service&quot;</code></a> из ответа от серверов Let&rsquo;s Encrypt.</p>
+<p>Аналогичным образом, мы можем изменить URL условий предоставления услуг (ToS) по мере его обновления. Рекомендуем использовать содержимое заголовка <a href="https://tools.ietf.org/html/rfc8555#section-7.3.3"><code>Link: rel=&quot;terms-of-service&quot;</code></a> из ответа серверов Let&rsquo;s Encrypt.</p>
+<p>Также потребуется поддерживать в актуальном состоянии TLS-конфигурацию, для противодействия вновь найденным уязвимостям в наборах шифров или версиях TLS-протокола.</p>
+<h1 id="уведомления-об-изменениях">Уведомления об изменениях</h1>
+<p>Для получения кратких уведомлений о важных изменениях (таких, как описано выше), подпишитесь на группу рассылки <a href="https://community.letsencrypt.org/t/about-the-api-announcements-category/23836">API Announcements</a>. Рекомендуется как разработчикам клиентского ПО, так и хостинг-провайдерам.</p>
+<p>Для получения развёрнутой информации о сервисе, посетите нашу <a href="https://letsencrypt.status.io/">страницу текущего состояния</a>, и нажмите кнопку Subscribe справа вверху. Рекомендуется хостинг-провайдерам.</p>
+<p>Убедитесь, что указан верный адрес электронной почты для ACME-аккаунта. Мы используем этот адрес для отправки уведомлений об истечении срока действия выпущенных сертификатов, а также для взаимодействия с вами в случае специфичных проблем.</p>
+<h1 id="кто-такой-подписчик">Кто такой &ldquo;Подписчик&rdquo;</h1>
+<p>В нашем <a href="letsencrypt-ewebsite/ru/repository/" hreflang="ru-RU">Соглашении</a>, под термином &ldquo;Подписчик&rdquo; мы понимаем любого владельца закрытого ключа для сертификата. Если вы - хостинг-провадер, то подписчиком являетесь вы, а не ваши клиенты. Если вы разрабатываете клиентское ПО, которое пользователь разворачивает и настраивает самостоятельно, то подписчиком будет пользователь, и т.д.</p>
+<p>Адрес электронной почты, указываемый при создании аккаунта Let&rsquo;s Encrypt (он же &ldquo;регистрация&rdquo;) должен принадлежать Подписчику. Мы используем этот адрес для отправки предупреждений об истечении срока действия сертификатов, и уведомлений об изменении нашей <a href="letsencrypt-ewebsite/ru/privacy/" hreflang="ru-RU">политики конфиденциальности</a>.  Если вы - хостинг-провайдер, эти уведомления должны приходить к вам, а не к вашим клиентам. Идеально было бы настроить список рассылки, чтобы несколько сотрудников могли получать от нас уведомления в ваше отстутствие.</p>
+<p>Другими словами, если вы - хостинг-провайдер, вам не нужно передавать нам адреса электронной почты ваших клиентов, или ознакомлять их с политикой конфиденциальности. Вам достаточно выпустить сертификаты для доменов под вашим управлением, и тут же начать их использовать.</p>
+<h1 id="один-аккаунт-или-несколько">Один аккаунт или несколько?</h1>
+<p>Согласно протоколу ACME, для авторизации и выпуска сертификатов возможно использование как одного общего аккаунта для нескольких клиентов, так и индивидуальных аккаунтов для каждого клиента в отдельности. Это может быть полезным, например, для хостинг-провайдеров. Создание индивидуальных аккаунтов для клиентов, с последующим их раздельным хранением, поможет в ситуации, когда один или несколько аккаунтов скомпрометированы, но остальные аккаунты в безопасности.</p>
+<p>Тем не менее, для большинства хостинг-провайдеров мы рекомендуем использовать один общий аккаунт для всех клиентов, с хорошо охраняемым закрытым ключом для него. Это облегчит определение, кому именно принадлежит тот или иной сертификат, упростит актуализацию контактной информации и управление ограничениями, при необходимости. Мы не сможем эффективно корректировать ограничения в случае использования индивидуальных аккаунтов для ваших клиентов.</p>
+<h1 id="мультидоменные-сертификаты-san">Мультидоменные сертификаты (SAN)</h1>
+<p>Наша <a href="letsencrypt-ewebsite/ru/docs/rate-limits/" hreflang="ru-RU">политика выпуска сертификатов</a> ограничивает число доменных имён для одного сертификата - не более 100. Использовать ли вам отдельный сертификат для каждого доменного имени, или сгруппировать доменные имена для нескольких сертификатов - мы оставляем на ваше усмотрение.</p>
+<p>Выпуск уникальных сертификатов на каждое доменное имя упрощает добавление или удаление доменов, по мере необходимости. Кроме того, отдельные сертификаты имеют минимальный размер, что ускоряет этап &ldquo;рукопожатия&rdquo; между браузером клиента и web-сервером в сетях с низкой пропускной способностью.</p>
+<p>С другой стороны, если вы используете множество интерфейсов для сайтов, имеет смысл поддерживать небольшое количество серверов для выпуска сертификатов. Если вам нужно поддерживать старые клиенты, такие как Windows XP, которые не поддерживают TLS Server Name Indication (<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>), вам понадобится уникальный IP адрес для каждого сертификата, так что добавление большего количества имен на каждый сертификат уменьшает количество IP адресов, которые вам нужны.</p>
+<p>В общем случае, оба варианта обеспечивают одну и ту же безопасность.</p>
+<h1 id="хранение-и-повторное-использование-сертификатов-и-ключей">Хранение и повторное использование сертификатов и ключей</h1>
+<p>Особая ценность Let&rsquo;s Encrypt - автоматический выпуск сертификата для нового сайта.  Однако, если ваша инфраструктура предполагает создание новых интерфейсов для одного и того же сайта, целесообразнее использовать сертификат и закрытый ключ из долговременнного хранилища. Новый сертификат ст<strong>о</strong>ит выпускать в случае, когда имеющиеся сертификаты закончились, или истёк срок их действия.</p>
+<p>Такой подход поможет Let&rsquo;s Encrypt качественно предоставлять свои услуги как можно б<strong>о</strong>льшему количеству клиентов. Вы же всегда сможете запустить свой новый сайт в любое удобное вам время, независимо от состояния сервисов Let&rsquo;s Encrypt.</p>
+<p>К примеру, всё чаще web-мастера используют Docker для создания новых инстансов для сайтов. Если вы настроите контейнеры Docker на выпуск сертификатов в момент старта, вместо использования сертификатов и ключей из долговременного хранилища, то, скорее всего, вы превысите ограничения на использование ресурсов Let&rsquo;s Encrypt. В худшем случае, при пересоздании всех ваши инстансов одновременно, вы окажетесь в ситуации, когда ни один из инстансов не сможет получить сертификат, и ваш сайт окажется недоступным в течение нескольких дней, пока ограничения не будут сняты. Однако этот тип проблемы не является уникальным для ограничения скорости. Та же проблема возникнет, если по каким-либо причинам сервисы Let&rsquo;s Encrypt будут недоступны.</p>
+<p>Некоторые подходы к развёртыванию сайтов проповедуют хранение закрытых ключей строго на тех компьютерах, на которых они были созданы. Эта модель также совместима с Let&rsquo;s Encrypt до тех пор, пока вы обеспечиваете длительное время работы ваших машин без перезагрузки, консистентность данных в хранилище, и отслеживаете момент наступления ограничений.</p>
+<h1 id="выбор-способа-проверки">Выбор способа проверки</h1>
+<p>Если вы используете проверку http-01 ACME, вам необходимо обеспечить формирование ответа от всех интерфейсов перед уведомлением Let&rsquo;s Encrypt о готовности пройти проверку. Если таких интерфейсов у вас много, задача будет непростой. В этом случае, разумнее выбрать проверку dns-01. Разумеется, если у вас несколько географически разнесённых DNS серверов, необходимо убедиться, что TXT-запись есть на каждом из них.</p>
+<p>Кроме того, при использовании проверки dns-01 необходимо удалить старые TXT-записи, чтобы ответ на запрос Let&rsquo;s Encrypt не оказался слишком большим.</p>
+<p>Если же вы настаиваете на проверке http-01, возможно, вам пригодятся HTTP-редиректы. Вы можете настроить интерфейсы ваших сайтов на редирект адреса /.well-known/acme-validation/XYZ на validation-server.example.com/XYZ для любого XYZ. Это перенесёт ответственность за выдачу сертификатов на сервер валидации, так что позаботьтесь о его безопасности.</p>
+<h1 id="центральные-серверы-валидации">Центральные серверы валидации</h1>
+<p>Учитывая вышесказанное, если вы используете множество интерфейсов для сайтов, имеет смысл поддерживать небольшое количество серверов для выпуска сертификатов. Так будет проще организовать редирект для проверки http-01, и реализовать долговременное хранение ключей и сертификатов.</p>
+<h1 id="реализация-сшивания-ocsp-ocsp-stapling">Реализация сшивания OCSP (OCSP Stapling)</h1>
+<p>Многие браузеры проверяют сертификат Let&rsquo;s Encrypt с помощью OCSP, когда загружают сайт, что вызывает [проблему производительности и безопасности](<a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/%29">https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/)</a>. Это <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/">проблема производительности и конфиденциальности</a>.  В идеале, подключение к вашему сайту не должно ожидать результата дополнительного подключения к Let&rsquo;s Encrypt. Кроме того, в запросах OCSP содержится информация о сайтах, которые посещают пользователи. Мы придерживаемся нашей политики конфиденциальности, и не сохраняем данные пользователей из OCSP-запросов, мы в принципе не нуждаемся в получении этих данных. Кроме того, расходы на трафик по обслуживанию OCSP-запросов для всех сайтов с сертификатом Let&rsquo;s Encrypt составили бы значительную долю наших инфраструктурных издержек.</p>
+<p>Настроив &ldquo;OCSP-сшивание&rdquo; на ваших web-серверах, вы улучшите производительность ваших сайтов, обеспечите конфиденциальность для ваших пользователей, и поможете Let&rsquo;s Encrypt эффективнее обслуживать как можно больше клиентов.</p>
+<h1 id="настройка-брандмауера">Настройка брандмауера</h1>
+<p>Для работы Let&rsquo;s Encrypt разрешите исходящий трафик для порта 443 на машинах с запущенным ACME-клиентом. Мы не публикуем IP-адреса наших ACME-сервисов, и, как правило, изменяем их без уведомления.</p>
+<p>Для проверки http-01, разрешите входящий трафик для порта 80. Мы не публикуем IP-адреса для выполнения проверки, и. как правило, изменяем их без уведомления.</p>
+<p>Обратите внимание: мы рекомендуем всегда настраивать HTTP-доступ до вашего web-сервера, с последующим редиректом на HTTPS. Для пользователей это будет лучше, чем сброc HTTP-соединения, при том же уровне безопасности.</p>
+<p>Для всех проверок, разрешите входящий трафик на порт 53 (TCP и UDP) для ваших DNS-серверов.</p>
+<h1 id="поддерживаемые-алгоритмы-шифрования">Поддерживаемые алгоритмы шифрования</h1>
+<p>Let&rsquo;s Encrypt принимает RSA-ключи длиной от 2048 до 4096 бит включительно, а также ECDSA ключи типа P-256 и P-384. Это верно и для ключей аккаунтов пользователей, и для ключей шифрования сертификатов, но использование ключей аккаунта для шифрования сертификата невозможно. Вы не можете повторно использовать ключ учетной записи в качестве ключа сертификата.</p>
+<p>Мы рекомендуем использовать конфигурацию с двумя сертификатами, по-умолчанию предлагая RSA-сертификаты. ECDSA-сертификаты используются гораздо реже, и только для ACME-клиентов, обеспечивающих их поддержку.</p>
+<h1 id="https-по-умолчанию">HTTPS по-умолчанию</h1>
+<p>Для компаний, предоставляющих услуги хостинга, мы предлагаем автоматически выпускать сертификаты, и настраивать доступ по HTTPS для всех доменных имён в управлении. Дополнительно, необходимо дать пользователям возможность настраивать свою конфигурацию перенаправления с HTTP на HTTPS. По-умолчанию, HTTPS должен быть включен для всех создаваемых аккаунтов, и отключен для всех существующих аккаунтов.</p>
+<p>Поясняем: существующие web-сайты, как правило, включают в себя дополнительные HTTP-ресурсы (скрипты, файлы стилей, изображения). Если эти сайты автоматически переключить на их HTTPS-версии, то браузеры могут заблокировать доступ к HTTP-ресурсам по причине смешанного контента (Mixed Content Blocking). Это может повлиять на работоспособность сайта. В то же время, разработчик нового сайта, скорее всего сразу организует доступ к ресурсами по HTTPS, т.к. недоступность доступа по HTTP будет замечена в процессе разработки.</p>
+<p>Мы рекомендуем настраивать заголовок ответа сервера HTTP Strict-Transport-Security (HSTS) с параметром max-age, равным 60 дней по-умолчанию. Вместе с тем, необходимо помнить, что если клиент перенесёт свой сайт к хостинг-провайдеру без настроенного доступа по HTTPS, закэшированная браузерами пользователей настройка HSTS сделает сайт недоступным для них. Проблемы с заголовком HSTS считаются серьёзной угрозой безопасности. Пользователи обычно игнорируют предупреждения браузера о несовпадении введённого имени домена с именем домена в сертификате, или о просроченном сертификате, и нажимают кнопку &ldquo;Продолжить&rdquo;. В случае с заголовком HSTS, обойти предупреждение и получить доступ к сайту не удастся.</p>
+<h1 id="когда-обновлять-сертификат">Когда обновлять сертификат</h1>
+<p>Мы рекомендуем настраивать автоматическое обновление сертификатов в последней трети их жизни. Для сертификатов Let&rsquo;s Encrypt срок действия по-умолчанию 90 дней, таким образом, обновление необходимо выполнить спустя 60 дней после выпуска сертификата.</p>
+<p>Если вы управляете сертификатами для более чем 10 000 доменных имён, мы рекомендуем выполнять обновление небольшими партиями, а не все сразу. Это снижает ваши риски: если сервисы Let&rsquo;s Encrypt по какой-либо причине будут недоступны, или возникли проблемы в вашей инфраструктурой обновления - ущерб будет причинён небольшой части сертификатов, а не всему количеству. Кроме того, обновление по частям поможет лучше планировать загрузку оборудования.</p>
+<p>Возможно, вы захотите массово выпустить сертификаты для всех доменов, что нормально. Но конкретные даты обновления сертификатов можно разнести на несколько дней - обновив сначала одну партию, на следующий день другую, и так далее.</p>
+<p>Если вы настраиваете специальный скрипт обновления, то убедитесь, что его запуск выполняется в произвольно выбираемый момент времени, а не в конкретный. Это гарантирует, что на серверах Let&rsquo;s Encrypt не будет серьёзных всплесков трафика. Т.к. нам необходимо обеспечить запас мощности для противодействия таким всплескам, их снижение поможет уменьшить наши издержки.</p>
+<h1 id="повтор-попыток-при-ошибках-обновления">Повтор попыток при ошибках обновления</h1>
+<p>Ошибки обновления не стоит считать фатальными. Реализуйте логику повторных запросов на обновление, используя подход экспоненциального увеличения интервалов. К примеру, первая попытка запускается через минуту, вторая попытка - спустя десять минут, третья - спустя сто минут, четвёртая попытка планируется на следующий день. Разумеется, нужен механизм ручного повтора попыток обновления сертификатов для каждого домена в отдельности, или глобально.</p>
+<p>Откат во время попыток обновления означает, что скрипт обновления отслеживает как удачные попытки, так и неудачные, и перед очередной попыткой проверяет наличие неудач в прошлом. Нет смысла бесконечно повторять попытки обновить сертификаты, если неудачи следуют одна за другой.</p>
+<p>О всех ошибках обновления следует извещать ответственного администратора, для своевременного решения возникших проблем.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - это бесплатный, автоматизированный и открытый Центр Сертификации, созданный для вас
+  некоммерческой организацией <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Все письма и запросы отправляйте по адресу:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Ознакомьтесь с нашей <a href="/ru/privacy/">политикой конфиденциальности</a>.<br>
+Ознакомьтесь с нашей <a href="https://www.abetterinternet.org/trademarks/">политикой в отношении товарных знаков</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

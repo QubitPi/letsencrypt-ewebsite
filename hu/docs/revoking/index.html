@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="hu">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tanúsítványok visszavonása -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Ha egy tanúsítványhoz tartozó privát kulcs már nem biztonságos, akkor a tanúsítványt vissza kell vonni. Ennek több oka is lehet. Például előfordulhat, hogy véletlenül megosztja a privát kulcsot egy nyilvános weboldalon; a hackerek lemásolhatják a privát kulcsot a szervereiről; vagy a hackerek ideiglenesen átvehetik az irányítást a szerverei vagy a DNS-konfiguráció felett, és ezt felhasználhatják egy olyan tanúsítvány érvényesítésére és kiadására, amelyhez ők rendelkeznek a privát kulccsal.
+Amikor Ön visszavonja a Let&amp;rsquo;s Encrypt tanúsítványt, a Let&amp;rsquo;s Encrypt közzéteszi a visszavonási információt az Online Certificate Status Protocol (OCSP) protokollon keresztül, egyes böngészők pedig ellenőrzik az OCSP-t, hogy megállapítsák, meg kell-e bízniuk a tanúsítványban.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Tanúsítványok visszavonása">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/hu/docs/revoking/">
+    <meta name="twitter:description" content="Ha egy tanúsítványhoz tartozó privát kulcs már nem biztonságos, akkor a tanúsítványt vissza kell vonni. Ennek több oka is lehet. Például előfordulhat, hogy véletlenül megosztja a privát kulcsot egy nyilvános weboldalon; a hackerek lemásolhatják a privát kulcsot a szervereiről; vagy a hackerek ideiglenesen átvehetik az irányítást a szerverei vagy a DNS-konfiguráció felett, és ezt felhasználhatják egy olyan tanúsítvány érvényesítésére és kiadására, amelyhez ők rendelkeznek a privát kulccsal.
+Amikor Ön visszavonja a Let&amp;rsquo;s Encrypt tanúsítványt, a Let&amp;rsquo;s Encrypt közzéteszi a visszavonási információt az Online Certificate Status Protocol (OCSP) protokollon keresztül, egyes böngészők pedig ellenőrzik az OCSP-t, hogy megállapítsák, meg kell-e bízniuk a tanúsítványban.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/hu/docs/revoking/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigációs linkek átugrása</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/hu/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/hu/docs/" class="pure-menu-link" tabindex="0">Dokumentáció</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Segítség</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Adományozok</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Legyen a támogatónk</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/sponsors/" class="pure-menu-link">Jelenlegi szponzorok és támogatók</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getinvolved/" class="pure-menu-link">Kapcsolódjon be</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Rólunk</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 lejárat (2021. szeptember)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" class="pure-menu-link">Gyakran Ismételt Kérdések (GYIK)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Szolgáltatás státusza</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/stats/" class="pure-menu-link">Statisztikák</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karrier</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/contact/" class="pure-menu-link">Kapcsolat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Nyelvek <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">✓ Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Tanúsítványok visszavonása</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Utoljára frissítve: <time datetime="2021-08-03">2021. aug. 3.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/hu/docs">Dokumentáció megtekinthető</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Megjegyzés: Az angol nyelvű változatot a fordítás óta frissítették
+                    (<time datetime="2021-10-15">2021. okt. 15.</time>)
+                    <a href="letsencrypt-ewebsite/docs/revoking/">Megtekintés angolul</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Ha egy tanúsítványhoz tartozó privát kulcs már nem biztonságos, akkor a tanúsítványt vissza kell vonni. Ennek több oka is lehet. Például előfordulhat, hogy véletlenül megosztja a privát kulcsot egy nyilvános weboldalon; a hackerek lemásolhatják a privát kulcsot a szervereiről; vagy a hackerek ideiglenesen átvehetik az irányítást a szerverei vagy a DNS-konfiguráció felett, és ezt felhasználhatják egy olyan tanúsítvány érvényesítésére és kiadására, amelyhez ők rendelkeznek a privát kulccsal.</p>
+<p>Amikor Ön visszavonja a Let&rsquo;s Encrypt tanúsítványt, a Let&rsquo;s Encrypt közzéteszi a visszavonási információt az <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a> protokollon keresztül, egyes böngészők pedig ellenőrzik az OCSP-t, hogy megállapítsák, meg kell-e bízniuk a tanúsítványban. Vegye figyelembe, hogy az OCSP-nek <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">van néhány alapvető problémája</a>, ezért nem minden böngésző végzi el ezt az ellenőrzést. Ennek ellenére a veszélyeztetett privát kulcsokhoz tartozó tanúsítványok visszavonása fontos gyakorlat, és a Let&rsquo;s Encrypt <a href="letsencrypt-ewebsite/hu/repository/" hreflang="hu">előfizetői megállapodása</a> előírja.</p>
+<p>A tanúsítvány visszavonásához a Let&rsquo;s Encrypt segítségével használja a <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a>-t, egy ACME kliensen keresztül, mint amilyen például <a href="https://certbot.eff.org/">Certbot</a>. Bizonyítania szükséges a Let&rsquo;s Encrypt számára, hogy jogosult a tanúsítvány visszavonására. Ennek háromféle módja van:</p>
+<h1 id="a-tanúsítványt-kiállító-fiókból">A tanúsítványt kiállító fiókból</h1>
+<p>Ha eredetileg Ön állította ki a tanúsítványt, és még mindig Ön rendelkezik a tanúsítvány kiállításához használt fiók felett, akkor a fiók hitelesítő adatainak használatával visszavonhatja azt. A Certbot alapértelmezés szerint megkísérli ezt. Például:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem --reason keycompromise
+</code></pre></div><h1 id="a-tanúsítvány-privát-kulcsának-használatával">A tanúsítvány privát kulcsának használatával</h1>
+<p>Ha eredetileg nem Ön állította ki a tanúsítványt, de rendelkezik a megfelelő privát kulcs másolatával, akkor a visszavonási kérelem aláírásához ezt a privát kulcsot használva visszavonhatja a tanúsítványt. Például, ha azt látja, hogy egy privát kulcsot véletlenül nyilvánosságra hoztak, ezzel a módszerrel visszavonhatja az adott privát kulcsot használó tanúsítványokat, még akkor is, ha nem Ön az a személy, aki eredetileg kiállította ezeket a tanúsítványokat.</p>
+<p>A módszer használatához először le kell töltenie a visszavonandó tanúsítványt. A Let&rsquo;s Encrypt minden tanúsítványt naplóz a <a href="https://www.certificate-transparency.org/">Certificate Transparency</a> naplókba, így a tanúsítványok megtalálhatók és letölthetők egy olyan naplófigyelőből, mint a <a href="https://crt.sh/">crt.sh</a>.</p>
+<p>Szüksége lesz a privát kulcs egy PEM formátumú másolatára is. Ha ezek megvannak, a következőképpen vonhatja vissza a tanúsítványt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reason keycompromise
+</code></pre></div><h1 id="másik-engedélyezett-fiók-használatával">Másik engedélyezett fiók használatával</h1>
+<p>Ha valaki tanúsítványt állított ki, miután veszélyeztette a tárhelyét vagy a DNS-ét, akkor a tanúsítványt vissza kell vonnia, amint visszanyerte a tárhely vagy DNS fölötti rendelkezését. A tanúsítvány visszavonásához a Let&rsquo;s Encryptnek biztosítania kell, hogy a tanúsítványban szereplő domain nevek felett Ön rendelkezik (különben az emberek engedély nélkül visszavonhatják egymás tanúsítványait)! Az Ön domain feletti rendelkezésének validálásához a Let&rsquo;s Encrypt ugyanazokat a módszereket használja, mint amit a tanúsítvány kibocsátásakor használ: elhelyezhet egy <a href="https://tools.ietf.org/html/rfc8555#section-8.4">értéket egy DNS TXT rekordban</a> vagy egy <a href="https://tools.ietf.org/html/rfc8555#section-8.3">fájlt egy HTTP-szerveren</a>. Általában az ACME kliens kezeli ezeket az Ön számára. Vegye figyelembe, hogy a legtöbb ACME kliens kombinálja az validálást és a kiadást, így a validálás kérésének egyetlen módja a kiadási kísérlet. Ezután visszavonhatja a kapott tanúsítványt, ha nincs rá szüksége, vagy egyszerűen megsemmisítheti a privát kulcsot. Ha egyáltalán nem szeretne tanúsítványt kiállítani, akkor a parancssorban megadhat egy nem létező domain nevet, ami a tanúsítvány kiállításának sikertelenségét eredményezi, miközben a többi, létező domain nevet továbbra is validálja. Ehhez futtassa a következőt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot certonly --manual --preferred-challenges<span class="o">=</span>dns -d <span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span> -d nonexistent.<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>
+</code></pre></div><p>Kövesse az utasításokat. Ha a DNS helyett inkább a HTTP-t szeretné használni a validáláshoz, akkor a <code>--preferred-challenges</code> flaget helyettesítse <code>--preferred-challenges=http</code> flaggel.</p>
+<p>Miután validálta a visszavonni kívánt tanúsítványban szereplő összes domain név ellenőrzését, letöltheti a tanúsítványt a <a href="https://crt.sh/">crt.sh</a> segítségével, majd folytassa a tanúsítvány visszavonását, mintha Ön állította volna ki:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/downloaded-cert.pem --reason keycompromise
+</code></pre></div></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  A Let's Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
+  melyet a nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> szervezet tesz elérhetővé.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Megkereséseiket a következő címre küldhetik:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Tekintse meg <a href="/privacy/">Adatvédelmi irányelveinket</a>.<br>
+Tekintse meg <a href="https://www.abetterinternet.org/trademarks">Védjegypolitikánkat</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

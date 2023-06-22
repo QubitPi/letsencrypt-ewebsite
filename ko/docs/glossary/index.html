@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ko-KR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>용어 사전 -  Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
+    <meta name="description" content="ACME (Automatic Certificate Management Environment) : Let&amp;rsquo;s Encrypt에서 구현한 프로토콜입니다. 해당 프로토콜과 호환되는 소프트웨어는 Let&amp;rsquo;s Encrypt를 사용하여 인증서를 요청할 수 있습니다. ACME RFC - 위키피디아 ACME Client : ACME 서버와 통신하여 인증서를 요청할 수 있는 프로그램입니다. ACME Server : 인증서를 생성할 수 있는 ACME 호환 서버입니다. Let&amp;rsquo;s Encrypt의 소프트웨어인 Bolder는 ACME와 호환되며, 일부 차이점이 있습니다. Authority Information Access (AIA) : 인증서의 발급자에 대한 정보를 얻는 방법을 사용자 에이전트에 나타내는 데 사용되는 인증서 연장입니다.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="용어 사전">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ko/docs/glossary/">
+    <meta name="twitter:description" content="ACME (Automatic Certificate Management Environment) : Let&amp;rsquo;s Encrypt에서 구현한 프로토콜입니다. 해당 프로토콜과 호환되는 소프트웨어는 Let&amp;rsquo;s Encrypt를 사용하여 인증서를 요청할 수 있습니다. ACME RFC - 위키피디아 ACME Client : ACME 서버와 통신하여 인증서를 요청할 수 있는 프로그램입니다. ACME Server : 인증서를 생성할 수 있는 ACME 호환 서버입니다. Let&amp;rsquo;s Encrypt의 소프트웨어인 Bolder는 ACME와 호환되며, 일부 차이점이 있습니다. Authority Information Access (AIA) : 인증서의 발급자에 대한 정보를 얻는 방법을 사용자 에이전트에 나타내는 데 사용되는 인증서 연장입니다.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ko/docs/glossary/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 블로그 피드" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">탐색 링크 건너뛰기</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ko/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ko/docs/" class="pure-menu-link" tabindex="0">문서</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">도움말</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">후원</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/donate/" class="pure-menu-link">기부하기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">스폰서 되기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/sponsors/" class="pure-menu-link">현재 스폰서 및 기부자</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getinvolved/" class="pure-menu-link">참여</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">소개</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">비영리 인터넷 보안 연구 그룹 (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" class="pure-menu-link">자주 묻는 질문</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">서비스 상태</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/stats/" class="pure-menu-link">통계</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">채용</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/contact/" class="pure-menu-link">연락처</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">언어 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">✓ 한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>용어 사전</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    최근 업데이트: <time datetime="2018-12-30">2018. 12. 30.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ko/docs">모든 문서 보기</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<!--
+Note for translators:
+
+- Usage of the "def" macro (in other languages than English):
+{% def
+	id="a unique id for anchor - the SAME than for english. will be prefixed by `def-`"
+	name="The term to define (optional if english or abbr is provided)"
+	abbr="an accronym (optional)"
+	english="the english term (optional - if present the abbr is in english too)" %}}
+		the definition
+{% /def %}
+
+- Check the javascript console for errors.
+
+- Automatic titles on definition's link cuts everything after the last point (to remove source links)
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="definition">
+	<a href="#def-ACME"><dfn id="def-ACME"><abbr lang="en">ACME</abbr></dfn> (Automatic Certificate Management Environment)</a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a>에서 구현한 프로토콜입니다. 해당 프로토콜과 호환되는 소프트웨어는 Let&rsquo;s Encrypt를 사용하여 <a href="#def-leaf">인증서</a>를 요청할 수 있습니다. <a href="https://tools.ietf.org/html/rfc8555">ACME RFC</a> - <a href="https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-ACME-client"><dfn id="def-ACME-client">ACME Client</dfn></a>
+	: ACME 서버와 통신하여 <a href="#def-leaf">인증서</a>를 요청할 수 있는 프로그램입니다.
+</p>
+<p class="definition">
+	<a href="#def-ACME-server"><dfn id="def-ACME-server">ACME Server</dfn></a>
+	: <a href="#def-leaf">인증서</a>를 생성할 수 있는 ACME 호환 서버입니다. Let&rsquo;s Encrypt의 소프트웨어인 <a href="#def-boulder">Bolder</a>는 ACME와 호환되며, <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">일부 차이점이 있습니다</a>.
+</p>
+<p class="definition">
+	<a href="#def-AIA"><dfn id="def-AIA">Authority Information Access</dfn> (<abbr>AIA</abbr>)</a>
+	: <a href="#def-certificate">인증서</a>의 발급자에 대한 정보를 얻는 방법을 <a href="#def-user-agent">사용자 에이전트</a>에 나타내는 데 사용되는 인증서 <a href="#def-extension">연장</a>입니다. 일반적으로 <a href="#def-OCSP">OCSP</a> URI와 <a href="#def-CAI">발행인 URI</a>를 지정합니다.
+</p>
+<p class="definition">
+	<a href="#def-BRs"><dfn id="def-BRs">Baseline Requirements</dfn> (<abbr>BRs</abbr>)</a>
+	: CA에 대한 일련의 기술 및 정책 요구 사항입니다. 모든 주요 <a href="#def-root-program">root 프로그램</a>에는 기본 요구 사항이 포함되므로 CA는 대부분의 브라우저에서 신뢰할 수 있는 다음 요구 사항을 따라야 합니다.
+</p>
+<p class="definition">
+	<a href="#def-boulder"><dfn id="def-boulder">Boulder</dfn></a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a>에서 개발하고 사용하는 ACME를 구현하는 소프트웨어입니다. <a href="https://github.com/letsencrypt/boulder">GitHub</a>
+</p>
+<p class="definition">
+	<a href="#def-CAI"><dfn id="def-CAI">CA Issuers</dfn></a>
+	: <a href="#def-AIA">AIA</a> 필드에 <a href="#def-leaf">인증서</a>의 발급자에 대한 정보가 포함되어 있습니다. <a href="#def-web-server">웹 서버</a>가 신뢰할 수 있는 <a href="#def-chain">인증서 체인</a>을 제공하지 않은 경우 유용할 수 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-CABF"><dfn id="def-CABF">CA/Browser Forum</dfn></a>
+	: 인증 기관, 인터넷 브라우저 소프트웨어 공급업체, 운영체제 및 기타 PKI 지원 응용 프로그램의 자발적 그룹입니다. CA/Browser Forum은 <a href="#def-BRs">기본 요구사항</a>를 발행합니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 CA/Browser Forum의 회원입니다. <a href="https://en.wikipedia.org/wiki/CA/Browser_Forum">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (Certificate Authority Authorization)</a>
+	: 해당 도메인 이름에 대한 인증서를 발급할 수 있는 <a href="#def-CA">CA</a>를 지정하는 DNS 레코드입니다. CAA 레코드는 브라우저가 아니라 CA에서 확인합니다. <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="letsencrypt-ewebsite/ko/docs/caa/" hreflang="ko-KR">명예 CAA 레코드</a>에서 요구하는 대로 <a href="#def-BRs">기본 요구사항</a>를 암호화합니다. - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CNAME"><dfn id="def-CNAME">Canonical Name record</dfn> (<abbr>CNAME</abbr>)</a>
+	: 하나의 도메인 이름을 다른 도메인에 매핑하는 DNS 항목으로, 정형 이름이라고 합니다. <a href="https://en.wikipedia.org/wiki/CNAME_record">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-certificate"><dfn id="def-certificate">Certificate</dfn></a>
+	: 공용 키와 공용 키 사용 시기를 설명하는 기타 데이터가 들어 있는 <a href="#def-X509">특정 형식</a>의 파일입니다. 가장 일반적인 종류의 인증서는 <a href="#def-leaf">리프 인증서</a>입니다. <a href="#def-intermediate">중간 인증서</a> 및 <a href="#def-root">root 인증서</a>도 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-CA"><dfn id="def-CA">Certificate Authority</dfn> (<abbr>CA</abbr>)</a>
+	: <a href="#def-leaf">인증서</a>를 발급하는 조직입니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>, <a href="#def-IdenTrust">IdenTrust</a>, Sectigo, DigiCert가 인증 기관입니다. <a href="https://en.wikipedia.org/wiki/Certificate_authority">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CP"><dfn id="def-CP">Certificate Policy</dfn> (<abbr>CP</abbr>)</a>
+	: 공통 보안 요구 사항이 있는 특정 커뮤니티 및 또는 애플리케이션 클래스에 인증서를 적용할 수 있음을 나타내는 명명된 규칙 집합입니다. 발행의 구체적인 내역은 <a href="#def-CPS">CPS</a>에 정리되어 있습니다. <a href="letsencrypt-ewebsite/ko/repository/#isrg-certificate-policy" hreflang="ko-KR">ISRG 인증서 정책</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CRL"><dfn id="def-CRL">Certificate Revocation List</dfn> (<abbr>CRL</abbr>)</a>
+	: <a href="#def-user-agent">사용자 에이전트</a>에 <a href="#def-leaf">인증서</a>의 <a href="#def-revocation">해지</a> 상태를 알리는 방법입니다. 이 목록은 해당 CA 중 서명하고 지정된 CA에서 해지한 모든 인증서의 일련 번호 목록입니다. <a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CSR"><dfn id="def-CSR">Certificate Signing Request</dfn> (<abbr>CSR</abbr>)</a>
+	: <a href="#def-CA">CA</a>에서 인증서를 생성하는 데 필요한 정보가 들어 있는 서명된 파일입니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>에 대한 관련 정보는 <a href="#def-CN">공통 이름</a>, <a href="#def-SAN">제목 대체 이름</a>, 제목 공개 키 정보입니다. 일반적으로 <a href="#def-ACME-client">클라이언트 응용 프로그램</a>은 사용자에 대한 CSR을 자동으로 생성합니다. 웹 호스팅 공급자 또는 장치도 CSR을 생성할 수 있습니다. <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-store"><dfn id="def-store">Certificate Store</dfn></a>
+	: 인증서 저장소에는 신뢰할 수 있는 <a href="#def-root">root 인증서</a> 목록이 있습니다. 운영체제(예: Windows, Android 또는 Debian) 및 <a href="#def-web-browser">웹 브라우저</a> (예: 파이어폭스)는 인증서 저장소를 유지합니다. 웹 브라우저가 없는 경우 운영체제의 인증서 저장소에 의존합니다. <a href="#def-leaf">인증서</a>에서 제공하는 <a href="#def-LE">Let&rsquo;s Encrypt</a>는 <a href="letsencrypt-ewebsite/ko/certificates/" hreflang="ko-KR">대부분의 인증서 저장소에서 신뢰</a>합니다.
+</p>
+<p class="definition">
+	<a href="#def-CT"><dfn id="def-CT">Certificate Transparency</dfn> (<abbr>CT</abbr>)</a>
+	: 보안을 향상시키려면 인증서 또는 <a href="#def-precertificate">사전 인증서</a>를 인증서 투명 로그: <a href="https://www.certificate-transparency.org/">https://www.certificate-transparency.org/</a> 에 게시해야 합니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 <a href="#def-precertificate">사전 인증서</a>를 생성하고 게시하며, 이후 <a href="#def-SCT">SCT</a> 목록을 다음 <a href="#def-leaf">인증서</a>에 포함합니다. Google Chrome과 같은 일부 <a href="#def-web-browser">웹 브라우저</a>는 인증서의 유효성을 확인하기 위해 이 검증 가능한 약속의 존재를 요구합니다. <a href="https://en.wikipedia.org/wiki/Certificate_Transparency">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CT-log"><dfn id="def-CT-log">Certificate Transparency Log</dfn></a>
+	: <a href="#def-CT">인증서 투명성</a>의 구성 요소는 인증서 및 <a href="#def-precertificate">사전 인증서</a>의 제출을 수락하고 이를 영구적이고 검증 가능하며 공개적으로 액세스 가능한 목록에 통합합니다.
+</p>
+<p class="definition">
+	<a href="#def-chain"><dfn id="def-chain">Certificate chain</dfn></a>
+	: <a href="#def-user-agent">사용자 에이전트</a>가 <a href="#def-store">인증서 저장소</a>의 <a href="#def-root">root 인증서</a>에 연결하여 엔드 엔티티 또는 <a href="#def-leaf">리프 인증서</a>를 신뢰할 수 있다고 판단하는 데 도움이 되는 <a href="#def-intermediate">중간 인증서</a> 목록입니다. 참고: 체인이 항상 고유한 것은 아니며, 웹 사이트에서 하나의 root로 이어지는 인증서 체인을 표시할 때 사용자 에이전트는 다른 체인을 사용하여 인증서를 검증하도록 결정할 수 있습니다. <a href="https://en.wikipedia.org/wiki/Public_key_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-extension"><dfn id="def-extension">Certificate extension</dfn></a>
+	: 인증서에서는 대부분의 필드가 확장으로 정의됩니다. 예를 들어 <a href="#def-SAN">제목 대체 이름</a> 및 <a href="#def-AIA">AIA</a>는 확장입니다. 확장 메커니즘을 사용하면 원래 <a href="#def-X509">X.509</a> 표준의 일부가 아닌 새 필드를 작성할 수 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-issuer"><dfn id="def-issuer">Certificate issuer</dfn></a>
+	: 인증서의 &ldquo;Issuer&rdquo; 필드는 인증서에 서명한 인증서를 설명합니다. 예를 들어, Let&rsquo;s Encrypt 엔티티 인증서의 Issuer 필드는 &ldquo;Issuer: C = US, O = Let&rsquo;s Encryption, CN = Let&rsquo;s Encrypt Authority X3&quot;일 수 있습니다. 일반적으로 <a href="#def-CN">공통 이름</a>, Country 및 Organization과 같은 필드를 포함합니다. Issuer 필드는 항상 일부 인증서의 <a href="#def-subject">제목</a> 필드와 일치합니다. <a href="#def-root">root</a>와 같은 <a href="#def-self-signed">자체 서명된</a> 인증서의 경우 발급자는 제목과 동일합니다. &ldquo;Issuer&quot;라는 용어는 다른 인증서를 발급하는 인증서 (<a href="#def-intermediate">중간 인증서</a> 또는 root) 또는 인증서를 발급하는 조직을 나타내는 데 사용할 수도 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-subject"><dfn id="def-subject">Certificate subject</dfn></a>
+	: 인증서 필드의 &ldquo;제목&rdquo; 필드는 인증서의 내용을 나타냅니다. 일반적으로 <a href="#def-CN">공통 이름</a>, Country 및 Organization과 같은 필드를 포함합니다.
+</p>
+<p class="definition">
+	<a href="#def-CPS"><dfn id="def-CPS">Certification Practice Statement</dfn> (<abbr>CPS</abbr>)</a>
+	: 인증 기관에서 인증서를 발급, 관리, 해지 및 갱신 또는 재입력하는 데 사용하는 관행에 대한 설명입니다. <a href="letsencrypt-ewebsite/ko/repository/#isrg-certification-practice-statement" hreflang="ko-KR">ISRG 인증 실무 명세서</a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 3.4</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-CN"><dfn id="def-CN">Common Name</dfn> (<abbr>CN</abbr>)</a>
+	: 인증서의 내용을 설명하는 인증서 <a href="#def-subject">제목</a>의 일부입니다. <a href="#def-root">root 인증서</a> 및 <a href="#def-intermediate">중간 인증서</a>의 경우 사람이 읽을 수있는 <a href="#def-CA">인증 기관</a>의 이름입니다. <a href="#def-leaf">리프 인증서</a>의 경우 인증서의 도메인 이름 중 하나입니다. 참고: 일반적인 이름은 63 자로 제한됩니다. 현재의 인터넷 표준은 소프트웨어가 인증서의 적용 가능성을 결정하기 위해 <a href="#def-SAN">제목 대체 이름</a> 만 검사 할 것을 기대하기 때문에 인증서가 적용되는 도메인 이름을 나타내는 오래된 방법입니다.
+</p>
+<p class="definition">
+	<a href="#def-critical"><dfn id="def-critical">Critical extension</dfn></a>
+	: 인증서에 &ldquo;중요&quot;라고 표시된 <a href="#def-extension">확장</a>이 포함될 수 있습니다. 즉, 소프트웨어가 확장을 처리하는 방법을 이해하지 않는 한 해당 인증서를 거부해야 합니다. 따라서 오래된 소프트웨어에 대한 위험을 야기하지 않고 보안에 중요한 새로운 확장을 도입할 수 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-cross-signing"><dfn id="def-cross-signing">Cross Signing</dfn></a>
+	: 발급 인증서는 둘 이상의 <a href="#def-root">root 인증서</a>에 의해 서명될 수 있습니다. 예를 들어 <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="#def-intermediate">중간 인증서</a>는 <a href="#def-IdenTrust">IdenTrust</a>에 의해 크로스 서명됩니다. 시작 시 Let&rsquo;s Encrypt root는 아직 <a href="#def-store">인증서 저장소</a>에 의해 신뢰되지 않았기 때문입니다. 기술적으로는 동일한 <a href="#def-subject">제목</a> 및 동일한 <a href="#def-key-pair">키 쌍</a>을 사용하여 두 개의 발급 인증서로 이루어지며, 하나는 Let&rsquo;s Encrypt root의 개인 키로 서명됩니다. 다른 하나는 IdenTrust root의 개인 키로 서명됩니다. <a href="letsencrypt-ewebsite/ko/certificates/" hreflang="ko-KR">/certificates</a>. <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-DANE"><dfn id="def-DANE">DNS-based Authentication of Named Entities</dfn> (<abbr>DANE</abbr>)</a>
+	: DNS를 사용하여 제공된 <a href="#def-leaf">인증서</a> 또는 암호화 키의 신뢰성을 확인하는 방법을 나타내는 메커니즘입니다. <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-DNSSEC"><dfn id="def-DNSSEC">Domain Name System Security Extensions</dfn> (<abbr>DNSSEC</abbr>)</a>
+	: DNS 응답을 암호화된 방식으로 인증하는 메커니즘입니다. DNSSEC를 사용하려면 TLD, 도메인 이름 소유자 및 재귀적 확인자가 배포해야 합니다. 현재 적용이 다소 부족합니다. <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-DV"><dfn id="def-DV">Domain-validated certificate</dfn></a>
+	: 신청자가 도메인 이름 (요청 조직의 ID가 아닌)에 대한 제어권을 증명한 <a href="#def-leaf">인증서</a>입니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 DV 인증서만 제공합니다 (<a href="#def-OV">OV</a> 또는 <a href="#def-EV">EV</a>가 아닌): <a href="letsencrypt-ewebsite/ko/docs/faq/" hreflang="ko-KR">FAQ</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (Elliptic Curve Digital Signature Algorithm)</a>
+	: 타원 곡선 암호화를 사용하는 DSA(디지털 서명 알고리즘)의 변형입니다. <a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">위키피디아</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 <a href="#def-leaf">엔드 엔티티 또는 리프 인증서</a>에 대해 ECDSA를 지원하지만 아직 <a href="#def-chain">인증서 체인</a> 전체에는 지원하지 않습니다: <a href="letsencrypt-ewebsite/ko/upcoming-features/" hreflang="ko-KR">향후 기능</a>
+</p>
+<p class="definition">
+	<a href="#def-Ed25519"><dfn id="def-Ed25519">Ed25519</dfn></a>
+	: Ed448과 함께 특정 유형의 <a href="#def-EdDSA">EdDSA</a>도 사용할 수 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-EdDSA"><dfn id="def-EdDSA"><abbr lang="en">EdDSA</abbr></dfn> (Edwards-curve Digital Signature Algorithm)</a>
+	: 타원 곡선 기반의 현대적인 공개 키 시그니처 시스템으로, 타원 곡선 암호화로 여러 가지 일반적인 <a href="https://ed25519.cr.yp.to/">구현 문제</a>]를 해결하도록 설계되었습니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>와 같은 인증 기관은 아직 EdDSA 인증서를 제공할 수 없습니다. <a href="https://en.wikipedia.org/wiki/EdDSA">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-ECC"><dfn id="def-ECC">Elliptic Curve Cryptography</dfn> (<abbr>ECC</abbr>)</a>
+	: 타원 곡선을 기반으로 하는 공용 키 암호화의 유형입니다. ECC는 비EC 암호화에 비해 작은 키를 사용하는 동시에 동등한 보안을 제공합니다. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">클라우드플레어</a> - <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-EV"><dfn id="def-EV">Extended Validation</dfn> (<abbr>EV</abbr>)</a>
+	: <a href="#def-CA">CA</a>가 웹 사이트를 제어하는 법적 실체를 확인하는 인증서 검증 유형입니다. 여기에는 해당 엔티티에 대한 정보가 포함되어 있습니다. <a href="#def-CA">CA</a>의 제어는 <a href="#def-OV">OV</a> 인증서에 대한 제어보다 더 엄격합니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 EV 인증서를 제공하지 않습니다. <a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-FQDN"><dfn id="def-FQDN">Fully qualified domain name</dfn> (<abbr>FQDN</abbr>)</a>
+	: 웹 사이트의 전체 도메인 이름입니다. 예를 들어 <code>www.example.com</code>은 <em>FQDN</em> 입니다.
+</p>
+<p class="definition">
+	<a href="#def-HPKP"><dfn id="def-HPKP">HTTP Public Key Pinning</dfn> (<abbr>HPKP</abbr>)</a>
+	: 웹 브라우저에 사이트의 <a href="#def-chain">인증서 체인</a>이 향후 로드에 대해 특정 공용 키를 사용하도록 요구하는 보안 메커니즘입니다. Chrome은 CA의 타협으로부터 보호하기 위해 이 메커니즘을 도입했지만, 사이트 정전을 초래함에 따라 Chrome이 해당 메커니즘을 <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">사용 중단 및 제거</a>하게 되었습니다. <a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-IdenTrust"><dfn id="def-IdenTrust">IdenTrust</dfn></a>
+	: <a href="#def-CA">인증 기관</a>입니다. IdenTrust는 <a href="#def-cross-signing">교차 서명한</a> <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="#def-intermediate">중간 인증서</a>를 가지고 있습니다: <a href="letsencrypt-ewebsite/ko/certificates/" hreflang="ko-KR">/certificates</a>. <a href="https://en.wikipedia.org/wiki/IdenTrust">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-intermediate"><dfn id="def-intermediate">Intermediate certificate</dfn></a>
+	: <a href="#def-root">root 인증서</a> 또는 다른 중간에서 서명한 인증서이며 다른 인증서를 서명할 수 있습니다. root 인증서의 개인 키를 오프라인으로 유지하면서 리프 인증서를 서명하는 데 사용됩니다. 매개 변수는 <a href="#def-chain">인증서 체인</a>에 포함되어 있습니다. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Types_of_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-IDN"><dfn id="def-IDN">Internationalized Domain Name</dfn> (<abbr>IDN</abbr>)</a>
+	: 도메인 이름에는 <code>a</code>~<code>z</code>, <code>0</code>~<code>9</code> 및 하이픈(<code>-</code>)이 아닌 다른 문자가 있습니다. 예를 들어, 그들은 아랍어, 중국어, 키릴어, 타밀어, 히브리어 또는 라틴어 문자 기반의 문자 (발음 구별 부호 또는 활자)를 포함할 수 있습니다. IDN 도메인의 인코딩된 표현은 <code>xn--</code>로 시작합니다. IDN은 <a href="#def-LE">Let&rsquo;s Encrypt</a>에서 지원됩니다: <a href="https://letsencrypt.org/2016/10/21/introducing-idn-support.html">https://letsencrypt.org/2016/10/21/introducing-idn-support.html</a>. <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">위키피디아</a> - <a href="https://tools.ietf.org/html/rfc5890">RFC 5890</a> - <a href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>
+</p>
+<p class="definition">
+	<a href="#def-IDNA"><dfn id="def-IDNA">Internationalized Domain Names for Applications</dfn> (<abbr>IDNA</abbr>)</a>
+	: <a href="#def-IDN">국제화된 도메인 이름</a> 참조.
+</p>
+<p class="definition">
+	<a href="#def-ISRG"><dfn id="def-ISRG">Internet Security Research Group</dfn> (<abbr>ISRG</abbr>)</a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a> 뒤에 있는 조직입니다: <a href="https://www.abetterinternet.org/about/">https://www.abetterinternet.org/about/</a>. <a href="https://en.wikipedia.org/wiki/Internet_Security_Research_Group">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-key-pair"><dfn id="def-key-pair">Key-pair</dfn></a>
+	: 서명 또는 암호화에 사용되는 개인 키와 공용 키의 조합입니다. 공용 키는 일반적으로 인증서에 내장되어 있는 반면 개인 키는 자체 저장되므로 비밀로 유지해야 합니다. 키 쌍은 애플리케이션에 따라 암호화 및 암호 해독, 서명 및 확인, 보조 키 협상 등에 사용할 수 있습니다. <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-leaf"><dfn id="def-leaf">Leaf certificate (end-entity certificate)</dfn></a>
+	: 일반적으로 <a href="#def-intermediate">중간 인증서</a>으로 서명한 인증서는 도메인 집합에 유효하며 다른 인증서에 서명할 수 없습니다. <a href="#def-ACME-client">ACME 클라이언트</a>에서 요청하고 <a href="#def-web-server">웹 서버</a>에서 사용하는 인증서 유형입니다. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#End-entity_or_leaf_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-LE"><dfn id="def-LE">Let&#39;s Encrypt</dfn> (<abbr>LE</abbr>)</a>
+	: <a href="#def-ISRG">ISRG</a>에 의해 운영되는 <a href="#def-CA">인증 기관</a>입니다. <a href="https://en.wikipedia.org/wiki/Let%27s_Encrypt">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-mixed-content"><dfn id="def-mixed-content">Mixed content</dfn></a>
+	: HTTPS 웹 페이지가 HTTP를 통해 하위 리소스(Javascript, CSS 또는 이미지)를 로드하는 경우. <a href="#def-web-browser">웹 브라우저</a>가 혼합 콘텐츠를 차단하거나 혼합 콘텐츠가 있을 때 페이지를 덜 안전한 것으로 표시할 수 있습니다: <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content</a>. 혼합 콘텐츠 문제를 해결하려면 웹 개발자가 페이지를 변경해야 모든 리소스가 HTTPS URL을 사용할 수 있습니다. 웹 브라우저 내 <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">개발자 도구</a>를 사용하여 혼합 콘텐츠 문제를 일으키는 리소스를 찾을 수 있습니다.
+</p>
+<p class="definition">
+	<a href="#def-OCSP"><dfn id="def-OCSP"><abbr lang="en">OCSP</abbr></dfn> (Online Certificate Status Protocol)</a>
+	: <a href="#def-leaf">인증서</a>의 <a href="#def-revocation">해지</a> 상태를 확인하는 방법입니다. 즉, <a href="#def-CA">인증 기관</a>이 아직 만료 날짜에 도달하지 않았음에도 인증서가 더 이상 유효한 것으로 간주되지 않아야 함을 나타내는 방법입니다. 이 요청을 통해 인증 기관과 인터넷 서비스 공급자가 누가 사이트를 방문하는지 직접 관찰할 수 있으므로 개인 정보 보호 문제가 발생할 수 있습니다. <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-must-staple"><dfn id="def-OCSP-must-staple">OCSP Must-Staple</dfn></a>
+	: <a href="#def-leaf">인증서</a> 확장자로, 해당 인증서가 있는 <a href="#def-web-server">웹 서버</a>가 <a href="#def-OCSP-stapling">OCSP 스테이핑</a>을 사용해야 한다는 것을 <a href="#def-web-browser">웹 브라우저</a>에게 알립니다. 웹 서버가 모든 연결에 대해 <a href="#def-leaf">인증서</a>의 최신 <a href="#def-revocation">해지</a> 상태를 확인하는 데에 주로 필요하며, 해지 상태를 더 믿을 수 있게 합니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 요청 시 OCSP Must-Staple <a href="#def-extension">연장</a>으로 인증서를 발급할 수 있습니다. <a href="https://blog.mozilla.org/security/2015/11/23/improving-revocation-ocsp-must-staple-and-short-lived-certificates/">모질라 보안 블로그</a> <a href="https://tools.ietf.org/html/rfc7633">RFC 7633</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-stapling"><dfn id="def-OCSP-stapling">OCSP stapling</dfn></a>
+	: <a href="#def-web-server">웹 서버</a>가 <a href="#def-CA">인증기관</a>에서 서명한 <a href="#def-web-browser">웹 브라우저</a> 응답을 보내는 방법이므로 브라우저 자체가 CA의 속도 향상 및 개인 정보 보호를 위해 보조 OCSP 요청을 할 필요가 없습니다. TLS 인증서 상태 요청 확장이라고도 합니다. <a href="https://en.wikipedia.org/wiki/OCSP_stapling">위키피디아</a> <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">클라우드플레어</a>
+</p>
+<p class="definition">
+	<a href="#def-OID"><dfn id="def-OID">Object identifier</dfn> (<abbr>OID</abbr>)</a>
+	: OID는 국제전기통신연합(ITU)과 ISO/IEC에 의해 표준화된 고유 숫자 식별자입니다. OID는 인증서 내에서 확장, 필드 또는 정책 주장을 정의하는 데 사용됩니다. 인터넷 표준 및 <a href="#def-CP">인증서 정책</a> 및 <a href="#def-CPS">인증 실무 지침서</a> 문서는 OID 사용을 정의합니다. <a href="https://en.wikipedia.org/wiki/Object_identifier">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-OV"><dfn id="def-OV">Organization Validation</dfn> (<abbr>OV</abbr>)</a>
+	: <a href="#def-CA">CA</a>가 <a href="#def-subscriber">이용자</a>의 법적 실체를 확인한 인증서입니다. 여기에는 해당 실체에 대한 정보가 포함되어 있습니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 OV 인증서를 제공하지 않습니다. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Organization_validation">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-pem"><dfn id="def-pem">PEM file (.pem)</dfn></a>
+	: 암호화 정보 형식 (기본적으로 보안 전자 메일을 위한 개인 정보 향상 메일 인터넷 표준의 일부로 지정됨)입니다. PEM 문서는 개인 키, 공용 키 또는 디지털 인증서와 같은 정보를 나타낼 수 있습니다. 이러한 파일은 &ldquo;-----BEGIN &ldquo;으로 시작하며 그 다음은 데이터 유형입니다. <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-pfx"><dfn id="def-pfx">Personal Information Exchange Files (.pfx)</dfn></a>
+	: <a href="#def-leaf">리프 인증서</a>, root로의 <a href="#def-chain">인증서 체인</a>과 리프 인증서의 개인 키가 포함된 파일입니다. <a href="https://en.wikipedia.org/wiki/PKCS_12">https://en.wikipedia.org/wiki/PKCS_12</a> 을 참조하세요. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files">마이크로소프트 하드웨어 개발 센터</a>
+</p>
+<p class="definition">
+	<a href="#def-precertificate"><dfn id="def-precertificate">Precertificate</dfn></a>
+	: 사전 인증서는 <a href="#def-CT">인증서 투명성</a>의 일부입니다. 사전 인증서는 CA가 발급하고자 하는 <a href="#def-leaf">리프 인증서</a>의 사본으로, 사전 인증서가 외부 소프트웨어에 의해 받아들여지지 않도록 하기 위해 <a href="#def-critical">치명적</a>이고 해로운 확장이 추가되었습니다. CA는 <a href="#def-SCT">SCT</a>와 교환하여 사전 인증을 <a href="#def-CT-log">CT 로그</a>에 제출합니다. 사전 인증서가 해당 인증서와 동일하지 않으므로 인증서 투명성 로그에 둘 다 포함될 수 있습니다. <a href="https://tools.ietf.org/html/rfc6962#section-3.1">RFC 6962 Section 3.1</a>
+</p>
+<p class="definition">
+	<a href="#def-PSL"><dfn id="def-PSL">Public Suffix List</dfn> (<abbr>PSL</abbr>)</a>
+	: 여러 개별 엔티티가 하위 도메인을 등록할 수 있는 인터넷 도메인을 나타내는 <em>공용 접미사</em> 목록입니다. 예를 들어, <code>com</code>과 <code>co.uk</code>는 TLD가 아니지만 <code>co.uk</code>는 공공 접미사입니다. 웹 브라우저에서는 다른 엔티티에 의해 운영될 가능성이 있는 사이트가 서로 웹 쿠키를 공유하지 못하도록 차단하기 위해 이 목록을 사용합니다. <a href="#def-LE">Let&rsquo;s Encrypt</a> 또한 속도 제한 계산에 목록을 사용합니다: <a href="letsencrypt-ewebsite/ko/docs/rate-limits/" hreflang="ko-KR">/rate-limits</a>. <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+<p class="definition">
+	<a href="#def-RSA"><dfn id="def-RSA"><abbr>RSA</abbr></dfn></a>
+	: 암호화 및 디지털 서명 인증에 사용되는 공용 키 알고리즘입니다. <a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-relying-party"><dfn id="def-relying-party">Relying Party</dfn></a>
+	: 인증서의 정보에 의존하는 사용자입니다. 예를 들어, HTTPS 웹 사이트를 방문하는 사람은 상대편입니다.
+</p>
+<p class="definition">
+	<a href="#def-revocation"><dfn id="def-revocation">Revocation</dfn></a>
+	: 인증서는 <a href="#def-CA">CA</a>에서 해지되었다고 하지 않는 한 만료 날짜까지 유효합니다. 개인 키의 손상 등 다양한 이유로 인증서가 해지될 수 있습니다. 웹 브라우저에서는 <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> 및 <a href="https://dev.chromium.org/Home/chromium-security/crlsets">CRLSets</a>와 같은 최신 방법을 사용하여 인증서가 해지되었는지 확인할 수 있습니다. 많은 경우 <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">해지되지 않는다</a>는 점을 인지하세요. <a href="letsencrypt-ewebsite/ko/docs/revoking/" hreflang="ko-KR">/docs/revoking</a>
+</p>
+<p class="definition">
+	<a href="#def-root-program"><dfn id="def-root-program">Root Program</dfn></a>
+	: 조직이 <a href="#def-store">인증서 저장소</a>에 포함할 인증서를 결정하고 소프트웨어가 어떤 CA를 신뢰하는지 결정하는 데 사용하는 정책입니다.
+</p>
+<p class="definition">
+	<a href="#def-root"><dfn id="def-root">Root certificate</dfn></a>
+	: <a href="#def-CA">인증 기관</a>에 의해 <a href="#def-self-signed">자체 서명된</a> 인증서는 <a href="#def-intermediate">중급</a> 인증서에 서명하는 데 사용되며 <a href="#def-store">인증서 저장소</a>에 포함됩니다. <a href="https://en.wikipedia.org/wiki/Root_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-SSL"><dfn id="def-SSL"><abbr lang="en">SSL</abbr></dfn> (Secure Sockets Layer)</a>
+	: <a href="#def-TLS">TLS</a>의 이전 이름이며, 여전히 공통으로 사용됩니다.
+</p>
+<p class="definition">
+	<a href="#def-self-signed"><dfn id="def-self-signed">Self-signed certificate</dfn></a>
+	: <a href="#def-subject">제목</a>이 <a href="#def-issuer">발행인</a>과 동일한 자체 개인 키로 서명된 인증서입니다. 자체 서명된 인증서는 <a href="#def-store">신뢰할 수 있는 root 목록</a>에 포함된 것과 같은 물리적 환경에서 이루어진 사전 준비로 인해만 신뢰됩니다. <a href="#def-root">root 인증서</a>는 자체 서명됩니다. <a href="https://en.wikipedia.org/wiki/Self-signed_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-SNI"><dfn id="def-SNI">Server Name Indication</dfn> (<abbr>SNI</abbr>)</a>
+	: <a href="#def-user-agent">TLS</a> 핸드셰이크 중에 <a href="#def-web-server">웹 서버</a> 연결할 도메인 이름을 지정하는 <a href="#def-TLS">사용자 에이전트</a>가 보내는 필드입니다. 따라서 서버는 여러 도메인이 동일한 IP 뒤에 호스트될 때 적절한 <a href="#def-leaf">인증서</a>로 응답할 수 있습니다. 클라이언트가 SNI에서 요청한 이름에 따라 웹 서버가 다른 인증서를 보내고 다른 내용을 표시할 수 있습니다. SNI는 암호화되지 않지만 실험 중인 대체, ESNI는 암호화가 됩니다. <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-SCT"><dfn id="def-SCT">Signed Certificate Timestamp</dfn> (<abbr>SCT</abbr>)</a>
+	: <a href="#def-CT-log">인증서 투명 로그</a>에서 인증서를 게시할 수 있는 서명된 검증 가능한 약속입니다. <a href="#def-CT">CT</a>를 시행하는 웹 브라우저는 <a href="#def-TLS">TLS</a> 핸드셰이크에 SCT가 있는지 확인하고 로그 요구 사항을 충족하지 않는 사이트에 대한 연결을 거부합니다. 그러면 부정 또는 부정확한 인증서가 탐지될 가능성이 높아집니다. <a href="https://www.certificate-transparency.org/how-ct-works">https://www.certificate-transparency.org/how-ct-works</a>
+</p>
+<p class="definition">
+	<a href="#def-staging"><dfn id="def-staging">Staging</dfn></a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a>는 속도 제한에 영향을 주지 않고 인증서 요청을 테스트할 수 있는 스테이징 API를 제공합니다. 스테이징 환경에서 생성된 인증서는 공개적으로 신뢰되지 <em>않습니다</em>. 준비 환경은 테스트, 디버깅 및 ACME 클라이언트 개발 용도로 사용해야 합니다. <a href="letsencrypt-ewebsite/ko/docs/staging-environment/" hreflang="ko-KR">/docs/staging-environment</a>
+</p>
+<p class="definition">
+	<a href="#def-SAN"><dfn id="def-SAN">Subject Alternative Name</dfn> (<abbr>SAN</abbr>)</a>
+	: 인증서가 유효한 도메인을 나타내는 <a href="#def-leaf">인증서</a> 필드입니다. 이제 호환성 문제로만 제공되는 <a href="#def-CN">공통 이름</a>의 사용을 대체합니다. 단일 인증서는 많은 SAN을 포함할 수 있으며 여러 가지 도메인 이름에 대해 유효합니다. <a href="https://en.wikipedia.org/wiki/Subject_Alternative_Name">위키피디아</a> <a href="https://letsencrypt.org/docs/rate-limits/#names-per-certificate">https://letsencrypt.org/docs/rate-limits/#names-per-certificate</a>
+</p>
+<p class="definition">
+	<a href="#def-subscriber"><dfn id="def-subscriber">Subscriber</dfn></a>
+	: 인증서를 요청하는 사용자 또는 조직입니다.
+</p>
+<p class="definition">
+	<a href="#def-TLS"><dfn id="def-TLS"><abbr lang="en">TLS</abbr></dfn> (Transport-Level Security)</a>
+	: HTTPS가 웹 페이지 방문을 암호화하고 인증하는 데 사용하는 프로토콜입니다.
+</p>
+<p class="definition">
+	<a href="#def-TLSA"><dfn id="def-TLSA"><abbr>TLSA</abbr></dfn></a>
+	: 특히 <a href="#def-TLS">TLS</a> 연결의 검증과 관련된 <a href="#def-DANE">DANE</a>의 부분입니다.
+</p>
+<p class="definition">
+	<a href="#def-TLD"><dfn id="def-TLD">Top-Level Domain</dfn> (<abbr>TLD</abbr>)</a>
+	: <code>.de</code>(독일), <code>.cn</code>(중국)과 같은 국가 코드 최상위 도메인(ccTLD), <code>.com</code>, <code>.org</code>와 같은 일반 최상위 도메인(gTLD)과 같은 계층적 도메인 이름 시스템에서 최고 수준입니다. <a href="https://en.wikipedia.org/wiki/Top-level_domain">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-UCC"><dfn id="def-UCC">Unified Communications Certificate</dfn> (<abbr>UCC</abbr>)</a>
+	: <a href="#def-SAN">제목 대체 이름 (SAN)</a>이 여러 개 포함된 인증서에 대한 설명입니다.
+</p>
+<p class="definition">
+	<a href="#def-user-agent"><dfn id="def-user-agent">User Agent</dfn></a>
+	: <a href="#def-web-server">웹 서버</a>와 통신할 수 있는 소프트웨어입니다. 예: <a href="#def-web-browser">웹 브라우저</a> 또는 <a href="https://en.wikipedia.org/wiki/CURL">cURL</a>.
+</p>
+<p class="definition">
+	<a href="#def-web-browser"><dfn id="def-web-browser">Web Browser</dfn></a>
+	: 웹 페이지를 표시하는 데 사용되는 <a href="#def-user-agent">사용자 에이전트</a>입니다. 예: <em>Mozilla Firefox</em>, <em>Google Chrome</em> 또는 <em>Internet Explorer</em> 입니다. <a href="https://en.wikipedia.org/wiki/Web_browser">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-web-server"><dfn id="def-web-server">Web server</dfn></a>
+	: 웹 페이지 (또는 이를 호스팅하는 하드웨어 서버)를 제공하는 소프트웨어입니다. <a href="https://en.wikipedia.org/wiki/Web_server">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-wildcard"><dfn id="def-wildcard">Wildcard Certificate</dfn></a>
+	: 이 인증서는 한 수준 깊이 하위 도메인에 대해 유효합니다. 예를 들어 <code>*.example.com</code>에 대한 <a href="#def-SAN">SAN</a>이 포함된 인증서는 <code>blog.example.com</code> 및 <code>www.example.com</code>에 유효하지만 <code>bork.bork.example.com</code> 또는 <code>example.com</code>에는 유효하지 <strong>않습니다</strong>. 와일드카드는 하위 도메인 대신 별표 문자 (*)로 표시됩니다. <a href="#def-LE">Let&rsquo;s Encrypt</a>는 <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">2018년 3월부터 와일드카드 인증서를 제공합니다</a>. <a href="https://en.wikipedia.org/wiki/Wildcard_certificate">위키피디아</a>
+</p>
+<p class="definition">
+	<a href="#def-X509"><dfn id="def-X509"><abbr>X.509</abbr></dfn></a>
+	: 공용 키 인증서의 형식을 정의하는 표준입니다. <a href="https://en.wikipedia.org/wiki/X.509">위키피디아</a>
+</p>
+<link rel="stylesheet" href="/css/glossary.css">
+<script src="/js/glossary.js" async></script>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt는 <a href="https://www.abetterinternet.org/"> 비영리 인터넷 보안 연구 그룹 (ISRG)</a>에서 가져온 무료, 자동 및 공개 인증 기관입니다.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>모든 문의 및 질문:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ko/privacy/">개인정보보호 정책</a>을 확인하십시오.<br>
+<a href="https://www.abetterinternet.org/trademarks/">상표권 정책</a>을 확인하십시오.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

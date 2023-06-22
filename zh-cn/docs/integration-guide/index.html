@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>集成指南 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="如果您是托管服务提供商或正在大型网站中集成 Let&amp;rsquo;s Encrypt，或者您正在为 Let&amp;rsquo;s Encrypt 编写客户端软件，则本文档包含了一些对您有用的建议。
+做好更改准备 Let&amp;rsquo;s Encrypt 和 Web PKI 都将随着时间的推移而不断发展。 您应该确保能够轻松更新所有使用 Let&amp;rsquo;s Encrypt 的服务。 如果您还要部署依赖于 Let&amp;rsquo;s Encrypt 证书的客户端，请特别确保这些客户端定期收到更新。
+将来，这些事情可能会发生变化：
+ 我们用于签发证书的根证书和中间证书 对证书签名时使用的哈希算法 我们愿意用于对终端实体证书进行签名的密钥类型和密钥强度 ACME 协议  我们将始终尽可能提前通知此类更改，但如果在某些组件中发现严重的安全漏洞，我们可能需要在短期内或立即进行更改。 特别是对于中间证书改变，你不应该硬编码中间证书，而应该使用 ACME 协议中的 Link: rel=&amp;quot;up&amp;quot;标头，因为中间证书很可能会改变。
+同样，我们可能会在更新服务条款（ToS）时更改其链接。 请避免硬编码 ToS 链接，而是使用 Link：rel =“terms-of-service” 标头确定要使用的 ToS 链接。
+要接收有关上述重要更改的小批量更新，请订阅我们的 API 公告分类。这对客户端开发人员和托管提供商都很有用。
+获取更新 要接收有关上述重要更改的小批量更新，请订阅我们的 API 公告分类。 这对客户端开发人员和托管提供商都很有用。
+有关维护和停机的更高容量更新，请访问我们的 状态页面并点击右上方的&amp;quot;订阅&amp;quot;按钮。 这对托管服务提供商最为有用。
+此外，请确保为 ACME 帐户使用有效的电子邮件地址。 我们将使用该电子邮件向您发送过期通知，并就您帐户特有的任何问题进行沟通。
+谁是用户 我们的 CPS 和用户协议指明了用户是指拥有证书私钥的人。 对于托管服务提供商而言，订阅者是提供商，而不是提供商的客户。 如果您正在编写允许人们自行部署的软件，那用户就是部署软件的人。
+创建帐户（即注册）时提供的联系电子邮件应发送给用户。 我们将向该地址发送电子邮件以警告即将到期的证书，并通知我们 隐私政策的更改。 如果您是托管服务提供商，那些通知应该发送给您而不是客户。 理想情况下，请配置邮件列表或别名，以便在您休假时其他人可以响应通知。">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="集成指南">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/integration-guide/">
+    <meta name="twitter:description" content="如果您是托管服务提供商或正在大型网站中集成 Let&amp;rsquo;s Encrypt，或者您正在为 Let&amp;rsquo;s Encrypt 编写客户端软件，则本文档包含了一些对您有用的建议。
+做好更改准备 Let&amp;rsquo;s Encrypt 和 Web PKI 都将随着时间的推移而不断发展。 您应该确保能够轻松更新所有使用 Let&amp;rsquo;s Encrypt 的服务。 如果您还要部署依赖于 Let&amp;rsquo;s Encrypt 证书的客户端，请特别确保这些客户端定期收到更新。
+将来，这些事情可能会发生变化：
+ 我们用于签发证书的根证书和中间证书 对证书签名时使用的哈希算法 我们愿意用于对终端实体证书进行签名的密钥类型和密钥强度 ACME 协议  我们将始终尽可能提前通知此类更改，但如果在某些组件中发现严重的安全漏洞，我们可能需要在短期内或立即进行更改。 特别是对于中间证书改变，你不应该硬编码中间证书，而应该使用 ACME 协议中的 Link: rel=&amp;quot;up&amp;quot;标头，因为中间证书很可能会改变。
+同样，我们可能会在更新服务条款（ToS）时更改其链接。 请避免硬编码 ToS 链接，而是使用 Link：rel =“terms-of-service” 标头确定要使用的 ToS 链接。
+要接收有关上述重要更改的小批量更新，请订阅我们的 API 公告分类。这对客户端开发人员和托管提供商都很有用。
+获取更新 要接收有关上述重要更改的小批量更新，请订阅我们的 API 公告分类。 这对客户端开发人员和托管提供商都很有用。
+有关维护和停机的更高容量更新，请访问我们的 状态页面并点击右上方的&amp;quot;订阅&amp;quot;按钮。 这对托管服务提供商最为有用。
+此外，请确保为 ACME 帐户使用有效的电子邮件地址。 我们将使用该电子邮件向您发送过期通知，并就您帐户特有的任何问题进行沟通。
+谁是用户 我们的 CPS 和用户协议指明了用户是指拥有证书私钥的人。 对于托管服务提供商而言，订阅者是提供商，而不是提供商的客户。 如果您正在编写允许人们自行部署的软件，那用户就是部署软件的人。
+创建帐户（即注册）时提供的联系电子邮件应发送给用户。 我们将向该地址发送电子邮件以警告即将到期的证书，并通知我们 隐私政策的更改。 如果您是托管服务提供商，那些通知应该发送给您而不是客户。 理想情况下，请配置邮件列表或别名，以便在您休假时其他人可以响应通知。">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>集成指南</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2016-08-08">Aug 8, 2016</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>如果您是托管服务提供商或正在大型网站中集成 Let&rsquo;s Encrypt，或者您正在为 Let&rsquo;s Encrypt 编写客户端软件，则本文档包含了一些对您有用的建议。</p>
+<h1 id="做好更改准备">做好更改准备</h1>
+<p>Let&rsquo;s Encrypt 和 Web PKI 都将随着时间的推移而不断发展。  您应该确保能够轻松更新所有使用 Let&rsquo;s Encrypt 的服务。 如果您还要部署依赖于 Let&rsquo;s Encrypt 证书的客户端，请特别确保这些客户端定期收到更新。</p>
+<p>将来，这些事情可能会发生变化：</p>
+<ul>
+<li>我们用于签发证书的根证书和中间证书</li>
+<li>对证书签名时使用的哈希算法</li>
+<li>我们愿意用于对终端实体证书进行签名的密钥类型和密钥强度</li>
+<li>ACME 协议</li>
+</ul>
+<p>我们将始终尽可能提前通知此类更改，但如果在某些组件中发现严重的安全漏洞，我们可能需要在短期内或立即进行更改。 特别是对于中间证书改变，你不应该硬编码中间证书，而应该使用 ACME 协议中的 <a href="https://tools.ietf.org/html/rfc8555#section-7.4.2"><code>Link: rel=&quot;up&quot;</code></a>标头，因为中间证书很可能会改变。</p>
+<p>同样，我们可能会在更新服务条款（ToS）时更改其链接。 请避免硬编码 ToS 链接，而是使用 <a href="https://tools.ietf.org/html/rfc8555#section-7.3.3"><code>Link：rel =“terms-of-service”</code></a> 标头确定要使用的 ToS 链接。</p>
+<p>要接收有关上述重要更改的小批量更新，请订阅我们的 <a href="https://community.letsencrypt.org/t/about-the-api-announcements-category/23836">API 公告</a>分类。这对客户端开发人员和托管提供商都很有用。</p>
+<h1 id="获取更新">获取更新</h1>
+<p>要接收有关上述重要更改的小批量更新，请订阅我们的 <a href="https://community.letsencrypt.org/t/about-the-api-announcements-category/23836">API 公告</a>分类。 这对客户端开发人员和托管提供商都很有用。</p>
+<p>有关维护和停机的更高容量更新，请访问我们的 <a href="https://letsencrypt.status.io/">状态页面</a>并点击右上方的&quot;订阅&quot;按钮。 这对托管服务提供商最为有用。</p>
+<p>此外，请确保为 ACME 帐户使用有效的电子邮件地址。 我们将使用该电子邮件向您发送过期通知，并就您帐户特有的任何问题进行沟通。</p>
+<h1 id="谁是用户">谁是用户</h1>
+<p>我们的 <a href="letsencrypt-ewebsite/zh-cn/repository/" hreflang="zh-Hans-CN">CPS 和用户协议</a>指明了用户是指拥有证书私钥的人。 对于托管服务提供商而言，订阅者是提供商，而不是提供商的客户。 如果您正在编写允许人们自行部署的软件，那用户就是部署软件的人。</p>
+<p>创建帐户（即注册）时提供的联系电子邮件应发送给用户。 我们将向该地址发送电子邮件以警告即将到期的证书，并通知我们 <a href="letsencrypt-ewebsite/zh-cn/privacy/" hreflang="zh-Hans-CN">隐私政策</a>的更改。  如果您是托管服务提供商，那些通知应该发送给您而不是客户。 理想情况下，请配置邮件列表或别名，以便在您休假时其他人可以响应通知。</p>
+<p>这样做的结果是，如果您是托管服务提供商，您无需向我们发送客户的电子邮件地址或让他们同意我们的用户协议。您只需为您控制的域名颁发证书然后开始使用它们。 您只需为您控制的域名颁发证书然后开始使用它们。</p>
+<h1 id="使用一个还是多个账户">使用一个还是多个账户？</h1>
+<p>在 ACME 中，可以创建一个帐户并将其用于所有授权和颁发，或者为每个客户创建一个帐户。 这种灵活性可能很有价值。 例如，一些主机提供商可能希望每个客户使用一个帐户，并将帐户密钥存储在不同的地方中，这样即使帐户密钥泄露也不会允许攻击者给所有用户颁发证书。</p>
+<p>但是，对于大多数大型托管服务提供商，我们建议使用单个帐户并保护相应的帐户密钥。 这样可以更轻松地识别属于同一实体的证书，更容易保持联系信息处于最新状态，并在需要时更轻松地提供速率限制调整。 如果您使用许多不同的帐户，我们将无法有效调整速率限制。</p>
+<h1 id="多域名-san-证书">多域名（SAN）证书</h1>
+<p>我们的 <a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">颁发政策</a>允许每个证书最多包含 100 个域名。 无论您是为每个主机名使用单独的证书，还是将许多主机名组合在少量证书上，这都取决于您。</p>
+<p>每个主机名使用单独的证书意味着在启用和停用域名时逻辑上进行添加和删除域名所需的更改更少。单独的证书还可以最大限度地减少证书大小，从而加快低带宽网络上的 HTTPS 握手速度。 每个主机名使用单独的证书意味着在启用和停用域名时逻辑上进行添加和删除域名所需的更改更少。单独的证书还可以最大限度地减少证书大小，从而加快低带宽网络上的 HTTPS 握手速度。</p>
+<p>另一方面，使用具有许多主机名的大型证书可以让您整体上管理更少的证书。如果您需要支持不支持 TLS 服务器名称指示（<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>）的旧客户端（如 Windows XP），则每个证书都需要一个唯一的 IP 地址 ，因此在每个证书上放置更多域名会减少您需要的 IP 地址数量。 另一方面，使用具有许多主机名的大型证书可以让您整体上管理更少的证书。如果您需要支持不支持 TLS 服务器名称指示（<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>）的旧客户端（如 Windows XP），则每个证书都需要一个唯一的 IP 地址 ，因此在每个证书上放置更多域名会减少您需要的 IP 地址数量。</p>
+<p>Let&rsquo;s Encrypt 的主要价值在于我们允许在创建新网站时自动颁发证书。但是，如果您的基础架构可能会为同一网站重复创建新的前端服务器，那么这些前端应该首先尝试使用来自持久性存储的证书和私钥，并且只在没有可用的证书或者所有现有的证书都已过期的情况下颁发新证书。</p>
+<h1 id="存储和重用证书和密钥">存储和重用证书和密钥</h1>
+<p>Let&rsquo;s Encrypt 的主要价值在于我们允许在创建新网站时自动颁发证书。  但是，如果您的基础架构可能会为同一网站重复创建新的前端服务器，那么这些前端应该首先尝试使用来自持久性存储的证书和私钥，并且只在没有可用的证书或者所有现有的证书都已过期的情况下颁发新证书。</p>
+<p>对于 Let&rsquo;s Encrypt，这有助于我们为尽可能多的人高效地提供服务。 对您而言，这可以确保您能够随时随地部署您的网站，无论 Let&rsquo;s Encrypt 的状态如何。</p>
+<p>例如，许多站点正在开始使用 Docker 按需配置新的前端实例。 如果您将 Docker 容器设置为在启动时颁发证书，并且您没有持久性地存储证书和密钥，那么您如果一次启动太多实例，就可能会达到速率限制。 在最糟糕的情况下，如果您必须立即销毁并重新创建所有实例，您可能会遇到这样的情况：您的实例都没有能够获得证书，并且您的网站在速率限制结束前会有好几天都无法使用。 而且不仅仅是速率限制会导致这类问题。 如果在需要启动前端时 Let&rsquo;s Encrypt 出于任何原因不可用，您就会遇到同样的问题。</p>
+<p>请注意，某些部署原则指出加密密钥永远不能离开生成它们的物理机器。 只要您确保机器及其数据可以长期使用，并且您仔细管理速率限制，此模型就可以正常使用 Let&rsquo;s Encrypt。</p>
+<h1 id="选择验证方式">选择验证方式</h1>
+<p>您如果正在使用 http-01 ACME 进行验证，则需要先向每个前端提供验证用的回复，然后才能通知 Let&rsquo;s Encrypt 您已准备好进行验证。 如果您有很多前端服务器，这么做可能非常困难。 在这种情况下，使用 dns-01 进行验证可能会更容易。 当然，您如果有许多地理位置分散的 DNS 响应服务器，则必须确保每个响应服务器上都有验证所需的 TXT 记录。</p>
+<p>此外，在使用 dns-01 进行验证时，请务必清理旧的 TXT 记录，以确保对 Let&rsquo;s Encrypt 的查询的回复不会太大。</p>
+<p>如果您想无论如何都要使用 http-01 进行验证，您也许可以利用 HTTP 重定向。 您可以设置每个前端，对于所有“XYZ”，将 /.well-known/acme-validation/XYZ 重定向到 validation-server.example.com/XYZ。 这会将颁发证书的责任委托给验证服务器，因此您需要很好地保护该服务器。</p>
+<h1 id="中央验证服务器">中央验证服务器</h1>
+<p>与上述两点相关，您如果有很多前端服务器，可能需要使用较小的服务器子集来管理证书颁发。 这样可以更轻松地使用重定向进行 http-01 验证，并提供长期存储证书和密钥的位置。</p>
+<h1 id="使用-ocsp-装订">使用 OCSP 装订</h1>
+<p>很多浏览器在加载您的网页时会尝试从 Let&rsquo;s Encrypt 的 OCSP 服务器获取响应。 这会导致一些<a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/">性能和隐私问题</a>。  理想情况下，连接到网站不应需要等待到 Let&rsquo;s Encrypt 服务器的辅助连接。 此外，OCSP 请求会向 Let&rsquo;s Encrypt 泄露用户访问的网站名称。 我们有良好的隐私权政策，所以不会记录 OCSP 请求中能够用于识别个人的信息，如果可以的话我们本不想收到这些数据。 此外我们预计，如果每次浏览器首次访问使用 Let&rsquo;s Encrypt 证书的站点都会发送 OCSP 请求，为这些请求提供服务的带宽成本将占去我们基础设施支出的一大部分。</p>
+<p>通过启用 OCSP 装订，您可以提高网站的性能，为用户提供更好的隐私保护，并帮助 Let&rsquo;s Encrypt 为尽可能多的人高效地提供服务。</p>
+<h1 id="防火墙配置">防火墙配置</h1>
+<p>要使用 Let&rsquo;s Encrypt，您需要允许来自运行 ACME 客户端的计算机的 443 端口上的出站通信。 我们不会公布我们的 ACME 服务使用的 IP 范围，它们可能在不另行通知的情况下改变。</p>
+<p>如果您 “http-01” ACME 验证方法，您需要允许 80 端口上的入站通信。 我们不会公布执行验证的 IP 范围，它们可能在不另行通知的情况下改变。</p>
+<p>注意：我们建议始终允许对 Web 服务器进行纯 HTTP 访问，并将其重定向到 HTTPS。 这比拒绝或丢弃 80 端口连接的 Web 服务器提供更好的用户体验，并提供相同级别的安全性。</p>
+<p>对于所有验证类型，您都需要允许到您的权威 DNS 服务器的 53 端口上的入站流量（TCP和UDP）。</p>
+<h1 id="支持的密钥算法">支持的密钥算法</h1>
+<p>让我们加密我们接受2048、3072或4096位长的 RSA 密钥和P-256 或 P-384 ECDSA 密钥。 对于帐户密钥和证书密钥来说都是如此。 您不能将帐户密钥重用为证书密钥。</p>
+<p>我们建议托管服务提供商自动颁发证书并为其控制的所有主机名配置 HTTPS，并且允许用户选择是否将 HTTP 链接重定向到等效的 HTTPS 链接。我们建议为现有帐户在默认情况下禁用该设置，但为新帐户在默认情况下启用该设置。</p>
+<h1 id="默认使用-https">默认使用 HTTPS</h1>
+<p>我们建议托管服务提供商自动颁发证书并为其控制的所有主机名配置 HTTPS，并且允许用户选择是否将 HTTP 链接重定向到等效的 HTTPS 链接。 我们建议为现有帐户在默认情况下禁用该设置，但为新帐户在默认情况下启用该设置。</p>
+<p>原因：现有网站可能包含一些 HTTP 子资源（脚本，CSS 和图像）。 如果将这些站点自动重定向到其 HTTPS 版本，则由于混合内容阻断，浏览器将阻止其中一些子资源的加载。 这可能会破坏网站上的功能。 但是，创建新网站并发现 HTTPS 重定向的人基本上一定会只包含 HTTPS 子资源，因为如果他们尝试包含 HTTP 子资源，他们会立即注意到该资源无法正常工作。</p>
+<p>我们建议允许客户设置 HTTP 严格传输安全（HSTS）标头，并默认设置有效期为 60 天。 但是，应在此设置旁显示警告：如果客户需要转移到不提供 HTTPS 的托管服务提供商，则浏览器中的缓存 HSTS 设置将使其网站不可用。 此外，客户和托管服务提供商都应该知道 HSTS 标头会将证书错误变为硬故障。 例如，虽然人们通常可以通过点击按钮忽略浏览器关于名称不匹配或证书过期的警告，但浏览器不允许对具有有效的 HSTS 标头的主机名这么做。</p>
+<h1 id="续期时间">续期时间</h1>
+<p>我们建议在有效期剩余三分之一时自动续期证书。 由于 Let&rsquo;s Encrypt 当前颁发有效期为 90 天的证书，这意味着在到期前 30 天进行续期。</p>
+<p>如果您要为超过 10000 个主机名颁发证书，我们建议进行小批量自动续期，而不是批量进行大量证书的续期。 这样做可以降低风险：如果 Let&rsquo;s Encrypt 在您需要续期时服务中断，或者您的续期系统出现暂时性故障，那么这些问题只会影响您的一部分而不是所有证书。 它还使我们能够更简单地进行服务器处理能力的规划。</p>
+<p>您可以批量颁发所有域名的证书以快速配置服务器，这没什么问题。 然后，您可以在正常续期前一天续期一部分证书，再在第二天再续期一部分，等等，这样可以分散各个证书续期的时间。</p>
+<p>如果您的客户端软件会自动配置定期批处理作业，请确保在一天中随机选择确切的时间来运行，而不是始终在特定时间运行。 这可以确保 Let&rsquo;s Encrypt 不会在每小时的开头遇到过高的流量峰值。 由于 Let&rsquo;s Encrypt 需要增加服务器处理能力来满足峰值负载，降低流量峰值可以帮助我们降低成本。</p>
+<h1 id="重试失败的验证">重试失败的验证</h1>
+<p>续期失败不应被视为致命错误。 您应该在颁发服务中使用指数式退避模式来实现优雅的重试逻辑，并将重试等待时间的最大值限制为每天对一张证书进行一次重试。 例如，以下是一个合理的退避时间表：一分钟后第一次重试，十分钟后第二次重试，一百分钟后第三次重试，一天后进行第四次和随后的重试。 当然您也应该允许管理员按域名或对全局提提前进行重试。</p>
+<p>重试时使用退避算法意味着您的颁发软件应该同时跟踪失败和成功的尝试，并在尝试重新颁发之前检查最近是否有失败。 每小时尝试数百次颁发是没有意义的，因为重复遇到的失败可能是持久性的。</p>
+<p>您应将所有错误发送给负责的管理员，以查看是否有特定问题需要修复。</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

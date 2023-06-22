@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ru-RU">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Виды проверок -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Когда вы запрашиваете новый сертификат у Let’s Encrypt, наши серверы проверяют права на доменные имена в сертификате, используя &amp;ldquo;испытания&amp;rdquo; (или &amp;ldquo;проверки&amp;rdquo;), согласно стандарту ACME. Проверки выполняются с помощью ACME-клиента и не требуют дополнительной настройки, но для сложных конфигураций будет полезным узнать о проверках чуть больше. Если нет уверенности, какую именно проверку применять - используйте настройки по-умолчанию для вашего ACME-клиента, или проверку HTTP-01.
+Проверка HTTP-01 Этот тип проверки используется чаще всего. Let’s Encrypt выдаёт ACME-клиенту токен, а ACME-клиент записывает этот токен в файл на web-сервере по пути http://YOUR_DOMAIN/.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Виды проверок">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ru/docs/challenge-types/">
+    <meta name="twitter:description" content="Когда вы запрашиваете новый сертификат у Let’s Encrypt, наши серверы проверяют права на доменные имена в сертификате, используя &amp;ldquo;испытания&amp;rdquo; (или &amp;ldquo;проверки&amp;rdquo;), согласно стандарту ACME. Проверки выполняются с помощью ACME-клиента и не требуют дополнительной настройки, но для сложных конфигураций будет полезным узнать о проверках чуть больше. Если нет уверенности, какую именно проверку применять - используйте настройки по-умолчанию для вашего ACME-клиента, или проверку HTTP-01.
+Проверка HTTP-01 Этот тип проверки используется чаще всего. Let’s Encrypt выдаёт ACME-клиенту токен, а ACME-клиент записывает этот токен в файл на web-сервере по пути http://YOUR_DOMAIN/.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ru/docs/challenge-types/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Блог Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустить навигационные ссылки</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ru/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ru/docs/" class="pure-menu-link" tabindex="0">Документация</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Помощь</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Поддержите нас</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/donate/" class="pure-menu-link">Сделайте пожертвование</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Станьте нашим спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/sponsors/" class="pure-menu-link">Текущие спонсоры и дарители</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getinvolved/" class="pure-menu-link">Внесите свой вклад</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">О сервисе</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/about/" class="pure-menu-link">Что такое Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Окончание срока действия DST Root CA X3 (сентябрь 2021 г.)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/faq/" class="pure-menu-link">Часто задаваемые вопросы (ЧЗВ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Состояние сервиса</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Карьера</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/contact/" class="pure-menu-link">Контакты</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Язык <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/challenge-types/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/challenge-types/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/challenge-types/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/challenge-types/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/challenge-types/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/challenge-types/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/challenge-types/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/challenge-types/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/challenge-types/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/challenge-types/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/challenge-types/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/challenge-types/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/challenge-types/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/challenge-types/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">✓ Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/challenge-types/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/challenge-types/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/challenge-types/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/challenge-types/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/challenge-types/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/challenge-types/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Виды проверок</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Последнее обновление: <time datetime="2020-12-08">8 дек. 2020 г.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ru/docs">Вся документация</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Внимание! Английская версия сайта была обновлена, перевод неактуален
+                    (<time datetime="2023-02-13">13 февр. 2023 г.</time>)
+                    <a href="letsencrypt-ewebsite/docs/challenge-types/">Просмотреть на английском</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Когда вы запрашиваете новый сертификат у Let’s Encrypt, наши серверы проверяют права на доменные имена в сертификате, используя &ldquo;испытания&rdquo; (или &ldquo;проверки&rdquo;), согласно стандарту ACME. Проверки выполняются с помощью ACME-клиента и не требуют дополнительной настройки, но для сложных конфигураций будет полезным узнать о проверках чуть больше. Если нет уверенности, какую именно проверку применять - используйте настройки по-умолчанию для вашего ACME-клиента, или проверку HTTP-01.</p>
+<h1 id="проверка-http-01">Проверка HTTP-01</h1>
+<p>Этот тип проверки используется чаще всего. Let’s Encrypt выдаёт ACME-клиенту токен, а ACME-клиент записывает этот токен в файл на web-сервере по пути <code>http://YOUR_DOMAIN/.well-known/acme-challenge/TOKEN</code>. В этом файле содержится сам токен, плюс отпечаток ключа вашего аккаунта. Как только ACME-клиент сообщит Let’s Encrypt, что файл готов, Let’s Encrypt будет пытаться получить этот файл по URL (возможно, несколько раз, с различных адресов). Если полученный ответ будет верным, проверка считается успешной, и сертификат для выбранного домена готов к использованию. Если проверка прошла неудачно, требуется повторить попытку с новым сертификатом.</p>
+<p>Реализация проверки HTTP-01 разрешает редиректы запросов, общим числом не более 10. Редиректы принимаются только на адреса, начинающиеся с “http:” или “https:”, и только на порты 80 или 443. Редиректы на IP-адреса не принимаются. Если редирект выполнялся на URL c HTTPS, то сертификат не считается подтверждённым (т.к. проверка для новых сертификатов, может обнаружить самоподписанные или просроченные сертификаты).</p>
+<p>Проверка HTTP-01 выполняется только с использованием порта 80. Произвольный порт для проверки снижает надёжность, и потому запрещён стандартом ACME.</p>
+<p>Плюсы:</p>
+<ul>
+<li>Упрощённая автоматизация процесса, не требующая дополнительных знаний по настройке доменов</li>
+<li>Выпуск сертификатов для доменов хостинг-провайдеров, привязанных по CNAME.</li>
+<li>Совместим с уже настроенными web-серверами.</li>
+</ul>
+<p>Минусы:</p>
+<ul>
+<li>Не работает, если ваш провайдер блокирует порт 80 (это редко, но это делают некоторые провайдеры).</li>
+<li>Не подходит для сертификатов с подстановкой (wildcard-сертификатов).</li>
+<li>Для каждого web-сервера требуется свой файл.</li>
+</ul>
+<h1 id="проверка-dns-01">Проверка DNS-01</h1>
+<p>Эта проверка требует подтверждения прав на домен с помощью специальной TXT-записи для доменного имени. Это сложнее в настройке, чем для проверки HTTP-01, но покрывает сценарии использования, недоступные для проверки HTTP-01. Кроме того, проверка DNS-01 разрешает выпускать сертификаты с подстановкой (wildcard-сертификаты). После того, как Let’s Encrypt передаёт ACME-клиенту токен, клиент создаёт содержимое TXT-записи на основе токена и ключа аккаунта, и записывает её в <code>_acme-challenge.YOUR_DOMAIN</code>. Далее, Let’s Encrypt запрашивает TXT-запись в DNS-зоне домена. Если значения совпадают - сертификат готов к использованию!</p>
+<p>Крайне важно автоматизировать процессы выпуска и отзыва сертификатов, поэтому проверку DNS-01 имеет смысл использовать, когда DNS-провайдер предоставляет API для автоматических обновлений. Наше сообщество поддерживает <a href="https://community.letsencrypt.org/t/dns-providers-who-easily-integrate-with-lets-encrypt-dns-validation/86438">список таких DNS-провайдеров</a>. DNS-провайдер может быть либо регистратором доменов (компанией, у которой вы купили доменное имя), либо сторонней организацией. Если вы захотите сменить DNS-провайдера, нужно будет сделать незначительные изменения у регистратора доменов. Ожидать окончания срока действия сертификатов при этом не требуется.</p>
+<p>Обратите внимание, что размещение полноправной учётной записи для DNS API на web-сервере увеличивает возможный ущерб при взломе. Лучше использовать <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">учётную запись с ограниченными возможностями</a>, или выполнять проверку DNS-01 на отдельном сервере, с последующим копированием сертификатов на web-сервер.</p>
+<p>Let’s Encrypt придерживается стандартов DNS для поиска TXT-записи при проверке DNS-01, поэтому можно задействовать записи CNAME или NS для делегирования права ответа за другие DNS-зоны. Например <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">настроив субдомен <code>_acme-challenge</code></a> для специального сервера валидации. Или, если DNS-провайдер медленно обновляется, и вы хотите использовать более производительный сервер.</p>
+<p>Для большинства DNS-провайдеров характерен &ldquo;период обновления данных&rdquo;, показывающий, сколько времени пройдёт с момента изменения DNS-записи до обновления всех DNS-серверов провайдера. Этот период сложно оценить, особенно когда DNS-провайдеры применяют <a href="https://en.wikipedia.org/wiki/Anycast">anycast</a>. В этом случае, в зависимости от геолокации, вы и Let’s Encrypt будете взаимодействовать с разными серверами, и получать различные результаты. Лучшие DNS API дают вам возможность автоматически проверять полноту распространения обновления. Если DNS-провайдер такой информации не даёт, придётся настроить ACME-клиент на длительное (не менее часа) ожидание перед запуском валидации.</p>
+<p>Для одного и того же доменного имени допускается несколько TXT-записей. Например, когда требуется одновременно выполнить проверку и для обычного сертификата, и для wildcard-сертификата. Удаляйте неактуальные TXT-записи, т.к. из-за большого размера ответа сервера при проверке Let’s Encrypt признает проверку неудачной.</p>
+<p>Плюсы:</p>
+<ul>
+<li>Подходит для сертификатов с подстановкой (wildcard-сертификатов).</li>
+<li>Работает в случае нескольких web-серверов.</li>
+</ul>
+<p>Минусы:</p>
+<ul>
+<li>Хранение учётной записи для API на web-сервере достаточно рискованно.</li>
+<li>У Вашего провайдера DNS может не быть API для управления.</li>
+<li>У DNS API может не быть методов оценки период обновления записей.</li>
+</ul>
+<h1 id="tls-sni-01">TLS-SNI-01</h1>
+<p>Проверка была описана в черновиках протокола ACME. Согласно ей, вначале выполняется TLS handshake на порте 443, и посылается специальный <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a> заголовок для поиска сертификата, содержащего токен. Проверка TLS-SNI-01 <a href="https://community.letsencrypt.org/t/march-13-2019-end-of-life-for-all-tls-sni-01-validation-support/74209">отключена в марте 2019</a> по причине недостаточной безопасности.</p>
+<h1 id="tls-alpn-01">TLS-ALPN-01</h1>
+<p>Разработана после признания проверки TLS-SNI-01 устаревшей, как <a href="https://tools.ietf.org/html/rfc8737">отдельный стандарт</a>. Как и TLS-SNI-01, проверка TLS-ALPN-01 выполняется через TLS handshake на порте 443. Но в данном случае применяется специальный протокол ALPN, чтобы на запросы валидации отвечали только серверы, знающие о таком типе проверки. Кроме того, становится возможным использовать SNI-поле, совпадающее с именем домена, для которого проводится валидация, для увеличения надёжности проверки.</p>
+<p>Эта проверка не подходит для массового использования. Скорее, она предназначена для владельцев TLS-концевых обратных прокси-серверов, для выполнения проверки типа HTTP-01, но внутри слоя TLS, для разделения ответственности. Как правило, это относится к большим хостинг-провайдерам, но распространённые web-серверы типа Apache и Nginx, однажды, поддержат протокол ALPN (а <a href="https://caddy.community/t/caddy-supports-the-acme-tls-alpn-challenge/4860">Caddy уже поддерживает</a>).</p>
+<p>Плюсы:</p>
+<ul>
+<li>Будет работать, даже если порт 80 закрыт.</li>
+<li>Может быть выполнена исключительно на слое TLS.</li>
+</ul>
+<p>Минусы:</p>
+<ul>
+<li>Пока не поддерживается Apache, Nginx или Certbot, и, возможно, не будет поддерживаться.</li>
+<li>
+<ul>
+<li>Как и для проверки HTTP-01, настраивать нужно ответ от каждого web-сервера.</li>
+</ul>
+</li>
+<li>Этот метод не может быть использован для проверки доменов по шаблонам.</li>
+</ul>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - это бесплатный, автоматизированный и открытый Центр Сертификации, созданный для вас
+  некоммерческой организацией <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Все письма и запросы отправляйте по адресу:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Ознакомьтесь с нашей <a href="/ru/privacy/">политикой конфиденциальности</a>.<br>
+Ознакомьтесь с нашей <a href="https://www.abetterinternet.org/trademarks/">политикой в отношении товарных знаков</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

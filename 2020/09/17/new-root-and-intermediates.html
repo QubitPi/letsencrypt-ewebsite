@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Let&#39;s Encrypt&#39;s New Root and Intermediate Certificates -  Let&#39;s Encrypt</title>
+    <meta name="description" content="On Thursday, September 3rd, 2020, Let’s Encrypt issued six new certificates: one root, four intermediates, and one cross-sign. These new certificates are part of our larger plan to improve privacy on the web, by making ECDSA end-entity certificates widely available, and by making certificates smaller.
+Given that we issue 1.5 million certificates every day, what makes these ones special? Why did we issue them? How did we issue them? Let’s answer these questions, and in the process take a tour of how Certificate Authorities think and work.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Let&#39;s Encrypt&#39;s New Root and Intermediate Certificates">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/2020/09/17/new-root-and-intermediates.html">
+    <meta name="twitter:description" content="On Thursday, September 3rd, 2020, Let’s Encrypt issued six new certificates: one root, four intermediates, and one cross-sign. These new certificates are part of our larger plan to improve privacy on the web, by making ECDSA end-entity certificates widely available, and by making certificates smaller.
+Given that we issue 1.5 million certificates every day, what makes these ones special? Why did we issue them? How did we issue them? Let’s answer these questions, and in the process take a tour of how Certificate Authorities think and work.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/2020/09/17/new-root-and-intermediates.html">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+  <body>
+    
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Skip navigation links</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Get Help</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donate</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Become a Sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getinvolved/" class="pure-menu-link">Get Involved</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">About Us</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/stats/" class="pure-menu-link">Statistics</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Careers</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/blog/" class="pure-menu-link">Blog</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+    
+    <div class="page-content">
+      <div class="wrapper">
+        
+<div class="post">
+	<header class="post-header">
+		<h1 class="post-title">Let&#39;s Encrypt&#39;s New Root and Intermediate Certificates</h1>
+		<p class="post-meta">Sep 17, 2020 • Aaron Gable</p>
+	</header>
+	<article class="post-content">
+		<p>On Thursday, September 3rd, 2020, Let’s Encrypt issued six new certificates:
+one root, four intermediates, and one cross-sign. These new certificates are
+part of our larger plan to improve privacy on the web, by making ECDSA
+end-entity certificates widely available, and by making certificates smaller.</p>
+<p>Given that we issue <a href="https://letsencrypt.org/stats/">1.5 million certificates every day</a>,
+what makes these ones special? Why did we issue them? How did we issue them?
+Let’s answer these questions, and in the process take a tour of how
+Certificate Authorities think and work.</p>
+<h1 id="the-backstory">The Backstory</h1>
+<p>Every publicly-trusted Certificate Authority (such as Let’s Encrypt) has at
+least one root certificate which is incorporated into various browser and OS
+vendors’ (e.g. Mozilla, Google) trusted root stores. This is what allows
+users who receive a certificate from a website to confirm that the
+certificate was issued by an organization that their browser trusts. But root
+certificates, by virtue of their widespread trust and long lives, must have
+their corresponding private key carefully protected and stored offline, and
+therefore can’t be used to sign things all the time. So every Certificate
+Authority (CA) also has some number of “intermediates”, certificates which
+are able to issue additional certificates but are not roots, which they use
+for day-to-day issuance.</p>
+<p>For the last <a href="https://letsencrypt.org/2015/06/04/isrg-ca-certs.html">five years</a>,
+Let’s Encrypt has had one root: the <a href="https://crt.sh/?caid=7394">ISRG Root X1</a>,
+which has a 4096-bit RSA key and is valid until 2035.</p>
+<p>Over that same time, we’ve had four intermediates: the Let’s Encrypt
+Authorities <a href="https://crt.sh/?caid=7395">X1</a>, <a href="https://crt.sh/?caid=9745">X2</a>,
+<a href="https://crt.sh/?caid=16418">X3</a>, and <a href="https://crt.sh/?caid=16429">X4</a>. The
+first two were issued when Let’s Encrypt first began operations in 2015, and
+were valid for 5 years. The latter two were issued about a year later, in
+2016, and are also valid for 5 years, expiring about this time next year. All
+of these intermediates use 2048-bit RSA keys. In addition,
+<a href="https://letsencrypt.org/2015/10/19/lets-encrypt-is-trusted.html">all of these intermediates are cross-signed</a>
+by IdenTrust’s DST Root CA X3, another root certificate controlled by a
+different certificate authority which is trusted by most root stores.</p>
+<p>Finally, we also have the <a href="https://crt.sh/?id=2929281974">ISRG Root OCSP X1</a>
+certificate. This one is a little different &ndash; it doesn’t issue any
+certificates. Instead, it signs Online Certificate Status Protocol (OCSP)
+responses that indicate the intermediate certificates have not been revoked.
+This is important because the only other thing capable of signing such
+statements is our root itself, and as mentioned above, the root needs to stay
+offline and safely secured.</p>
+<p><img src="/images/2020-09-17-hierarchy-pre-sept-2020.png" alt="Let&rsquo;s Encrypt&rsquo;s hierarchy as of August 2020" title="Let's Encrypt's hierarchy as of August 2020"></p>
+<h1 id="the-new-certificates">The New Certificates</h1>
+<p>For starters, we’ve issued two new 2048-bit RSA intermediates which we’re
+calling <a href="https://crt.sh/?caid=183267">R3</a> and
+<a href="https://crt.sh/?caid=183268">R4</a>. These are both issued by ISRG Root X1, and
+have 5-year lifetimes. They will also be cross-signed by IdenTrust. They’re
+basically direct replacements for our current X3 and X4, which are expiring
+in a year. We expect to switch our primary issuance pipeline to use R3 later
+this year, which won’t have any real effect on issuance or renewal.</p>
+<p>The other new certificates are more interesting. First up, we have the new
+<a href="https://crt.sh/?caid=183269">ISRG Root X2</a>, which has an ECDSA P-384 key
+instead of RSA, and is valid until 2040. Issued from that, we have two new
+intermediates, <a href="https://crt.sh/?caid=183283">E1</a> and
+<a href="https://crt.sh/?caid=183284">E2</a>, which are both also ECDSA and are valid
+for 5 years.</p>
+<p>Notably, these ECDSA intermediates are not cross-signed by IdenTrust’s DST
+Root CA X3. Instead, the ISRG Root X2 itself is
+<a href="https://crt.sh/?id=3334561878">cross-signed by our existing ISRG Root X1</a>.
+An astute observer might also notice that we have not issued an OCSP Signing
+Certificate from ISRG Root X2.</p>
+<p><img src="/images/2020-09-17-hierarchy-post-sept-2020.png" alt="Let&rsquo;s Encrypt&rsquo;s hierarchy as of September 2020" title="Let's Encrypt's hierarchy as of September 2020"></p>
+<p>Now that we have the technical details out of the way, let’s dive in to <em>why</em>
+the new hierarchy looks the way it does.</p>
+<h1 id="why-we-issued-an-ecdsa-root-and-intermediates">Why We Issued an ECDSA Root and Intermediates</h1>
+<p>There are lots of <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/">other articles</a>
+you can read about the benefits of ECDSA (smaller key sizes for the same
+level of security; correspondingly faster encryption, decryption, signing,
+and verification operations; and more). But for us, the big benefit comes
+from their smaller certificate sizes.</p>
+<p>Every connection to a remote domain over https:// requires a TLS handshake.
+Every TLS handshake requires that the server provide its certificate.
+Validating that certificate requires a certificate chain (the list of all
+intermediates up to but not including a trusted root), which is also usually
+provided by the server. This means that every connection &ndash; and a page
+covered in ads and tracking pixels might have dozens or hundreds &ndash; ends up
+transmitting a large amount of certificate data. And every certificate
+contains both its own public key and a signature provided by its issuer.</p>
+<p>While a 2048-bit RSA public key is about 256 bytes long, an ECDSA P-384
+public key is only about 48 bytes. Similarly, the RSA signature will be
+another 256 bytes, while the ECDSA signature will only be 96 bytes. Factoring
+in some additional overhead, that’s a savings of nearly 400 bytes per
+certificate. Multiply that by how many certificates are in your chain, and
+how many connections you get in a day, and the bandwidth savings add up fast.</p>
+<p>These savings are a public benefit both for our subscribers – who can be
+sites for which bandwidth can be a meaningful cost every month – and for
+end-users, who may have limited or metered connections. Bringing privacy to
+the whole Web doesn’t just mean making certificates available, it means
+making them efficient, too.</p>
+<p>As an aside: since we’re concerned about certificate sizes, we’ve also taken
+a few other measures to save bytes in our new certificates. We’ve shortened
+their Subject Common Names from “Let’s Encrypt Authority X3” to just “R3”,
+relying on the previously-redundant Organization Name field to supply the
+words “Let’s Encrypt”. We’ve shortened their Authority Information Access
+Issuer and CRL Distribution Point URLs, and we’ve dropped their CPS and OCSP
+urls entirely. All of this adds up to another approximately 120 bytes of
+savings without making any substantive change to the useful information in
+the certificate.</p>
+<h1 id="why-we-cross-signed-the-ecdsa-root">Why We Cross-Signed the ECDSA Root</h1>
+<p>Cross-signing is an important step, bridging the gap between when a new root
+certificate is issued and when that root is incorporated into various trust
+stores. We know that it is going to take 5 years or so for our new ISRG Root
+X2 to be widely trusted itself, so in order for certificates issued by the E1
+intermediate to be trusted, there needs to be a cross-sign somewhere in the
+chain.</p>
+<p>We had basically two options: we could cross-sign the new ISRG Root X2 from
+our existing ISRG Root X1, or we could cross-sign the new E1 and E2
+intermediates from ISRG Root X1. Let’s examine the pros and cons of each.</p>
+<p>Cross-signing the new ISRG Root X2 certificate means that, if a user has ISRG
+Root X2 in their trust store, then their full certificate chain will be 100%
+ECDSA, giving them fast validation, as discussed above. And over the next few
+years, as ISRG Root X2 is incorporated into more and more trust stores,
+validation of ECDSA end-entity certificates will get faster without users or
+websites having to change anything. The tradeoff though is that, as long as
+X2 isn’t in trust stores, user agents will have to validate a chain with two
+intermediates: both E1 and X2 chaining up to the X1 root. This takes more
+time during certificate validation.</p>
+<p>Cross-signing the intermediates directly has the opposite tradeoff. On the
+one hand, all of our chains will be the same length, with just one
+intermediate between the subscriber certificate and the widely-trusted ISRG
+Root X1. But on the other hand, when the ISRG Root X2 does become widely
+trusted, we’d have to <a href="https://letsencrypt.org/2019/04/15/transitioning-to-isrg-root.html">go through another chain switch</a>
+in order for anyone to gain the benefits of an all-ECDSA chain.</p>
+<p>In the end, we decided that providing the option of all-ECDSA chains was more
+important, and so opted to go with the first option, and cross-sign the ISRG
+Root X2 itself.</p>
+<h1 id="why-we-didn-t-issue-an-ocsp-responder">Why We Didn’t Issue an OCSP Responder</h1>
+<p>The Online Certificate Status Protocol is a way for user agents to discover,
+in real time, whether or not a certificate they’re validating has been
+revoked. Whenever a browser wants to know if a certificate is still valid, it
+can simply hit a URL contained within the certificate itself and get a yes or
+no response, which is signed by another certificate and can be similarly
+validated. This is great for end-entity certificates, because the responses
+are small and fast, and any given user might care about (and therefore have
+to fetch) the validity of wildly different sets of certificates, depending on
+what sites they visit.</p>
+<p>But intermediate certificates are a tiny subset of all certificates in the
+wild, are generally well-known, and are rarely revoked. Because of this, it
+can be much more efficient to simply maintain a Certificate Revocation List
+(CRL) containing validity information for all well-known intermediates. Our
+intermediate certificates all contain a URL from which a browser can fetch
+their CRL, and in fact some browsers even aggregate these into their own CRLs
+which they distribute with each update. This means that checking the
+revocation status of intermediates doesn’t require an extra network round
+trip before you can load a site, resulting in a better experience for
+everyone.</p>
+<p>In fact, a recent change (<a href="https://cabforum.org/2020/07/16/ballot-sc31-browser-alignment/">ballot SC31</a>)
+to the Baseline Requirements, which govern CAs, has made it so intermediate
+certificates are no longer required to include an OCSP URL; they can now have
+their revocation status served solely by CRL. And as noted above, we have
+removed the OCSP URL from our new intermediates. As a result, we didn’t need
+to issue an OCSP responder signed by ISRG Root X2.</p>
+<h1 id="putting-it-all-together">Putting It All Together</h1>
+<p>Now that we’ve shared our new certificates look the way they do, there’s one
+last thing we’d like to mention: how we actually went about issuing them.</p>
+<p>The creation of new root and intermediate certificates is a big deal, since
+their contents are so regulated and their private keys have to be so
+carefully protected. So much so that the act of issuing new ones is called a
+“ceremony”. Let’s Encrypt <a href="https://letsencrypt.org/about/">believes strongly in automation</a>,
+so we wanted our ceremony to require as little human involvement as possible.</p>
+<p>Over the last few months we’ve built a <a href="https://github.com/letsencrypt/boulder/tree/main/cmd/ceremony">ceremony tool</a>
+which, given appropriate configuration, can produce all of the desired keys,
+certificates, and requests for cross-signs. We also built a
+<a href="https://github.com/letsencrypt/2020-hierarchy-demo">demo</a> of our ceremony,
+showing what our configuration files would be, and allowing anyone to run it
+themselves and examine the resulting output. Our SREs put together a replica
+network, complete with Hardware Security Modules, and practiced the ceremony
+multiple times to ensure it would work flawlessly. We shared this demo with
+our technical advisory board, our community, and various mailing lists, and
+in the process received valuable feedback that actually influenced some of
+the decisions we’ve talked about above! Finally, on September 3rd, our
+Executive Director met with SREs at a secure datacenter to execute the whole
+ceremony, and record it for future audits.</p>
+<p>And now the ceremony is complete. We’ve updated <a href="https://letsencrypt.org/certificates">our certificates page</a>
+to include details about all of our new certificates, and are beginning the
+process of requesting that our new root be incorporated into various trust
+stores. We intend to begin issuing with our new intermediates over the coming
+weeks, and will post further announcements in our <a href="https://community.letsencrypt.org/">community forum</a>
+when we do.</p>
+<p>We hope that this has been an interesting and informative tour around our
+hierarchy, and we look forward to continuing to improve the internet one
+certificate at a time. We’d like to thank IdenTrust for their early and
+ongoing support of our vision to change security on the Web for the better.</p>
+<p>We depend on contributions from our community of users and supporters in
+order to provide our services. If your company or organization would like to
+<a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please
+email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. We ask that you make an
+<a href="https://letsencrypt.org/donate/">individual contribution</a> if it is within your
+means.</p>
+
+	</article>
+</div>
+
+      </div>
+    </div>
+    
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Support a more secure and privacy-respecting Web.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/donate/">Donate</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt is a free, automated, and open certificate
+  authority brought to you by the nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send all mail or inquiries to:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        View our <a href="/privacy/">privacy policy</a>.<br>
+View our <a href="https://www.abetterinternet.org/trademarks">trademark policy</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+  </body>
+</html>

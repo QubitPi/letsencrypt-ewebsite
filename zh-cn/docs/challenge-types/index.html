@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="zh-Hans-CN">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>验证方式 -  Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
+    <meta name="description" content="当您从 Let&amp;rsquo;s Encrypt 获得证书时，我们的服务器会验证您是否使用 ACME 标准定义的验证方式来验证您对证书中域名的控制权。 大多数情况下，验证由 ACME 客户端自动处理，但如果您需要做出一些更复杂的配置决策，那么了解更多有关它们的信息会很有用。 如果您不确定怎么做，请使用您的客户端的默认设置或使用 HTTP-01。
+HTTP-01 验证 这是当今最常见的验证方式。 Let’s Encrypt 向您的 ACME 客户端提供一个令牌，然后您的 ACME 客户端将在您对 Web 服务器的 http://&amp;lt;你的域名&amp;gt;/.well-known/acme-challenge/&amp;lt;TOKEN&amp;gt;（用提供的令牌替换 &amp;lt;TOKEN&amp;gt;）路径上放置指定文件。 该文件包含令牌以及帐户密钥的指纹。 一旦您的 ACME 客户端告诉 Let&amp;rsquo;s Encrypt 文件已准备就绪，Let&amp;rsquo;s Encrypt 会尝试获取它（可能从多个地点进行多次尝试）。 如果我们的验证机制在您的 Web 服务器上找到了放置于正确地点的正确文件，则该验证被视为成功，您可以继续申请颁发证书。 如果验证检查失败，您将不得不再次使用新证书重新申请。
+我们的 HTTP-01 验证最多接受 10 次重定向。 我们只接受目标为“http:”或“https:”且端口为 80 或 443 的重定向。 我们不目标为 IP 地址的重定向。 当被重定向到 HTTPS 链接时，我们不会验证证书是否有效（因为验证的目的是申请有效证书，所以它可能会遇到自签名或过期的证书）。
+HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口会降低安全性，所以 ACME 标准已禁止此行为。
+优点：
+ 它可以轻松地自动化进行而不需要关于域名配置的额外知识。 它允许托管服务提供商为通过 CNAME 指向它们的域名颁发证书。 它适用于现成的 Web 服务器。  缺点：">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="验证方式">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/challenge-types/">
+    <meta name="twitter:description" content="当您从 Let&amp;rsquo;s Encrypt 获得证书时，我们的服务器会验证您是否使用 ACME 标准定义的验证方式来验证您对证书中域名的控制权。 大多数情况下，验证由 ACME 客户端自动处理，但如果您需要做出一些更复杂的配置决策，那么了解更多有关它们的信息会很有用。 如果您不确定怎么做，请使用您的客户端的默认设置或使用 HTTP-01。
+HTTP-01 验证 这是当今最常见的验证方式。 Let’s Encrypt 向您的 ACME 客户端提供一个令牌，然后您的 ACME 客户端将在您对 Web 服务器的 http://&amp;lt;你的域名&amp;gt;/.well-known/acme-challenge/&amp;lt;TOKEN&amp;gt;（用提供的令牌替换 &amp;lt;TOKEN&amp;gt;）路径上放置指定文件。 该文件包含令牌以及帐户密钥的指纹。 一旦您的 ACME 客户端告诉 Let&amp;rsquo;s Encrypt 文件已准备就绪，Let&amp;rsquo;s Encrypt 会尝试获取它（可能从多个地点进行多次尝试）。 如果我们的验证机制在您的 Web 服务器上找到了放置于正确地点的正确文件，则该验证被视为成功，您可以继续申请颁发证书。 如果验证检查失败，您将不得不再次使用新证书重新申请。
+我们的 HTTP-01 验证最多接受 10 次重定向。 我们只接受目标为“http:”或“https:”且端口为 80 或 443 的重定向。 我们不目标为 IP 地址的重定向。 当被重定向到 HTTPS 链接时，我们不会验证证书是否有效（因为验证的目的是申请有效证书，所以它可能会遇到自签名或过期的证书）。
+HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口会降低安全性，所以 ACME 标准已禁止此行为。
+优点：
+ 它可以轻松地自动化进行而不需要关于域名配置的额外知识。 它允许托管服务提供商为通过 CNAME 指向它们的域名颁发证书。 它适用于现成的 Web 服务器。  缺点：">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">跳过导航链接</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">社区</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">捐赠</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">成为赞助商</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">关于</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">互联网安全研究小组（ISRG）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">服务状态</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">招贤纳士</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">切换语言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/challenge-types/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/challenge-types/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/challenge-types/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/challenge-types/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/challenge-types/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/challenge-types/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/challenge-types/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/challenge-types/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/challenge-types/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/challenge-types/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/challenge-types/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/challenge-types/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/challenge-types/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/challenge-types/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/challenge-types/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/challenge-types/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/challenge-types/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/challenge-types/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/challenge-types/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/challenge-types/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>验证方式</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    最后更新：<time datetime="2020-12-08">Dec 8, 2020</time>
+
+
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    注意：本页面有较新的英文版本。
+                    (<time datetime="2023-02-13">Feb 13, 2023</time>)
+                    <a href="letsencrypt-ewebsite/docs/challenge-types/">阅读英文页面</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>当您从 Let&rsquo;s Encrypt 获得证书时，我们的服务器会验证您是否使用 ACME 标准定义的验证方式来验证您对证书中域名的控制权。 大多数情况下，验证由 ACME 客户端自动处理，但如果您需要做出一些更复杂的配置决策，那么了解更多有关它们的信息会很有用。 如果您不确定怎么做，请使用您的客户端的默认设置或使用 HTTP-01。</p>
+<h1 id="http-01-验证">HTTP-01 验证</h1>
+<p>这是当今最常见的验证方式。 Let’s Encrypt 向您的 ACME 客户端提供一个令牌，然后您的 ACME 客户端将在您对 Web 服务器的 <code>http://&lt;你的域名&gt;/.well-known/acme-challenge/&lt;TOKEN&gt;</code>（用提供的令牌替换 <code>&lt;TOKEN&gt;</code>）路径上放置指定文件。 该文件包含令牌以及帐户密钥的指纹。 一旦您的 ACME 客户端告诉 Let&rsquo;s Encrypt 文件已准备就绪，Let&rsquo;s Encrypt 会尝试获取它（可能从多个地点进行多次尝试）。 如果我们的验证机制在您的 Web 服务器上找到了放置于正确地点的正确文件，则该验证被视为成功，您可以继续申请颁发证书。 如果验证检查失败，您将不得不再次使用新证书重新申请。</p>
+<p>我们的 HTTP-01 验证最多接受 10 次重定向。 我们只接受目标为“http:”或“https:”且端口为 80 或 443 的重定向。 我们不目标为 IP 地址的重定向。 当被重定向到 HTTPS 链接时，我们不会验证证书是否有效（因为验证的目的是申请有效证书，所以它可能会遇到自签名或过期的证书）。</p>
+<p>HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口会降低安全性，所以 ACME 标准已禁止此行为。</p>
+<p>优点：</p>
+<ul>
+<li>它可以轻松地自动化进行而不需要关于域名配置的额外知识。</li>
+<li>它允许托管服务提供商为通过 CNAME 指向它们的域名颁发证书。</li>
+<li>它适用于现成的 Web 服务器。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>如果您的 ISP 封锁了 80 端口，该验证将无法正常工作（这种情况很少见，但一些住宅 ISP 会这么做）。</li>
+<li>Let’s Encrypt 不允许您使用此验证方式来颁发通配符证书。</li>
+<li>您如果有多个 Web 服务器，则必须确保该文件在所有这些服务器上都可用。</li>
+</ul>
+<h1 id="dns-01-验证">DNS-01 验证</h1>
+<p>此验证方式要求您在该域名下的 TXT 记录中放置特定值来证明您控制域名的 DNS 系统。 该配置比 HTTP-01 略困难，但可以在某些 HTTP-01 不可用的情况下工作。 它还允许您颁发通配符证书。 在 Let’s Encrypt 为您的 ACME 客户端提供令牌后，您的客户端将创建从该令牌和您的帐户密钥派生的 TXT 记录，并将该记录放在 <code>_acme-challenge.&lt;YOUR_DOMAIN&gt;</code> 下。 然后 Let’s Encrypt 将向 DNS 系统查询该记录。 如果找到匹配项，您就可以继续颁发证书！</p>
+<p>由于颁发和续期的自动化非常重要，只有当您的 DNS 提供商拥有可用于自动更新的 API 时，使用 DNS-01 验证方式才有意义。 我们的社区在<a href="https://community.letsencrypt.org/t/dns-providers-who-easily-integrate-with-lets-encrypt-dns-validation/86438">此处提供了此类 DNS 提供商的列表</a>。 您的 DNS 提供商可能与您的域名注册商（您从中购买域名的公司）相同或不同。 如果您想更改 DNS 提供商，只需在注册商处进行一些小的更改， 无需等待域名即将到期。</p>
+<p>请注意，将完整的 DNS API 凭据放在 Web 服务器上会显着增加该服务器被黑客攻击造成的影响。 最佳做法是使用<a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">权限范围受限的 API 凭据</a>，或在单独的服务器上执行 DNS 验证并自动将证书复制到 Web 服务器上。</p>
+<p>由于 Let’s Encrypt 在查找用于 DNS-01 验证的 TXT 记录时遵循 DNS 标准，因此您可以使用 CNAME 记录或 NS 记录将验证工作委派给其他 DNS 区域。 这可以用于<a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">将 <code>_acme-challenge</code> 子域名委派</a>给验证专用的服务器或区域。 如果您的 DNS 提供商更新速度很慢，那么您也可以使用此方法把验证工作委派给更新速度更快的服务器。</p>
+<p>大多数 DNS 提供商都有一个“更新时间”，它反映了从更新 DNS 记录到其在所有服务器上都可用所需的时间。 这个时间可能很难测量，因为这些提供商通常也使用<a href="https://en.wikipedia.org/wiki/Anycast">任播</a>，这意味着多个服务器可以拥有相同的 IP 地址，并且根据您在世界上的位置，您和 Let’s Encrypt 可能会与不同的服务器通信（并获得不同的应答）。 最好的情况是 DNS API 为您提供了自动检查更新是否完成的方法。 如果您的 DNS 提供商没有这样的方法，您只需将客户端配置为等待足够长的时间（通常多达一个小时），以确保在触发验证之前更新已经完全完成。</p>
+<p>您可以为同一名称提供多个 TXT 记录。 例如，如果您同时验证通配符和非通配符证书，那么这种情况可能会发生。 但是，您应该确保清理旧的 TXT 记录，因为如果响应大小太大，Let&rsquo;s Encrypt 将拒绝该记录。</p>
+<p>优点：</p>
+<ul>
+<li>您可以使用此验证方式来颁发包含通配符域名的证书。</li>
+<li>即使您有多个 Web 服务器，它也能正常工作。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>在 Web 服务器上保留 API 凭据存在风险。</li>
+<li>您的 DNS 提供商可能不提供 API。</li>
+<li>您的 DNS API 可能无法提供有关更新时间的信息。</li>
+</ul>
+<h1 id="tls-sni-01验证">TLS-SNI-01验证</h1>
+<p>ACME 的草案版本中定义了这一验证方式。 它在 443 端口上进行 TLS 握手，并发送了一个特定的 [SNI] 标头以获取包含令牌的证书。 由于安全原因，该验证<a href="https://community.letsencrypt.org/t/march-13-2019-end-of-life-for-all-tls-sni-01-validation-support/74209">已于 2019 年 3 月禁用</a>。</p>
+<h1 id="tls-alpn-01验证">TLS-ALPN-01验证</h1>
+<p>这一验证类型是在 TLS-SNI-01 被弃用后开发的，并且已经开发为<a href="https://tools.ietf.org/html/rfc8737">单独的标准</a>。 与 TLS-SNI-01 一样，它通过 443 端口上的 TLS 执行。 但是，它使用自定义的 ALPN 协议来确保只有知道此验证类型的服务器才会响应验证请求。 这还允许对此质询类型的验证请求使用与要验证的域名匹配的SNI字段，从而使其更安全。</p>
+<p>这一验证类型并不适合大多数人。 它最适合那些想要执行类似于 HTTP-01 的基于主机的验证，但希望它完全在 TLS 层进行以分离关注点的 TLS 反向代理的作者。 现在其主要使用者为大型托管服务提供商，但 Apache 和 Nginx 等主流 Web 服务器有朝一日可能会实现对其的支持（<a href="https://caddy.community/t/caddy-supports-the-acme-tls-alpn-challenge/4860">Caddy已经支持了这一验证类型</a>）。</p>
+<p>优点：</p>
+<ul>
+<li>它在 80 端口不可用时仍可以正常工作。</li>
+<li>它可以完全仅在 TLS 层执行。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>它不支持 Apache、Nginx 和 Certbot，且很可能短期内不会兼容这些软件。</li>
+<li>与 HTTP-01 一样，如果您有多台服务器，则它们需要使用相同的内容进行应答。</li>
+<li>此方法不能用于验证通配符域名。</li>
+</ul>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织<a href="https://www.abetterinternet.org/"
+  style="white-space:nowrap;">互联网安全研究小组（ISRG）</a>运营。
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>发送邮件或询问到：</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        查看我们的<a href="/zh-cn/privacy/">隐私政策</a><br />
+查看我们的<a href="https://www.abetterinternet.org/trademarks/">商标政策</a>
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

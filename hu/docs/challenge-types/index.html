@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="hu">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kihívás típusok -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Amikor Ön tanúsítványt kap a Let&amp;rsquo;s Encrypt-től, szervereink az ACME szabványban meghatározott &amp;ldquo;kihívások&amp;rdquo; segítségével érvényesítik, hogy Ön rendelkezik a tanúsítványban szereplő domain nevekkel. Az esetek többségében ezt az érvényesítést az ACME kliens automatikusan elvégzi, de ha bonyolultabb konfigurációs döntéseket kell hoznia, hasznos, ha többet tud róluk. Ha bizonytalan, használja az kliens alapértelmezett beállításait vagy a HTTP-01-et.
+HTTP-01 kihívás Ez ma a leggyakoribb kihívástípus. A Let&amp;rsquo;s Encrypt egy tokent ad az ACME kliensnek, és az ACME kliens egy fájlt helyez el a webszerverén a http://&amp;lt;YOUR_DOMAIN&amp;gt;/.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Kihívás típusok">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/hu/docs/challenge-types/">
+    <meta name="twitter:description" content="Amikor Ön tanúsítványt kap a Let&amp;rsquo;s Encrypt-től, szervereink az ACME szabványban meghatározott &amp;ldquo;kihívások&amp;rdquo; segítségével érvényesítik, hogy Ön rendelkezik a tanúsítványban szereplő domain nevekkel. Az esetek többségében ezt az érvényesítést az ACME kliens automatikusan elvégzi, de ha bonyolultabb konfigurációs döntéseket kell hoznia, hasznos, ha többet tud róluk. Ha bizonytalan, használja az kliens alapértelmezett beállításait vagy a HTTP-01-et.
+HTTP-01 kihívás Ez ma a leggyakoribb kihívástípus. A Let&amp;rsquo;s Encrypt egy tokent ad az ACME kliensnek, és az ACME kliens egy fájlt helyez el a webszerverén a http://&amp;lt;YOUR_DOMAIN&amp;gt;/.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/hu/docs/challenge-types/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Navigációs linkek átugrása</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/hu/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/hu/docs/" class="pure-menu-link" tabindex="0">Dokumentáció</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Segítség</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Adományozok</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/donate/" class="pure-menu-link">Make a Donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Legyen a támogatónk</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/sponsors/" class="pure-menu-link">Jelenlegi szponzorok és támogatók</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getinvolved/" class="pure-menu-link">Kapcsolódjon be</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Rólunk</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 lejárat (2021. szeptember)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" class="pure-menu-link">Gyakran Ismételt Kérdések (GYIK)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Szolgáltatás státusza</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/stats/" class="pure-menu-link">Statisztikák</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karrier</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/contact/" class="pure-menu-link">Kapcsolat</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Nyelvek <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/challenge-types/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/challenge-types/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/challenge-types/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/challenge-types/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/challenge-types/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/challenge-types/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/challenge-types/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/challenge-types/" lang="hu" hreflang="hu" class="pure-menu-link">✓ Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/challenge-types/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/challenge-types/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/challenge-types/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/challenge-types/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/challenge-types/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/challenge-types/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/challenge-types/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/challenge-types/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/challenge-types/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/challenge-types/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/challenge-types/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/challenge-types/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Kihívás típusok</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Utoljára frissítve: <time datetime="2020-12-08">2020. dec. 8.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/hu/docs">Dokumentáció megtekinthető</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Megjegyzés: Az angol nyelvű változatot a fordítás óta frissítették
+                    (<time datetime="2023-02-13">2023. febr. 13.</time>)
+                    <a href="letsencrypt-ewebsite/docs/challenge-types/">Megtekintés angolul</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Amikor Ön tanúsítványt kap a Let&rsquo;s Encrypt-től, szervereink az ACME szabványban meghatározott &ldquo;kihívások&rdquo; segítségével érvényesítik, hogy Ön rendelkezik a tanúsítványban szereplő domain nevekkel. Az esetek többségében ezt az érvényesítést az ACME kliens automatikusan elvégzi, de ha bonyolultabb konfigurációs döntéseket kell hoznia, hasznos, ha többet tud róluk. Ha bizonytalan, használja az kliens alapértelmezett beállításait vagy a HTTP-01-et.</p>
+<h1 id="http-01-kihívás">HTTP-01 kihívás</h1>
+<p>Ez ma a leggyakoribb kihívástípus. A Let&rsquo;s Encrypt egy tokent ad az ACME kliensnek, és az ACME kliens egy fájlt helyez el a webszerverén a <code>http://&lt;YOUR_DOMAIN&gt;/.well-known/acme-challenge/&lt;TOKEN&gt;</code> címen. Ez a fájl tartalmazza a tokent, valamint az Ön fiókkulcsának ujjlenyomatát. Amint az ACME kliens közli a Let&rsquo;s Encrypttel, hogy a fájl készen áll, a Let&rsquo;s Encrypt megpróbálja lekérni azt (esetleg többször is, több pontból). Ha a validációs ellenőrzések megfelelő válaszokat kapnak a webszervertől, a validálás sikeresnek tekinthető, és folytathatja a tanúsítvány kiállítását. Ha az validációs ellenőrzések sikertelenek, akkor egy új tanúsítvánnyal kell újra próbálkoznia.</p>
+<p>A HTTP-01 kihívás megvalósítása az átirányításokat követi, akár 10 átirányításig. Csak a &ldquo;http:&rdquo; vagy &ldquo;https:&rdquo; átirányításokat fogadja el, és csak a 80-as vagy 443-as portokra. Nem fogad el átirányításokat IP-címekre. Amikor HTTPS URL-re irányít át, nem ellenőrzi a tanúsítványokat (mivel a kihívás célja az érvényes tanúsítványok indítása, előfordulhat, hogy útközben önaláírt vagy lejárt tanúsítványokkal találkozik).</p>
+<p>A HTTP-01 kihívást csak a 80-as porton lehet végrehajtani. Ha az ügyfelek tetszőleges portokat adhatnának meg, az a kihívást kevésbé biztonságossá tenné, ezért az ACME-szabvány ezt nem engedélyezi.</p>
+<p>Előnyök:</p>
+<ul>
+<li>Könnyen automatizálható a domain konfigurációjának különösebb ismerete nélkül.</li>
+<li>Lehetővé teszi a tárhelyszolgáltatók számára, hogy tanúsítványokat állítsanak ki a hozzájuk CNAME-elt domainekhez.</li>
+<li>A szabványos webkiszolgálókkal működik.</li>
+</ul>
+<p>Hátrányok:</p>
+<ul>
+<li>Nem működik, ha az internetszolgáltató blokkolja a 80-as portot (ez ritka, de néhány lakossági internetszolgáltató ezt teszi).</li>
+<li>A Let&rsquo;s Encrypt nem engedi, hogy ezt a kihívást wildcard tanúsítványok kiadására használja.</li>
+<li>Ha több webszervere van, meg kell győződnie arról, hogy a fájl mindegyiken elérhető.</li>
+</ul>
+<h1 id="dns-01-kihívás">DNS-01 kihívás</h1>
+<p>Ez a kihívás azt kéri, hogy bizonyítsa be, hogy Ön rendelkezik a domain nevéhez tartozó DNS felett, egy adott értéknek a domain név alatti TXT rekordba való beírásával. It is harder to configure than HTTP-01, but can work in scenarios that HTTP-01 can’t. Lehetővé teszi a wildcard tanúsítványok kiadását is. Miután a Let&rsquo;s Encrypt megadja az ACME kliensnek a tokent, a kliens létrehoz egy TXT rekordot, amely a tokenből és az Ön fiókkulcsából származik, és ezt a rekordot a <code>_acme-challenge.&lt;YOUR_DOMAIN&gt;</code> címre helyezi. Ezután a Let&rsquo;s Encrypt lekérdezi a DNS rendszert erre a bejegyzésre. Ha talál egyezést, akkor folytathatja a tanúsítvány kiállítását!</p>
+<p>Mivel a kiadás és megújítás automatizálása nagyon fontos, csak akkor van értelme a DNS-01 kihívások használatának, ha a DNS szolgáltatója rendelkezik olyan API-val, amellyel Ön automatizálhatja a frissítéseket. Közösségünk összeállított egy <a href="https://community.letsencrypt.org/t/dns-providers-who-easily-integrate-with-lets-encrypt-dns-validation/86438">listát az ilyen DNS-szolgáltatókról, amelyeket itt talál</a>. A DNS szolgáltatója lehet ugyanaz, mint a regisztrátora (a cég, amelytől a domain nevét vásárolta), de lehet, hogy más. Ha DNS szolgáltatót szeretne váltani, csak néhány apró változtatást kell végrehajtania a regisztrátoránál. Nem kell megvárni, hogy a domainje közel kerüljön a lejárathoz, hogy ezt megtehesse.</p>
+<p>Vegye figyelembe, hogy a teljes DNS API hitelesítő adatok webkiszolgálón való elhelyezése jelentősen megnöveli a webkiszolgáló feltörése esetén annak hatását. A legjobb gyakorlat a <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">szűkebb hatókörű API hitelesítő adatok</a> használata, vagy a DNS validáció elvégzése egy különálló szerverről, és a tanúsítványok automatikus másolása az Ön webszerverére.</p>
+<p>Mivel a Let&rsquo;s Encrypt a DNS-01 érvényesítéséhez a TXT rekordok keresésekor a DNS szabványokat követi, a CNAME rekordok vagy NS rekordok használatával a kihívás megválaszolását más DNS zónákra delegálhatja. Ez arra használható, hogy az <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation"><code>_acme-challenge</code> subdomaint egy validáció-specifikus szerverre vagy zónára delegálja</a>. Akkor is használható, ha a DNS szolgáltatója lassan frissít, és egy gyorsabban frissítő szerverre szeretné delegálni.</p>
+<p>A legtöbb DNS szolgáltatónak van egy &ldquo;propagációs ideje&rdquo;, amely meghatározza, hogy mennyi idő telik el egy DNS rekord frissítése után, amíg az elérhetővé válik az összes szerverükön. Ezt nehéz mérni, mert gyakran <a href="https://en.wikipedia.org/wiki/Anycast">anycast-ot</a>-t is használnak, ami azt jelenti, hogy több szerver is rendelkezhet ugyanazzal az IP-címmel, és attól függően, hogy Ön a világ mely pontján tartózkodik, előfordulhat, hogy más szerverrel beszél (és más választ kap), mint a Let&rsquo;s Encrypt. A legjobb DNS API-k lehetővé teszik Önnek, hogy automatikusan ellenőrizze, hogy egy frissítés teljes mértékben propagált-e. Ha a DNS szolgáltatója nem rendelkezik ilyennel, akkor úgy kell beállítania a klienset, hogy elég sokáig (gyakran akár egy órát) várjon, hogy a frissítés propagáljon, mielőtt elindítja a validálást.</p>
+<p>Ugyanazon névhez több TXT rekord is tartozhat. Ez például akkor fordulhat elő, ha egyszerre validál egy wildcard és egy nem wildcard tanúsítványhoz tartozó kihívást. Azonban ügyelnie kell arra, hogy a régi TXT rekordokat törölje, mert ha a válasz mérete túl nagy lesz, a Let&rsquo;s Encrypt elkezdi elutasítani azt.</p>
+<p>Előnyök:</p>
+<ul>
+<li>Ezt a kihívást használhatja olyan tanúsítványok kiadására, amelyek wildcard domain neveket tartalmaznak.</li>
+<li>Akkor is jól működik, ha több webszerverrel rendelkezik.</li>
+</ul>
+<p>Hátrányok:</p>
+<ul>
+<li>Az API hitelesítő adatokat a webszerverén tárolni kockázatos.</li>
+<li>Előfordulhat, hogy az Ön DNS szolgáltatója nem kínál API-t.</li>
+<li>Előfordulhat, hogy a DNS API nem ad információt a propagációs időkről.</li>
+</ul>
+<h1 id="tls-sni-01">TLS-SNI-01</h1>
+<p>Ezt a kihívást az ACME tervezetében határozták meg. A 443-as porton TLS kézfogást hajtott végre, és elküldött egy speciális <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a> fejlécet, keresve a tokent tartalmazó tanúsítványt. <a href="https://community.letsencrypt.org/t/march-13-2019-end-of-life-for-all-tls-sni-01-validation-support/74209">2019 márciusában letiltották</a>, mert nem volt elég biztonságos.</p>
+<h1 id="tls-alpn-01">TLS-ALPN-01</h1>
+<p>Ezt a kihívást a TLS-SNI-01 elavulása után fejlesztették ki, és jelenleg <a href="https://tools.ietf.org/html/rfc8737">különálló szabványként</a> fejlesztik. A TLS-SNI-01-hez hasonlóan ez is TLS-en keresztül történik a 443-as porton. Egy egyedi ALPN protokollt használ azonban annak biztosítására, hogy csak olyan szerverek válaszoljanak az validálási kérelmekre, amelyek ismerik ezt a kihívástípust. Ez azt is lehetővé teszi, hogy az erre a kihívástípusra vonatkozó validálási kérelmek olyan SNI mezőt használjanak, amely megfelel az validálandó domain névnek, így biztonságosabbá válik.</p>
+<p>Ez a kihívás nem alkalmas a legtöbb ember számára. A legmegfelelőbb a TLS felfüggesztést végző fordított proxyk szerzőinek, akik a HTTP-01-hez hasonlóan hoszt alapú validálást akarnak végezni, de ezt teljes egészében a TLS rétegen szeretnék elvégezni a problémák elkülönítése érdekében. Jelenleg ez főként a nagy tárhelyszolgáltatókat jelenti, de az olyan mainstream webszerverek, mint az Apache és az Nginx egy napon megvalósíthatják ezt (és a <a href="https://caddy.community/t/caddy-supports-the-acme-tls-alpn-challenge/4860">Caddy már meg is valósította</a>).</p>
+<p>Előnyök:</p>
+<ul>
+<li>Ez akkor is működik, ha a 80-as port nem érhető el.</li>
+<li>Ez tisztán a TLS rétegen is elvégezhető.</li>
+</ul>
+<p>Hátrányok:</p>
+<ul>
+<li>Az Apache, az Nginx és a Certbot nem támogatja, és valószínűleg nem is fogja egyhamar.</li>
+<li>A HTTP-01-hez hasonlóan, ha Önnek több szervere van, mindegyiknek ugyanazzal a tartalommal kell válaszolnia.</li>
+<li>Ez a módszer nem használható wildcard domainek validálására.</li>
+</ul>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  A Let's Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
+  melyet a nonprofit <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> szervezet tesz elérhetővé.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Megkereséseiket a következő címre küldhetik:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Tekintse meg <a href="/privacy/">Adatvédelmi irányelveinket</a>.<br>
+Tekintse meg <a href="https://www.abetterinternet.org/trademarks">Védjegypolitikánkat</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

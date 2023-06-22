@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="uk-UA">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Закінчення DST Root ЦС X3 (вересень 2021 року) -  Let&#39;s Encrypt - Free SSL/TLS Certificates</title>
+    <meta name="description" content="30 вересня 2021 року відбудеться невелика зміна того, як старі браузери та пристрої будуть довіряти сертифікатам Let&amp;rsquo;s Encrypt. Якщо Ви запускаєте типовий веб-сайт, Ви поки не помітите різниці - переважна більшість Ваших відвідувачів все ще приймуть Ваш сертифікат Let&amp;rsquo;s Encrypt. Якщо ж Ви надаєте API чи маєте підтримувати девайси IoT, Вам, можливо, доведеться приділити трохи більшу увагу цій зміні.
+Let&amp;rsquo;s Encrypt має кореневий сертифікат, який має назву ISRG Root X1. Сучасні браузери та девайси довіряють сертифікату Let&amp;rsquo;s Encrypt, встановленому на Вашому веб-сайті, бо вони включають ISRG Root X1 у свій список кореневих сертифікатів.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Закінчення DST Root ЦС X3 (вересень 2021 року)">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/">
+    <meta name="twitter:description" content="30 вересня 2021 року відбудеться невелика зміна того, як старі браузери та пристрої будуть довіряти сертифікатам Let&amp;rsquo;s Encrypt. Якщо Ви запускаєте типовий веб-сайт, Ви поки не помітите різниці - переважна більшість Ваших відвідувачів все ще приймуть Ваш сертифікат Let&amp;rsquo;s Encrypt. Якщо ж Ви надаєте API чи маєте підтримувати девайси IoT, Вам, можливо, доведеться приділити трохи більшу увагу цій зміні.
+Let&amp;rsquo;s Encrypt має кореневий сертифікат, який має назву ISRG Root X1. Сучасні браузери та девайси довіряють сертифікату Let&amp;rsquo;s Encrypt, встановленому на Вашому веб-сайті, бо вони включають ISRG Root X1 у свій список кореневих сертифікатів.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Канал блогу Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустити навігаційні посилання</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/uk/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/uk/docs/" class="pure-menu-link" tabindex="0">Документація</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Допомога</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Підтримати</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/donate/" class="pure-menu-link">Зробити пожертву</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Стати спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/sponsors/" class="pure-menu-link">Спонсори та фонди</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getinvolved/" class="pure-menu-link">Долучитися</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Про сервіс</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Закінчення DST Root ЦС X3 (вересень 2021 року)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/faq/" class="pure-menu-link">Часто поставлені питання (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Стан сервісу</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Кар&#39;єра</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/contact/" class="pure-menu-link">Контакти</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Мови <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/dst-root-ca-x3-expiration-september-2021/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/dst-root-ca-x3-expiration-september-2021/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/dst-root-ca-x3-expiration-september-2021/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/dst-root-ca-x3-expiration-september-2021/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/dst-root-ca-x3-expiration-september-2021/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/dst-root-ca-x3-expiration-september-2021/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/dst-root-ca-x3-expiration-september-2021/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/dst-root-ca-x3-expiration-september-2021/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/dst-root-ca-x3-expiration-september-2021/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/dst-root-ca-x3-expiration-september-2021/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/dst-root-ca-x3-expiration-september-2021/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">✓ Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/dst-root-ca-x3-expiration-september-2021/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Закінчення DST Root ЦС X3 (вересень 2021 року)</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Останнє оновлення: <time datetime="2021-05-07">7 трав. 2021 р.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/uk/docs">Переглянути всю документацію</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Примітка: Англійська версія була оновлена з моменту перекладу
+                    (<time datetime="2021-09-30">30 вер. 2021 р.</time>)
+                    <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/">Переглянути англійською</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>30 вересня 2021 року відбудеться невелика зміна того, як старі браузери та пристрої будуть довіряти сертифікатам Let&rsquo;s Encrypt. Якщо Ви запускаєте типовий веб-сайт, Ви поки не помітите різниці - переважна більшість Ваших відвідувачів все ще приймуть Ваш сертифікат Let&rsquo;s Encrypt. Якщо ж Ви надаєте API чи маєте підтримувати девайси IoT, Вам, можливо, доведеться приділити трохи більшу увагу цій зміні.</p>
+<p>Let&rsquo;s Encrypt має <a href="/docs/glossary/#def-root">кореневий сертифікат</a>, який має назву <a href="letsencrypt-ewebsite/uk/certificates/" hreflang="uk-UA">ISRG Root X1</a>. Сучасні браузери та девайси довіряють сертифікату Let&rsquo;s Encrypt, встановленому на Вашому веб-сайті, бо вони включають ISRG Root X1 у свій список кореневих сертифікатів. Щоб переконатися у тому, що сертифікати, які ми видаємо, є прийнятими на старих девайсах, ми також маємо &ldquo;схрещення&rdquo; з давнього кореневого сертифіката: DST Root ЦС X3.</p>
+<p>Коли ми починали, цей старий кореневий сертифікат (DST Root ЦС X3) допоміг нам успішно почати та раптово заробив довіру майже кожного девайсу. Новіший кореневий сертифікат (ISRG Root X1) є зараз широко довірений також, але деякі старі девайси ніколи не довіряють йому через не отримання оновлення програмного забезпечення (наприклад, iPhone 4 чи HTC Dream). <a href="letsencrypt-ewebsite/uk/docs/certificate-compatibility/" hreflang="uk-UA">Натисніть тут для перегляду списку платформ, які довіряють ISRG Root X1</a>.</p>
+<p>Закінчення роботи DST Root ЦС X3 припадає на 30 вересня 2021 року. Це означає, що старі девайси, які не довіряють ISRG Root X1, почнуть отримувати попередження про сертифікати, коли відвідуватимуть сайти, які використовують сертифікати Let&rsquo;s Encrypt. Тут існує один важливий виняток: старі Android девайси, які не довіряють ISRG Root X1, будуть продовжувати працювати з  Let&rsquo;s Encrypt, <a href="/2020/12/21/extending-android-compatibility.html">дякуючи спеціальному схрещуванню з DST Root CA X3</a>, який продовжує минуле закінчення терміну дії цього кореневого сертифіката. Це виключення працює тільки для Android.</p>
+<p>Що ж робити Вам? Як і для більшості людей, зовсім нічого! Ми налаштували нашу видачу сертифікатів, тому Ваш веб-сайт буде робити правильний вибір у більшості випадків, віддаючи перевагу широкій сумісності. Якщо ж Ви надаєте API чи маєте підтримувати девайси IoT, то Вам потрібно буде впевнитися у двох речах: (1) всі клієнти Вашого API повинні довіряти ISRG Root X1 (не лише DST Root ЦС X3) і, (2) якщо клієнти Вашого API користуються OpenSSL, <a href="https://community.letsencrypt.org/t/openssl-client-compatibility-changes-for-let-s-encrypt-certificates/143816">то вони повинні використовувати версію 1.1.0 чи пізнішу</a>. У OpenSSL1.0.x  дивність перевірки сертифікату означає те, що навіть клієнти, які довіряють ISRG Root X1 зазнають невдачі, коли ознайомлюються з ланцюгом сумісних Android сертифікатів, які ми рекомендуємо за замовчуванням.</p>
+<p>Якщо Ви хотіли б отримати додаткову інформацію про наші поточні зміни виробничого ланцюга, <a href="https://community.letsencrypt.org/t/production-chain-changes/150739">будь ласка, перевірте цей потік в нашій спільноті</a>.</p>
+<p>Якщо у Вас виникли якісь питання з приводу майбутнього закінчення терміну дії, <a href="https://community.letsencrypt.org/t/help-thread-for-dst-root-ca-x3-expiration-september-2021/149190">будь ласка, напишіть їх сюди, на цей форум</a>.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - це безкоштовний, автоматизований і відкритий Центр Сертифікації, створений для вас
+  некомерційною організацією <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Відправити всі повідомлення чи запити:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Переглянути <a href="/uk/privacy/">політику конфіденційності</a>.<br>
+Переглянути <a href="/uk/trademarks/">правила користування торговою маркою</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

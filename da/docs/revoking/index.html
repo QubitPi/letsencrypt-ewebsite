@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="da">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tilbagekaldelse af certifikater -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Når et certifikat ikke længere er sikkert at bruge, bør du tilbagekalde det. Dette kan ske for et par forskellige årsager. Du har, som eksempel, ved et uheld have fået delt den private nøgle på et offenligt website; hackere kan have kopieret den private nøgle fra dine servere; eller hackere har måske midlertidigt fået kontrol over dine servere eller DNS opsætning, og brugt det til at validere og udsteede et certifikat til hvilket de har den private nøgle.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Tilbagekaldelse af certifikater">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/da/docs/revoking/">
+    <meta name="twitter:description" content="Når et certifikat ikke længere er sikkert at bruge, bør du tilbagekalde det. Dette kan ske for et par forskellige årsager. Du har, som eksempel, ved et uheld have fået delt den private nøgle på et offenligt website; hackere kan have kopieret den private nøgle fra dine servere; eller hackere har måske midlertidigt fået kontrol over dine servere eller DNS opsætning, og brugt det til at validere og udsteede et certifikat til hvilket de har den private nøgle.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/da/docs/revoking/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Spring navigation links over</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/da/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/da/docs/" class="pure-menu-link" tabindex="0">Dokumentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Få hjælp</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Doner</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/donate/" class="pure-menu-link">Foretag en donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/sponsors/" class="pure-menu-link">Nuværende Sponsorer og finansieringskilder</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/getinvolved/" class="pure-menu-link">Bliv en del af det</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Om os</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Udløb (september 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/stats/" class="pure-menu-link">Statistikker</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karriere</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">donere</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Bliv sponsor</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sprog <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">✓ Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Tilbagekaldelse af certifikater</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Seneste opdatering: <time datetime="2021-10-15">15. okt. 2021</time>
+
+
+ | <a href="/letsencrypt-ewebsite/da/docs">Se al dokumentation</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Når et certifikat ikke længere er sikkert at bruge, bør du tilbagekalde det. Dette kan ske for et par forskellige årsager. Du har, som eksempel, ved et uheld have fået delt den private nøgle på et offenligt website; hackere kan have kopieret den private nøgle fra dine servere; eller hackere har måske midlertidigt fået kontrol over dine servere eller DNS opsætning, og brugt det til at validere og udsteede et certifikat til hvilket de har den private nøgle.</p>
+<p>Når du tilbagekalder et Let&rsquo;s Encrypt certifikat, vil Let&rsquo;s Encrypt vil offentliggøre denne tilbagekaldelseinformation via <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol(OCSP)</a>, og nogle browsere vil tjekke OCSP, for at se, om de bør have tillid til et certifikat. Bemærk, at OCSP <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">har nogle grundlæggende problemer</a>, så ikke alle browsere udfører denne kontrol. Alligevel er tilbagekaldelse af certifikater, der tilhører kompromitterede private nøgler en vigtig praksis og er påkrævet af Let&rsquo;s Encrypts <a href="letsencrypt-ewebsite/da/repository/" hreflang="da">Abonnentaftale</a>.</p>
+<p>For at tilbagekalde et certifikat via Let&rsquo;s Encrypt, skal du bruge <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a>, sandsynligvis gennem en ACME-klient som <a href="https://certbot.eff.org/">Certbot</a>. Du bliver nødt til at bevise overfor Let&rsquo;s Encrypt, at du er autoriseret til at tilbagekalde certifikatet. Der er tre måder at gøre dette: fra den konto, der udstedte certifikatet, ved hjælp af en anden autoriseret konto, eller ved hjælp af certifikatets private nøgle.</p>
+<h1 id="angivelse-af-en-årsagskode">Angivelse af en årsagskode</h1>
+<p>Når du tilbagekalder et certifikat, skal vi kryptere abonnenter vælge en årsagskode på følgende måde:</p>
+<ul>
+<li>Ingen grund angivet eller <code>uspecificeret</code> (RFC 5280 CRLReason #0)
+<ul>
+<li>Hvis nedenstående årsagskoder ikke gælder for tilbagekaldelsesanmodningen, må abonnenten ikke angive en anden årsagskodekode end &ldquo;uspecificeret&rdquo;.</li>
+</ul>
+</li>
+<li><code>keyCompromise</code> (RFC 5280 CRLReason #1)
+<ul>
+<li>Certifikatabonnenten skal vælge &ldquo;keyCompromise&rdquo; tilbagekaldelsesårsagen, når de har grund til at tro, at den private nøgle i deres certifikat er blevet kompromitteret, f.eks. en uautoriseret person har haft adgang til den private nøgle til deres certifikat.</li>
+<li>Hvis tilbagekaldelsesanmodningen er underskrevet ved hjælp af certifikatets private nøgle, i stedet for en privatnøgle til abonnentkonto, så kan Let&rsquo;s Encrypt vælge at ignorere tilbagekaldelsesårsagen i forespørgslen og angive årsagen til &ldquo;keyCompromise&rdquo;.</li>
+</ul>
+</li>
+<li><code>superseded</code> (RFC 5280 CRLReason #4)
+<ul>
+<li>Certifikatabonnenten bør vælge den &ldquo;superseeded&rdquo; (erstatttet) tilbagekaldelsesårsag, når de anmoder om et nyt certifikat til erstatning for deres eksisterende certifikat.</li>
+</ul>
+</li>
+<li><code>cessationOfOperation</code> (RFC 5280 CRLReason #5)
+<ul>
+<li>Certifikatabonnenten bør vælge &ldquo;cessationOfOperation&rdquo; (ophørsbegrænsning) tilbagekaldelsesårsagen, når de ikke længere ejer alle domænenavne i certifikatet, eller når de ikke længere vil bruge certifikatet, fordi de ophører deres websted.</li>
+<li>Hvis tilbagekaldelsesanmodningen er fra en abonnentkonto, som ikke bestilte det pågældende certifikat, men har påvist kontrol med alle identifikatorer i certifikatet Let&rsquo;s Encrypt kan ignorere tilbagekaldelsesårsagen i forespørgslen og angive årsagen til &ldquo;cessationOfOperation&rdquo; (ophørshandling).</li>
+</ul>
+</li>
+</ul>
+<p>Tilbagekaldelsesanmodninger, der angiver en anden årsagskode, end de ovenfor beskrevne vil blive afvist.</p>
+<h1 id="fra-den-konto-der-har-udstedt-certifikatet">Fra den konto, der har udstedt certifikatet</h1>
+<p>Hvis du oprindeligt udstedte certifikatet, og du stadig har kontrol over den konto, du plejede at udstede det, du kan tilbagekalde det ved hjælp af dine kontooplysninger. Certbot vil forsøge dette som standard. Eksempel:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /etc/letsencrypt/archive/<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>/cert1.pem
+</code></pre></div><h1 id="bruger-en-anden-autoriseret-konto">Bruger en anden autoriseret konto</h1>
+<p>Hvis nogen udstedte et certifikat efter at have kompromitteret din vært eller dit DNS, vil du kunne tilbagekalde certifikatet, når du genvundet kontrollen. For at tilbagekalde certifikatet vil Let&rsquo;s Encrypt sikre, at du kontrollerer domænenavnene i dette certifikat (ellers kan folk tilbagekalde hinandens certifikater uden tilladelse)!</p>
+<p>For at validere denne kontrol, bruger Let&rsquo;s Encrypt de samme metoder, som den bruger til at validere kontrollen til udstedelse: du kan sætte en <a href="https://tools.ietf.org/html/rfc8555#section-8.4">værdi i en DNS TXT-post</a> eller sætte en <a href="https://tools.ietf.org/html/rfc8555#section-8.3">fil på en HTTP-server</a>. Generelt vil en ACME-klient håndtere dette for dig. Bemærk, at de fleste ACME-klienter kombinerer validering og udstedelse, så den eneste måde at bede om valideringer på er at forsøge udstedelse. Du kan derefter tilbagekalde det resulterende certifikat, hvis du ikke ønsker det, eller blot ødelægge den private nøgle.</p>
+<p>Hvis du vil undgå at udstede et certifikat overhovedet, kan du inkludere et ikke-eksisterende domænenavn i din kommandolinje, som vil få udstedelsen til at mislykkes, mens de stadig validerer de andre, eksisterende domænenavne. Eksempel:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot certonly --manual --preferred-challenges<span class="o">=</span>dns -d <span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span> -d nonexistent.<span class="si">${</span><span class="nv">YOUR_DOMAIN</span><span class="si">}</span>
+</code></pre></div><p>Og følg instruktionerne. Hvis du foretrækker at validere brugen af HTTP i stedet for DNS, skal du erstatte <code>--preferred-challenges</code> flaget med <code>--preferred-challenges=http</code>.</p>
+<p>Når du har valideret kontrollen over alle domænenavne i det certifikat, du vil tilbagekalde, du kan downloade certifikatet fra <a href="https://crt.sh/">crt. h</a>, derefter fortsætte med at tilbagekalde certifikatet, som om du havde udstedt det:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/downloaded-cert.pem
+</code></pre></div><h1 id="ved-brug-af-certifikatets-private-nøgle">Ved brug af certifikatets private nøgle</h1>
+<p>Hvis du ikke oprindeligt udstedte certifikatet, men du har en kopi af den tilsvarende private nøgle, du kan tilbagekalde ved at bruge den private nøgle til at underskrive tilbagekaldelsesanmodningen. For eksempel, hvis du ser, at en privat nøgle ved et uheld er blevet offenliggjort, kan du bruge denne metode til at tilbagekalde certifikater, der brugte den private-nøgle også selvom du ikke er den person, der oprindeligt udstedte disse certifikater.</p>
+<p>For at bruge denne metode skal du først have en kopi af den private nøgle i PEM-format.</p>
+<p>Derefter, hvis du ikke allerede har det, download certifikatet, der skal tilbagekaldes. Let&rsquo;s Encrypt logger alle certifikater til <a href="https://www.certificate-transparency.org/">Certifikat Transparency</a> logs, så du kan finde og downloade certifikater fra en log monitor som <a href="https://crt.sh/">crt.sh</a>. Søgning efter et matchende <code>SubjectPublicKeyInfo</code> (SPKI) felt vil finde alle certifikater, der bruger den private nøgle. For at udtrække SPKI hash fra en privat nøgle:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">openssl pkey -outform DER -in /PATH/TO/privkey.pem -pubout <span class="p">|</span> openssl sha256
+</code></pre></div><p>Når du har den private nøgle og certifikat, kan du tilbagekalde certifikatet således:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/privkey.pem --reason keyCompromise
+</code></pre></div></div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt er en gratis, automatisk og åben certifikat 
+ udsteeder bragt til dig af nonprofit organisationen <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>. 
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send alle mails eller forespørgsler til:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Se vores <a href="/privacy/">privatlivspolitik</a>.<br>
+Se vores <a href="https://www.abetterinternet.org/trademarks">varemærkepolitik</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ru-RU">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Часто задаваемые вопросы -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Этот раздел состоит из двух частей:
+ Общие вопросы Технические вопросы  Общие вопросы Какие услуги предлагает Let&amp;rsquo;s Encrypt? Let&amp;rsquo;s Encrypt — это глобальный Центр сертификации (ЦС). Мы помогаем людям и организациям в получении, обновлении и управлении SSL/TLS сертификатами. Наши сертификаты используются сайтами для организации доступа к ним по безопасному протоколу HTTPS.
+Let’s Encrypt предлагает сертификаты с подтверждением домена (Domain Validation, DV). Мы не выпускаем сертификаты с подтверждением организации (Organization Validation, OV) или сертификаты высокой надёжности (Extended Validation, EV), потому что не можем пока автоматизировать выдачу таких сертификатов.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Часто задаваемые вопросы">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ru/docs/faq/">
+    <meta name="twitter:description" content="Этот раздел состоит из двух частей:
+ Общие вопросы Технические вопросы  Общие вопросы Какие услуги предлагает Let&amp;rsquo;s Encrypt? Let&amp;rsquo;s Encrypt — это глобальный Центр сертификации (ЦС). Мы помогаем людям и организациям в получении, обновлении и управлении SSL/TLS сертификатами. Наши сертификаты используются сайтами для организации доступа к ним по безопасному протоколу HTTPS.
+Let’s Encrypt предлагает сертификаты с подтверждением домена (Domain Validation, DV). Мы не выпускаем сертификаты с подтверждением организации (Organization Validation, OV) или сертификаты высокой надёжности (Extended Validation, EV), потому что не можем пока автоматизировать выдачу таких сертификатов.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ru/docs/faq/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Блог Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустить навигационные ссылки</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ru/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ru/docs/" class="pure-menu-link" tabindex="0">Документация</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Помощь</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Поддержите нас</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/donate/" class="pure-menu-link">Сделайте пожертвование</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Станьте нашим спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/sponsors/" class="pure-menu-link">Текущие спонсоры и дарители</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getinvolved/" class="pure-menu-link">Внесите свой вклад</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">О сервисе</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/about/" class="pure-menu-link">Что такое Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Окончание срока действия DST Root CA X3 (сентябрь 2021 г.)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/faq/" class="pure-menu-link">Часто задаваемые вопросы (ЧЗВ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Состояние сервиса</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Карьера</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/contact/" class="pure-menu-link">Контакты</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Язык <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/faq/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/faq/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/faq/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/faq/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/faq/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/faq/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/faq/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/faq/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/faq/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/faq/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/faq/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/faq/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">✓ Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/faq/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/faq/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/faq/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/faq/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/faq/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Часто задаваемые вопросы</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Последнее обновление: <time datetime="2022-06-15">15 июн. 2022 г.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ru/docs">Вся документация</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Внимание! Английская версия сайта была обновлена, перевод неактуален
+                    (<time datetime="2022-09-28">28 сент. 2022 г.</time>)
+                    <a href="letsencrypt-ewebsite/docs/faq/">Просмотреть на английском</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>Этот раздел состоит из двух частей:</p>
+<ul>
+<li><a href="#general">Общие вопросы</a></li>
+<li><a href="#technical">Технические вопросы</a></li>
+</ul>
+<h1 id="a-id-general-общие-вопросы-a"><a id="general">Общие вопросы</a></h1>
+<h2 id="какие-услуги-предлагает-let-s-encrypt">Какие услуги предлагает Let&rsquo;s Encrypt?</h2>
+<p>Let&rsquo;s Encrypt — это глобальный Центр сертификации (ЦС). Мы помогаем людям и организациям в получении, обновлении и управлении SSL/TLS сертификатами. Наши сертификаты используются сайтами для организации доступа к ним по безопасному протоколу HTTPS.</p>
+<p>Let’s Encrypt предлагает сертификаты с подтверждением домена (Domain Validation, DV). Мы не выпускаем сертификаты с подтверждением организации (Organization Validation, OV) или сертификаты высокой надёжности (Extended Validation, EV), потому что не можем пока автоматизировать выдачу таких сертификатов.</p>
+<p>Чтобы начать использовать Let&rsquo;s Encrypt, посетите страницу <a href="letsencrypt-ewebsite/ru/getting-started/" hreflang="ru-RU">Приступая к работе</a>.</p>
+<h2 id="сколько-стоят-услуги-let-s-encrypt-это-действительно-бесплатно">Сколько стоят услуги Let&rsquo;s Encrypt? Это действительно бесплатно?</h2>
+<p>Мы не берём плату за наши сертификаты. Let’s Encrypt — некоммерческая организация, свою миссию мы видим в создании более безопасного и уважающего конфиденциальность Интернета, способствуя широкому распространению HTTPS. Наши услуги бесплатны и просты в использовании, поэтому каждый может настроить HTTPS для своего сайта.</p>
+<p>Нам нужна поддержка спонсоров, грантодателей и отдельных людей, чтобы предоставлять наши услуги бесплатно по всему миру. Если вы хотите поддержать нас, рассмотрите возможность <a href="letsencrypt-ewebsite/ru/donate/" hreflang="ru-RU">пожертвования</a> или <a href="https://www.abetterinternet.org/sponsor">станьте спонсором</a>.</p>
+<p>Иногда интеграторы (например, хостинги) взимают номинальную плату для покрытия административных и управленческих расходов на предоставление сертификатов Let&rsquo;s Encrypt.</p>
+<h2 id="какую-техническую-поддержку-вы-предлагаете">Какую техническую поддержку вы предлагаете?</h2>
+<p>Let&rsquo;s Encrypt — небольшая компания, мы полагаемся на автоматизацию для снижения затрат. Поэтому мы не можем предложить непосредственную техническую помощь каждому из наших пользователей. Но у нас есть другие способы помочь вам:</p>
+<ol>
+<li>Действительно полезная <a href="letsencrypt-ewebsite/ru/docs/" hreflang="ru-RU">документация</a>.</li>
+<li>Активный и полезный <a href="https://community.letsencrypt.org/">форум сообщества</a>. Участники нашего сообщества отлично справляются с ответами на вопросы, а на самые распространенные вопросы уже даны ответы.</li>
+</ol>
+<p>Вот <a href="https://www.youtube.com/watch?v=Xe1TZaElTAs">видео</a> которое нам нравится, о значимости поддержки сообщества.</p>
+<h2 id="сайт-с-сертификатом-let-s-encrypt-используется-для-фишинга-вредоносного-по-мошенничества-что-мне-делать">Сайт с сертификатом Let&rsquo;s Encrypt используется для фишинга/вредоносного ПО/мошенничества/&hellip; , что мне делать?</h2>
+<p>Мы рекомендуем сообщить об этом в Google Safe Browsing и Microsoft Smart Screen, которые способны эффективно защищать пользователей Интернета. URL-адреса для отчетов:</p>
+<ul>
+<li><a href="https://safebrowsing.google.com/safebrowsing/report_badware/">https://safebrowsing.google.com/safebrowsing/report_badware/</a></li>
+<li><a href="https://www.microsoft.com/en-us/wdsi/support/report-unsafe-site-guest">https://www.microsoft.com/en-us/wdsi/support/report-unsafe-site-guest</a></li>
+</ul>
+<p>Хотите узнать больше о наших политиках и обосновании? Вам сюда:</p>
+<p><a href="https://letsencrypt.org/2015/10/29/phishing-and-malware.html">https://letsencrypt.org/2015/10/29/phishing-and-malware.html</a></p>
+<h1 id="a-id-technical-технические-вопросы-a"><a id="technical">Технические вопросы</a></h1>
+<h2 id="примет-ли-мой-браузер-сертификаты-от-let-s-encrypt">Примет ли мой браузер сертификаты от Let’s Encrypt?</h2>
+<p>Да, большинство браузеров и операционных систем доверяют нашим сертификатам. Для подробной информации обратитесь к <a href="letsencrypt-ewebsite/ru/docs/certificate-compatibility/" hreflang="ru-RU">реестру совместимости</a>.</p>
+<h2 id="пригодны-ли-сертификаты-let-s-encrypt-для-других-целей-нежели-ssl-tls-для-сайтов">Пригодны ли сертификаты Let&rsquo;s Encrypt для других целей, нежели SSL/TLS для сайтов?</h2>
+<p>Сертификаты Let&rsquo;s Encrypt — это стандартные сертификаты с подтверждением домена, поэтому они пригодны для любых серверов, использующих доменное имя, например веб-серверы, почтовые серверы, FTP-серверы и т. д.</p>
+<p>Для шифрования электронной почты и подписи исполняемого кода нужны сертификаты иного типа, который Let’s Encrypt пока не предоставляет.</p>
+<h2 id="let-s-encrypt-создаёт-или-хранит-закрытые-ключи-для-моих-сертификатов-на-своих-серверах">Let’s Encrypt создаёт или хранит закрытые ключи для моих сертификатов на своих серверах?</h2>
+<p>Нет. Никогда.</p>
+<p>Закрытые ключи всегда создаются и управляются на ваших собственных серверах, а не на серверах Центра сертификации Let&rsquo;s Encrypt.</p>
+<h2 id="каков-срок-действия-сертификатов-let-s-encrypt-какое-время-они-будут-считаться-действительными">Каков срок действия сертификатов Let&rsquo;s Encrypt? Какое время они будут считаться действительными?</h2>
+<p>Наши сертификаты действительны в течение 90 дней с момента выпуска. О том, почему, вы можете прочитать <a href="/2015/11/09/why-90-days.html">здесь</a>.</p>
+<p>Не существует способа изменить это, без исключений. Мы рекомендуем автоматически обновлять сертификаты каждые 60 дней.</p>
+<h2 id="планирует-ли-let-s-encrypt-выпускать-сертификаты-с-подтверждением-организации-organization-validation-ov-или-сертификаты-высокой-надёжности-extended-validation-ev">Планирует ли Let’s Encrypt выпускать сертификаты с подтверждением организации (Organization Validation, OV) или сертификаты высокой надёжности (Extended Validation, EV)?</h2>
+<p>Да, один и тот же сертификат Let’s Encrypt может содержать несколько доменных имён, используя механизм Subject Alternative Name (SAN).</p>
+<h2 id="могу-ли-я-получить-сертификат-для-нескольких-доменных-имён-san-или-ucc-сертификаты">Могу ли я получить сертификат для нескольких доменных имён (SAN или UCC сертификаты)?</h2>
+<p>Да, один и тот же сертификат Let’s Encrypt может содержать несколько доменных имён, используя механизм Subject Alternative Name (SAN).</p>
+<h2 id="выпускает-ли-let-s-encrypt-сертификаты-с-возможностью-подстановки-wildcard-сертификаты">Выпускает ли Let’s Encrypt сертификаты с возможностью подстановки (wildcard-сертификаты)?</h2>
+<p>Да. Выдача wildcard должна выполняться через ACMEv2 с использованием <a href="/docs/challenge-types/#dns-01-challenge">вызова DNS-01</a>. Узнайте подробности в статье <a href="https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578">на форуме сообщества</a>.</p>
+<h2 id="существует-ли-acme-клиент-let-s-encrypt-для-моей-операционной-системы">Существует ли ACME-клиент Let&rsquo;s Encrypt для моей операционной системы?</h2>
+<p>Есть множество реализаций <a href="letsencrypt-ewebsite/ru/docs/client-options/" hreflang="ru-RU">ACME-клиента</a>. Скорее всего, для вашей операционной системы найдётся рабочее решение. На начальном этапе мы рекомендуем использовать <a href="https://certbot.eff.org/">Certbot</a>.</p>
+<h2 id="могу-ли-я-использовать-имеющийся-закрытый-ключ-или-запрос-на-подпись-сертификата-certificate-signing-request-csr">Могу ли я использовать имеющийся закрытый ключ или Запрос на подпись сертификата (Certificate Signing Request, CSR)?</h2>
+<p>Да, но не все клиенты поддерживают эту функцию. <a href="https://certbot.eff.org/">Certbot</a> — поддерживает.</p>
+<h2 id="какие-ip-адреса-использует-let-s-encrypt-для-проверки-моего-веб-сервера">Какие IP-адреса использует Let&rsquo;s Encrypt для проверки моего веб-сервера?</h2>
+<p>Мы не публикуем такой список IP-адресов, потому что эти IP-адреса могут измениться в любое время. Обратите внимание, что теперь мы <a href="https://letsencrypt.org/2020/02/19/multi-perspective-validation.html">проверяем с нескольких IP-адресов</a>.</p>
+<h2 id="я-успешно-обновил-сертификат-но-на-этот-раз-проверка-не-состоялась-как-такое-возможно">Я успешно обновил сертификат, но на этот раз проверка не состоялась. Как такое возможно?</h2>
+<p>Если вы однажды успешно подтвердили право на доменное имя, результат авторизации вашей учетной записи кэшируется для последующего использования. Кеш авторизации действует 30 дней с момента проверки. Если у запрошенного сертификата необходимые авторизации будут в кэше, то новая проверка не будет запущена до тех пор, пока не истечет срок действия кешированных авторизаций.</p>
+<h2 id="где-я-могу-узнать-больше-о-tls-ssl-и-pki-в-целом">Где я могу узнать больше о TLS/SSL и PKI в целом?</h2>
+<p>Давний исследователь и практик в области безопасности, Иван Ристич, опубликовал руководство по настройке, содержащее полезную информацию о том, что следует учитывать при <a href="https://www.feistyduck.com/library/bulletproof-tls-guide/online/" target="_blank" rel="noopener noreferer">настройке конфигурации TLS</a>.</p>
+<p>Для получения более обширной информации и подробностей мы рекомендуем <a href="https://www.feistyduck.com/books/bulletproof-tls-and-pki/" target="_blank" rel="noopener noreferer">Bulletproof TLS и PKI</a>, написал также Ристич.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - это бесплатный, автоматизированный и открытый Центр Сертификации, созданный для вас
+  некоммерческой организацией <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Все письма и запросы отправляйте по адресу:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Ознакомьтесь с нашей <a href="/ru/privacy/">политикой конфиденциальности</a>.<br>
+Ознакомьтесь с нашей <a href="https://www.abetterinternet.org/trademarks/">политикой в отношении товарных знаков</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

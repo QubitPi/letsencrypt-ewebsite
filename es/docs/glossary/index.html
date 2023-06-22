@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="es-US">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Glosario -  Let&#39;s Encrypt - Certificados SSL/TLS Gratuitos</title>
+    <meta name="description" content="ACME (Automatic Certificate Management Environment) : Protocolo implementado por Let&amp;rsquo;s Encrypt. Software compatible con este protocolo que puede usar para comunicarse con Let&amp;rsquo;s Encrypt a la hora de solicitar un certificate. ACME drafts - Wikipedia ACME Client : Un programa capaz de comunicarse con un servidor ACME para solicitar un certificate. ACME Server : Un servidor compatible con ACME que puede generar certificates. El software , Boulder, es compatible con ACME, con algunas diferencias.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Glosario">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/es/docs/glossary/">
+    <meta name="twitter:description" content="ACME (Automatic Certificate Management Environment) : Protocolo implementado por Let&amp;rsquo;s Encrypt. Software compatible con este protocolo que puede usar para comunicarse con Let&amp;rsquo;s Encrypt a la hora de solicitar un certificate. ACME drafts - Wikipedia ACME Client : Un programa capaz de comunicarse con un servidor ACME para solicitar un certificate. ACME Server : Un servidor compatible con ACME que puede generar certificates. El software , Boulder, es compatible con ACME, con algunas diferencias.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/es/docs/glossary/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Saltar enlaces de navegación</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/es/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/es/docs/" class="pure-menu-link" tabindex="0">Documentación</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/ayuda-en-espanol/22" class="pure-menu-link" tabindex="0">Consigue Ayuda</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Donar</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/donate/" class="pure-menu-link">Haz una donación</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Conviértete en un patrocinador</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/sponsors/" class="pure-menu-link">Patrocinadores y donantes actuales</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getinvolved/" class="pure-menu-link">Involúcrate</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Acerca De</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/faq/" class="pure-menu-link">Preguntas Frecuentes (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status de Servicio</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/stats/" class="pure-menu-link">Estadísticas</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Trabajos</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/contact/" class="pure-menu-link">Contactar</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Lenguajes <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">✓ Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>Glosario</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Última Actualización: <time datetime="2018-12-30">30 dic. 2018</time>
+
+
+ | <a href="/letsencrypt-ewebsite/es/docs">Ve toda la Documentación</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<!--
+Note for translators:
+ 
+- Usage of the "def" macro (in other languages than English):
+{% def 
+	id="a unique id for anchor - the SAME than for english. will be prefixed by `def-`" 
+	name="The term to define (optional if english or abbr is provided)"
+	abbr="an accronym (optional)"
+	english="the english term (optional - if present the abbr is in english too)" %}}
+		the definition
+{% /def %}
+	
+- Check the javascript console for errors.
+
+- Automatic titles on definition's link cuts everything after the last point (to remove source links)
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="definition">
+	<a href="#def-ACME"><dfn id="def-ACME"><abbr lang="en">ACME</abbr></dfn> (Automatic Certificate Management Environment)</a>
+	: Protocolo implementado por <a href="#def-LE">Let&rsquo;s Encrypt</a>. Software compatible con este protocolo que puede usar para comunicarse con Let&rsquo;s Encrypt a la hora de solicitar un <a href="#def-leaf">certificate</a>. <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-16">ACME drafts</a> - <a href="https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-ACME-client"><dfn id="def-ACME-client">ACME Client</dfn></a>
+	: Un programa capaz de comunicarse con un servidor ACME para solicitar un <a href="#def-leaf">certificate</a>.
+</p>
+<p class="definition">
+	<a href="#def-ACME-server"><dfn id="def-ACME-server">ACME Server</dfn></a>
+	: Un servidor compatible con ACME que puede generar <a href="#def-leaf">certificates</a>. El software , <a href="#def-boulder">Boulder</a>, es compatible con ACME, <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">con algunas diferencias</a>.
+</p>
+<p class="definition">
+	<a href="#def-AIA"><dfn id="def-AIA">Authority Information Access</dfn> (<abbr>AIA</abbr>)</a>
+	: Una <a href="#def-extension">extensión</a> del certificado utilizado para indicar a los <a href="#def-user-agent">agentes de usuario</a> cómo obtener información sobre el emisor del <a href="#def-certificate">certificado</a>. Por lo general, especifica el URI <a href="#def-OCSP">OCSP</a> y el <a href="#def-CAI">URI del emisor</a>.
+</p>
+<p class="definition">
+	<a href="#def-BRs"><dfn id="def-BRs">Baseline Requirements</dfn> (<abbr>BRs</abbr>)</a>
+	: Un conjunto de requisitos técnicos y de políticas para las AC. Dado que todos los principales <a href="#def-root-program">programas raíz</a> incorporan los Requisitos de línea de base, la mayoría de los navegadores deben cumplir con estos requisitos.
+</p>
+<p class="definition">
+	<a href="#def-boulder"><dfn id="def-boulder">Boulder</dfn></a>
+	: El software que implementa ACME, desarrollado y utilizado por <a href="#def-LE">Let&rsquo;s Encrypt</a>. <a href="https://github.com/letsencrypt/boulder">GitHub</a>
+</p>
+<p class="definition">
+	<a href="#def-CAI"><dfn id="def-CAI">CA Issuers</dfn></a>
+	: Parte del campo <a href="#def-AIA">AIA</a> que contiene información sobre el emisor del <a href="#def-leaf">certificado</a>. Puede ser útil cuando el <a href="#def-web-server">servidor web</a> no proporciona una <a href="#def-chain">cadena de certificados</a> confiable.
+</p>
+<p class="definition">
+	<a href="#def-CABF"><dfn id="def-CABF">CA/Browser Forum</dfn></a>
+	: Un grupo voluntario de autoridades de certificación, proveedores de software de navegador de Internet, sistemas operativos y otras aplicaciones habilitadas para PKI. El CA/Browser Forum publica los <a href="#def-BRs">Requisitos de línea de base</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> es miembro del Foro de CA/Browser. <a href="https://en.wikipedia.org/wiki/CA/Browser_Forum">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (Certificate Authority Authorization)</a>
+	: Un registro DNS que especifica qué <a href="#def-CA">CA</a> pueden emitir un certificado para el nombre de dominio correspondiente. Los registros de CAA son verificados por las CA, no por los navegadores. <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="letsencrypt-ewebsite/es/docs/caa/" hreflang="es-US">honors CAA records</a> según lo requerido por los <a href="#def-BRs">Baseline Requirements</a>. - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CNAME"><dfn id="def-CNAME">Canonical Name record</dfn> (<abbr>CNAME</abbr>)</a>
+	: Una entrada DNS que asigna un nombre de dominio a otro, conocido como el Nombre canónico. <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-certificate"><dfn id="def-certificate">Certificate</dfn></a>
+	: Un archivo en un <a href="#def-X509">formato particular</a> que contiene una clave pública y otros datos que describen cuándo usar esa clave pública. El tipo de certificado más común es un <a href="#def-leaf">certificado de hoja</a>. También hay certificados <a href="#def-intermediate">intermedios</a> y <a href="#def-root">raíz</a>.
+</p>
+<p class="definition">
+	<a href="#def-CA"><dfn id="def-CA">Certificate Authority</dfn> (<abbr>CA</abbr>)</a>
+	: Una organización que emite <a href="#def-leaf">certificados</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a>, <a href="#def-IdenTrust">IdenTrust</a>, Sectigo, and DigiCert son autoridades de certificación. <a href="https://en.wikipedia.org/wiki/Certificate_authority">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CP"><dfn id="def-CP">Certificate Policy</dfn> (<abbr>CP</abbr>)</a>
+	: Un conjunto de reglas que indica la aplicabilidad de un certificado a una comunidad o clase de aplicaciones en particular con requisitos de seguridad comunes. Los detalles específicos de la emisión se resumen en un <a href="#def-CPS">CPS</a>. <a href="letsencrypt-ewebsite/es/repository/#isrg-certificate-policy" hreflang="es-US">ISRG Certificate Policy</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CRL"><dfn id="def-CRL">Certificate Revocation List</dfn> (<abbr>CRL</abbr>)</a>
+	: Un método para informar a <a href="#def-user-agent">agentes de usuario</a> sobre el estado de <a href="#def-revocation">revocación</a> de un <a href="#def-leaf">certificado</a>. Esta es una lista de los números de serie de todos los certificados revocados de una CA determinada, firmada por esa CA. <a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CSR"><dfn id="def-CSR">Certificate Signing Request</dfn> (<abbr>CSR</abbr>)</a>
+	: Un archivo firmado que contiene la información necesaria requerida por <a href="#def-CA">CA</a> para generar un certificado. La información relevante para <a href="#def-LE">Let&rsquo;s Encrypt</a> son <a href="#def-CN">Nombre común</a>, <a href="#def-SAN">Nombres alternativos de sujeto</a> e Información de clave pública del sujeto. Por lo general, <a href="#def-ACME-client">aplicaciones de cliente</a> generan automáticamente la CSR para el usuario, aunque un proveedor o dispositivo de alojamiento web también puede generar un CSR. <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-store"><dfn id="def-store">Certificate Store</dfn></a>
+	: Un almacén de certificados contiene una lista de <a href="#def-root">certificados raíz de confianza</a>. Los sistemas operativos (como Windows, Android o Debian) y <a href="#def-web-browser">navegadores web</a> (como Firefox) mantienen un almacén de certificados. Los navegadores sin uno dependen del almacén de certificados de los sistemas operativos. Los <a href="#def-leaf">Certificados</a> proporcionados por <a href="#def-LE">Let&rsquo;s Encrypt</a> son <a href="letsencrypt-ewebsite/es/certificates/" hreflang="es-US">confiables por la mayoría de las tiendas de certificados</a>.
+</p>
+<p class="definition">
+	<a href="#def-CT"><dfn id="def-CT">Certificate Transparency</dfn> (<abbr>CT</abbr>)</a>
+	: Para mejorar la seguridad, los certificados (o <a href="#def-precertificate">precertificados</a>) deben publicarse en los registros de transparencia de certificados: <a href="https://www.certificate-transparency.org/">https://www.certificate-transparency.org/</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> genera y publica <a href="#def-precertificate">precertificados</a> e incluye en el <a href="#def-leaf">certificado</a> posterior una lista de <a href="#def-SCT">SCT</a> para el precertificado. Algunos <a href="#def-web-browser">navegadores</a>, como Google Chrome, requieren la presencia de esta premisa verificable para validar el certificado. <a href="https://en.wikipedia.org/wiki/Certificate_Transparency">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CT-log"><dfn id="def-CT-log">Certificate Transparency Log</dfn></a>
+	: Un componente de <a href="#def-CT">Transparencia de certificado</a> que acepta envíos de certificados y <a href="#def-precertificate">precertificados</a> y los incorpora a una lista permanente, verificable y de acceso público.
+</p>
+<p class="definition">
+	<a href="#def-chain"><dfn id="def-chain">Certificate chain</dfn></a>
+	: Una lista de <a href="#def-intermediate">certificados intermedios</a> que ayudan a un <a href="#def-user-agent">agente de usuario</a> a determinar que puede confiar en una entidad final o <a href="#def-leaf">certificado de hoja</a>, conectándolo a un <a href="#def-root">certificado raíz</a> en su <a href="#def-store">almacén de certificados</a>. Nota: la cadena no siempre es única y cuando un sitio web presenta una cadena de certificados que conduce a una raíz, el agente de usuario puede decidir usar otra cadena para validar el certificado. <a href="https://en.wikipedia.org/wiki/Public_key_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-extension"><dfn id="def-extension">Certificate extension</dfn></a>
+	: En los certificados, la mayoría de los campos están definidos por extensiones. Por ejemplo, <a href="#def-SAN">Nombres alternativos de sujeto</a> y <a href="#def-AIA">AIA</a> son extensiones. El mecanismo de extensión permite crear nuevos campos que no formaban parte del estándar original <a href="#def-X509">X.509</a>.
+</p>
+<p class="definition">
+	<a href="#def-issuer"><dfn id="def-issuer">Certificate issuer</dfn></a>
+	: El campo &ldquo;Emisor&rdquo; de un certificado describe qué emisor lo firmó. Por ejemplo, el campo Emisor de un certificado de entidad final Let&rsquo;s Encrypt podría ser &ldquo;Emisor: C = US, O = Let&rsquo;s Encrypt, CN = Let&rsquo;s Encrypt Authority X3&rdquo;. Comúnmente contiene campos como <a href="#def-CN">Nombre común</a>, País y Organización. El campo Emisor siempre coincide con el campo <a href="#def-subject">Asunto</a> de algún certificado. Para los certificados <a href="#def-self-signed">autofirmados</a> como <a href="#def-root">root</a>, el Emisor es el mismo que el Asunto. El término &ldquo;emisor&rdquo; también puede usarse para indicar un certificado que emite otros certificados (un <a href="#def-intermediate">intermedio</a> o raíz), o una organización que emite certificados.
+</p>
+<p class="definition">
+	<a href="#def-subject"><dfn id="def-subject">Certificate subject</dfn></a>
+	: El campo &ldquo;Asunto&rdquo; de certificado indica de qué trata un certificado. Esto comúnmente contiene campos como <a href="#def-CN">Nombre común</a>, País y Organización.
+</p>
+<p class="definition">
+	<a href="#def-CPS"><dfn id="def-CPS">Certification Practice Statement</dfn> (<abbr>CPS</abbr>)</a>
+	: La declaración de las prácticas que una autoridad de certificación emplea en la emisión, gestión, revocación y renovación o re-codificación de certificados. <a href="letsencrypt-ewebsite/es/repository/#isrg-certification-practice-statement" hreflang="es-US">ISRG Certification Practice Statement</a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 section 3.4</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-CN"><dfn id="def-CN">Common Name</dfn> (<abbr>CN</abbr>)</a>
+	: Parte del <a href="#def-subject">Asunto</a> de un certificado que describe de qué trata el certificado. Para <a href="#def-root">raíces</a> e <a href="#def-intermediate">intermedios</a> es el nombre legible por humanos de la <a href="#def-CA">autoridad de certificación</a>. Para <a href="#def-leaf">certificados</a> es uno de los nombres de dominio en el certificado. Nota: El nombre común está limitado a 63 caracteres. Es un método obsoleto para indicar un nombre de dominio al que se aplica el certificado, ya que los estándares actuales de Internet esperan que el software verifique solo los <a href="#def-SAN">Nombres alternativos del sujeto</a> para determinar la aplicabilidad de un certificado.
+</p>
+<p class="definition">
+	<a href="#def-critical"><dfn id="def-critical">Critical extension</dfn></a>
+	: Un certificado puede contener <a href="#def-extension">extensiones</a> marcadas como &ldquo;críticas&rdquo;. Esto significa que el software debe rechazar ese certificado a menos que el software comprenda cómo procesar esa extensión. Esto permite introducir nuevas extensiones que son importantes para la seguridad sin crear riesgos para el software anterior.
+</p>
+<p class="definition">
+	<a href="#def-cross-signing"><dfn id="def-cross-signing">Cross Signing</dfn></a>
+	: Un certificado de emisión puede ser firmado por más de una <a href="#def-root">raíz</a>. Por ejemplo, <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="#def-intermediate">intermedios</a> están firmados de forma cruzada por <a href="#def-IdenTrust">IdenTrust</a>, porque en el lanzamiento la raíz Let&rsquo;s Encrypt aún no era confiable para <a href="#def-store">los almacenes de certificados</a>. Técnicamente, se logra con dos certificados de emisión, utilizando el mismo <a href="#def-subject">Asunto</a> y el mismo <a href="#def-key-pair">Key-pair</a>, uno firmado por la clave privada de una raíz Let&rsquo;s Encrypt y el otro firmado por la clave privada de la raíz de IdenTrust: <a href="letsencrypt-ewebsite/es/certificates/" hreflang="es-US">/certificates</a>. <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-DANE"><dfn id="def-DANE">DNS-based Authentication of Named Entities</dfn> (<abbr>DANE</abbr>)</a>
+	: Un mecanismo que utiliza DNS para indicar cómo verificar la autenticidad del <a href="#def-leaf">certificado</a> o la clave de cifrado presentada.  <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-DNSSEC"><dfn id="def-DNSSEC">Domain Name System Security Extensions</dfn> (<abbr>DNSSEC</abbr>)</a>
+	: Un mecanismo para autenticar criptográficamente las respuestas DNS. DNSSEC requiere la implementación por parte del registrador del dominio y solucionadores recursivos para que surta efecto. La adopción es actualmente algo baja. <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-DV"><dfn id="def-DV">Domain-validated certificate</dfn></a>
+	: Un <a href="#def-leaf">certificado</a> donde el solicitante solo ha demostrado su control sobre el nombre de dominio (y no la identidad de la organización solicitante). <a href="#def-LE">Let&rsquo;s Encrypt</a> ofrece solo certificados DV (no <a href="#def-OV">OV</a> o <a href="#def-EV">EV</a>): <a href="letsencrypt-ewebsite/es/docs/faq/" hreflang="es-US">FAQ</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (Elliptic Curve Digital Signature Algorithm)</a>
+	: Una variante del algoritmo de firma digital (DSA) que utiliza una curva elíptica criptografía . <a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">Wikipedia</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> admite ECDSA para <a href="#def-leaf">certificados de entidad final</a>, pero aún no para toda la <a href="#def-chain">cadena</a>: <a href="letsencrypt-ewebsite/es/upcoming-features/" hreflang="es-US">/upcoming-features</a>
+</p>
+<p class="definition">
+	<a href="#def-Ed25519"><dfn id="def-Ed25519">Ed25519</dfn></a>
+	: Un tipo específico de <a href="#def-EdDSA">EdDSA</a>, junto con Ed448.
+</p>
+<p class="definition">
+	<a href="#def-EdDSA"><dfn id="def-EdDSA"><abbr lang="en">EdDSA</abbr></dfn> (Edwards-curve Digital Signature Algorithm)</a>
+	: Un moderno sistema de firma de clave pública basado en curvas elípticas, diseñado para resolver varios <a href="https://ed25519.cr.yp.to/">problemas de implementación</a>  comunes con criptografía de curva elíptica. Las autoridades de certificación como <a href="#def-LE">Let&rsquo;s Encrypt</a> aún no pueden proporcionar certificados EdDSA. <a href="https://en.wikipedia.org/wiki/EdDSA">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-ECC"><dfn id="def-ECC">Elliptic Curve Cryptography</dfn> (<abbr>ECC</abbr>)</a>
+	: Un tipo de criptografía de clave pública basada en curvas elípticas. ECC usa claves más pequeñas en comparación con la criptografía que no es de EC mientras proporciona seguridad equivalente. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">Cloudflare</a> - <a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-EV"><dfn id="def-EV">Extended Validation</dfn> (<abbr>EV</abbr>)</a>
+	: Un tipo de validación de certificado para el cual <a href="#def-CA">CA</a> ha verificado la entidad legal que controla el sitio web. Contienen información sobre esa entidad. Los controles desde <a href="#def-CA">CA</a> son más estrictos que para los certificados <a href="#def-OV">OV</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> no ofrece certificados EV. <a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-FQDN"><dfn id="def-FQDN">Fully qualified domain name</dfn> (<abbr>FQDN</abbr>)</a>
+	: El nombre de dominio completo de un sitio web. Por ejemplo, <code>www.example.com</code> es un <em>FQDN</em>.
+</p>
+<p class="definition">
+	<a href="#def-HPKP"><dfn id="def-HPKP">HTTP Public Key Pinning</dfn> (<abbr>HPKP</abbr>)</a>
+	: Un mecanismo de seguridad que le pide a un navegador que requiera que la <a href="#def-chain">cadena de certificados</a> de un sitio use ciertas claves públicas en futuras cargas. Chrome introdujo este mecanismo para proteger contra compromisos de CA, pero causó interrupciones en el sitio, lo que llevó a Chrome a <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">desaprobarlo y eliminarlo</a>. <a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-IdenTrust"><dfn id="def-IdenTrust">IdenTrust</dfn></a>
+	: A <a href="#def-CA">Certificate Authority</a>. IdenTrust tiene <a href="#def-cross-signing">firma cruzada</a> <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="#def-intermediate">intermediate certificates</a>: <a href="letsencrypt-ewebsite/es/certificates/" hreflang="es-US">/certificates</a>. <a href="https://en.wikipedia.org/wiki/IdenTrust">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-intermediate"><dfn id="def-intermediate">Intermediate certificate</dfn></a>
+	: Un certificado firmado por una <a href="#def-root">raíz</a> u otro intermediario y capaz de firmar otros certificados. Se utilizan para firmar certificados manteniendo la clave privada del certificado raíz fuera de línea. Los intermedios se incluyen en <a href="#def-chain">cadenas de certificados</a>. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Types_of_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-IDN"><dfn id="def-IDN">Internationalized Domain Name</dfn> (<abbr>IDN</abbr>)</a>
+	: Nombre de dominio con caracteres distintos de <code>a</code> a <code>z</code>, <code>0</code> a <code>9</code> y el guión (<code>-</code>). Por ejemplo, pueden contener caracteres basados en el alfabeto árabe, chino, cirílico, tamil, hebreo o latino con signos diacríticos o ligaduras. La representación codificada de un dominio IDN comienza con <code>xn -</code>. Los IDN son compatibles con <a href="#def-LE">Let&rsquo;s Encrypt</a>: <a href="https://letsencrypt.org/2016/10/21/introducing-idn-support.html">https://letsencrypt.org/2016/10/21/introducing-idn-support.html</a>. <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">Wikipedia</a> - <a href="https://tools.ietf.org/html/rfc5890">RFC 5890</a> - <a href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>
+</p>
+<p class="definition">
+	<a href="#def-IDNA"><dfn id="def-IDNA">Internationalized Domain Names for Applications</dfn> (<abbr>IDNA</abbr>)</a>
+	: Vea <a href="#def-IDN">internationalized domain name</a>.
+</p>
+<p class="definition">
+	<a href="#def-ISRG"><dfn id="def-ISRG">Internet Security Research Group</dfn> (<abbr>ISRG</abbr>)</a>
+	: Es la organización que hay trás <a href="#def-LE">Let&rsquo;s Encrypt</a>: <a href="https://www.abetterinternet.org/about/">https://www.abetterinternet.org/about/</a>. <a href="https://en.wikipedia.org/wiki/Internet_Security_Research_Group">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-key-pair"><dfn id="def-key-pair">Key-pair</dfn></a>
+	: Una combinación de una clave privada y una clave pública utilizada para firmar o cifrar. La clave pública se incrusta comúnmente en un certificado, mientras que la clave privada se almacena por sí sola y debe mantenerse en secreto. Se puede usar un par de claves para cifrar y descifrar, para firmar y verificar datos, o para negociar claves secundarias, según la aplicación. <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-leaf"><dfn id="def-leaf">Leaf certificate (end-entity certificate)</dfn></a>
+	: Generalmente un certificado firmado por un <a href="#def-intermediate">intermedio</a>, válido para un conjunto de dominios y no puede firmar otros certificados. Este es el tipo de certificado que solicitan <a href="#def-ACME-client">clientes ACME</a> y que usan <a href="#def-web-server">servidores web</a>.<a href="https://en.wikipedia.org/wiki/Public_key_certificate#End-entity_or_leaf_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-LE"><dfn id="def-LE">Let&#39;s Encrypt</dfn> (<abbr>LE</abbr>)</a>
+	: The <a href="#def-CA">Certificate Authority</a> operado por <a href="#def-ISRG">ISRG</a>. <a href="https://en.wikipedia.org/wiki/Let%27s_Encrypt">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-mixed-content"><dfn id="def-mixed-content">Mixed content</dfn></a>
+	: Cuando una página web HTTPS carga recursos secundarios (Javascript, CSS o imágenes) a través de HTTP. Algunos <a href="#def-web-browser">Navegadores</a> pueden bloquear contenido o marcar la página como menos segura cuando hay contenido mixto: <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content</a> . Para solucionar un problema de contenido mixto, un desarrollador web debe cambiar sus páginas para que todos los recursos usen URL HTTPS. Existen <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">Herramientas para desarrolladores</a> integrados en los navegadores se pueden usar para descubrir qué recursos están causando problemas de contenido mixto.
+</p>
+<p class="definition">
+	<a href="#def-OCSP"><dfn id="def-OCSP"><abbr lang="en">OCSP</abbr></dfn> (Online Certificate Status Protocol)</a>
+	: Un método para verificar el estado de <a href="#def-revocation">revocación</a> de un <a href="#def-leaf">certificado</a>. En otras palabras, una forma de verificar si una <a href="#def-CA">Autoridad de certificación</a> indica que el certificado ya no debe considerarse válido, a pesar de que aún no se ha alcanzado su fecha de vencimiento. Esta solicitud puede crear problemas de privacidad porque permite que la autoridad de certificación y los proveedores de servicios de Internet observen directamente quién visita qué sitios. <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-must-staple"><dfn id="def-OCSP-must-staple">OCSP Must-Staple</dfn></a>
+	: Una extensión del <a href="#def-leaf">certificado</a> que informa al <a href="#def-web-browser">navegador</a> que el <a href="#def-web-server">servidor web</a> con ese certificado debe usar <a href="#def-OCSP-stapling">grapado OCSP</a>. Se utiliza para exigir que el servidor web confirme un estado actualizado de <a href="#def-revocation">revocación</a> del <a href="#def-leaf">certificado</a> en cada conexión, haciendo que la revocación sea más confiable. <a href="#def-LE">Let&rsquo;s Encrypt</a> puede emitir certificados con la <a href="#def-extension">extensión</a> OCSP Must-Staple a petición. <a href="https://blog.mozilla.org/security/2015/11/23/improving-revocation-ocsp-must-staple-and-short-lived-certificates/">Mozilla Security Blog</a> <a href="https://tools.ietf.org/html/rfc7633">RFC 7633</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-stapling"><dfn id="def-OCSP-stapling">OCSP stapling</dfn></a>
+	: Método por el cuál un <a href="#def-web-server">servidor web</a> envíe un a un <a href="#def-web-browser">navegador</a> una respuesta <a href="#def-OCSP">OCSP</a> firmada por la <a href="#def-CA">Autoridad de certificación</a>, por lo que el navegador en sí no necesita realizar una solicitud OCSP secundaria a la CA, lo que mejora la velocidad y la privacidad. También conocida como extensión de solicitud de estado de certificado TLS. <a href="https://en.wikipedia.org/wiki/OCSP_stapling">Wikipedia</a> <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">Cloudflare</a>
+</p>
+<p class="definition">
+	<a href="#def-OID"><dfn id="def-OID">Object identifier</dfn> (<abbr>OID</abbr>)</a>
+	: Los OID son identificadores numéricos únicos estandarizados por la Unión Internacional de Telecomunicaciones (UIT) e ISO / IEC. Los OID se utilizan dentro de los certificados para definir extensiones, campos o afirmaciones de políticas. Los estándares de Internet y los documentos de <a href="#def-CP">Política de certificados</a> y <a href="#def-CPS">Declaración de práctica de certificación</a> definen el uso de OID. <a href="https://en.wikipedia.org/wiki/Object_identifier">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-OV"><dfn id="def-OV">Organization Validation</dfn> (<abbr>OV</abbr>)</a>
+	: Certificados para los cuales <a href="#def-CA">CA</a> ha verificado la entidad jurídica del <a href="#def-subscriber">Suscriptor</a>. Contienen información sobre esa entidad. <a href="#def-LE">Let&rsquo;s Encrypt</a> no ofrece certificados OV. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Organization_validation">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-pem"><dfn id="def-pem">PEM file (.pem)</dfn></a>
+	: Un formato para la información criptográfica (originalmente especificado como parte de los estándares de Internet de privacidad mejorada para correo electrónico seguro). Un documento PEM puede representar información como una clave privada, una clave pública o un certificado digital. Estos archivos comienzan con &ldquo;---- BEGIN&rdquo; y luego con un tipo de datos. <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-pfx"><dfn id="def-pfx">Personal Information Exchange Files (.pfx)</dfn></a>
+	: Un archivo que puede contener un <a href="#def-leaf">certificado</a>, su <a href="#def-chain">cadena</a> hasta la raíz y la clave privada. Ver también <a href="https://en.wikipedia.org/wiki/PKCS_12">https://en.wikipedia.org/wiki/PKCS_12</a>. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files">Microsoft Hardware Dev Center</a>
+</p>
+<p class="definition">
+	<a href="#def-precertificate"><dfn id="def-precertificate">Precertificate</dfn></a>
+	: Los precertificados son parte de la <a href="#def-CT">Transparencia de certificado</a>. Un precertificado es una copia del <a href="#def-leaf">certificado</a> que una CA tiene la intención de emitir, con una extensión de veneno <a href="#def-critical">crítica</a> agregada para evitar que el precertificado sea aceptado por el software en la naturaleza. Una CA envía un precertificado a <a href="#def-CT-log">registros de CT</a> a cambio de <a href="#def-SCT">SCTs</a>. Dado que un precertificado no es idéntico a su certificado correspondiente, los registros de Transparencia de certificados pueden terminar conteniendo ambos. <a href="https://tools.ietf.org/html/rfc6962#section-3.1">RFC 6962 Section 3.1</a>
+</p>
+<p class="definition">
+	<a href="#def-PSL"><dfn id="def-PSL">Public Suffix List</dfn> (<abbr>PSL</abbr>)</a>
+	: Una lista de <em>Sufijos públicos</em> mantenida por Mozilla, que indica qué dominios de Internet están disponibles para diferentes entidades para registrar subdominios. Por ejemplo, la lista indica que tanto <code>com</code> como <code>co.uk</code> son sufijos públicos a pesar de que <code>co.uk</code> no es un TLD. Los navegadores web utilizan la lista, entre otras cosas, para evitar que los sitios que probablemente sean operados por diferentes entidades compartan cookies web entre sí. <a href="#def-LE">Let&rsquo;s Encrypt</a> también usa la lista para los cálculos de límite de solicitudes: <a href="letsencrypt-ewebsite/es/docs/rate-limits/" hreflang="es-US">/rate-limits</a>. <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+<p class="definition">
+	<a href="#def-RSA"><dfn id="def-RSA"><abbr>RSA</abbr></dfn></a>
+	: Un algoritmo de clave pública utilizado para el cifrado y para firmar digitalmente certificados. <a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-relying-party"><dfn id="def-relying-party">Relying Party</dfn></a>
+	: La persona que depende de la información en un certificado. Por ejemplo, alguien que visita un sitio web HTTPS es una parte confiable.
+</p>
+<p class="definition">
+	<a href="#def-revocation"><dfn id="def-revocation">Revocation</dfn></a>
+	: Un certificado es válido hasta su fecha de vencimiento, a menos que la <a href="#def-CA">CA</a> indique que ha sido revocado. El certificado puede ser revocado por varias razones, como el compromiso de la clave privada. Los navegadores pueden verificar si un certificado ha sido revocado utilizando <a href="#def-CRL">CRL</a>, <a href="#def-OCSP">OCSP</a> o métodos más nuevos como <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> and <a href="https://dev.chromium.org/Home/chromium-security/crlsets">CRLSets</a>. Nota: algunas situaciones, <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">la revocación no funciona</a>. <a href="letsencrypt-ewebsite/es/docs/revoking/" hreflang="es-US">/docs/revoking</a>
+</p>
+<p class="definition">
+	<a href="#def-root-program"><dfn id="def-root-program">Root Program</dfn></a>
+	: Las políticas que utiliza una organización para decidir qué certificados incluir en su <a href="#def-store">almacén de certificados</a> y establecer qué CA confían su software.
+</p>
+<p class="definition">
+	<a href="#def-root"><dfn id="def-root">Root certificate</dfn></a>
+	: A <a href="#def-self-signed">self-signed</a> certificado controlado por una <a href="#def-CA">autoridad de certificación</a>, utilizado para firmar sus certificados <a href="#def-intermediate">intermedio</a> e incluido en <a href="#def-store">almacenes de certificados</a>. <a href="https://en.wikipedia.org/wiki/Root_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SSL"><dfn id="def-SSL"><abbr lang="en">SSL</abbr></dfn> (Secure Sockets Layer)</a>
+	: Un nombre anterior para <a href="#def-TLS">TLS</a>, todavía de uso común.
+</p>
+<p class="definition">
+	<a href="#def-self-signed"><dfn id="def-self-signed">Self-signed certificate</dfn></a>
+	: Un certificado firmado por su propia clave privada, con su <a href="#def-subject">Asunto</a> igual a su <a href="#def-issuer">Emisor</a>. Los certificados autofirmados solo son confiables debido a arreglos previos realizados en el mundo físico, como la inclusión en una <a href="#def-store">lista raíz confiable</a>. Los <a href="#def-root">certificados raíz</a> están autofirmados. <a href="https://en.wikipedia.org/wiki/Self-signed_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SNI"><dfn id="def-SNI">Server Name Indication</dfn> (<abbr>SNI</abbr>)</a>
+	: Un campo que un <a href="#def-user-agent">agente de usuario</a> envía a un <a href="#def-web-server">servidor</a> durante un protocolo de enlace <a href="#def-TLS">TLS</a>, especificando el nombre de dominio para conectarse . Esto permite que el servidor responda con el <a href="#def-leaf">certificado</a> apropiado cuando varios dominios están alojados detrás de la misma IP. El servidor web podría enviar un certificado diferente y mostrar contenido diferente, dependiendo del nombre que el cliente solicitó por SNI. SNI no está encriptado, pero sí un reemplazo experimental, ESNI <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-SCT"><dfn id="def-SCT">Signed Certificate Timestamp</dfn> (<abbr>SCT</abbr>)</a>
+	: Una promesa firmada y verificable de publicar un certificado, desde un <a href="#def-CT-log">Registro de transparencia del certificado</a>. Los navegadores que aplican <a href="#def-CT">CT</a> verifican la presencia de SCT en el certificado de un sitio o en el protocolo de enlace <a href="#def-TLS">TLS</a>, y se niegan a conectarse a sitios que no cumplen con su registro requisitos Esto aumenta la probabilidad de que se detecten certificados fraudulentos o inexactos. <a href="https://www.certificate-transparency.org/how-ct-works">https://www.certificate-transparency.org/how-ct-works</a>
+</p>
+<p class="definition">
+	<a href="#def-staging"><dfn id="def-staging">Staging</dfn></a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a> proporciona una API provisional para probar la solicitud de certificado sin afectar los límites de solicitudes. Los certificados generados por el entorno de ensayo <em>no</em> son de confianza pública. El entorno de ensayo debe usarse para fines de prueba, depuración y desarrollo de clientes ACME. <a href="letsencrypt-ewebsite/es/docs/staging-environment/" hreflang="es-US">/docs/staging-environment</a>
+</p>
+<p class="definition">
+	<a href="#def-SAN"><dfn id="def-SAN">Subject Alternative Name</dfn> (<abbr>SAN</abbr>)</a>
+	: Un campo de un <a href="#def-leaf">certificado</a> que indica para qué dominio(s) es válido el certificado. Reemplaza el uso del <a href="#def-CN">Nombre común</a>, que ahora se proporciona solo por razones de compatibilidad. Un solo certificado puede contener muchas SAN y ser válido para muchos nombres de dominio diferentes. <a href="https://en.wikipedia.org/wiki/Subject_Alternative_Name">Wikipedia</a> <a href="https://letsencrypt.org/docs/rate-limits/#names-per-certificate">https://letsencrypt.org/docs/rate-limits/#names-per-certificate</a>
+</p>
+<p class="definition">
+	<a href="#def-subscriber"><dfn id="def-subscriber">Subscriber</dfn></a>
+	: La persona u organización que solicita un certificado.
+</p>
+<p class="definition">
+	<a href="#def-TLS"><dfn id="def-TLS"><abbr lang="en">TLS</abbr></dfn> (Transport-Level Security)</a>
+	: El protocolo utilizado por HTTPS para cifrar y autenticar las visitas a la página web.
+</p>
+<p class="definition">
+	<a href="#def-TLSA"><dfn id="def-TLSA"><abbr>TLSA</abbr></dfn></a>
+	: La parte de <a href="#def-DANE">DANE</a> específicamente relacionada con la validación de conexiones <a href="#def-TLS">TLS</a>.
+</p>
+<p class="definition">
+	<a href="#def-TLD"><dfn id="def-TLD">Top-Level Domain</dfn> (<abbr>TLD</abbr>)</a>
+	: Nivel más alto en el Sistema de nombres de dominio jerárquico como dominios de nivel superior de código de país (ccTLD) ejemplo: <code>.de</code> (Alemania), <code>.cn</code> (China) y dominios genéricos de nivel superior (gTLD) como <code>.com </code>, <code>.org</code>. <a href="https://en.wikipedia.org/wiki/Top-level_domain">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-UCC"><dfn id="def-UCC">Unified Communications Certificate</dfn> (<abbr>UCC</abbr>)</a>
+	: Una descripción de un certificado que contiene múltiples <a href="#def-SAN">Nombres alternativos de sujeto (SAN)</a>.
+</p>
+<p class="definition">
+	<a href="#def-user-agent"><dfn id="def-user-agent">User Agent</dfn></a>
+	: Software capaz de comunicarse con un <a href="#def-web-server">servidor web</a>. Ejemplo: un <a href="#def-web-browser">navegador web</a> o <a href="https://en.wikipedia.org/wiki/CURL">cURL</a>.
+</p>
+<p class="definition">
+	<a href="#def-web-browser"><dfn id="def-web-browser">Web Browser</dfn></a>
+	: Un <a href="#def-user-agent">agente de usuario</a> utilizado para mostrar páginas web. Ejemplos: <em>Mozilla Firefox</em>, <em>Google Chrome</em> o <em>Internet Explorer</em>. <a href="https://en.wikipedia.org/wiki/Web_browser">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-web-server"><dfn id="def-web-server">Web server</dfn></a>
+	: Software que sirve páginas web (o, por extensión, el servidor de hardware que lo aloja). <a href="https://en.wikipedia.org/wiki/Web_server">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-wildcard"><dfn id="def-wildcard">Wildcard Certificate</dfn></a>
+	: Certificados válidos para subdominios de un nivel de profundidad. Por ejemplo, un certificado que contiene un <a href="#def-SAN">SAN</a> para <code>*.example.com</code> es válido para <code>blog.example.com</code> y <code>www.example.com</code> pero <strong>no</strong> para <code>bork.bork.example.com</code> o <code>example.com</code>). Un comodín se indica con un asterisco * en lugar de un subdominio. <a href="#def-LE">Let&rsquo;s Encrypt</a>  <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">proporciona certificados comodín a partir de marzo de 2018</a>. <a href="https://en.wikipedia.org/wiki/Wildcard_certificate">Wikipedia</a>
+</p>
+<p class="definition">
+	<a href="#def-X509"><dfn id="def-X509"><abbr>X.509</abbr></dfn></a>
+	: El estándar que define el formato de los certificados de clave pública. <a href="https://en.wikipedia.org/wiki/X.509">Wikipedia</a>
+</p>
+<link rel="stylesheet" href="/css/glossary.css">
+<script src="/js/glossary.js" async></script>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt es una autoridad de certificación gratuita, automatizada, y abierta traida a ustedes por la organización sin ánimos de lucro <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envíe todo el correo o consultas a:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Mira nuestra <a href="/es/privacy/">política de privacidad</a>.<br>
+Mira nuestra <a href="https://www.abetterinternet.org/trademarks/">política de marca</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

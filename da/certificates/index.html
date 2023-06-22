@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="da">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kæde af tillid -  Let&#39;s Encrypt</title>
+    <meta name="description" content="Root-certifikater Vores root certifikater holdes sikkert offline. Vi udsteder end-entity certifikater til abonnenter fra intermediate certifikater som beskrevet i næste afsnit. For at sikre yderligere kompatibilitet når vi sender vores nye Root X2 til forskellige root certifikat samling, har vi også krydsunderskrevet det fra Root X1.
+ Aktive  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Selvsigneret: der, pem, txt Krydssigneret af DST Root CA X3: der, pem, txt     Aktive, begrænset tilgængelighed  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Selvsigneret: der, pem, txt Krydssigneret af ISRG Root X1: der, pem, txt      Vi har oprettet hjemmesider til at teste certifikater, der med tillidskæder til vores aktive Root certifikat.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Kæde af tillid">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/da/certificates/">
+    <meta name="twitter:description" content="Root-certifikater Vores root certifikater holdes sikkert offline. Vi udsteder end-entity certifikater til abonnenter fra intermediate certifikater som beskrevet i næste afsnit. For at sikre yderligere kompatibilitet når vi sender vores nye Root X2 til forskellige root certifikat samling, har vi også krydsunderskrevet det fra Root X1.
+ Aktive  ISRG Root X1 (RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1)  Selvsigneret: der, pem, txt Krydssigneret af DST Root CA X3: der, pem, txt     Aktive, begrænset tilgængelighed  ISRG Root X2 (ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2)  Selvsigneret: der, pem, txt Krydssigneret af ISRG Root X1: der, pem, txt      Vi har oprettet hjemmesider til at teste certifikater, der med tillidskæder til vores aktive Root certifikat.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/da/certificates/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Spring navigation links over</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/da/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/da/docs/" class="pure-menu-link" tabindex="0">Dokumentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Få hjælp</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Doner</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/donate/" class="pure-menu-link">Foretag en donation</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/sponsors/" class="pure-menu-link">Nuværende Sponsorer og finansieringskilder</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/getinvolved/" class="pure-menu-link">Bliv en del af det</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Om os</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Udløb (september 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Service Status</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/stats/" class="pure-menu-link">Statistikker</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karriere</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">donere</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Bliv sponsor</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Sprog <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">✓ Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/5.jpg');">
+<div class="container">
+	<h1>Kæde af tillid</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Seneste opdatering: <time datetime="2021-10-02">2. okt. 2021</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p><a href="/images/isrg-hierarchy.png"><img src="/images/isrg-hierarchy.png" alt="ISRG Certificate Hierarchy Diagram, as of December 2020"></a></p>
+<h1 id="root-certifikater">Root-certifikater</h1>
+<p>Vores root certifikater holdes sikkert offline. Vi udsteder end-entity certifikater til abonnenter fra intermediate certifikater som beskrevet i næste afsnit. For at sikre yderligere kompatibilitet når vi sender vores nye Root X2 til forskellige root certifikat samling, har vi også krydsunderskrevet det fra Root X1.</p>
+<ul>
+<li>Aktive
+<ul>
+<li>ISRG Root X1 (<code>RSA 4096, O = Internet Security Research Group, CN = ISRG Root X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314791">Selvsigneret</a>: <a href="/certs/isrgrootx1.der">der</a>, <a href="/certs/isrgrootx1.pem">pem</a>, <a href="/certs/isrgrootx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3958242236">Krydssigneret af DST Root CA X3</a>: <a href="/certs/isrg-root-x1-cross-signed.der">der</a>, <a href="/certs/isrg-root-x1-cross-signed.pem">pem</a>, <a href="/certs/isrg-root-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktive, begrænset tilgængelighed
+<ul>
+<li>ISRG Root X2 (<code>ECDSA P-384, O = Internet Security Research Group, CN = ISRG Root X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3335562555">Selvsigneret</a>: <a href="/certs/isrg-root-x2.der">der</a>, <a href="/certs/isrg-root-x2.pem">pem</a>, <a href="/certs/isrg-root-x2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3334561878">Krydssigneret af ISRG Root X1</a>: <a href="/certs/isrg-root-x2-cross-signed.der">der</a>, <a href="/certs/isrg-root-x2-cross-signed.pem">pem</a>, <a href="/certs/isrg-root-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Vi har oprettet hjemmesider til at teste certifikater, der med tillidskæder til vores aktive Root certifikat.</p>
+<ul>
+<li>ISRG Root X1
+<ul>
+<li><a href="https://valid-isrgrootx1.letsencrypt.org/">Gyldigt</a></li>
+<li><a href="https://revoked-isrgrootx1.letsencrypt.org/">Tilbagekaldt</a></li>
+<li><a href="https://expired-isrgrootx1.letsencrypt.org/">Udløbet</a></li>
+</ul>
+</li>
+<li>ISRG Root X2
+<ul>
+<li><a href="https://valid-isrgrootx2.letsencrypt.org/">Gyldigt</a></li>
+<li><a href="https://revoked-isrgrootx2.letsencrypt.org/">Tilbagekaldt</a></li>
+<li><a href="https://expired-isrgrootx2.letsencrypt.org/">Udløbet</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="intermediate-certifikater">Intermediate Certifikater</h1>
+<p>Under normale omstændigheder vil certifikater udstedt af Let&rsquo;s Encrypt komme fra &ldquo;R3&rdquo;, et RSA-mellemled. I øjeblikket er udstedelse fra &ldquo;E1&rdquo;, en ECDSA-intermediate, kun muligt for ECDSA-abonnentnøgler for <a href="https://community.letsencrypt.org/t/ecdsa-availability-in-production-environment/150679">tilladte konti</a>. I fremtiden vil udstedelsen fra &ldquo;E1&rdquo; være tilgængelig for alle.</p>
+<p>Vores øvrige intermediate (&ldquo;R4&rdquo; og &ldquo;E2&rdquo;) er reserveret til katastrofegenopretning og vil kun blive brugt hvis vi mister evnen til at udstede med vores primære intermediate. Vi anvender ikke X1, X2, X3 og X4 intermediates længere.</p>
+<p>IdenTrust har krydssigneret vores RSA-mellemprodukter for at sikre yderligere kompatibilitet.</p>
+<ul>
+<li>Aktive
+<ul>
+<li>Let&rsquo;s Encrypt R3 (<code>RSA 2048, O = Let's Encrypt, CN = R3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561879">Signeret af ISRG Root X1</a>: <a href="/certs/lets-encrypt-r3.der">der</a>, <a href="/certs/lets-encrypt-r3.pem">Pem</a>, <a href="/certs/lets-encrypt-r3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778542">Krydssigneret af IdenTrust </a>: <a href="/certs/lets-encrypt-r3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r3-cross-signed.txt">txt</a> (trukket tilbage)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Aktive, begrænset tilgængelighed
+<ul>
+<li>Let&rsquo;s Encrypt E1 (<code>ECDSA P-384, O = Let's Encrypt, CN = E1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671964">Krydssigneret af ISRG Root X2</a>: <a href="/certs/lets-encrypt-e1.der">der</a>, <a href="/certs/lets-encrypt-e1.pem">pem</a>, <a href="/certs/lets-encrypt-e1.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Backup
+<ul>
+<li>Let&rsquo;s Encrypt R4 (<code>RSA 2048, O = Let's Encrypt, CN = R4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334561877">Krydssigneret af ISRG Root X1</a>: <a href="/certs/lets-encrypt-r4.der">der</a>, <a href="/certs/lets-encrypt-r4.pem">pem</a>, <a href="/certs/lets-encrypt-r4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=3479778543">Krydssigneret af IdenTrust </a>: <a href="/certs/lets-encrypt-r4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-r4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-r4-cross-signed.txt">txt</a> (trukket tilbage)</li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt E2 (<code>ECDSA P-384, O = Let's Encrypt, CN = E2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=3334671963">Krydssigneret af ISRG Root X2</a>: <a href="/certs/lets-encrypt-e2.der">der</a>, <a href="/certs/lets-encrypt-e2.pem">pem</a>, <a href="/certs/lets-encrypt-e2.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Trukket tilbage
+<ul>
+<li>Let&rsquo;s Encrypt Authority X1 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X1</code>)
+<ul>
+<li><a href="https://crt.sh/?id=9314792">Krydssigneret af ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx1.der">der</a>, <a href="/certs/letsencryptauthorityx1.pem">pem</a>, <a href="/certs/letsencryptauthorityx1.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10235198">Krydssigneret af IdenTrust </a>: <a href="/certs/lets-encrypt-x1-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x1-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x1-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X2 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X2</code>)
+<ul>
+<li><a href="https://crt.sh/?id=12721505">Signeret af ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx2.der">der</a>, <a href="/certs/letsencryptauthorityx2.pem">Pem</a>, <a href="/certs/letsencryptauthorityx2.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=10970235">Krydssigneret af IdenTrust </a>: <a href="/certs/lets-encrypt-x2-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x2-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x2-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X3 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X3</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997543">Krydssigneret af ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx3.der">der</a>, <a href="/certs/letsencryptauthorityx3.pem">pem</a>, <a href="/certs/letsencryptauthorityx3.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15706126">Krydssigneret af IdenTrust </a>: <a href="/certs/lets-encrypt-x3-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x3-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x3-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt Authority X4 (<code>RSA 2048, O = Let's Encrypt, CN = Let's Encrypt Authority X4</code>)
+<ul>
+<li><a href="https://crt.sh/?id=47997546">Krydssigneret af ISRG Root X1</a>: <a href="/certs/letsencryptauthorityx4.der">der</a>, <a href="/certs/letsencryptauthorityx4.pem">pem</a>, <a href="/certs/letsencryptauthorityx4.txt">txt</a></li>
+<li><a href="https://crt.sh/?id=15710291">Krydssigneret af IdenTrust </a>: <a href="/certs/lets-encrypt-x4-cross-signed.der">der</a>, <a href="/certs/lets-encrypt-x4-cross-signed.pem">pem</a>, <a href="/certs/lets-encrypt-x4-cross-signed.txt">txt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="krydssignering">Krydssignering</h1>
+<h2 id="intermediate">Intermediate</h2>
+<p>Hver af vores intermediate certifikater repræsenterer et enkelt offentligt/privat nøglepar. Den private nøgle fra dette par par genererer signaturen for alle slutenhed certifikater (også kendt som leaf certifikater), som for eksempel de certifikater, vi udsteder til brug på din server.</p>
+<p>Vores RSA-intermediate certifikater er signeret af ISRG Root X1. ISRG Root X1 er bredt betroet på dette punkt, men vores RSA-intermediate certifikat er stadig krydssigneret af IdenTrust&rsquo;s &ldquo;<a href="https://crt.sh/?id=8395">DST Root CA X3</a>&rdquo; (nu kaldet &ldquo;TrustID X3 Root&rdquo;) for yderligere klientkompatibilitet. IdenTrust Root certifikatet har eksisteret længere og har derfor bedre kompatibilitet med ældre enheder og operativsystemer (f.eks. Windows XP, Android 7). Du kan <a href="https://www.identrust.com/support/downloads">downloade &ldquo;TrustID X3 Root&rdquo; fra IdenTrust</a> (eller alternativt du kan <a href="/certs/trustid-x3-root.pem.txt">downloade en kopi fra os</a>).</p>
+<p>At have krydssignaturer betyder, at hver af vores RSA-intermediate certifikater har to certifikater, der repræsenterer samme signeringsnøgle. Den ene er signeret af DST Root CA X3 og den anden er signeret af ISRG Root X1. Den nemmeste måde at skelne de to er ved at se på deres Udsteder felt.</p>
+<p>Når du konfigurerer en webserver, konfigurerer server administratoren ikke kun end-entity certifikatet men også en liste over intermediate certifikater for at hjælpe browsere med at verificere at slutenheds-certifikatet har en tillidskæde, der fører til et betroet rod certifikat. Næsten alle server administratorer vil vælge at servere en kæde, herunder mellemcertifikatet med Emne &ldquo;R3&rdquo; og Udsteder &ldquo;ISRG Root X1&rdquo;. Det anbefalede Let&rsquo;s Encrypt klientsoftware, <a href="https://certbot.org">Certbot</a>, vil gøre denne konfiguration problemfrit.</p>
+<h2 id="rødder">Rødder</h2>
+<p>I lighed med intermediate certifikater kan rodcertifikaterne krydssigneres, ofte for at øge klientens kompatibilitet. Vores ECDSA-rod, ISRG Root X2 blev genereret i efteråret 2020 og er rod certifikatet til ECDSA-hierarkiet. Det er repræsenteret ved to certifikater: en, der er selvsigneret og en, der er underskrevet af ISRG Root X1.</p>
+<p>Alle certifikater signeret af ECDSA intermediate &ldquo;E1&rdquo; vil komme med en kæde med et intermediate certifikat, hvis emne er &ldquo;ISRG Root X2&rdquo;, og hvis udsteder er &ldquo;ISRG Root X1&rdquo;. Næsten alle server administratorer vil vælge at tjene denne kæde, da det tilbyder den mest komprimerbare indtil ISRG Root X2 er bredt betroet.</p>
+<h1 id="ocsp-signeringscertifikat">OCSP- Signeringscertifikat</h1>
+<p>Dette certifikat bruges til at signere OCSP-svar for Let&rsquo;s Encrypt sinatur intermediate certifikater så vi ikke behøver at bringe rodnøglen online for at signere disse svar. En kopi af dette certifikat er inkluderet automatisk i disse OCSP-svar, så Abonnenter behøver ikke at gøre noget med det. Det er kun inkluderet her til orienterende formål.</p>
+<ul>
+<li>ISRG Root OCSP X1 (<a href="https://crt.sh/?id=2929281974">Signeret af ISRG Root X1</a>): <a href="/certs/isrg-root-ocsp-x1.der">der</a>, <a href="/certs/isrg-root-ocsp-x1.pem">pem</a>, <a href="/certs/isrg-root-ocsp-x1.txt">txt</a></li>
+</ul>
+<p>Vores nyere intermedia certifikater har ikke OCSP-URL&rsquo;er (deres tilbagekaldelsesoplysninger er anvendes i stedet via CRL), så vi har ikke udstedt et OCSP-signeringscertifikat fra ISRG Root X2.</p>
+<h1 id="certificate-transparency">Certificate Transparency</h1>
+<p>Vi er dedikeret til gennemsigtighed i vores driftsanliggender og i de certifikater, vi udsteder. Vi sender alle certifikater til <a href="https://www.certificate-transparency.org/">Certifikat Gennemsigtighed Logen</a> når vi udsteder dem. Du kan se alle udstedte Let&rsquo;s Encrypt certifikater via disse links:</p>
+<ul>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=7395">Udstedt af Let&rsquo;s Encrypt Autoriteten X1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=16418">Udstedt af Let&rsquo;s Encrypt Autoriteten X3</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183283">Udstedt af E1</a></li>
+<li><a href="https://crt.sh/?Identity=%25&amp;iCAID=183267">Udstedt af R3</a></li>
+</ul>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Støt et mere sikkert og privatlivets respektiverede internettet.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/da/donate/">Donér</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt er en gratis, automatisk og åben certifikat 
+ udsteeder bragt til dig af nonprofit organisationen <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>. 
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Send alle mails eller forespørgsler til:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Se vores <a href="/privacy/">privatlivspolitik</a>.<br>
+Se vores <a href="https://www.abetterinternet.org/trademarks">varemærkepolitik</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

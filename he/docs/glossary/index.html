@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html
+	dir="rtl"
+	lang="he">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>מונחון -  Let&#39;s Encrypt</title>
+    <meta name="description" content="ACME (סביבת ניהול אישורים אוטומטית - Automatic Certificate Management Environment) : הפרוטוקול שממומש על ידי Let&amp;rsquo;s Encrypt. תכניות שתואמות לפרוטוקול הזה יכולות להשתמש בו על מנת לתקשר עם Let&amp;rsquo;s Encrypt ולבקש אישור. ה־RFC של ACME - ויקיפדיה CAA (הרשאת רשות אישורים - Certificate Authority Authorization) : רשומת DNS שמציינת אילו רשויות אישורים מורשות להנפיק אישורים לשם התחום התואם. רשומות CAA נבדקות על ידי רשויות אישורים, לא על ידי דפדפנים. ב־Let&amp;rsquo;s Encrypt מכבדים את רשומות ה־ CAA כפי שנדרש בדרישות היסוד.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="מונחון">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/he/docs/glossary/">
+    <meta name="twitter:description" content="ACME (סביבת ניהול אישורים אוטומטית - Automatic Certificate Management Environment) : הפרוטוקול שממומש על ידי Let&amp;rsquo;s Encrypt. תכניות שתואמות לפרוטוקול הזה יכולות להשתמש בו על מנת לתקשר עם Let&amp;rsquo;s Encrypt ולבקש אישור. ה־RFC של ACME - ויקיפדיה CAA (הרשאת רשות אישורים - Certificate Authority Authorization) : רשומת DNS שמציינת אילו רשויות אישורים מורשות להנפיק אישורים לשם התחום התואם. רשומות CAA נבדקות על ידי רשויות אישורים, לא על ידי דפדפנים. ב־Let&amp;rsquo;s Encrypt מכבדים את רשומות ה־ CAA כפי שנדרש בדרישות היסוד.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/he/docs/glossary/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="הזנת הבלוג של Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">דילוג על קישורי הניווט</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/he/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/he/docs/" class="pure-menu-link" tabindex="0">תיעוד</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">קבלת עזרה</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">תרומה</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/donate/" class="pure-menu-link">הצעת תרומה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">מתן חסות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/sponsors/" class="pure-menu-link">נותני חסות ומממנים נוכחיים</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getinvolved/" class="pure-menu-link">להצטרף למאמץ</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">עלינו</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/faq/" class="pure-menu-link">שאלות ותשובות (שו״ת)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">תפוגת התוקף של DST Root CA X3 (ספטמבר 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">מצב השירות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/stats/" class="pure-menu-link">סטטיסטיקה</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">משרות</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/contact/" class="pure-menu-link">יצירת קשר</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">✓ עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>מונחון</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    עדכון אחרון: <time datetime="2018-12-30">30 בדצמ׳ 2018</time>
+
+
+ | <a href="/letsencrypt-ewebsite/he/docs">הצגת כל התיעוד</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<!--
+Note for translators:
+ 
+- Usage of the "def" macro (in other languages than English):
+{% def 
+    id="a unique id for anchor - the SAME than for english. will be prefixed by `def-`" 
+    name="The term to define (optional if english or abbr is provided)"
+    abbr="an accronym (optional)"
+    english="the english term (optional - if present the abbr is in english too)" %}}
+        the definition
+{% /def %}
+    
+- Check the javascript console for errors.
+
+- Automatic titles on definition's link cuts everything after the last point (to remove source links)
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="definition">
+	<a href="#def-ACME"><dfn id="def-ACME"><abbr lang="en">ACME</abbr></dfn> (סביבת ניהול אישורים אוטומטית - <i lang="en">Automatic Certificate Management Environment</i>)</a>
+	: הפרוטוקול שממומש על ידי <a href="#def-LE">Let&rsquo;s Encrypt</a>. תכניות שתואמות לפרוטוקול הזה יכולות להשתמש בו על מנת לתקשר עם Let&rsquo;s Encrypt ולבקש <a href="#def-leaf">אישור</a>. <a href="https://tools.ietf.org/html/rfc8555">ה־RFC של ACME</a> - <a href="https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (הרשאת רשות אישורים - <i lang="en">Certificate Authority Authorization</i>)</a>
+	: רשומת DNS שמציינת אילו <a href="#def-CA">רשויות אישורים</a> מורשות להנפיק אישורים לשם התחום התואם. רשומות CAA נבדקות על ידי רשויות אישורים, לא על ידי דפדפנים. ב־<a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="letsencrypt-ewebsite/he/docs/caa/" hreflang="he">מכבדים את רשומות ה־ CAA</a> כפי שנדרש ב<a href="#def-BRs">דרישות היסוד</a>. - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (אלגוריתם חתימה דיגיטלית מעל עקום אליפטי - <i lang="en">Elliptic Curve Digital Signature Algorithm</i>)</a>
+	: סוג של אלגוריתם חתימה דיגיטלית (Digital Signature Algorithm - DSA) שמשתמש בהצפנת עקום אליפטי.  <a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">ויקיפדיה</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a> תומכת ב־ECDSA עבור <a href="#def-leaf">אישורי יישות קצה או עלה</a>, אך עדיין לא עבור כל ה<a href="#def-chain">שרשרת</a>: <a href="letsencrypt-ewebsite/he/upcoming-features/" hreflang="he">תכונות-מתוכננות</a>
+</p>
+<p class="definition">
+	<a href="#def-Ed25519"><dfn id="def-Ed25519">Ed25519</dfn></a>
+	: סוג מסוים של <a href="#def-EdDSA">EdDSA</a>, לצד Ed448.
+</p>
+<p class="definition">
+	<a href="#def-EdDSA"><dfn id="def-EdDSA"><abbr lang="en">EdDSA</abbr></dfn> (אלגוריתם חתימה דיגיטלית על עקום אדוארדס - <i lang="en">Edwards-curve Digital Signature Algorithm</i>)</a>
+	: מערכת מודרנית לחתימה עם מפתח ציבורי על בסיס עקומים אליפטיים, תוכנן כדי לפתור מספר <a href="https://ed25519.cr.yp.to/">תקלות מימוש</a> נפוצות עם הצפנה על עקום אליפטי. רשויות אישורים כגון <a href="#def-LE">Let&rsquo;s Encrypt</a> עדיין לא יכולות לספק אישורי EdDSA. <a href="https://en.wikipedia.org/wiki/EdDSA">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-IdenTrust"><dfn id="def-IdenTrust">IdenTrust</dfn></a>
+	: <a href="#def-CA">רשות אישורים</a>. הרשות IdenTrust <a href="#def-cross-signing">חתמה באופן צולב</a> על <a href="#def-intermediate">אישורי התווך</a> של <a href="#def-LE">Let&rsquo;s Encrypt</a>‏: <a href="letsencrypt-ewebsite/he/certificates/" hreflang="he">‎/certificates</a>. <a href="https://en.wikipedia.org/wiki/IdenTrust">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-LE"><dfn id="def-LE">Let&#39;s Encrypt‏</dfn> (<abbr>LE</abbr>)</a>
+	: <a href="#def-CA">רשות האישורים</a> שמופעלת על ידי <a href="#def-ISRG">ISRG</a>. <a href="https://he.wikipedia.org/wiki/Let%27s_Encrypt">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP"><dfn id="def-OCSP"><abbr lang="en">OCSP</abbr></dfn> (פרוטוקול מצב אישורים מקוון - <i lang="en">Online Certificate Status Protocol</i>)</a>
+	: שיטה לבדוק את מצב ה<a href="#def-revocation">שלילה</a> של <a href="#def-leaf">אישור</a>. במילים אחרות, דרך לבדוק האם <a href="#def-CA">רשות אישורים</a> מציינת שהאישור לא אמור להיחשב עוד כתקף, על אף שתאריך התפוגה שלו לא הגיע עדיין. הבקשה הזאת יכולה להוביל לבעיות פרטיות כיוון שהיא מרשה לרשות האישורים ולספקיות האינטרנט לצפות באופן ישיר מי מבקר ובאיזה אתרים. <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-RSA"><dfn id="def-RSA"><abbr>RSA</abbr></dfn></a>
+	: אלגוריתם מפתח ציבורי שמשמש להצפנה ולחתימה דיגיטלית של אישורים. <a href="https://he.wikipedia.org/wiki/RSA">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-SSL"><dfn id="def-SSL"><abbr lang="en">SSL</abbr></dfn> (שכבת שקעים מאובטחת - <i lang="en">Secure Sockets Layer</i>)</a>
+	: השם הקודם של <a href="#def-TLS">TLS</a>, עדיין נפוץ להשתמש בו.
+</p>
+<p class="definition">
+	<a href="#def-TLS"><dfn id="def-TLS"><abbr lang="en">TLS</abbr></dfn> (אבטחה ברמת התעבורה - <i lang="en">Transport-Level Security</i>)</a>
+	: הפרוטוקול בו משתמש HTTPS כדי להצפין ולאמת ביקורים בדפי אינטרנט.
+</p>
+<p class="definition">
+	<a href="#def-TLSA"><dfn id="def-TLSA"><abbr>TLSA</abbr></dfn></a>
+	: החלק ב־<a href="#def-DANE">DANE</a> (הרשאה מבוססת DNS ליישויות שמיות) שקשור נקודתית לתיקוף חיבורי <a href="#def-TLS">TLS</a>.
+</p>
+<p class="definition">
+	<a href="#def-X509"><dfn id="def-X509"><abbr>X.509</abbr></dfn></a>
+	: התקן שמגדיר את תצורת אישורי המפתח הציבורי. <a href="https://he.wikipedia.org/wiki/X.509">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-certificate"><dfn id="def-certificate">אישור</dfn> (<i lang="en">Certificate</i>)</a>
+	: קובץ ב<a href="#def-X509">תבנית מסוימת</a> שמכיל מפתח ציבורי ונתונים אחרים שמתארים מתי להשתמש במפתח הציבורי הזה. סוג האישור הנפוץ ביותר הוא <a href="#def-leaf">אישור עלה</a>. ישנם גם אישורים <a href="#def-intermediate">מתווכים</a> ו<a href="#def-root">עליונים</a>.
+</p>
+<p class="definition">
+	<a href="#def-self-signed"><dfn id="def-self-signed">אישור בחתימה עצמית</dfn> (<i lang="en">Self-signed certificate</i>)</a>
+	: אישור שנחתם באמצעות המפתח הפרטי שלו עצמו כאשר ה־<a href="#def-subject">Subject</a> (נושא) שווה ל־<a href="#def-issuer">Issuer</a> (מנפיק). אישורים בחתימה עצמית מהימנים רק בעקבות סידורים מוקדמים שבוצעו בעולם הפיזי כגון הוספה ל<a href="#def-store">רשימת האישורים העליונים המהימנים</a>. <a href="#def-root">אישורים עליונים</a> חתומים עצמית. <a href="https://en.wikipedia.org/wiki/Self-signed_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-UCC"><dfn id="def-UCC">אישור דרכי תקשורת מאוגדות</dfn> (<abbr lang="en">UCC</abbr> - <i lang="en">Unified Communications Certificate</i>)</a>
+	: תיאור של אישור שמכיל מספר <a href="#def-SAN">Subject Alternative Names - שמות נושא חלופיים (SANs)</a>.
+</p>
+<p class="definition">
+	<a href="#def-wildcard"><dfn id="def-wildcard">אישור כוללני</dfn> (<i lang="en">Wildcard Certificate</i>)</a>
+	: אישורים שתקפים לתת־שמות תחומים עד עומק של רמה אחת למטה. למשל, אישור שמכיל <a href="#def-SAN">SAN</a> ל־<code>‎*.example.com</code> תקף על <code>blog.example.com</code> ועל <code>www.example.com</code> אך <strong>לא</strong> על <code>bork.bork.example.com</code> או על <code>example.com</code>. אישור כוללני נבדל בכך שמופיעה בו כוכבית (*) בהתחלה במקום תת־שם תחום. <a href="#def-LE">Let&rsquo;s Encrypt</a> <a href="https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579">מספקת אישורים כוללניים החל ממרץ 2018</a>. <a href="https://en.wikipedia.org/wiki/Wildcard_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-leaf"><dfn id="def-leaf">אישור עלה (אישור יישות קצה)</dfn> (<i lang="en">Leaf certificate (end-entity certificate)</i>)</a>
+	: הנפוץ ביותר, אישור שנחתם על ידי אישור <a href="#def-intermediate">תווך</a>, תקף לסדרה מסוימת של שמות תחום ואין אפשרות לחתום אתו על אישורים אחרים. זה סוג האישור שמבקשים <a href="#def-ACME-client">לקוחות ACME</a> וגם זה שבו משתמשים <a href="#def-web-server">שרתי אינטרנט</a>. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#End-entity_or_leaf_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-root"><dfn id="def-root">אישור עליון</dfn> (<i lang="en">Root certificate</i>)</a>
+	: אישור ש<a href="#def-self-signed">נחתם עצמית</a> שנשלט על ידי <a href="#def-CA">רשות אישורים</a>, משמש לחתימה על אישורי ה<a href="#def-intermediate">תווך</a> ונכלל ב<a href="#def-store">מאגרי המהימנים</a>. <a href="https://en.wikipedia.org/wiki/Root_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-precertificate"><dfn id="def-precertificate">אישור קדם</dfn> (<i lang="en">Precertificate</i>)</a>
+	: אישורי קדם הם חלק מ<a href="#def-CT">שקיפות אישורים</a>. אישור קדם הוא עותק של ה<a href="#def-leaf">אישור</a> שרשות האישורים מתכננת להנפיק, עם תוספת הרחבת רעל a <a href="#def-critical">חמורה</a> כדי להגן מפני מצב בו האישור יתקבל על ידי תכנה כלשהי. רשות אישורים מגישה אישור קדם ל<a href="#def-CT-log">יומני רשות אישורים</a> בתמורה ל־<a href="#def-SCT">SCTs</a>. מאחר שאישור קדם אינו זהה לאישור התואם שלך, יכול להיות שביומני שקיפות האישורים יופיעו שניהם. <a href="https://tools.ietf.org/html/rfc6962#section-3.1">RFC 6962 סעיף 3.1</a>
+</p>
+<p class="definition">
+	<a href="#def-intermediate"><dfn id="def-intermediate">אישור תווך</dfn> (<i lang="en">Intermediate certificate</i>)</a>
+	: אישור שנחתם על ידי אישור <a href="#def-root">עליון</a> או אישור תווך אחר ומסוגל לחתום על אישורים אחרים. הם משמשים לחתום על אישורי עלה תוך שמירה על המפתח הפרטי של האישור העליון מחוץ לאינטרנט. אישורי תווך נכללים כחלק מ<a href="#def-chain">שרשרת האישורים</a>. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Types_of_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-DV"><dfn id="def-DV">אישור תקף שם תחום</dfn> (<i lang="en">Domain-validated certificate</i>)</a>
+	: <a href="#def-leaf">אישור</a> בו המועמד הוכיח את שליטתו על שם התחום (ולא על זהות הארגון המבקש). <a href="#def-LE">Let&rsquo;s Encrypt</a> מציעה רק אישורי DV (לא <a href="#def-OV">OV</a> או <a href="#def-EV">EV</a>): <a href="letsencrypt-ewebsite/he/docs/faq/" hreflang="he">שו״ת</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-boulder"><dfn id="def-boulder">בולדר</dfn> (<i lang="en">Boulder</i>)</a>
+	: התכנית שמממשת את ACME, בפיתוח ובשימוש של <a href="#def-LE">Let&rsquo;s Encrypt</a>. <a href="https://github.com/letsencrypt/boulder">GitHub</a>
+</p>
+<p class="definition">
+	<a href="#def-CSR"><dfn id="def-CSR">בקשת חתימה על אישור</dfn> (<abbr lang="en">CSR</abbr> - <i lang="en">Certificate Signing Request</i>)</a>
+	: קובץ חתום שמכיל את המידע שדורשת <a href="#def-CA">רשות האישורים</a> כדי לייצר אישור. המידע שדרוש ל־<a href="#def-LE">Let&rsquo;s Encrypt</a> הוא ה־<a href="#def-CN">Common Name</a> (שם נפוץ),‏ <a href="#def-SAN">Subject Alternative Names</a> (שמות נושא חלופיים) ו־Subject Public Key Info (פרטי מפתח ציבורי של הנושא). בדרך כלל, <a href="#def-ACME-client">יישומי לקוחות</a> מייצרים את בקשת החתימה על האישור אוטומטית עבור הלקוח, למרות שספקית אחסון או מכשיר כלשהו גם כן יכולים לייצר בקשה לחתימה על האישור. <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-relying-party"><dfn id="def-relying-party">גוף נסמך</dfn> (<i lang="en">Relying Party</i>)</a>
+	: הגוף שסומך על המידע שבאישור. למשל, מבקר באתר HTTPS הוא גוף נסמך.
+</p>
+<p class="definition">
+	<a href="#def-AIA"><dfn id="def-AIA">גישה למידע של הרשות</dfn> (<abbr lang="en">AIA</abbr> - <i lang="en">Authority Information Access</i>)</a>
+	: <a href="#def-extension">הרחבה</a> לאישור שייעודה לסמן ל<a href="#def-user-agent">סוכני משתמש</a> איך לקבל מידע על מנפיק ה<a href="#def-certificate">אישור</a>. היא בדרך כלל מציינת את כתובת ה־<a href="#def-OCSP">OCSP</a> ואת <a href="#def-CAI">כתובת המנפיק</a>.
+</p>
+<p class="definition">
+	<a href="#def-web-browser"><dfn id="def-web-browser">דפדפן אינטרנט</dfn> (<i lang="en">Web Browser</i>)</a>
+	: <a href="#def-user-agent">סוכן משתמש</a> שמשמש להצגת עמודי תוכן מהאינטרנט. דוגמאות: <em>Firefox מבית Mozilla</em>,‏ <em>Chrome מבית Google</em> או <em>Internet Explorer</em>. <a href="https://he.wikipedia.org/wiki/%d7%93%d7%a4%d7%93%d7%a4%d7%9f">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-BRs"><dfn id="def-BRs">דרישות יסוד</dfn> (<abbr lang="en">BRs</abbr> - <i lang="en">Baseline Requirements</i>)</a>
+	: סדרה של דרישות טכניות והגדרות מדינִיוּת עבור רשויות אישורים. מאחר שכל <a href="#def-root-program">התכניות העליונות</a> ממזגות את ה־Baseline Requirements (דרישות היסוד), על רשויות האישורים לעקוב אחר הדרישות האלה כדי שרוב הדפדפנים יוכלו לתת בהן אמון.
+</p>
+<p class="definition">
+	<a href="#def-staging"><dfn id="def-staging">הכנה להקמה</dfn> (<i lang="en">Staging</i>)</a>
+	: מערכת <a href="#def-LE">Let&rsquo;s Encrypt</a> מספקת API במסגרת הכנה להקמה כדי לבדוק בקשות אישורים מבלי להשפיע על מגבלת המיכסות. אישורים שנוצרו על ידי סביבת ההכנה להקמה <em>אינם</em> מהימנים בקרב הציבור. סביבת ההכנה להקמה מיועדת לטובת בדיקות, ניפוי שגיאות ופיתוח לקוח ACME. <a href="letsencrypt-ewebsite/he/docs/staging-environment/" hreflang="he">/docs/staging-environment</a>
+</p>
+<p class="definition">
+	<a href="#def-CPS"><dfn id="def-CPS">הצהרת אופן אישור</dfn> (<abbr lang="en">CPS</abbr> - <i lang="en">Certification Practice Statement</i>)</a>
+	: הצהרה של דרכי הפעולה בהן נוקטת רשות אישורים לטובת הנפקה, ניהול, שלילה וחיפוש או החלפת מפתח לאישורים. <a href="letsencrypt-ewebsite/he/repository/#isrg-certification-practice-statement" hreflang="he">הצהרת אופן האישור של ISRG</a>‏ - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 סעיף 3.4</a> - <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-ECC"><dfn id="def-ECC">הצפנה מבוססת עקום אליפטי</dfn> (<abbr lang="en">ECC</abbr> - <i lang="en">Elliptic Curve Cryptography</i>)</a>
+	: סוג של הצפנת מפתח ציבורי שמבוסס על עקומות אליפטיות. ECC (הצפנת עקום אליפטי) משתמשת במפתחות קטנים יותר ביחס להצפנה שאינה מבוססת עקום אליפטי תוך אספקת אבטחה ברמה דומה. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">Cloudflare</a> - [ויקיפדיה](https://he. wikipedia. org/wiki/הצפנה_מבוססת_עקום_אליפטי)
+</p>
+<p class="definition">
+	<a href="#def-critical"><dfn id="def-critical">הרחבה קריטית</dfn> (<i lang="en">Critical extension</i>)</a>
+	: אישור יכול להכיל <a href="#def-extension">הרחבות</a> שמסומנות כ„קריטיות”. משמעות הדבר היא שתכניות חייבות לדחות את האישור הזה אלא אם כן התכניות מבינות איך לעבד את ההרחבה הזאת. מאפשר להציג הרחבות חדשות שחשובות לאבטחה מבלי ליצור סיכונים לתכניות ישנות.
+</p>
+<p class="definition">
+	<a href="#def-DNSSEC"><dfn id="def-DNSSEC">הרחבות אבטחה למערכת שמות תחום</dfn> (<abbr lang="en">DNSSEC</abbr> - <i lang="en">Domain Name System Security Extensions</i>)</a>
+	: מנגנון לאימות קריפטוגרפי של תגובות DNS. DNSSEC דורש הטמעה על ידי TLDs (סיומות אינטרנט), בעלי שמות תחום ופותרים רקורסיביים כדי שיחול. האימוץ כרגע הוא די נמוך. <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-extension"><dfn id="def-extension">הרחבת אישור</dfn> (<i lang="en">Certificate extension</i>)</a>
+	: באישורים, רוב השדות מוגדרים כהרחבות. למשל, <a href="#def-SAN">Subject Alternative Names</a> ו־<a href="#def-AIA">AIA</a> הן הרחבות. מנגנון ההרחבה מאפשר ליצור שדות חדשים שלא היו חלק מתקן <a href="#def-X509">X.509</a> המקורי.
+</p>
+<p class="definition">
+	<a href="#def-DANE"><dfn id="def-DANE">הרשאה מבוססת DNS ליישויות שמיות</dfn> (<abbr lang="en">DANE</abbr> - <i lang="en">DNS-based Authentication of Named Entities</i>)</a>
+	: מנגנון שמשתמש ב־DNS שמציין איך לוודא את האמינות של ה<a href="#def-leaf">אישור</a> או של מפתח ההצפנה שהוצג.  <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-OCSP-must-staple"><dfn id="def-OCSP-must-staple">חובת שידוך OCSP‏</dfn> (<i lang="en">OCSP Must-Staple</i>)</a>
+	: הרחבת <a href="#def-leaf">אישור</a> שמודיעה ל<a href="#def-web-browser">דפדפן</a> ש<a href="#def-web-server">שרת האינטרנט</a> עם האישור הזה חייב להשתמש ב<a href="#def-OCSP-stapling">שידוך OCSP</a>. ההרחבה משמשת לדרוש שמצב <a href="#def-revocation">שלילה</a> עדכני של ה<a href="#def-leaf">אישור</a> יאומת על ידי שרת האינטרנט עם כל חיבור, מה שהופך את השלילה ליותר אמינה. ל־<a href="#def-LE">Let&rsquo;s Encrypt</a> יש אפשרות להנפיק אישורים עם <a href="#def-extension">הרחבת</a> חובת שידוך OCSP לפי בקשה. <a href="https://blog.mozilla.org/security/2015/11/23/improving-revocation-ocsp-must-staple-and-short-lived-certificates/">בלוג האבטחה של Mozilla‏</a> <a href="https://tools.ietf.org/html/rfc7633">RFC 7633</a>
+</p>
+<p class="definition">
+	<a href="#def-SCT"><dfn id="def-SCT">חותמות זמן לאישורים חתומים</dfn> (<abbr lang="en">SCT</abbr> - <i lang="en">Signed Certificate Timestamp</i>)</a>
+	: הבטחה חתומה וניתנת לאימות לפרסם אישור מתוך <a href="#def-CT-log">יומן שקיפות אישורים</a>. דפדפנים שאוכפים בדיקת <a href="#def-CT">שקיפות אישורים</a> בודקים נוכחות של חותמות זמן לאישורים חתומים, או בלחיצת היד <a href="#def-TLS">TLS</a> (אבטחה ברמת התעבורה) ומסרבים להתחבר לאתרים שלא עומדים בדרישות התיעוד שלהם ביומן. בדיקה זו מעלה את הסיכוי לזיהוי אישורים שנועדו לצורכי הונאה או שאינם מדויקים. <a href="https://www.certificate-transparency.org/how-ct-works">https://www.certificate-transparency.org/how-ct-works</a>
+</p>
+<p class="definition">
+	<a href="#def-cross-signing"><dfn id="def-cross-signing">חתימה צולבת</dfn> (<i lang="en">Cross Signing</i>)</a>
+	: על אישור לחתימה ניתן לחתום עם יותר מ<a href="#def-root">אישור עליון</a> אחד. למשל, <a href="#def-intermediate">אישורי התווך</a> של <a href="#def-LE">Let&rsquo;s Encrypt</a> חתומים באופן צולב גם על ידי <a href="#def-IdenTrust">IdenTrust</a>, כיוון שבזמן ההשקה האישור העליון של Let&rsquo;s Encrypt עדיין לא נחשב מהימן בעיני <a href="#def-store">מאגרי אישורים</a>. טכנית, ניתן לבצע זאת עם שני אישורי הנפקה, באמצעות אותו ה<a href="#def-subject">נושא</a> (Subject) ואותו <a href="#def-key-pair">צמד המפתחות</a> (Key-pair), האחד חתום על ידי המפתח הפרטי של האישור העליון של Let&rsquo;s Encrypt והשני חתום על ידי המפתח הפרטי של האישור העליון של IdenTrust: <a href="letsencrypt-ewebsite/he/certificates/" hreflang="he">אישורים</a>. <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-CT-log"><dfn id="def-CT-log">יומני שקיפות אישורים</dfn> (<i lang="en">Certificate Transparency Log</i>)</a>
+	: רכיב בתוך <a href="#def-CT">שקיפות אישורים</a> שמקבל הגשות של אישורים ו<a href="#def-precertificate">אישורי קדם</a> ומאגד אותם לכדי רשימה קבועה, ניתנת לאימות ונגישה לציבור.
+</p>
+<p class="definition">
+	<a href="#def-ACME-client"><dfn id="def-ACME-client">לקוח ACME‏</dfn> (<i lang="en">ACME Client</i>)</a>
+	: תכנית שיכולה לתקשר עם שרת ACME כדי לבקש <a href="#def-leaf">אישור</a>.
+</p>
+<p class="definition">
+	<a href="#def-store"><dfn id="def-store">מאגר אישורים</dfn> (<i lang="en">Certificate Store</i>)</a>
+	: מאגר אישורים מכיל רשימה של <a href="#def-root">אישורים עליונים</a> מהימנים. מערכות הפעלה (כגון Windows,‏ Android או דביאן) ו<a href="#def-web-browser">דפדפנים</a> (כגון Firefox) מחזיקים מאגר אישורים. למעט הדפדפן הזה שאר הדפדפנים מסתמכים על מאגר האישורים של מערכת ההפעלה. <a href="#def-leaf">אישורים</a> שמסופקים על ידי <a href="#def-LE">Let&rsquo;s Encrypt</a> נחשבים <a href="letsencrypt-ewebsite/he/certificates/" hreflang="he">מהימנים בעיני רוב מאגרי האישורים</a>.
+</p>
+<p class="definition">
+	<a href="#def-CP"><dfn id="def-CP">מדיניות אישורים</dfn> (<abbr lang="en">CP</abbr> - <i lang="en">Certificate Policy</i>)</a>
+	: סדרה שמית של כללים שמציינים את יישימותו של אישור לקהילה ו/או מחלקה של יישומים מסוימים עם דרישות אבטחה משותפות. פרטים נקודתיים על הנפקה מפורטים תחת <a href="#def-CPS">CPS</a> (הכרזת מדיניות אישור). <a href="letsencrypt-ewebsite/he/repository/#isrg-certificate-policy" hreflang="he">מדיניות האישורים של ISRG</a>‏ - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-OID"><dfn id="def-OID">מזהה עצם</dfn> (<abbr lang="en">OID</abbr> - <i lang="en">Object identifier</i>)</a>
+	: OIDs (מזהי עצמים) הם מזהים מספריים ייחודיים שתוקננו על ידי International Telecommunications Union ‏(ITU - איגוד הטלקומוניקציה הבינלאומי) וגם על ידי ISO/IEC (ארגון התקינה הבינלאומי/הנציבות הבין-לאומית לאלקטרוטכניקה). במזהי עצמים נעשה שימוש בתוך אישורים כדי להגדיר הרחבות, שדות או קביעות מדיניות. תקני אינטרנט ו<a href="#def-CP">מדיניות אישורים</a> ומסמכי <a href="#def-CPS">הצהרת מדיניות אישורים</a> מגדירים את אופן השימוש במזהי עצמים. <a href="https://en.wikipedia.org/wiki/Object_identifier">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-subscriber"><dfn id="def-subscriber">מנוי</dfn> (<i lang="en">Subscriber</i>)</a>
+	: האדם או הארגון שמבקשים אישור.
+</p>
+<p class="definition">
+	<a href="#def-issuer"><dfn id="def-issuer">מנפיק האישור</dfn> (<i lang="en">Certificate issuer</i>)</a>
+	: השדה „Issuer” (מנפיק) באישור שמתאר איזה אישור חתם עליו. למשל, שדה המנפיק (Issuer) באישור יישות קצה של Let&rsquo;s Encrypt עשוי להיות „Issuer: C = US, O = Let&rsquo;s Encrypt, CN = Let&rsquo;s Encrypt Authority X3”. הוא בדרך כלל מכיל אישורים כגון <a href="#def-CN">Common Name</a> (שם נפוץ), Country (מדינה) ו־Organization (ארגון). שדה המנפיק (Issuer) תמיד תואם לאיזשהו שדה <a href="#def-subject">Subject</a> (נושא) באישור. לאישורים <a href="#def-self-signed">חתומים עצמית</a> כגון <a href="#def-root">אישורים עליונים</a>, ה־Issuer תמיד זהה ל־Subject. המונח „מנפיק” יכול גם לציין אישורים שמנפיק אישורים אחרים (כגון <a href="#def-intermediate">אישור תווך</a> או אישור עליון) או ארגון שמנפיק אישורים.
+</p>
+<p class="definition">
+	<a href="#def-subject"><dfn id="def-subject">נושא אישור</dfn> (<i lang="en">Certificate subject</i>)</a>
+	: השדה „Subject” (נושא) באישור מציין על מה האישור. הוא בדרך כלל מכיל שדות כגון <a href="#def-CN">Common Name</a> (שם נפוץ), Country (מדינה), ו־Organization (ארגון).
+</p>
+<p class="definition">
+	<a href="#def-HPKP"><dfn id="def-HPKP">נעיצת מפתח ציבורי עם HTTP‏</dfn> (<abbr lang="en">HPKP</abbr> - <i lang="en">HTTP Public Key Pinning</i>)</a>
+	: מנגנון אבטחה שמבקש מהדפדפן לדרוש ש<a href="#def-chain">שרשרת אישורים</a> תשתמש במפתחות ציבוריים מסוימים בטעינות עתידיות. Chrome הציג את המנגנון הזה כדי להגן מפני חבלות מצד רשות האישורים אך זה גרם לתקלות גישה לאתרים, מה שהוביל את Chrome <a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">לצמצם את השימוש בו ולהסיר אותו</a>. <a href="https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-user-agent"><dfn id="def-user-agent">סוכן משתמש</dfn> (<i lang="en">User Agent</i>)</a>
+	: תכנית שמסוגלת לתקשר עם <a href="#def-web-server">שרת אינטרנט</a>. לדוגמה: <a href="#def-web-browser">דפדפן אינטרנט</a> או <a href="https://en.wikipedia.org/wiki/CURL">cURL</a>.
+</p>
+<p class="definition">
+	<a href="#def-CABF"><dfn id="def-CABF">פורום דפדפנים/רשויות אישורים</dfn> (<i lang="en">CA/Browser Forum</i>)</a>
+	: קבוצה התנדבותית של רשויות אישורים, יצרני דפדפני אינטרנט, מערכות הפעלה ויישומים נוספים שתומכים ב־PKI. פורום דפדפנים/רשויות אישורים מפרסם את <a href="#def-BRs">דרישות היסוד</a>. ארגון <a href="#def-LE">Let&rsquo;s Encrypt</a> חבר בפורום דפדפנים/רשויות אישורים. <a href="https://en.wikipedia.org/wiki/CA/Browser_Forum">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-SNI"><dfn id="def-SNI">ציון שם שרת</dfn> (<abbr lang="en">SNI</abbr> - <i lang="en">Server Name Indication</i>)</a>
+	: שדה ששולח <a href="#def-user-agent">סוכן משתמש</a> ל<a href="#def-web-server">שרת</a> במהלך <a href="#def-TLS">לחיצת יד TLS</a> ומציין את שם התחום להתחבר אליו. מנגנון זה מאפשר לשרת לענות עם ה<a href="#def-leaf">אישור</a> הנכון כאשר מספר שמות תחום מתארחים מאחורי אותה כתובת IP. שרת האינטרנט עשוי לשלוח אישור אחר ולהציג תוכן אחר בהתאם לשרת שביקש הלקוח דרך SNI (ציון שם שרת). השדה SNI אינו מוצפן אבל חלופה ניסיונית בשם ESNI כן. <a href="https://en.wikipedia.org/wiki/Server_Name_Indication">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-key-pair"><dfn id="def-key-pair">צמד מפתחות</dfn> (<i lang="en">Key-pair</i>)</a>
+	: שילוב של מפתח פרטי וציבורים שמשמשים יחד לחתימה או להצפנה. המפתח הציבורי בדרך כלל מוטמע בתוך אישור, בעוד המפתח הפרטי מאוחסן בנפרד ויש לשמור עליו בסוד. צמד מפתחות יכול לשמש להצפנה ולפענוח, כדי לחתום ולאמת נתונים או כדי לשאת ולתת על מפתחות משניים, בהתאם ליישום. <a href="https://he.wikipedia.org/wiki/%d7%9e%d7%a4%d7%aa%d7%97_%d7%a6%d7%99%d7%91%d7%95%d7%a8%d7%99">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-ISRG"><dfn id="def-ISRG">קבוצת מחקר אבטחת האינטרנט</dfn> (<abbr lang="en">ISRG</abbr> - <i lang="en">Internet Security Research Group</i>)</a>
+	: הארגון שמאחורי <a href="#def-LE">Let&rsquo;s Encrypt</a>:‏ <a href="https://www.abetterinternet.org/about/">https://www.abetterinternet.org/about/‎</a>. <a href="https://en.wikipedia.org/wiki/Internet_Security_Research_Group">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-pem"><dfn id="def-pem">קובץ PEM ‏(‎.pem)</dfn> (<i lang="en">PEM file (.pem)</i>)</a>
+	: סוג קובץ למידע מוצפן (במקור צוין כחלק מתוך ערכת תקני האינטרנט Privacy Enhanced Mail - דוא״ל עם פרטיות מורחבת לאבטחה של דוא״ל). מסמך PEM יכול לייצג מידע כגון מפתח פרטי, מפתח ציבורי או אישור דיגיטלי. קבצים אלו נפתחים ב־„‎-----BEGIN ‎” ואז סוג הנתונים. <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-pfx"><dfn id="def-pfx">קובצי החלפת פרטים אישיים (‎.pfx)</dfn> (<i lang="en">Personal Information Exchange Files (.pfx)</i>)</a>
+	: קובץ שמכיל <a href="#def-leaf">אישור עלה</a>, את ה<a href="#def-chain">שרשרת</a> שלו עד האישור העליון ואת המפתח הפרטי של אישור העלה. ניתן גם לקרוא את <a href="https://en.wikipedia.org/wiki/PKCS_12">https://en.wikipedia.org/wiki/PKCS_12</a>. <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/install/personal-information-exchange---pfx--files">מרכז פיתוח החומרה של Microsoft</a>
+</p>
+<p class="definition">
+	<a href="#def-CAI"><dfn id="def-CAI">רשויות אישורים מנפיקות</dfn> (<i lang="en">CA Issuers</i>)</a>
+	: חלק מהשדה <a href="#def-AIA">AIA</a> שמכיל מידע על מנפיק ה<a href="#def-leaf">אישור</a>. עשוי להיות שימושי כאשר <a href="#def-web-server">שרת האינטרנט</a> לא סיפק <a href="#def-chain">שרשרת אישורים</a> מהימנה.
+</p>
+<p class="definition">
+	<a href="#def-CNAME"><dfn id="def-CNAME">רשומת שם קנוני</dfn> (<abbr lang="en">CNAME</abbr> - <i lang="en">Canonical Name record</i>)</a>
+	: רשומת DNS שממפה שם תחום אחד לאחר, נקראת שם קנוני. <a href="https://en.wikipedia.org/wiki/CNAME_record">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-CA"><dfn id="def-CA">רשות אישורים</dfn> (<abbr lang="en">CA</abbr> - <i lang="en">Certificate Authority</i>)</a>
+	: ארגון שמנפיק <a href="#def-leaf">אישורים</a>. <a href="#def-LE">Let&rsquo;s Encrypt</a>,‏ <a href="#def-IdenTrust">IdenTrust</a>,‏ Sectigo ו־DigiCert הן רשויות אישורים. <a href="https://en.wikipedia.org/wiki/Certificate_authority">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-CRL"><dfn id="def-CRL">רשימת אישורים שנשללו</dfn> (<abbr lang="en">CRL</abbr> - <i lang="en">Certificate Revocation List</i>)</a>
+	: שיטה ליידע את <a href="#def-user-agent">סוכני המשתמש</a> על מצב <a href="#def-revocation">שלילת</a> <a href="#def-leaf">אישור</a>. זו רשימת המספרים הסידוריים של כל האישורים שנשללו על ידי רשות אישורים מסוימת ונחתמו קודם על ידיה. <a href="https://en.wikipedia.org/wiki/Certificate_revocation_list">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-PSL"><dfn id="def-PSL">רשימת סיומות ציבורית</dfn> (<abbr lang="en">PSL</abbr> - <i lang="en">Public Suffix List</i>)</a>
+	: רשימה של <em>סיומות ציבוריות</em> שמתוחזקת על ידי Mozilla ומציינת אילו שמות תחום באינטרנט זמינים לטובת יישויות שונות כדי לרשום תת־מתחמים. למשל, הרשימה מציינת שגם <code>com</code> וגם <code>co.uk</code> הן סיומות ציבוריות למרות ש־<code>co.uk</code> אינו שם תחום עליון. דפדפנים משתמשים ברשימה הזאת, לצד מקורות נוספים, כדי למנוע מאתרים שכפי הנראה מופעלים על ידי יישויות שונות לשתף ביניהם עוגיות. <a href="#def-LE">Let&rsquo;s Encrypt</a> משתמשת ברשימה גם כדי לחשב מגבלת מיכסות: <a href="letsencrypt-ewebsite/he/docs/rate-limits/" hreflang="he">מגבלת-מיכסות</a>. <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>‎
+</p>
+<p class="definition">
+	<a href="#def-OCSP-stapling"><dfn id="def-OCSP-stapling">שידוך פרוטוקול מצב אישורים מקוון</dfn> (<i lang="en">OCSP stapling</i>)</a>
+	: דרך ל<a href="#def-web-server">שרת האינטרנט</a> לשלוח ל<a href="#def-web-browser">דפדפן</a> תגובת <a href="#def-OCSP">OCSP</a> שחתומה על ידי <a href="#def-CA">רשות אישורים</a>, כדי שהדפדפן עצמו לא יצטרך לבצע בקשת OCSP (פרוטוקול מצב אישור מקוון) משנית אל רשות האישורים, מציג שיפור במהירות ובפרטיות. מוכר גם בתור הרחבת בקשת מצב אישור TLS. <a href="https://en.wikipedia.org/wiki/OCSP_stapling">ויקיפדיה</a> <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">Cloudflare</a>
+</p>
+<p class="definition">
+	<a href="#def-revocation"><dfn id="def-revocation">שלילה</dfn> (<i lang="en">Revocation</i>)</a>
+	: אישור תקף עד למועד תפוגת תוקפו, אלא אם כן <a href="#def-CA">רשות האישורים</a> מכריזה שהוא נשלל. האישור עשוי להישלל ממגוון סיבות כגון פגיעה במפתח הפרטי. דפדפנים יכולים לבדוק אם אישור נשלל בעזרת <a href="#def-CRL">CRL</a>,‏ <a href="#def-OCSP">OCSP</a> או שיטות חדשות יותר כגון <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> ו־<a href="https://dev.chromium.org/Home/chromium-security/crlsets">CRLSets</a>. כדאי לשים לב שבמקרים רבים, <a href="https://www.imperialviolet.org/2011/03/18/revocation.html">שלילה לא עובדת</a>. <a href="letsencrypt-ewebsite/he/docs/revoking/" hreflang="he">/docs/revoking</a>
+</p>
+<p class="definition">
+	<a href="#def-SAN"><dfn id="def-SAN">שם חלופי לנושא</dfn> (<abbr lang="en">SAN</abbr> - <i lang="en">Subject Alternative Name</i>)</a>
+	: שדה ב<a href="#def-leaf">אישור</a> שמציין על איזה שם תחום או על אילו שמות תחום האישור תקף. מחליף את השימוש ב־<a href="#def-CN">Common Name</a> (שם נפוץ), שמסופק כעת מטעמי תאימות בלבד. אישור בודד יכול להכיל מספר SANs ולהיות תקף למספר שמות תחום שונים. <a href="https://en.wikipedia.org/wiki/Subject_Alternative_Name">ויקיפדיה</a> <a href="https://letsencrypt.org/docs/rate-limits/#names-per-certificate">https://letsencrypt.org/docs/rate-limits/#names-per-certificate</a>
+</p>
+<p class="definition">
+	<a href="#def-CN"><dfn id="def-CN">שם נפוץ</dfn> (<abbr lang="en">CN</abbr> - <i lang="en">Common Name</i>)</a>
+	: חלק מה<a href="#def-subject">נושא</a> (Subject) של האישור שמסביר מה טיב האישור. עבור <a href="#def-root">אישורים עליונים</a> ו<a href="#def-intermediate">אישורי תווך</a> מדובר בשם של <a href="#def-CA">רשות האישורים</a> שגם בני אדם יכולים להבין. עבור <a href="#def-leaf">אישורי עלה</a> זה אחד משמות התחום שבאישור. נא לשים לב: השם הנפוץ מוגבל ל־63 תווים. זו שיטה מיושנת לציון שם התחום עליו חל האישור מאחר שהתקנים העדכניים באינטרנט מצפים מצד התכנה לבדוק רק את <a href="#def-SAN">Subject Alternative Names</a> (שמות נושא חלופיים) כדי לקבוע את ישימות האישור.
+</p>
+<p class="definition">
+	<a href="#def-FQDN"><dfn id="def-FQDN">שם תחום מלא</dfn> (<abbr lang="en">FQDN</abbr> - <i lang="en">Fully qualified domain name</i>)</a>
+	: שם התחום המלא של אתר. למשל, <code>www.example.com</code> הוא <em>FQDN</em> (שם תחום מלא).
+</p>
+<p class="definition">
+	<a href="#def-IDN"><dfn id="def-IDN">שם תחום תואם בינאום</dfn> (<abbr lang="en">IDN</abbr> - <i lang="en">Internationalized Domain Name</i>)</a>
+	: שם תחום עם תווים מחוץ לטווח של <code>a</code> עד <code>z</code>,‏ <code>0</code> עד <code>9</code> ומינוס (<code>-</code>). השמות יכולים להכיל תווים עבריים, ערביים, סיניים, טמילים, קיריליים או מבוססי לטיניים עם סימנים סובבי תו או ליגטורות. הייצוג המקודד של שמות תחום תואמי בינאום מתחיל ב־<code>xn--‎</code>. ב־<a href="#def-LE">Let&rsquo;s Encrypt</a> קיימת תמיכה בשמות תחום תואמי בינאום: <a href="https://letsencrypt.org/2016/10/21/introducing-idn-support.html">https://letsencrypt.org/2016/10/21/introducing-idn-support.html</a>. <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">ויקיפדיה</a> - <a href="https://tools.ietf.org/html/rfc5890">RFC 5890</a>‏ - <a href="https://tools.ietf.org/html/rfc5891">RFC 5891</a>
+</p>
+<p class="definition">
+	<a href="#def-TLD"><dfn id="def-TLD">שמות תחום עליונים</dfn> (<abbr lang="en">TLD</abbr> - <i lang="en">Top-Level Domain</i>)</a>
+	: הרמה הגבוהה ביותר במערכת שמות התחום, כגון שמות תחום עליונים לפי קוד מדינה (ccTLDs) כגון <code>‎.il</code> (ישראל), <code>‎.cn</code> (סין) ושמות תחום עליונים כלליים (gTLDs) כגון <code>‎.com</code>,‏ <code>‎.org</code>. <a href="https://he.wikipedia.org/wiki/%d7%a1%d7%99%d7%95%d7%9e%d7%aa_%d7%90%d7%99%d7%a0%d7%98%d7%a8%d7%a0%d7%98">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-IDNA"><dfn id="def-IDNA">שמות תחום תואמי בינאום ליישומים</dfn> (<abbr lang="en">IDNA</abbr> - <i lang="en">Internationalized Domain Names for Applications</i>)</a>
+	: להלן <a href="#def-IDN">שמות תחום תואמי בינאום</a>.
+</p>
+<p class="definition">
+	<a href="#def-CT"><dfn id="def-CT">שקיפות אישורים</dfn> (<abbr lang="en">CT</abbr> - <i lang="en">Certificate Transparency</i>)</a>
+	: כדי לשפר את האבטחה, יש לפרסם אישורים (או <a href="#def-precertificate">קדם אישורים</a>) ליומני שקיפות אישורים: <a href="https://www.certificate-transparency.org/">https://www.certificate-transparency.org/</a>‎. מערכת <a href="#def-LE">Let&rsquo;s Encrypt</a> מייצרת ומפרסמת <a href="#def-precertificate">אישורי קדם</a> וכוללת ב<a href="#def-leaf">אישור</a> העוקב רשימה של <a href="#def-SCT">SCTs</a> (חותמות זמן של אישור חתום) עבור אישור הקדם. חלק מה<a href="#def-web-browser">דפדפנים</a>, כגון Chrome מבית Google, דורש את נוכחותה של הבטחה זו שניתן לאמת כדי לתקף את האישור. <a href="https://en.wikipedia.org/wiki/Certificate_Transparency">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-chain"><dfn id="def-chain">שרשרת אישורים</dfn> (<i lang="en">Certificate chain</i>)</a>
+	: רשימה של <a href="#def-intermediate">אישורי תווך</a> שמסייעים ל<a href="#def-user-agent">סוכן משתמש</a> לקבוע שיוכל לתת אמון ביישות קצה או ב<a href="#def-leaf">אישור עלה</a>, על ידי חיבורו אל <a href="#def-root">אישור עליון</a> ב<a href="#def-store">מאגר האישורים</a> שלו. נא לשים לב: השרשרת אינה תמיד ייחודית וכאשר אתר מציג שרשרת אישורים שמובילה לאישור עליון אחד, סוכן המשתמש עשוי להחליט להשתמש בשרשרת אחרת כדי לתקף את האישור. <a href="https://en.wikipedia.org/wiki/Public_key_certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-ACME-server"><dfn id="def-ACME-server">שרת ACME‏</dfn> (<i lang="en">ACME Server</i>)</a>
+	: שרת תואם ACME שיכול לייצר <a href="#def-leaf">אישורים</a>. התכנית שלLet&rsquo;s Encrypt,‏ <a href="#def-boulder">Boulder</a>, היא תואמת ACME <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">עם מספר שינויים קלים</a>.
+</p>
+<p class="definition">
+	<a href="#def-web-server"><dfn id="def-web-server">שרת אינטרנט</dfn> (<i lang="en">Web server</i>)</a>
+	: תכנית שמגישה עמודי אינטרנט (או, בהתאם לסיומת, את החומרה של השרת שמעארח אותה). <a href="https://he.wikipedia.org/wiki/%d7%a9%d7%a8%d7%aa_HTTP">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-mixed-content"><dfn id="def-mixed-content">תוכן מעורב</dfn> (<i lang="en">Mixed content</i>)</a>
+	: כאשר עמוד HTTPS טוען תת־משאבים (Javascript,‏ CSS או תמונות) על גבי HTTP. <a href="#def-web-browser">דפדפנים</a> עשויים לחסום תוכן מעורב או לסמן את העמוד הזה כפחות מאובטח כאשר קיים תוכן מעורב: <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content</a>. כדי לתקן בעיית תוכן מעורב, על גורם פיתוח האתר להחליף את העמודים שלהם כדי שכל המשאבים יהיו בכתובות HTTPS. <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">כלי מפתחים</a> שמובנים בתוך הדפדפנים עשויים לשמש כדי לאתר אילו משאבים גורמים לבעיית התוכן המעורב.
+</p>
+<p class="definition">
+	<a href="#def-OV"><dfn id="def-OV">תיקוף ארגון</dfn> (<abbr lang="en">OV</abbr> - <i lang="en">Organization Validation</i>)</a>
+	: אישורים שעבורם <a href="#def-CA">רשות אישורים</a> אימתה את היישות המשפטית של ה<a href="#def-subscriber">מנוי</a>. הם מכילים מידע על היישות הזאת. <a href="#def-LE">Let&rsquo;s Encrypt</a> אינה מציעה אישורי OV. <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Organization_validation">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-EV"><dfn id="def-EV">תיקוף מורחב</dfn> (<abbr lang="en">EV</abbr> - <i lang="en">Extended Validation</i>)</a>
+	: סוג של תיקוף אישור שעבורו <a href="#def-CA">רשות האישורים</a> אימתה את היישות המשפטית ששולטת באתר. הם מכילים מידע על היישות הזאת. הפקדים מ<a href="#def-CA">רשות האישורים</a> הם יותר מחמירים עבור אישורי <a href="#def-OV">OV</a>‏. <a href="#def-LE">Let&rsquo;s Encrypt</a> אינה מציעה אישורי EV. <a href="https://en.wikipedia.org/wiki/Extended_Validation_Certificate">ויקיפדיה</a>
+</p>
+<p class="definition">
+	<a href="#def-root-program"><dfn id="def-root-program">תכנית עליונה</dfn> (<i lang="en">Root Program</i>)</a>
+	: מסמכי המדיניות בהן משתמש ארגון כדי להחליט אילו אישורים לכלול ב<a href="#def-store">מאגר המהימנות</a> ולפיכך להחליט אילו רשויות אישורים נחשבות מהימנות על ידי התכנה שלו.
+</p>
+<link rel="stylesheet" href="/css/glossary.css" />
+<script src="/js/glossary.js" async></script>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt היא רשות אישורים חופשית, אוטומטית ופתוחה
+  שמוגשת לך באדיבות <a href="https://www.abetterinternet.org/">קבוצת מחקר אבטחת האינטרנט (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>יש לשלוח הודעות או בקשות אל:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        לצפייה ב<a href="/privacy/">מדיניות הפרטיות</a> שלנו.<br>
+לצפייה ב<a href="https://www.abetterinternet.org/trademarks/">מדיניות זכויות היוצרים</a> שלנו.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

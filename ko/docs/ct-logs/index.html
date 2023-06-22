@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="ko-KR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>인증서 투명성(CT, Certificate Transparency) 로그 -  Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
+    <meta name="description" content="인증서 투명성(CT, Certificate Transparency)는 TLS 인증서 발급에 대한 로깅 및 모니터링을 위한 시스템입니다. CT는 모든 사람의 인증서 발급 모니터링 및 학습 능력을 크게 향상시키며, 이러한 기능을 통해 CA 에코시스템과 웹 보안이 크게 개선되었습니다. 그 결과, CT는 빠르게 중요한 인프라가 되고 있습니다.  Let&#39;s Encrypt에서는 우리가 발급하는 모든 인증서를 CT 로그에 제출합니다. 또한 공개적으로 신뢰하는 인증 기관 모두가 기꺼이 제출할 수 있는 CT 로그도 직접 운영하고 있습니다. 펀딩  Let&#39;s Encrypt CT 로그를 후하게 후원해 주신 다음 파트너 여러분께 감사드립니다.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="인증서 투명성(CT, Certificate Transparency) 로그">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/ko/docs/ct-logs/">
+    <meta name="twitter:description" content="인증서 투명성(CT, Certificate Transparency)는 TLS 인증서 발급에 대한 로깅 및 모니터링을 위한 시스템입니다. CT는 모든 사람의 인증서 발급 모니터링 및 학습 능력을 크게 향상시키며, 이러한 기능을 통해 CA 에코시스템과 웹 보안이 크게 개선되었습니다. 그 결과, CT는 빠르게 중요한 인프라가 되고 있습니다.  Let&#39;s Encrypt에서는 우리가 발급하는 모든 인증서를 CT 로그에 제출합니다. 또한 공개적으로 신뢰하는 인증 기관 모두가 기꺼이 제출할 수 있는 CT 로그도 직접 운영하고 있습니다. 펀딩  Let&#39;s Encrypt CT 로그를 후하게 후원해 주신 다음 파트너 여러분께 감사드립니다.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/ko/docs/ct-logs/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 블로그 피드" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">탐색 링크 건너뛰기</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/ko/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/ko/docs/" class="pure-menu-link" tabindex="0">문서</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">도움말</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">후원</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/donate/" class="pure-menu-link">기부하기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">스폰서 되기</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/sponsors/" class="pure-menu-link">현재 스폰서 및 기부자</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getinvolved/" class="pure-menu-link">참여</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">소개</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">비영리 인터넷 보안 연구 그룹 (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 루트 인증서 만료 (2021년 9월)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/faq/" class="pure-menu-link">자주 묻는 질문</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">서비스 상태</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/stats/" class="pure-menu-link">통계</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">채용</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/contact/" class="pure-menu-link">연락처</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">언어 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/ct-logs/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/ct-logs/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/ct-logs/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/ct-logs/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/ct-logs/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/ct-logs/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/ct-logs/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/ct-logs/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/ct-logs/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/ct-logs/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/ct-logs/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/ct-logs/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">✓ 한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/ct-logs/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/ct-logs/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/ct-logs/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/ct-logs/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/ct-logs/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/ct-logs/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/ct-logs/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/ct-logs/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/ct-logs/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/4.jpg');">
+<div class="container">
+	<h1>인증서 투명성(CT, Certificate Transparency) 로그</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    최근 업데이트: <time datetime="2019-05-15">2019. 5. 15.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/ko/docs">모든 문서 보기</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    참고: 번역된 이후로 영문판이 업데이트되었습니다
+                    (<time datetime="2022-06-17">2022. 6. 17.</time>)
+                    <a href="letsencrypt-ewebsite/docs/ct-logs/">영어로 보기</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+<p>
+  <a href="https://www.certificate-transparency.org/what-is-ct"
+    >인증서 투명성(CT, Certificate Transparency)</a
+  >는 TLS 인증서 발급에 대한 로깅 및 모니터링을 위한 시스템입니다. CT는 모든
+  사람의 인증서 발급 모니터링 및 학습 능력을 크게 향상시키며, 이러한 기능을 통해
+  CA 에코시스템과 웹 보안이 크게 개선되었습니다. 그 결과, CT는 빠르게 중요한
+  인프라가 되고 있습니다.
+</p>
+
+<p>
+  Let's Encrypt에서는 우리가 발급하는 모든 인증서를 CT 로그에 제출합니다. 또한
+  공개적으로 신뢰하는 인증 기관 모두가 기꺼이 제출할 수 있는 CT 로그도 직접
+  운영하고 있습니다.
+</p>
+
+<h2>펀딩</h2>
+
+<p>
+  Let's Encrypt CT 로그를 후하게 후원해 주신 다음 파트너 여러분께 감사드립니다.
+  귀사에서 이 작업을 계속하는 데 도움을 받으려면 다음 사항을 고려하시기
+  바랍니다.<a href="https://www.abetterinternet.org/sponsor/">후원 또는 기부</a
+  >.
+</p>
+
+<p class="text-center">
+  <a href="https://sectigo.com/"
+    ><img src="/images/sectigo_logo_color.svg" width="240" alt="Sectigo"
+  /></a>
+</p>
+
+<h2>구조</h2>
+
+<p>
+  우리의 로그는 AWS 인프라에서 실행되는 구글의
+  <a href="https://github.com/google/trillian/">Trillian 소프트웨어</a>를
+  사용합니다. 컨테이너 조정 및 작업 스케줄링에는
+  <a href="https://kubernetes.io/">Kubernetes</a>를, 데이터베이스 관리에는 AWS
+  RDS를 사용합니다.
+</p>
+<h2>로그 모니터링</h2>
+
+<p>
+  Let's Encrypt가
+  <a href="https://github.com/letsencrypt/ct-woodpecker">CT Woodpecker</a>라는
+  오픈소스 CT 로그 모니터링 도구를 만들었습니다. 이 도구를 사용하여 로그의
+  안전성과 컴플라이언스를 모니터링하고 다른 사용자들도 이 툴을 유용하게 사용할
+  수 있기를 바랍니다.
+</p>
+
+<h2>CT 로그</h2>
+
+
+
+    <h3>생산</h3>
+
+<ul>
+     
+    <li class="list-style-none">
+        <ul>
+        
+            
+            <li>
+            <strong>이름: Oak 2019</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2019<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFkqNKRuZ&#43;Z8IOsnNJrUZ8gwp&#43;KKGOdQrJ/HKhSadK/SJuoCc9&#43;dxQ7awpmWIMr9SKcQeG5uRzG1kVSyFN4Wfcw==</code><br>
+            로그 ID: <code>65:9B:33:50:F4:3B:12:CC:5E:A5:AB:4E:C7:65:D3:FD:E6:C8:82:43:77:77:78:E7:20:03:F9:EB:2B:8C:31:29</code><br>
+            창 시작: <code>2019-01-01T00:00Z</code><br>
+            창 종료: <code>2020-01-07T00:00Z</code><br>
+
+            
+            
+                상태: Rejected - Shard Expired
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Oak 2020</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2020<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEfzb42Zdr/h7hgqgDCo1vrNJqGqbcUvJGJEER9DDqp19W/wFSB0l166hD&#43;U5cAXchpH8ZkBNUuvOHS0OnJ4oJrQ==</code><br>
+            로그 ID: <code>E7:12:F2:B0:37:7E:1A:62:FB:8E:C9:0C:61:84:F1:EA:7B:37:CB:56:1D:11:26:5B:F3:E0:F3:4B:F2:41:54:6E</code><br>
+            창 시작: <code>2020-01-01T00:00Z</code><br>
+            창 종료: <code>2021-01-07T00:00Z</code><br>
+
+            
+            
+                상태: Rejected - Shard Expired
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Oak 2021</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2021<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELsYzGMNwo8rBIlaklBIdmD2Ofn6HkfrjK0Ukz1uOIUC6Lm0jTITCXhoIdjs7JkyXnwuwYiJYiH7sE1YeKu8k9w==</code><br>
+            로그 ID: <code>94:20:BC:1E:8E:D5:8D:6C:88:73:1F:82:8B:22:2C:0D:D1:DA:4D:5E:6C:4F:94:3D:61:DB:4E:2F:58:4D:A2:C2</code><br>
+            창 시작: <code>2021-01-01T00:00Z</code><br>
+            창 종료: <code>2022-01-07T00:00Z</code><br>
+
+            
+            
+                상태: Rejected - Shard Expired
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Oak 2022</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2022<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEhjyxDVIjWt5u9sB/o2S8rcGJ2pdZTGA8&#43;IpXhI/tvKBjElGE5r3de4yAfeOPhqTqqc&#43;o7vPgXnDgu/a9/B&#43;RLg==</code><br>
+            로그 ID: <code>DF:A5:5E:AB:68:82:4F:1F:6C:AD:EE:B8:5F:4E:3E:5A:EA:CD:A2:12:A4:6A:5E:8E:3B:12:C0:20:44:5C:2A:73</code><br>
+            창 시작: <code>2022-01-01T00:00Z</code><br>
+            창 종료: <code>2023-01-07T00:00Z</code><br>
+
+            
+            
+                상태: Usable
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Oak 2023</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2023<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEsz0OeL7jrVxEXJu&#43;o4QWQYLKyokXHiPOOKVUL3/TNFFquVzDSer7kZ3gijxzBp98ZTgRgMSaWgCmZ8OD74mFUQ==</code><br>
+            로그 ID: <code>B7:3E:FB:24:DF:9C:4D:BA:75:F2:39:C5:BA:58:F4:6C:5D:FC:42:CF:7A:9F:35:C4:9E:1D:09:81:25:ED:B4:99</code><br>
+            창 시작: <code>2023-01-01T00:00Z</code><br>
+            창 종료: <code>2024-01-07T00:00Z</code><br>
+
+            
+            
+                상태: Usable
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Oak 2024h1</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2024h1<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVkPXfnvUcre6qVG9NpO36bWSD&#43;pet0Wjkv3JpTyArBog7yUvuOEg96g6LgeN5uuk4n0kY59Gv5RzUo2Wrqkm/Q==</code><br>
+            로그 ID: <code>3B:53:77:75:3E:2D:B9:80:4E:8B:30:5B:06:FE:40:3B:67:D8:4F:C3:F4:C7:BD:00:0D:2D:72:6F:E1:FA:D4:17</code><br>
+            창 시작: <code>2023-12-20T00:00Z</code><br>
+            창 종료: <code>2024-07-20T00:00Z</code><br>
+
+            
+            
+                상태: Pending
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Oak 2024h2</strong><br>
+            URI: https://oak.ct.letsencrypt.org/2024h2<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE13PWU0fp88nVfBbC1o9wZfryUTapE4Av7fmU01qL6E8zz8PTidRfWmaJuiAfccvKu5&#43;f81wtHqOBWa&#43;Ss20waA==</code><br>
+            로그 ID: <code>3F:17:4B:4F:D7:22:47:58:94:1D:65:1C:84:BE:0D:12:ED:90:37:7F:1F:85:6A:EB:C1:BF:28:85:EC:F8:64:6E</code><br>
+            창 시작: <code>2024-06-20T00:00Z</code><br>
+            창 종료: <code>2025-01-20T00:00Z</code><br>
+
+            
+            
+                상태: Pending
+            
+            </li>
+            
+        
+            
+        
+            
+        
+        </ul>
+    </li>
+</ul>
+ 
+
+    <h3>테스트</h3>
+
+<ul>
+     
+    <li class="list-style-none">
+        <ul>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <li>
+            <strong>이름: Sapling 2022h2</strong><br>
+            URI: https://sapling.ct.letsencrypt.org/2022h2<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE6m0gtMM2pcVTxVjkztm/ByNrF32xacdVnbsYwlzwtqN0vOwqcXLtPkfYqH&#43;q93hlJwEBsX1MnRXDdlMHkkmZJg==</code><br>
+            로그 ID: <code>23:2D:41:A4:CD:AC:87:CE:D9:F9:43:F4:68:C2:82:09:5A:E0:9D:30:D6:2E:2F:A6:5D:DC:3B:91:9C:2E:46:8F</code><br>
+            창 시작: <code>2022-06-15T00:00Z</code><br>
+            창 종료: <code>2023-01-15T00:00Z</code><br>
+
+            
+            
+            </li>
+            
+        
+            
+            <li>
+            <strong>이름: Sapling 2023h1</strong><br>
+            URI: https://sapling.ct.letsencrypt.org/2023h1<br>
+            공개 키: <code>MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE09jAcGbw5CDCK2Kg0kkmmDydfDfZAA8K64BufU37yx3Jcy/ePy1EjAi2wUPVJ0xsaNMCU37mh&#43;fBV3&#43;K/cSG8A==</code><br>
+            로그 ID: <code>C1:83:24:0B:F1:A4:50:C7:6F:BB:00:72:69:DC:AC:3B:E2:2A:48:05:D4:db:E0:49:66:C3:C8:ab:C4:47:B0:0C</code><br>
+            창 시작: <code>2022-12-15T00:00Z</code><br>
+            창 종료: <code>2023-07-15T00:00Z</code><br>
+
+            
+            
+            </li>
+            
+        
+        </ul>
+    </li>
+</ul>
+
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt는 <a href="https://www.abetterinternet.org/"> 비영리 인터넷 보안 연구 그룹 (ISRG)</a>에서 가져온 무료, 자동 및 공개 인증 기관입니다.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>모든 문의 및 질문:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        <a href="/ko/privacy/">개인정보보호 정책</a>을 확인하십시오.<br>
+<a href="https://www.abetterinternet.org/trademarks/">상표권 정책</a>을 확인하십시오.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

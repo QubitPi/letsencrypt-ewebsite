@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="uk-UA">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Початок роботи -  Let&#39;s Encrypt - Free SSL/TLS Certificates</title>
+    <meta name="description" content="Для ввімкнення HTTPS на вашому сайті, вам потрібно отримати сертифікат (тип файлу) від Центру сертифікації (ЦС). Let&amp;rsquo;s Encrypt - це ЦС. Для того, щоб отримати сертифікат для домену вашого сайту від Let&amp;rsquo;s Encrypt, вам потрібно продемонструвати контроль над доменом. За допомогою Let&amp;rsquo;s Encrypt ви робите це за допомогою програмного забезпечення, яке використовує протокол ACME, який зазвичай працює на вашому веб-хостингу.
+Щоб зрозуміти, який метод підійде вам найкраще, потрібно знати, чи є у вас shell access (також відомий як SSH доступ) для вашого веб-хостингу.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Початок роботи">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/uk/getting-started/">
+    <meta name="twitter:description" content="Для ввімкнення HTTPS на вашому сайті, вам потрібно отримати сертифікат (тип файлу) від Центру сертифікації (ЦС). Let&amp;rsquo;s Encrypt - це ЦС. Для того, щоб отримати сертифікат для домену вашого сайту від Let&amp;rsquo;s Encrypt, вам потрібно продемонструвати контроль над доменом. За допомогою Let&amp;rsquo;s Encrypt ви робите це за допомогою програмного забезпечення, яке використовує протокол ACME, який зазвичай працює на вашому веб-хостингу.
+Щоб зрозуміти, який метод підійде вам найкраще, потрібно знати, чи є у вас shell access (також відомий як SSH доступ) для вашого веб-хостингу.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/uk/getting-started/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Канал блогу Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Пропустити навігаційні посилання</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/uk/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/uk/docs/" class="pure-menu-link" tabindex="0">Документація</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Допомога</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Підтримати</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/donate/" class="pure-menu-link">Зробити пожертву</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Стати спонсором</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/sponsors/" class="pure-menu-link">Спонсори та фонди</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getinvolved/" class="pure-menu-link">Долучитися</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Про сервіс</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Закінчення DST Root ЦС X3 (вересень 2021 року)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/faq/" class="pure-menu-link">Часто поставлені питання (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Стан сервісу</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/stats/" class="pure-menu-link">Статистика</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Кар&#39;єра</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/contact/" class="pure-menu-link">Контакти</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Мови <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">✓ Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="container">
+	<h1>Початок роботи</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<p>Для ввімкнення HTTPS на вашому сайті, вам потрібно отримати сертифікат (тип файлу) від Центру сертифікації (ЦС). Let&rsquo;s Encrypt - це ЦС. Для того, щоб отримати сертифікат для домену вашого сайту від Let&rsquo;s Encrypt, вам потрібно продемонструвати контроль над доменом. За допомогою Let&rsquo;s Encrypt ви робите це за допомогою програмного забезпечення, яке використовує протокол <a href="https://tools.ietf.org/html/rfc8555">ACME</a>, який зазвичай працює на вашому веб-хостингу.</p>
+<p>Щоб зрозуміти, який метод підійде вам найкраще, потрібно знати, чи є у вас <a href="https://en.wikipedia.org/wiki/Shell_account">shell access</a> (також відомий як SSH доступ) для вашого веб-хостингу. Якщо ви повністю контролюєте свій сайт за допомогою такої панелі керування, як <a href="https://cpanel.net/">cPanel</a>, <a href="https://www.plesk.com/">Plesk</a> або <a href="https://wordpress.org/">WordPress</a>, є велика ймовірність того, що у вас немає shell access. Для того, аби впевнитись, запитайте вашого хостинг-провайдера.</p>
+<h1 id="з-наявністю-shell-access">З наявністю Shell Access</h1>
+<p>Ми радимо всім, з shell access, використовувати <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> ACME-клієнт. Аби марно не витрачати час, на Certbot є можливість автоматизувати видачу та встановлення сертифікатів. Для тих, хто не хоче мати автоматичні налаштування, є режим &ldquo;експерта&rdquo;. Він дуже легкий у використанні, підтримується багатьма операційними системами та має чудову документацію. <a href="https://certbot.eff.org/" title="Certbot">Перейдіть на сайт Certbot</a> для того, щоб отримати налаштовані інструкції для вашої операційної системи та веб-сервера.</p>
+<p>Якщо <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> не відповідає вашим потребам, або ви хочете спробувати щось інше, є <a href="letsencrypt-ewebsite/uk/docs/client-options/" hreflang="uk-UA">багатий вибір інших ACME-клієнтів</a>.  Як тільки ви обрали клієнтське програмне забезпечення ACME, перегляньте документацію, аби продовжити роботу.</p>
+<p>Якщо ви експериментуєте з різними ACME-клієнтами, використовуйте наше <a href="letsencrypt-ewebsite/uk/docs/staging-environment/" hreflang="uk-UA">тестове середовище</a> для того, щоб уникнути <a href="letsencrypt-ewebsite/uk/docs/rate-limits/" hreflang="uk-UA">обмеження швидкості </a>.</p>
+<h1 id="без-shell-access">Без Shell Access</h1>
+<p>Найкращий спосіб використання Let&rsquo;s Encrypt без shell access - це використання вбудованої підтримки від вашого хостинг-провайдера. Якщо ваш хостинг-провайдер пропонує підтримку Let&rsquo;s Encrypt, він може надіслати запит на безкоштовний сертифікат від вашого імені, встановити його та автоматично оновлювати. Для деяких хостинг-провайдерів це налаштування необхідно увімкнути. Інші провайдери автоматично надсилають запити та встановлюють сертифікати для своїх клієнтів.</p>
+<p><a href="https://community.letsencrypt.org/t/web-hosting-who-support-lets-encrypt/6920">Перевірте список наших хостинг-провайдерів</a> щоб побачити, чи є ваш провайдер у ньому. Якщо це так, дотримуйтесь їхньої документації для того, щоб налаштувати ваш сертифікат Let&rsquo;s Encrypt.</p>
+<p>Якщо ваш хостинг-провайдер не підтримує Let&rsquo;s Encrypt, ви можете зв&rsquo;язатися з центром за посиланням для того, щоб отримати допомогу. Ми робимо все можливе, щоб зробити додавання підтримки Let&rsquo;s Encrypt максимально простою операцією, а провайдери завжди раді чути пропозиції від клієнтів!</p>
+<p>Якщо ваш хостинг-провайдер не хоче співпрацювати з ЦС, але підтримує завантаження сертифікатів клієнтів, ви можете встановити Certbot на ваш комп&rsquo;ютер та використовувати його в <a href="https://certbot.eff.org/docs/using.html#manual">ручному режимі</a>. У ручному режимі ви завантажуєте файл на ваш сайт, щоб підтвердити контроль над ним. Certbot отримуватиме сертифікат, який можна завантажити на хостинг-провайдер. Ми не рекомендуємо використовувати цю опцію, тому що вона забирає час. До того ж, вам потрібно буде повторювати її декілька разів на рік, як термін дії вашого сертифікату закінчуватиметься. Більшість людей звертається по допомогу до служби підтримки Let&rsquo;s Encrypt від імені хостинг-провайдера, або ж змінює провайдерів, якщо вони не планують впровадити цю службу.</p>
+<h1 id="допомога">Допомога</h1>
+<p>Якщо у Вас є питання щодо вибору ACME-клієнта, використання одного з них, або будь-чого іншого пов&rsquo;язаного з Let&rsquo;s Encrypt, будь ласка, спробуйте звернутися до <a href="https://community.letsencrypt.org/">форумів спільнот з корисною інформацією</a>.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Підтримайте безпечніший та конфіденційний Інтернет.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/uk/donate/">Підтримати</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt - це безкоштовний, автоматизований і відкритий Центр Сертифікації, створений для вас
+  некомерційною організацією <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Відправити всі повідомлення чи запити:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Переглянути <a href="/uk/privacy/">політику конфіденційності</a>.<br>
+Переглянути <a href="/uk/trademarks/">правила користування торговою маркою</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

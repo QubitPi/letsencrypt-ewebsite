@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="si">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ලෙට්&#39;ස් එන්ක්‍රිප්ට් පිළිබඳව -  Let&#39;s Encrypt</title>
+    <meta name="description" content="ලෙට්&#39;ස් එන්ක්‍රිප්ට් යනු මහජන ප්‍රයෝජනය සඳහා ක්‍රියාත්මක වන නොමිලේ, ස්වයංක්‍රීය සහ විවෘත සහතික අධිකාරියකි (CA). එය අන්තර්ජාල ආරක්‍ෂණ පර්යේෂණ සමූහය (අයි.එස්.ආර්.ජී.) විසින් සපයන සේවාවකි.
+වියමන අඩවි සඳහා HTTPS (SSL/TLS) සබල කිරීමට අපි මිනිසුන්ට ඇවැසි සංඛ්‍යාංක සහතික හැකි උපරිම පරිශීලක-හිතකාමී ආකාරයෙන් නොමිලේ ලබා දෙන්නෙමු. අපට වඩාත් ආරක්‍ෂිත සහ පෞද්ගලිකත්වයට ගරු කරන වියමනක් සෑදීමට ඇවැසි බැවින් මෙය සිදු කෙරේ.
+අපගේ වාර්ෂික වාර්තාව බාගැනීමෙන් වඩාත්ම මෑත වසරේ සමාලෝචනය කියවීමට හැකිය.
+ලෙට්&#39;ස් එන්ක්‍රිප්ට් පිටුපස ඇති ප්‍රධාන මූලධර්ම වන්නේ:">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="ලෙට්&#39;ස් එන්ක්‍රිප්ට් පිළිබඳව">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/si/about/">
+    <meta name="twitter:description" content="ලෙට්&#39;ස් එන්ක්‍රිප්ට් යනු මහජන ප්‍රයෝජනය සඳහා ක්‍රියාත්මක වන නොමිලේ, ස්වයංක්‍රීය සහ විවෘත සහතික අධිකාරියකි (CA). එය අන්තර්ජාල ආරක්‍ෂණ පර්යේෂණ සමූහය (අයි.එස්.ආර්.ජී.) විසින් සපයන සේවාවකි.
+වියමන අඩවි සඳහා HTTPS (SSL/TLS) සබල කිරීමට අපි මිනිසුන්ට ඇවැසි සංඛ්‍යාංක සහතික හැකි උපරිම පරිශීලක-හිතකාමී ආකාරයෙන් නොමිලේ ලබා දෙන්නෙමු. අපට වඩාත් ආරක්‍ෂිත සහ පෞද්ගලිකත්වයට ගරු කරන වියමනක් සෑදීමට ඇවැසි බැවින් මෙය සිදු කෙරේ.
+අපගේ වාර්ෂික වාර්තාව බාගැනීමෙන් වඩාත්ම මෑත වසරේ සමාලෝචනය කියවීමට හැකිය.
+ලෙට්&#39;ස් එන්ක්‍රිප්ට් පිටුපස ඇති ප්‍රධාන මූලධර්ම වන්නේ:">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/si/about/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="ලෙට්&#39;ස් එන්ක්‍රිප්ට් සටහන් සංග්‍රහය" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">යාත්‍රණ සබැඳි මඟහරින්න</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/si/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/si/docs/" class="pure-menu-link" tabindex="0">ප්‍රලේඛනය</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">උදව් ගන්න</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">පරිත්‍යාග</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/donate/" class="pure-menu-link">පරිත්‍යාගයක් කරන්න</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/sponsors/" class="pure-menu-link">අනුග්‍රහකයින් හා මූල්‍යදායකයින්</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/getinvolved/" class="pure-menu-link">එක් වන්න</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">අප ගැන</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/about/" class="pure-menu-link">ලෙට්&#39;ස් එන්ක්‍රිප්ට්</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">අන්තර්ජාල ආරක්‍ෂණ පර්යේෂණ සමූහය (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/faq/" class="pure-menu-link">නිතර අසන පැණ (නිති පැණ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">සේවාවේ තත්‍වය</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/stats/" class="pure-menu-link">සංඛ්‍යාලේඛන</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">වෘත්තීන්</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/contact/" class="pure-menu-link">සබඳතාව</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">භාෂා <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/about/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/about/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/about/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/about/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/about/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/about/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/about/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/about/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/about/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/about/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/about/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/about/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/about/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/about/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/about/" lang="si" hreflang="si" class="pure-menu-link">✓ සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/about/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/about/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/about/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/about/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/about/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/about/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>ලෙට්&#39;ස් එන්ක්‍රිප්ට් පිළිබඳව</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<p>ලෙට්'ස් එන්ක්‍රිප්ට් යනු මහජන ප්‍රයෝජනය සඳහා ක්‍රියාත්මක වන නොමිලේ, ස්වයංක්‍රීය සහ විවෘත සහතික අධිකාරියකි (CA). එය <a href="https://www.abetterinternet.org/">අන්තර්ජාල ආරක්‍ෂණ පර්යේෂණ සමූහය (අයි.එස්.ආර්.ජී.)</a> විසින් සපයන සේවාවකි.</p>
+<p>වියමන අඩවි සඳහා HTTPS (SSL/TLS) සබල කිරීමට අපි මිනිසුන්ට ඇවැසි සංඛ්‍යාංක සහතික හැකි උපරිම පරිශීලක-හිතකාමී ආකාරයෙන් නොමිලේ ලබා දෙන්නෙමු. අපට වඩාත් ආරක්‍ෂිත සහ පෞද්ගලිකත්වයට ගරු කරන වියමනක් සෑදීමට ඇවැසි බැවින් මෙය සිදු කෙරේ.</p>
+<p>අපගේ <a href="https://abetterinternet.org/documents/2020-ISRG-Annual-Report.pdf">වාර්ෂික වාර්තාව</a> බාගැනීමෙන් වඩාත්ම මෑත වසරේ සමාලෝචනය කියවීමට හැකිය.</p>
+<p>ලෙට්'ස් එන්ක්‍රිප්ට් පිටුපස ඇති ප්‍රධාන මූලධර්ම වන්නේ:</p>
+<ul>
+<li><strong>නොමිලේ:</strong> වසම් නාමයක් හිමි ඕනෑම කෙනෙකුට වියදමකින් තොරව විශ්වාසදායක සහතිකයක් අත් කර ගැනීමට ලෙට්'ස් එන්ක්‍රිප්ට් භාවිතා කළ හැකිය.</li>
+<li><strong>ස්වයංක්‍රීය:</strong> වියමන සේවාදායකයක ධාවනය වන මෘදුකාංගයකට ලෙට්'ස් එන්ක්‍රිප්ට් සමඟ අන්තර් ක්‍රියා කිරීමෙන් සහතිකයක් පහසුවෙන් අත් කර ගැනීම, භාවිතයට ආරක්‍ෂිතව වින්‍යාසගත වීම සහ ස්වයංක්‍රීයව අළුත් වීම ද සිදු වේ.</li>
+<li><strong>ආරක්‍ෂිත:</strong> ස.අධි. (CA) පාර්ශවයෙන් සහ අඩවි ක්‍රියාකරුවන්ට ඔවුන්ගේ සේවාදායක නිසියාකාරව සුරක්‍ෂිත කිරීමට උදවු කිරීමෙන් TLS ආරක්‍ෂණයේ ප්‍රශස්ත භාවිතයන් ප්‍රගමනයට ලෙට්'ස් එන්ක්‍රිප්ට් වේදිකාවක් ලෙස සේවය කරනු ඇත.</li>
+<li><strong>විනිවිද භාවය:</strong> නිකුත් කරන ලද හෝ අහෝසි කරන ලද සියළුම සහතික ප්‍රසිද්ධියේ සටහන් කර ඇති අතර ඕනෑම කෙනෙකුට පරීක්ෂා කිරීමට තිබේ.</li>
+<li><strong>විවෘත:</strong> ස්වයංක්‍රීය නිකුත් සහ අළුත් කිරීමේ කෙටුම්පත අන් අයට යොදාගත හැකි විවෘත ප්‍රමිතියක් ලෙස <a href="https://tools.ietf.org/html/rfc8555">ප්‍රකාශනය</a> කර ඇත.</li>
+<li><strong>සමුපකාර:</strong> බොහෝ පවතින අන්තර්ජාල කෙටුම්පත් මෙන්, ලෙට්'ස් එන්ක්‍රිප්ට් යනු ඕනෑම සංවිධානයක පාලනයෙන් ඔබ්බට ප්‍රජාවට ප්‍රතිලාභ ලබා දීම සඳහා වූ ඒකාබද්ධ ප්‍රයත්නයකි.</li>
+</ul>
+<p><a href="letsencrypt-ewebsite/si/how-it-works/" hreflang="si">ලෙට්'ස් එන්ක්‍රිප්ට් ක්‍රියා කරන ආකාරය</a> පිළිබඳව වඩාත් විස්තරාත්මක තොරතුරු සහිත පිටුවක් අප සතුව ඇත.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>වඩාත් ආරක්‍ෂිත සහ පෞද්ගලිකත්‍වයට ගරු කරන වියමනකට සහාය වන්න.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/si/donate/">පරිත්‍යාග</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>Let's Encrypt යනු නොමිලේ, ස්වයංක්‍රීය සහ විවෘත සහතික අධිකාරියකි. ලාභ නොලබන අන්තර්ජාල ආරක්‍ෂණ පර්යේෂණ සමූහය (අයි.එස්.ආර්.ජී.) විසින් මෙහෙයවයි.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>වෙත සියළුම තැපැල් හෝ විමසීම් යවන්න:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        අපගේ <a href="/privacy/">රහස්‍යතා ප්‍රතිපත්තිය</a> දකින්න.<br>
+අපගේ <a href="https://www.abetterinternet.org/trademarks">වෙළඳලකුණු ප්‍රතිපත්තිය</a> දකින්න.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

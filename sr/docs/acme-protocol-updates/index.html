@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="sr">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ACME ažuriranja protokola -  Let&#39;s Encrypt - Besplatni SSL/TLS Sertifikati</title>
+    <meta name="description" content="IETF-standardized ACME protokol, RFC 8555, predstavlja prekretnicu u tome kako Let&amp;rsquo;s Encrypt funkcioniše.
+Krajnje tačke API-a Trenutno raspolažemo sa sledećim API okruženjem. Molimo Vas da pogledate našu dokumentaciju o razlikama kako bi ste bili u mogućnosti da izvršite poređenje implementacije u skladu sa ACME specifikacijom.
+ACME v2 (RFC 8555)  [Production] https://acme-v02.api.letsencrypt.org/directory [Staging] https://acme-staging-v02.api.letsencrypt.org/directory  ACME v1 (Zastarelo)  [Production] https://acme-v01.api.letsencrypt.org/directory [Staging] https://acme-staging.api.letsencrypt.org/directory  Nove mogućnosti ACME-a kompatibilne sa prethodnim verzijama S vremena na vreme Let&amp;rsquo;s Encrypt može implementirati nove funkcionalnosti koje će funkcionisati i biti podržane i u nekim od starijih verzija već postojećih API okruženja.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="ACME ažuriranja protokola">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/sr/docs/acme-protocol-updates/">
+    <meta name="twitter:description" content="IETF-standardized ACME protokol, RFC 8555, predstavlja prekretnicu u tome kako Let&amp;rsquo;s Encrypt funkcioniše.
+Krajnje tačke API-a Trenutno raspolažemo sa sledećim API okruženjem. Molimo Vas da pogledate našu dokumentaciju o razlikama kako bi ste bili u mogućnosti da izvršite poređenje implementacije u skladu sa ACME specifikacijom.
+ACME v2 (RFC 8555)  [Production] https://acme-v02.api.letsencrypt.org/directory [Staging] https://acme-staging-v02.api.letsencrypt.org/directory  ACME v1 (Zastarelo)  [Production] https://acme-v01.api.letsencrypt.org/directory [Staging] https://acme-staging.api.letsencrypt.org/directory  Nove mogućnosti ACME-a kompatibilne sa prethodnim verzijama S vremena na vreme Let&amp;rsquo;s Encrypt može implementirati nove funkcionalnosti koje će funkcionisati i biti podržane i u nekim od starijih verzija već postojećih API okruženja.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/sr/docs/acme-protocol-updates/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog lista" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Preskoči navigacione linkove</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/sr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/sr/docs/" class="pure-menu-link" tabindex="0">Dokumentacija</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/" class="pure-menu-link" tabindex="0">Pomoć</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Doniraj</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/donate/" class="pure-menu-link">Dati donaciju</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Postanite Sponzor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/sponsors/" class="pure-menu-link">Trenutni sponzori i donori</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/getinvolved/" class="pure-menu-link">Priključite se</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">O nama</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">Status Servisa</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/stats/" class="pure-menu-link">Statistika</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Karijera</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/contact/" class="pure-menu-link">Kontakt</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Jezik <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/docs/acme-protocol-updates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/docs/acme-protocol-updates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/docs/acme-protocol-updates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/docs/acme-protocol-updates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/docs/acme-protocol-updates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/acme-protocol-updates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/docs/acme-protocol-updates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/docs/acme-protocol-updates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/docs/acme-protocol-updates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/docs/acme-protocol-updates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/docs/acme-protocol-updates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/docs/acme-protocol-updates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/docs/acme-protocol-updates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/docs/acme-protocol-updates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/docs/acme-protocol-updates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/docs/acme-protocol-updates/" lang="sr" hreflang="sr" class="pure-menu-link">✓ Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/docs/acme-protocol-updates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/docs/acme-protocol-updates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/docs/acme-protocol-updates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/docs/acme-protocol-updates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/docs/acme-protocol-updates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="container">
+	<h1>ACME ažuriranja protokola</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+
+<p>
+
+    
+    Poslednji put ažurirano: <time datetime="2019-10-07">07.10.2019.</time>
+
+
+ | <a href="/letsencrypt-ewebsite/sr/docs">Pregledaj svu dokumentaciju</a>
+</p>
+
+
+
+
+
+    
+        
+               
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p><a href="https://letsencrypt.org/2019/03/11/acme-protocol-ietf-standard.html">IETF-standardized</a> ACME protokol, <a href="https://datatracker.ietf.org/doc/rfc8555/">RFC 8555</a>, predstavlja prekretnicu u tome kako Let&rsquo;s Encrypt funkcioniše.</p>
+<h1 id="krajnje-tačke-api-a">Krajnje tačke API-a</h1>
+<p>Trenutno raspolažemo sa sledećim API okruženjem. Molimo Vas da pogledate <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">našu dokumentaciju o razlikama</a> kako bi ste bili u mogućnosti da izvršite poređenje implementacije u skladu sa ACME specifikacijom.</p>
+<h2 id="acme-v2-rfc-8555">ACME v2 (RFC 8555)</h2>
+<ul>
+<li>[Production] <code>https://acme-v02.api.letsencrypt.org/directory</code></li>
+<li>[Staging] <code>https://acme-staging-v02.api.letsencrypt.org/directory</code></li>
+</ul>
+<h2 id="acme-v1-zastarelo">ACME v1 (Zastarelo)</h2>
+<ul>
+<li>[Production] <code>https://acme-v01.api.letsencrypt.org/directory</code></li>
+<li>[Staging] <code>https://acme-staging.api.letsencrypt.org/directory</code></li>
+</ul>
+<h1 id="nove-mogućnosti-acme-a-kompatibilne-sa-prethodnim-verzijama">Nove mogućnosti ACME-a kompatibilne sa prethodnim verzijama</h1>
+<p>S vremena na vreme Let&rsquo;s Encrypt može implementirati nove funkcionalnosti koje će funkcionisati i biti podržane i u nekim od starijih verzija već postojećih API okruženja. Obično takve funkcionalnosti sa podrškom za prethodne verzije su uvedene u slučajevima kada odlučimo da implementiramo neku funkcionalnost u ACME-u koju nismo implementirali ranije.</p>
+<p>Kada je nova funkcionalnost objavljena za već postojeći API, ta funkcionalnost biće jasno navedena u našoj javnoj ACME specifikaciji i neće ugroziti rad pravilno implementiranih klijenata.</p>
+<h1 id="nove-verzije-acme-a-sa-velikim-izmenama">Nove verzije ACME-a sa velikim izmenama</h1>
+<p>Trenutno ne planiramo da uvodimo velike izmene u našoj ACME podršci, ali ukoliko osetimo da je to neophodno da se uradi mi ćemo raditi na tome da obezbedimo laku tranziciju sa dovoljno vremena kao i da o tome komuniciramo unapred u najranijem mogućem roku. Sistem administratori trebaju da održavaju i obezbede mogućnosti da se ažuriranja njihovih ACME klijenata mogu uraditi neometano i na vreme u slučajevima kada je to neophodno.</p>
+</div>
+</div>
+		
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt je besplatno, automatizovano, i otvoreno sertifikaciono
+  telo omogućeno od strane ne profitne <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> grupe.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Сва писма и упите шаљите на:</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Pročitaj našu <a href="/sr/privacy/">politiku privatnosti</a>.<br>
+Pročitaj našu <a href="https://www.abetterinternet.org/trademarks/">politiku brenda</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>

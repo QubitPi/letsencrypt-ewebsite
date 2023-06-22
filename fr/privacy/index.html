@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html
+	dir="ltr"
+	lang="fr-FR">
+	
+	
+	
+		<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Politique de confidentialité -  Let&#39;s Encrypt - Certificats SSL/TLS gratuits</title>
+    <meta name="description" content="La politique de confidentialité de Let&amp;rsquo;s Encrypt décrit la manière dont nous recueillons, utilisons et divulguons vos informations dans trois contextes différents :
+ Lorsque, en tant que partie utilisatrice, vous visitez un site web sécurisé par HTTPS qui utilise un certificat de Let&amp;rsquo;s Encrypt, Lorsque vous êtes un abonné, c&amp;rsquo;est-à-dire lorsque vous demandez et utilisez des certificats de Let&amp;rsquo;s Encrypt, Lorsque vous êtes un visiteur du site web Let&amp;rsquo;s Encrypt, du forum de discussion communautaire, d&amp;rsquo;autres pages web sous letsencrypt.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@letsencrypt">
+    <meta name="twitter:title" content="Politique de confidentialité">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/fr/privacy/">
+    <meta name="twitter:description" content="La politique de confidentialité de Let&amp;rsquo;s Encrypt décrit la manière dont nous recueillons, utilisons et divulguons vos informations dans trois contextes différents :
+ Lorsque, en tant que partie utilisatrice, vous visitez un site web sécurisé par HTTPS qui utilise un certificat de Let&amp;rsquo;s Encrypt, Lorsque vous êtes un abonné, c&amp;rsquo;est-à-dire lorsque vous demandez et utilisez des certificats de Let&amp;rsquo;s Encrypt, Lorsque vous êtes un visiteur du site web Let&amp;rsquo;s Encrypt, du forum de discussion communautaire, d&amp;rsquo;autres pages web sous letsencrypt.">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+
+    
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    
+    <link rel="canonical" href="letsencrypt-ewebsite/fr/privacy/">
+    
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Flux du blog de Let&#39;s Encrypt" />
+    
+    
+</head>
+
+	
+	<body>
+		
+<header class="site-header">
+  <a id="skiplink" href="#main-content">Passer les liens de navigation</a>
+  <div class="wrapper">
+    <a class="site-title" href="letsencrypt-ewebsite/fr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+
+    <span id="menuIcon">
+      <i class="fas fa-bars"></i>
+    </span>
+    <nav class="site-nav" id="menu">
+      <div class="pure-menu pure-menu-horizontal custom-can-transform">
+        <ul class="pure-menu-list">
+          
+          <li class="pure-menu-item">
+            <a href="letsencrypt-ewebsite/fr/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            
+          </li>
+          
+          <li class="pure-menu-item">
+            <a href="https://community.letsencrypt.org/c/help/aide-en-francais" class="pure-menu-link" tabindex="0">Obtenir de l&#39;aide</a>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Faire un don</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/donate/" class="pure-menu-link">Faire un don</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/sponsor/" class="pure-menu-link">Devenez un sponsor</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/sponsors/" class="pure-menu-link">Sponsors et donateurs actuels</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/getinvolved/" class="pure-menu-link">Participez</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">À propos de nous</a>
+            
+            <ul class="pure-menu-children">
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/about/" class="pure-menu-link">Internet Security Research Group (ISRG)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Expiration de l&#39;AC racine X3 de DST (septembre 2021)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/docs/faq/" class="pure-menu-link">Foire aux questions (FAQ)</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://letsencrypt.status.io/" class="pure-menu-link">État du service</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/stats/" class="pure-menu-link">Statistiques</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="https://www.abetterinternet.org/careers/" class="pure-menu-link">Emplois</a>
+              </li>
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/contact/" class="pure-menu-link">Contact</a>
+              </li>
+              
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+          
+          <li class="pure-menu-item pure-menu-has-children">
+            <a href="#" class="pure-menu-link" tabindex="0">Langues <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <ul class="pure-menu-children menu-for-languages">
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/privacy/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/da/privacy/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/de/privacy/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/es/privacy/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fi/privacy/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/fr/privacy/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">✓ Français</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/he/privacy/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/hu/privacy/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/id/privacy/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/it/privacy/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ja/privacy/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ko/privacy/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/pt-br/privacy/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/ru/privacy/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/si/privacy/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sr/privacy/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/sv/privacy/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/uk/privacy/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/vi/privacy/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-cn/privacy/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+              </li>
+              
+              
+              <li class="pure-menu-item">
+                <a href="letsencrypt-ewebsite/zh-tw/privacy/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="site-banner">
+  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of helping build a brighter Internet →</a>
+</div>
+<div id="main-content"></div>
+
+
+		
+
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/4.jpg');">
+<div class="container">
+	<h1>Politique de confidentialité</h1>
+</div>
+</div>
+
+<div class="page-content">
+	<div class="wrapper">
+
+
+
+<script src="/js/i18n.js" defer async></script>
+
+
+<div class="canonical-warning" style="">
+			<i class="fas fa-exclamation-circle" aria-hidden="true"></i>Remarque : la version anglaise fait foi</div>
+<p>
+
+    
+    Dernière mise à jour : <time datetime="2022-03-11">11 mars 2022</time>
+
+
+
+</p>
+
+
+
+
+
+    
+        
+               
+            
+            <p>
+                <i>
+                    Note : La version anglaise a été mise à jour depuis sa traduction
+                    (<time datetime="2023-02-28">28 févr. 2023</time>)
+                    <a href="letsencrypt-ewebsite/privacy/">Voir en anglais</a>
+                </i>
+            </p>
+            
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+<p>La politique de confidentialité de Let&rsquo;s Encrypt décrit la manière dont nous recueillons, utilisons et divulguons vos informations dans trois contextes différents :</p>
+<ul>
+<li>Lorsque, en tant que partie utilisatrice, vous visitez un site web sécurisé par HTTPS qui utilise un certificat de Let&rsquo;s Encrypt,</li>
+<li>Lorsque vous êtes un abonné, c&rsquo;est-à-dire lorsque vous demandez et utilisez des certificats de Let&rsquo;s Encrypt,</li>
+<li>Lorsque vous êtes un visiteur du site web Let&rsquo;s Encrypt, du forum de discussion communautaire, d&rsquo;autres pages web sous letsencrypt.org et de sites de médias sociaux tiers sur lesquels Let&rsquo;s Encrypt gère un compte.</li>
+</ul>
+<p>Let&rsquo;s Encrypt est un service fourni par <a href="https://www.abetterinternet.org/">Internet Security Research Group</a>, une société d&rsquo;utilité publique à but non lucratif de Californie (États-Unis).</p>
+<h2 id="partie-utilisatrice">Partie utilisatrice</h2>
+<p>Lorsque vous utilisez un site web HTTPS ou un autre service TLS avec un certificat Let&rsquo;s Encrypt, votre navigateur (ou client TLS) peut interroger Let&rsquo;s Encrypt pour vérifier si le certificat a été révoqué (&ldquo;requête OCSP&rdquo; : Protocole de vérification de certificat en ligne). Si votre navigateur effectue une demande OCSP, nos serveurs enregistreront automatiquement votre adresse IP, votre navigateur et votre système d&rsquo;exploitation dans des fichiers journaux temporaires du serveur. Nous n&rsquo;utilisons pas les données des demandes OCSP pour établir des profils ou identifier des personnes. Les journaux temporaires du serveur sont utilisés à des fins opérationnelles uniquement et sont normalement supprimés en moins de sept jours. Nous pouvons conserver un sous-ensemble de journaux de serveurs pendant des périodes plus longues afin d&rsquo;enquêter sur les défaillances ou les abus de logiciels. Si nous le faisons, nous supprimerons tous les journaux stockés lorsque nous aurons terminé notre enquête. Nous pouvons également calculer, conserver et publier des informations globales à partir des journaux de serveur, comme les certificats qui génèrent le plus grand volume de demandes. Nous nous efforcerons toujours de faire en sorte que ces ensembles de données ne contiennent pas d&rsquo;informations sur les activités d&rsquo;utilisateurs ou de systèmes identifiables.</p>
+<h2 id="abonné">Abonné</h2>
+<p>Si vous êtes un abonné, vous demandez à Let&rsquo;s Encrypt un certificat de confiance destiné à attester publiquement que vous contrôlez un ou plusieurs noms de domaine accessibles sur Internet. Dans le cadre du processus visant à prouver ce contrôle, Let&rsquo;s Encrypt recueillera diverses informations relatives à l&rsquo;authentification et à la gestion des certificats. Ces informations comprennent les adresses IP à partir desquelles vous accédez au service Let&rsquo;s Encrypt ; toutes les adresses IP résolues pour tous les noms de domaine demandés ; les informations du serveur liées à toutes les demandes de validation ; les journaux complets de toutes les demandes HTTP / ACME (Environnement de Gestion Automatique de Certificat) entrantes, toutes les demandes de validation sortantes ; et les informations envoyées par ou déduites de votre logiciel client. Nous conserverons ces informations pendant un minimum de sept ans, conformément aux exigences du programme &ldquo;Trusted Root&rdquo;. Ces informations seront conservées pendant un maximum de dix ans.</p>
+<p>Nous devons être en mesure de démontrer au public, y compris ceux qui comptent sur la fiabilité de nos certificats, que nos services fonctionnent comme prévu. Par conséquent, nous pouvons être dans l&rsquo;incapacité de supprimer des informations, y compris les adresses IP. Ces informations peuvent être rendues publiques de plusieurs façons, notamment par le biais d&rsquo;API publiques, de référentiels publics et/ou de discussions publiques.</p>
+<p>Vous pouvez avoir la possibilité de fournir des informations de contact, telles que votre adresse électronique, à des fins de service et de récupération du compte. Vos coordonnées ne seront pas rendues publiques et ne seront partagées qu&rsquo;en vertu de la section &ldquo;Application de la loi et circonstances atténuantes&rdquo; ci-dessous. En fournissant votre adresse électronique, vous acceptez de recevoir de notre part des courriers électroniques relatifs à nos services. Vous pouvez vous désinscrire des courriers électroniques relatifs aux services à tout moment en cliquant sur le lien &ldquo;désinscription&rdquo; figurant au bas de nos courriers électroniques ou en nous contactant à l&rsquo;adresse <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>. Nous n&rsquo;utiliserons pas vos coordonnées à des fins de marketing ou de promotion.</p>
+<p>Vous devrez peut-être télécharger le logiciel client à partir d&rsquo;un dépôt tel que ceux gérés par Debian, Ubuntu, Red Hat ou Github. Votre interaction avec un tel dépôt de logiciels est régie par la politique de confidentialité et/ou les conditions d&rsquo;utilisation de ce dépôt.</p>
+<h2 id="visiteur">Visiteur</h2>
+<p>Lorsque vous naviguez sur le site web de Let&rsquo;s Encrypt, vous avez la possibilité de faire un don. Les dons sont traités par nos partenaires de paiement de confiance, notamment DonorBox, Stripe, Shopify, PayPal, The Giving Block et Gemini, en fonction de la méthode de paiement choisie, et stockés dans la base de données Salesforce de l&rsquo;ARS. Nous recueillons votre nom et votre adresse électronique lorsque vous faites un don. Nous n&rsquo;utiliserons pas votre adresse électronique pour vous contacter sans votre consentement, sauf si nous estimons que cela est nécessaire pour résoudre un problème lié à un don particulier. Vos interactions avec <a href="https://donorbox.org/privacy">DonorBox</a>, <a href="https://stripe.com/privacy/">Stripe</a>, <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full">PayPal</a>, <a href="https://www.shopify.com/legal/privacy">Shopify</a>, <a href="https://thegivingblock.com/about/privacy-policy/">The Giving Block</a>, Gemini, <a href="https://shiphero.com/privacy-data-policy/">SHIPHERO</a>, <a href="https://www.salesforce.com/company/privacy/">Salesforce</a>, et <a href="https://www.sageintacct.com/privacy_policy_website">Sage Intacct</a> sont régies par leurs politiques de confidentialité respectives. Nous ne recueillons ni ne conservons aucune information sur les cartes de crédit ou les informations bancaires liées aux dons. Nos partenaires d&rsquo;exécution des expéditions sont Shopify et SHIPHERO.</p>
+<p>Vous pouvez avoir la possibilité de fournir votre adresse électronique pour recevoir des communications relatives aux projets de l&rsquo;EIGS par le biais d&rsquo;une inscription sur un site web de l&rsquo;EIGS et d&rsquo;autres documents de marketing. Toute communication délivrée via MailChimp ou Salesforce et vos interactions avec <a href="https://www.intuit.com/privacy/statement/">MailChimp</a> et <a href="https://www.salesforce.com/company/privacy/">Salesforce</a> sont régies par leurs politiques de confidentialité. Nous pouvons occasionnellement utiliser votre adresse électronique pour envoyer des communications personnalisées liées à Let&rsquo;s Encrypt. Vous pouvez demander que votre adresse électronique soit retirée de notre liste en vous désinscrivant via MailChimp ou en nous envoyant un courriel à <a href="mailto:press@letsencrypt.org">press@letsencrypt.org</a>.</p>
+<p>Si vous vous inscrivez pour utiliser le forum d&rsquo;assistance communautaire de Let&rsquo;s Encrypt, les informations personnelles que vous fournissez et vos actions sur ce forum sont régies par la politique de confidentialité de notre fournisseur d&rsquo;hébergement et de logiciels pour le forum, <a href="https://www.discourse.org/privacy">Civilized Discourse Construction Kit</a>. Nous ne recueillons ni ne conservons d&rsquo;informations personnelles dans le cadre de notre offre de ce forum d&rsquo;assistance.</p>
+<h2 id="nous-ne-vendons-pas-vos-données-ou-informations">Nous ne vendons pas vos données ou informations</h2>
+<p>Nous ne vendons pas vos données ou informations. Cela comprend les données et les informations de la partie utilisatrice, de l&rsquo;abonné et du visiteur.</p>
+<h2 id="demandes-des-forces-de-l-ordre-et-circonstances-atténuantes">Demandes des forces de l&rsquo;ordre et Circonstances atténuantes</h2>
+<p>Dans la mesure où nous en disposons, nous pouvons divulguer des informations personnelles identifiables vous concernant à des tiers dans des circonstances limitées. Ces circonstances comprennent les cas où nous avons votre consentement ou lorsque nous croyons de bonne foi que la loi l&rsquo;exige, par exemple en vertu d&rsquo;une citation à comparaître ou d&rsquo;une autre ordonnance judiciaire ou administrative. Nous pouvons également divulguer des informations relatives au recouvrement des comptes lorsque nous pensons de bonne foi que cela est nécessaire pour éviter une atteinte à la vie, un préjudice corporel, un dommage matériel ou un préjudice financier important.</p>
+<p>Si la loi nous oblige à divulguer les informations que vous avez fournies, nous essaierons de vous avertir au préalable (sauf si cela nous est interdit ou si cela serait futile) qu&rsquo;une demande d&rsquo;accès à vos informations a été faite afin de vous donner la possibilité de vous opposer à la divulgation. Nous nous efforcerons de fournir cet avis par tout moyen raisonnablement possible. Si vous ne contestez pas la demande de divulgation, nous pouvons être légalement tenus de communiquer vos informations.</p>
+<p>En outre, nous nous réservons le droit, à notre seule discrétion, de nous opposer de manière indépendante à certaines demandes (d&rsquo;accès à des informations sur les utilisateurs de nos produits et technologies) que nous jugeons abusives.</p>
+<h2 id="quels-sont-les-droits-des-parties-prenantes-des-abonnés-et-des-visiteurs-de-l-espace-économique-européen-en-vertu-de-la-rgpd-et-comment-puis-je-les-exercer">Quels sont les droits des parties prenantes, des abonnés et des visiteurs de l&rsquo;Espace économique européen en vertu de la RGPD, et comment puis-je les exercer ?</h2>
+<p>Nous traitons les données personnelles comme décrit dans cette politique de confidentialité. La finalité et la base légale du traitement des informations sont les suivantes :</p>
+<p><strong>Objectif :</strong> Fournir des informations sur l&rsquo;état des certificats (OCSP : Protocole de vérification de certificat en ligne)</p>
+<p><strong>Base légale :</strong> Intérêts légitimes</p>
+<p><strong>Informations supplémentaires :</strong> Nous recueillons et traitons les informations des parties utilisatrices afin de fournir de manière fiable des informations sur l&rsquo;état des certificats.</p>
+<p><strong>Objectif :</strong> Fournir des services de délivrance et de gestion de certificats</p>
+<p><strong>Base légale :</strong> Contrat, Intérêts légitimes</p>
+<p><strong>Informations supplémentaires :</strong> Nous recueillons et traitons les informations des Abonnés afin de fournir des services fiables et sécurisés d&rsquo;émission et de gestion de certificats, et de démontrer au public que nos services fonctionnent comme prévu.</p>
+<p><strong>Objectif :</strong> Fournir des informations aux visiteurs</p>
+<p><strong>Base légale :</strong> Consentement, Intérêts légitimes</p>
+<p><strong>Informations supplémentaires :</strong> Nous recueillons et traitons les informations des Visiteurs afin de fournir des informations via le Web et le courrier électronique de manière fiable et efficace.</p>
+<p>**Objectif : **Traitement des dons et des demandes de parrainage</p>
+<p><strong>Base légale :</strong> Intérêts légitimes</p>
+<p><strong>Informations supplémentaires :</strong> Nous recueillons et traitons des informations afin de traiter et de faciliter les dons.</p>
+<p><strong>Objectif :</strong> Obligations légales et circonstances atténuantes</p>
+<p><strong>Base légale :</strong> Obligation légale, intérêts légitimes</p>
+<p><strong>Informations supplémentaires :</strong> Nous pouvons collecter et traiter des informations afin de nous conformer à des obligations légales et lorsque nous pensons de bonne foi qu&rsquo;il est nécessaire de prévenir toute atteinte à la vie, tout préjudice personnel, tout dommage matériel ou tout préjudice financier important.</p>
+<p>Veuillez noter qu&rsquo;il se peut que nous ne soyons pas en mesure de supprimer des informations, y compris les adresses IP, car ces informations sont nécessaires pour que d&rsquo;autres puissent déterminer la fiabilité de nos certificats. Dans certains cas, nous pouvons traiter des données personnelles en raison d&rsquo;une obligation légale ou pour protéger vos intérêts vitaux ou ceux d&rsquo;une autre personne.</p>
+<p>Vos données personnelles peuvent être collectées depuis ou transférées vers des juridictions où nous et nos prestataires de services stockons ou traitons des données, y compris les États-Unis. Ces juridictions peuvent ne pas offrir le même niveau de protection des données que votre juridiction, y compris l&rsquo;EEE. Nous avons pris des mesures pour nous assurer que nos prestataires de services offrent un niveau de protection adéquat des données personnelles des résidents de l&rsquo;EEE, notamment en concluant des accords de traitement des données utilisant les Clauses contractuelles types approuvées par la Commission européenne, ou en utilisant d&rsquo;autres garanties approuvées par la Commission européenne. Vous avez le droit d&rsquo;obtenir des détails sur le mécanisme de transfert de vos informations personnelles en dehors de l&rsquo;UE en nous envoyant un courriel aux coordonnées ci-dessous.</p>
+<p>Les personnes situées dans l&rsquo;Espace économique européen (EEE) ont certains droits concernant leurs informations personnelles, notamment le droit d&rsquo;accéder, de corriger ou de supprimer les données personnelles que nous traitons par le biais de votre utilisation de nos sites et services. Si vous êtes un individu qui est une partie adverse, un abonné ou un visiteur basé dans l&rsquo;EEE, vous pouvez :</p>
+<ul>
+<li>
+<p>Demandez un rapport sur vos données personnelles en nous envoyant un courriel à <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>. Ce rapport comprendra les données personnelles dont nous disposons à votre sujet, fournies dans un format structuré, couramment utilisé et portable. Veuillez noter que nous pouvons vous demander des informations supplémentaires pour vérifier votre identité avant de divulguer toute information.</p>
+</li>
+<li>
+<p>Demandez que vos informations soient corrigées ou supprimées en nous contactant à l&rsquo;adresse <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>.</p>
+</li>
+<li>
+<p>S&rsquo;opposer à ce que nous traitions vos informations. Vous pouvez nous demander de cesser d&rsquo;utiliser vos informations, y compris lorsque nous les utilisons pour vous envoyer des courriels de service. Vous pouvez retirer votre consentement à recevoir des courriels de service à tout moment en cliquant sur le lien &ldquo;unsubscribe&rdquo; qui se trouve dans les courriels de Let&rsquo;s Encrypt.</p>
+</li>
+<li>
+<p>Se plaindre auprès d&rsquo;un autorité de réglementation. Si vous êtes basé dans l&rsquo;EEE et que vous pensez que nous n&rsquo;avons pas respecté les lois sur la protection des données, vous avez le droit de déposer une plainte auprès de votre autorité de surveillance locale.</p>
+</li>
+</ul>
+<p>Pour plus d&rsquo;informations, ou pour signaler un problème de confidentialité, veuillez contacter : <a href="mailto:security@letsencrypt.org">security@letsencrypt.org</a>.</p>
+</div>
+</div>
+		
+<div class="donate-footer">
+  <div class="wrapper text-center">
+    <h2>Soutenez un Web plus sûr et plus respectueux de la vie privée.</h2>
+    <div class="buttons">
+      <a class="accent" href="/letsencrypt-ewebsite/fr/donate/">Faire un don</a>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-2">
+        <p>  Let's Encrypt est une autorité de certification gratuite, automatisée et ouverte
+  mise à votre disposition par la société d'utilité publique <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a>.
+</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">548 Market St, PMB 77519</span>,
+            <span itemprop="addressLocality">San Francisco</span>,
+            <span itemprop="addressRegion">CA</span>
+            <span itemprop="postalCode">94104-5401</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+        <p>Envoyer tous les emails ou les demandes de renseignements à :</p>
+        <p>
+          <span itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">PO Box 18666</span>,
+            <span itemprop="addressLocality">Minneapolis</span>,
+            <span itemprop="addressRegion">MN</span>
+            <span itemprop="postalCode">55418-0666</span>,
+            <span itemprop="addressCountry">USA</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+          <li>
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <a href="https://github.com/letsencrypt">
+              <span class="username">GitHub</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://twitter.com/letsencrypt">
+              <span class="username">Twitter</span>
+            </a>
+          </li>
+         
+          
+          <li>
+            <i class="fab fa-mastodon" aria-hidden="true"></i>
+            <a rel="me" href="https://infosec.exchange/@letsencrypt">
+              <span class="username">Mastodon</span>
+            </a>
+          </li>
+         
+        </ul>
+        Voir notre <a href="/fr/privacy/">politique de confidentialité</a>.<br>
+Voir notre <a href="https://www.abetterinternet.org/trademarks/">politique en matière de copyright</a>.
+
+      </div>
+
+      <div class="footer-col footer-newsletter-col  footer-col-3">
+        <h6>Subscribe to our Newsletter</h6>
+        <iframe src="https://outreach.abetterinternet.org/l/1011011/2023-02-16/6l51" height="200" style="width: 100%; border: 0"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+
+	</body>
+</html>
