@@ -15,18 +15,18 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="Best Practice - Keep Port 80 Open">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/docs/allow-port-80/">
+    <meta name="twitter:url" content="https://letsencrypt.org/docs/allow-port-80/">
     <meta name="twitter:description" content="We occasionally get reports from people who have trouble using the HTTP-01 challenge type because they&amp;rsquo;ve firewalled off port 80 to their web server. Our recommendation is that all servers meant for general web use should offer both HTTP on port 80 and HTTPS on port 443. They should also send redirects for all port 80 requests, and possibly an HSTS header (on port 443 requests).
 Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your server, because requests on port 80 are generally served by the same software that runs on port 443.">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/docs/allow-port-80/">
+    <link rel="canonical" href="/docs/allow-port-80/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt Blog Feed" />
     
@@ -39,7 +39,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
 <header class="site-header">
   <a id="skiplink" href="#main-content">Skip navigation links</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -49,7 +49,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
+            <a href="/docs/" class="pure-menu-link" tabindex="0">Documentation</a>
             
           </li>
           
@@ -64,7 +64,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/donate/" class="pure-menu-link">Make a Donation</a>
+                <a href="/donate/" class="pure-menu-link">Make a Donation</a>
               </li>
               
               <li class="pure-menu-item">
@@ -72,11 +72,11 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
+                <a href="/sponsors/" class="pure-menu-link">Current Sponsors and Funders</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/getinvolved/" class="pure-menu-link">Get Involved</a>
+                <a href="/getinvolved/" class="pure-menu-link">Get Involved</a>
               </li>
               
             </ul>
@@ -89,7 +89,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -97,15 +97,15 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
+                <a href="/docs/faq/" class="pure-menu-link">Frequently Asked Questions (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/repository/" class="pure-menu-link">Policy and Legal Repository</a>
+                <a href="/repository/" class="pure-menu-link">Policy and Legal Repository</a>
               </li>
               
               <li class="pure-menu-item">
@@ -113,7 +113,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/stats/" class="pure-menu-link">Statistics</a>
+                <a href="/stats/" class="pure-menu-link">Statistics</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,11 +121,11 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/contact/" class="pure-menu-link">Contact</a>
+                <a href="/contact/" class="pure-menu-link">Contact</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/blog/" class="pure-menu-link">Blog</a>
+                <a href="/blog/" class="pure-menu-link">Blog</a>
               </li>
               
             </ul>
@@ -186,107 +186,107 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
+                <a href="/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">✓ English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -305,7 +305,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>Best Practice - Keep Port 80 Open</h1>
 </div>
@@ -321,7 +321,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="da" style="display:none">
-        <a lang="da" hreflang="da" href="letsencrypt-ewebsite/da/docs/allow-port-80/">
+        <a lang="da" hreflang="da" href="/da/docs/allow-port-80/">
         
           Se på Dansk
         
@@ -332,7 +332,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="de-DE" style="display:none">
-        <a lang="de-DE" hreflang="de-DE" href="letsencrypt-ewebsite/de/docs/allow-port-80/">
+        <a lang="de-DE" hreflang="de-DE" href="/de/docs/allow-port-80/">
         
           Auf Deutsch ansehen
         
@@ -343,7 +343,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="es-US" style="display:none">
-        <a lang="es-US" hreflang="es-US" href="letsencrypt-ewebsite/es/docs/allow-port-80/">
+        <a lang="es-US" hreflang="es-US" href="/es/docs/allow-port-80/">
         
           Ver en español
         
@@ -356,7 +356,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="fr-FR" style="display:none">
-        <a lang="fr-FR" hreflang="fr-FR" href="letsencrypt-ewebsite/fr/docs/1/">
+        <a lang="fr-FR" hreflang="fr-FR" href="/fr/docs/1/">
         
           Voir en Français
         
@@ -367,7 +367,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="he" style="display:none">
-        <a lang="he" hreflang="he" href="letsencrypt-ewebsite/he/docs/allow-port-80/">
+        <a lang="he" hreflang="he" href="/he/docs/allow-port-80/">
         
           לעבור לעברית
         
@@ -378,7 +378,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="hu" style="display:none">
-        <a lang="hu" hreflang="hu" href="letsencrypt-ewebsite/hu/docs/allow-port-80/">
+        <a lang="hu" hreflang="hu" href="/hu/docs/allow-port-80/">
         
           Megtekintés magyar nyelven
         
@@ -391,7 +391,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="it-IT" style="display:none">
-        <a lang="it-IT" hreflang="it-IT" href="letsencrypt-ewebsite/it/docs/allow-port-80/">
+        <a lang="it-IT" hreflang="it-IT" href="/it/docs/allow-port-80/">
         
           Visualizza in italiano
         
@@ -402,7 +402,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="ja" style="display:none">
-        <a lang="ja" hreflang="ja" href="letsencrypt-ewebsite/ja/docs/allow-port-80/">
+        <a lang="ja" hreflang="ja" href="/ja/docs/allow-port-80/">
         
           日本語で表示する
         
@@ -413,7 +413,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="ko-KR" style="display:none">
-        <a lang="ko-KR" hreflang="ko-KR" href="letsencrypt-ewebsite/ko/docs/allow-port-80/">
+        <a lang="ko-KR" hreflang="ko-KR" href="/ko/docs/allow-port-80/">
         
           한국어로 보기
         
@@ -426,7 +426,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="ru-RU" style="display:none">
-        <a lang="ru-RU" hreflang="ru-RU" href="letsencrypt-ewebsite/ru/docs/allow-port-80/">
+        <a lang="ru-RU" hreflang="ru-RU" href="/ru/docs/allow-port-80/">
         
           Просмотреть на русском
         
@@ -441,7 +441,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="sv" style="display:none">
-        <a lang="sv" hreflang="sv" href="letsencrypt-ewebsite/sv/docs/1/">
+        <a lang="sv" hreflang="sv" href="/sv/docs/1/">
         
           Visa på svenska
         
@@ -452,7 +452,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="uk-UA" style="display:none">
-        <a lang="uk-UA" hreflang="uk-UA" href="letsencrypt-ewebsite/uk/docs/allow-port-80/">
+        <a lang="uk-UA" hreflang="uk-UA" href="/uk/docs/allow-port-80/">
         
           Переглянути українською
         
@@ -463,7 +463,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="vi-VN" style="display:none">
-        <a lang="vi-VN" hreflang="vi-VN" href="letsencrypt-ewebsite/vi/docs/allow-port-80/">
+        <a lang="vi-VN" hreflang="vi-VN" href="/vi/docs/allow-port-80/">
         
           Xem bằng tiếng Việt
         
@@ -474,7 +474,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="zh-Hans-CN" style="display:none">
-        <a lang="zh-Hans-CN" hreflang="zh-Hans-CN" href="letsencrypt-ewebsite/zh-cn/docs/allow-port-80/">
+        <a lang="zh-Hans-CN" hreflang="zh-Hans-CN" href="/zh-cn/docs/allow-port-80/">
         
           使用简体中文阅读本网页。
         
@@ -485,7 +485,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
   
     
       <p data-langswitch="zh-Hant-TW" style="display:none">
-        <a lang="zh-Hant-TW" hreflang="zh-Hant-TW" href="letsencrypt-ewebsite/zh-tw/docs/allow-port-80/">
+        <a lang="zh-Hant-TW" hreflang="zh-Hant-TW" href="/zh-tw/docs/allow-port-80/">
         
           使用正體中文閲讀本網頁。
         
@@ -505,7 +505,7 @@ Allowing port 80 doesn&amp;rsquo;t introduce a larger attack surface on your ser
     Last updated: <time datetime="2019-01-24">Jan 24, 2019</time>
 
 
- | <a href="/letsencrypt-ewebsite/docs">See all Documentation</a>
+ | <a href="/docs">See all Documentation</a>
 </p>
 
 
@@ -618,7 +618,7 @@ View our <a href="https://www.abetterinternet.org/trademarks">trademark policy</
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

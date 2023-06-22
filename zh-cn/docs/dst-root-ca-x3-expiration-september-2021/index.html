@@ -17,20 +17,20 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="DST Root CA X3 到期(2021年9月)">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/">
+    <meta name="twitter:url" content="https://letsencrypt.org/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/">
     <meta name="twitter:description" content="2021年9月30日，旧浏览器和设备信任Let’s Encrypt 证书的方式会有一些微小的变化。 如果您运行的是一个常规的网站， 您不会注意到任何变化，绝大多数访客仍然会接受您的 Let’s Encrypt 证书。 如果您提供 API 或必须支持物联网设备，您可能需要多注意更改。
 Let’s Encrypt 有个名为 ISRG Root X1 的&amp;quot;根证书&amp;quot; 。 现代浏览器和设备信任安装在您网站上的 Let&amp;rsquo;s Encrypt 证书，因为它们的根证书列表中包含 ISRG Root X1。 为了确保我们颁发的证书在旧设备上受信任，我们还拥有来自旧根证书的“交叉签名”：DST Root CA X3。
 当我们开始签发时，旧的根证书 (DST Root CA X3) 帮助我们起步并立即受到几乎所有设备的信任。 较新的根证书 (ISRG Root X1) 现在也受到广泛信任 - 但一些较旧的设备永远不会信任它，因为它们没有获得软件更新（例如，iPhone 4 或 HTC Dream）。 点击这里查看哪些平台信任ISRG Root X1
 DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG Root X1 的旧设备在访问使用 Let’s Encrypt 证书的网站时将会得到证书过期警告。 有一个重要的例外：不信任 ISRG Root X1 的旧 Android 设备将能够继续正常访问使用 Let’s Encrypt 证书加密的网站， 感谢来自 DST Root CA X3的特殊交叉签名延长了该根证书的到期时间。 此例外仅适用于 Android 。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/">
+    <link rel="canonical" href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -43,7 +43,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -53,7 +53,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -68,7 +68,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -76,11 +76,11 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -93,7 +93,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -101,11 +101,11 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -113,7 +113,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -182,107 +182,107 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/docs/dst-root-ca-x3-expiration-september-2021/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/dst-root-ca-x3-expiration-september-2021/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/dst-root-ca-x3-expiration-september-2021/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/dst-root-ca-x3-expiration-september-2021/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/dst-root-ca-x3-expiration-september-2021/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/dst-root-ca-x3-expiration-september-2021/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/dst-root-ca-x3-expiration-september-2021/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/dst-root-ca-x3-expiration-september-2021/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/dst-root-ca-x3-expiration-september-2021/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/dst-root-ca-x3-expiration-september-2021/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/dst-root-ca-x3-expiration-september-2021/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/dst-root-ca-x3-expiration-september-2021/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/dst-root-ca-x3-expiration-september-2021/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/dst-root-ca-x3-expiration-september-2021/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/dst-root-ca-x3-expiration-september-2021/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/dst-root-ca-x3-expiration-september-2021/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/dst-root-ca-x3-expiration-september-2021/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/dst-root-ca-x3-expiration-september-2021/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/dst-root-ca-x3-expiration-september-2021/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/ja/docs/dst-root-ca-x3-expiration-september-2021/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/dst-root-ca-x3-expiration-september-2021/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/dst-root-ca-x3-expiration-september-2021/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/dst-root-ca-x3-expiration-september-2021/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/dst-root-ca-x3-expiration-september-2021/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/dst-root-ca-x3-expiration-september-2021/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/dst-root-ca-x3-expiration-september-2021/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/dst-root-ca-x3-expiration-september-2021/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/dst-root-ca-x3-expiration-september-2021/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/dst-root-ca-x3-expiration-september-2021/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/dst-root-ca-x3-expiration-september-2021/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/dst-root-ca-x3-expiration-september-2021/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/dst-root-ca-x3-expiration-september-2021/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/dst-root-ca-x3-expiration-september-2021/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/dst-root-ca-x3-expiration-september-2021/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/dst-root-ca-x3-expiration-september-2021/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -301,7 +301,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>DST Root CA X3 到期(2021年9月)</h1>
 </div>
@@ -322,7 +322,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
     最后更新：<time datetime="2021-05-07">May 7, 2021</time>
 
 
- | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+ | <a href="/zh-cn/docs">所有文档</a>
 </p>
 
 
@@ -337,7 +337,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
                 <i>
                     注意：本页面有较新的英文版本。
                     (<time datetime="2021-09-30">Sep 30, 2021</time>)
-                    <a href="letsencrypt-ewebsite/docs/dst-root-ca-x3-expiration-september-2021/">阅读英文页面</a>
+                    <a href="/docs/dst-root-ca-x3-expiration-september-2021/">阅读英文页面</a>
                 </i>
             </p>
             
@@ -385,8 +385,8 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
 
 
 <p>2021年9月30日，旧浏览器和设备信任Let’s Encrypt 证书的方式会有一些微小的变化。 如果您运行的是一个常规的网站， 您不会注意到任何变化，绝大多数访客仍然会接受您的 Let’s Encrypt 证书。 如果您提供 API 或必须支持物联网设备，您可能需要多注意更改。</p>
-<p>Let’s Encrypt 有个名为 <a href="letsencrypt-ewebsite/zh-cn/certificates/" hreflang="zh-Hans-CN">ISRG Root X1</a> 的&quot;<a href="/docs/glossary/#def-root">根证书</a>&quot; 。 现代浏览器和设备信任安装在您网站上的 Let&rsquo;s Encrypt 证书，因为它们的根证书列表中包含 ISRG Root X1。 为了确保我们颁发的证书在旧设备上受信任，我们还拥有来自旧根证书的“交叉签名”：DST Root CA X3。</p>
-<p>当我们开始签发时，旧的根证书 (DST Root CA X3) 帮助我们起步并立即受到几乎所有设备的信任。 较新的根证书 (ISRG Root X1) 现在也受到广泛信任 - 但一些较旧的设备永远不会信任它，因为它们没有获得软件更新（例如，iPhone 4 或 HTC Dream）。 <a href="letsencrypt-ewebsite/zh-cn/docs/certificate-compatibility/" hreflang="zh-Hans-CN">点击这里查看哪些平台信任ISRG Root X1</a></p>
+<p>Let’s Encrypt 有个名为 <a href="/zh-cn/certificates/" hreflang="zh-Hans-CN">ISRG Root X1</a> 的&quot;<a href="/zh-cn/docs/glossary/#def-root">根证书</a>&quot; 。 现代浏览器和设备信任安装在您网站上的 Let&rsquo;s Encrypt 证书，因为它们的根证书列表中包含 ISRG Root X1。 为了确保我们颁发的证书在旧设备上受信任，我们还拥有来自旧根证书的“交叉签名”：DST Root CA X3。</p>
+<p>当我们开始签发时，旧的根证书 (DST Root CA X3) 帮助我们起步并立即受到几乎所有设备的信任。 较新的根证书 (ISRG Root X1) 现在也受到广泛信任 - 但一些较旧的设备永远不会信任它，因为它们没有获得软件更新（例如，iPhone 4 或 HTC Dream）。 <a href="/zh-cn/docs/certificate-compatibility/" hreflang="zh-Hans-CN">点击这里查看哪些平台信任ISRG Root X1</a></p>
 <p>DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG Root X1 的旧设备在访问使用 Let’s Encrypt 证书的网站时将会得到证书过期警告。 有一个重要的例外：不信任 ISRG Root X1 的旧 Android 设备将能够继续正常访问使用 Let’s Encrypt 证书加密的网站， <a href="/2020/12/21/extending-android-compatibility.html">感谢来自 DST Root CA X3</a>的特殊交叉签名延长了该根证书的到期时间。 此例外仅适用于 Android 。</p>
 <p>我应该怎么办？ 对于大多数人来说，什么都不用做！ 我们已经用有利于广泛兼容的方式设置了我们的证书颁发服务，所以您的网站将在大多数情况下正常运行。 如果您提供 API 服务或必须支持 IoT 设备，则需要确保两件事：(1) API 服务的所有客户端都必须信任 ISRG Root X1 (而不仅仅信任 DST Root CA X3)，以及 (2) 如果您的 API 的客户端使用 OpenSSL，<a href="https://community.letsencrypt.org/t/openssl-client-compatibility-changes-for-let-s-encrypt-certificates/143816">它们必须使用 1.1.0 或更高版本</a>。 在 OpenSSL 1.0.x 版本中 ，证书验证时有个奇怪现象：当使用我们默认推荐的兼容 Android 的证书链时，即使客户端信任 ISRG Root X1 ，也会出现证书错误。</p>
 <p>如果你想要了解我们正在进行的生产环境证书链更改的更多信息，<a href="https://community.letsencrypt.org/t/production-chain-changes/150739">请在我们的社区中查看这个帖子</a></p>
@@ -470,7 +470,7 @@ DST Root CA X3 将于2021年9月30日到期。 这意味着那些不信任 ISRG 
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

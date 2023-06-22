@@ -17,20 +17,20 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="憑證相容性">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-tw/docs/certificate-compatibility/">
+    <meta name="twitter:url" content="https://letsencrypt.org/zh-tw/docs/certificate-compatibility/">
     <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt 盡力地在不影響安全性的前提下相容各種軟體。一個平台是否能驗證 Let&amp;rsquo;s Encrypt 的憑證，主要取決於平台的憑證信任倉庫中是否包含 IdenTrust DST Root X3 憑證。另外平台也得支援 SHA-2 憑證，因為 Let&amp;rsquo;s Encrypt 所有的憑證都使用 SHA-2。
 如果你的憑證僅在一部分而不是全部的&amp;quot;相容軟體&amp;quot;運作，那可能表示你的網頁伺服器設定有誤。如果你在較新的系統中遇到問題，常見的原因是網頁伺服器沒有提供正確的憑證鏈。如果你在較舊的系統中遇到問題，例如：Windows XP，常見的原因是該平台不支援加密演算法套件或 TLS 版本，或是平台缺乏伺服器名稱指示 (Server Name Indication, SNI)。你可以使用 SSL Labs 的測試網站來測試伺服器的憑證相相容性。如果這樣還是無法找到問題發生的原因，請向我們的社群論壇尋求幫助。
 你可以在論壇的這篇討論中取得更多有關憑證相容性的資訊。
 相容軟體  Mozilla Firefox &amp;gt;= v2.0 Google Chrome Internet Explorer on Windows XP SP3 and higher Microsoft Edge Android OS &amp;gt;= v2.3.6 Safari &amp;gt;= v4.0 on macOS Safari on iOS &amp;gt;= v3.1 Debian Linux &amp;gt;= v6 Ubuntu Linux &amp;gt;= v12.04 NSS Library &amp;gt;= v3.">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-tw/docs/certificate-compatibility/">
+    <link rel="canonical" href="/zh-tw/docs/certificate-compatibility/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
     
@@ -43,7 +43,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳過導航連結</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -53,7 +53,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            <a href="/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
             
           </li>
           
@@ -68,7 +68,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+                <a href="/zh-tw/donate/" class="pure-menu-link">捐贈</a>
               </li>
               
               <li class="pure-menu-item">
@@ -76,11 +76,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+                <a href="/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+                <a href="/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -93,7 +93,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -101,11 +101,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+                <a href="/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -113,7 +113,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+                <a href="/zh-tw/stats/" class="pure-menu-link">統計數據</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+                <a href="/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
               </li>
               
             </ul>
@@ -182,107 +182,107 @@
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/certificate-compatibility/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/docs/certificate-compatibility/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/certificate-compatibility/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/certificate-compatibility/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/certificate-compatibility/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/certificate-compatibility/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/certificate-compatibility/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/certificate-compatibility/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/certificate-compatibility/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/certificate-compatibility/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/certificate-compatibility/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/certificate-compatibility/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/certificate-compatibility/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/certificate-compatibility/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/certificate-compatibility/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/certificate-compatibility/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/certificate-compatibility/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/certificate-compatibility/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/certificate-compatibility/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/certificate-compatibility/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/certificate-compatibility/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/ja/docs/certificate-compatibility/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/certificate-compatibility/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/certificate-compatibility/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/certificate-compatibility/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/certificate-compatibility/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/certificate-compatibility/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/certificate-compatibility/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/certificate-compatibility/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/certificate-compatibility/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/certificate-compatibility/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/certificate-compatibility/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/certificate-compatibility/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/certificate-compatibility/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/certificate-compatibility/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/certificate-compatibility/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/certificate-compatibility/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/certificate-compatibility/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/certificate-compatibility/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/zh-cn/docs/certificate-compatibility/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/certificate-compatibility/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+                <a href="/zh-tw/docs/certificate-compatibility/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
               </li>
               
             </ul>
@@ -301,7 +301,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>憑證相容性</h1>
 </div>
@@ -322,7 +322,7 @@
     最後更新於<time datetime="2016-12-05">Dec 5, 2016</time>
 
 
- | <a href="/letsencrypt-ewebsite/zh-tw/docs">查看所有文件</a>
+ | <a href="/zh-tw/docs">查看所有文件</a>
 </p>
 
 
@@ -337,7 +337,7 @@
                 <i>
                     請注意：英文版本（原版）在本翻譯後有改動
                     (<time datetime="2021-10-31">Oct 31, 2021</time>)
-                    <a href="letsencrypt-ewebsite/docs/certificate-compatibility/">查看英文版本</a>
+                    <a href="/docs/certificate-compatibility/">查看英文版本</a>
                 </i>
             </p>
             
@@ -507,7 +507,7 @@
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

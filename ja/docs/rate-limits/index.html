@@ -25,7 +25,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="レート制限">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/ja/docs/rate-limits/">
+    <meta name="twitter:url" content="https://letsencrypt.org/ja/docs/rate-limits/">
     <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt は、できるだけ多くの人がフェアにサービスを利用できるように、レート制限を設けています。デフォルトの設定で使用する大部分の人にとって、設けている制限は十分高いものになっていると考えています。また、証明書の更新時には、レート制限にほぼ必ず引っかからないようにレート制限を設計しています。そのため、大規模な組織でも、Let&amp;rsquo;s Encrypt の介入なしに、発行する証明書の数を徐々に増やしていくことができるようになっています。
 もしあなたが Let&amp;rsquo;s Encrypt クライアントの開発やテストを活発に行なっている場合には、本番 API を使用する代わりに、私たちが用意したステージング環境を利用するようにしてください。もしあなたがプロバイダや大規模なウェブサイトとのインテグレーションの作業を行おうとしている場合には、Let&amp;rsquo;s Encrypt のインテグレーションガイドに目を通してください。
 主なレート制限としては、登録ドメインごとの証明書数 (1週間に50個まで) があります。登録ドメインとは、一般に言うと、あなたがドメイン名レジストラから購入したドメインの一部のことです。たとえば、www.example.com の場合、登録ドメインは example.com です。new.blog.example.co.uk の場合、登録ドメインは example.co.uk になります。Let&amp;rsquo;s Encrypt では、登録ドメインの計算にPublic Suffix List (公開サフィックスリスト) を使用しています。
@@ -38,15 +38,15 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
 &amp;ldquo;new-reg&amp;rdquo;、&amp;ldquo;new-authz&amp;rdquo;、&amp;ldquo;new-cert&amp;rdquo; のエンドポイントには、リクエスト全体に対する毎秒 20 回の制限があります。&amp;quot;/directory&amp;quot; と &amp;ldquo;/acme&amp;rdquo; ディレクトリおよびサブディレクトリのエンドポイントには、リクエスト全体に毎秒 40 回の制限があります。
 その他に、通常はほとんど引っかからない制限が2つあります。
 IP アドレスごとのアカウント数の最大は、3時間毎に 10 個までです。また、IPv6 /48 の範囲に含まれる IP レンジごとのアカウント数の最大は、3時間毎に最大 500 個までです。この2つのアカウントに関するレート制限の上限を超えることは極めて稀です。大規模なインテグレータには、多数の顧客を扱うために1つのアカウントを使う設計を採用することをおすすめします。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/ja/docs/rate-limits/">
+    <link rel="canonical" href="/ja/docs/rate-limits/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt ブログフィード" />
     
@@ -59,7 +59,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
 <header class="site-header">
   <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -69,7 +69,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
+            <a href="/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
             
           </li>
           
@@ -84,7 +84,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
+                <a href="/ja/donate/" class="pure-menu-link">寄付する</a>
               </li>
               
               <li class="pure-menu-item">
@@ -92,11 +92,11 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
+                <a href="/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
+                <a href="/ja/getinvolved/" class="pure-menu-link">参加する</a>
               </li>
               
             </ul>
@@ -109,7 +109,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -117,11 +117,11 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
+                <a href="/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
+                <a href="/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -129,7 +129,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
+                <a href="/ja/stats/" class="pure-menu-link">統計情報</a>
               </li>
               
               <li class="pure-menu-item">
@@ -137,7 +137,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
+                <a href="/ja/contact/" class="pure-menu-link">連絡先</a>
               </li>
               
             </ul>
@@ -198,107 +198,107 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/rate-limits/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/docs/rate-limits/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/rate-limits/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/rate-limits/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/rate-limits/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/rate-limits/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/rate-limits/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/rate-limits/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/rate-limits/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/rate-limits/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/rate-limits/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/rate-limits/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/rate-limits/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/rate-limits/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/rate-limits/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/rate-limits/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/rate-limits/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/rate-limits/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/rate-limits/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/rate-limits/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/rate-limits/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
+                <a href="/ja/docs/rate-limits/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/rate-limits/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/rate-limits/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/rate-limits/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/rate-limits/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/rate-limits/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/rate-limits/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/rate-limits/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/rate-limits/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/rate-limits/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/rate-limits/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/rate-limits/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/rate-limits/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/rate-limits/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/rate-limits/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/rate-limits/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/rate-limits/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/zh-cn/docs/rate-limits/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/rate-limits/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/docs/rate-limits/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -317,7 +317,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>レート制限</h1>
 </div>
@@ -338,7 +338,7 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
     最終更新日:<time datetime="2023-06-09">2023/06/09</time>
 
 
- | <a href="/letsencrypt-ewebsite/ja/docs">すべてのドキュメントを読む</a>
+ | <a href="/ja/docs">すべてのドキュメントを読む</a>
 </p>
 
 
@@ -393,25 +393,25 @@ IP アドレスごとのアカウント数の最大は、3時間毎に 10 個ま
 
 
 <p>Let&rsquo;s Encrypt は、できるだけ多くの人がフェアにサービスを利用できるように、レート制限を設けています。デフォルトの設定で使用する大部分の人にとって、設けている制限は十分高いものになっていると考えています。また、証明書の更新時には、レート制限にほぼ必ず引っかからないようにレート制限を設計しています。そのため、大規模な組織でも、Let&rsquo;s Encrypt の介入なしに、発行する証明書の数を徐々に増やしていくことができるようになっています。</p>
-<p>もしあなたが Let&rsquo;s Encrypt クライアントの開発やテストを活発に行なっている場合には、本番 API を使用する代わりに、私たちが用意した<a href="letsencrypt-ewebsite/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>を利用するようにしてください。もしあなたがプロバイダや大規模なウェブサイトとのインテグレーションの作業を行おうとしている場合には、<a href="letsencrypt-ewebsite/ja/docs/integration-guide/" hreflang="ja">Let&rsquo;s Encrypt のインテグレーションガイド</a>に目を通してください。</p>
+<p>もしあなたが Let&rsquo;s Encrypt クライアントの開発やテストを活発に行なっている場合には、本番 API を使用する代わりに、私たちが用意した<a href="/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>を利用するようにしてください。もしあなたがプロバイダや大規模なウェブサイトとのインテグレーションの作業を行おうとしている場合には、<a href="/ja/docs/integration-guide/" hreflang="ja">Let&rsquo;s Encrypt のインテグレーションガイド</a>に目を通してください。</p>
 <p>主なレート制限としては、<a id="certificates-per-registered-domain"></a><strong>登録ドメインごとの証明書数</strong> (1週間に50個まで) があります。登録ドメインとは、一般に言うと、あなたがドメイン名レジストラから購入したドメインの一部のことです。たとえば、<code>www.example.com</code> の場合、登録ドメインは <code>example.com</code> です。<code>new.blog.example.co.uk</code> の場合、登録ドメインは <code>example.co.uk</code> になります。Let&rsquo;s Encrypt では、登録ドメインの計算に<a href="https://publicsuffix.org">Public Suffix List (公開サフィックスリスト)</a> を使用しています。</p>
 <p>サブドメインを多数持っている場合は、最大で<a id="names-per-certificate"></a><strong>証明書ごとに 100 ドメイン名まで</strong>1つの証明書に統合できます。上記の制限と合わせると、毎週 5,000 個までのユニークなサブドメイン名を含む証明書を発行できることになります。複数のドメイン名を含む証明書は、SAN 証明書と呼ばれることが多く、UCC 証明書と呼ばれることもあります。パフォーマンスと信頼性の理由から、証明書ごとのドメイン名はできるだけ少ない方がよいです。</p>
 <p>証明書の更新は特別扱いされ、<strong>登録ドメインごとの証明書数</strong>の制限にカウントされませんが、1週間に 5 つまでの<strong>証明書の発行の複製</strong>の制限の対象とはなります。注意: 証明書の更新が登録ドメインごとの証明書数の制限の対象となるのは、2019年3月までです。しかし、<a href="https://community.letsencrypt.org/t/rate-limits-fixing-certs-per-name-rate-limit-order-of-operations-gotcha/88189">2019年3月以降は制限の対象ではなくなります</a>。</p>
 <p>発行済の証明書が更新 (または複製) の対象とみなされるのは、全く同じホスト名の集合が指定されているときです (大文字・小文字、順序は区別しない)。たとえば、[<code>www.example.com</code>, <code>example.com</code>] というドメイン名に対する証明書をリクエストした場合、同じ週に [<code>www.example.com</code>, <code>example.com</code>] に対する証明書を重複して発行できるのは、追加で 4 つまでです。しかし、[<code>blog.example.com</code>] というドメインを追加してホスト名の集合が変化したときには、追加でリクエストを発行できます。</p>
 <p>更新の処理では、公開鍵とリクエストの拡張は無視されます。新しい鍵を使用していたとしても、証明書の発行は更新とみなされます。</p>
 <p><strong>証明書の無効化を行ったとしても、レート制限はリセットされません</strong>。その証明書を発行するためのリソースはすでに消費されてしまっているからです。</p>
-<p><a id="failed-validations"></a><strong>検証の失敗</strong>は、1アカウントごと、1ホスト名ごと、1時間毎に、5回までに制限されています。この制限は<a href="letsencrypt-ewebsite/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>では緩和されているため、接続の問題をデバッグする場合には、こちらを使ってください。</p>
+<p><a id="failed-validations"></a><strong>検証の失敗</strong>は、1アカウントごと、1ホスト名ごと、1時間毎に、5回までに制限されています。この制限は<a href="/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>では緩和されているため、接続の問題をデバッグする場合には、こちらを使ってください。</p>
 <p>&ldquo;new-reg&rdquo;、&ldquo;new-authz&rdquo;、&ldquo;new-cert&rdquo; のエンドポイントには、<a id="overall-requests"></a><strong>リクエスト全体</strong>に対する毎秒 20 回の制限があります。&quot;/directory&quot; と &ldquo;/acme&rdquo; ディレクトリおよびサブディレクトリのエンドポイントには、リクエスト全体に毎秒 40 回の制限があります。</p>
 <p>その他に、通常はほとんど引っかからない制限が2つあります。</p>
-<p><a id="accounts-per-ip-address"></a><strong>IP アドレスごとのアカウント数</strong>の最大は、3時間毎に 10 個までです。また、IPv6 /48 の範囲に含まれる <strong>IP レンジごとのアカウント数</strong>の最大は、3時間毎に最大 500 個までです。この2つのアカウントに関するレート制限の上限を超えることは極めて稀です。大規模なインテグレータには、<a href="letsencrypt-ewebsite/ja/docs/integration-guide/" hreflang="ja">多数の顧客を扱うために1つのアカウントを使う</a>設計を採用することをおすすめします。</p>
-<p><a id="pending-authorizations"></a><strong>認証の待機</strong>は、アカウントごとに最大で 300 まで可能です。この制限にかかることは稀ですが、ACME クライアントの開発時には頻繁に発生します。というのも、通常クライアントの開発では、認証を作成しても実際に証明書を発行しないからです。そのため、ACME クライアントの開発時には、<a href="letsencrypt-ewebsite/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>を使用してください。</p>
+<p><a id="accounts-per-ip-address"></a><strong>IP アドレスごとのアカウント数</strong>の最大は、3時間毎に 10 個までです。また、IPv6 /48 の範囲に含まれる <strong>IP レンジごとのアカウント数</strong>の最大は、3時間毎に最大 500 個までです。この2つのアカウントに関するレート制限の上限を超えることは極めて稀です。大規模なインテグレータには、<a href="/ja/docs/integration-guide/" hreflang="ja">多数の顧客を扱うために1つのアカウントを使う</a>設計を採用することをおすすめします。</p>
+<p><a id="pending-authorizations"></a><strong>認証の待機</strong>は、アカウントごとに最大で 300 まで可能です。この制限にかかることは稀ですが、ACME クライアントの開発時には頻繁に発生します。というのも、通常クライアントの開発では、認証を作成しても実際に証明書を発行しないからです。そのため、ACME クライアントの開発時には、<a href="/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>を使用してください。</p>
 <p>ACME v2 API のユーザーは、1アカウントで3時間ごとに<a
 id="new-orders"></a><strong>新しい命令</strong>を最大 300 個まで作成できます。</p>
 <h1 id="a-id-overrides-a-オーバーライド"><a id="overrides"></a>オーバーライド</h1>
 <p>レート制限に引っかかった場合、制限を一時的にリセットする方法はありません。レート制限が解消されるまで1週間後まで待つ必要があります。Let&rsquo;s Encrypt ではスライディング・ウィンドウを使用しているため、たとえば月曜日に 25 個の証明書を発行し、金曜日に 25 個の証明書を発行した場合、次にもう一度証明書を発行できるのは月曜日以降です。登録ドメインに対する発行証明書のリストを取得するには、<a href="https://crt.sh">crt.sh で検索</a>します。ここでは、パブリックな<a href="https://www.certificate-transparency.org">証明書の透明性 (Certificate Transparency; CT)</a>
 ログを利用しています。</p>
 <p>大規模なホスティングプロバイダや Let&rsquo;s Encrypt のインテグレーションを行っている組織のために、<a href="https://isrg.formstack.com/forms/rate_limit_adjustment_request">レート制限フォーム</a>が用意されており、レート制限の上限を上げるリクエストができます。リクエストの処理には数週間かかるため、単に通常より早くレート制限を解除してほしいというリクエストには利用できません。</p>
-<p>ただし、ほとんどのホスティングプロバイダでは、レート制限を上げる必要はありません。発行した独立した登録ドメインの数に制限はないからです。あなたの顧客が登録ドメインに 2,000 個以上のサブドメインを持っていない限り、制限を上げるリクエストは必要ありません。<a href="letsencrypt-ewebsite/ja/docs/integration-guide/" hreflang="ja">インテグレーションガイド</a>には、さらに詳しいアドバイスがあります。</p>
+<p>ただし、ほとんどのホスティングプロバイダでは、レート制限を上げる必要はありません。発行した独立した登録ドメインの数に制限はないからです。あなたの顧客が登録ドメインに 2,000 個以上のサブドメインを持っていない限り、制限を上げるリクエストは必要ありません。<a href="/ja/docs/integration-guide/" hreflang="ja">インテグレーションガイド</a>には、さらに詳しいアドバイスがあります。</p>
 <h1 id="a-id-clearing-pending-a-認証の待機を解消する"><a id="clearing-pending"></a>認証の待機を解消する</h1>
 <p>もし待機中の認証オブジェクトがたくさんあり、レート制限のエラーが発生するようになってしまった場合、これらの認証オブジェクトに対して検証を行うことができます。そのためには、<a href="https://tools.ietf.org/html/rfc8555#section-7.5.1">ACME の仕様</a>に記述されたチャレンジの1つに対して、JWS で署名された POST リクエストを送信します。待機中の認証オブジェクトは、<code>https://acme-v02.api.letsencrypt.org/acme/authz/XYZ</code> の形式の URL で送信され、クライアントのログに記録されているはずです。検証を行うと、成功・失敗に関わらず、認証が「待機」状態から抜けられます。もし関連する認証の URL を含むログが見つからない場合は、レート制限が解消するまで待つ以外に方法はありません。Let&rsquo;s Encrypt では、スライディング・ウィンドウが使用されているため、発行のパターンによっては 1週間より短い時間で待機状態が解消される可能性があります。</p>
 <p>一般に、大量の認証の待機が生じるのは、バグの多いクライアントが原因です。このレート制限が頻繁に起こる場合は、クライアントのコードをダブルチェックした方がいいでしょう。</p>
@@ -493,7 +493,7 @@ id="new-orders"></a><strong>新しい命令</strong>を最大 300 個まで作�
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

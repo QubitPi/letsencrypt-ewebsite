@@ -1,14 +1,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt - Besplatni SSL/TLS Sertifikati</title>
-    <link>letsencrypt-ewebsite/sr/</link>
+    <link>https://letsencrypt.org/sr/</link>
     <description>  Let&#39;s Encrypt je besplatno, automatizovano, i otvoreno sertifikaciono
   telo omogućeno od strane ne profitne &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt;Internet Security Research Group (ISRG)&lt;/a&gt; grupe.
 </description>
     <language>sr</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="letsencrypt-ewebsite/sr/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://letsencrypt.org/sr/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>

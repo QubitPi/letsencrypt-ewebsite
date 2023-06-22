@@ -1,14 +1,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt - 免费的SSL/TLS证书</title>
-    <link>letsencrypt-ewebsite/zh-cn/</link>
+    <link>https://letsencrypt.org/zh-cn/</link>
     <description>  Let&#39;s Encrypt 是免费、开放和自动化的证书颁发机构。由非盈利组织&lt;a href=&#34;https://www.abetterinternet.org/&#34;
   style=&#34;white-space:nowrap;&#34;&gt;互联网安全研究小组（ISRG）&lt;/a&gt;运营。
 </description>
     <language>zh-Hans-CN</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="letsencrypt-ewebsite/zh-cn/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://letsencrypt.org/zh-cn/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>

@@ -21,7 +21,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="はじめる">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/ja/getting-started/">
+    <meta name="twitter:url" content="https://letsencrypt.org/ja/getting-started/">
     <meta name="twitter:description" content="あなたのウェブサイトで HTTPS を有効にするためには、認証局 (Certificate Authority; CA) から証明書 (ファイルの一種) を取得する必要があります。 Let&amp;rsquo;s Encrypt は認証局の1つです。 Let&amp;rsquo;s Encrypt からウェブサイトのドメイン用の証明書を取得するには、あなたが自分のドメインをコントロールする権利があることを示す必要があります。 Let&amp;rsquo;s Encrypt では、ACME プロトコルというルールを使用するソフトウェアを使って、この証明を行います。このソフトウェアは、通常はあなたのウェブホスト上で実行します。
 証明書を発行するのに最適な方法を知るには、まず、ウェブホストへのシェルアクセス (SSH アクセスとも言います) ができるかどうかを確認する必要があります。 もし、cPanel や Plesk、WordPress などのように、完全にコントロールパネルだけを使ってウェブサイトを管理しているとしたら、シェルアクセスができない可能性が高いです。 これを確認するには、使用しているホスティング・プロバイダに問い合わせてください。
 シェルへのアクセス権を持っている場合 シェルアクセスができるほとんどの人には、Certbot という ACME クライアントを使うのがおすすめです。 証明書の発行とインストールを、ダウンタイムゼロで自動化できます。 自動設定を使いたくない人のために、エキスパートモードも用意されています。 とても簡単に使え、多数のオペレーティングシステムで動作し、たくさんのドキュメントもあります。 Certbot のウェブサイトでは、各オペレーティングシステムやウェブサーバーごとの個別の設定方法について解説されています。
@@ -30,15 +30,15 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
 シェルへのアクセス権を持っていない場合 シェルアクセスができない場合に Let&amp;rsquo;s Encrypt を利用する一番良い方法は、ホスティング・プロバイダが用意したサポートを利用することです。 もし、あなたが利用するホスティング・プロバイダが Let&amp;rsquo;s Encrypt をサポートしている場合、あなたの代わりに無料の証明書をリクエスト、インストールし、自動的に最新の状態に更新してくれます。 一部のホスティング・プロバイダでは、この機能は自分で設定から有効にする必要がある場合があります。 それ以外のプロバイダでは、すべてのユーザーのために、自動で証明書が発行・インストールされるようになっています。
 あなたが利用しているホスティング・プロバイダが Let&amp;rsquo;s Encrypt をサポートしているかどうかは、 ホスティング・プロバイダのリストで確認してください。 もしサポートされている場合は、ホスティング・プロバイダのドキュメンに書かれている Let&amp;rsquo;s Encrypt の設定方法に従ってください。
 あなたのホスティング・プロバイダが Let&amp;rsquo;s Encrypt をサポートしていない場合には、問い合わせをしてサポートするようにリクエストすることができます。 私たちは Let&amp;rsquo;s Encrypt を非常に簡単に導入できるように最善の努力を尽くしているため、プロバイダは利用者からの提案を喜んで聞いてくれるはずです。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/ja/getting-started/">
+    <link rel="canonical" href="/ja/getting-started/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt ブログフィード" />
     
@@ -51,7 +51,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
 <header class="site-header">
   <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -61,7 +61,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
+            <a href="/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
             
           </li>
           
@@ -76,7 +76,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
+                <a href="/ja/donate/" class="pure-menu-link">寄付する</a>
               </li>
               
               <li class="pure-menu-item">
@@ -84,11 +84,11 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
+                <a href="/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
+                <a href="/ja/getinvolved/" class="pure-menu-link">参加する</a>
               </li>
               
             </ul>
@@ -101,7 +101,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -109,11 +109,11 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
+                <a href="/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
+                <a href="/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
+                <a href="/ja/stats/" class="pure-menu-link">統計情報</a>
               </li>
               
               <li class="pure-menu-item">
@@ -129,7 +129,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
+                <a href="/ja/contact/" class="pure-menu-link">連絡先</a>
               </li>
               
             </ul>
@@ -190,107 +190,107 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
+                <a href="/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -309,7 +309,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
+<div class="hero slim" style="background-image: url('/images/3.jpg');">
 <div class="container">
 	<h1>はじめる</h1>
 </div>
@@ -327,8 +327,8 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
 <p>証明書を発行するのに最適な方法を知るには、まず、ウェブホストへの<a href="https://ja.wikipedia.org/wiki/%e3%82%b7%e3%82%a7%e3%83%ab%e3%82%a2%e3%82%ab%e3%82%a6%e3%83%b3%e3%83%88">シェルアクセス</a> (SSH アクセスとも言います) ができるかどうかを確認する必要があります。 もし、<a href="https://cpanel.net/">cPanel</a> や <a href="https://www.plesk.com/">Plesk</a>、<a href="https://wordpress.org/">WordPress</a> などのように、完全にコントロールパネルだけを使ってウェブサイトを管理しているとしたら、シェルアクセスができない可能性が高いです。 これを確認するには、使用しているホスティング・プロバイダに問い合わせてください。</p>
 <h1 id="シェルへのアクセス権を持っている場合">シェルへのアクセス権を持っている場合</h1>
 <p>シェルアクセスができるほとんどの人には、<a href="https://certbot.eff.org/" title="Certbot">Certbot</a> という ACME クライアントを使うのがおすすめです。 証明書の発行とインストールを、ダウンタイムゼロで自動化できます。 自動設定を使いたくない人のために、エキスパートモードも用意されています。 とても簡単に使え、多数のオペレーティングシステムで動作し、たくさんのドキュメントもあります。 <a href="https://certbot.eff.org/" title="Certbot">Certbot のウェブサイト</a>では、各オペレーティングシステムやウェブサーバーごとの個別の設定方法について解説されています。</p>
-<p><a href="https://certbot.eff.org/" title="Certbot">Certbot</a> があなたの要件を満たさない場合や、他のクライアントを試してみたい場合には、Certbot の他にも<a href="letsencrypt-ewebsite/ja/docs/client-options/" hreflang="ja">たくさんの ACME クライアント</a>が利用できます。  ACME クライアントを自分で選んだ場合は、そのクライアントのドキュメントを参照してください。</p>
-<p>別の ACME クライアントを使って実験を行う場合は、私たちが用意した<a href="letsencrypt-ewebsite/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>を利用して、<a href="letsencrypt-ewebsite/ja/docs/rate-limits/" hreflang="ja">レート・リミット</a>の制限を受けないように気をつけてください。</p>
+<p><a href="https://certbot.eff.org/" title="Certbot">Certbot</a> があなたの要件を満たさない場合や、他のクライアントを試してみたい場合には、Certbot の他にも<a href="/ja/docs/client-options/" hreflang="ja">たくさんの ACME クライアント</a>が利用できます。  ACME クライアントを自分で選んだ場合は、そのクライアントのドキュメントを参照してください。</p>
+<p>別の ACME クライアントを使って実験を行う場合は、私たちが用意した<a href="/ja/docs/staging-environment/" hreflang="ja">ステージング環境</a>を利用して、<a href="/ja/docs/rate-limits/" hreflang="ja">レート・リミット</a>の制限を受けないように気をつけてください。</p>
 <h1 id="シェルへのアクセス権を持っていない場合">シェルへのアクセス権を持っていない場合</h1>
 <p>シェルアクセスができない場合に Let&rsquo;s Encrypt を利用する一番良い方法は、ホスティング・プロバイダが用意したサポートを利用することです。 もし、あなたが利用するホスティング・プロバイダが Let&rsquo;s Encrypt をサポートしている場合、あなたの代わりに無料の証明書をリクエスト、インストールし、自動的に最新の状態に更新してくれます。 一部のホスティング・プロバイダでは、この機能は自分で設定から有効にする必要がある場合があります。 それ以外のプロバイダでは、すべてのユーザーのために、自動で証明書が発行・インストールされるようになっています。</p>
 <p>あなたが利用しているホスティング・プロバイダが Let&rsquo;s Encrypt をサポートしているかどうかは、 <a href="https://community.letsencrypt.org/t/web-hosting-who-support-lets-encrypt/6920">ホスティング・プロバイダのリスト</a>で確認してください。 もしサポートされている場合は、ホスティング・プロバイダのドキュメンに書かれている Let&rsquo;s Encrypt の設定方法に従ってください。</p>
@@ -343,7 +343,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
   <div class="wrapper text-center">
     <h2>よりセキュアでプライバシーを尊重するウェブを支援してください。</h2>
     <div class="buttons">
-      <a class="accent" href="/letsencrypt-ewebsite/ja/donate/">寄付する</a>
+      <a class="accent" href="/ja/donate/">寄付する</a>
     </div>
   </div>
 </div>
@@ -423,7 +423,7 @@ Certbot があなたの要件を満たさない場合や、他のクライアン
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

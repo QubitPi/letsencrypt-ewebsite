@@ -21,7 +21,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="証明書を失効する">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/ja/docs/revoking/">
+    <meta name="twitter:url" content="https://letsencrypt.org/ja/docs/revoking/">
     <meta name="twitter:description" content="証明書に対応する秘密鍵が安全でなくなったときは、証明書を失効する必要があります。 これにはいくつかの理由があります。 たとえば、パブリックなウェブサイト上で誤って秘密鍵を公開してしまった場合、ハッカーが秘密鍵をサーバーからコピーした場合、ハッカーが一時的にサーバーや DNS の設定を操作した場合、取得した秘密鍵で証明書の検証や発行が行われた場合などがあります。
 Let&amp;rsquo;s Encrypt の証明書を失効すると、Let&amp;rsquo;s Encrypt は失効情報を Online Certificate Status Protocol (OCSP) を用いて公開します。一部のブラウザは OCSP をチェックして証明書が信頼するべきかどうか確認します。 ただし、OCSP にはいくつかの基礎的な問題があるため、すべてのブラウザがチェックするわけではないことに注意してください。 それでも、侵害された秘密鍵に対応する証明書を失効することは重要です。また、Let&amp;rsquo;s Encrypt の Subscriber Agreement でも義務づけられています。
 Let&amp;rsquo;s Encrypt で証明書を失効するには、ACME API を使用しますが、通常は Certbot などのACME クライアントを使用します。 証明書の失効をするには、Let&amp;rsquo;s Encrypt に対して失効の権限があることを証明しなければなりません。 証明の方法は３つあります。
@@ -30,15 +30,15 @@ certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem --r
 この方法を使うには、初めに失効する証明書をダウンロードする必要があります。 Let&amp;rsquo;s Encrypt はすべての証明書のログを Certificate Transparency logs に記録しています。そのため、crt.sh などの log monitor から証明書を見つけてダウンロードできます。
 また、PEM 形式の秘密鍵のコピーも必要です。 これらが準備できたら、以下のコマンドで証明書を失効できます。
 certbot revoke --cert-path /PATH/TO/cert.">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/ja/docs/revoking/">
+    <link rel="canonical" href="/ja/docs/revoking/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt ブログフィード" />
     
@@ -51,7 +51,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
 <header class="site-header">
   <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -61,7 +61,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
+            <a href="/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
             
           </li>
           
@@ -76,7 +76,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
+                <a href="/ja/donate/" class="pure-menu-link">寄付する</a>
               </li>
               
               <li class="pure-menu-item">
@@ -84,11 +84,11 @@ certbot revoke --cert-path /PATH/TO/cert.">
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
+                <a href="/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
+                <a href="/ja/getinvolved/" class="pure-menu-link">参加する</a>
               </li>
               
             </ul>
@@ -101,7 +101,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -109,11 +109,11 @@ certbot revoke --cert-path /PATH/TO/cert.">
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
+                <a href="/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
+                <a href="/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
+                <a href="/ja/stats/" class="pure-menu-link">統計情報</a>
               </li>
               
               <li class="pure-menu-item">
@@ -129,7 +129,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
+                <a href="/ja/contact/" class="pure-menu-link">連絡先</a>
               </li>
               
             </ul>
@@ -190,107 +190,107 @@ certbot revoke --cert-path /PATH/TO/cert.">
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
+                <a href="/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -309,7 +309,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>証明書を失効する</h1>
 </div>
@@ -330,7 +330,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
     最終更新日:<time datetime="2021-08-03">2021/08/03</time>
 
 
- | <a href="/letsencrypt-ewebsite/ja/docs">すべてのドキュメントを読む</a>
+ | <a href="/ja/docs">すべてのドキュメントを読む</a>
 </p>
 
 
@@ -345,7 +345,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
                 <i>
                     注意: このページが翻訳された後、英語バージョンのページがアップデートされています。
                     (<time datetime="2021-10-15">2021/10/15</time>)
-                    <a href="letsencrypt-ewebsite/docs/revoking/">英語で表示する</a>
+                    <a href="/docs/revoking/">英語で表示する</a>
                 </i>
             </p>
             
@@ -393,7 +393,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
 
 
 <p>証明書に対応する秘密鍵が安全でなくなったときは、証明書を失効する必要があります。 これにはいくつかの理由があります。 たとえば、パブリックなウェブサイト上で誤って秘密鍵を公開してしまった場合、ハッカーが秘密鍵をサーバーからコピーした場合、ハッカーが一時的にサーバーや DNS の設定を操作した場合、取得した秘密鍵で証明書の検証や発行が行われた場合などがあります。</p>
-<p>Let&rsquo;s Encrypt の証明書を失効すると、Let&rsquo;s Encrypt は失効情報を <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a> を用いて公開します。一部のブラウザは OCSP をチェックして証明書が信頼するべきかどうか確認します。 ただし、OCSP には<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">いくつかの基礎的な問題</a>があるため、すべてのブラウザがチェックするわけではないことに注意してください。 それでも、侵害された秘密鍵に対応する証明書を失効することは重要です。また、Let&rsquo;s Encrypt の <a href="letsencrypt-ewebsite/ja/repository/" hreflang="ja">Subscriber Agreement</a> でも義務づけられています。</p>
+<p>Let&rsquo;s Encrypt の証明書を失効すると、Let&rsquo;s Encrypt は失効情報を <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a> を用いて公開します。一部のブラウザは OCSP をチェックして証明書が信頼するべきかどうか確認します。 ただし、OCSP には<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">いくつかの基礎的な問題</a>があるため、すべてのブラウザがチェックするわけではないことに注意してください。 それでも、侵害された秘密鍵に対応する証明書を失効することは重要です。また、Let&rsquo;s Encrypt の <a href="/ja/repository/" hreflang="ja">Subscriber Agreement</a> でも義務づけられています。</p>
 <p>Let&rsquo;s Encrypt で証明書を失効するには、<a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a> を使用しますが、通常は <a href="https://certbot.eff.org/">Certbot</a> などのACME クライアントを使用します。 証明書の失効をするには、Let&rsquo;s Encrypt に対して失効の権限があることを証明しなければなりません。 証明の方法は３つあります。</p>
 <h1 id="証明書を発行したアカウントから行う方法">証明書を発行したアカウントから行う方法</h1>
 <p>もともと自分で証明書を発行し、現在でも発行に使用したアカウントがコントロール下にある場合、そのアカウントを使って証明書を失効できます。 Certbot はデフォルトでこの方法を試します。 以下は失効を行う例です。</p>
@@ -487,7 +487,7 @@ certbot revoke --cert-path /PATH/TO/cert.">
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

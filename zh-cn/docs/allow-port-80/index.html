@@ -18,21 +18,21 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="最佳实践——开放 80 端口">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/allow-port-80/">
+    <meta name="twitter:url" content="https://letsencrypt.org/zh-cn/docs/allow-port-80/">
     <meta name="twitter:description" content="我们偶尔会收到使用 HTTP-01 验证类型时遇到问题的人的报告，这是因为他们通过防火墙封闭了 Web 服务器上的 80 端口。 我们的建议是，所有用于一般 Web 使用的服务器应该同时在 80 端口上提供 HTTP 服务、在 443 端口上提供 HTTPS 服务。 他们还应该将所有发送至 80 端口的请求重定向至 443 端口，并且在（443 端口上的）所有响应中添加 HSTS 标头。
 开放 80 端口并不会在服务器中引入更大的攻击面，因为 80 端口和 443 端口通常由同样的软件提供服务。
 关闭 80 端口不会降低意外通过 HTTP 访问您网站的人的风险。 在正常情况下，那个人将收到 HTTPS 重定向，其后续通信将受到保护。 如果该人受到活跃的 MITM 攻击，MITM 攻击者将在 80 端口上回应请求，因此您的站点将永远无法对该用户回答“连接已被拒绝”。
 最后，保持 80 端口开放并提供重定向有助于让人们访问您网站的正确版本（HTTPS 版本）。 有很多您无法控制的情况都可能暂时将访问者引导至您网站的 HTTP 版本，例如电子邮件中的自动链接或者手动输入网站域名。 对他们来说，获得重定向比获得错误更好。
 不幸的是，在某些情况下您可能无法控制 80 端口的开放或者关闭。 部分 ISP（通常为住宅网络提供商）会因各种原因阻止对 80 端口的访问。 若您的 ISP 阻止您使用 80 端口但您仍旧希望从 Let’s Encrypt 获取证书，您有两种选择：您可以使用 DNS-01 验证方式，或（在443端口上）使用 支持 TLS-ALPN-01 验证方式的客户端">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/allow-port-80/">
+    <link rel="canonical" href="/zh-cn/docs/allow-port-80/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -45,7 +45,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -55,7 +55,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -70,7 +70,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -78,11 +78,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -95,7 +95,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -103,11 +103,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -115,7 +115,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -123,7 +123,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -184,107 +184,107 @@
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -303,7 +303,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>最佳实践——开放 80 端口</h1>
 </div>
@@ -324,7 +324,7 @@
     最后更新：<time datetime="2019-01-24">Jan 24, 2019</time>
 
 
- | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+ | <a href="/zh-cn/docs">所有文档</a>
 </p>
 
 
@@ -462,7 +462,7 @@
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="集成指南">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/integration-guide/">
+    <meta name="twitter:url" content="https://letsencrypt.org/zh-cn/docs/integration-guide/">
     <meta name="twitter:description" content="如果您是托管服务提供商或正在大型网站中集成 Let&amp;rsquo;s Encrypt，或者您正在为 Let&amp;rsquo;s Encrypt 编写客户端软件，则本文档包含了一些对您有用的建议。
 做好更改准备 Let&amp;rsquo;s Encrypt 和 Web PKI 都将随着时间的推移而不断发展。 您应该确保能够轻松更新所有使用 Let&amp;rsquo;s Encrypt 的服务。 如果您还要部署依赖于 Let&amp;rsquo;s Encrypt 证书的客户端，请特别确保这些客户端定期收到更新。
 将来，这些事情可能会发生变化：
@@ -36,15 +36,15 @@
 此外，请确保为 ACME 帐户使用有效的电子邮件地址。 我们将使用该电子邮件向您发送过期通知，并就您帐户特有的任何问题进行沟通。
 谁是用户 我们的 CPS 和用户协议指明了用户是指拥有证书私钥的人。 对于托管服务提供商而言，订阅者是提供商，而不是提供商的客户。 如果您正在编写允许人们自行部署的软件，那用户就是部署软件的人。
 创建帐户（即注册）时提供的联系电子邮件应发送给用户。 我们将向该地址发送电子邮件以警告即将到期的证书，并通知我们 隐私政策的更改。 如果您是托管服务提供商，那些通知应该发送给您而不是客户。 理想情况下，请配置邮件列表或别名，以便在您休假时其他人可以响应通知。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/">
+    <link rel="canonical" href="/zh-cn/docs/integration-guide/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -57,7 +57,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -67,7 +67,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -82,7 +82,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -90,11 +90,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -107,7 +107,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -115,11 +115,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -127,7 +127,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -135,7 +135,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -196,107 +196,107 @@
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/docs/integration-guide/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/da/docs/integration-guide/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/de/docs/integration-guide/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/es/docs/integration-guide/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/fi/docs/integration-guide/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/fr/docs/integration-guide/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/he/docs/integration-guide/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/hu/docs/integration-guide/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/id/docs/integration-guide/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/it/docs/integration-guide/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/ja/docs/integration-guide/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/ko/docs/integration-guide/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/pt-br/docs/integration-guide/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/ru/docs/integration-guide/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/si/docs/integration-guide/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/sr/docs/integration-guide/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/sv/docs/integration-guide/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/uk/docs/integration-guide/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/vi/docs/integration-guide/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="/zh-cn/docs/integration-guide/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/zh-tw/docs/integration-guide/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -315,7 +315,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>集成指南</h1>
 </div>
@@ -336,7 +336,7 @@
     最后更新：<time datetime="2016-08-08">Aug 8, 2016</time>
 
 
- | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
+ | <a href="/zh-cn/docs">所有文档</a>
 </p>
 
 
@@ -408,14 +408,14 @@
 <p>有关维护和停机的更高容量更新，请访问我们的 <a href="https://letsencrypt.status.io/">状态页面</a>并点击右上方的&quot;订阅&quot;按钮。 这对托管服务提供商最为有用。</p>
 <p>此外，请确保为 ACME 帐户使用有效的电子邮件地址。 我们将使用该电子邮件向您发送过期通知，并就您帐户特有的任何问题进行沟通。</p>
 <h1 id="谁是用户">谁是用户</h1>
-<p>我们的 <a href="letsencrypt-ewebsite/zh-cn/repository/" hreflang="zh-Hans-CN">CPS 和用户协议</a>指明了用户是指拥有证书私钥的人。 对于托管服务提供商而言，订阅者是提供商，而不是提供商的客户。 如果您正在编写允许人们自行部署的软件，那用户就是部署软件的人。</p>
-<p>创建帐户（即注册）时提供的联系电子邮件应发送给用户。 我们将向该地址发送电子邮件以警告即将到期的证书，并通知我们 <a href="letsencrypt-ewebsite/zh-cn/privacy/" hreflang="zh-Hans-CN">隐私政策</a>的更改。  如果您是托管服务提供商，那些通知应该发送给您而不是客户。 理想情况下，请配置邮件列表或别名，以便在您休假时其他人可以响应通知。</p>
+<p>我们的 <a href="/zh-cn/repository/" hreflang="zh-Hans-CN">CPS 和用户协议</a>指明了用户是指拥有证书私钥的人。 对于托管服务提供商而言，订阅者是提供商，而不是提供商的客户。 如果您正在编写允许人们自行部署的软件，那用户就是部署软件的人。</p>
+<p>创建帐户（即注册）时提供的联系电子邮件应发送给用户。 我们将向该地址发送电子邮件以警告即将到期的证书，并通知我们 <a href="/zh-cn/privacy/" hreflang="zh-Hans-CN">隐私政策</a>的更改。  如果您是托管服务提供商，那些通知应该发送给您而不是客户。 理想情况下，请配置邮件列表或别名，以便在您休假时其他人可以响应通知。</p>
 <p>这样做的结果是，如果您是托管服务提供商，您无需向我们发送客户的电子邮件地址或让他们同意我们的用户协议。您只需为您控制的域名颁发证书然后开始使用它们。 您只需为您控制的域名颁发证书然后开始使用它们。</p>
 <h1 id="使用一个还是多个账户">使用一个还是多个账户？</h1>
 <p>在 ACME 中，可以创建一个帐户并将其用于所有授权和颁发，或者为每个客户创建一个帐户。 这种灵活性可能很有价值。 例如，一些主机提供商可能希望每个客户使用一个帐户，并将帐户密钥存储在不同的地方中，这样即使帐户密钥泄露也不会允许攻击者给所有用户颁发证书。</p>
 <p>但是，对于大多数大型托管服务提供商，我们建议使用单个帐户并保护相应的帐户密钥。 这样可以更轻松地识别属于同一实体的证书，更容易保持联系信息处于最新状态，并在需要时更轻松地提供速率限制调整。 如果您使用许多不同的帐户，我们将无法有效调整速率限制。</p>
 <h1 id="多域名-san-证书">多域名（SAN）证书</h1>
-<p>我们的 <a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">颁发政策</a>允许每个证书最多包含 100 个域名。 无论您是为每个主机名使用单独的证书，还是将许多主机名组合在少量证书上，这都取决于您。</p>
+<p>我们的 <a href="/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">颁发政策</a>允许每个证书最多包含 100 个域名。 无论您是为每个主机名使用单独的证书，还是将许多主机名组合在少量证书上，这都取决于您。</p>
 <p>每个主机名使用单独的证书意味着在启用和停用域名时逻辑上进行添加和删除域名所需的更改更少。单独的证书还可以最大限度地减少证书大小，从而加快低带宽网络上的 HTTPS 握手速度。 每个主机名使用单独的证书意味着在启用和停用域名时逻辑上进行添加和删除域名所需的更改更少。单独的证书还可以最大限度地减少证书大小，从而加快低带宽网络上的 HTTPS 握手速度。</p>
 <p>另一方面，使用具有许多主机名的大型证书可以让您整体上管理更少的证书。如果您需要支持不支持 TLS 服务器名称指示（<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>）的旧客户端（如 Windows XP），则每个证书都需要一个唯一的 IP 地址 ，因此在每个证书上放置更多域名会减少您需要的 IP 地址数量。 另一方面，使用具有许多主机名的大型证书可以让您整体上管理更少的证书。如果您需要支持不支持 TLS 服务器名称指示（<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">SNI</a>）的旧客户端（如 Windows XP），则每个证书都需要一个唯一的 IP 地址 ，因此在每个证书上放置更多域名会减少您需要的 IP 地址数量。</p>
 <p>Let&rsquo;s Encrypt 的主要价值在于我们允许在创建新网站时自动颁发证书。但是，如果您的基础架构可能会为同一网站重复创建新的前端服务器，那么这些前端应该首先尝试使用来自持久性存储的证书和私钥，并且只在没有可用的证书或者所有现有的证书都已过期的情况下颁发新证书。</p>
@@ -533,7 +533,7 @@
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

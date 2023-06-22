@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt</title>
-    <link>letsencrypt-ewebsite/si/</link>
+    <link>https://letsencrypt.org/si/</link>
     <description>Let&#39;s Encrypt යනු නොමිලේ, ස්වයංක්‍රීය සහ විවෘත සහතික අධිකාරියකි. ලාභ නොලබන අන්තර්ජාල ආරක්‍ෂණ පර්යේෂණ සමූහය (අයි.එස්.ආර්.ජී.) විසින් මෙහෙයවයි.
 </description>
     <language>si</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="letsencrypt-ewebsite/si/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://letsencrypt.org/si/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>
