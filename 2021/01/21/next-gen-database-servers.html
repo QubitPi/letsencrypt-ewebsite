@@ -17,7 +17,7 @@
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/2021/01/21/next-gen-database-servers.html">
     
@@ -31,7 +31,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">Skip navigation links</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -173,7 +173,7 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -338,21 +338,21 @@
 </table>
 </div>
 <figure style="display: flex; flex-direction: column; align-items: center; text-align: center">
-<img src="/images/2021.01.21-next-gen-db-chassis.jpg" width="600" alt="Dell PowerEdge R7525 Chassis">
+<img src="images/2021.01.21-next-gen-db-chassis.jpg" width="600" alt="Dell PowerEdge R7525 Chassis">
 <figcaption>Dell PowerEdge R7525 internals. The two silver rectangles in the middle are the CPUs. The RAM sticks, each 64GB, are above and below the CPUs. The 24x NVMe drives are in the front of the server, on the far left.</figcaption>
 </figure>
 <p>By going with AMD EPYC, we were able to get 64 physical CPU cores while keeping clock speeds high: 2.9GHz base with 3.4GHz boost. More importantly, EPYC provides 128 PCIe v4.0 lanes, which allows us to put 24 NVMe drives in a single machine. NVMe is incredibly fast (~5.7x faster than the SATA SSDs in our previous-gen database servers) because it uses PCIe instead of SATA. However, PCIe lanes are typically very limited: modern consumer chips typically have only 16 lanes, and Intel’s Xeon chips have 48. By providing 128 PCI lanes per chip (v4.0, no less), AMD EPYC has made it possible to pack large numbers of NVMe drives into a single machine. We’ll talk more about NVMe later.</p>
 <h2 id="performance-impact">Performance Impact</h2>
 <p>We’ll start by looking at our median time to process a request because it best reflects subscribers’ experience. Before the upgrade, we turned around the median API request in ~90 ms. The upgrade decimated that metric to ~9 ms!</p>
-<p class="text-center"><img src="/images/2021.01.21-next-gen-db-api-latency.png" alt="API Latency"></p>
+<p class="text-center"><img src="images/2021.01.21-next-gen-db-api-latency.png" alt="API Latency"></p>
 <p>We can clearly see how our old CPUs were reaching their limit. In the week before we upgraded our primary database server, its CPU usage (from /proc/stat) averaged over 90%:</p>
-<p class="text-center"><img src="/images/2021.01.21-next-gen-db-cpu-before.png" alt="CPU Usage Before Upgrade"></p>
+<p class="text-center"><img src="images/2021.01.21-next-gen-db-cpu-before.png" alt="CPU Usage Before Upgrade"></p>
 <p>The new AMD EPYC CPUs sit at about 25%. You can see in this graph where we promoted the new database server from replica (read-only) to primary (read/write) on September 15.</p>
-<p class="text-center"><img src="/images/2021.01.21-next-gen-db-cpu-after.png" alt="CPU Usage After Upgrade"></p>
+<p class="text-center"><img src="images/2021.01.21-next-gen-db-cpu-after.png" alt="CPU Usage After Upgrade"></p>
 <p>The upgrade greatly reduced our overall database latency. The average query response time (from INFORMATION_SCHEMA) used to be ~0.45ms.</p>
-<p class="text-center"><img src="/images/2021.01.21-next-gen-db-db-latency-before.png" alt="Database Latency Before Upgrade"></p>
+<p class="text-center"><img src="images/2021.01.21-next-gen-db-db-latency-before.png" alt="Database Latency Before Upgrade"></p>
 <p>Queries now average <em>three times faster</em>, about 0.15ms.</p>
-<p class="text-center"><img src="/images/2021.01.21-next-gen-db-db-latency-after.png" alt="Database Latency After Upgrade"></p>
+<p class="text-center"><img src="images/2021.01.21-next-gen-db-db-latency-after.png" alt="Database Latency After Upgrade"></p>
 <h2 id="openzfs-and-nvme">OpenZFS and NVMe</h2>
 <p>NVMe drives are becoming increasingly popular because of their incredible performance. Up until recently, though, it was nearly impossible to get many of them in a single machine because NVMe uses PCIe lanes. Those were very limited: Intel’s Xeon processors come with just 48 PCIe v3 lanes, and a number of those are used up by the chipset and add-on cards such as network adapters and GPUs. You can’t fit many NVMe drives in the remaining lanes.</p>
 <p>AMD’s latest generation of EPYC processors come with 128 PCIe lanes - more than double what Intel offers - and they’re PCIe v4! This is enough to pack a 2U server full of NVMe drives (24 in our case).</p>

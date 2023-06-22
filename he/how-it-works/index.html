@@ -26,7 +26,7 @@
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/he/how-it-works/">
     
@@ -41,7 +41,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">דילוג על קישורי הניווט</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/he/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/he/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -179,7 +179,7 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">שפות <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -391,13 +391,13 @@
 <p>בנוסף לאתגרים, רשות האישורים Let&rsquo;s Encrypt מספקת אסימון מוצפן שעל הסוכן לחתום עליו עם המפתח הפרטי שלו כדי להוכיח שיש לו שליטה על צמד המפתחות.</p>
 <div class="howitworks-figure">
 <img alt="בקשת אתגרים לתיקוף example.com"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>תכנית הסוכן משלימה את אחת מסדרות האתגרים שסופקו.   נניח שהוא מצליח להשלים את המשימה השנייה שלעיל: הסוכן יוצר קובץ תחת נתיב מסוים באתר <code>http://example.com</code>.  הסוכן גם חותם על האסימון המוצפן עם המפתח הפרטי שלו.  לאחר שהסוכן השלים את הצעדים האלה, הוא מודיע לרשות האישורים שהוא מוכן להשלים את התיקוף.</p>
 <p>מכאן, זה תפקידה של רשות האישורים לבדוק שהאתגרים נענו כראוי.  רשות האישורים מאמתת את החתימות על האסימון המוצפון ומנסה להוריד את הקובץ מהשרת ולוודא שיש בו את התוכן שאמור להיות בו.</p>
 <div class="howitworks-figure">
 <img alt="בקשת הרשאה כדי לפעול עבור example.com"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>אם החתימה על האסימון המוצפן תקפה והאתגרים הושלמו אז הסוכן שמזוהה באמצעות המפתח הציבורי מורשה לנהל אישורים עבור <code>example.com</code>.  אנו קוראים לצמד המפתחות בהם משתמש הסוכן „צמד מפתחות מורשה” עבור <code>example.com</code>.</p>
 <h2 id="הנפקה-ושלילה-של-אישורים">הנפקה ושלילה של אישורים</h2>
@@ -406,12 +406,12 @@
 <p>כאשר רשות האישורים Let&rsquo;s Encrypt מקבלת את האישור, היא מאמתת את שתי החתימות.  אם הכול נראה טוב, היא מנפיקה אישור עבור <code>example.com</code> עם המפתח הציבורי מתוך בקשת חתימת האישור (CSR) ומחזירה אותו אל הסוכן.</p>
 <div class="howitworks-figure">
 <img alt="בקשת אישור עבור example.com"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>השלילה עובדת באופן דומה.  הסוכן חותם על בקשת שלילה עם צמד המפתחות שמורשים עבור <code>example.com</code>, ורשות האישורים Let&rsquo;s Encrypt מוודאה שהבקשה מורשית.  אם תהליך זה צלח, פרטי השלילה מפורסמים לערוצי השלילה הרגילים (למשל: OCSP), כדי שהגופים הנסמכים כגון דפדפנים יוכלו לדעת שאין עליהם לסמוך על אישורים שנשללו.</p>
 <div class="howitworks-figure">
 <img alt="בקשת שלילת אישור עבור example.com"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

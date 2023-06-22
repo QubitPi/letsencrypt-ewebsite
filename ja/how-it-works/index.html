@@ -36,7 +36,7 @@
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/ja/how-it-works/">
     
@@ -51,7 +51,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/ja/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -185,7 +185,7 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">言語 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">言語 <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -397,13 +397,13 @@
 <p>チャレンジの間に、Let&rsquo;s Encrypt CA はエージェントに対してノンスを与えます。エージェントは秘密鍵を使ってこのノンスに署名する必要があります。これにより、エージェントがキーペアをコントロールしていることも証明します。</p>
 <div class="howitworks-figure">
 <img alt="example.com を検証するためのチャレンジのリクエスト"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>エージェント・ソフトウェアは、提示されたチャレンジのうちの1つをクリアします。   今、上の例で提示された2つ目のチャレンジをエージェントがクリアできるとしましょう。このとき、エージェントは <code>http://example.com</code> のサイト上の特定のパスにファイルを1つ生成します。  また、エージェントは提示されたノンスに秘密鍵を使って署名します。  エージェントがこれらのステップをクリアしたら、CA に検証の準備ができたことを伝えます。</p>
 <p>すると、CA は、チャレンジが正しく行われたかをチェックします。  CA はノンスの署名が正しいことを検証し、ウェブサーバーからファイルをダウンロードし、その中に期待どおりのコンテンツが含まれているかどうかを確認します。</p>
 <div class="howitworks-figure">
 <img alt="example.com の代表として振る舞うための認証リクエスト"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>もし、ノンスに書かれた署名が有効であり、チャレンジがクリアされたならば、公開鍵を持つエージェントは <code>example.com</code> に対する証明書の管理を行うことを認証されたことになります。  私たちは、このエージェントが使用するキーペアのことを、<code>example.com</code>に対して「認証されたキーペア」と呼びます。</p>
 <h2 id="証明書の発行と無効化">証明書の発行と無効化</h2>
@@ -412,12 +412,12 @@
 <p>Let&rsquo;s Encrypt CA がこのリクエストを受け取ると、両方の署名を検証します。  すべてが問題なければ、 <code>example.com</code> の証明書を発行し、CSR に同梱されていた公開鍵で暗号化してエージェントへ送り返します。</p>
 <div class="howitworks-figure">
 <img alt="example.com に対する証明書のリクエスト"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>無効化の作業も同じ方法で行われます。  エージェントは無効化リクエストを作り、<code>example.com</code>に対して認証されたキーペアで署名をして送ります。Let&rsquo;s Encrypt CA はリクエストが認証されているかどうかを検証します。  もし認証されていれば、証明書の無効化の情報を一般の無効化チャンネル (たとえば、OCSP) に公開します。その結果、このチャンネルを使用しているブラウザなどは、無効化された証明書を受け入れてはいけないことを知ることができます。</p>
 <div class="howitworks-figure">
 <img alt="example.com に対する証明書の無効化リクエスト"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

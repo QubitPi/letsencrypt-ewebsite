@@ -24,7 +24,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/pt-br/how-it-works/">
     
@@ -39,7 +39,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
 <header class="site-header">
   <a id="skiplink" href="#main-content">Pular links de navegação</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/pt-br/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/pt-br/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -169,7 +169,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Idiomas <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Idiomas <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -381,13 +381,13 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
 <p>Juntamente com os desafios, a AC Let&rsquo;s Encrypt também provê um pacote de dados que o agente precisa assinar com sua chave privada para provar que ele controla o par de chaves.</p>
 <div class="howitworks-figure">
 <img alt="Requesting challenges to validate example.com"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>O software agente completa um dos desafios fornecidos.   Vamos assumir que o agente é capaz de completar a segunda tarefa: ele cria um arquivo em um caminho especificado em <code>http://example.com</code>.  O agente também assina o pacote de dados providos com sua chave privada.  Uma vez que ele termina estes passos, ele notifica a AC que está pronto para concluir a validação.</p>
 <p>Agora é responsabilidade da AC verificar que os desafios foram completados.  A AC verifica a assinatura no pacote de dados e tenta fazer o download do arquivo especificado no servidor web e se certifica de que ele possui o conteúdo esperado.</p>
 <div class="howitworks-figure">
 <img alt="Requesting authorization to act for example.com"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>Se a assinatura no pacote de dados é válida e os desafios foram corretamente completados, o agente identificado pela chave pública é autorizado a cuidar do gerenciamento de certificados de <code>example.com</code>.  Nós chamamos o par de chaves usado pelo agente de &ldquo;par de chavez autorizado&rdquo; para `example.com.</p>
 <h2 id="emissão-e-revogação-de-certificado">Emissão e Revogação de Certificado</h2>
@@ -396,12 +396,12 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
 <p>Quando a Let&rsquo;s Encrypt recebe a solicitação ambas as assinaturas são validadas.  Se tudo estiver certo, ele emite um certificado para <code>example.com</code> com a chave pública da SAC e o devolve ao agente.</p>
 <div class="howitworks-figure">
 <img alt="Requesting a certificate for example.com"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>A revogação funciona de maneira similar.  O agente assina a solicitação de revogação com o par de chaves autorizado para <code>example.com</code> e a Let&rsquo;s Encrypt verifica se a solicitação é autorizada.  Se for autorizada, a Let&rsquo;s Encrypt publica a informação de revogação em canais normais de revogação (como por exemplo OCSP), de maneira que terceiros que dependem de certificados (como navegadores) saibam que não devem confiar no certificado revogado.</p>
 <div class="howitworks-figure">
 <img alt="Requesting revocation of a certificate for example.com"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

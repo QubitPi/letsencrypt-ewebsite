@@ -26,7 +26,7 @@ There are two steps to this process.">
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/how-it-works/">
     
@@ -41,7 +41,7 @@ There are two steps to this process.">
 <header class="site-header">
   <a id="skiplink" href="#main-content">Skip navigation links</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -183,7 +183,7 @@ There are two steps to this process.">
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -562,13 +562,13 @@ There are two steps to this process.">
 <p>Along with the challenges, the Let&rsquo;s Encrypt CA also provides a nonce that the agent must sign with its private key pair to prove that it controls the key pair.</p>
 <div class="howitworks-figure">
 <img alt="Requesting challenges to validate example.com"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>The agent software completes one of the provided sets of challenges.   Let&rsquo;s say it is able to accomplish the second task above: it creates a file on a specified path on the <code>http://example.com</code> site.  The agent also signs the provided nonce with its private key.  Once the agent has completed these steps, it notifies the CA that it&rsquo;s ready to complete validation.</p>
 <p>Then, it&rsquo;s the CA&rsquo;s job to check that the challenges have been satisfied.  The CA verifies the signature on the nonce, and it attempts to download the file from the web server and make sure it has the expected content.</p>
 <div class="howitworks-figure">
 <img alt="Requesting authorization to act for example.com"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>If the signature over the nonce is valid, and the challenges check out, then the agent identified by the public key is authorized to do certificate management for <code>example.com</code>.  We call the key pair the agent used an &ldquo;authorized key pair&rdquo; for <code>example.com</code>.</p>
 <h2 id="certificate-issuance-and-revocation">Certificate Issuance and Revocation</h2>
@@ -577,12 +577,12 @@ There are two steps to this process.">
 <p>When the Let&rsquo;s Encrypt CA receives the request, it verifies both signatures.  If everything looks good, it issues a certificate for <code>example.com</code> with the public key from the CSR and returns it to the agent.</p>
 <div class="howitworks-figure">
 <img alt="Requesting a certificate for example.com"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>Revocation works in a similar manner.  The agent signs a revocation request with the key pair authorized for <code>example.com</code>, and the Let&rsquo;s Encrypt CA verifies that the request is authorized.  If so, it publishes revocation information into the normal revocation channels (i.e. OCSP), so that relying parties such as browsers can know that they shouldn&rsquo;t accept the revoked certificate.</p>
 <div class="howitworks-figure">
 <img alt="Requesting revocation of a certificate for example.com"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

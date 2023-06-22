@@ -21,7 +21,7 @@ Please visit [this post] (https://community.letsencrypt.org/t/production-chain-c
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/2020/12/21/extending-android-compatibility.html">
     
@@ -35,7 +35,7 @@ Please visit [this post] (https://community.letsencrypt.org/t/production-chain-c
 <header class="site-header">
   <a id="skiplink" href="#main-content">Skip navigation links</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -177,7 +177,7 @@ Please visit [this post] (https://community.letsencrypt.org/t/production-chain-c
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -318,7 +318,7 @@ Please visit [this post] (https://community.letsencrypt.org/t/production-chain-c
 <p>IdenTrust has agreed to issue a 3-year cross-sign for our ISRG Root X1 from their DST Root CA X3. The new cross-sign will be somewhat novel because it extends beyond the expiration of DST Root CA X3. This solution works because Android intentionally does not enforce the expiration dates of certificates used as trust anchors. ISRG and IdenTrust reached out to our auditors and root programs to review this plan and ensure there weren’t any compliance concerns.</p>
 <p>As such, we will be able to provide subscribers with a chain which contains both ISRG Root X1 and DST Root CA X3, ensuring uninterrupted service to all users and avoiding the potential breakage we have been concerned about.</p>
 <p>We will not be performing our previously-planned chain switch on January 11th, 2021. Instead, we will be switching to provide this new chain by default in late January or early February. The transition should have no impact on Let’s Encrypt subscribers, much like our switch to our R3 intermediate earlier this month.</p>
-<p class="text-center"><img src="/images/2020.12.21-android-compat-cert-chain.png" alt="Let's Encrypt Issuance Chains" width="600"></p>
+<p class="text-center"><img src="images/2020.12.21-android-compat-cert-chain.png" alt="Let's Encrypt Issuance Chains" width="600"></p>
 <p>Some additional technical details follow.</p>
 <p><strong>I’m an ACME client developer, what do I need to do?</strong> If your client handled the X3 to R3 transition smoothly, then you shouldn’t need to take action. Ensure that your client correctly uses the intermediate certificate provided by the ACME API at the end of issuance, and doesn’t retrieve intermediates by other means (e.g. hardcoding them, reusing what is on disk already, or fetching from AIA URLs).</p>
 <p><strong>I’m a Let’s Encrypt subscriber, what do I need to do?</strong> In the vast majority of cases, nothing. If you want to double check, please ensure that your ACME client is up-to-date.</p>

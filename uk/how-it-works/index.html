@@ -26,7 +26,7 @@
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/uk/how-it-works/">
     
@@ -41,7 +41,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">Пропустити навігаційні посилання</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/uk/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/uk/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -175,7 +175,7 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Мови <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Мови <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -387,13 +387,13 @@
 <p>Поряд із перевірками, ЦС Let&rsquo;s Encrypt також надає одноразовий пароль, який агент має підписати своїм приватним ключем, підтверджуючи контроль над парою ключів.</p>
 <div class="howitworks-figure">
 <img alt="Запит перевірок для домену example.com"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>Програмне забезпечення агента виконує одну із запропонованих перевірок.   Скажімо, він може виконати друге завдання зазначене вище, створивши файл на вказаному шляху на сайті <code>http://example.com</code>.  Агент також підписує наданий одноразовий пароль своїми приватними ключами.  Виконавши ці кроки, агент повідомляє ЦС про готовність до завершення перевірки.</p>
 <p>Наступне завдання ЦС – перевірити, чи перевірка пройшла успішно.  ЦС звіряє правильність підпису одноразового пароля, намагаючись завантажити файл з веб-сервера та перевірити, чи містить він очікуваний вміст.</p>
 <div class="howitworks-figure">
 <img alt="Запит авторизації для дій від імені example.com"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>Якщо цей підпис правильний, і усі перевірки здійснені, то агент, ідентифікований відкритим ключем, має право керувати сертифікатами для домена<code>example.com</code>.  Пара ключів (відкритий і приватний), що використовувалася агентом при перевірці прав на домен, називається &ldquo;авторизованою парою ключів&rdquo; для <code>example.com</code>.</p>
 <h2 id="видача-та-відкликання-сертифікатів">Видача та відкликання сертифікатів</h2>
@@ -402,12 +402,12 @@
 <p>Після отримання запиту, ЦС Let&rsquo;s Encrypt перевіряє обидва підписи.  Якщо все добре, ЦС видає сертифікат для <code>example.com</code> з публічним ключем з CSR і повертає його агентові.</p>
 <div class="howitworks-figure">
 <img alt="Запит сертифікату для example.com"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>Процес відкликання сертифікату працює аналогічно.  Агент підписує запит на відкликання за допомогою авторизованої пари ключів для <code>example.com</code> і ЦС Let&rsquo;s Encrypt підтверджує авторизацію запиту.  Якщо автентифікація пройшла успішно, інформація про відкликання публікується у звичайні канали відкликання (тобто OCSP), щоб відповідні сторони, такі як браузери, могли знати, що вони не повинні приймати відкликаний сертифікат.</p>
 <div class="howitworks-figure">
 <img alt="Запит на відкликання сертифікату для example.com"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

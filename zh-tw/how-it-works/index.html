@@ -42,7 +42,7 @@
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/zh-tw/how-it-works/">
     
@@ -57,7 +57,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳過導航連結</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/zh-tw/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -191,7 +191,7 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -403,13 +403,13 @@
 <p>此外，在驗證考驗中，Let&rsquo;s Encrypt 還提供了一個隨機數 (nonce)，要求憑證管理軟體必須用它所產生的私鑰，對隨機數進行簽名，以證明憑證管理軟體擁有這組金鑰對。</p>
 <div class="howitworks-figure">
 <img alt="Requesting challenges to validate example.com"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>讓我們假設，憑證管理軟體想要完成上文所提到的第二個任務。憑證管理軟體會建立一個文件並放在 <code>http://example.com</code> 網站上指定的位置，並使用私鑰對隨機數進行簽名。動作完成後，它會告知 CA 它已經準備好以進行驗證了。</p>
 <p>接著 CA 要驗證伺服器是否通過這個考驗。CA 會檢查隨機數上的簽名，並且下載在放網頁伺服器上的文件，以確認文件內容。</p>
 <div class="howitworks-figure">
 <img alt="替 example.com 請求授權所需要的工作"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>如果對隨機數的簽名驗證通過，則這個考驗就算完成。這表示以公鑰作為識別的憑證管理軟體，有權管理 <code>example.com</code>。通常我們稱這個，由憑證管理軟體所使用，用來進行驗證的公私金鑰對為“授權金鑰對”。</p>
 <h2 id="憑證的頒發和註銷">憑證的頒發和註銷</h2>
@@ -418,12 +418,12 @@
 <p>當 Let&rsquo;s Encrypt 接收到請求後，它會驗證這兩個簽名。如果驗證成功，CA 會使用 CSR 中的公鑰替 <code>example.com</code> 的憑證簽名，再將文件回傳給憑證管理軟體。</p>
 <div class="howitworks-figure">
 <img alt="替 example.com 申請憑證"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>註銷憑證的流程與申請流程類似。憑證管理軟體使用 <code>example.com</code> 的授權金鑰對替註銷請求簽名，接著 Let&rsquo;s Encrypt 會驗證該請求，如果請求通過驗證，它會將註銷訊息發佈到 OCSP (Online Certificate Status Protocol) 伺服器，以便讓瀏覽器等有關程式知道，他們不該信任已被註銷的憑證。</p>
 <div class="howitworks-figure">
 <img alt="註銷 example.com 憑證的流程"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

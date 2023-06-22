@@ -24,7 +24,7 @@
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/vi/how-it-works/">
     
@@ -39,7 +39,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">Bỏ qua các liên kết điều hướng</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/vi/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/vi/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -169,7 +169,7 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Các Ngôn ngữ <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Các Ngôn ngữ <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -381,13 +381,13 @@
 <p>Cùng với những thách thức, Let&rsquo;s Encrypt CA cũng đưa ra quy định bắt buộc rằng agent phải ký bằng cặp khóa riêng của mình để chứng minh rằng họ kiểm soát cặp khóa.</p>
 <div class="howitworks-figure">
 <img alt="Yêu cầu thử thách để xác thực example.com"
-     src="/images/howitworks_challenge.png"/>
+     src="images/howitworks_challenge.png"/>
 </div>
 <p>Phần mềm agent hoàn thành một trong những bộ thử thách được cung cấp.   Giả sử nó có thể hoàn thành nhiệm vụ thứ hai ở trên: nó tạo một tệp với một đường dẫn cụ thể trên trang web <code>http://example.com</code>.  Agent cũng ký nonce được cung cấp bằng khóa riêng của nó.  Khi agent đã hoàn thành các bước này, nó sẽ thông báo cho CA rằng nó đã sẵn sàng để hoàn tất việc xác thực.</p>
 <p>Sau đó, nhiệm vụ của CA là kiểm tra xem các thử thách đã được thỏa mãn chưa.  CA xác minh chữ ký trên nonce và nó cố gắng tải xuống tệp từ máy chủ web và đảm bảo rằng nó có nội dung như mong đợi.</p>
 <div class="howitworks-figure">
 <img alt="Yêu cầu ủy quyền để hành động cho example.com"
-     src="/images/howitworks_authorization.png"/>
+     src="images/howitworks_authorization.png"/>
 </div>
 <p>Nếu chữ ký over the nonce là hợp lệ và các thử thách được kiểm tra, thì agent được xác định bằng khóa công khai được ủy quyền thực hiện quản lý chứng chỉ cho <code>example.com</code>.  Chúng tôi gọi cặp khóa mà agent đã sử dụng là &ldquo;cặp khóa được ủy quyền&rdquo; cho <code>example.com</code>.</p>
 <h2 id="cấp-và-thu-hồi-chứng-chỉ">Cấp và Thu hồi Chứng chỉ</h2>
@@ -396,12 +396,12 @@
 <p>Khi Let&rsquo;s Encrypt CA nhận được yêu cầu, nó sẽ xác minh cả hai chữ ký.  Nếu mọi thứ đều ổn, nó sẽ cấp chứng chỉ cho <code>example.com</code> với khóa công khai từ CSR và trả lại cho đại lý.</p>
 <div class="howitworks-figure">
 <img alt="Yêu cầu một chứng nhận cho example.com"
-     src="/images/howitworks_certificate.png"/>
+     src="images/howitworks_certificate.png"/>
 </div>
 <p>Thu hồi hoạt động theo cách tương tự.  Agent ký yêu cầu thu hồi bằng cặp khóa được ủy quyền cho <code>example.com</code> và Let&rsquo;s Encrypt CA xác minh rằng yêu cầu được ủy quyền.  Nếu vậy, nó xuất bản thông tin thu hồi vào các kênh thu hồi thông thường (tức là OCSP), để các bên phụ thuộc như trình duyệt có thể biết rằng họ không nên chấp nhận chứng chỉ đã thu hồi.</p>
 <div class="howitworks-figure">
 <img alt="Yêu cầu thu hồi một chứng nhận cho example.com"
-     src="/images/howitworks_revocation.png"/>
+     src="images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>
