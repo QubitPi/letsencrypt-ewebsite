@@ -26,7 +26,7 @@ Der er to trin i denne proces. For det første viser agenten til CA at webserver
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/da/how-it-works/">
     
@@ -41,7 +41,7 @@ Der er to trin i denne proces. For det første viser agenten til CA at webserver
 <header class="site-header">
   <a id="skiplink" href="#main-content">Spring navigation links over</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/da/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/da/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -180,7 +180,7 @@ Der er to trin i denne proces. For det første viser agenten til CA at webserver
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Sprog <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Sprog <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -392,13 +392,13 @@ Der er to trin i denne proces. For det første viser agenten til CA at webserver
 <p>Sammen med udfordringerne Let&rsquo;s Encrypt CA giver også en nonce at agenten skal underskrive med sin private nøgle par for at bevise, at det styrer nøglen parret.</p>
 <div class="howitworks-figure">
 <img alt="Requesting challenges to validate example.com"
-     src="images/howitworks_challenge.png"/>
+     src="/images/howitworks_challenge.png"/>
 </div>
 <p>Agent software fuldender en af de leverede sæt af udfordringer.   Lad os antage, at den er i stand til at udføre den anden opgave ovenfor: der oprettes en fil på en bestemt sti på <code>http://example.com</code> webstedet.  Agenten underskriver også den medfølgende nonce med sin private nøgle.  Når agenten har fuldført disse trin, underretter den CA, at den er klar til at fuldføre valideringen.</p>
 <p>Derefter er det CA&rsquo;s opgave at kontrollere, at udfordringerne er blevet imødekommet.  CA verificerer underskriften på nonce, og det forsøger at hente filen fra webserveren og bekræfter at den har det forventede indhold.</p>
 <div class="howitworks-figure">
 <img alt="Requesting authorization to act for example.com"
-     src="images/howitworks_authorization.png"/>
+     src="/images/howitworks_authorization.png"/>
 </div>
 <p>Hvis underskriften over nonce er gyldig, og udfordringerne bekræftes, så tillades den agent, der er identificeret af den offentlige nøgle, at gøre certifikatstyring for eksempel <code>. om</code>.  Vi kalder nøgleparret, agenten brugte et &ldquo;autoriseret nøglepar&rdquo; for <code>example.com</code>.</p>
 <h2 id="certifikat-udstedelse-og-tilbagekaldelse">Certifikat udstedelse og tilbagekaldelse</h2>
@@ -407,12 +407,12 @@ Der er to trin i denne proces. For det første viser agenten til CA at webserver
 <p>Når Let&rsquo;s Encrypt CA modtager anmodningen, verificerer den begge underskrifter.  Hvis alt ser godt ud, udsteder det et certifikat for <code>example.com</code> med den offentlige nøgle fra CSR og returnerer det til agenten.</p>
 <div class="howitworks-figure">
 <img alt="Requesting a certificate for example.com"
-     src="images/howitworks_certificate.png"/>
+     src="/images/howitworks_certificate.png"/>
 </div>
 <p>Tilbagekaldelse virker på en lignende måde.  Agenten underskriver en tilbagekaldelsesanmodning med nøgleparret godkendt for <code>eksempel.com</code>, og Let&rsquo;s Encrypt CA bekræfter, at anmodningen er autoriseret.  I så fald offentliggør den tilbagekaldelsesoplysninger i de normale tilbagekaldelseskanaler (dvs. OCSP), så afhængige parter såsom browsere kan vide, at de ikke bør acceptere det tilbagekaldte certifikat.</p>
 <div class="howitworks-figure">
 <img alt="Requesting revocation of a certificate for example.com"
-     src="images/howitworks_revocation.png"/>
+     src="/images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

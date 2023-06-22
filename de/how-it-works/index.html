@@ -26,7 +26,7 @@ Dieser Prozess umfasst zwei Schritte. Zunächst weist der Agent der Zertifizieru
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/de/how-it-works/">
     
@@ -41,7 +41,7 @@ Dieser Prozess umfasst zwei Schritte. Zunächst weist der Agent der Zertifizieru
 <header class="site-header">
   <a id="skiplink" href="#main-content">Navigation überspringen</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/de/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/de/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -175,7 +175,7 @@ Dieser Prozess umfasst zwei Schritte. Zunächst weist der Agent der Zertifizieru
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Sprachen <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Sprachen <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -387,13 +387,13 @@ Dieser Prozess umfasst zwei Schritte. Zunächst weist der Agent der Zertifizieru
 <p>Neben den Herausforderungen bietet die Let&rsquo;s Encrypt-Zertifizierungsstelle auch eine Nonce, die der Agent mit seinem privaten Schlüsselpaar signieren muss, um zu beweisen, dass er das Schlüsselpaar kontrolliert.</p>
 <div class="howitworks-figure">
 <img alt="Aufforderung zur Validierung von example.com stellen"
-     src="images/howitworks_challenge.png"/>
+     src="/images/howitworks_challenge.png"/>
 </div>
 <p>Die Agentensoftware erfüllt eine der gestellten Herausforderungen.   Nehmen wir an, sie ist in der Lage, die zweite Aufgabe oben auszuführen: Sie erstellt eine Datei in einem angegebenen Pfad auf der Website <code>http://example.com</code>.  Der Agent signiert die bereitgestellte Nonce außerdem mit seinem privaten Schlüssel.  Nachdem der Agent diese Schritte ausgeführt hat, benachrichtigt er die Zertifizierungsstelle, dass sie zur Validierung bereit ist.</p>
 <p>Dann ist es die Aufgabe der Zertifizierungsstelle, zu überprüfen, ob die Aufforderungen erfüllt sind.  Die Zertifizierungsstelle überprüft die Signatur auf der Nonce und versucht, die Datei vom Webserver herunterzuladen und sicherzustellen, dass sie den erwarteten Inhalt hat.</p>
 <div class="howitworks-figure">
 <img alt="Erfordert Autorisierung um für example.com zu agieren"
-     src="images/howitworks_authorization.png"/>
+     src="/images/howitworks_authorization.png"/>
 </div>
 <p>Wenn die Signatur über die Nonce gültig ist und die Herausforderungen ausgecheckt werden, ist der durch den öffentlichen Schlüssel identifizierte Agent berechtigt, die Zertifikatsverwaltung für <code>example.com</code> durchzuführen.  Wir nennen das Schlüsselpaar, dass der Agent ein &ldquo;autorisiertes Schlüsselpaar&rdquo; für <code>example.com</code> verwendet hat.</p>
 <h2 id="zertifikatausstellung-und-widerruf">Zertifikatausstellung und Widerruf</h2>
@@ -402,12 +402,12 @@ Dieser Prozess umfasst zwei Schritte. Zunächst weist der Agent der Zertifizieru
 <p>Wenn die Let&rsquo;s Encrypt-Zertifizierungsstelle die Anforderung erhält, werden beide Signaturen überprüft.  Wenn alles gut aussieht, wird ein Zertifikat für <code>example.com</code> mit dem öffentlichen Schlüssel aus dem CSR ausgestellt und an den Agenten zurückgegeben.</p>
 <div class="howitworks-figure">
 <img alt="Anfordern eines Zertifikats für example.com"
-     src="images/howitworks_certificate.png"/>
+     src="/images/howitworks_certificate.png"/>
 </div>
 <p>Der Widerruf funktioniert auf ähnliche Weise.  Der Agent unterzeichnet eine Sperranforderung mit dem für <code>example.com</code> autorisierten Schlüsselpaar, und die Let&rsquo;s Encrypt-Zertifizierungsstelle überprüft, ob die Anforderung autorisiert ist.  In diesem Fall werden Sperrinformationen in den normalen Sperrkanälen (z.B. OCSP) veröffentlicht, sodass vertrauende Parteien wie Browser wissen können, dass sie das widerrufene Zertifikat nicht akzeptieren sollten.</p>
 <div class="howitworks-figure">
 <img alt="Anfrage zum Widerruf eines Zertifikats für example.com"
-     src="images/howitworks_revocation.png"/>
+     src="/images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

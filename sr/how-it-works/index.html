@@ -26,7 +26,7 @@ Postoje dva koraka u ovom procesu.">
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/sr/how-it-works/">
     
@@ -41,7 +41,7 @@ Postoje dva koraka u ovom procesu.">
 <header class="site-header">
   <a id="skiplink" href="#main-content">Preskoči navigacione linkove</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/sr/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/sr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -171,7 +171,7 @@ Postoje dva koraka u ovom procesu.">
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Jezik <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Jezik <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -383,13 +383,13 @@ Postoje dva koraka u ovom procesu.">
 <p>Uz dostupne načine verifikacije, Let&rsquo;s Encrypt sertifikaciono telo (CA) takođe daje naznaku da agent mora potpisati sa svojim privatnim parom ključeva kako bi dokazao da kontroliše par javnih ključeva.</p>
 <div class="howitworks-figure">
 <img alt="Zahtevanje challenge-a za validaciju example.com"
-     src="images/howitworks_challenge.png"/>
+     src="/images/howitworks_challenge.png"/>
 </div>
 <p>Agentski softver završava verifikaciju jednim od ponuđenih načina.   Recimo da je u stanju izvršiti verifikaciju koristeći drugi naveden način iznad: kreira datoteku na određenoj putanji na web serveru <code>http://example.com</code>.  Agent takodje potpisuje svoj privatni ključ.  Nakon što agent izvrši ove korake, obaveštava sertifikaciono telo (CA) da je spreman za potpunu proveru.</p>
 <p>Nakon toga, posao sertifikacionog tela (CA) jeste da proveri da li su uslovi i verifikacija zadovoljena.  Sertifikaciono telo (CA) proverava potpis bez prijave i pokušava da preuzme prethodno kreiranu datoteku s web servera i uveriti se da ima očekivani sadržaj.</p>
 <div class="howitworks-figure">
 <img alt="Potraživanje dozvole za zastupanje za example.com"
-     src="images/howitworks_authorization.png"/>
+     src="/images/howitworks_authorization.png"/>
 </div>
 <p>Ako je potpis dobar, a verifikacija validna, tada je agent koji je identifikovan javnim ključem ovlašćen za upravljanje sertifikatom za domen <code>example.com</code>.  Ukoliko sve deluje u redu, sertifikaciono telo izdaje sertifikat za  <code>example.com</code> zajedno sa javnim ključem (public key) od CSR-a i dostavlja sertifikat agentu.</p>
 <h2 id="izdavanje-i-poništavanje-sertifikata">Izdavanje i poništavanje sertifikata</h2>
@@ -398,12 +398,12 @@ Postoje dva koraka u ovom procesu.">
 <p>Kada Let&rsquo;s Encrypt sertifikaciono telo (CA) primi zahtev, ono onda verifikuje oba potpisa.  Ukoliko sve deluje u redu, sertifikaciono telo izdaje sertifikat za  <code>example.com</code> zajedno sa javnim ključem (public key) od CSR-a i dostavlja sertifikat agentu.</p>
 <div class="howitworks-figure">
 <img alt="Potraživanje sertifikata za example.com"
-     src="images/howitworks_certificate.png"/>
+     src="/images/howitworks_certificate.png"/>
 </div>
 <p>Poništavanje sertifikata funkcioniše na sličan način.  Agent potpisuje zahtev za poništavanje sertifikata svojim javnim ključem za domen  <code>example.com</code>, gde nakon toga Let&rsquo;s Encrypt sertifikaciono telo (CA) verifikuje da je zahtev legitiman i odobren.  Ukoliko da, onda objavljuje informaciju o poništavanju sertifikata putem standardnih kanala (primer. OCSP), tako da zavisni partneri budu obavešteni o tome kao što su web pretraživači u cilju kako bi znali da više ne tretiraju taj konkretan sertifikat kao validan.</p>
 <div class="howitworks-figure">
 <img alt="Potraživanje poništenja sertifikata za example.com"
-     src="images/howitworks_revocation.png"/>
+     src="/images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

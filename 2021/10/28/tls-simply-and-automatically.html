@@ -19,7 +19,7 @@ OVHcloud first started looking into using Let’s Encrypt certificates because t
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/2021/10/28/tls-simply-and-automatically.html">
     
@@ -33,7 +33,7 @@ OVHcloud first started looking into using Let’s Encrypt certificates because t
 <header class="site-header">
   <a id="skiplink" href="#main-content">Skip navigation links</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -175,7 +175,7 @@ OVHcloud first started looking into using Let’s Encrypt certificates because t
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Languages <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -310,7 +310,7 @@ OVHcloud first started looking into using Let’s Encrypt certificates because t
 		<p>OVHcloud, the largest hosting provider in Europe, has used Let’s Encrypt for TLS certificates since 2016. Since then, they’ve provisioned tens of millions of certificates for their shared hosting customers. We often get asked about how large integrations work and their best practices so this will be the first in a series of blog posts we’ll publish on the topic.</p>
 <p><a href="https://ovhcloud.com/">OVHcloud</a> first started looking into using Let’s Encrypt certificates because the team saw a need for the protection provided by TLS for every customer (remember, way back five years ago, when that wasn’t just a thing everybody did?). “Our goal was to deliver TLS simply. We didn’t want to have to write a tutorial for our customers to upload a cert, but instead just click and it works,” said Guillaume Marchand, OVHcloud’s Technical Team Lead.</p>
 <p>They considered building their own CA but determined the cost and complexity of doing so would be impractical. Instead, they build an ACME client to prepare for using Let’s Encrypt. It took about six months, “we simply followed the RFC and did a bit of reverse engineering of Certbot,” said Guillaume. In addition to a custom client, OVHcloud automated their Certificate Signing Request (CSR) process and certificate installation process.</p>
-<p class="text-center"><img src="images/2021.10.28-OVHcloud-schematic.png" alt="Schematic of how OVHcloud automatically and simply gets Let's Encrypt certificates"></p>
+<p class="text-center"><img src="/images/2021.10.28-OVHcloud-schematic.png" alt="Schematic of how OVHcloud automatically and simply gets Let's Encrypt certificates"></p>
 <p>Getting a TLS certificate is on the critical path to onboarding a shared hosting client, so monitoring is a big part of OVHcloud’s success with Let’s Encrypt. They set up monitoring at every step in the delivery process: requesting the certificate, asking for challenges, waiting for validation, and requesting certificate creation. They also keep an eye on how long it takes to get a certificate (“it’s really fast”). OVHcloud also monitors our <a href="https://letsencrypt.status.io/">status page</a> to stay apprised of our operational status.</p>
 <p>Over 10,000 certificates are issued from Let’s Encrypt to OVHcloud every day. As the company continues to expand into North America, they predict that number will grow. The initial and ongoing work done by the OVHcloud team ensures that TLS will be a simple and reliable aspect of their service.</p>
 <p>OVHcloud is a longtime sponsor of ISRG so we’d like to close by thanking them for not just being great technical collaborators, but also financial supporters.</p>

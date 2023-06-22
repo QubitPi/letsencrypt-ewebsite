@@ -24,7 +24,7 @@ Pour en comprendre le fonctionnement, passons en revue le processus de mise en p
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/fr/how-it-works/">
     
@@ -39,7 +39,7 @@ Pour en comprendre le fonctionnement, passons en revue le processus de mise en p
 <header class="site-header">
   <a id="skiplink" href="#main-content">Passer les liens de navigation</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/fr/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/fr/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -173,7 +173,7 @@ Pour en comprendre le fonctionnement, passons en revue le processus de mise en p
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Langues <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Langues <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -385,13 +385,13 @@ Pour en comprendre le fonctionnement, passons en revue le processus de mise en p
 <p>En plus des challenges, l&rsquo;AC &ldquo;Let&rsquo;s Encrypt&rdquo; fournit également un nonce que l&rsquo;agent doit signer avec sa paire de clés privées pour prouver qu&rsquo;il contrôle la paire de clés.</p>
 <div class="howitworks-figure">
 <img alt="Demander des challenges pour valider example.com"
-     src="images/howitworks_challenge.png"/>
+     src="/images/howitworks_challenge.png"/>
 </div>
 <p>Le logiciel d&rsquo;agent complète l&rsquo;un des challenges fournis.   Supposons qu&rsquo;il soit capable d&rsquo;accomplir la deuxième tâche ci-dessus : il crée un fichier sur un chemin spécifié sur le site <code>http://example.com</code>.  L&rsquo;agent signe également le nonce fourni avec sa clé privée.  Une fois que l&rsquo;agent a terminé ces étapes, il notifie à l&rsquo;AC qu&rsquo;il est prêt à terminer la validation.</p>
 <p>Ensuite, c&rsquo;est le travail de l&rsquo;AC de vérifier que les challenges ont été satisfaits.  L&rsquo;AC vérifie la signature sur le nonce, et elle tente de télécharger le fichier du serveur web et de s&rsquo;assurer qu&rsquo;il a le contenu attendu.</p>
 <div class="howitworks-figure">
 <img alt="Demander l'autorisation pour example.com"
-     src="images/howitworks_authorization.png"/>
+     src="/images/howitworks_authorization.png"/>
 </div>
 <p>Si la signature sur le nonce est valide, et que les challenges sont vérifiés, alors l&rsquo;agent identifié par la clé publique est autorisé à faire la gestion des certificats pour <code>exemple.com</code>.  Nous appelons la paire de clés que l&rsquo;agent a utilisée une &ldquo;paire de clés autorisée&rdquo; pour <code>exemple.com</code>.</p>
 <h2 id="délivrance-et-révocation-des-certificats">Délivrance et révocation des certificats</h2>
@@ -400,12 +400,12 @@ Pour en comprendre le fonctionnement, passons en revue le processus de mise en p
 <p>Lorsque l&rsquo;AC &ldquo;Let&rsquo;s Encrypt&rdquo; reçoit la demande, elle vérifie les deux signatures.  Si tout semble bon, il délivre un certificat pour <code>exemple.com</code> avec la clé publique du CSR et le renvoie à l&rsquo;agent.</p>
 <div class="howitworks-figure">
 <img alt="Demander un certificat par exemple.com"
-     src="images/howitworks_certificate.png"/>
+     src="/images/howitworks_certificate.png"/>
 </div>
 <p>La révocation fonctionne de manière similaire.  L&rsquo;agent signe une demande de révocation avec la paire de clés autorisée pour <code>exemple.com</code>, et l&rsquo;AC Let&rsquo;s Encrypt vérifie que la demande est autorisée.  Si c&rsquo;est le cas, elle publie les informations de révocation dans les canaux de révocation normaux (c&rsquo;est-à-dire OCSP), afin que les parties qui se fient au certificat, comme les navigateurs, puissent savoir qu&rsquo;elles ne doivent pas accepter le certificat révoqué.</p>
 <div class="howitworks-figure">
 <img alt="Demander la révocation d'un certificat pour example.com"
-     src="images/howitworks_revocation.png"/>
+     src="/images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>

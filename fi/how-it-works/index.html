@@ -28,7 +28,7 @@ Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäj�
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
     <link rel="canonical" href="/letsencrypt-ewebsite/fi/how-it-works/">
     
@@ -43,7 +43,7 @@ Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäj�
 <header class="site-header">
   <a id="skiplink" href="#main-content">Ohita navigointilinkit</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/fi/"><img src="images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/fi/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -173,7 +173,7 @@ Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäj�
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Kielet <img src="images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Kielet <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
@@ -385,13 +385,13 @@ Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäj�
 <p>Haasteiden ohella varmentaja Let&rsquo;s Encrypt tarjoaa myös nonce:n, joka agentin on allekirjoitettava yksityisellä avainparillaan todistaakseen, että se hallitsee avainparia.</p>
 <div class="howitworks-figure">
 <img alt="Requesting challenges to validate example.com"
-     src="images/howitworks_challenge.png"/>
+     src="/images/howitworks_challenge.png"/>
 </div>
 <p>Agenttiohjelmisto toteuttaa yhden tarjotuista sarjoista haasteita.   Oletetaan, että se pystyy suorittamaan toisen yllä olevan tehtävän: se luo tiedoston määritettyyn polkuun <code>http://esimerkki.com</code>:lle.  Agentti allekirjoittaa myös toimitetun nonce:n yksityisellä avaimellaan.  Kun agentti on suorittanut nämä vaiheet, se ilmoittaa varmentajalle, että on valmis suorittamaan vahvistuksen.</p>
 <p>Sitten on varmentajan tehtävä tarkistaa, että haasteet on täytetty.  Varmentaja tarkistaa allekirjoituksen nonce:ssa ja yrittää ladata tiedoston verkkopalvelimelta ja varmistaa, että siinä on odotettu sisältö.</p>
 <div class="howitworks-figure">
 <img alt="Requesting authorization to act for example.com"
-     src="images/howitworks_authorization.png"/>
+     src="/images/howitworks_authorization.png"/>
 </div>
 <p>Jos allekirjoitus nonce:n välityksellä on kelvollinen ja haasteet kuitataan, sitten julkisella avaimella tunnistettu agentti on valtuutettu hallitsemaan <code>esimerkki.com</code>:n varmenteita.  Kutsumme agentiin käyttämää avainparia &ldquo;valtuutetuksi avainpariksi&rdquo; <code>esimerkki.com</code>:een.</p>
 <h2 id="varmenteen-myöntäminen-ja-kumoaminen">Varmenteen myöntäminen ja kumoaminen</h2>
@@ -400,12 +400,12 @@ Toimialueen vahvistus Let&amp;rsquo;s Encrypt tunnistaa palvelimen ylläpitäj�
 <p>Kun Let&rsquo;s Encrypt CA vastaanottaa pyynnön, se vahvistaa molemmat allekirjoitukset.  Jos kaikki näyttää hyvältä, se luo varmenteen <code>esimerkiksi.com</code>:lle CSR:n julkisella avaimella ja palauttaa sen agentille.</p>
 <div class="howitworks-figure">
 <img alt="Requesting a certificate for example.com"
-     src="images/howitworks_certificate.png"/>
+     src="/images/howitworks_certificate.png"/>
 </div>
 <p>Kumoaminen toimii samalla tavalla.  Agentti allekirjoittaa peruutuspyynnön avainparilla, joka on valtuutettu toimialueelle <code>esimerkki.com</code>, ja varmentaja Let&rsquo;s Encrypt varmistaa, että pyyntö on valtuutettu.  Jos näin on, se julkaisee kumotustiedot normaaleihin kumotuskanaviin (eli OCSP:hen), jotta siihen luottavat osapuolet, kuten verkkoselaimet, voivat tietää, että niiden ei pitäisi hyväksyä kumottua varmennetta.</p>
 <div class="howitworks-figure">
 <img alt="Requesting revocation of a certificate for example.com"
-     src="images/howitworks_revocation.png"/>
+     src="/images/howitworks_revocation.png"/>
 </div>
 </div>
 </div>
