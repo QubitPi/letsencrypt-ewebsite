@@ -14,17 +14,17 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="术语表">
-    <meta name="twitter:url" content="https://letsencrypt.org/zh-cn/docs/glossary/">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/glossary/">
     <meta name="twitter:description" content="ACME (自动证书管理环境 - Automatic Certificate Management Environment) : 由 Let&amp;rsquo;s Encrypt 实现的协议。 与该协议兼容的软件可以用它与 Let&amp;rsquo;s Encrypt 通信以获取证书。 ACME RFC - 维基百科条目 ACME 客户端 (ACME Client) : 能够与 ACME 服务器通信以获取证书的程序。 ACME 服务器 (ACME Server) : 与 ACME 协议兼容的能生成证书的服务器。 Let&amp;rsquo;s Encrypt 开发的软件 Boulder 与 ACME 协议兼容，但有一些差异。 Boulder : 由 Let&amp;rsquo;s Encrypt开发并使用的实现了 ACME 协议的软件。 GitHub CA 颁发者 (CA Issuers) : AIA 字段的一部分，包含证书颁发者的信息。 它在Web 服务器没有提供受信任的证书链时可能会有用。 CA/浏览器论坛 (CA/Browser Forum) : 由证书颁发机构、互联网浏览器软件的供应商、操作系统和其他使用 PKI 的应用程序组成的志愿团体。 CA/浏览器论坛发布了底线要求。 Let&amp;rsquo;s Encrypt是 CA/浏览器论坛的成员。 维基百科条目 CAA (证书颁发机构授权 - Certificate Authority Authorization) : 指定允许为对应域名颁发证书的 CA的 DNS 记录。 CAA 记录由 CA 而非浏览器检查。 根据底线要求，Let&amp;rsquo;s Encrypt尊重 CAA 记录。 - 维基百科条目 ECDSA (椭圆曲线数字签名算法 - Elliptic Curve Digital Signature Algorithm) : 使用椭圆曲线加密的数字签名算法（DSA）的变体。 维基百科条目。 Let&amp;rsquo;s Encrypt 支持使用 ECDSA 的叶证书（终端实体证书），但没有全部使用 ECDSA 的完整证书链：/upcoming-features Ed25519 : 一种特殊类型的 EdDSA，类似的还有 Ed448。 EdDSA (爱德华兹曲线数字签名算法 - Edwards-curve Digital Signature Algorithm) : 基于椭圆曲线的现代公钥签名系统。它是为了解决一些常见的椭圆曲线加密的实现问题而被设计出来的。 Let&amp;rsquo;s Encrypt 等证书颁发机构暂时还不能提供 EdDSA 证书。 维基百科条目 HTTP公钥固定 (HPKP - HTTP Public Key Pinning) : 要求浏览器在将来加载网页时确保网站的证书链使用特定公钥的安全机制。 Chrome 引入了这项机制来应对 CA 被入侵的情况，但是它会导致网站停止工作，所以 Chrome 又弃用并移除了它。 维基百科条目。 IdenTrust : 证书颁发机构。 IdenTrust 交叉签名了 Let&amp;rsquo;s Encrypt 的中间证书：/certificates。 维基百科条目 Let&amp;#39;s Encrypt (LE) : 由 ISRG 运营的证书颁发机构。 维基百科条目 OCSP (在线证书状态协议 - Online Certificate Status Protocol) : 检查证书的吊销状态的方法。 也就是说，这是一个检查证书颁发机构是否表明证书不再有效（即使还没有到过期日期）的方法。 这种请求可能会造成隐私问题，因为它允许证书颁发机构的互联网服务提供商直接得知谁在在访问哪些网站。 维基百科条目 OCSP 必须装订 (OCSP Must-Staple) : 告知浏览器使用该证书的Web 服务器必须使用 OCSP 装订的证书扩展。 它被用于确保浏览器在每次连接到 Web 服务器时都确认证书的最新吊销状态，以使吊销操作更加可靠。 如果被请求这么做，Let&amp;rsquo;s Encrypt 可以颁发带有“OCSP 必须装订”扩展的证书。 Mozilla 安全博客文章 RFC 7633 OCSP 装订 (OCSP stapling) : Web 服务器向浏览器发送由证书颁发机构签名的 OCSP 回复的方法。 该方法使得浏览器自身不必单独向 CA 发送 OCSP 请求，能够加快网页加载速度并增强安全性。 维基百科条目 Cloudflare PEM 文件（.">
-    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/zh-cn/docs/glossary/">
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/glossary/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -37,7 +37,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -47,7 +47,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -62,7 +62,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -70,11 +70,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -87,7 +87,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -95,11 +95,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -107,7 +107,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -115,7 +115,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -176,107 +176,107 @@
               
               
               <li class="pure-menu-item">
-                <a href="/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="letsencrypt-ewebsite/docs/glossary/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="letsencrypt-ewebsite/da/docs/glossary/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="letsencrypt-ewebsite/de/docs/glossary/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="letsencrypt-ewebsite/es/docs/glossary/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="letsencrypt-ewebsite/fi/docs/glossary/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="letsencrypt-ewebsite/fr/docs/glossary/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="letsencrypt-ewebsite/he/docs/glossary/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="letsencrypt-ewebsite/hu/docs/glossary/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="letsencrypt-ewebsite/id/docs/glossary/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="letsencrypt-ewebsite/it/docs/glossary/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="letsencrypt-ewebsite/ja/docs/glossary/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="letsencrypt-ewebsite/ko/docs/glossary/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="letsencrypt-ewebsite/pt-br/docs/glossary/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="letsencrypt-ewebsite/ru/docs/glossary/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="letsencrypt-ewebsite/si/docs/glossary/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="letsencrypt-ewebsite/sr/docs/glossary/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="letsencrypt-ewebsite/sv/docs/glossary/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="letsencrypt-ewebsite/uk/docs/glossary/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="letsencrypt-ewebsite/vi/docs/glossary/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/glossary/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/glossary/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -295,7 +295,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
 <div class="container">
 	<h1>术语表</h1>
 </div>
@@ -316,7 +316,7 @@
     最后更新：<time datetime="2018-12-30">Dec 30, 2018</time>
 
 
- | <a href="/zh-cn/docs">所有文档</a>
+ | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
 </p>
 
 
@@ -1313,11 +1313,11 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-CAA"><dfn id="def-CAA"><abbr lang="en">CAA</abbr></dfn> (证书颁发机构授权 - <i lang="en">Certificate Authority Authorization</i>)</a>
-	: 指定允许为对应域名颁发证书的 <a href="#def-CA">CA</a>的 DNS 记录。 CAA 记录由 CA 而非浏览器检查。 根据<a href="#def-BRs">底线要求</a>，<a href="#def-LE">Let&rsquo;s Encrypt</a><a href="/zh-cn/docs/caa/" hreflang="zh-Hans-CN">尊重 CAA 记录</a>。 - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">维基百科条目</a>
+	: 指定允许为对应域名颁发证书的 <a href="#def-CA">CA</a>的 DNS 记录。 CAA 记录由 CA 而非浏览器检查。 根据<a href="#def-BRs">底线要求</a>，<a href="#def-LE">Let&rsquo;s Encrypt</a><a href="letsencrypt-ewebsite/zh-cn/docs/caa/" hreflang="zh-Hans-CN">尊重 CAA 记录</a>。 - <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">维基百科条目</a>
 </p>
 <p class="definition">
 	<a href="#def-ECDSA"><dfn id="def-ECDSA"><abbr lang="en">ECDSA</abbr></dfn> (椭圆曲线数字签名算法 - <i lang="en">Elliptic Curve Digital Signature Algorithm</i>)</a>
-	: 使用椭圆曲线加密的数字签名算法（DSA）的变体。  <a href="https://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95">维基百科条目</a>。 <a href="#def-LE">Let&rsquo;s Encrypt</a> 支持使用 ECDSA 的<a href="#def-leaf">叶证书（终端实体证书）</a>，但没有全部使用 ECDSA 的完整<a href="#def-chain">证书链</a>：<a href="/zh-cn/upcoming-features/" hreflang="zh-Hans-CN">/upcoming-features</a>
+	: 使用椭圆曲线加密的数字签名算法（DSA）的变体。  <a href="https://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95">维基百科条目</a>。 <a href="#def-LE">Let&rsquo;s Encrypt</a> 支持使用 ECDSA 的<a href="#def-leaf">叶证书（终端实体证书）</a>，但没有全部使用 ECDSA 的完整<a href="#def-chain">证书链</a>：<a href="letsencrypt-ewebsite/zh-cn/upcoming-features/" hreflang="zh-Hans-CN">/upcoming-features</a>
 </p>
 <p class="definition">
 	<a href="#def-Ed25519"><dfn id="def-Ed25519" lang="en">Ed25519</dfn></a>
@@ -1333,7 +1333,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-IdenTrust"><dfn id="def-IdenTrust" lang="en">IdenTrust</dfn></a>
-	: <a href="#def-CA">证书颁发机构</a>。 IdenTrust <a href="#def-cross-signing">交叉签名</a>了 <a href="#def-LE">Let&rsquo;s Encrypt</a> 的<a href="#def-intermediate">中间证书</a>：<a href="/zh-cn/certificates/" hreflang="zh-Hans-CN">/certificates</a>。  <a href="https://en.wikipedia.org/wiki/IdenTrust">维基百科条目</a>
+	: <a href="#def-CA">证书颁发机构</a>。 IdenTrust <a href="#def-cross-signing">交叉签名</a>了 <a href="#def-LE">Let&rsquo;s Encrypt</a> 的<a href="#def-intermediate">中间证书</a>：<a href="letsencrypt-ewebsite/zh-cn/certificates/" hreflang="zh-Hans-CN">/certificates</a>。  <a href="https://en.wikipedia.org/wiki/IdenTrust">维基百科条目</a>
 </p>
 <p class="definition">
 	<a href="#def-LE"><dfn id="def-LE" lang="en">Let&#39;s Encrypt</dfn> (<abbr lang="en">LE</abbr>)</a>
@@ -1397,7 +1397,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-cross-signing"><dfn id="def-cross-signing">交叉签名</dfn> (<i lang="en">Cross Signing</i>)</a>
-	: 一个用于签发证书的证书可以被多个<a href="#def-root">根证书</a>签名。 例如，<a href="#def-LE">Let&rsquo;s Encrypt</a>的<a href="#def-intermediate">中间证书</a>由 <a href="#def-IdenTrust">IdenTrust</a>交叉签名，因为刚开始时 Let&rsquo;s Encrypt 的根证书还没有被各个<a href="#def-store">证书存储</a>信任。 技术上讲，交叉签名需要两个有着相同<a href="#def-subject">主体</a>和<a href="#def-key-pair">密钥对</a>的证书，它们分别由 Let&rsquo;s Encrypt 和 IdeaTrust 的根证书的私钥签名：<a href="/zh-cn/certificates/" hreflang="zh-Hans-CN">/certificates</a>。 <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">维基百科条目</a>
+	: 一个用于签发证书的证书可以被多个<a href="#def-root">根证书</a>签名。 例如，<a href="#def-LE">Let&rsquo;s Encrypt</a>的<a href="#def-intermediate">中间证书</a>由 <a href="#def-IdenTrust">IdenTrust</a>交叉签名，因为刚开始时 Let&rsquo;s Encrypt 的根证书还没有被各个<a href="#def-store">证书存储</a>信任。 技术上讲，交叉签名需要两个有着相同<a href="#def-subject">主体</a>和<a href="#def-key-pair">密钥对</a>的证书，它们分别由 Let&rsquo;s Encrypt 和 IdeaTrust 的根证书的私钥签名：<a href="letsencrypt-ewebsite/zh-cn/certificates/" hreflang="zh-Hans-CN">/certificates</a>。 <a href="https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification">维基百科条目</a>
 </p>
 <p class="definition">
 	<a href="#def-relying-party"><dfn id="def-relying-party">信任方</dfn> (<i lang="en">Relying Party</i>)</a>
@@ -1405,7 +1405,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-PSL"><dfn id="def-PSL">公共后缀列表</dfn> (<abbr lang="en">PSL</abbr> - <i lang="en">Public Suffix List</i>)</a>
-	: 由 Mozilla 维护的公共后缀的列表，它包含了那些可供大量实体注册的互联网域名。 例如，这个列表同时包含了 <code>com</code>和 <code>co.uk</code>，尽管 <code>co.uk</code> 不是 TLD。 网页浏览器使用这个列表和其他一些方法来防止可能是不同实体运营的网站互相共享 Cookies。 <a href="#def-LE">Let&rsquo;s Encrypt</a> 也使用这个列表来计算速率限制：<a href="/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">/rate-limits</a>。  <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+	: 由 Mozilla 维护的公共后缀的列表，它包含了那些可供大量实体注册的互联网域名。 例如，这个列表同时包含了 <code>com</code>和 <code>co.uk</code>，尽管 <code>co.uk</code> 不是 TLD。 网页浏览器使用这个列表和其他一些方法来防止可能是不同实体运营的网站互相共享 Cookies。 <a href="#def-LE">Let&rsquo;s Encrypt</a> 也使用这个列表来计算速率限制：<a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">/rate-limits</a>。  <a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
 </p>
 <p class="definition">
 	<a href="#def-critical"><dfn id="def-critical">关键扩展</dfn> (<i lang="en">Critical extension</i>)</a>
@@ -1421,7 +1421,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-revocation"><dfn id="def-revocation">吊销</dfn> (<i lang="en">Revocation</i>)</a>
-	: 证书在其到期之前一直有效，除非 <a href="#def-CA">CA</a> 声明它被吊销了。 证书可能因包括私钥泄露在内的多种原因被吊销。 浏览器可以通过 <a href="#def-CRL">CRL</a>、<a href="#def-OCSP">OCSP</a> 或像 <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> 和 <a href="https://dev.chromium.org/Home/chromium-security/crlsets">CRLSets</a> 一类的较新的方法来检查证书是否被吊销。 注意在许多情况下，<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">吊销证书是没有用的</a>。 <a href="/zh-cn/docs/revoking/" hreflang="zh-Hans-CN">/docs/revoking</a>
+	: 证书在其到期之前一直有效，除非 <a href="#def-CA">CA</a> 声明它被吊销了。 证书可能因包括私钥泄露在内的多种原因被吊销。 浏览器可以通过 <a href="#def-CRL">CRL</a>、<a href="#def-OCSP">OCSP</a> 或像 <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/">OneCRL</a> 和 <a href="https://dev.chromium.org/Home/chromium-security/crlsets">CRLSets</a> 一类的较新的方法来检查证书是否被吊销。 注意在许多情况下，<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">吊销证书是没有用的</a>。 <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" hreflang="zh-Hans-CN">/docs/revoking</a>
 </p>
 <p class="definition">
 	<a href="#def-IDN"><dfn id="def-IDN">国际化域名</dfn> (<abbr lang="en">IDN</abbr> - <i lang="en">Internationalized Domain Name</i>)</a>
@@ -1433,7 +1433,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-DV"><dfn id="def-DV">域名验证型证书</dfn> (<i lang="en">Domain-validated certificate</i>)</a>
-	: 申请者仅证明了其对域名（而非申请的组织）的控制权的<a href="#def-leaf">证书</a>。 <a href="#def-LE">Let&rsquo;s Encrypt</a>仅提供 DV 证书，不提供 <a href="#def-OV">OV</a>或 <a href="#def-EV">EV</a>证书：<a href="/zh-cn/docs/faq/" hreflang="zh-Hans-CN">常见问题</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">维基百科条目</a>
+	: 申请者仅证明了其对域名（而非申请的组织）的控制权的<a href="#def-leaf">证书</a>。 <a href="#def-LE">Let&rsquo;s Encrypt</a>仅提供 DV 证书，不提供 <a href="#def-OV">OV</a>或 <a href="#def-EV">EV</a>证书：<a href="letsencrypt-ewebsite/zh-cn/docs/faq/" hreflang="zh-Hans-CN">常见问题</a> - <a href="https://en.wikipedia.org/wiki/Domain-validated_certificate">维基百科条目</a>
 </p>
 <p class="definition">
 	<a href="#def-DANE"><dfn id="def-DANE">基于 DNS 的实体认证</dfn> (<abbr lang="en">DANE</abbr> - <i lang="en">DNS-based Authentication of Named Entities</i>)</a>
@@ -1481,7 +1481,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-staging"><dfn id="def-staging">测试</dfn> (<i lang="en">Staging</i>)</a>
-	: <a href="#def-LE">Let&rsquo;s Encrypt</a> 提供了用于在不会影响速率限制的前提下测试证书请求的测试 API。 由测试环境生成的证书是<em>不</em> 被信任的。 测试环境应仅用于测试、调试和 ACME 客户端开发的目的。 <a href="/zh-cn/docs/staging-environment/" hreflang="zh-Hans-CN">/docs/staging-environment</a>
+	: <a href="#def-LE">Let&rsquo;s Encrypt</a> 提供了用于在不会影响速率限制的前提下测试证书请求的测试 API。 由测试环境生成的证书是<em>不</em> 被信任的。 测试环境应仅用于测试、调试和 ACME 客户端开发的目的。 <a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" hreflang="zh-Hans-CN">/docs/staging-environment</a>
 </p>
 <p class="definition">
 	<a href="#def-mixed-content"><dfn id="def-mixed-content">混合内容</dfn> (<i lang="en">Mixed content</i>)</a>
@@ -1533,11 +1533,11 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-store"><dfn id="def-store">证书存储</dfn> (<i lang="en">Certificate Store</i>)</a>
-	: 证书存储包含有受信任的<a href="#def-root">根证书</a>的列表。 操作系统（如 Windows、Android、Debian）和<a href="#def-web-browser">网页浏览器</a>（如 Firefox）都维护有证书存储。 没有证书存储的浏览器依赖于操作系统的证书存储。 <a href="#def-LE">Let&rsquo;s Encrypt</a>提供的<a href="#def-leaf">证书</a><a href="/zh-cn/certificates/" hreflang="zh-Hans-CN">被大多数证书存储信任</a>。
+	: 证书存储包含有受信任的<a href="#def-root">根证书</a>的列表。 操作系统（如 Windows、Android、Debian）和<a href="#def-web-browser">网页浏览器</a>（如 Firefox）都维护有证书存储。 没有证书存储的浏览器依赖于操作系统的证书存储。 <a href="#def-LE">Let&rsquo;s Encrypt</a>提供的<a href="#def-leaf">证书</a><a href="letsencrypt-ewebsite/zh-cn/certificates/" hreflang="zh-Hans-CN">被大多数证书存储信任</a>。
 </p>
 <p class="definition">
 	<a href="#def-CPS"><dfn id="def-CPS">证书实践声明</dfn> (<abbr lang="en">CPS</abbr> - <i lang="en">Certification Practice Statement</i>)</a>
-	: 证书颁发机构对证书进行颁发、管理、吊销、续期、更换密钥时所采用的实践的声明。 <a href="/zh-cn/repository/#isrg-certification-practice-statement" hreflang="zh-Hans-CN">ISRG 证书实践声明</a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 3.4 节</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">维基百科条目</a>
+	: 证书颁发机构对证书进行颁发、管理、吊销、续期、更换密钥时所采用的实践的声明。 <a href="letsencrypt-ewebsite/zh-cn/repository/#isrg-certification-practice-statement" hreflang="zh-Hans-CN">ISRG 证书实践声明</a> - <a href="https://tools.ietf.org/html/rfc3647#section-3.4">RFC 3647 3.4 节</a> <a href="https://en.wikipedia.org/wiki/Certification_Practice_Statement">维基百科条目</a>
 </p>
 <p class="definition">
 	<a href="#def-extension"><dfn id="def-extension">证书扩展</dfn> (<i lang="en">Certificate extension</i>)</a>
@@ -1545,7 +1545,7 @@ Note for translators:
 </p>
 <p class="definition">
 	<a href="#def-CP"><dfn id="def-CP">证书政策</dfn> (<abbr lang="en">CP</abbr> - <i lang="en">Certificate Policy</i>)</a>
-	: 一组指明证书对于一个特定的有着共同安全要求的社区和/或应用类型的适用性的规则 体颁发过程的细节由 <a href="#def-CPS">CPS</a> 描述。 <a href="/zh-cn/repository/#isrg-certificate-policy" hreflang="zh-Hans-CN">ISRG 证书政策</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">维基百科条目</a>
+	: 一组指明证书对于一个特定的有着共同安全要求的社区和/或应用类型的适用性的规则 体颁发过程的细节由 <a href="#def-CPS">CPS</a> 描述。 <a href="letsencrypt-ewebsite/zh-cn/repository/#isrg-certificate-policy" hreflang="zh-Hans-CN">ISRG 证书政策</a> - <a href="https://tools.ietf.org/html/rfc3647">RFC 3647</a> - <a href="https://en.wikipedia.org/wiki/Certificate_policy">维基百科条目</a>
 </p>
 <p class="definition">
 	<a href="#def-CSR"><dfn id="def-CSR">证书签名请求</dfn> (<abbr lang="en">CSR</abbr> - <i lang="en">Certificate Signing Request</i>)</a>
@@ -1668,7 +1668,7 @@ Note for translators:
 
 
 
-<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

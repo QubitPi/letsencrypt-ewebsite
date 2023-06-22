@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="入門">
-    <meta name="twitter:url" content="https://letsencrypt.org/zh-tw/getting-started/">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-tw/getting-started/">
     <meta name="twitter:description" content="為了在你的網站上設定 HTTPS，你需要從憑證頒發機構 (Certificate Authority, CA) 獲取憑證，而 Let&amp;rsquo;s Encrypt 就是一個憑證頒發機構。要從 Let&amp;rsquo;s Encrypt 上獲得屬於你網站的憑證，你必須證明你對域名的控制權。你可以在你的主機上運行使用 ACME 協議的軟體，來獲取 Let&amp;rsquo;s Encrypt 的憑證
 為了找出最適合你的方式來獲取憑證，你需要知道你是否擁有伺服器的遠端帳號權限（shell access 或稱 SSH access）。如果你完全使用圖形化介面管理你的帳戶，例如 cPanel、 Plesk 或 WordPress，你很有可能不具有遠端帳號的權限，建議你先向服務提供業者做確認。
 擁有遠端帳號權限 我們建議大多數具有遠端帳號權限的使用者，採用 Certbot 這個 ACME 客戶端。它可以自動執行憑證的頒發、安裝，甚至不需要停止你的伺服器；Certbot 也提供專家模式，給不想要自動設定的使用者。Certbot 操作簡單，適用於許多系統；並且具有完善的文檔。參考 Certbot 官網，以獲取對於不同系統和網頁伺服器的操作說明。
@@ -32,15 +32,15 @@
 查看支援 Let&amp;rsquo;s Encrypt 的業者列表，確認你提供商的是否有出現在列表上。如果有的話，請按照他們的文檔設定 Let&amp;rsquo;s Encrypt 憑證。
 如果你的服務商不支援 Let&amp;rsquo;s Encrypt，你可以與他們聯絡尋求幫助。我們會盡力使添加 Let&amp;rsquo;s Encrypt 變得非常簡單，業者通常很樂意聽取客戶的建議！
 如果你的服務商不想整合 Let&amp;rsquo;s Encrypt，但支援上傳自訂的憑證，你可以在你的電腦中安裝 Certbot 並使用手動模式 (Manual Mode)。在手動模式下，你需要將特定文件上傳到你的網頁伺服器上以證明你的控制權。確認網頁伺服器上的文件相符後，Certbot 將會取得憑證，讓你可以上傳給他們。我們不建議使用這個模式，因為它非常耗時，並且你需要在憑證過期時重複此步驟（註：憑證有效期限為三個月，因此每年至少要重複 4 次）。對於大多數人來說，最好向業者尋求 Let&amp;rsquo;s Encrypt 支援；如果他們不打算整合，建議你更換一家。">
-    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/zh-tw/getting-started/">
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-tw/getting-started/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
     
@@ -53,7 +53,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳過導航連結</a>
   <div class="wrapper">
-    <a class="site-title" href="/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -63,7 +63,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            <a href="letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
             
           </li>
           
@@ -78,7 +78,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+                <a href="letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
               </li>
               
               <li class="pure-menu-item">
@@ -86,11 +86,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+                <a href="letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -103,7 +103,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -111,11 +111,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -123,7 +123,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+                <a href="letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
               </li>
               
               <li class="pure-menu-item">
@@ -131,7 +131,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+                <a href="letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
               </li>
               
             </ul>
@@ -192,107 +192,107 @@
               
               
               <li class="pure-menu-item">
-                <a href="/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="letsencrypt-ewebsite/getting-started/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="letsencrypt-ewebsite/da/getting-started/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="letsencrypt-ewebsite/de/getting-started/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="letsencrypt-ewebsite/es/getting-started/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="letsencrypt-ewebsite/fi/getting-started/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="letsencrypt-ewebsite/fr/getting-started/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="letsencrypt-ewebsite/he/getting-started/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="letsencrypt-ewebsite/hu/getting-started/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="letsencrypt-ewebsite/id/getting-started/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="letsencrypt-ewebsite/it/getting-started/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="letsencrypt-ewebsite/ja/getting-started/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="letsencrypt-ewebsite/ko/getting-started/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="letsencrypt-ewebsite/pt-br/getting-started/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="letsencrypt-ewebsite/ru/getting-started/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="letsencrypt-ewebsite/si/getting-started/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="letsencrypt-ewebsite/sr/getting-started/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="letsencrypt-ewebsite/sv/getting-started/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="letsencrypt-ewebsite/uk/getting-started/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="letsencrypt-ewebsite/vi/getting-started/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="letsencrypt-ewebsite/zh-cn/getting-started/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+                <a href="letsencrypt-ewebsite/zh-tw/getting-started/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
               </li>
               
             </ul>
@@ -311,7 +311,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/images/3.jpg');">
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/3.jpg');">
 <div class="container">
 	<h1>入門</h1>
 </div>
@@ -347,7 +347,7 @@
                 <i>
                     請注意：英文版本（原版）在本翻譯後有改動
                     (<time datetime="2020-02-11">Feb 11, 2020</time>)
-                    <a href="/getting-started/">查看英文版本</a>
+                    <a href="letsencrypt-ewebsite/getting-started/">查看英文版本</a>
                 </i>
             </p>
             
@@ -398,8 +398,8 @@
 <p>為了找出最適合你的方式來獲取憑證，你需要知道你是否擁有伺服器的<a href="https://en.wikipedia.org/wiki/Shell_account">遠端帳號權限</a>（shell access 或稱 SSH access）。如果你完全使用圖形化介面管理你的帳戶，例如 <a href="https://cpanel.com/">cPanel</a>、 <a href="https://www.plesk.com/">Plesk</a> 或 <a href="https://wordpress.org/">WordPress</a>，你很有可能不具有遠端帳號的權限，建議你先向服務提供業者做確認。</p>
 <h1 id="擁有遠端帳號權限">擁有遠端帳號權限</h1>
 <p>我們建議大多數具有遠端帳號權限的使用者，採用 <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> 這個 ACME 客戶端。它可以自動執行憑證的頒發、安裝，甚至不需要停止你的伺服器；Certbot 也提供專家模式，給不想要自動設定的使用者。Certbot 操作簡單，適用於許多系統；並且具有完善的文檔。<a href="https://certbot.eff.org/" title="Certbot">參考 Certbot 官網</a>，以獲取對於不同系統和網頁伺服器的操作說明。</p>
-<p>如果 <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> 不能滿足你的需求，或是你想嘗試別的客戶端，還有<a href="/zh-tw/docs/client-options/" hreflang="zh-Hant-TW">很多 ACME 用戶端</a>可供選擇。在你選定 ACME 客戶端軟體後，請參閱該客戶端的文檔。</p>
-<p>如果你正在嘗試使用不同的 ACME 用戶端，請使用我們的<a href="/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>以免超過<a href="/zh-tw/docs/rate-limits/" hreflang="zh-Hant-TW">憑證頒發與更新的速率限制</a>。</p>
+<p>如果 <a href="https://certbot.eff.org/" title="Certbot">Certbot</a> 不能滿足你的需求，或是你想嘗試別的客戶端，還有<a href="letsencrypt-ewebsite/zh-tw/docs/client-options/" hreflang="zh-Hant-TW">很多 ACME 用戶端</a>可供選擇。在你選定 ACME 客戶端軟體後，請參閱該客戶端的文檔。</p>
+<p>如果你正在嘗試使用不同的 ACME 用戶端，請使用我們的<a href="letsencrypt-ewebsite/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>以免超過<a href="letsencrypt-ewebsite/zh-tw/docs/rate-limits/" hreflang="zh-Hant-TW">憑證頒發與更新的速率限制</a>。</p>
 <h1 id="沒有遠端帳號權限">沒有遠端帳號權限</h1>
 <p>在沒有遠端帳號權限的情況下，最好的辦法是使用服務業者所提供的現有支援。如果你的業者支援 Let&rsquo;s Encrypt，那麼他們就能幫助你申請免費憑證；安裝並設定自動更新。某些業者會需要你在控制介面或聯繫客服以開啟 Let&rsquo;s Encrypt 服務。也有些業者會為所有客戶自動設定並安裝憑證。</p>
 <p>查看<a href="https://community.letsencrypt.org/t/web-hosting-who-support-lets-encrypt/6920">支援 Let&rsquo;s Encrypt 的業者列表</a>，確認你提供商的是否有出現在列表上。如果有的話，請按照他們的文檔設定 Let&rsquo;s Encrypt 憑證。</p>
@@ -414,7 +414,7 @@
   <div class="wrapper text-center">
     <h2>支持更安全，更尊重私隱的網際網路.</h2>
     <div class="buttons">
-      <a class="accent" href="/zh-tw/donate/">捐贈</a>
+      <a class="accent" href="/letsencrypt-ewebsite/zh-tw/donate/">捐贈</a>
     </div>
   </div>
 </div>
@@ -495,7 +495,7 @@
 
 
 
-<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

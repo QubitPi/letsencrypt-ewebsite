@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://letsencrypt.org/sitemap.xml
+Sitemap: letsencrypt-ewebsite/sitemap.xml

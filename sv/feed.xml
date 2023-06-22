@@ -1,14 +1,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt - Gratis SSL/TLS-certifikat</title>
-    <link>https://letsencrypt.org/sv/</link>
+    <link>letsencrypt-ewebsite/sv/</link>
     <description>  Let&#39;s Encrypt är en gratis, automatiserad och öppen certifikatutgivare
   skapad av icke-vinstdrivande &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt;Internet Security Research Group (ISRG)&lt;/a&gt;.
 </description>
     <language>sv</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="https://letsencrypt.org/sv/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="letsencrypt-ewebsite/sv/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>

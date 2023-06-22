@@ -21,7 +21,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="註銷憑證">
-    <meta name="twitter:url" content="https://letsencrypt.org/zh-tw/docs/revoking/">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-tw/docs/revoking/">
     <meta name="twitter:description" content="當憑證相對應的私鑰不再安全時，你應該註銷憑證。 這個情況可能由很多原因造成， 例如：你不小心將私鑰公開在網路上；駭客可能進入了你的伺服器並複製私鑰；駭客可能暫時控制了你的伺服器或 DNS 設定，並頒發且驗證了他們擁有私鑰的憑證。
 當你註銷 Let&amp;rsquo;s Encrypt 憑證，Let&amp;rsquo;s Encrypt 透過 Online Certificate Status Protocol (OCSP) 發布註銷憑證的訊息，有些瀏覽器會檢查 OCSP 來確定是否該信任這張憑證。 請注意，OCSP 有一些根本上的問題，因此不是所有瀏覽器都會檢查它。 將洩漏私鑰的憑證註銷非常重要，並且在 Let&amp;rsquo;s Encrypt 的使用者協議中要求使用者執行。
 你需要使用 ACME API 來註銷憑證，通常使用者會使用 ACME 客戶端，例如：Certbot。 你必須向 Let&amp;rsquo;s Encrypt 證明你有權限註銷憑證， 我們有三種方法讓你註銷憑證：
@@ -30,15 +30,15 @@ certbot revoke --cert-path /etc/letsencrypt/archive/${YOUR_DOMAIN}/cert1.pem --r
 如果你想使用這個方法註銷憑證，你需要先下載你想註銷的憑證， Let&amp;rsquo;s Encrypt 將所有的憑證透過憑證透明度紀錄下來，因此你可以從監控網站；例如：crt.sh 中找到憑證並下載它。
 此外，你還需要 PEM 格式的私鑰。 當你有了這些文件後，你可以 Certbot 指令來註銷憑證：
 certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reason keycompromise 使用其他帳號註銷憑證 如果有人入侵你的主機或 DNS，並頒發了憑證，當你取回控制權後，你想要註銷它所頒發的憑證憑證。 Let&amp;rsquo;s Encrypt 必須驗證你擁有憑證中網域的控制權（不然人們可以在未經許可的狀況下註銷別人的憑證）！ Let&amp;rsquo;s Encrypt 使用和頒發憑證時相同的方法來驗證網域控制權：你可以加入一個 DNS TXT 紀錄、放一個檔案在 HTTP 伺服器上 或提供一個特殊的 TLS 憑證。 通常 ACME 客戶端會幫你完成這些工作。 需要注意的是，大多數 ACME 客戶端會同時完成驗證和頒發憑證，因此你僅能透過頒發新憑證來完成驗證。 如果你不想要一張新的憑證，你可以在頒發後註銷它，或是直接將私鑰刪除。 如果你想要完全避免頒發一張新的憑證，你可以在申請頒發時加入一個不存在的網域名稱，這會導致憑證頒發失敗，但是還是能驗證其他存在網域名稱的控制權。 如果你想要這麼做，你可以透過 Certbot 指令：">
-    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/zh-tw/docs/revoking/">
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-tw/docs/revoking/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
     
@@ -51,7 +51,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳過導航連結</a>
   <div class="wrapper">
-    <a class="site-title" href="/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -61,7 +61,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            <a href="letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
             
           </li>
           
@@ -76,7 +76,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+                <a href="letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
               </li>
               
               <li class="pure-menu-item">
@@ -84,11 +84,11 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+                <a href="letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -101,7 +101,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -109,11 +109,11 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+                <a href="letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
               </li>
               
               <li class="pure-menu-item">
@@ -129,7 +129,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+                <a href="letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
               </li>
               
             </ul>
@@ -190,107 +190,107 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
               
               
               <li class="pure-menu-item">
-                <a href="/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="letsencrypt-ewebsite/docs/revoking/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="letsencrypt-ewebsite/da/docs/revoking/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="letsencrypt-ewebsite/de/docs/revoking/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="letsencrypt-ewebsite/es/docs/revoking/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="letsencrypt-ewebsite/fi/docs/revoking/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="letsencrypt-ewebsite/fr/docs/revoking/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="letsencrypt-ewebsite/he/docs/revoking/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="letsencrypt-ewebsite/hu/docs/revoking/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="letsencrypt-ewebsite/id/docs/revoking/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="letsencrypt-ewebsite/it/docs/revoking/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="letsencrypt-ewebsite/ja/docs/revoking/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="letsencrypt-ewebsite/ko/docs/revoking/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="letsencrypt-ewebsite/pt-br/docs/revoking/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="letsencrypt-ewebsite/ru/docs/revoking/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="letsencrypt-ewebsite/si/docs/revoking/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="letsencrypt-ewebsite/sr/docs/revoking/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="letsencrypt-ewebsite/sv/docs/revoking/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="letsencrypt-ewebsite/uk/docs/revoking/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="letsencrypt-ewebsite/vi/docs/revoking/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/revoking/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/revoking/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
               </li>
               
             </ul>
@@ -309,7 +309,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
 
 		
 
-<div class="hero slim" style="background-image: url('/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
 <div class="container">
 	<h1>註銷憑證</h1>
 </div>
@@ -330,7 +330,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
     最後更新於<time datetime="2021-08-03">Aug 3, 2021</time>
 
 
- | <a href="/zh-tw/docs">查看所有文件</a>
+ | <a href="/letsencrypt-ewebsite/zh-tw/docs">查看所有文件</a>
 </p>
 
 
@@ -345,7 +345,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
                 <i>
                     請注意：英文版本（原版）在本翻譯後有改動
                     (<time datetime="2021-10-15">Oct 15, 2021</time>)
-                    <a href="/docs/revoking/">查看英文版本</a>
+                    <a href="letsencrypt-ewebsite/docs/revoking/">查看英文版本</a>
                 </i>
             </p>
             
@@ -393,7 +393,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
 
 
 <p>當憑證相對應的私鑰不再安全時，你應該註銷憑證。 這個情況可能由很多原因造成， 例如：你不小心將私鑰公開在網路上；駭客可能進入了你的伺服器並複製私鑰；駭客可能暫時控制了你的伺服器或 DNS 設定，並頒發且驗證了他們擁有私鑰的憑證。</p>
-<p>當你註銷 Let&rsquo;s Encrypt 憑證，Let&rsquo;s Encrypt 透過 <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a> 發布註銷憑證的訊息，有些瀏覽器會檢查 OCSP 來確定是否該信任這張憑證。 請注意，OCSP 有一些<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">根本上的問題</a>，因此不是所有瀏覽器都會檢查它。 將洩漏私鑰的憑證註銷非常重要，並且在 Let&rsquo;s Encrypt 的<a href="/zh-tw/repository/" hreflang="zh-Hant-TW">使用者協議</a>中要求使用者執行。</p>
+<p>當你註銷 Let&rsquo;s Encrypt 憑證，Let&rsquo;s Encrypt 透過 <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">Online Certificate Status Protocol (OCSP)</a> 發布註銷憑證的訊息，有些瀏覽器會檢查 OCSP 來確定是否該信任這張憑證。 請注意，OCSP 有一些<a href="https://www.imperialviolet.org/2011/03/18/revocation.html">根本上的問題</a>，因此不是所有瀏覽器都會檢查它。 將洩漏私鑰的憑證註銷非常重要，並且在 Let&rsquo;s Encrypt 的<a href="letsencrypt-ewebsite/zh-tw/repository/" hreflang="zh-Hant-TW">使用者協議</a>中要求使用者執行。</p>
 <p>你需要使用 <a href="https://github.com/letsencrypt/boulder/blob/master/docs/acme-divergences.md">ACME API</a> 來註銷憑證，通常使用者會使用 ACME 客戶端，例如：<a href="https://certbot.eff.org/">Certbot</a>。 你必須向 Let&rsquo;s Encrypt 證明你有權限註銷憑證， 我們有三種方法讓你註銷憑證：</p>
 <h1 id="使用申請頒發憑證的帳號註銷憑證">使用申請頒發憑證的帳號註銷憑證</h1>
 <p>如果你擁有當初申請頒發憑證帳號的控制權，你可以透過你帳號的認證資訊， Certbot 預設使用這種方式註銷憑證， 註銷指令為：</p>
@@ -488,7 +488,7 @@ certbot revoke --cert-path /PATH/TO/cert.pem --key-path /PATH/TO/key.pem --reaso
 
 
 
-<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

@@ -20,7 +20,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="ACME 客户端">
-    <meta name="twitter:url" content="https://letsencrypt.org/zh-cn/docs/client-options/">
+    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/client-options/">
     <meta name="twitter:description" content="最后更新：Jun 29, 2022 | 所有文档 Let&amp;rsquo;s Encrypt 使用 ACME 协议来验证您对给定域名的控制权并向您颁发证书。 要获得 Let&amp;rsquo;s Encrypt 证书，您需要选择一个要使用的 ACME 客户端软件。
 下列 ACME 客户端由第三方提供。 Let&amp;rsquo;s Encrypt 不控制或审查第三方客户端，也不能保证其安全性或可靠性。
 您也可以使用某些浏览器（网页版）ACME 客户端，但我们不会在此列出这些客户端，因为它们会鼓励您手动进行续期，从而导致用户体验不佳并增加错过续期的风险。
@@ -28,15 +28,15 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
 如果 Certbot 不能满足您的需求，或者您只是想尝试其他软件，那么下面有更多的客户端可供选择，这些客户端按照编写所用的语言或是使用环境排序。
 其他客户端 此列表上的所有客户端都支持ACMEv2 API (RFC 8555)。 我们将很快淘汰ACMEv1 API。 如果您使用的客户端在该列表中，请确保您将其升级到最新版本。 如果下面没有列出您正在使用的客户端，则该客户端有几率不支持ACMEv2 API，请与项目维护者联系或更换其他客户端。
 Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Compatible to bash, dash and sh)   dehydrated (Compatible to bash and zsh)   ght-acme.">
-    <meta name="twitter:image:src" content="https://letsencrypt.org/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://letsencrypt.org/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/zh-cn/docs/client-options/">
+    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/client-options/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -49,7 +49,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -59,7 +59,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -74,7 +74,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -82,11 +82,11 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -99,7 +99,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -107,11 +107,11 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -119,7 +119,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -127,7 +127,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
               </li>
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -188,107 +188,107 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
               
               
               <li class="pure-menu-item">
-                <a href="/docs/client-options/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="letsencrypt-ewebsite/docs/client-options/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/da/docs/client-options/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="letsencrypt-ewebsite/da/docs/client-options/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/de/docs/client-options/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="letsencrypt-ewebsite/de/docs/client-options/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/es/docs/client-options/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="letsencrypt-ewebsite/es/docs/client-options/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fi/docs/client-options/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="letsencrypt-ewebsite/fi/docs/client-options/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/fr/docs/client-options/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="letsencrypt-ewebsite/fr/docs/client-options/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/he/docs/client-options/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="letsencrypt-ewebsite/he/docs/client-options/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/hu/docs/client-options/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="letsencrypt-ewebsite/hu/docs/client-options/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/id/docs/client-options/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="letsencrypt-ewebsite/id/docs/client-options/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/it/docs/client-options/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="letsencrypt-ewebsite/it/docs/client-options/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ja/docs/client-options/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="letsencrypt-ewebsite/ja/docs/client-options/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ko/docs/client-options/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="letsencrypt-ewebsite/ko/docs/client-options/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/pt-br/docs/client-options/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="letsencrypt-ewebsite/pt-br/docs/client-options/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/ru/docs/client-options/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="letsencrypt-ewebsite/ru/docs/client-options/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/si/docs/client-options/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="letsencrypt-ewebsite/si/docs/client-options/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sr/docs/client-options/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="letsencrypt-ewebsite/sr/docs/client-options/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/sv/docs/client-options/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="letsencrypt-ewebsite/sv/docs/client-options/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/uk/docs/client-options/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="letsencrypt-ewebsite/uk/docs/client-options/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/vi/docs/client-options/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="letsencrypt-ewebsite/vi/docs/client-options/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-cn/docs/client-options/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="letsencrypt-ewebsite/zh-cn/docs/client-options/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/zh-tw/docs/client-options/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="letsencrypt-ewebsite/zh-tw/docs/client-options/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -307,7 +307,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
 
 		
 
-<div class="hero slim" style="background-image: url('/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
 <div class="container">
 	<h1>ACME 客户端</h1>
 </div>
@@ -324,7 +324,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
 <p>
     
     最后更新：<time datetime="2022-06-29">Jun 29, 2022</time>
-     | <a href="/zh-cn/docs">所有文档</a>
+     | <a href="/letsencrypt-ewebsite/zh-cn/docs">所有文档</a>
 </p>
 
 <p>Let&rsquo;s Encrypt 使用 ACME 协议来验证您对给定域名的控制权并向您颁发证书。 要获得 Let&rsquo;s Encrypt 证书，您需要选择一个要使用的 ACME 客户端软件。</p>
@@ -11969,7 +11969,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
 <p>如果您知道在以上列表中没有列出的 ACME 客户端或集成了 Let&rsquo;s Encrypt 的项目，您可以在我们网站的 GitHub <a href="https://github.com/letsencrypt/website/">代码仓库</a>中更新 <code>data/clients.json</code> 文件并提交拉取请求（Pull Request）。</p>
 <p>在提交拉取请求之前，请确保：</p>
 <ol>
-<li>该客户端尊重 <a href="/zh-cn/trademarks/" hreflang="zh-Hans-CN">Let&rsquo;s Encrypt 商标政策</a>。</li>
+<li>该客户端尊重 <a href="letsencrypt-ewebsite/zh-cn/trademarks/" hreflang="zh-Hans-CN">Let&rsquo;s Encrypt 商标政策</a>。</li>
 <li>该客户端不是基于浏览器使用的，并且支持自动续期。</li>
 <li>您的提交把该软件加至相关列表的<strong>末尾</strong>（如果该软件支持 ACMEv2 协议，请不要忘记添加“acme_v2”）。</li>
 <li>您的提交更新了 <code>clients.json</code> 顶部的 <code>lastmod</code> 日期戳。</li>
@@ -12053,7 +12053,7 @@ Bash   GetSSL (bash, also automates certs on remote hosts via ssh)   acme.sh (Co
 
 
 
-<script src="/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

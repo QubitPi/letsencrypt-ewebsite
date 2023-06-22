@@ -1,14 +1,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt</title>
-    <link>https://letsencrypt.org/he/</link>
+    <link>letsencrypt-ewebsite/he/</link>
     <description>  Let&#39;s Encrypt היא רשות אישורים חופשית, אוטומטית ופתוחה
   שמוגשת לך באדיבות &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt;קבוצת מחקר אבטחת האינטרנט (ISRG)&lt;/a&gt;.
 </description>
     <language>he</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="https://letsencrypt.org/he/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="letsencrypt-ewebsite/he/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>
