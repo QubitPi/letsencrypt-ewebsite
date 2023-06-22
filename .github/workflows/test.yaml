@@ -1,17 +1,21 @@
 name: Test
 
-on:
+"on":
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
+
+env:
+  USER: QubitPi
+  EMAIL: jack20220723@gmail.com
 
 jobs:
   test:
     runs-on: ubuntu-latest
-  
+
     steps:
       - uses: actions/checkout@v2
       - name: Setup NodeJS
@@ -36,3 +40,12 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: html5validator --root public --blacklist documents a-warm-welcome-to-asn1-and-der donate --also-check-css --format text
+      - name: Deploy website to GitHub Pages
+        if: github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+          enable_jekyll: false
+          user_name: ${{ env.USER }}
+          user_email: ${{ env.EMAIL }}

@@ -1,4 +1,5 @@
-baseURL = "https://letsencrypt.org/"
+baseURL = "https://qubitpi.github.io/letsencrypt-website"
+canonifyurls = true
 
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
