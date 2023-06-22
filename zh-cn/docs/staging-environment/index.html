@@ -21,7 +21,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="测试环境">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/staging-environment/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/zh-cn/docs/staging-environment/">
     <meta name="twitter:description" content="在使用我们的正式环境以前，我们强烈建议您使用我们的测试环境进行测试性部署， 这将允许您在颁发受信任的证书前确保一切正常，并且降低您受到速率限制的可能性。
 我们的ACME V2 测试环境为：
 https://acme-staging-v02.api.letsencrypt.org/directory
@@ -30,15 +30,15 @@ https://acme-staging-v02.api.letsencrypt.org/directory
  每个注册域名允许颁发的证书数量限制为每周 30000 张。 重复证书限制为每周 30000 张。 每小时允许 60 次验证失败。 每个 IP 地址注册账户数量限制为每个 IP 每 3 小时允许注册 50 个账户。 对于 ACME v2，新订单限制为每个帐户每 3 小时 1500 个。  测试证书层次结构 测试环境的证书层次结构为 mimics production。
 中间证书 在测试环境中有两个有效的中间证书：一个 RSA 算法 (STAGING) Artificial Apicot R3 和 ECDSA 算法 &amp;quot;(STAGING) Ersatz Edamame E1&amp;quot;
 2021年3月24日，ECDSA 签发在 测试环境 中启用，所有使用ECDSA 密钥的测试证书请求都由 &amp;ldquo;(STAGING) Ersatz Edamame E1&amp;rdquo; 签名，并使用 ECDSA 证书链。 同样，所有使用RSA密钥的测试证书请求都由&amp;quot;(STAGING) Artificial Apicot R3&amp;quot;颁发，并使用RSA证书链。 无法使用 ECDSA 密钥获取使用 RSA 颁发的证书，反之亦然； 控制您获得哪个颁发者的方法是控制您在本地生成什么样的密钥。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/">
+    <link rel="canonical" href="/letsencrypt-ewebsite/zh-cn/docs/staging-environment/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -51,7 +51,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -61,7 +61,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="/letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -76,7 +76,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -84,11 +84,11 @@ https://acme-staging-v02.api.letsencrypt.org/directory
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -101,7 +101,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -109,11 +109,11 @@ https://acme-staging-v02.api.letsencrypt.org/directory
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -129,7 +129,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -190,107 +190,107 @@ https://acme-staging-v02.api.letsencrypt.org/directory
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/staging-environment/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/letsencrypt-ewebsite/docs/staging-environment/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/staging-environment/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/letsencrypt-ewebsite/da/docs/staging-environment/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/staging-environment/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/letsencrypt-ewebsite/de/docs/staging-environment/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/staging-environment/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/letsencrypt-ewebsite/es/docs/staging-environment/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/staging-environment/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/letsencrypt-ewebsite/fi/docs/staging-environment/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/staging-environment/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/letsencrypt-ewebsite/fr/docs/staging-environment/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/staging-environment/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/letsencrypt-ewebsite/he/docs/staging-environment/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/staging-environment/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/letsencrypt-ewebsite/hu/docs/staging-environment/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/staging-environment/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/letsencrypt-ewebsite/id/docs/staging-environment/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/staging-environment/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/letsencrypt-ewebsite/it/docs/staging-environment/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/staging-environment/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/letsencrypt-ewebsite/ja/docs/staging-environment/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/staging-environment/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/letsencrypt-ewebsite/ko/docs/staging-environment/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/staging-environment/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/letsencrypt-ewebsite/pt-br/docs/staging-environment/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/staging-environment/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/letsencrypt-ewebsite/ru/docs/staging-environment/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/staging-environment/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/letsencrypt-ewebsite/si/docs/staging-environment/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/staging-environment/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/letsencrypt-ewebsite/sr/docs/staging-environment/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/staging-environment/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/letsencrypt-ewebsite/sv/docs/staging-environment/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/staging-environment/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/letsencrypt-ewebsite/uk/docs/staging-environment/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/staging-environment/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/letsencrypt-ewebsite/vi/docs/staging-environment/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/staging-environment/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/staging-environment/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/letsencrypt-ewebsite/zh-tw/docs/staging-environment/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -389,7 +389,7 @@ https://acme-staging-v02.api.letsencrypt.org/directory
 <p><code>https://acme-staging-v02.api.letsencrypt.org/directory</code></p>
 <p>如果您使用的是 Certbot，则可以通过 <code>--test-cert</code> 命令行标志来使用我们的测试环境。 如果您使用的是其他 ACME 客户端，请阅读他们有关使用我们的测试环境进行测试的说明。 请注意，只有兼容 ACME v2 的客户端才能使用 v2 测试环境。</p>
 <h1 id="速率限制">速率限制</h1>
-<p>测试环境使用与<a href="letsencrypt-ewebsite/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">生产环境类似</a>的速率限制，但具体数据有所变化：</p>
+<p>测试环境使用与<a href="/letsencrypt-ewebsite/zh-cn/docs/rate-limits/" hreflang="zh-Hans-CN">生产环境类似</a>的速率限制，但具体数据有所变化：</p>
 <ul>
 <li><strong>每个注册域名允许颁发的证书数量</strong>限制为每周 30000 张。</li>
 <li><strong>重复证书</strong>限制为每周 30000 张。</li>
@@ -398,14 +398,14 @@ https://acme-staging-v02.api.letsencrypt.org/directory
 <li>对于 ACME v2，<strong>新订单</strong>限制为每个帐户每 3 小时 1500 个。</li>
 </ul>
 <h1 id="测试证书层次结构">测试证书层次结构</h1>
-<p>测试环境的证书层次结构为 <a href="letsencrypt-ewebsite/zh-cn/certificates/" hreflang="zh-Hans-CN">mimics production</a>。</p>
+<p>测试环境的证书层次结构为 <a href="/letsencrypt-ewebsite/zh-cn/certificates/" hreflang="zh-Hans-CN">mimics production</a>。</p>
 <h2 id="中间证书">中间证书</h2>
 <p>在测试环境中有两个有效的中间证书：一个 RSA 算法 <a href="/certs/staging/letsencrypt-stg-int-r3.pem">(STAGING) Artificial Apicot R3</a> 和 ECDSA 算法 <a href="/certs/staging/letsencrypt-stg-int-e1.pem">&quot;(STAGING) Ersatz Edamame E1&quot;</a></p>
 <p>2021年3月24日，ECDSA 签发在 <a href="https://community.letsencrypt.org/t/ecdsa-issuance-available-in-staging-march-24/147839">测试环境</a> 中启用，所有使用ECDSA 密钥的测试证书请求都由 &ldquo;(STAGING) Ersatz Edamame E1&rdquo; 签名，并使用 ECDSA 证书链。 同样，所有使用RSA密钥的测试证书请求都由&quot;(STAGING) Artificial Apicot R3&quot;颁发，并使用RSA证书链。 无法使用 ECDSA 密钥获取使用 RSA 颁发的证书，反之亦然； 控制您获得哪个颁发者的方法是控制您在本地生成什么样的密钥。</p>
 <h2 id="根证书">根证书</h2>
 <p>测试环境有两个活跃的根证书，它们<strong>不在</strong>浏览器/客户端的信任存储中:“(STAGING) Pretend Pear X1和&quot;(STAGING) Bogus Brocoli X2&quot;。 如果您想修改测试客户端以信任测试环境，您可以通过添加 <a href="/certs/staging/letsencrypt-stg-root-x1.pem">&quot;(STAGING) Pretend Pear X1&quot;</a> 和/或 <a href="/certs/staging/letsencrypt-stg-root-x2.pem">&quot;(STAGING) Bogus Brocoli X2&quot;</a> 证书到您的测试证书信任列表。 您可以<a href="https://github.com/letsencrypt/website/tree/master/static/certs/staging">在这</a>找到我们所有的测试证书。  请注意：请不要将测试环境的根证书或中间证书安装进日常使用的受信证书存储中，因为这些证书没有受到 Let&rsquo;s Encrypt 的审计，也没有达到我们生产环境证书的标准，因此将其用于非测试环境可能会造成安全隐患。</p>
 <h1 id="证书透明度日志">证书透明度日志</h1>
-<p>测试环境将准证书提交给 Let&rsquo;s Encrypt 的测试用证书透明度日志<a href="letsencrypt-ewebsite/zh-cn/docs/ct-logs/" hreflang="zh-Hans-CN">Sapling</a> 和Google 的测试用证书透明度日志<a href="http://www.certificate-transparency.org/known-logs#TOC-Test-Logs">testtube</a>，并在颁发的证书中包含其返回的 SCT。</p>
+<p>测试环境将准证书提交给 Let&rsquo;s Encrypt 的测试用证书透明度日志<a href="/letsencrypt-ewebsite/zh-cn/docs/ct-logs/" hreflang="zh-Hans-CN">Sapling</a> 和Google 的测试用证书透明度日志<a href="http://www.certificate-transparency.org/known-logs#TOC-Test-Logs">testtube</a>，并在颁发的证书中包含其返回的 SCT。</p>
 <h1 id="持续集成-开发测试">持续集成/开发测试</h1>
 <p>测试环境具有允许进行测试的更高速率限制，但是不建议与开发环境或持续集成服务（CI）集成。  向外部服务器发出网络请求可能会导致网络不稳定，并且测试环境无法“伪造” DNS或强制其他验证成功通过，这会使测试设置更加复杂。</p>
 <p>除了测试环境外，Let&rsquo;s Encrypt还提供了一个专用于CI和开发环境的小型ACME服务器，称为<a href="https://github.com/letsencrypt/pebble">Pebble</a>。  您可以<a href="https://github.com/letsencrypt/pebble#docker">快速而简单的</a>在开发机器或CI环境中运行Pebble。</p>

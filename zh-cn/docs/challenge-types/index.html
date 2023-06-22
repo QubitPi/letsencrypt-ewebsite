@@ -19,22 +19,22 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="验证方式">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/challenge-types/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/zh-cn/docs/challenge-types/">
     <meta name="twitter:description" content="当您从 Let&amp;rsquo;s Encrypt 获得证书时，我们的服务器会验证您是否使用 ACME 标准定义的验证方式来验证您对证书中域名的控制权。 大多数情况下，验证由 ACME 客户端自动处理，但如果您需要做出一些更复杂的配置决策，那么了解更多有关它们的信息会很有用。 如果您不确定怎么做，请使用您的客户端的默认设置或使用 HTTP-01。
 HTTP-01 验证 这是当今最常见的验证方式。 Let’s Encrypt 向您的 ACME 客户端提供一个令牌，然后您的 ACME 客户端将在您对 Web 服务器的 http://&amp;lt;你的域名&amp;gt;/.well-known/acme-challenge/&amp;lt;TOKEN&amp;gt;（用提供的令牌替换 &amp;lt;TOKEN&amp;gt;）路径上放置指定文件。 该文件包含令牌以及帐户密钥的指纹。 一旦您的 ACME 客户端告诉 Let&amp;rsquo;s Encrypt 文件已准备就绪，Let&amp;rsquo;s Encrypt 会尝试获取它（可能从多个地点进行多次尝试）。 如果我们的验证机制在您的 Web 服务器上找到了放置于正确地点的正确文件，则该验证被视为成功，您可以继续申请颁发证书。 如果验证检查失败，您将不得不再次使用新证书重新申请。
 我们的 HTTP-01 验证最多接受 10 次重定向。 我们只接受目标为“http:”或“https:”且端口为 80 或 443 的重定向。 我们不目标为 IP 地址的重定向。 当被重定向到 HTTPS 链接时，我们不会验证证书是否有效（因为验证的目的是申请有效证书，所以它可能会遇到自签名或过期的证书）。
 HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口会降低安全性，所以 ACME 标准已禁止此行为。
 优点：
  它可以轻松地自动化进行而不需要关于域名配置的额外知识。 它允许托管服务提供商为通过 CNAME 指向它们的域名颁发证书。 它适用于现成的 Web 服务器。  缺点：">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/">
+    <link rel="canonical" href="/letsencrypt-ewebsite/zh-cn/docs/challenge-types/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -47,7 +47,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -57,7 +57,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="/letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -72,7 +72,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -80,11 +80,11 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -97,7 +97,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -105,11 +105,11 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -117,7 +117,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -125,7 +125,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -186,107 +186,107 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/challenge-types/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/letsencrypt-ewebsite/docs/challenge-types/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/challenge-types/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/letsencrypt-ewebsite/da/docs/challenge-types/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/challenge-types/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/letsencrypt-ewebsite/de/docs/challenge-types/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/challenge-types/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/letsencrypt-ewebsite/es/docs/challenge-types/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/challenge-types/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/letsencrypt-ewebsite/fi/docs/challenge-types/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/challenge-types/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/letsencrypt-ewebsite/fr/docs/challenge-types/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/challenge-types/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/letsencrypt-ewebsite/he/docs/challenge-types/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/challenge-types/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/letsencrypt-ewebsite/hu/docs/challenge-types/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/challenge-types/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/letsencrypt-ewebsite/id/docs/challenge-types/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/challenge-types/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/letsencrypt-ewebsite/it/docs/challenge-types/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/challenge-types/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/letsencrypt-ewebsite/ja/docs/challenge-types/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/challenge-types/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/letsencrypt-ewebsite/ko/docs/challenge-types/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/challenge-types/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/letsencrypt-ewebsite/pt-br/docs/challenge-types/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/challenge-types/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/letsencrypt-ewebsite/ru/docs/challenge-types/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/challenge-types/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/letsencrypt-ewebsite/si/docs/challenge-types/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/challenge-types/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/letsencrypt-ewebsite/sr/docs/challenge-types/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/challenge-types/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/letsencrypt-ewebsite/sv/docs/challenge-types/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/challenge-types/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/letsencrypt-ewebsite/uk/docs/challenge-types/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/challenge-types/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/letsencrypt-ewebsite/vi/docs/challenge-types/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/challenge-types/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/challenge-types/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/challenge-types/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/letsencrypt-ewebsite/zh-tw/docs/challenge-types/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -341,7 +341,7 @@ HTTP-01 验证只能使用 80 端口。 因为允许客户端指定任意端口�
                 <i>
                     注意：本页面有较新的英文版本。
                     (<time datetime="2023-02-13">Feb 13, 2023</time>)
-                    <a href="letsencrypt-ewebsite/docs/challenge-types/">阅读英文页面</a>
+                    <a href="/letsencrypt-ewebsite/docs/challenge-types/">阅读英文页面</a>
                 </i>
             </p>
             

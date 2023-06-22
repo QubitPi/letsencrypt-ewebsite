@@ -19,22 +19,22 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="ASN.1 与 DER 轻松入门">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/">
     <meta name="twitter:description" content="本文以轻松的笔触介绍了 HTTPS 证书背后的数据结构和格式， 只要稍有计算机科学知识并对数字证书略知一二就不难理解。
 HTTPS 证书是一种文件，与任何其他文件一样。 它的具体格式是由 RFC 5280 规定的， 该标准采用了一门名为 ASN.1 的语言，专门用于定义文件格式，也可以说是定义数据结构。 譬如，C 语言是这样定义数据结构的：
 struct point { int x, y; char label[10]; }; Go 语言则是这样定义的：
 type point struct { x, y int label string } 而写成 ASN.1 就会是这样：
 Point ::= SEQUENCE { x INTEGER, y INTEGER, label UTF8String } 与 Go 和 C 的语法相比，ASN.1 的优势在于它不依赖某一门特定的编程语言， 任何语言都可以根据上述 ASN.1 定义实现 Point 结构。不仅如此，借助工具还可以将 ASN.1 定义自动转换成你想使用的语言。 在 ASN.1 中，一系列相关的定义称为一个“模块”。
 ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可以从内存导出成一串字节（或存入文件中），也可以由一串字节反过来导入内存。 因此任何一台设备生成的证书其他设备都能正常读取，无需顾忌 CPU 和操作系统的差异。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/">
+    <link rel="canonical" href="/letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt 博客订阅源" />
     
@@ -47,7 +47,7 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳过导航链接</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/zh-cn/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -57,7 +57,7 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
+            <a href="/letsencrypt-ewebsite/zh-cn/docs/" class="pure-menu-link" tabindex="0">文档</a>
             
           </li>
           
@@ -72,7 +72,7 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/donate/" class="pure-menu-link">捐助我们</a>
               </li>
               
               <li class="pure-menu-item">
@@ -80,11 +80,11 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/sponsors/" class="pure-menu-link">当前赞助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/getinvolved/" class="pure-menu-link">帮助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -97,7 +97,7 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -105,11 +105,11 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 到期(2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/faq/" class="pure-menu-link">常见问题（FAQ）</a>
               </li>
               
               <li class="pure-menu-item">
@@ -117,7 +117,7 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/stats/" class="pure-menu-link">统计数据</a>
               </li>
               
               <li class="pure-menu-item">
@@ -125,7 +125,7 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/contact/" class="pure-menu-link">联系我们</a>
               </li>
               
             </ul>
@@ -186,107 +186,107 @@ ASN.1 的另一特点在于它有各种序列化格式，也就是说数据可�
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/a-warm-welcome-to-asn1-and-der/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/letsencrypt-ewebsite/docs/a-warm-welcome-to-asn1-and-der/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/a-warm-welcome-to-asn1-and-der/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/letsencrypt-ewebsite/da/docs/a-warm-welcome-to-asn1-and-der/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/a-warm-welcome-to-asn1-and-der/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/letsencrypt-ewebsite/de/docs/a-warm-welcome-to-asn1-and-der/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/a-warm-welcome-to-asn1-and-der/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/letsencrypt-ewebsite/es/docs/a-warm-welcome-to-asn1-and-der/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/a-warm-welcome-to-asn1-and-der/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/letsencrypt-ewebsite/fi/docs/a-warm-welcome-to-asn1-and-der/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/a-warm-welcome-to-asn1-and-der/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/letsencrypt-ewebsite/fr/docs/a-warm-welcome-to-asn1-and-der/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/a-warm-welcome-to-asn1-and-der/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/letsencrypt-ewebsite/he/docs/a-warm-welcome-to-asn1-and-der/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/a-warm-welcome-to-asn1-and-der/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/letsencrypt-ewebsite/hu/docs/a-warm-welcome-to-asn1-and-der/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/a-warm-welcome-to-asn1-and-der/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/letsencrypt-ewebsite/id/docs/a-warm-welcome-to-asn1-and-der/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/a-warm-welcome-to-asn1-and-der/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/letsencrypt-ewebsite/it/docs/a-warm-welcome-to-asn1-and-der/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/a-warm-welcome-to-asn1-and-der/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/letsencrypt-ewebsite/ja/docs/a-warm-welcome-to-asn1-and-der/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/a-warm-welcome-to-asn1-and-der/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/letsencrypt-ewebsite/ko/docs/a-warm-welcome-to-asn1-and-der/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/a-warm-welcome-to-asn1-and-der/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/letsencrypt-ewebsite/pt-br/docs/a-warm-welcome-to-asn1-and-der/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/a-warm-welcome-to-asn1-and-der/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/letsencrypt-ewebsite/ru/docs/a-warm-welcome-to-asn1-and-der/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/a-warm-welcome-to-asn1-and-der/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/letsencrypt-ewebsite/si/docs/a-warm-welcome-to-asn1-and-der/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/a-warm-welcome-to-asn1-and-der/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/letsencrypt-ewebsite/sr/docs/a-warm-welcome-to-asn1-and-der/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/a-warm-welcome-to-asn1-and-der/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/letsencrypt-ewebsite/sv/docs/a-warm-welcome-to-asn1-and-der/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/a-warm-welcome-to-asn1-and-der/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/letsencrypt-ewebsite/uk/docs/a-warm-welcome-to-asn1-and-der/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/a-warm-welcome-to-asn1-and-der/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/letsencrypt-ewebsite/vi/docs/a-warm-welcome-to-asn1-and-der/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/a-warm-welcome-to-asn1-and-der/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">✓ 简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/a-warm-welcome-to-asn1-and-der/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/letsencrypt-ewebsite/zh-tw/docs/a-warm-welcome-to-asn1-and-der/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>

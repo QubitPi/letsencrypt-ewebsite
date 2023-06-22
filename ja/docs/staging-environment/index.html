@@ -19,22 +19,22 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="ステージング環境">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/ja/docs/staging-environment/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/ja/docs/staging-environment/">
     <meta name="twitter:description" content="Let&amp;rsquo;s Encrypt をテストする際には、本番環境を使う前に、私たちが用意したステージング環境を使うことを強くおすすめします。ステージング環境を利用すると、信頼された証明書を発行直後に利用でき、本番環境のレート制限を破ってしまう可能性を減らすことができます。
 Let&amp;rsquo;s Encrypt の ACME v2 staging environment の URL は、次のとおりです。
 https://acme-staging-v02.api.letsencrypt.org/directory
 Certbot を使用している場合、--dry-run フラグを設定するだけでステージング環境を利用できます。その他の ACME クライアントを利用している場合は、そのクライアントの設定方法を参照して Let&amp;rsquo;s Encrypt のステージング環境でテストを行ってください。ただし、v2 staging environment には v2 互換の ACME クライアントが必要です。
 レート制限 ステージング環境でも、本番環境のレート制限の説明に書かれているのと同様のレート制限が適用されますが、次のような例外が設けられています。
  登録ドメインごとの証明書は、1週間ごとに 30,000 個までです。 重複する証明書は、1週間ごとに 30,000 個までです。 検証の失敗は、1時間ごとに 60 個までです。 IP アドレスごとのアカウント数は、1つの IP につき、3時間ごとに 50 アカウントまでです。 ACME v2 では、New Orders は、1アカウントにつき、3時間ごとに 1,500 new orders までです。  ルート証明書 ステージング環境の中間証明書 (&amp;quot;(STAGING) Artificial Apricot R3&amp;quot;) は、ブラウザやクライアントの trust store には存在しないルート証明書を使って発行されます。テスト専用のクライアントをステージング環境を信頼するようにテスト目的で設定したいときは、&amp;quot;(STAGING) Pretend Pear X1&amp;quot; を追加します。重要な注意: ステージング専用のルート証明書や中間証明書を日常的に使用する trust store には追加してはいけません。ステージング用の証明書は、監査されておらず、本番用のルート証明書と同じ基準を満たしていないため、テスト以外のどんな目的で使用するのも危険です。">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/ja/docs/staging-environment/">
+    <link rel="canonical" href="/letsencrypt-ewebsite/ja/docs/staging-environment/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt ブログフィード" />
     
@@ -47,7 +47,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
 <header class="site-header">
   <a id="skiplink" href="#main-content">ナビゲーション・リンクをスキップ</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/ja/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -57,7 +57,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
+            <a href="/letsencrypt-ewebsite/ja/docs/" class="pure-menu-link" tabindex="0">ドキュメント</a>
             
           </li>
           
@@ -72,7 +72,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
+                <a href="/letsencrypt-ewebsite/ja/donate/" class="pure-menu-link">寄付する</a>
               </li>
               
               <li class="pure-menu-item">
@@ -80,11 +80,11 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
+                <a href="/letsencrypt-ewebsite/ja/sponsors/" class="pure-menu-link">現在のスポンサーと資金提供者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
+                <a href="/letsencrypt-ewebsite/ja/getinvolved/" class="pure-menu-link">参加する</a>
               </li>
               
             </ul>
@@ -97,7 +97,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/ja/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -105,11 +105,11 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
+                <a href="/letsencrypt-ewebsite/ja/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 の失効 (2021年9月)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
+                <a href="/letsencrypt-ewebsite/ja/docs/faq/" class="pure-menu-link">よくある質問 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -117,7 +117,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
+                <a href="/letsencrypt-ewebsite/ja/stats/" class="pure-menu-link">統計情報</a>
               </li>
               
               <li class="pure-menu-item">
@@ -125,7 +125,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
+                <a href="/letsencrypt-ewebsite/ja/contact/" class="pure-menu-link">連絡先</a>
               </li>
               
             </ul>
@@ -186,107 +186,107 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/docs/staging-environment/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/letsencrypt-ewebsite/docs/staging-environment/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/docs/staging-environment/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/letsencrypt-ewebsite/da/docs/staging-environment/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/docs/staging-environment/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/letsencrypt-ewebsite/de/docs/staging-environment/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/docs/staging-environment/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/letsencrypt-ewebsite/es/docs/staging-environment/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/docs/staging-environment/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/letsencrypt-ewebsite/fi/docs/staging-environment/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/docs/staging-environment/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/letsencrypt-ewebsite/fr/docs/staging-environment/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/docs/staging-environment/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/letsencrypt-ewebsite/he/docs/staging-environment/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/docs/staging-environment/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/letsencrypt-ewebsite/hu/docs/staging-environment/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/docs/staging-environment/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/letsencrypt-ewebsite/id/docs/staging-environment/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/docs/staging-environment/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/letsencrypt-ewebsite/it/docs/staging-environment/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/docs/staging-environment/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
+                <a href="/letsencrypt-ewebsite/ja/docs/staging-environment/" lang="ja" hreflang="ja" class="pure-menu-link">✓ 日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/docs/staging-environment/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/letsencrypt-ewebsite/ko/docs/staging-environment/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/staging-environment/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="/letsencrypt-ewebsite/pt-br/docs/staging-environment/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/docs/staging-environment/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/letsencrypt-ewebsite/ru/docs/staging-environment/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/docs/staging-environment/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/letsencrypt-ewebsite/si/docs/staging-environment/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/docs/staging-environment/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/letsencrypt-ewebsite/sr/docs/staging-environment/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/docs/staging-environment/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/letsencrypt-ewebsite/sv/docs/staging-environment/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/docs/staging-environment/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/letsencrypt-ewebsite/uk/docs/staging-environment/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/docs/staging-environment/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/letsencrypt-ewebsite/vi/docs/staging-environment/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/docs/staging-environment/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/docs/staging-environment/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/docs/staging-environment/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/letsencrypt-ewebsite/zh-tw/docs/staging-environment/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -341,7 +341,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
                 <i>
                     注意: このページが翻訳された後、英語バージョンのページがアップデートされています。
                     (<time datetime="2022-06-13">2022/06/13</time>)
-                    <a href="letsencrypt-ewebsite/docs/staging-environment/">英語で表示する</a>
+                    <a href="/letsencrypt-ewebsite/docs/staging-environment/">英語で表示する</a>
                 </i>
             </p>
             
@@ -393,7 +393,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
 <p><code>https://acme-staging-v02.api.letsencrypt.org/directory</code></p>
 <p>Certbot を使用している場合、<code>--dry-run</code> フラグを設定するだけでステージング環境を利用できます。その他の ACME クライアントを利用している場合は、そのクライアントの設定方法を参照して Let&rsquo;s Encrypt のステージング環境でテストを行ってください。ただし、v2 staging environment には v2 互換の ACME クライアントが必要です。</p>
 <h1 id="レート制限">レート制限</h1>
-<p>ステージング環境でも、<a href="letsencrypt-ewebsite/ja/docs/rate-limits/" hreflang="ja">本番環境のレート制限の説明</a>に書かれているのと同様のレート制限が適用されますが、次のような例外が設けられています。</p>
+<p>ステージング環境でも、<a href="/letsencrypt-ewebsite/ja/docs/rate-limits/" hreflang="ja">本番環境のレート制限の説明</a>に書かれているのと同様のレート制限が適用されますが、次のような例外が設けられています。</p>
 <ul>
 <li><strong>登録ドメインごとの証明書</strong>は、1週間ごとに 30,000 個までです。</li>
 <li><strong>重複する証明書</strong>は、1週間ごとに 30,000 個までです。</li>
@@ -404,7 +404,7 @@ Certbot を使用している場合、--dry-run フラグを設定するだけ�
 <h1 id="ルート証明書">ルート証明書</h1>
 <p>ステージング環境の中間証明書 (<a href="/certs/staging/letsencrypt-stg-int-r3.pem">&quot;(STAGING) Artificial Apricot R3&quot;</a>) は、ブラウザやクライアントの trust store には<strong>存在しない</strong>ルート証明書を使って発行されます。テスト専用のクライアントをステージング環境を信頼するようにテスト目的で設定したいときは、<a href="/certs/staging/letsencrypt-stg-root-x1.pem">&quot;(STAGING) Pretend Pear X1&quot;</a> を追加します。<strong>重要な注意</strong>: ステージング専用のルート証明書や中間証明書を日常的に使用する trust store には追加してはいけません。ステージング用の証明書は、監査されておらず、本番用のルート証明書と同じ基準を満たしていないため、テスト以外のどんな目的で使用するのも危険です。</p>
 <h1 id="証明書の透明性">証明書の透明性</h1>
-<p>ステージング環境では、pre-certificates を Let&rsquo;s Encrypt <a href="letsencrypt-ewebsite/ja/docs/ct-logs/" hreflang="ja">Testflume</a> と Google <a href="http://www.certificate-transparency.org/known-logs#TOC-Test-Logs">testtube</a> CT test logs に送信し、送信時に返された SCT が発行した証明書の中に含まれます。</p>
+<p>ステージング環境では、pre-certificates を Let&rsquo;s Encrypt <a href="/letsencrypt-ewebsite/ja/docs/ct-logs/" hreflang="ja">Testflume</a> と Google <a href="http://www.certificate-transparency.org/known-logs#TOC-Test-Logs">testtube</a> CT test logs に送信し、送信時に返された SCT が発行した証明書の中に含まれます。</p>
 </div>
 </div>
 		

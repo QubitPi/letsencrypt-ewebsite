@@ -1,14 +1,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt</title>
-    <link>letsencrypt-ewebsite/hu/</link>
+    <link>https://qubitpi.github.io/letsencrypt-ewebsite/hu/</link>
     <description>  A Let&#39;s Encrypt egy ingyenes, automatizált és nyílt tanúsító hatóság,
   melyet a nonprofit &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt;Internet Security Research Group (ISRG)&lt;/a&gt; szervezet tesz elérhetővé.
 </description>
     <language>hu</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="letsencrypt-ewebsite/hu/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://qubitpi.github.io/letsencrypt-ewebsite/hu/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>

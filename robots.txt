@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: letsencrypt-ewebsite/sitemap.xml
+Sitemap: https://qubitpi.github.io/letsencrypt-ewebsite/sitemap.xml

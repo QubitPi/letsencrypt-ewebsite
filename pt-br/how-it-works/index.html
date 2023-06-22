@@ -15,18 +15,18 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="Como a Let&#39;s Encrypt Funciona">
-    <meta name="twitter:url" content="letsencrypt-ewebsite/pt-br/how-it-works/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/pt-br/how-it-works/">
     <meta name="twitter:description" content="O objetivo da Let&amp;rsquo;s Encrypt e do protocolo ACME é tornar possível a configuração de um servidor HTTPS e fazê-lo obter automaticamente um certificado confiável sem intervenção humana. Isso é realizado através do uso do agente de gerenciamento de certificado no servidor web.
 Para entender como a tecnologia funciona, vamos analisar o passo a passo do processo de configuração do domínio https://example.com/ com um agente de gerenciamento de certificado que suporta a Let&amp;rsquo;s Encrypt.">
-    <meta name="twitter:image:src" content="letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
 
     
     <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
     <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="letsencrypt-ewebsite/pt-br/how-it-works/">
+    <link rel="canonical" href="/letsencrypt-ewebsite/pt-br/how-it-works/">
     
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Feed do blog Let&#39;s Encrypt" />
     
@@ -39,7 +39,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
 <header class="site-header">
   <a id="skiplink" href="#main-content">Pular links de navegação</a>
   <div class="wrapper">
-    <a class="site-title" href="letsencrypt-ewebsite/pt-br/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="/letsencrypt-ewebsite/pt-br/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -49,7 +49,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="letsencrypt-ewebsite/pt-br/docs/" class="pure-menu-link" tabindex="0">Documentação</a>
+            <a href="/letsencrypt-ewebsite/pt-br/docs/" class="pure-menu-link" tabindex="0">Documentação</a>
             
           </li>
           
@@ -64,7 +64,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/donate/" class="pure-menu-link">Faça uma doação</a>
+                <a href="/letsencrypt-ewebsite/pt-br/donate/" class="pure-menu-link">Faça uma doação</a>
               </li>
               
               <li class="pure-menu-item">
@@ -72,7 +72,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/sponsors/" class="pure-menu-link">Atuais Patrocinadores e Doadores</a>
+                <a href="/letsencrypt-ewebsite/pt-br/sponsors/" class="pure-menu-link">Atuais Patrocinadores e Doadores</a>
               </li>
               
             </ul>
@@ -85,7 +85,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="/letsencrypt-ewebsite/pt-br/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -93,11 +93,11 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="/letsencrypt-ewebsite/pt-br/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/docs/faq/" class="pure-menu-link">Perguntas Frequentes (FAQ)</a>
+                <a href="/letsencrypt-ewebsite/pt-br/docs/faq/" class="pure-menu-link">Perguntas Frequentes (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -105,7 +105,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/stats/" class="pure-menu-link">Estatísticas</a>
+                <a href="/letsencrypt-ewebsite/pt-br/stats/" class="pure-menu-link">Estatísticas</a>
               </li>
               
               <li class="pure-menu-item">
@@ -113,7 +113,7 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
               </li>
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/contact/" class="pure-menu-link">Contato</a>
+                <a href="/letsencrypt-ewebsite/pt-br/contact/" class="pure-menu-link">Contato</a>
               </li>
               
             </ul>
@@ -174,107 +174,107 @@ Para entender como a tecnologia funciona, vamos analisar o passo a passo do proc
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/how-it-works/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="/letsencrypt-ewebsite/how-it-works/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/da/how-it-works/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="/letsencrypt-ewebsite/da/how-it-works/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/de/how-it-works/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="/letsencrypt-ewebsite/de/how-it-works/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/es/how-it-works/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="/letsencrypt-ewebsite/es/how-it-works/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fi/how-it-works/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="/letsencrypt-ewebsite/fi/how-it-works/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/fr/how-it-works/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="/letsencrypt-ewebsite/fr/how-it-works/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/he/how-it-works/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="/letsencrypt-ewebsite/he/how-it-works/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/hu/how-it-works/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="/letsencrypt-ewebsite/hu/how-it-works/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/id/how-it-works/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="/letsencrypt-ewebsite/id/how-it-works/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/it/how-it-works/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="/letsencrypt-ewebsite/it/how-it-works/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ja/how-it-works/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="/letsencrypt-ewebsite/ja/how-it-works/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ko/how-it-works/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="/letsencrypt-ewebsite/ko/how-it-works/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/pt-br/how-it-works/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">✓ Português do Brasil</a>
+                <a href="/letsencrypt-ewebsite/pt-br/how-it-works/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">✓ Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/ru/how-it-works/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="/letsencrypt-ewebsite/ru/how-it-works/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/si/how-it-works/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="/letsencrypt-ewebsite/si/how-it-works/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sr/how-it-works/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="/letsencrypt-ewebsite/sr/how-it-works/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/sv/how-it-works/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="/letsencrypt-ewebsite/sv/how-it-works/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/uk/how-it-works/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="/letsencrypt-ewebsite/uk/how-it-works/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/vi/how-it-works/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="/letsencrypt-ewebsite/vi/how-it-works/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-cn/how-it-works/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="/letsencrypt-ewebsite/zh-cn/how-it-works/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="letsencrypt-ewebsite/zh-tw/how-it-works/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="/letsencrypt-ewebsite/zh-tw/how-it-works/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>

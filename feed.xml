@@ -1,17 +1,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt</title>
-    <link>letsencrypt-ewebsite/</link>
+    <link>https://qubitpi.github.io/letsencrypt-ewebsite/</link>
     <description>  Let&#39;s Encrypt is a free, automated, and open certificate
   authority brought to you by the nonprofit &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt;Internet Security Research Group (ISRG)&lt;/a&gt;.
 </description>
     <language>en-US</language>
     <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="letsencrypt-ewebsite/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://qubitpi.github.io/letsencrypt-ewebsite/feed.xml" rel="self" type="application/rss+xml" />
       <item>
         <title>ISRG’s 10th Anniversary</title>
-        <link>letsencrypt-ewebsite/2023/05/24/isrg-10th-anniversary.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2023/05/24/isrg-10th-anniversary.html</link>
         <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
         <description><![CDATA[<div class="card border-0 pic-quote-right">
     <img alt="Celebrating 10 Years of ISRG" class="mx-auto img-fluid" src="/images/blog/2023-05-24-ISRG_10th_anniversary_-_short.gif" />
@@ -68,10 +68,10 @@
 <p>Divvi Up is exciting technology with a bright future. Our biggest challenge here, like most things involving cryptography, is to make it easy to use. We also need to make sure we can provide the service at a cost that will allow for widespread adoption, so we&rsquo;ll be doing a lot of optimization. Our hope is that over the next decade we can make privacy respecting metrics the norm, just like we did for HTTPS.</p>
 <p>The internet wasn&rsquo;t built with security or privacy in mind, so there is a bountiful opportunity for us to improve its infrastructure. The Internet is also constantly growing and changing, so it is also our job to look into the future and prepare for the next set of threats and challenges as best we can.</p>
 <p>Thanks to our supporters, we&rsquo;ll continue adapting and responding to help ensure the Web is more secure long into the future. Please consider <a href="https://www.abetterinternet.org/sponsor/">becoming a sponsor</a> or <a href="https://www.abetterinternet.org/donate/">making a donation</a> in support of our work.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2023/05/24/isrg-10th-anniversary.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2023/05/24/isrg-10th-anniversary.html</guid>
       </item><item>
         <title>Improving Resiliency and Reliability for Let’s Encrypt with ARI</title>
-        <link>letsencrypt-ewebsite/2023/03/23/improving-resliiency-and-reliability-with-ari.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2023/03/23/improving-resliiency-and-reliability-with-ari.html</link>
         <pubDate>Thu, 23 Mar 2023 00:00:00 +0000</pubDate>
         <description><![CDATA[<p>The Let&rsquo;s Encrypt team is excited to announce that <a href="https://datatracker.ietf.org/doc/draft-ietf-acme-ari/">ACME Renewal Information (ARI)</a> is live in production! ARI makes it possible for our subscribers to handle certificate revocation and renewal as easily and automatically as the process of getting a certificate in the first place.</p>
 <p>With ARI, Let&rsquo;s Encrypt can signal to ACME clients when they should renew certificates. In the normal case of a certificate with a 90 day lifetime, ARI might signal for renewal at 60 days. If Let&rsquo;s Encrypted needs to revoke a certificate for some reason, ARI can signal that renewal needs to happen prior to the revocation. This means that even in extenuating circumstances, renewal can happen in an entirely automated way without disrupting subscriber services.</p>
@@ -80,11 +80,11 @@
 <p>ARI has been <a href="https://datatracker.ietf.org/doc/draft-ietf-acme-ari/">standardized</a> in the IETF, a process that started with an <a href="https://mailarchive.ietf.org/arch/msg/acme/b-RddSX8TdGYvO3f9c7Lzg6I2I4/">email</a> from Let&rsquo;s Encrypt engineer Roland Shoemaker in March of 2020. In September of 2021 Let&rsquo;s Encrypt engineer Aaron Gable submitted the first draft to the IETF&rsquo;s ACME working group, and now ARI is in production. The next step is for ACME clients to start supporting ARI, a process we plan to help with as best we can in the coming months.</p>
 <p>ARI is a huge step forward for agility and resiliency in the TLS certificate ecosystem and we&rsquo;re excited to see it gain widespread adoption!</p>
 <h2 id="supporting-let-s-encrypt">Supporting Let&rsquo;s Encrypt</h2>
-<p>As a project of the <a href="https://abetterinternet.org/">Internet Security Research Group</a> (ISRG), 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our public benefit services. If your company or organization would like to sponsor Let&rsquo;s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="letsencrypt-ewebsite/donate/" hreflang="en-US">donation</a>, we ask that you make an individual contribution.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2023/03/23/improving-resliiency-and-reliability-with-ari.html</guid>
+<p>As a project of the <a href="https://abetterinternet.org/">Internet Security Research Group</a> (ISRG), 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our public benefit services. If your company or organization would like to sponsor Let&rsquo;s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="/letsencrypt-ewebsite/donate/" hreflang="en-US">donation</a>, we ask that you make an individual contribution.</p>]]></description>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2023/03/23/improving-resliiency-and-reliability-with-ari.html</guid>
       </item><item>
         <title>Thank you to our 2023 renewing sponsors</title>
-        <link>letsencrypt-ewebsite/2023/01/19/renewing-sponsors.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2023/01/19/renewing-sponsors.html</link>
         <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
         <description><![CDATA[<p>At ISRG, we often say, &ldquo;as a nonprofit, 100% of our funding comes from charitable contributions.&rdquo; But what does that actually look like? For nearly a decade, the vast majority of our funding has come from sponsorships&mdash;in fact, more than $17 million dollars has been donated to ISRG since 2015. Looking to the year ahead, we wanted to take a moment to thank our renewing sponsors who, quite literally, make our work possible: </p>
 <h2 id="with-us-since-the-beginning">With us since the beginning</h2>
@@ -120,13 +120,13 @@
 <blockquote>
 <p>&ldquo;Let&rsquo;s Encrypt makes it easy for everyone to do the right thing to secure the Internet. We couldn&rsquo;t be happier to give our support to such a great effort.&rdquo;</p>
 </blockquote>
-<p>Together, <a href="letsencrypt-ewebsite/sponsors/" hreflang="en-US">these organizations</a> make the mission of ISRG, and its impact for billions of people around the world, possible. Powered by their support, we look forward to continuing to build a Web that works for everyone, everywhere.</p>
+<p>Together, <a href="/letsencrypt-ewebsite/sponsors/" hreflang="en-US">these organizations</a> make the mission of ISRG, and its impact for billions of people around the world, possible. Powered by their support, we look forward to continuing to build a Web that works for everyone, everywhere.</p>
 <h2 id="supporting-let-s-encrypt">Supporting Let&rsquo;s Encrypt</h2>
 <p>As a project of the <a href="https://abetterinternet.org/">Internet Security Research Group</a> (ISRG), 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our public benefit services. If your company or organization would like to sponsor Let&rsquo;s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="https://letsencrypt.org/donate/">donation</a>, we ask that you make an individual contribution.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2023/01/19/renewing-sponsors.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2023/01/19/renewing-sponsors.html</guid>
       </item><item>
         <title>A Look into the Engineering Culture at ISRG</title>
-        <link>letsencrypt-ewebsite/2023/01/12/eng-culture-at-isrg.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2023/01/12/eng-culture-at-isrg.html</link>
         <pubDate>Thu, 12 Jan 2023 12:00:00 +0000</pubDate>
         <description><![CDATA[<p>Engineers design systems and processes to ensure high quality outcomes and solutions - what if the same lens could be used to build a workplace where these very same engineers can thrive? Many organizations toil on how to build an environment where employees are engaged, challenged, and happy with their workplace, and while ISRG is not immune to those challenges, we do implement a few distinctive practices that help mitigate some workplace difficulties. Because 68% of our staff are engineers, we will be focusing in this post on how we are building a workplace culture where engineers can thrive.</p>
 <p><strong>1. Aligning Growth Aspirations</strong></p>
@@ -147,10 +147,10 @@
 <p>If this sounds like a culture you&rsquo;d like to be a part of, check out our <a href="https://www.abetterinternet.org/careers/">open jobs</a>!</p>
 <h2 id="supporting-let-s-encrypt">Supporting Let&rsquo;s Encrypt</h2>
 <p>As a project of the <a href="https://abetterinternet.org/">Internet Security Research Group</a> (ISRG), 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our public benefit services. If your company or organization would like to sponsor Let&rsquo;s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="https://letsencrypt.org/donate/">donation</a>, we ask that you make an individual contribution.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2023/01/12/eng-culture-at-isrg.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2023/01/12/eng-culture-at-isrg.html</guid>
       </item><item>
         <title>Let’s Encrypt improves how we manage OCSP responses</title>
-        <link>letsencrypt-ewebsite/2022/12/15/ocspcaching.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2022/12/15/ocspcaching.html</link>
         <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
         <description><![CDATA[<p>Let&rsquo;s Encrypt has improved how we manage Online Certificate Status Protocol (OCSP) responses by deploying Redis and generating responses on-demand rather than pre-generating them, making us more reliable than ever.</p>
 <h2 id="about-ocsp-responses">About OCSP Responses</h2>
@@ -167,10 +167,10 @@
 <p>The first test was to directly accept 1/16 of the requests by dropping a segment of our CDN cache. In that initial test we handled ~12,500 requests per second. Successive tests ratcheted up to 1/8th CDN cache drop, then 1/4th, then 1/2, then a 100% cache drop. With each ratcheting up of the test load we were able to monitor and glean insights as to how our deployment could handle the traffic. In the final test of 100% of requests, our systems remained responsive. This means that if we experience a spike in the number of OCSP responses we need to accept moving forward, we are equipped to handle them, dramatically reducing the risks to Internet users.</p>
 <h2 id="supporting-let-s-encrypt">Supporting Let&rsquo;s Encrypt</h2>
 <p>As a project of the <a href="https://abetterinternet.org/">Internet Security Research Group</a> (ISRG), 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our public benefit services. If your company or organization would like to sponsor Let&rsquo;s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="https://letsencrypt.org/donate/">donation</a>, we ask that you make an individual contribution.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2022/12/15/ocspcaching.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2022/12/15/ocspcaching.html</guid>
       </item><item>
         <title>A Year-End Letter from our Executive Director</title>
-        <link>letsencrypt-ewebsite/2022/12/05/ed-letter-2022.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2022/12/05/ed-letter-2022.html</link>
         <pubDate>Mon, 05 Dec 2022 12:00:00 +0000</pubDate>
         <description><![CDATA[<p><em>This letter was originally published in our <a href="https://www.abetterinternet.org/documents/2022-ISRG-Annual-Report.pdf">2022 annual report</a>.</em></p>
 <p>The past year at ISRG has been a great one and I couldn&rsquo;t be more proud of our staff, community, funders, and other partners that made it happen. <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> continues to thrive, serving more websites around the world than ever before with excellent security and stability.</p>
@@ -183,10 +183,10 @@
 <p>Our <a href="https://www.memorysafety.org/">Prossimo</a> project started in 2020 with a clear goal: move security sensitive software infrastructure to memory safe code. Since then, we&rsquo;ve gotten a lot of code written to improve memory safety on the Internet.</p>
 <p>We&rsquo;re ending the year with <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8aebac82933ff1a7c8eede18cab11e1115e2062b">Rust support being merged into the Linux kernel</a> and the completion of a <a href="https://github.com/memorysafety/ntpd-rs">memory safe NTP client and server implementation</a>. We&rsquo;re thrilled about the potential for a more memory safe kernel, but now we need to see the development of drivers in Rust. We&rsquo;re particularly excited about an <a href="https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf">NVMe driver</a> that shows excellent initial performance metrics while coming with the benefit of never producing a memory safety bug. We are actively working to make similar progress on <a href="https://www.memorysafety.org/initiative/rustls/">Rustls</a>, a high-performance TLS library, and <a href="https://www.memorysafety.org/initiative/dns/">Trust-DNS</a>, a fully recursive DNS resolver.</p>
 <p>All of this is made possible by charitable contributions from people like you and organizations around the world. Since 2015, tens of thousands of people have given to our work. They&rsquo;ve made a case for corporate sponsorship, given through their DAFs, or set up recurring donations. That&rsquo;s all added up to $17M that we&rsquo;ve used to change the Internet for nearly everyone using it. I hope you&rsquo;ll join these people and support us financially if you can.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2022/12/05/ed-letter-2022.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2022/12/05/ed-letter-2022.html</guid>
       </item><item>
         <title>Remembering Peter Eckersley</title>
-        <link>letsencrypt-ewebsite/2022/09/12/remembering-peter-eckersley.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2022/09/12/remembering-peter-eckersley.html</link>
         <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
         <description><![CDATA[
 <div class="main-article">
@@ -228,10 +228,10 @@ Peter's longtime friend and colleague Seth Schoen, who was among the earliest co
 </p>
 
 </div>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2022/09/12/remembering-peter-eckersley.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2022/09/12/remembering-peter-eckersley.html</guid>
       </item><item>
         <title>A New Life for Certificate Revocation Lists</title>
-        <link>letsencrypt-ewebsite/2022/09/07/new-life-for-crls.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2022/09/07/new-life-for-crls.html</link>
         <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
         <description><![CDATA[<p>This month, Let&rsquo;s Encrypt is turning on new infrastructure to support revoking certificates via Certificate Revocation Lists. Despite having been largely supplanted by the Online Certificate Status Protocol for over a decade now, CRLs are gaining new life with recent browser updates. By collecting and summarizing CRLs for their users, browsers are making reliable revocation of certificates a reality, improving both security and privacy on the web. Let&rsquo;s talk about exactly what this new infrastructure does, and why it&rsquo;s important.</p>
 <h1 id="a-brief-history-of-revocation">A Brief History of Revocation</h1>
@@ -255,10 +255,10 @@ Peter's longtime friend and colleague Seth Schoen, who was among the earliest co
 <p>There&rsquo;s still a long way to go before revocation in the Web PKI is truly fixed. The privacy concerns around OCSP will only be mitigated once all clients have stopped relying on it, and we still need to develop good ways for non-browser clients to reliably check revocation information.</p>
 <p>We look forward to continuing to work with the rest of the Web PKI community to make revocation checking private, reliable, and efficient for everyone.</p>
 <p>If you&rsquo;re excited about our work developing more robust and private revocation mechanisms, you can support us with a <a href="https://letsencrypt.org/donate/">donation</a>, or encourage your company or organization to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> our work. As a nonprofit project, 100% of our funding comes from contributions from our community and supporters, and we depend on your support.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2022/09/07/new-life-for-crls.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2022/09/07/new-life-for-crls.html</guid>
       </item><item>
         <title>Nurturing Continued Growth of Our Oak CT Log</title>
-        <link>letsencrypt-ewebsite/2022/05/19/nurturing-ct-log-growth.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2022/05/19/nurturing-ct-log-growth.html</link>
         <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
         <description><![CDATA[<p>Let&rsquo;s Encrypt has been running a Certificate Transparency (CT) log since 2019 as part of our commitment to keeping the Web PKI ecosystem healthy. CT logs have become important infrastructure for an encrypted Web <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, but have a well-deserved reputation for being difficult to operate at high levels of trust: Only 6 organizations run logs that are currently considered to be &ldquo;qualified.&rdquo; <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p>Our <a href="/2019/05/15/introducing-oak-ct-log.html">Oak</a> log is the only qualified CT log that runs on an entirely open source stack <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. In the interest of lowering the barrier for other organizations to join the CT ecosystem, we want to cover a few recent changes to Oak that might be helpful to anyone else planning to launch a log based on Google&rsquo;s Trillian backed by MariaDB:</p>
@@ -343,7 +343,7 @@ Peter's longtime friend and colleague Seth Schoen, who was among the earliest co
 <p>Though the performance requirements for CT logs are strict, the bulk of the scalability difficulty has to do with the large amount of data and the high and ever-increasing rate of growth; this is the way of relational databases. Horizontal scaling continues to be the solution, and is straightforward to apply to the open source Trillian and MariaDB stack.</p>
 <h2 id="supporting-let-s-encrypt">Supporting Let’s Encrypt</h2>
 <p>As a nonprofit project, 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our services for the public benefit. If your
-company or organization would like to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="letsencrypt-ewebsite/donate/" hreflang="en-US">donation</a>, we ask that you make an individual contribution.</p>
+company or organization would like to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="/letsencrypt-ewebsite/donate/" hreflang="en-US">donation</a>, we ask that you make an individual contribution.</p>
 <br />
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -365,23 +365,23 @@ company or organization would like to <a href="https://www.abetterinternet.org/s
 </li>
 </ol>
 </section>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2022/05/19/nurturing-ct-log-growth.html</guid>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2022/05/19/nurturing-ct-log-growth.html</guid>
       </item><item>
         <title>TLS Beyond the Web: How MongoDB Uses Let’s Encrypt for Database-to-Application Security</title>
-        <link>letsencrypt-ewebsite/2022/04/28/database-to-app-tls.html</link>
+        <link>https://qubitpi.github.io/letsencrypt-ewebsite/2022/04/28/database-to-app-tls.html</link>
         <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
         <description><![CDATA[<p>Most of the time, people think about using Let&rsquo;s Encrypt certificates to encrypt the communication between a website and server. But connections that need TLS are everywhere! In order for us to have an Internet that is 100% encrypted, we need to think beyond the website.</p>
 <p>MongoDB&rsquo;s managed multicloud database service, called Atlas, uses Let&rsquo;s Encrypt certificates to secure the connection between customers' applications and MongoDB databases, and between service points inside the platform. We spoke with Kenn White, Security Principal at MongoDB, about how his team uses Let&rsquo;s Encrypt certificates for over two million databases, across 200 datacenters and three cloud providers.</p>
 <p>&quot;Let&rsquo;s Encrypt has become a core part of our infrastructure stack,&quot; said Kenn. Interestingly, our relationship didn&rsquo;t start out that way. MongoDB became a financial sponsor of Let&rsquo;s Encrypt years earlier simply to support our mission to pursue security and privacy. MongoDB Atlas began to take off and it became clear that TLS would continue to be a priority as they brought on customers like currency exchanges, treasury platforms and retail payment networks. &quot;The whole notion of high automation and no human touch all really appealed to us,&quot; said Kenn of MongoDB&rsquo;s decision to use Let&rsquo;s Encrypt.</p>
 <p>MongoDB&rsquo;s diverse customer roster means they support a wide variety of languages, libraries, and operating systems. Consequently, their monitoring is quite robust. Over the years, MongoDB has become a helpful resource for Let&rsquo;s Encrypt engineers to identify edge case implementation bugs. Their ability to accurately identify issues early helps us respond efficiently; this is a benefit that ripples out across our diverse subscribers all over the Web.</p>
-<p>The open sharing of information is a core part of how Let&rsquo;s Encrypt operates. In fact, &quot;transparency&quot; is one of our <a href="letsencrypt-ewebsite/about/" hreflang="en-US">key operating principles</a>. The ability to see and understand how Let&rsquo;s Encrypt is changing helped MongoDB gain trust and confidence in our operations. &quot;I don&rsquo;t think you can really put a price on the experience we&rsquo;ve had working with the Let&rsquo;s Encrypt engineering team,&quot; said Kenn. &quot;One thing that I appreciate about Let&rsquo;s Encrypt is that you&rsquo;ve always been extremely transparent on your priorities and your roadmap vision. In terms of the technology and your telemetry, this is an evolution; where you are today is far better than where you were two years ago. And two years ago you were already head and shoulders above almost every peer in the industry.&quot;</p>
+<p>The open sharing of information is a core part of how Let&rsquo;s Encrypt operates. In fact, &quot;transparency&quot; is one of our <a href="/letsencrypt-ewebsite/about/" hreflang="en-US">key operating principles</a>. The ability to see and understand how Let&rsquo;s Encrypt is changing helped MongoDB gain trust and confidence in our operations. &quot;I don&rsquo;t think you can really put a price on the experience we&rsquo;ve had working with the Let&rsquo;s Encrypt engineering team,&quot; said Kenn. &quot;One thing that I appreciate about Let&rsquo;s Encrypt is that you&rsquo;ve always been extremely transparent on your priorities and your roadmap vision. In terms of the technology and your telemetry, this is an evolution; where you are today is far better than where you were two years ago. And two years ago you were already head and shoulders above almost every peer in the industry.&quot;</p>
 <p>Check out other blog posts in this series about how other large subscribers use Let&rsquo;s Encrypt certificates.</p>
 <p><a href="/2021/10/28/tls-simply-and-automatically.html">TLS Simply and Automatically for Europe&rsquo;s Largest Cloud Customers</a></p>
 <p><a href="/2021/09/14/speed-at-scale-shopify.html">Speed at scale: Let&rsquo;s Encrypt serving Shopify&rsquo;s 4.5 million domains</a></p>
 <h2 id="supporting-let-s-encrypt">Supporting Let’s Encrypt</h2>
 <p>As a nonprofit project, 100% of our funding comes from contributions from our community of users and supporters. We depend on their support in order to provide our services for the public benefit. If your
-company or organization would like to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="letsencrypt-ewebsite/donate/" hreflang="en-US">donation</a>, we ask that you make an individual contribution.</p>]]></description>
-        <guid isPermaLink="true">letsencrypt-ewebsite/2022/04/28/database-to-app-tls.html</guid>
+company or organization would like to <a href="https://www.abetterinternet.org/sponsor/">sponsor</a> Let’s Encrypt please email us at <a href="mailto:sponsor@letsencrypt.org">sponsor@letsencrypt.org</a>. If you can support us with a <a href="/letsencrypt-ewebsite/donate/" hreflang="en-US">donation</a>, we ask that you make an individual contribution.</p>]]></description>
+        <guid isPermaLink="true">https://qubitpi.github.io/letsencrypt-ewebsite/2022/04/28/database-to-app-tls.html</guid>
       </item>
   </channel>
 </rss>
