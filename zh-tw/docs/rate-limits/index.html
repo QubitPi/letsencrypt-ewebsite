@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="速率限制">
-    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/zh-tw/docs/rate-limits/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/rate-limits/">
     <meta name="twitter:description" content="為了確保大多數使用者的公平性，Let&amp;rsquo;s Encrypt 具有憑證操作上的速率限制，我們相信這些的限制能滿足大多數用戶的需求。大型機構可以逐步增加他們憑證數量，而不需要受到 Let&amp;rsquo;s Encrypt 的干預。
 如果你正著手開發或測試 Let&amp;rsquo;s Encrypt 客戶端，請使用我們的測試環境，請不要使用上線環境的 API。如果你正為服務提供業者或大型網站整合 Let&amp;rsquo;s Encrypt，請閱讀我們的整合指南。
 我們最主要的限制是每個註冊網域 (Registered Domain) 的憑證頒發數量，限制為每周 50 張。註冊網域，是指你向網域註冊商所購買的名稱，例如：網域名稱 www.example.com 的註冊網域就是 example.com；而網域名稱 new.blog.example.co.uk 的註冊網域是 example.co.uk。我們使用公共後綴列表 (Public Suffix List) 來辨認一個網域名稱的註冊網域。
@@ -34,17 +34,17 @@
 註銷憑證不會使頒發速率限制重設，因為你已經消耗了這些用來頒發憑證的資源。
 我們還有網域驗證失敗限制，對於每個帳號每域名每小時 5 次的限制。在測試環境中並沒有那麼嚴格的限制，因此你可以使用測試環境來針對連線問題除錯。
 &amp;ldquo;new-reg&amp;rdquo;、&amp;ldquo;new-authz&amp;rdquo; 和 &amp;ldquo;new-cert&amp;rdquo; 端點的速率限制總和為每秒 20 次請求。&amp;quot;/directory&amp;quot; 端點和 &amp;ldquo;/acme&amp;rdquo; 路徑以及其子路徑的速率請求總和為每秒 40 次請求。">
-    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-website/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-website/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="https://qubitpi.github.io/letsencrypt-website/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="https://qubitpi.github.io/letsencrypt-website/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/letsencrypt-ewebsite/zh-tw/docs/rate-limits/">
+    <link rel="canonical" href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/rate-limits/">
     
-    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
+    <link rel="alternate" href="https://qubitpi.github.io/letsencrypt-website/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
     
     
 </head>
@@ -55,7 +55,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳過導航連結</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="https://qubitpi.github.io/letsencrypt-website/zh-tw/"><img src="https://qubitpi.github.io/letsencrypt-website/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -65,7 +65,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
             
           </li>
           
@@ -80,7 +80,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/donate/" class="pure-menu-link">捐贈</a>
               </li>
               
               <li class="pure-menu-item">
@@ -88,11 +88,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -105,7 +105,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -113,11 +113,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -125,7 +125,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/stats/" class="pure-menu-link">統計數據</a>
               </li>
               
               <li class="pure-menu-item">
@@ -133,7 +133,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
               </li>
               
             </ul>
@@ -189,112 +189,112 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="https://qubitpi.github.io/letsencrypt-website/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/docs/rate-limits/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/docs/rate-limits/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/da/docs/rate-limits/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/da/docs/rate-limits/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/de/docs/rate-limits/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/de/docs/rate-limits/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/es/docs/rate-limits/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/es/docs/rate-limits/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/fi/docs/rate-limits/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/fi/docs/rate-limits/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/fr/docs/rate-limits/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/fr/docs/rate-limits/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/he/docs/rate-limits/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/he/docs/rate-limits/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/hu/docs/rate-limits/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/hu/docs/rate-limits/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/id/docs/rate-limits/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/id/docs/rate-limits/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/it/docs/rate-limits/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/it/docs/rate-limits/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ja/docs/rate-limits/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ja/docs/rate-limits/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ko/docs/rate-limits/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ko/docs/rate-limits/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/pt-br/docs/rate-limits/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/pt-br/docs/rate-limits/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/docs/rate-limits/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/docs/rate-limits/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/si/docs/rate-limits/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/si/docs/rate-limits/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/sr/docs/rate-limits/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/sr/docs/rate-limits/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/sv/docs/rate-limits/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/sv/docs/rate-limits/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/uk/docs/rate-limits/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/uk/docs/rate-limits/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/vi/docs/rate-limits/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/vi/docs/rate-limits/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-cn/docs/rate-limits/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-cn/docs/rate-limits/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/docs/rate-limits/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/rate-limits/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
               </li>
               
             </ul>
@@ -313,7 +313,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>速率限制</h1>
 </div>
@@ -324,7 +324,7 @@
 
 
 
-<script src="/js/i18n.js" defer async></script>
+<script src="https://qubitpi.github.io/letsencrypt-website/js/i18n.js" defer async></script>
 
 
 
@@ -334,7 +334,7 @@
     最後更新於<time datetime="2023-06-09">Jun 9, 2023</time>
 
 
- | <a href="/letsencrypt-ewebsite/zh-tw/docs">查看所有文件</a>
+ | <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs">查看所有文件</a>
 </p>
 
 
@@ -389,24 +389,24 @@
 
 
 <p>為了確保大多數使用者的公平性，Let&rsquo;s Encrypt 具有憑證操作上的速率限制，我們相信這些的限制能滿足大多數用戶的需求。大型機構可以逐步增加他們憑證數量，而不需要受到 Let&rsquo;s Encrypt 的干預。</p>
-<p>如果你正著手開發或測試 Let&rsquo;s Encrypt 客戶端，請使用我們的<a href="/letsencrypt-ewebsite/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>，請不要使用上線環境的 API。如果你正為服務提供業者或大型網站整合 Let&rsquo;s Encrypt，請閱讀我們的<a href="/letsencrypt-ewebsite/zh-tw/docs/integration-guide/" hreflang="zh-Hant-TW">整合指南</a>。</p>
+<p>如果你正著手開發或測試 Let&rsquo;s Encrypt 客戶端，請使用我們的<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>，請不要使用上線環境的 API。如果你正為服務提供業者或大型網站整合 Let&rsquo;s Encrypt，請閱讀我們的<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/integration-guide/" hreflang="zh-Hant-TW">整合指南</a>。</p>
 <p>我們最主要的限制是<a id="certificates-per-registered-domain"></a><strong>每個註冊網域 (Registered Domain) 的憑證頒發數量</strong>，限制為每周 50 張。註冊網域，是指你向網域註冊商所購買的名稱，例如：網域名稱 <code>www.example.com</code> 的註冊網域就是 <code>example.com</code>；而網域名稱 <code>new.blog.example.co.uk</code> 的註冊網域是 <code>example.co.uk</code>。我們使用<a href="https://publicsuffix.org">公共後綴列表 (Public Suffix List)</a> 來辨認一個網域名稱的註冊網域。</p>
 <p>如果你擁有非常多的子網域，你可能會想將它們整合成一張憑證。你最多能在<a id="names-per-certificate"></a><strong>一張憑證中包含 100 個網域名稱</strong>。綜合上述兩個限制，你每個星期最多能替 5000 個網域名稱申請憑證。在一張憑證中包含多個網域名稱的憑證，我們稱為主體別名 (Subject Alternative Name, SAN) 憑證，或有時稱為整合通訊憑證 (Unified Communications Certificates, UCC) 憑證。注意：出於效率和可靠性考量，一張憑證最好不要包含太多網域名稱。</p>
 <p>更新憑證僅有一項特別規定：更新憑證受到<strong>重複憑證</strong>限制，一個星期內僅能頒發 5 張重複的憑證。更新憑證與<strong>每個註冊網域的憑證頒發數量</strong>互相獨立。請注意：2019 年 3 月前，更新憑證曾經受到每個註冊網域的憑證頒發數量影響，但是<a href="https://community.letsencrypt.org/t/rate-limits-fixing-certs-per-name-rate-limit-order-of-operations-gotcha/88189">現在已經互相獨立了</a>。</p>
 <p>如果一張憑證與先前的某張憑證擁有相同的網域，無論網域的大小寫或順序，它就會被視為重複憑證。例如，你過去已經申請了一張憑證，網域包括 [<code>www.example.com</code>, <code>example.com</code>]，則這禮拜你僅能再替 [<code>www.example.com</code>, <code>example.com</code>] 這組網域申請 4 次憑證。如果你在網域中添加了 [<code>blog.example.com</code>]，你就不會受到重複憑證的限制。</p>
 <p>重複憑證的計算，不會因為你變更了的憑證公鑰和憑證擴展而受影響。</p>
 <p><strong>註銷憑證不會使頒發速率限制重設</strong>，因為你已經消耗了這些用來頒發憑證的資源。</p>
-<p>我們還有<a id="failed-validations"></a><strong>網域驗證失敗</strong>限制，對於每個帳號每域名每小時 5 次的限制。在<a href="/letsencrypt-ewebsite/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>中並沒有那麼嚴格的限制，因此你可以使用測試環境來針對連線問題除錯。</p>
+<p>我們還有<a id="failed-validations"></a><strong>網域驗證失敗</strong>限制，對於每個帳號每域名每小時 5 次的限制。在<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>中並沒有那麼嚴格的限制，因此你可以使用測試環境來針對連線問題除錯。</p>
 <p>&ldquo;new-reg&rdquo;、&ldquo;new-authz&rdquo; 和 &ldquo;new-cert&rdquo; 端點的<a
 id="overall-requests"></a><strong>速率限制總和</strong>為每秒 20 次請求。&quot;/directory&quot; 端點和 &ldquo;/acme&rdquo; 路徑以及其子路徑的速率請求總和為每秒 40 次請求。</p>
 <p>此外我們還有兩個你可能比較不會遇到的限制。</p>
-<p><a id="accounts-per-ip-address"></a><strong>每個 IP 位置</strong>每 3 個小時最多能建立 10 個帳號。<strong>每個 IPv6 /48</strong> 每 3 個小時最多能建立 500 個帳號。要達到這種帳號限制是很難的，我們建議服務提供業者<a href="/letsencrypt-ewebsite/zh-tw/docs/integration-guide/" hreflang="zh-Hant-TW">使用一個帳號為多個客戶提供服務</a>。</p>
-<p>你的帳號最多能有 300 個<strong>待驗證授權</strong>。這種速率限制很難達到，通常是在 ACME 客戶端開發時才會遇到。會達到這個速率限制，通常表示你的客戶端正在建立授權，但是沒有驗證授權。如果你正在開發 ACME 客戶端，請使用我們的<a href="/letsencrypt-ewebsite/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>。</p>
+<p><a id="accounts-per-ip-address"></a><strong>每個 IP 位置</strong>每 3 個小時最多能建立 10 個帳號。<strong>每個 IPv6 /48</strong> 每 3 個小時最多能建立 500 個帳號。要達到這種帳號限制是很難的，我們建議服務提供業者<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/integration-guide/" hreflang="zh-Hant-TW">使用一個帳號為多個客戶提供服務</a>。</p>
+<p>你的帳號最多能有 300 個<strong>待驗證授權</strong>。這種速率限制很難達到，通常是在 ACME 客戶端開發時才會遇到。會達到這個速率限制，通常表示你的客戶端正在建立授權，但是沒有驗證授權。如果你正在開發 ACME 客戶端，請使用我們的<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/staging-environment/" hreflang="zh-Hant-TW">測試環境</a>。</p>
 <p>對於使用 ACME v2 API 的使用者，每 3 個小時最多可以建立 300 個<a id="new-orders"></a><strong>新請求</strong>。</p>
 <h1 id="a-id-overrides-a-超過限制"><a id="overrides"></a>超過限制</h1>
 <p>如果你達到速率限制，我們無法暫時重設它。你只能等待一個星期直到速率限制結束。我們使用滑動窗口來計算限制時間，如果你在這星期一申請了 25 張憑證，星期五申請了另外 25 張憑證，你可以在下星期一再次申請憑證頒發。你可以透過<a href="https://crt.sh">查詢 crt.sh</a>，取得你的註冊網域所申請過的憑證列表，它使用公開的<a href="https://www.certificate-transparency.org">憑證透明化 (Certificate Transparency)</a> 紀錄。</p>
 <p>如果你是個想整合 Let&rsquo;s Encrypt 的服務提供業者或組織，你可以透過填寫<a href="https://isrg.formstack.com/forms/rate_limit_adjustment_request">增加速率表單</a>以取得更高的速率。處理表單需要幾周的時間，因此如果你只是想要在限制結束前更快的重設限制，請不要填寫這個表單。</p>
-<p>大多數的業者不需要增加速率，因為對於不同的註冊網域並沒有頒發速率限制。如果你的你的客戶在一個註冊網域上擁有超過 2000 個子網域，你才需要考慮增加速率。請參考我們的<a href="/letsencrypt-ewebsite/zh-tw/docs/integration-guide/" hreflang="zh-Hant-TW">整合指南</a>，以取得更多資訊。</p>
+<p>大多數的業者不需要增加速率，因為對於不同的註冊網域並沒有頒發速率限制。如果你的你的客戶在一個註冊網域上擁有超過 2000 個子網域，你才需要考慮增加速率。請參考我們的<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/integration-guide/" hreflang="zh-Hant-TW">整合指南</a>，以取得更多資訊。</p>
 <h1 id="a-id-clearing-pending-a-清除待驗證授權"><a id="clearing-pending"></a>清除待驗證授權</h1>
 <p>如果你有大量的待驗證授權並且受到了速率限制，你可以透過向其中一個提出考驗的伺服器，發出 JWS 簽名的 POST 請求，來觸發未驗證授權的驗證請求，詳細流程請參考 <a href="https://tools.ietf.org/html/rfc8555#section-7.5.1">ACME 規範</a>。待驗證授權的格式由 <a href="https://acme-v01.api.letsencrypt.org/acme/authz/XYZ">https://acme-v01.api.letsencrypt.org/acme/authz/XYZ</a> 中所表示，並且會出現在你的客戶端記錄檔中。請注意，記錄檔中不管驗證成功或失敗都會先顯示待驗證。如果你的記錄檔中沒有對應授權的 URL，你需要等待速率限制結束。如上文所說描述的，我們使用滑動窗口來計算時間，根據你頒發憑證的間隔時間不同，等待的時間可能不需要一周。</p>
 <p>通常有大量未驗證授權的原因是客戶端軟體有錯誤。如果你達到這個速率限制，你應該再檢查一下你的客戶端程式碼。</p>
@@ -472,7 +472,7 @@ id="overall-requests"></a><strong>速率限制總和</strong>為每秒 20 次請
           </li>
          
         </ul>
-        查看我們的<a href="/zh-tw/privacy/">私隱政策</a>.<br>
+        查看我們的<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/privacy/">私隱政策</a>.<br>
 查看我們的<a href="https://www.abetterinternet.org/trademarks/">商標政策</a>.
 
       </div>
@@ -489,7 +489,7 @@ id="overall-requests"></a><strong>速率限制總和</strong>為每秒 20 次請
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="https://qubitpi.github.io/letsencrypt-website/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

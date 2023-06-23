@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt - 무료 SSL/TLS 인증서</title>
-    <link>https://qubitpi.github.io/letsencrypt-ewebsite/ko/</link>
+    <link>https://qubitpi.github.io/letsencrypt-website/ko/</link>
     <description>  Let&#39;s Encrypt는 &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt; 비영리 인터넷 보안 연구 그룹 (ISRG)&lt;/a&gt;에서 가져온 무료, 자동 및 공개 인증 기관입니다.
 </description>
     <language>ko-KR</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="https://qubitpi.github.io/letsencrypt-ewebsite/ko/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://qubitpi.github.io/letsencrypt-website/ko/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>

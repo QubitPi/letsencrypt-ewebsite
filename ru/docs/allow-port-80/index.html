@@ -15,20 +15,20 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="Лучшая практика - держите 80 порт открытым">
-    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/ru/docs/allow-port-80/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-website/ru/docs/allow-port-80/">
     <meta name="twitter:description" content="Периодически нам сообщают о проблемах с использованием проверки HTTP-01, потому что отключен 80 порт в настройках брандмауэра на веб-сервере. Мы рекомендуем, чтобы все сервера, предназначенные для использования в общей сети, работали как с HTTP на порту 80, так и с HTTPS на порту 443. Также они должны перенаправлять все запросы, приходящие на 80 порт, и, по возможности, заголовки HSTS (для запросов на 443 порт).
 Открытый 80 порт не увеличивает число возможных векторов атаки на ваш сервер, так как запросы на 80 порт обычно обрабатываются тем же ПО, что работает и с 443 портом.">
-    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-website/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-website/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="https://qubitpi.github.io/letsencrypt-website/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="https://qubitpi.github.io/letsencrypt-website/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/letsencrypt-ewebsite/ru/docs/allow-port-80/">
+    <link rel="canonical" href="https://qubitpi.github.io/letsencrypt-website/ru/docs/allow-port-80/">
     
-    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Блог Let&#39;s Encrypt" />
+    <link rel="alternate" href="https://qubitpi.github.io/letsencrypt-website/feed.xml" type="application/rss+xml" title="Блог Let&#39;s Encrypt" />
     
     
 </head>
@@ -39,7 +39,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">Пропустить навигационные ссылки</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/ru/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="https://qubitpi.github.io/letsencrypt-website/ru/"><img src="https://qubitpi.github.io/letsencrypt-website/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -49,7 +49,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/letsencrypt-ewebsite/ru/docs/" class="pure-menu-link" tabindex="0">Документация</a>
+            <a href="https://qubitpi.github.io/letsencrypt-website/ru/docs/" class="pure-menu-link" tabindex="0">Документация</a>
             
           </li>
           
@@ -64,7 +64,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/donate/" class="pure-menu-link">Сделайте пожертвование</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/donate/" class="pure-menu-link">Сделайте пожертвование</a>
               </li>
               
               <li class="pure-menu-item">
@@ -72,11 +72,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/sponsors/" class="pure-menu-link">Текущие спонсоры и дарители</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/sponsors/" class="pure-menu-link">Текущие спонсоры и дарители</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/getinvolved/" class="pure-menu-link">Внесите свой вклад</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/getinvolved/" class="pure-menu-link">Внесите свой вклад</a>
               </li>
               
             </ul>
@@ -89,7 +89,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/about/" class="pure-menu-link">Что такое Let&#39;s Encrypt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/about/" class="pure-menu-link">Что такое Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -97,11 +97,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Окончание срока действия DST Root CA X3 (сентябрь 2021 г.)</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">Окончание срока действия DST Root CA X3 (сентябрь 2021 г.)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/docs/faq/" class="pure-menu-link">Часто задаваемые вопросы (ЧЗВ)</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/docs/faq/" class="pure-menu-link">Часто задаваемые вопросы (ЧЗВ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -109,7 +109,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/stats/" class="pure-menu-link">Статистика</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/stats/" class="pure-menu-link">Статистика</a>
               </li>
               
               <li class="pure-menu-item">
@@ -117,7 +117,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/contact/" class="pure-menu-link">Контакты</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/contact/" class="pure-menu-link">Контакты</a>
               </li>
               
             </ul>
@@ -173,112 +173,112 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">Язык <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">Язык <img src="https://qubitpi.github.io/letsencrypt-website/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/docs/allow-port-80/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/da/docs/allow-port-80/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/de/docs/allow-port-80/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/es/docs/allow-port-80/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/fi/docs/allow-port-80/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/fr/docs/1/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/he/docs/allow-port-80/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/hu/docs/allow-port-80/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/id/docs/allow-port-80/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/it/docs/allow-port-80/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ja/docs/allow-port-80/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ko/docs/allow-port-80/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/pt-br/docs/allow-port-80/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">✓ Русский</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/docs/allow-port-80/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">✓ Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/si/docs/allow-port-80/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/sr/docs/allow-port-80/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/sv/docs/1/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/uk/docs/allow-port-80/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/vi/docs/allow-port-80/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-cn/docs/allow-port-80/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/allow-port-80/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">繁體中文</a>
               </li>
               
             </ul>
@@ -297,7 +297,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/1.jpg');">
+<div class="hero slim" style="background-image: url('/images/1.jpg');">
 <div class="container">
 	<h1>Лучшая практика - держите 80 порт открытым</h1>
 </div>
@@ -308,7 +308,7 @@
 
 
 
-<script src="/js/i18n.js" defer async></script>
+<script src="https://qubitpi.github.io/letsencrypt-website/js/i18n.js" defer async></script>
 
 
 
@@ -318,7 +318,7 @@
     Последнее обновление: <time datetime="2019-01-24">24 янв. 2019 г.</time>
 
 
- | <a href="/letsencrypt-ewebsite/ru/docs">Вся документация</a>
+ | <a href="https://qubitpi.github.io/letsencrypt-website/ru/docs">Вся документация</a>
 </p>
 
 
@@ -439,7 +439,7 @@
           </li>
          
         </ul>
-        Ознакомьтесь с нашей <a href="/ru/privacy/">политикой конфиденциальности</a>.<br>
+        Ознакомьтесь с нашей <a href="https://qubitpi.github.io/letsencrypt-website/ru/privacy/">политикой конфиденциальности</a>.<br>
 Ознакомьтесь с нашей <a href="https://www.abetterinternet.org/trademarks/">политикой в отношении товарных знаков</a>.
 
       </div>
@@ -456,7 +456,7 @@
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="https://qubitpi.github.io/letsencrypt-website/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

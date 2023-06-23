@@ -17,22 +17,22 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@letsencrypt">
     <meta name="twitter:title" content="憑證信任鏈">
-    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-ewebsite/zh-tw/certificates/">
+    <meta name="twitter:url" content="https://qubitpi.github.io/letsencrypt-website/zh-tw/certificates/">
     <meta name="twitter:description" content="根憑證 我們簽發根憑證的私鑰以離線方式存儲在安全的地點。我們使用中間憑證向用戶頒發終端憑證，中間憑證將在下一章節介紹。
  活躍憑證  ISRG Root X1（自簽）    我們設置了以下網站，用來測試由根憑證所簽發的憑證鏈是否有效。
  ISRG Root X1 有效憑證  https://valid-isrgrootx1.letsencrypt.org/   ISRG Root X1 已註銷憑證  https://revoked-isrgrootx1.letsencrypt.org/   ISRG Root X1 已過期憑證  https://expired-isrgrootx1.letsencrypt.org/    中間憑證 IdenTrust 和我們交互簽名 (Cross-Sign) 了中間憑證，這樣可以確保我們所發的終端憑證被所有主流瀏覽器信任。
 在正常的情況下，由 Let&amp;rsquo;s Encrypt 所頒發的憑證會來自中間憑證 &amp;ldquo;Let&amp;rsquo;s Encrypt Authority X3&amp;rdquo;。而另一個中間憑證 &amp;ldquo;Let&amp;rsquo;s Encrypt Authority X4&amp;rdquo; 將被保留起來用於災難恢復期，只有在我們失去對 &amp;ldquo;Let&amp;rsquo;s Encrypt Authority X3&amp;rdquo; 的掌控時才會使用它。X1 和 X2 是我們的第一代中間憑證，為了更好地相容 Windows XP，我們將他們替換為目前的 X3 和 X4 中間憑證。">
-    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/le-logo-twitter-noalpha.png">
-    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-ewebsite/images/LetsEncrypt-SocialShare.png">
+    <meta name="twitter:image:src" content="https://qubitpi.github.io/letsencrypt-website/images/le-logo-twitter-noalpha.png">
+    <meta name="og:image" content="https://qubitpi.github.io/letsencrypt-website/images/LetsEncrypt-SocialShare.png">
 
     
-    <link rel="stylesheet" href="/letsencrypt-ewebsite/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
+    <link rel="stylesheet" href="https://qubitpi.github.io/letsencrypt-website/css/main.min.6791249091d19b45fdcb90a60bdc1d673e0fa8014336e38e91d9017427824807933b14f5d5af8403308998662afcdf07b5be942bb9087d7cfbfdb5da709822a5.css" integrity="sha512-Z5EkkJHRm0X9y5CmC9wdZz4PqAFDNuOOkdkBdCeCSAeTOxT11a&#43;EAzCJmGYq/N8Htb6UK7kIfXz7/bXacJgipQ==">
 
-    <link rel="stylesheet" href="/fontawesome-free-5.12.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="https://qubitpi.github.io/letsencrypt-website/fontawesome-free-5.12.1-web/css/all.min.css" />
     
-    <link rel="canonical" href="/letsencrypt-ewebsite/zh-tw/certificates/">
+    <link rel="canonical" href="https://qubitpi.github.io/letsencrypt-website/zh-tw/certificates/">
     
-    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
+    <link rel="alternate" href="https://qubitpi.github.io/letsencrypt-website/feed.xml" type="application/rss+xml" title="Let&#39;s Encrypt部落格動態消息" />
     
     
 </head>
@@ -43,7 +43,7 @@
 <header class="site-header">
   <a id="skiplink" href="#main-content">跳過導航連結</a>
   <div class="wrapper">
-    <a class="site-title" href="/letsencrypt-ewebsite/zh-tw/"><img src="/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
+    <a class="site-title" href="https://qubitpi.github.io/letsencrypt-website/zh-tw/"><img src="https://qubitpi.github.io/letsencrypt-website/images/letsencrypt-logo-horizontal.svg" alt="Let's Encrypt"></a>
 
     <span id="menuIcon">
       <i class="fas fa-bars"></i>
@@ -53,7 +53,7 @@
         <ul class="pure-menu-list">
           
           <li class="pure-menu-item">
-            <a href="/letsencrypt-ewebsite/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
+            <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/" class="pure-menu-link" tabindex="0">文件</a>
             
           </li>
           
@@ -68,7 +68,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/donate/" class="pure-menu-link">捐贈</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/donate/" class="pure-menu-link">捐贈</a>
               </li>
               
               <li class="pure-menu-item">
@@ -76,11 +76,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/sponsors/" class="pure-menu-link">當前贊助商和捐助者</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/getinvolved/" class="pure-menu-link">幫助 Let&#39;s Encrypt</a>
               </li>
               
             </ul>
@@ -93,7 +93,7 @@
             <ul class="pure-menu-children">
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/about/" class="pure-menu-link">Let&#39;s Encrypt</a>
               </li>
               
               <li class="pure-menu-item">
@@ -101,11 +101,11 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/dst-root-ca-x3-expiration-september-2021/" class="pure-menu-link">DST Root CA X3 Expiration (September 2021)</a>
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/docs/faq/" class="pure-menu-link">常見問題 (FAQ)</a>
               </li>
               
               <li class="pure-menu-item">
@@ -113,7 +113,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/stats/" class="pure-menu-link">統計數據</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/stats/" class="pure-menu-link">統計數據</a>
               </li>
               
               <li class="pure-menu-item">
@@ -121,7 +121,7 @@
               </li>
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/contact/" class="pure-menu-link">聯繫我們</a>
               </li>
               
             </ul>
@@ -177,112 +177,112 @@
           
           
           <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
+            <a href="#" class="pure-menu-link" tabindex="0">語言 <img src="https://qubitpi.github.io/letsencrypt-website/images/language-icon128px-black.png" class="inline-icon" alt="" aria-hidden="true"></a>
             <ul class="pure-menu-children menu-for-languages">
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/certificates/" lang="en-US" hreflang="en-US" class="pure-menu-link">English</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/da/certificates/" lang="da" hreflang="da" class="pure-menu-link">Dansk</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/de/certificates/" lang="de-DE" hreflang="de-DE" class="pure-menu-link">Deutsch</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/es/certificates/" lang="es-US" hreflang="es-US" class="pure-menu-link">Español</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/fi/certificates/" lang="fi" hreflang="fi" class="pure-menu-link">Suomi</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/fr/certificates/" lang="fr-FR" hreflang="fr-FR" class="pure-menu-link">Français</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/he/certificates/" lang="he" hreflang="he" class="pure-menu-link">עברית</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/hu/certificates/" lang="hu" hreflang="hu" class="pure-menu-link">Hungarian</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/id/certificates/" lang="id-ID" hreflang="id-ID" class="pure-menu-link">Bahasa Indonesia</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/it/certificates/" lang="it-IT" hreflang="it-IT" class="pure-menu-link">Italiano</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ja/certificates/" lang="ja" hreflang="ja" class="pure-menu-link">日本語</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ko/certificates/" lang="ko-KR" hreflang="ko-KR" class="pure-menu-link">한국어</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/pt-br/certificates/" lang="pt-BR" hreflang="pt-BR" class="pure-menu-link">Português do Brasil</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/ru/certificates/" lang="ru-RU" hreflang="ru-RU" class="pure-menu-link">Русский</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/si/certificates/" lang="si" hreflang="si" class="pure-menu-link">සිංහල</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/sr/certificates/" lang="sr" hreflang="sr" class="pure-menu-link">Srpski</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/sv/certificates/" lang="sv" hreflang="sv" class="pure-menu-link">Svenska</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/uk/certificates/" lang="uk-UA" hreflang="uk-UA" class="pure-menu-link">Українська</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/vi/certificates/" lang="vi-VN" hreflang="vi-VN" class="pure-menu-link">Tiếng Việt</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-cn/certificates/" lang="zh-Hans-CN" hreflang="zh-Hans-CN" class="pure-menu-link">简体中文</a>
               </li>
               
               
               <li class="pure-menu-item">
-                <a href="/letsencrypt-ewebsite/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
+                <a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/certificates/" lang="zh-Hant-TW" hreflang="zh-Hant-TW" class="pure-menu-link">✓ 繁體中文</a>
               </li>
               
             </ul>
@@ -301,7 +301,7 @@
 
 		
 
-<div class="hero slim" style="background-image: url('/letsencrypt-ewebsite/images/5.jpg');">
+<div class="hero slim" style="background-image: url('/images/5.jpg');">
 <div class="container">
 	<h1>憑證信任鏈</h1>
 </div>
@@ -312,7 +312,7 @@
 
 
 
-<script src="/js/i18n.js" defer async></script>
+<script src="https://qubitpi.github.io/letsencrypt-website/js/i18n.js" defer async></script>
 
 
 
@@ -337,7 +337,7 @@
                 <i>
                     請注意：英文版本（原版）在本翻譯後有改動
                     (<time datetime="2021-10-02">Oct 2, 2021</time>)
-                    <a href="/letsencrypt-ewebsite/certificates/">查看英文版本</a>
+                    <a href="https://qubitpi.github.io/letsencrypt-website/certificates/">查看英文版本</a>
                 </i>
             </p>
             
@@ -389,7 +389,7 @@
 <ul>
 <li>活躍憑證
 <ul>
-<li><a href="/certs/isrgrootx1.pem.txt">ISRG Root X1（自簽）</a></li>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/isrgrootx1.pem.txt">ISRG Root X1（自簽）</a></li>
 </ul>
 </li>
 </ul>
@@ -417,32 +417,32 @@
 <ul>
 <li>活耀憑證
 <ul>
-<li><a href="/certs/lets-encrypt-x3-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X3（與 IdenTrust 交互簽名）</a>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/lets-encrypt-x3-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X3（與 IdenTrust 交互簽名）</a>
 <ul>
-<li><a href="/certs/letsencryptauthorityx3.pem.txt">Let&rsquo;s Encrypt Authority X3（由 ISRG Root X1 簽發）</a></li>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/letsencryptauthorityx3.pem.txt">Let&rsquo;s Encrypt Authority X3（由 ISRG Root X1 簽發）</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>備用憑證
 <ul>
-<li><a href="/certs/lets-encrypt-x4-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X4（與 IdenTrust 交互簽名）</a>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/lets-encrypt-x4-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X4（與 IdenTrust 交互簽名）</a>
 <ul>
-<li><a href="/certs/letsencryptauthorityx4.pem.txt">Let&rsquo;s Encrypt Authority X4（由 ISRG Root X1 簽發）</a></li>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/letsencryptauthorityx4.pem.txt">Let&rsquo;s Encrypt Authority X4（由 ISRG Root X1 簽發）</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>已退役憑證
 <ul>
-<li><a href="/certs/lets-encrypt-x2-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X2（與 IdenTrust 交互簽名）</a>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/lets-encrypt-x2-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X2（與 IdenTrust 交互簽名）</a>
 <ul>
-<li><a href="/certs/letsencryptauthorityx2.pem.txt">Let&rsquo;s Encrypt Authority X2（由 ISRG Root X1 簽發）</a></li>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/letsencryptauthorityx2.pem.txt">Let&rsquo;s Encrypt Authority X2（由 ISRG Root X1 簽發）</a></li>
 </ul>
 </li>
-<li><a href="/certs/lets-encrypt-x1-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X1（與 IdenTrust 交互簽名）</a>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/lets-encrypt-x1-cross-signed.pem.txt">Let&rsquo;s Encrypt Authority X1（與 IdenTrust 交互簽名）</a>
 <ul>
-<li><a href="/certs/letsencryptauthorityx1.pem.txt">Let&rsquo;s Encrypt Authority X1（由 ISRG Root X1 簽發）</a></li>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/letsencryptauthorityx1.pem.txt">Let&rsquo;s Encrypt Authority X1（由 ISRG Root X1 簽發）</a></li>
 </ul>
 </li>
 </ul>
@@ -451,15 +451,15 @@
 <h1 id="交互簽名">交互簽名</h1>
 <p>我們的中間憑證 &ldquo;Let&rsquo;s Encrypt Authority X3&rdquo; 具有一對公鑰和私鑰，
 我們使用金鑰中的私鑰替所有終端憑證（也稱為子葉憑證）簽名，這也就是我們頒發給你伺服器的憑證。</p>
-<p>我們的中間憑證是由 ISRG Root X1 根憑證所簽發。因為我們還是個非常新的憑證頒發機構，ISRG Root X1 尚未受到大多數的瀏覽器的信任。為了使我們頒發的憑證被廣為信任，我們向一個已受主流瀏覽器信任的根憑證 IdenTrust，交互簽名後產生了我們的中間憑證。精確地說，IdenTrust 使用他們的 &ldquo;DST Root CA X3&rdquo;（現在被稱為 &ldquo;TrustID X3 Root&rdquo;）與我們交互簽名後產生了我們的中間憑證。<a href="https://www.identrust.com/support/downloads">你可以從 identrust.com 網站下載 &ldquo;TrustID X3 Root&rdquo;</a>（或是你也可以在這裡下載副本：<a href="/certs/trustid-x3-root.pem.txt">.pem</a> 及 <a href="/certs/trustid-x3-root.p7b">.p7b</a>）。</p>
+<p>我們的中間憑證是由 ISRG Root X1 根憑證所簽發。因為我們還是個非常新的憑證頒發機構，ISRG Root X1 尚未受到大多數的瀏覽器的信任。為了使我們頒發的憑證被廣為信任，我們向一個已受主流瀏覽器信任的根憑證 IdenTrust，交互簽名後產生了我們的中間憑證。精確地說，IdenTrust 使用他們的 &ldquo;DST Root CA X3&rdquo;（現在被稱為 &ldquo;TrustID X3 Root&rdquo;）與我們交互簽名後產生了我們的中間憑證。<a href="https://www.identrust.com/support/downloads">你可以從 identrust.com 網站下載 &ldquo;TrustID X3 Root&rdquo;</a>（或是你也可以在這裡下載副本：<a href="https://qubitpi.github.io/letsencrypt-website/certs/trustid-x3-root.pem.txt">.pem</a> 及 <a href="https://qubitpi.github.io/letsencrypt-website/certs/trustid-x3-root.p7b">.p7b</a>）。</p>
 <p>這表示我們現在有兩種中間憑證。一種由 DST Root CA X3 根憑證所簽發，而另一種由 ISRG Root X1 根憑證所簽發。區分這兩種憑證最簡單的方法，就是查看憑證的簽發者 (Issuer) 欄位。</p>
 <p>當你在設定網頁伺服器時，伺服器管理者不只需要設定終端憑證，也需要設定中間憑證；以幫助瀏覽器透過信任鏈，驗證終端憑證是否被受信任的根憑證所簽發。幾乎所有的伺服器管理者都會選擇使用由 &ldquo;DST Root CA X3&rdquo; 根憑證，以及 &ldquo;Let’s Encrypt Authority X3&rdquo; 中間憑證所組成的憑證信任鏈。我們建議你使用 Let&rsquo;s Encrypt 所開發的軟體 <a href="https://certbot.org">Certbot</a>，替你無縫地設定憑證信任鏈。</p>
 <p>下圖表示憑證之間的關係：</p>
-<img src="/certs/isrg-keys.png" alt="ISRG 憑證關係圖">
+<img src="https://qubitpi.github.io/letsencrypt-website/certs/isrg-keys.png" alt="ISRG 憑證關係圖">
 <h1 id="ocsp-憑證">OCSP 憑證</h1>
 <p>為避免我們將 ISRG 根憑證的私鑰放到線上伺服器中，因此我們使用 OCSP 憑證的私鑰替 Let&rsquo;s Encrypt 中間憑證簽署 OCSP 回應。OCSP 回應中會自動將這張憑證的複本包含在其中，因此使用者不需要需進行任何操作。這裡放上此憑證供你參考。</p>
 <ul>
-<li><a href="/certs/isrg-root-ocsp-x1.pem.txt">ISRG Root OCSP X1 （由 ISRG Root X1 簽發）</a></li>
+<li><a href="https://qubitpi.github.io/letsencrypt-website/certs/isrg-root-ocsp-x1.pem.txt">ISRG Root OCSP X1 （由 ISRG Root X1 簽發）</a></li>
 </ul>
 <h1 id="憑證透明度">憑證透明度</h1>
 <p>我們努力使 Let&rsquo;s Encrypt 的運作及憑證頒發過程保持透明。我們在頒發憑證時，會將憑證透過<a href="https://www.certificate-transparency.org/">憑證透明度</a>系統紀錄下來。你可以通過以下連結查看所有 Let&rsquo;s Encrypt 所頒發過的憑證：</p>
@@ -469,7 +469,7 @@
 </ul>
 <h1 id="更多訊息">更多訊息</h1>
 <p>ISRG 根憑證和 Let&rsquo;s Encrypt 中間憑證的私鑰均存儲在硬體安全模組 (HSM) 中；它提供高度安全的保護，以避免私鑰被竊取。</p>
-<p>目前所有 ISRG 私鑰均為 RSA 私鑰。我們正在<a href="/letsencrypt-ewebsite/zh-tw/upcoming-features/" hreflang="zh-Hant-TW">計劃使用 ECDSA 私鑰</a>。</p>
+<p>目前所有 ISRG 私鑰均為 RSA 私鑰。我們正在<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/upcoming-features/" hreflang="zh-Hant-TW">計劃使用 ECDSA 私鑰</a>。</p>
 </div>
 </div>
 		
@@ -477,7 +477,7 @@
   <div class="wrapper text-center">
     <h2>支持更安全，更尊重私隱的網際網路.</h2>
     <div class="buttons">
-      <a class="accent" href="/letsencrypt-ewebsite/zh-tw/donate/">捐贈</a>
+      <a class="accent" href="https://qubitpi.github.io/letsencrypt-website/zh-tw/donate/">捐贈</a>
     </div>
   </div>
 </div>
@@ -541,7 +541,7 @@
           </li>
          
         </ul>
-        查看我們的<a href="/zh-tw/privacy/">私隱政策</a>.<br>
+        查看我們的<a href="https://qubitpi.github.io/letsencrypt-website/zh-tw/privacy/">私隱政策</a>.<br>
 查看我們的<a href="https://www.abetterinternet.org/trademarks/">商標政策</a>.
 
       </div>
@@ -558,7 +558,7 @@
 
 
 
-<script src="/letsencrypt-ewebsite/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
+<script src="https://qubitpi.github.io/letsencrypt-website/js/main.9c0b9add2dc0db21de0f695103830dbde01e31d77fa9a2db9ac3c1b9e09e4806f2e0d9a7281b06461b2e162a3560c605b038169b42ff376b4cd28cc71203c8f0.js" integrity="sha512-nAua3S3A2yHeD2lRA4MNveAeMdd/qaLbmsPBueCeSAby4NmnKBsGRhsuFio1YMYFsDgWm0L/N2tM0ozHEgPI8A=="></script>
 
 	</body>
 </html>

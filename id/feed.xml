@@ -1,14 +1,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let&#39;s Encrypt - Sertifikat SSL/TLS Gratis</title>
-    <link>https://qubitpi.github.io/letsencrypt-ewebsite/id/</link>
+    <link>https://qubitpi.github.io/letsencrypt-website/id/</link>
     <description>  Let&#39;s Encrypt adalah otoritas sertifikasi terbuka yang gratis dan terotomatisasi,
   dipersembahkan oleh organisasi non-profit &lt;a href=&#34;https://www.abetterinternet.org/&#34;&gt;Internet Security Research Group (ISRG)&lt;/a&gt;.
 </description>
     <language>id-ID</language>
     <lastBuildDate>Mon, 15 Aug 2022 00:00:00 -0700</lastBuildDate>
     <generator>Hugo v0.89.1</generator>
-    <atom:link href="https://qubitpi.github.io/letsencrypt-ewebsite/id/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://qubitpi.github.io/letsencrypt-website/id/feed.xml" rel="self" type="application/rss+xml" />
       
   </channel>
 </rss>
